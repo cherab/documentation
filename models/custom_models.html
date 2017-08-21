@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.1. Custom emission models &mdash; CHERAB 0.99 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="CHERAB 0.99 documentation" href="../index.html"/>
+        <link rel="up" title="7. Emission Models" href="emission_models.html"/>
+        <link rel="next" title="7.2. CXS models" href="cxs/cxs_model.html"/>
+        <link rel="prev" title="7. Emission Models" href="emission_models.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.99
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core.html">3. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic_classes.html">4. Atomic Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../equilibrium.html">5. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasma_sources.html">6. Plasma sources</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="emission_models.html">7. Emission Models</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.1. Custom emission models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/cxs_model.html">7.2. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/atomic_data_calculation.html">7.3. Atomic data calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beam/beam_attenuation_calculation.html">7.4. Beam attenuation calcualtion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html">7.5. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bes/bes_model.html">7.6. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="radiated_power/radiated_power.html">7.7. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brem/bremsstrahlung.html">7.8. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_line/basic_line_emission.html">7.9. Basic Line Emission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utility.html">9. Utilities</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="emission_models.html">7. Emission Models</a> &raquo;</li>
+        
+      <li>7.1. Custom emission models</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/models/custom_models.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="custom-emission-models">
+<h1>7.1. Custom emission models<a class="headerlink" href="#custom-emission-models" title="Permalink to this headline">¶</a></h1>
+<p>Custom emitters are implemented as Raysect materials with the <cite>VolumeEmitterInhomogeneous</cite> class.
+You model should inherit from this base class, only two methods need to be implemented,
+the <cite>__init__()</cite> and <cite>emission_function()</cite> methods.</p>
+<p>The <cite>__init__()</cite> method should be used to setup any plasma parameters you will need access
+to for calculations. You could pass in the whole plasma object, or alternatively just the
+species you need. In this example, I will need the electron distribution and atomic deuterium
+distribution. Both of these can be passed in from the plasma object.</p>
+<p>I&#8217;m also passing in a spectroscopic <cite>Line</cite> object which holds useful information about my
+emission line. But this can change alot from application to application. We are also loading
+some atomic data from ADAS. You could optionally pass in the atomic data you want to use in
+the <cite>__init__()</cite>.</p>
+<p>The <cite>step</cite> parameter is the only parameter required by the parent <cite>VolumeEmitterInhomogeneous</cite>
+class. This parameter determines the integration step size for sampling and will need to be
+adjusted based on your application&#8217;s scale lengths. Make ure you call the parent init whith the
+super method, e.g. <cite>super().__init__(step=step)</cite>.</p>
+<p>All the magic happens in the <cite>emission_function()</cite> method. This method is called at every point
+in space where the ray-tracer would like to know the emission. The arguments are fixed and are
+as follows:</p>
+<ul class="simple">
+<li><cite>point</cite> (<cite>Point3D</cite>) - current position in local primitive coordinates</li>
+<li><cite>direction</cite> (<cite>Vector3D</cite>) - current ray direction in local primitive coordinates</li>
+<li><cite>spectrum</cite> (<cite>Spectrum</cite>) - measured spectrum so far. Don&#8217;t overwrite it. Add your local
+emission to the measured spectrum. Units are in spectral radiance (W/m3/str/nm).</li>
+<li><cite>world</cite> (<cite>World</cite>) - the world being ray-traced. You may have multiple worlds.</li>
+<li><cite>ray</cite> (<cite>Ray</cite>) - the current ray being traced.</li>
+<li><cite>primitive</cite> (<cite>Primitive</cite>) - the primitive container for this material. Could be a sphere,
+cyliner, or CAD mesh for example.</li>
+<li><cite>to_local</cite> (<cite>AffineMatrix3D</cite>) - Affine matrix for coordinate transformations to local coordinates.</li>
+<li><cite>to_world</cite> (<cite>AffineMatrix3D</cite>) - Affine matrix for coordinate transformations to world coordinates.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Don&#8217;t override the spectrum parameter, you will loose all the previous ray samples. Instead you
+should add your local emission at the current point in space to the measured spectrum array.</p>
+</div>
+<p>Here is an example class implementation of an excitation line.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExcitationLine</span><span class="p">(</span><span class="n">VolumeEmitterInhomogeneous</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">electron_distribution</span><span class="p">,</span> <span class="n">atom_species</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+                 <span class="n">block</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">line</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">electron_distribution</span> <span class="o">=</span> <span class="n">electron_distribution</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atom_species</span> <span class="o">=</span> <span class="n">atom_species</span>
+
+        <span class="c1"># Function to load ADAS rate coefficients</span>
+        <span class="c1"># Replace this with your own atomic data as necessary.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pec_excitation</span> <span class="o">=</span> <span class="n">get_adf15_pec</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s1">&#39;EXCIT&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">emission_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">,</span> <span class="n">world</span><span class="p">,</span> <span class="n">ray</span><span class="p">,</span> <span class="n">primitive</span><span class="p">,</span>
+                          <span class="n">to_local</span><span class="p">,</span> <span class="n">to_world</span><span class="p">):</span>
+
+        <span class="c1">##########################################</span>
+        <span class="c1"># Load all data you need for calculation #</span>
+
+        <span class="c1"># Get the current position in world coordinates,</span>
+        <span class="c1"># &#39;point&#39; is in local primitive coordinates by default</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">point</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">to_world</span><span class="p">)</span>
+
+        <span class="c1"># electron density n_e(x, y, z) at current point</span>
+        <span class="n">ne</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">electron_distribution</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+        <span class="c1"># electron temperature t_e(x, y, z) at current point</span>
+        <span class="n">te</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">electron_distribution</span><span class="o">.</span><span class="n">effective_temperature</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+        <span class="c1"># density of neutral atoms of species specified by line.element</span>
+        <span class="n">na</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atom_species</span><span class="o">.</span><span class="n">distribution</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+        <span class="c1"># Electron temperature and density must be in valid range for ADAS data.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="mi">5</span><span class="n">E13</span> <span class="o">&lt;</span> <span class="n">ne</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="n">E21</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">spectrum</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="mf">0.2</span> <span class="o">&lt;</span> <span class="n">te</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">spectrum</span>
+
+        <span class="c1"># Photo Emission Coefficient (PEC) for excitation at this temperature and density</span>
+        <span class="n">pece</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pec_excitation</span><span class="p">(</span><span class="n">ne</span><span class="p">,</span> <span class="n">te</span><span class="p">)</span>
+
+        <span class="c1"># calculate line intensity</span>
+        <span class="n">inty</span> <span class="o">=</span> <span class="mi">1</span><span class="n">E6</span> <span class="o">*</span> <span class="p">(</span><span class="n">pece</span> <span class="o">*</span> <span class="n">ne</span> <span class="o">*</span> <span class="n">na</span><span class="p">)</span>
+
+        <span class="n">weight</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">atomic_weight</span>
+        <span class="n">rest_wavelength</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">wavelength</span>
+
+        <span class="c1">###############################</span>
+        <span class="c1"># Calculate the emission line #</span>
+
+        <span class="c1"># Calculate a simple gaussian line at each line wavelength in spectrum</span>
+        <span class="c1"># Add it to the existing spectrum. Don&#39;t override previous results!</span>
+
+        <span class="n">sigma</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">te</span> <span class="o">*</span> <span class="n">ELEMENTARY_CHARGE</span> <span class="o">/</span> <span class="p">(</span><span class="n">weight</span> <span class="o">*</span> <span class="n">AMU</span><span class="p">))</span> <span class="o">*</span> <span class="n">rest_wavelength</span> <span class="o">/</span> <span class="n">SPEED_OF_LIGHT</span>
+        <span class="n">i0</span> <span class="o">=</span> <span class="n">inty</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">PI</span><span class="p">))</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">wvl</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">spectrum</span><span class="o">.</span><span class="n">wavelengths</span><span class="p">):</span>
+            <span class="n">spectrum</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">i0</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">wvl</span> <span class="o">-</span> <span class="n">rest_wavelength</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">width</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">spectrum</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cxs/cxs_model.html" class="btn btn-neutral float-right" title="7.2. CXS models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="emission_models.html" class="btn btn-neutral" title="7. Emission Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.99',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

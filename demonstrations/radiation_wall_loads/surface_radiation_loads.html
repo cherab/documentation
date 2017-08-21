@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Calculating wall surface radiation loads &mdash; CHERAB 0.99 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.99
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">1. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">2. Atomic Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">3. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">4. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">5. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">6. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">7. Utilities</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Calculating wall surface radiation loads</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demonstrations/radiation_wall_loads/surface_radiation_loads.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="calculating-wall-surface-radiation-loads">
+<span id="surface-radiation-loads"></span><h1>Calculating wall surface radiation loads<a class="headerlink" href="#calculating-wall-surface-radiation-loads" title="Permalink to this headline">¶</a></h1>
+<p>In this example we ray-trace the total radiated power from a SOLPS simulation
+and use rectangular observers wrapping around the machine wall to calculate a
+radiation power profile wrapping around the machine. The full demo file for
+this tutorial can be downloaded from
+<a class="reference external" href="https://git.ccfe.ac.uk/cherab/cherab-core/tree/master/docs/demonstrations/radiation_wall_loads/wall_radiation.py">here</a>.
+Start by importing all required modules and creating world.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># External imports</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span>
+
+<span class="c1"># Raysect imports</span>
+<span class="kn">from</span> <span class="nn">raysect.core.workflow</span> <span class="k">import</span> <span class="n">SerialEngine</span>
+<span class="kn">from</span> <span class="nn">raysect.core</span> <span class="k">import</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate_basis</span>
+<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="k">import</span> <span class="n">World</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.observer.nonimaging.pixel</span> <span class="k">import</span> <span class="n">Pixel</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="k">import</span> <span class="n">PowerPipeline0D</span>
+<span class="kn">from</span> <span class="nn">raysect.primitive.mesh</span> <span class="k">import</span> <span class="n">Mesh</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.material.absorber</span> <span class="k">import</span> <span class="n">AbsorbingSurface</span>
+
+<span class="c1"># CHERAB imports</span>
+<span class="kn">from</span> <span class="nn">cherab_extra.simulation_data.solps.models.radiated_power</span> <span class="k">import</span> <span class="n">solps_total_radiated_power</span>
+<span class="kn">from</span> <span class="nn">cherab_extra.simulation_data.solps.solps_plasma</span> <span class="k">import</span> <span class="n">SOLPSSimulation</span>
+<span class="kn">from</span> <span class="nn">cherab_aug.integrated_power.wall_detector_geometry</span> <span class="k">import</span> <span class="n">aug_wall_detectors</span>
+
+<span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="loading-plasma-and-machine-geometry">
+<h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Permalink to this headline">¶</a></h2>
+<p>Load all parts of the machine mesh from files. We are using a perfect absorbing surface so that
+no emission will be reflected.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MESH_PATH</span> <span class="o">=</span> <span class="s1">&#39;/projects/cadmesh/aug/&#39;</span>
+
+<span class="c1"># Load all parts of mesh with chosen material</span>
+<span class="n">MESH_PARTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;vessel_s02-03.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;vessel_s04-05.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;vessel_s06-07.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;vessel_s08-09.rsm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;vessel_s10-11.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;vessel_s12-13.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;vessel_s14-15.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;vessel_s16-01.rsm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;divertor_s02-03.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;divertor_s04-05.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;divertor_s06-07.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;divertor_s08-09.rsm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;divertor_s10-11.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;divertor_s12-13.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;divertor_s14-15.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;divertor_s16-01.rsm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;inner_heat_shield_s01.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;inner_heat_shield_s02.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;inner_heat_shield_s03.rsm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;inner_heat_shield_s04.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;inner_heat_shield_s05.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;inner_heat_shield_s06.rsm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;inner_heat_shield_s07.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;inner_heat_shield_s08.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;inner_heat_shield_s09.rsm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;inner_heat_shield_s10.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;inner_heat_shield_s11.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;inner_heat_shield_s12.rsm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;inner_heat_shield_s13.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;inner_heat_shield_s14.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;inner_heat_shield_s15.rsm&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;inner_heat_shield_s16.rsm&#39;</span><span class="p">]</span>
+
+<span class="n">machine_material</span> <span class="o">=</span> <span class="n">AbsorbingSurface</span><span class="p">()</span>  <span class="c1"># Mesh with perfect absorber</span>
+
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">MESH_PARTS</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">MESH_PATH</span> <span class="o">+</span> <span class="n">path</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;importing </span><span class="si">{}</span><span class="s2">  ...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">directory</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">name</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">Mesh</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="n">machine_material</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The core Plasma object will be populated from the output of a AUG SOLPS simulation, this example
+provided by Felix Reimold (2016). The simulation can be loaded from the AUG MDSplus server
+or locally from files.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Load simulation from MDSplus</span>
+<span class="n">mds_server</span> <span class="o">=</span> <span class="s1">&#39;solps-mdsplus.aug.ipp.mpg.de:8001&#39;</span>
+<span class="n">ref_number</span> <span class="o">=</span> <span class="mi">40195</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">SOLPSSimulation</span><span class="o">.</span><span class="n">load_from_mdsplus</span><span class="p">(</span><span class="n">mds_server</span><span class="p">,</span> <span class="n">ref_number</span><span class="p">)</span>
+
+<span class="c1"># Load simulation from raw output files</span>
+<span class="c1"># SIM_PATH = &#39;/home/mcarr/mst1/aug_2016/solps_testcase/&#39;</span>
+<span class="c1"># sim = SOLPSSimulation.load_from_output_files(SIM_PATH)</span>
+
+<span class="n">plasma</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">plasma</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">mesh</span>
+<span class="n">plasma_cylinder</span> <span class="o">=</span> <span class="n">solps_total_radiated_power</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">sim</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description-of-wall-tile-observers">
+<h2>Description of wall tile observers<a class="headerlink" href="#description-of-wall-tile-observers" title="Permalink to this headline">¶</a></h2>
+<p>Even though we are using the full CAD files for ray-tracing effects such as
+occlusion and shadowing, we will use a simplified wall surface as the
+observing surface.</p>
+<p>The observing surface will be 1cm wide and covering a complete poloidal cross
+section of the machine. Each wall element will be a rectangle with x-width=1cm
+and a y-width that varies poloidally depending on the detail level required in
+that part of the machine. For example, the observing tiles might need to be
+much small in the divertor region where radiation gradients are much steeper.</p>
+<p>For every tile the minimum description needed is the (xwidth, ywidth) dimensions,
+a Point3D indicating the centre point of the tile, a surface normal vector, and
+a y-axis vector. An example description could be a list like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># (detector index, xwidth, ywidth, centre_point, normal_vector, y_vector)</span>
+<span class="n">aug_wall_detectors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.2027</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">(</span><span class="mf">1.0566</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.072559</span><span class="p">),</span>
+     <span class="n">Vector3D</span><span class="p">(</span><span class="mf">0.99958</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.028904</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">0.028904</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.99958</span><span class="p">)),</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.06912</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">(</span><span class="mf">1.0647</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.20806</span><span class="p">),</span>
+     <span class="n">Vector3D</span><span class="p">(</span><span class="mf">0.98882</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.14913</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">0.14913</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.98882</span><span class="p">)),</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1362</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">(</span><span class="mf">1.0761</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.31002</span><span class="p">),</span>
+     <span class="n">Vector3D</span><span class="p">(</span><span class="mf">0.99575</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.092117</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">0.092117</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.99575</span><span class="p">)),</span>
+     <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/AUG_wall_outline1.png" src="../../_images/AUG_wall_outline1.png" />
+<p class="caption"><span class="caption-text">Example wall observation geometry for AUG shown in blue. Surface normals indicated.</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/AUG_wall_zoomed.png" src="../../_images/AUG_wall_zoomed.png" />
+<p class="caption"><span class="caption-text">Zoomed in view of the wall observation geometry for AUG in the divertor. Note,
+observing surface can be very close but must not overlap the CAD files. Otherwise
+radiation is absorbed by the CAD surface instead of the observing surface.</span></p>
+</div>
+<p>For each tile in the list of wall tiles, setup the tile as a <cite>Pixel</cite> observer class.
+These pixels are rectangular surfaces with arbitrary orientation. Random sample points
+and vectors are generated across the rectangular surface to cover the full etendue of
+the tile.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Storage lists for results</span>
+<span class="n">powers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">power_errors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">detector_numbers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">distance</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">X_WIDTH</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># x-width is constant 1cm</span>
+<span class="n">running_distance</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">cherab_total_power</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Loop over each tile detector</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">detector</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">aug_wall_detectors</span><span class="p">):</span>
+
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;detector </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+    <span class="c1"># extract the dimensions and orientation of the tile</span>
+    <span class="n">y_width</span> <span class="o">=</span> <span class="n">detector</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">centre_point</span> <span class="o">=</span> <span class="n">detector</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">normal_vector</span> <span class="o">=</span> <span class="n">detector</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">y_vector</span> <span class="o">=</span> <span class="n">detector</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">pixel_area</span> <span class="o">=</span> <span class="n">X_WIDTH</span> <span class="o">*</span> <span class="n">y_width</span>
+
+    <span class="c1"># Use the power pipeline to record total power arriving at the surface</span>
+    <span class="n">power_data</span> <span class="o">=</span> <span class="n">PowerPipeline0D</span><span class="p">()</span>
+
+    <span class="c1"># Create a affine transform matrix to correctly orientate the tile</span>
+    <span class="n">pixel_transform</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="n">centre_point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">centre_point</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">centre_point</span><span class="o">.</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate_basis</span><span class="p">(</span><span class="n">normal_vector</span><span class="p">,</span> <span class="n">y_vector</span><span class="p">)</span>
+    <span class="c1"># Use pixel_samples argument to increase amount of sampling and reduce noise</span>
+    <span class="n">pixel</span> <span class="o">=</span> <span class="n">Pixel</span><span class="p">([</span><span class="n">power_data</span><span class="p">],</span> <span class="n">x_width</span><span class="o">=</span><span class="n">X_WIDTH</span><span class="p">,</span> <span class="n">y_width</span><span class="o">=</span><span class="n">y_width</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pixel-</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
+                  <span class="n">spectral_bins</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">pixel_transform</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">pixel_samples</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+    <span class="c1"># Start collecting samples</span>
+    <span class="n">pixel</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+
+    <span class="c1"># Append the collected data to the storage lists</span>
+    <span class="n">powers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">power_data</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">mean</span> <span class="o">/</span> <span class="n">pixel_area</span><span class="p">)</span>  <span class="c1"># convert to W/m^2</span>
+    <span class="n">power_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">power_data</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">error</span><span class="p">()</span> <span class="o">/</span> <span class="n">pixel_area</span><span class="p">)</span>
+    <span class="n">detector_numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the current poloidal distance around the machine</span>
+    <span class="n">running_distance</span> <span class="o">+=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">y_width</span>
+    <span class="n">distance</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">running_distance</span><span class="p">)</span>
+    <span class="n">running_distance</span> <span class="o">+=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">y_width</span>
+
+    <span class="c1"># For checking energy conservation.</span>
+    <span class="c1"># Revolve this tile around the cylindrical z-axis to get total power collected by these tiles.</span>
+    <span class="c1"># Add up all the tile contributions to get total power collected.</span>
+    <span class="n">pixel_radius</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">centre_point</span><span class="o">.</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">centre_point</span><span class="o">.</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">cherab_total_power</span> <span class="o">+=</span> <span class="n">power_data</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="n">y_width</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">pixel_radius</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/AUG_radiation_load.png" src="../../_images/AUG_radiation_load.png" />
+<p class="caption"><span class="caption-text">Example plot of radiation power loading around the machine walls.</span></p>
+</div>
+</div>
+<div class="section" id="checking-for-energy-conservation">
+<h2>Checking for energy conservation<a class="headerlink" href="#checking-for-energy-conservation" title="Permalink to this headline">¶</a></h2>
+<p>We can check that energy is being conserved by looping over each cell in the SOLPS simulation and adding
+up its power to find the total power emitted in the simulation. Total radiated power should equal total
+power collected on the walls.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">total_rad_data</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">total_rad_data</span>
+<span class="n">vol</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vol</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">cr</span>
+
+<span class="n">solps_total_power</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">nx</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">ny</span><span class="p">):</span>
+        <span class="n">solps_total_power</span> <span class="o">+=</span> <span class="n">total_rad_data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">vol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CHERAB total radiated power =&gt; </span><span class="si">{:.4G}</span><span class="s2"> W&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cherab_total_power</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SOLPS total radiated power =&gt; </span><span class="si">{:.4G}</span><span class="s2"> W&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">solps_total_power</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.99',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

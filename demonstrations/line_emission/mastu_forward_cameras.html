@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MAST-U filtered cameras &mdash; CHERAB 0.99 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.99
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">1. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">2. Atomic Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">3. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">4. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">5. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">6. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">7. Utilities</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>MAST-U filtered cameras</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demonstrations/line_emission/mastu_forward_cameras.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mast-u-filtered-cameras">
+<span id="mastu-forward-cameras"></span><h1>MAST-U filtered cameras<a class="headerlink" href="#mast-u-filtered-cameras" title="Permalink to this headline">¶</a></h1>
+<p>Example of using SOLPS simulation and ADAS rates to model filtered cameras.
+Start by importing all required modules and creating world.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Core and external imports</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">raysect.core</span> <span class="k">import</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">Point3D</span>
+<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="k">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">translate</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="k">import</span> <span class="n">VectorCamera</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="k">import</span> <span class="n">RGBPipeline2D</span><span class="p">,</span> <span class="n">SpectralPipeline2D</span><span class="p">,</span> <span class="n">PowerPipeline2D</span>
+<span class="kn">from</span> <span class="nn">raysect.primitive.mesh</span> <span class="k">import</span> <span class="n">import_stl</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.material.lambert</span> <span class="k">import</span> <span class="n">Lambert</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.material.absorber</span> <span class="k">import</span> <span class="n">AbsorbingSurface</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.material.debug</span> <span class="k">import</span> <span class="n">Light</span> <span class="k">as</span> <span class="n">Debug</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.spectralfunction</span> <span class="k">import</span> <span class="n">ConstantSF</span>
+
+<span class="c1"># Cherab and raysect imports</span>
+<span class="kn">from</span> <span class="nn">cherab.atomic.core</span> <span class="k">import</span> <span class="n">Line</span>
+<span class="kn">from</span> <span class="nn">cherab.atomic.elements</span> <span class="k">import</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span>
+<span class="kn">from</span> <span class="nn">cherab_contrib.jet.calcam</span> <span class="k">import</span> <span class="n">load_calcam_calibration</span>
+<span class="kn">from</span> <span class="nn">cherab_contrib.simulation_data.solps.solps_plasma</span> <span class="k">import</span> <span class="n">SOLPSSimulation</span>
+<span class="kn">from</span> <span class="nn">cherab.model.impact_excitation.pec_line</span> <span class="k">import</span> <span class="n">ExcitationLine</span><span class="p">,</span> <span class="n">RecombinationLine</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="loading-machine-geometry">
+<h2>Loading machine geometry<a class="headerlink" href="#loading-machine-geometry" title="Permalink to this headline">¶</a></h2>
+<p>Load all parts of the machine mesh from files (either .stl or .obj). Each CAD files&#8217; optical properties are modified
+by the chosen material:</p>
+<ul class="simple">
+<li>AbsorbingSurface - Acts as a perfect absorber. This class is useful for using the mesh geometry to restrict the plasma
+view, without including more advanced behaviour such as reflections.</li>
+<li>Lambert - a lambertian surface which takes the percentage reflectance as an argument. This material will include
+reflective effects and hence requires larger number of samples for sufficient accuracy.</li>
+<li>Debug - a useful material for debugging. Takes a vector as argument which specifies the direction of global
+illumination. All surfaces will be illuminated with a uniform light emitting in the direction of this vector.</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MESH_PARTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;/projects/cadmesh/mast/mastu-light/mug_centrecolumn_endplates.stl&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;/projects/cadmesh/mast/mastu-light/mug_divertor_nose_plates.stl&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">MESH_PARTS</span><span class="p">:</span>
+    <span class="n">import_stl</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="n">AbsorbingSurface</span><span class="p">())</span>  <span class="c1"># Mesh with perfect absorber</span>
+    <span class="c1"># import_stl(path, parent=world, material=Lambert(ConstantSF(0.25)))  # Mesh with 25% Lambertian reflectance</span>
+    <span class="c1"># import_stl(path, parent=world, material=Debug(Vector3D(0.0, 1.0, 0.0)))  # Mesh with debugging material</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loading-plasma-from-solps-simulation">
+<h2>Loading plasma from SOLPS simulation<a class="headerlink" href="#loading-plasma-from-solps-simulation" title="Permalink to this headline">¶</a></h2>
+<p>The core Plasma object can be populated from the output of a SOLPS simulation. These simulations can be loaded from the
+raw output files, or from the AUG MDSplus server. This example loads a SOLPS simulation from the AUG server.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Load plasma from SOLPS model</span>
+<span class="n">mds_server</span> <span class="o">=</span> <span class="s1">&#39;solps-mdsplus.aug.ipp.mpg.de:8001&#39;</span>
+<span class="n">ref_number</span> <span class="o">=</span> <span class="mi">69636</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">SOLPSSimulation</span><span class="o">.</span><span class="n">load_from_mdsplus</span><span class="p">(</span><span class="n">mds_server</span><span class="p">,</span> <span class="n">ref_number</span><span class="p">)</span>
+<span class="n">plasma</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">plasma</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">mesh</span>
+<span class="n">vessel</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vessel</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-up-emission-lines">
+<h2>Setting up emission lines<a class="headerlink" href="#setting-up-emission-lines" title="Permalink to this headline">¶</a></h2>
+<p>The desired emission lines can be simulated by setting up an emission Line object. This specifies the species and
+transition of interest. Rate coefficient data will be loaded from the ADAS database if the line identified is available
+in the default ADAS ADF files. If no rate data is available, a user supplied ADF file can be used to populate the rate
+coefficient curves.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Setup deuterium lines</span>
+<span class="n">d_alpha</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">wavelength</span><span class="o">=</span><span class="mf">656.19</span><span class="p">)</span>
+<span class="n">d_gamma</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">wavelength</span><span class="o">=</span><span class="mf">433.99</span><span class="p">)</span>
+
+<span class="c1"># Load both deuterium plasma species for use in rate calculations.</span>
+<span class="n">d_ion_species</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">d_atom_species</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Load the Excitation and Recombination lines and add them as emitters to the world.</span>
+<span class="n">d_alpha_excit</span> <span class="o">=</span> <span class="n">ExcitationLine</span><span class="p">(</span><span class="n">d_alpha</span><span class="p">,</span> <span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span><span class="p">,</span> <span class="n">d_atom_species</span><span class="p">,</span>
+                               <span class="n">inside_outside</span><span class="o">=</span><span class="n">plasma</span><span class="o">.</span><span class="n">inside_outside</span><span class="p">)</span>
+<span class="n">d_alpha_excit</span><span class="o">.</span><span class="n">add_emitter_to_world</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">plasma</span><span class="p">)</span>
+<span class="n">d_alpha_recom</span> <span class="o">=</span> <span class="n">RecombinationLine</span><span class="p">(</span><span class="n">d_alpha</span><span class="p">,</span> <span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span><span class="p">,</span> <span class="n">d_ion_species</span><span class="p">,</span>
+                                  <span class="n">inside_outside</span><span class="o">=</span><span class="n">plasma</span><span class="o">.</span><span class="n">inside_outside</span><span class="p">)</span>
+<span class="n">d_alpha_recom</span><span class="o">.</span><span class="n">add_emitter_to_world</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">plasma</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Two more examples of lines that could be added to the scene.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># d-gamma</span>
+<span class="n">d_gamma_excit</span> <span class="o">=</span> <span class="n">ExcitationLine</span><span class="p">(</span><span class="n">d_gamma</span><span class="p">,</span> <span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span><span class="p">,</span> <span class="n">d_atom_species</span><span class="p">,</span>
+                               <span class="n">inside_outside</span><span class="o">=</span><span class="n">plasma</span><span class="o">.</span><span class="n">inside_outside</span><span class="p">)</span>
+<span class="n">d_gamma_excit</span><span class="o">.</span><span class="n">add_emitter_to_world</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">plasma</span><span class="p">)</span>
+<span class="n">d_gamma_recom</span> <span class="o">=</span> <span class="n">RecombinationLine</span><span class="p">(</span><span class="n">d_gamma</span><span class="p">,</span> <span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span><span class="p">,</span> <span class="n">d_ion_species</span><span class="p">,</span>
+                                  <span class="n">inside_outside</span><span class="o">=</span><span class="n">plasma</span><span class="o">.</span><span class="n">inside_outside</span><span class="p">)</span>
+<span class="n">d_gamma_recom</span><span class="o">.</span><span class="n">add_emitter_to_world</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">plasma</span><span class="p">)</span>
+
+<span class="c1"># ciii_465</span>
+<span class="n">ciii_465</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">wavelength</span><span class="o">=</span><span class="mf">465.01</span><span class="p">)</span>
+<span class="n">ciii_species</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ciii_excit</span> <span class="o">=</span> <span class="n">ExcitationLine</span><span class="p">(</span><span class="n">ciii_465</span><span class="p">,</span> <span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span><span class="p">,</span> <span class="n">ciii_species</span><span class="p">,</span> <span class="n">inside_outside</span><span class="o">=</span><span class="n">plasma</span><span class="o">.</span><span class="n">inside_outside</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ciii_excit</span><span class="o">.</span><span class="n">add_emitter_to_world</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">plasma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filtered-camera-setup">
+<h2>Filtered camera setup<a class="headerlink" href="#filtered-camera-setup" title="Permalink to this headline">¶</a></h2>
+<p>Camera geometry can be loaded from a CalCam calibration. The appropriate camera to use is the VectorCamera which takes
+the pixel geometry as arguments.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Select from available Cameras</span>
+<span class="n">camera_config</span> <span class="o">=</span> <span class="n">load_calcam_calibration</span><span class="p">(</span><span class="s1">&#39;./demo/mast/camera_configs/mug_bulletb_midplane.nc&#39;</span><span class="p">)</span>
+<span class="c1"># camera_config = load_calcam_calibration(&#39;./demo/mast/camera_configs/mug_divcam_isp.nc&#39;)</span>
+<span class="c1"># camera_config = load_calcam_calibration(&#39;./demo/mast/camera_configs/mug_divcam_sxd.nc&#39;)</span>
+
+
+<span class="c1"># Load RGB pipeline for visualisation</span>
+<span class="n">rgb</span> <span class="o">=</span> <span class="n">RGBPipeline2D</span><span class="p">(</span><span class="n">display_unsaturated_fraction</span><span class="o">=</span><span class="mf">0.96</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;sRGB&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get the power and raw spectral data for scientific use.</span>
+<span class="n">power_unfiltered</span> <span class="o">=</span> <span class="n">PowerPipeline2D</span><span class="p">(</span><span class="n">display_unsaturated_fraction</span><span class="o">=</span><span class="mf">0.96</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Unfiltered Power (W)&quot;</span><span class="p">)</span>
+<span class="n">power_unfiltered</span><span class="o">.</span><span class="n">display_update_time</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">spectral</span> <span class="o">=</span> <span class="n">SpectralPipeline2D</span><span class="p">()</span>
+
+<span class="c1"># Setup camera for interactive use...</span>
+<span class="n">pixels_shape</span><span class="p">,</span> <span class="n">pixel_origins</span><span class="p">,</span> <span class="n">pixel_directions</span> <span class="o">=</span> <span class="n">camera_config</span>
+<span class="n">camera</span> <span class="o">=</span> <span class="n">VectorCamera</span><span class="p">(</span><span class="n">pixel_origins</span><span class="p">,</span> <span class="n">pixel_directions</span><span class="p">,</span>
+                      <span class="n">pipelines</span><span class="o">=</span><span class="p">[</span><span class="n">rgb</span><span class="p">,</span> <span class="n">power_unfiltered</span><span class="p">,</span> <span class="n">spectral</span><span class="p">],</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">camera</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If your simulation includes reflection effects. We recommend running the simulation in a loop and collecting lots of
+samples. The simulation can be terminated manually when the required noise level has been reached.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Setup camera for batch run on cluster</span>
+<span class="n">pixels_shape</span><span class="p">,</span> <span class="n">pixel_origins</span><span class="p">,</span> <span class="n">pixel_directions</span> <span class="o">=</span> <span class="n">camera_config</span>
+<span class="n">camera</span> <span class="o">=</span> <span class="n">VectorCamera</span><span class="p">(</span><span class="n">pixel_origins</span><span class="p">,</span> <span class="n">pixel_directions</span><span class="p">,</span> <span class="n">pixels</span><span class="o">=</span><span class="n">pixels_shape</span><span class="p">,</span> <span class="n">sensitivity</span><span class="o">=</span><span class="mi">1</span><span class="n">E</span><span class="o">-</span><span class="mi">34</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">spectral_samples</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">display_progress</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">accumulate</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># start ray tracing</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5000</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rendering pass </span><span class="si">{}</span><span class="s2"> (</span><span class="si">{}</span><span class="s2"> samples/pixel)...&quot;</span>
+          <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">camera</span><span class="o">.</span><span class="n">accumulated_samples</span> <span class="o">+</span> <span class="n">camera</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">*</span> <span class="n">camera</span><span class="o">.</span><span class="n">spectral_rays</span><span class="p">))</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;mastu_divcam_dalpha_</span><span class="si">{}</span><span class="s2">_samples.png&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">camera</span><span class="o">.</span><span class="n">accumulated_samples</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Raw power and spectral data is available for further scientific use through the power and spectral pipelines.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Wavelength array</span>
+<span class="n">spectral</span><span class="o">.</span><span class="n">wavelengths</span>
+<span class="c1"># Raw spectrum at pixel coordinate (250, 250)</span>
+<span class="n">spectral</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">mean</span><span class="p">[</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-output-images">
+<h2>Example output images<a class="headerlink" href="#example-output-images" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/mastu_bulletb_midplane_dgamma1.png" src="../../_images/mastu_bulletb_midplane_dgamma1.png" />
+<p class="caption"><span class="caption-text">D-gamma with the mid-plane bullet camera.</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/mastu_divcam_isp_ciii_465.png" src="../../_images/mastu_divcam_isp_ciii_465.png" />
+<p class="caption"><span class="caption-text">C-III at 465nm with the X-point camera.</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/mastu_divcam_sxd_dalpha.png" src="../../_images/mastu_divcam_sxd_dalpha.png" />
+<p class="caption"><span class="caption-text">D-alpha in the Super-X configuration and viewed with the SXD camera.</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/mastu_divcam_sxd_dalpha_150_samples.png" src="../../_images/mastu_divcam_sxd_dalpha_150_samples.png" />
+<p class="caption"><span class="caption-text">Repeat of the previous image. All previous simulations used the perfect AbsorbingSurface material to include geometry
+blocking effects. This simulation goes one step further, instead we are using a Lambertian material with 25%
+reflectance to simulate carbon tiles. This leads to a visable difference around the tile surfaces.</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.99',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

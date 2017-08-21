@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>76666 sample analysis &mdash; CHERAB 0.99 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.99
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">1. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">2. Atomic Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">3. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">4. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">5. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">6. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">7. Utilities</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>76666 sample analysis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demonstrations/jet_cxrs/jet_demo_76666.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sample-analysis">
+<span id="jet-cxrs-76666"></span><h1>76666 sample analysis<a class="headerlink" href="#sample-analysis" title="Permalink to this headline">¶</a></h1>
+<p>Demo for pulse 76666 at t=61s</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+
+<span class="c1"># Demo for pulse 79666 at t=61s</span>
+<span class="n">PULSE</span> <span class="o">=</span> <span class="mi">79666</span>
+<span class="n">TIME</span> <span class="o">=</span> <span class="mf">61.</span>
+
+<span class="c1"># External imports</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">isnan</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.data_source</span> <span class="k">import</span> <span class="n">DataSource</span>
+<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.neutralbeam</span> <span class="k">import</span> <span class="n">PINIParameters</span>
+<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.ppf_access</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.scenegraph</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">core</span> <span class="k">import</span> <span class="n">Species</span>
+<span class="c1"># Internal imports</span>
+<span class="kn">from</span> <span class="nn">core.distribution</span> <span class="k">import</span> <span class="n">Maxwellian</span>
+<span class="kn">from</span> <span class="nn">core.math.mapping.interpolators.interpolators1d</span> <span class="k">import</span> <span class="n">Interpolate1DCubic</span>
+<span class="kn">from</span> <span class="nn">core.math.mapping.mappers</span> <span class="k">import</span> <span class="n">IsoMapper3D</span>
+<span class="kn">from</span> <span class="nn">core.model.beam.singleray</span> <span class="k">import</span> <span class="n">SingleRayAttenuator</span>
+<span class="kn">from</span> <span class="nn">core.model.cxs.beaminteraction</span> <span class="k">import</span> <span class="n">CXSBeamPlasmaIntersection</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="n">plot</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="k">import</span> <span class="n">electron_mass</span><span class="p">,</span> <span class="n">atomic_mass</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="k">import</span> <span class="n">cumtrapz</span>
+
+<span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="k">import</span> <span class="n">ADAS</span>
+<span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="k">import</span> <span class="n">elements</span><span class="p">,</span> <span class="n">Line</span>
+<span class="kn">from</span> <span class="nn">raysect.core</span> <span class="k">import</span> <span class="n">Vector3D</span>
+
+<span class="c1"># ########################### SCENEGRAPH CREATION ########################### #</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Scenegraph creation&#39;</span><span class="p">)</span>
+
+<span class="n">atomic_data</span> <span class="o">=</span> <span class="n">ADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># C1 = Cylinder(4, 4, transform=translate(0, 0, -2.0)*rotate(0, 0, 0))</span>
+<span class="c1"># C2 = Cylinder(1.5, 4.2, transform=translate(0, 0, -2.1)*rotate(0, 0, 0))</span>
+<span class="c1"># Subtract(C1, C2, world, transform=translate(0, 0, 0)*rotate(0, 0, 0),</span>
+<span class="c1">#          material=DAlphaPlasma(PULSE, time=TIME, power=0.08, sigma=0.1, step=0.1), name=&quot;Plasma primitive&quot;)</span>
+
+<span class="n">attenuation_instruction</span> <span class="o">=</span> <span class="p">(</span><span class="n">SingleRayAttenuator</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">})</span>
+<span class="n">emission_instructions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">CXSBeamPlasmaIntersection</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;line&#39;</span><span class="p">:</span> <span class="n">Line</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">)),</span>  <span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">}),</span>
+                         <span class="c1"># (CXSBeamPlasmaIntersection, {&#39;line&#39;: Line(elements.carbon, 5, (10, 8)), &#39;step&#39;: 0.01})</span>
+                        <span class="p">]</span>
+
+<span class="n">world</span><span class="p">,</span> <span class="n">plasma</span><span class="p">,</span> <span class="n">components</span> <span class="o">=</span> <span class="n">build_jet_scenegraph</span><span class="p">(</span><span class="n">PULSE</span><span class="p">,</span>
+                                             <span class="n">atomic_data</span><span class="p">,</span>
+                                             <span class="n">attenuation_instruction</span><span class="p">,</span>
+                                             <span class="n">emission_instructions</span><span class="p">)</span>
+
+<span class="n">octant8</span> <span class="o">=</span> <span class="n">components</span><span class="p">[</span><span class="s1">&#39;nib8&#39;</span><span class="p">]</span>
+<span class="n">ks5_oct1</span> <span class="o">=</span> <span class="n">components</span><span class="p">[</span><span class="s1">&#39;ks5_oct1&#39;</span><span class="p">]</span>
+<span class="n">ks7_oct8</span> <span class="o">=</span> <span class="n">components</span><span class="p">[</span><span class="s1">&#39;ks7_oct8&#39;</span><span class="p">]</span>
+
+<span class="n">ks5_oct1</span><span class="o">.</span><span class="n">min_wavelength</span> <span class="o">=</span> <span class="mi">526</span>
+<span class="n">ks5_oct1</span><span class="o">.</span><span class="n">max_wavelength</span> <span class="o">=</span> <span class="mi">532</span>
+
+<span class="c1"># print_scenegraph(world)</span>
+
+<span class="c1"># ########################### PLASMA CONFIGURATION ########################## #</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Plasma configuration&#39;</span><span class="p">)</span>
+<span class="c1"># /!\ Plasma configuration is from pulse 79503!</span>
+<span class="n">PULSE_PLASMA</span> <span class="o">=</span> <span class="mi">79503</span>
+
+<span class="n">src</span> <span class="o">=</span> <span class="n">DataSource</span><span class="p">()</span>
+<span class="n">src</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">TIME</span>
+<span class="n">src</span><span class="o">.</span><span class="n">n_pulse</span> <span class="o">=</span> <span class="n">PULSE_PLASMA</span>
+<span class="n">psi</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">get_psi_normalised</span><span class="p">(</span><span class="n">cached2d</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">inside</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="ow">not</span> <span class="n">isnan</span><span class="p">(</span><span class="n">psi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+
+<span class="n">ppfsetdevice</span><span class="p">(</span><span class="s2">&quot;JET&quot;</span><span class="p">)</span>
+<span class="n">ppfuid</span><span class="p">(</span><span class="s1">&#39;cgiroud&#39;</span><span class="p">,</span> <span class="n">rw</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
+<span class="n">ppfgo</span><span class="p">(</span><span class="n">pulse</span><span class="o">=</span><span class="n">PULSE_PLASMA</span><span class="p">,</span> <span class="n">seq</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">psi_coord</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ppfget</span><span class="p">(</span><span class="n">PULSE_PLASMA</span><span class="p">,</span> <span class="s1">&#39;PRFL&#39;</span><span class="p">,</span> <span class="s1">&#39;C6&#39;</span><span class="p">)[</span><span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">psi_coord</span> <span class="o">&lt;=</span> <span class="mf">1.0</span>
+<span class="n">psi_coord</span> <span class="o">=</span> <span class="n">psi_coord</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="n">flow_velocity_tor_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ppfget</span><span class="p">(</span><span class="n">PULSE_PLASMA</span><span class="p">,</span> <span class="s1">&#39;PRFL&#39;</span><span class="p">,</span> <span class="s1">&#39;VT&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">flow_velocity_tor_psi</span> <span class="o">=</span> <span class="n">Interpolate1DCubic</span><span class="p">(</span><span class="n">psi_coord</span><span class="p">,</span> <span class="n">flow_velocity_tor_data</span><span class="p">)</span>
+<span class="n">flow_velocity_tor</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">flow_velocity_tor_psi</span><span class="p">)</span>
+<span class="n">flow_velocity</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">flow_velocity_tor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">flow_velocity_tor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="mf">0.</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">ion_temperature_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ppfget</span><span class="p">(</span><span class="n">PULSE_PLASMA</span><span class="p">,</span> <span class="s1">&#39;PRFL&#39;</span><span class="p">,</span> <span class="s1">&#39;TI&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)[</span><span class="n">mask</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ti between </span><span class="si">{}</span><span class="s2"> and </span><span class="si">{}</span><span class="s2"> eV&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ion_temperature_data</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">ion_temperature_data</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+<span class="n">ion_temperature_psi</span> <span class="o">=</span> <span class="n">Interpolate1DCubic</span><span class="p">(</span><span class="n">psi_coord</span><span class="p">,</span> <span class="n">ion_temperature_data</span><span class="p">)</span>
+<span class="n">ion_temperature</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">ion_temperature_psi</span><span class="p">)</span>
+
+<span class="n">electron_density_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ppfget</span><span class="p">(</span><span class="n">PULSE_PLASMA</span><span class="p">,</span> <span class="s1">&#39;PRFL&#39;</span><span class="p">,</span> <span class="s1">&#39;NE&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)[</span><span class="n">mask</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ne between </span><span class="si">{}</span><span class="s2"> and </span><span class="si">{}</span><span class="s2"> m-3&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">electron_density_data</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">electron_density_data</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+<span class="n">electron_density_psi</span> <span class="o">=</span> <span class="n">Interpolate1DCubic</span><span class="p">(</span><span class="n">psi_coord</span><span class="p">,</span> <span class="n">electron_density_data</span><span class="p">)</span>
+<span class="n">electron_density</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">electron_density_psi</span><span class="p">)</span>
+
+<span class="n">density_c6_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ppfget</span><span class="p">(</span><span class="n">PULSE_PLASMA</span><span class="p">,</span> <span class="s1">&#39;PRFL&#39;</span><span class="p">,</span> <span class="s1">&#39;C6&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">density_c6_psi</span> <span class="o">=</span> <span class="n">Interpolate1DCubic</span><span class="p">(</span><span class="n">psi_coord</span><span class="p">,</span> <span class="n">density_c6_data</span><span class="p">)</span>
+<span class="n">density_c6</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">density_c6_psi</span><span class="p">)</span>
+
+<span class="n">density_d</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">electron_density</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">density_c6</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+<span class="n">d_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">density_d</span><span class="p">,</span> <span class="n">ion_temperature</span><span class="p">,</span> <span class="n">flow_velocity</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
+<span class="n">c6_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">density_c6</span><span class="p">,</span> <span class="n">ion_temperature</span><span class="p">,</span> <span class="n">flow_velocity</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">carbon</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
+<span class="n">e_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">electron_density</span><span class="p">,</span> <span class="n">ion_temperature</span><span class="p">,</span> <span class="n">flow_velocity</span><span class="p">,</span> <span class="n">electron_mass</span><span class="p">)</span>
+
+<span class="n">d_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d_distribution</span><span class="p">)</span>
+<span class="n">c6_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">c6_distribution</span><span class="p">)</span>
+
+<span class="n">plasma</span><span class="o">.</span><span class="n">b_field</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span><span class="o">.</span><span class="n">normalise</span><span class="p">()</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">inside</span> <span class="o">=</span> <span class="n">inside</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span> <span class="o">=</span> <span class="n">e_distribution</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">set_species</span><span class="p">([</span><span class="n">d_species</span><span class="p">,</span> <span class="n">c6_species</span><span class="p">])</span>
+
+<span class="c1"># ########################### PINIS CONFIGURATION ########################### #</span>
+<span class="c1"># (no information on PINI 6, assumed off)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PINIs configuration&#39;</span><span class="p">)</span>
+
+<span class="c1"># energy must not be 0 if the beam is turned on!</span>
+<span class="c1"># energy in eV/amu:</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">109717.</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">109717.</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">100000.</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">100000.</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">109863.</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">109179.</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">99267.3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">99657.9</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="c1"># powers in W:</span>
+<span class="n">powers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.17340e+06</span><span class="p">,</span>  <span class="mf">1.19512e+06</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.08606e+06</span><span class="p">,</span>  <span class="mf">1.00185e+06</span><span class="p">,</span>  <span class="mf">1.02248e+06</span><span class="p">,</span>  <span class="mf">1.00373e+06</span><span class="p">],</span>  <span class="c1"># main component</span>
+                   <span class="p">[</span><span class="mf">237300.</span><span class="p">,</span>      <span class="mf">241693.</span><span class="p">,</span>     <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">219749.</span><span class="p">,</span>      <span class="mf">202222.</span><span class="p">,</span>      <span class="mf">196378.</span><span class="p">,</span>      <span class="mf">193255.</span><span class="p">],</span>  <span class="c1"># half component</span>
+                   <span class="p">[</span><span class="mf">175050.</span><span class="p">,</span>      <span class="mf">178290.</span><span class="p">,</span>     <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">161481.</span><span class="p">,</span>      <span class="mf">151293.</span><span class="p">,</span>      <span class="mf">189440.</span><span class="p">,</span>      <span class="mf">184596.</span><span class="p">]],</span>  <span class="c1"># third component</span>
+                  <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">turned_on</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+<span class="n">pini_parameters</span> <span class="o">=</span> <span class="n">PINIParameters</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">powers</span><span class="p">,</span> <span class="n">turned_on</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">)</span>
+<span class="n">octant8</span><span class="o">.</span><span class="n">pini_parameters</span> <span class="o">=</span> <span class="n">pini_parameters</span>
+
+<span class="c1"># ############################### OBSERVATION ############################### #</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Observation&#39;</span><span class="p">)</span>
+
+<span class="n">ks5_oct1</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+<span class="n">ks5_oct1</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+<span class="n">ks5_oct1</span><span class="o">.</span><span class="n">get_los_group</span><span class="p">(</span><span class="s1">&#39;D Lines&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+<span class="n">ks5_oct1</span><span class="o">.</span><span class="n">get_los_group</span><span class="p">(</span><span class="s1">&#39;D Lines&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_los</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+
+<span class="c1"># ion()</span>
+<span class="c1"># # camera = PinholeCamera(fov=90, parent=world, transform=rotate(0,0,0)*translate(0,0,-5)) # below</span>
+<span class="c1"># # camera = PinholeCamera(scale=500, fov=90, parent=world, transform=translate(0,0,0)*rotate(0,180,180)*translate(0,0,-6)) # above</span>
+<span class="c1"># camera = PinholeCamera(fov=90, parent=world, transform=translate(0,-2,0)*rotate(0,135,180)*translate(0,0,-4)) # plongee</span>
+<span class="c1"># # camera = PinholeCamera(scale=5000000, fov=90, parent=world, transform=translate(0,0,0)*rotate(0,90,180)*translate(0,0,-6)) # horizon</span>
+<span class="c1">#</span>
+<span class="c1"># # camera = OrthographicCamera(width=10, parent=world, transform=translate(2,-2.5,0)*rotate(0,180,180)*translate(0,0,-2)) # above</span>
+<span class="c1">#</span>
+<span class="c1"># camera.ray_max_depth = 20</span>
+<span class="c1"># camera.rays = 1</span>
+<span class="c1"># camera.spectral_samples = 20</span>
+<span class="c1"># camera.pixels = (200, 200)</span>
+<span class="c1"># camera.display_progress = True</span>
+<span class="c1"># camera.display_update_time = 10</span>
+<span class="c1"># camera.observe()</span>
+<span class="c1">#</span>
+<span class="c1"># ioff()</span>
+<span class="c1"># camera.save(&quot;render.png&quot;)</span>
+<span class="c1"># camera.display()</span>
+<span class="c1"># show()</span>
+
+
+<span class="n">nb_tracks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ks5_oct1</span><span class="o">.</span><span class="n">spectra</span><span class="p">[</span><span class="s1">&#39;D Lines&#39;</span><span class="p">])</span>
+
+<span class="c1"># Calculated data</span>
+<span class="n">d_lines_c</span> <span class="o">=</span> <span class="n">ks5_oct1</span><span class="o">.</span><span class="n">spectra</span><span class="p">[</span><span class="s1">&#39;D Lines&#39;</span><span class="p">]</span>
+<span class="n">d_samples_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nb_tracks</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">d_lines_c</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">d_wavelengths_all_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">d_lines_c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">d_lines_c</span><span class="p">)):</span>
+    <span class="c1"># calculated radiance in J/m^2/str/s/nm</span>
+    <span class="n">d_samples_c</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">d_lines_c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">samples</span>
+
+    <span class="c1"># turn it into ph/m^2/str/s/nm</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">d_wavelengths_all_c</span><span class="p">)):</span>
+        <span class="n">d_samples_c</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">PhotonToJ</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">d_samples_c</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">d_wavelengths_all_c</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">d_wavelengths_all_c</span><span class="p">,</span> <span class="n">d_samples_c</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="p">:])</span>
+<span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># calculated intensity in ph/m^2/str/s</span>
+<span class="n">d_intensity_c</span> <span class="o">=</span> <span class="n">cumtrapz</span><span class="p">(</span><span class="n">d_samples_c</span><span class="p">,</span> <span class="n">d_wavelengths_all_c</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">d_wavelengths_c</span> <span class="o">=</span> <span class="n">d_wavelengths_all_c</span><span class="p">[</span><span class="n">d_samples_c</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d_wavelengths_c</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nb_tracks</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">d_wavelengths_c</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">d_intensity_c</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.99',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

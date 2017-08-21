@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>9. Utilities &mdash; CHERAB 0.99 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="CHERAB 0.99 documentation" href="index.html"/>
+        <link rel="next" title="Code examples gallery" href="demonstrations/demonstrations.html"/>
+        <link rel="prev" title="8. Math functions" href="math.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.99
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">3. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomic_classes.html">4. Atomic Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">5. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">6. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math.html">8. Math functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.utility.conversion">9.1. Unit Conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.utility.notify">9.2. Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.utility.recursivedict">9.3. Recursive Dict</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CHERAB</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>9. Utilities</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/utility.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="utilities">
+<h1>9. Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
+<p>Small module of helper functions and classes.</p>
+<div class="section" id="module-cherab.core.utility.conversion">
+<span id="unit-conversions"></span><h2>9.1. Unit Conversions<a class="headerlink" href="#module-cherab.core.utility.conversion" title="Permalink to this headline">¶</a></h2>
+<p>Utility functions shared for two or more modules</p>
+<dl class="class">
+<dt id="cherab.core.utility.conversion.AmuToKg">
+<em class="property">class </em><code class="descclassname">cherab.core.utility.conversion.</code><code class="descname">AmuToKg</code><a class="headerlink" href="#cherab.core.utility.conversion.AmuToKg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from amu to kg</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.utility.conversion.AngstromToNm">
+<em class="property">class </em><code class="descclassname">cherab.core.utility.conversion.</code><code class="descname">AngstromToNm</code><a class="headerlink" href="#cherab.core.utility.conversion.AngstromToNm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from cm3 to m3</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.utility.conversion.BaseFactorConversion">
+<em class="property">class </em><code class="descclassname">cherab.core.utility.conversion.</code><code class="descname">BaseFactorConversion</code><a class="headerlink" href="#cherab.core.utility.conversion.BaseFactorConversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for conversion based on factor</p>
+<dl class="classmethod">
+<dt id="cherab.core.utility.conversion.BaseFactorConversion.inv">
+<em class="property">classmethod </em><code class="descname">inv</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.BaseFactorConversion.inv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse conversion</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="cherab.core.utility.conversion.BaseFactorConversion.to">
+<em class="property">classmethod </em><code class="descname">to</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.BaseFactorConversion.to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Direct conversion</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.utility.conversion.Cm3ToM3">
+<em class="property">class </em><code class="descclassname">cherab.core.utility.conversion.</code><code class="descname">Cm3ToM3</code><a class="headerlink" href="#cherab.core.utility.conversion.Cm3ToM3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from cm3 to m3</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.utility.conversion.EvAmuToMS">
+<em class="property">class </em><code class="descclassname">cherab.core.utility.conversion.</code><code class="descname">EvAmuToMS</code><a class="headerlink" href="#cherab.core.utility.conversion.EvAmuToMS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from eV/amu to velocity (m/s)</p>
+<dl class="classmethod">
+<dt id="cherab.core.utility.conversion.EvAmuToMS.inv">
+<em class="property">classmethod </em><code class="descname">inv</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.EvAmuToMS.inv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse conversion</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="cherab.core.utility.conversion.EvAmuToMS.to">
+<em class="property">classmethod </em><code class="descname">to</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.EvAmuToMS.to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Direct conversion</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.utility.conversion.EvToJ">
+<em class="property">class </em><code class="descclassname">cherab.core.utility.conversion.</code><code class="descname">EvToJ</code><a class="headerlink" href="#cherab.core.utility.conversion.EvToJ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from eV to Jules</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.utility.conversion.PerCm3ToPerM3">
+<em class="property">class </em><code class="descclassname">cherab.core.utility.conversion.</code><code class="descname">PerCm3ToPerM3</code><a class="headerlink" href="#cherab.core.utility.conversion.PerCm3ToPerM3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from cm-3 to m-3</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.utility.conversion.PhotonToJ">
+<em class="property">class </em><code class="descclassname">cherab.core.utility.conversion.</code><code class="descname">PhotonToJ</code><a class="headerlink" href="#cherab.core.utility.conversion.PhotonToJ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from photon to Jules</p>
+<dl class="classmethod">
+<dt id="cherab.core.utility.conversion.PhotonToJ.inv">
+<em class="property">classmethod </em><code class="descname">inv</code><span class="sig-paren">(</span><em>x</em>, <em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.PhotonToJ.inv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse conversion; wavelength in nm</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="cherab.core.utility.conversion.PhotonToJ.to">
+<em class="property">classmethod </em><code class="descname">to</code><span class="sig-paren">(</span><em>x</em>, <em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.PhotonToJ.to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Direct conversion; wavelength in nm</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cherab.core.utility.notify">
+<span id="notify"></span><h2>9.2. Notify<a class="headerlink" href="#module-cherab.core.utility.notify" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cherab.core.utility.notify.Notifier">
+<em class="property">class </em><code class="descclassname">cherab.core.utility.notify.</code><code class="descname">Notifier</code><a class="headerlink" href="#cherab.core.utility.notify.Notifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows objects to broadcast notifications to observing objects.</p>
+<p>This object implements a version of the observer pattern. Objects wishing
+to be notified may register a callback function with the notifier. The
+callbacks will be called when the notify method of the Notifier is called.</p>
+<p>The primary purpose of this class is to permit cache control between
+disconnected objects. To speed up calculations, objects may cache the
+results of a calculation involving a source object. If the source object
+data changes, the caches of the dependent objects must be invalidated
+otherwise stale data may be used in subsequent calculations.</p>
+<p>Callbacks are assumed to have no arguments.</p>
+<p>This object holds weak references to callbacks. If an observing object has
+registered a method as a callback and that object is subsequently deleted,
+the callback will be automatically removed from the list of registered
+callbacks. The Notifier will not prevent referenced objects being garbage
+collected.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.utility.notify.NotifyingList">
+<em class="property">class </em><code class="descclassname">cherab.core.utility.notify.</code><code class="descname">NotifyingList</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.notify.NotifyingList" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list that reports changes to its contents.</p>
+<p>The NotifyingList class is a subclass of the builtin list type. It extends
+the list type to add a Notifier object that generates notifications
+whenever the list contents are modified. A notifier attribute is provided
+to supply access to configure the internal Notifier object.</p>
+<p>The NotifierList implements the entire list interface. Please note however
+that __add__ or __mul__ operations involving a NotifyingList will return
+a basic builtin list.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cherab.core.utility.recursivedict">
+<span id="recursive-dict"></span><h2>9.3. Recursive Dict<a class="headerlink" href="#module-cherab.core.utility.recursivedict" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cherab.core.utility.recursivedict.RecursiveDict">
+<em class="property">class </em><code class="descclassname">cherab.core.utility.recursivedict.</code><code class="descname">RecursiveDict</code><a class="headerlink" href="#cherab.core.utility.recursivedict.RecursiveDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary that implements a basic, automatically expanding tree.</p>
+<p>If a key is accessed that is not defined then it is automatically populated
+with another RecursiveDict object. This allows the user to rapidly
+construct nested trees of data, with each level of the tree automatically
+created. The RecursiveDict is especially useful for quickly assembling
+configuration files. Once the RecursiveDict is populated it can be frozen by
+converting the tree to a nested set of basic python dictionaries.</p>
+<p>For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">RecursiveDict</span><span class="p">()</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;animal&quot;</span><span class="p">][</span><span class="s2">&quot;bird&quot;</span><span class="p">][</span><span class="s2">&quot;parrot&quot;</span><span class="p">][</span><span class="s2">&quot;dead&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;tree&quot;</span><span class="p">][</span><span class="s2">&quot;larch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;The larch.&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">freeze</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will produce the following nested dictionary in b:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;animal&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;bird&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;parrot&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;dead&quot;</span><span class="p">:</span> <span class="kc">True</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;tree&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;larch&quot;</span><span class="p">:</span> <span class="s2">&quot;The larch.&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="cherab.core.utility.recursivedict.RecursiveDict.freeze">
+<code class="descname">freeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.recursivedict.RecursiveDict.freeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a copy of this object with the RecursiveDicts replaced with basic python dictionaries.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="demonstrations/demonstrations.html" class="btn btn-neutral float-right" title="Code examples gallery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="math.html" class="btn btn-neutral" title="8. Math functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.99',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
