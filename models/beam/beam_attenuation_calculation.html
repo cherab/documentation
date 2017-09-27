@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.4. Beam attenuation calcualtion &mdash; CHERAB 0.99 documentation</title>
+  <title>Beam attenuation calcualtion &mdash; CHERAB 0.99 documentation</title>
   
 
   
@@ -34,10 +34,7 @@
   
 
   
-    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/>
-        <link rel="up" title="7. Emission Models" href="../emission_models.html"/>
-        <link rel="next" title="7.5. Calculation of predicted charge-exchange spectra seen by a line-of-sight" href="../cxs/charge_exchange_calculation.html"/>
-        <link rel="prev" title="7.3. Atomic data calculation" href="../cxs/atomic_data_calculation.html"/> 
+    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -91,32 +88,14 @@
             
             
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../core.html">3. Core Plasma Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">4. Atomic Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">5. Plasma equilibrium</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">7. Emission Models</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../custom_models.html">7.1. Custom emission models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cxs/cxs_model.html">7.2. CXS models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cxs/atomic_data_calculation.html">7.3. Atomic data calculation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.4. Beam attenuation calcualtion</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#stopping-coefficients-with-respect-to-electron-density">7.4.1. Stopping coefficients with respect to electron density</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-collisional-radiative-model-for-beam-stopping">7.4.2. The collisional-radiative model for beam stopping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#building-up-the-beam-stopping-coefficient-from-the-pure-impurity-solutions-simplification-adopted-to-make-calculation-faster">7.4.3. Building-up the beam stopping coefficient from the pure impurity solutions: simplification adopted to make calculation faster</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#features-implemented-in-cherab">7.4.4. Features implemented in CHERAB</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#litterature-on-which-this-note-is-based">7.4.5. Litterature on which this note is based</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../cxs/charge_exchange_calculation.html">7.5. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">7.6. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">7.7. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">7.8. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">7.9. Basic Line Emission</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../emission_models.html">7. Emission Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../utility.html">9. Utilities</a></li>
 </ul>
@@ -167,9 +146,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../emission_models.html">7. Emission Models</a> &raquo;</li>
-        
-      <li>7.4. Beam attenuation calcualtion</li>
+      <li>Beam attenuation calcualtion</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -189,7 +166,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="beam-attenuation-calcualtion">
-<h1>7.4. Beam attenuation calcualtion<a class="headerlink" href="#beam-attenuation-calcualtion" title="Permalink to this headline">¶</a></h1>
+<h1>Beam attenuation calcualtion<a class="headerlink" href="#beam-attenuation-calcualtion" title="Permalink to this headline">¶</a></h1>
 <p>In this section, the calculation of beam attenuation in CHERAB is
 presented. This documentation is meant to be a concise compilation
 of the main aspects needed to carry out a beam attenuation calculation
@@ -295,7 +272,7 @@ It depends on the collisional energy between ions and neutrals, ion temperature
 and ion density: <span class="math">\(S_{ST}^i = S_{ST}^i[E_c^i, n_i, T_i]\)</span>. Here we consider
 both main ion and impurities.</p>
 <div class="section" id="stopping-coefficients-with-respect-to-electron-density">
-<h2>7.4.1. Stopping coefficients with respect to electron density<a class="headerlink" href="#stopping-coefficients-with-respect-to-electron-density" title="Permalink to this headline">¶</a></h2>
+<h2>Stopping coefficients with respect to electron density<a class="headerlink" href="#stopping-coefficients-with-respect-to-electron-density" title="Permalink to this headline">¶</a></h2>
 <p>Although ion impact ionisation and charge transfer are the most efficient
 reactions causing beam stopping, it is usual in fusion to define the stopping
 coefficient with respect to the electron density:</p>
@@ -311,7 +288,7 @@ stopping coefficient and which simplification can be made for a more
 time-efficient calculation.</p>
 </div>
 <div class="section" id="the-collisional-radiative-model-for-beam-stopping">
-<h2>7.4.2. The collisional-radiative model for beam stopping<a class="headerlink" href="#the-collisional-radiative-model-for-beam-stopping" title="Permalink to this headline">¶</a></h2>
+<h2>The collisional-radiative model for beam stopping<a class="headerlink" href="#the-collisional-radiative-model-for-beam-stopping" title="Permalink to this headline">¶</a></h2>
 <p>It was found advantageous to embed the calculation of beam stopping (and beam
 emission) by hydrogen in a more general picture of neutral hydrogen as a
 radiating, ionizing and recombining species in the fusion plasma.</p>
@@ -392,7 +369,7 @@ solutions as a linear superposition by the theoretical data acquisition
 routines in CHEAP.</p>
 </div>
 <div class="section" id="building-up-the-beam-stopping-coefficient-from-the-pure-impurity-solutions-simplification-adopted-to-make-calculation-faster">
-<h2>7.4.3. Building-up the beam stopping coefficient from the pure impurity solutions: simplification adopted to make calculation faster<a class="headerlink" href="#building-up-the-beam-stopping-coefficient-from-the-pure-impurity-solutions-simplification-adopted-to-make-calculation-faster" title="Permalink to this headline">¶</a></h2>
+<h2>Building-up the beam stopping coefficient from the pure impurity solutions: simplification adopted to make calculation faster<a class="headerlink" href="#building-up-the-beam-stopping-coefficient-from-the-pure-impurity-solutions-simplification-adopted-to-make-calculation-faster" title="Permalink to this headline">¶</a></h2>
 <div class="topic">
 <p class="topic-title first">ADAS312</p>
 <p>It is the interactive post-processing code designed to extract effective
@@ -450,13 +427,13 @@ conditions for application to other plasma/injection systems. (He beams, …..)<
 </div>
 </div>
 <div class="section" id="features-implemented-in-cherab">
-<h2>7.4.4. Features implemented in CHERAB<a class="headerlink" href="#features-implemented-in-cherab" title="Permalink to this headline">¶</a></h2>
+<h2>Features implemented in CHERAB<a class="headerlink" href="#features-implemented-in-cherab" title="Permalink to this headline">¶</a></h2>
 <p><strong>Assumption: no need to take into account the spatial transport of metastables in the plasma</strong></p>
 <blockquote>
 <div>(more relevant to beam emission)</div></blockquote>
 </div>
 <div class="section" id="litterature-on-which-this-note-is-based">
-<h2>7.4.5. Litterature on which this note is based<a class="headerlink" href="#litterature-on-which-this-note-is-based" title="Permalink to this headline">¶</a></h2>
+<h2>Litterature on which this note is based<a class="headerlink" href="#litterature-on-which-this-note-is-based" title="Permalink to this headline">¶</a></h2>
 <p>Anderson 2000</p>
 </div>
 </div>
@@ -468,15 +445,6 @@ conditions for application to other plasma/injection systems. (He beams, …..)<
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../cxs/charge_exchange_calculation.html" class="btn btn-neutral float-right" title="7.5. Calculation of predicted charge-exchange spectra seen by a line-of-sight" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../cxs/atomic_data_calculation.html" class="btn btn-neutral" title="7.3. Atomic data calculation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

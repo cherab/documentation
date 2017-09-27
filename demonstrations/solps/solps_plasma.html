@@ -89,13 +89,15 @@
             
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../core.html">1. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">2. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">3. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">4. Plasma sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">5. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../math.html">6. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../utility.html">7. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">3. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">4. Atomic Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">5. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">6. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">9. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -165,13 +167,15 @@
             
   <div class="section" id="loading-a-mast-u-plasma-from-solps">
 <span id="mastu-solps-plasma"></span><h1>Loading a MAST-U plasma from SOLPS<a class="headerlink" href="#loading-a-mast-u-plasma-from-solps" title="Permalink to this headline">¶</a></h1>
-<p>Example of how to load a plasma from an existing SOLPS simulation.
+<p>Example of how to load a plasma from an existing SOLPS simulation
+(<a class="reference external" href="https://github.com/cherab/solps/blob/master/demos/mastu_solps_plasma.py">demo file</a>).
 Also, shows how to inspect the plasma parameters. Start by importing
 all required modules.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">cherab.atomic.elements</span> <span class="k">import</span> <span class="n">carbon</span><span class="p">,</span> <span class="n">deuterium</span>
-<span class="kn">from</span> <span class="nn">cherab_contrib.simulation_data.solps.solps_plasma</span> <span class="k">import</span> <span class="n">SOLPSSimulation</span>
+<span class="kn">from</span> <span class="nn">cherab.core.atomic.elements</span> <span class="k">import</span> <span class="n">carbon</span><span class="p">,</span> <span class="n">deuterium</span>
+<span class="kn">from</span> <span class="nn">cherab.solps</span> <span class="k">import</span> <span class="n">SOLPSSimulation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Import the SOLPS simulation from AUG MDSplus server.</p>
@@ -187,15 +191,15 @@ all required modules.</p>
 <p>The plasma parameters are loaded automatically from the simulation. We can now access an individual species using the
 <cite>get_species</cite> method. It takes as argument the element/isotope of interest and the desired charge state. If the species
 requested was not in the simulation, an exception will be thrown.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">d0</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">d1</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">c0</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">c1</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">c2</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">c3</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">c4</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">c5</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">c6</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">get_species</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">d0</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c0</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">c3</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">c4</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">c5</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">c6</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The electron distribution is the only exception to the above access pattern. It is accessed with a dedicated plasma
