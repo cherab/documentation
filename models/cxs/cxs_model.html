@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.2. CXS models &mdash; CHERAB 0.99 documentation</title>
+  <title>9.2. CXS models &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,27 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/>
-        <link rel="up" title="7. Emission Models" href="../emission_models.html"/>
-        <link rel="next" title="7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight" href="charge_exchange_calculation.html"/>
-        <link rel="prev" title="7.1. Custom emission models" href="../custom_models.html"/> 
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight" href="charge_exchange_calculation.html" />
+    <link rel="prev" title="9.1. Custom emission models" href="../custom_models.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -66,7 +59,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -94,26 +87,29 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">7. Emission Models</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../custom_models.html">7.1. Custom emission models</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.2. CXS models</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#single-ray-attenuator">7.2.1. Single Ray Attenuator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cxs-beam-plasma-intersection">7.2.2. CXS Beam Plasma Intersection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">9. Emission Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../custom_models.html">9.1. Custom emission models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.2. CXS models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#single-ray-attenuator">9.2.1. Single Ray Attenuator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cxs-beam-plasma-intersection">9.2.2. CXS Beam Plasma Intersection</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="charge_exchange_calculation.html">7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">7.4. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">7.5. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">7.6. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">7.7. Basic Line Emission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charge_exchange_calculation.html">9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic_data_calculation.html">9.4. Atomic data calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">9.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">9.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">9.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">9.8. Basic Line Emission</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -129,7 +125,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">CHERAB</a>
@@ -137,9 +133,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -162,15 +159,15 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../emission_models.html">7. Emission Models</a> &raquo;</li>
+          <li><a href="../emission_models.html">9. Emission Models</a> &raquo;</li>
         
-      <li>7.2. CXS models</li>
+      <li>9.2. CXS models</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/models/cxs/cxs_model.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/models/cxs/cxs_model.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -184,10 +181,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="cxs-models">
-<h1>7.2. CXS models<a class="headerlink" href="#cxs-models" title="Permalink to this headline">¶</a></h1>
+<h1>9.2. CXS models<a class="headerlink" href="#cxs-models" title="Permalink to this headline">¶</a></h1>
 <p>CXS models.</p>
 <div class="section" id="single-ray-attenuator">
-<h2>7.2.1. Single Ray Attenuator<a class="headerlink" href="#single-ray-attenuator" title="Permalink to this headline">¶</a></h2>
+<h2>9.2.1. Single Ray Attenuator<a class="headerlink" href="#single-ray-attenuator" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.model.attenuator.singleray.SingleRayAttenuator">
 <em class="property">class </em><code class="descclassname">cherab.core.model.attenuator.singleray.</code><code class="descname">SingleRayAttenuator</code><a class="headerlink" href="#cherab.core.model.attenuator.singleray.SingleRayAttenuator" title="Permalink to this definition">¶</a></dt>
@@ -207,9 +204,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> &#8211; x coordinate in meters.</li>
-<li><strong>y</strong> &#8211; y coordinate in meters.</li>
-<li><strong>z</strong> &#8211; z coordinate in meters.</li>
+<li><strong>x</strong> – x coordinate in meters.</li>
+<li><strong>y</strong> – y coordinate in meters.</li>
+<li><strong>z</strong> – z coordinate in meters.</li>
 </ul>
 </td>
 </tr>
@@ -224,7 +221,7 @@
 
 </div>
 <div class="section" id="cxs-beam-plasma-intersection">
-<h2>7.2.2. CXS Beam Plasma Intersection<a class="headerlink" href="#cxs-beam-plasma-intersection" title="Permalink to this headline">¶</a></h2>
+<h2>9.2.2. CXS Beam Plasma Intersection<a class="headerlink" href="#cxs-beam-plasma-intersection" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.model.beam.charge_exchange.BeamCXLine">
 <em class="property">class </em><code class="descclassname">cherab.core.model.beam.charge_exchange.</code><code class="descname">BeamCXLine</code><a class="headerlink" href="#cherab.core.model.beam.charge_exchange.BeamCXLine" title="Permalink to this definition">¶</a></dt>
@@ -234,8 +231,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>line</strong> &#8211; </li>
-<li><strong>step</strong> &#8211; integration step in meters</li>
+<li><strong>line</strong> – </li>
+<li><strong>step</strong> – integration step in meters</li>
 </ul>
 </td>
 </tr>
@@ -244,6 +241,42 @@
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="cherab.core.model.beam.charge_exchange.BeamCXLine._change">
+<code class="descname">_change</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.beam.charge_exchange.BeamCXLine._change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called if the plasma, beam or the atomic data source properties change.</p>
+<p>If the model caches calculation data that would be invalidated if its
+source data changes then this method may be overridden to clear the
+cache.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.model.beam.charge_exchange.BeamCXLine.emission">
+<code class="descname">emission</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.beam.charge_exchange.BeamCXLine.emission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the emission for a point on the beam in a specified direction.</p>
+<p>Models implementing this method must add their spectral response to the
+supplied spectrum object. The spectrum units are spectral radiance per
+meter (W/m^3/str/nm).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>beam_point</strong> – Point in beam space.</li>
+<li><strong>plasma_point</strong> – Point in plasma space.</li>
+<li><strong>beam_direction</strong> – Beam axis direction in plasma space.</li>
+<li><strong>observation_direction</strong> – Observation direction in plasma space.</li>
+<li><strong>spectrum</strong> – Spectrum to which emission should be added.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Updated Spectrum object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -251,18 +284,16 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="charge_exchange_calculation.html" class="btn btn-neutral float-right" title="7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="charge_exchange_calculation.html" class="btn btn-neutral float-right" title="9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../custom_models.html" class="btn btn-neutral" title="7.1. Custom emission models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../custom_models.html" class="btn btn-neutral" title="9.1. Custom emission models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -292,33 +323,28 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

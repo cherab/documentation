@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Atomic data calculation &mdash; CHERAB 0.99 documentation</title>
+  <title>9.4. Atomic data calculation &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,24 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/> 
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9.5. BES - Beam Emission Spectroscopy" href="../bes/bes_model.html" />
+    <link rel="prev" title="9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight" href="charge_exchange_calculation.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -63,7 +59,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -88,16 +84,39 @@
             
             
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">9. Emission Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../custom_models.html">9.1. Custom emission models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs_model.html">9.2. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charge_exchange_calculation.html">9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.4. Atomic data calculation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#effective-emission-charge-exchange-coefficient">9.4.1. Effective emission charge-exchange coefficient <span class="math notranslate nohighlight">\(q^{eff}_{n\rightarrow n'}\)</span></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#best-method-to-calculate-from-adf12-files">9.4.1.1. &gt; Best method to calculate <span class="math notranslate nohighlight">\(q^{eff}_{n\rightarrow n'}\)</span> from adf12 files?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#best-method-to-calculate-simulated-spectral-line-with-maxwellian-distribution-of-velocity-for-target-ion-but-taking-into-account-the-cross-section-effet">9.4.1.2. &gt; Best method to calculate simulated spectral line with Maxwellian distribution of velocity for target ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span> but taking into account the cross-section effet</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#effective-beam-population-coefficient">9.4.2. Effective beam population coefficient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#effective-beam-stopping-coefficient">9.4.3. Effective beam stopping coefficient <span class="math notranslate nohighlight">\(S_{CR}^{Z}\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-adas-file-used-at-present-in-cheap">9.4.4. List of ADAS file used at present in CHEAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-cx-lines-transition-and-accurate-wavelength">9.4.5. List of CX lines, transition and accurate wavelength</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">9.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">9.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">9.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">9.8. Basic Line Emission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -113,7 +132,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">CHERAB</a>
@@ -121,9 +140,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -146,13 +166,15 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Atomic data calculation</li>
+          <li><a href="../emission_models.html">9. Emission Models</a> &raquo;</li>
+        
+      <li>9.4. Atomic data calculation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/models/cxs/atomic_data_calculation.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/models/cxs/atomic_data_calculation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -166,7 +188,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="atomic-data-calculation">
-<h1>Atomic data calculation<a class="headerlink" href="#atomic-data-calculation" title="Permalink to this headline">¶</a></h1>
+<h1>9.4. Atomic data calculation<a class="headerlink" href="#atomic-data-calculation" title="Permalink to this headline">¶</a></h1>
 <p>Aim of this note: Below is given the details on how ADAS atomic data are
 used and implemented in CHERAB at present. The aim here is to give a very
 concise information. More details can be found in ADAS manual on line.</p>
@@ -196,54 +218,54 @@ within the main CHERAB.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><span class="math">\(\sigma^{CX}_{Z^{(\alpha+1)+}}(H^0(m_i), n, l, E_{c})\)</span></td>
-<td>Charge-Exchange cross-section between electron donor <span class="math">\(H^0\)</span> in metastable state <span class="math">\(m_{i}\)</span> and ion <span class="math">\(Z^{(\alpha+1)+}\)</span> in shell <span class="math">\((n,l)\)</span> with a collision energy <span class="math">\(E_{c}\)</span></td>
-<td><span class="math">\(\sigma_{n, l}(E_{c})\)</span></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><span class="math">\(cm^{2}\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(\sigma^{CX}_{Z^{(\alpha+1)+}}(H^0(m_i), n, l, E_{c})\)</span></td>
+<td>Charge-Exchange cross-section between electron donor <span class="math notranslate nohighlight">\(H^0\)</span> in metastable state <span class="math notranslate nohighlight">\(m_{i}\)</span> and ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span> in shell <span class="math notranslate nohighlight">\((n,l)\)</span> with a collision energy <span class="math notranslate nohighlight">\(E_{c}\)</span></td>
+<td><span class="math notranslate nohighlight">\(\sigma_{n, l}(E_{c})\)</span></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td><span class="math notranslate nohighlight">\(cm^{2}\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(q^{CX, Z^{(\alpha+1)+}, H^0(m_i)}_{n\rightarrow n'}\)</span></td>
-<td>Effective emission coefficient (or rate) for a charge-exchange line corresponding to a transition <span class="math">\(n\rightarrow n'\)</span> of ion <span class="math">\(Z^{(\alpha+1)+}\)</span> with electron donor <span class="math">\(H^0\)</span> in metastable state <span class="math">\(m_{i}\)</span></td>
-<td><span class="math">\(q^{eff}_{n\rightarrow n'}\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(q^{CX, Z^{(\alpha+1)+}, H^0(m_i)}_{n\rightarrow n'}\)</span></td>
+<td>Effective emission coefficient (or rate) for a charge-exchange line corresponding to a transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span> of ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span> with electron donor <span class="math notranslate nohighlight">\(H^0\)</span> in metastable state <span class="math notranslate nohighlight">\(m_{i}\)</span></td>
+<td><span class="math notranslate nohighlight">\(q^{eff}_{n\rightarrow n'}\)</span></td>
 <td>adf12</td>
 <td>adas303</td>
-<td><span class="math">\(photon.cm^{3}.s^{-1}.(4\pi steradian)^{-1}\)</span></td>
+<td><span class="math notranslate nohighlight">\(photon.cm^{3}.s^{-1}.(4\pi steradian)^{-1}\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(bmp(H^0(m_i))\)</span></td>
-<td>Relative beam population of excited state <span class="math">\(m_i\)</span> over ground state for atom <span class="math">\(H^0\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(bmp(H^0(m_i))\)</span></td>
+<td>Relative beam population of excited state <span class="math notranslate nohighlight">\(m_i\)</span> over ground state for atom <span class="math notranslate nohighlight">\(H^0\)</span></td>
 <td>BMP</td>
 <td>adf22</td>
 <td>adas304</td>
 <td>dimensionless</td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(Q^{CX}_{Z^{(\alpha+1)+}}(H^0(m_i), n, l, E_{c})\)</span></td>
-<td>Charge-Exchange rate between electron donor <span class="math">\(H^0\)</span> in metastable state <span class="math">\(m_{i}\)</span> and ion <span class="math">\(Z^{(\alpha+1)+}\)</span> in shell <span class="math">\((n,l)\)</span> with a collision energy <span class="math">\(E_{c}\)</span></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><span class="math">\(reaction.s^{-1}.cm^{-3}\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(Q^{CX}_{Z^{(\alpha+1)+}}(H^0(m_i), n, l, E_{c})\)</span></td>
+<td>Charge-Exchange rate between electron donor <span class="math notranslate nohighlight">\(H^0\)</span> in metastable state <span class="math notranslate nohighlight">\(m_{i}\)</span> and ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span> in shell <span class="math notranslate nohighlight">\((n,l)\)</span> with a collision energy <span class="math notranslate nohighlight">\(E_{c}\)</span></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td><span class="math notranslate nohighlight">\(reaction.s^{-1}.cm^{-3}\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(I_{n\rightarrow n'}\)</span></td>
-<td>Intensity of charge exchange line due to transition <span class="math">\(n\rightarrow n'\)</span>.</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><span class="math">\(photon.s^{-1}.cm^{-3}.(4\pi steradian)^{-1}\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(I_{n\rightarrow n'}\)</span></td>
+<td>Intensity of charge exchange line due to transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>.</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td><span class="math notranslate nohighlight">\(photon.s^{-1}.cm^{-3}.(4\pi steradian)^{-1}\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(\lambda_n\)</span></td>
-<td>Natural wavelength of transition <span class="math">\(n\rightarrow n'\)</span> from ion <span class="math">\(Z^{(\alpha+1)+, *}\)</span></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><span class="math">\(nm\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(\lambda_n\)</span></td>
+<td>Natural wavelength of transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span> from ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+, *}\)</span></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td><span class="math notranslate nohighlight">\(nm\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(S^{e, i}_{CR}(E_H, n_e, T_i)\)</span></td>
-<td>Effective collisional radiative stopping coefficient for atom <span class="math">\(H^0\)</span> in a beam by fully stripped ions <span class="math">\(X^i\)</span> and their electrons.</td>
-<td><span class="math">\(S^{e, i}_{CR}\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(S^{e, i}_{CR}(E_H, n_e, T_i)\)</span></td>
+<td>Effective collisional radiative stopping coefficient for atom <span class="math notranslate nohighlight">\(H^0\)</span> in a beam by fully stripped ions <span class="math notranslate nohighlight">\(X^i\)</span> and their electrons.</td>
+<td><span class="math notranslate nohighlight">\(S^{e, i}_{CR}\)</span></td>
 <td>adf21</td>
 <td>adas304</td>
-<td><span class="math">\(cm^3.s^{-1}\)</span></td>
+<td><span class="math notranslate nohighlight">\(cm^3.s^{-1}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -252,7 +274,7 @@ within the main CHERAB.</p>
 <p class="last">Make it clear: all information clearly available in ADAS</p>
 </div>
 <div class="section" id="effective-emission-charge-exchange-coefficient">
-<h2>Effective emission charge-exchange coefficient <span class="math">\(q^{eff}_{n\rightarrow n'}\)</span><a class="headerlink" href="#effective-emission-charge-exchange-coefficient" title="Permalink to this headline">¶</a></h2>
+<h2>9.4.1. Effective emission charge-exchange coefficient <span class="math notranslate nohighlight">\(q^{eff}_{n\rightarrow n'}\)</span><a class="headerlink" href="#effective-emission-charge-exchange-coefficient" title="Permalink to this headline">¶</a></h2>
 <p>Open ADAS:</p>
 <blockquote>
 <div><ul>
@@ -260,9 +282,9 @@ within the main CHERAB.</p>
 </li>
 <li><p class="first">ADAS file: adf12</p>
 </li>
-<li><p class="first">Adas idl routine to read the file : /u/adas/idl/adaslib/readadf/read_adf12.pro (possible to read the file or do the calculation of <span class="math">\(q^{eff}_{n\rightarrow n'}\)</span> within read_adf12.pro)</p>
+<li><p class="first">Adas idl routine to read the file : /u/adas/idl/adaslib/readadf/read_adf12.pro (possible to read the file or do the calculation of <span class="math notranslate nohighlight">\(q^{eff}_{n\rightarrow n'}\)</span> within read_adf12.pro)</p>
 </li>
-<li><p class="first">Adas idl routine to calculate the <span class="math">\(q^{eff}_{n\rightarrow n'}\)</span>: /u/adas/idl/adaslib/cxsqef.pro</p>
+<li><p class="first">Adas idl routine to calculate the <span class="math notranslate nohighlight">\(q^{eff}_{n\rightarrow n'}\)</span>: /u/adas/idl/adaslib/cxsqef.pro</p>
 </li>
 <li><p class="first">Type of adf12 file:</p>
 <blockquote>
@@ -288,28 +310,28 @@ within the main CHERAB.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><span class="math">\(E_c\)</span></td>
-<td>Collision energy: <span class="math">\(\frac{1}{2}\left(\vec{v_H}-\vec{v}\right)^2\)</span> with <span class="math">\(\vec{v_H}\)</span> the velocity of the neutral H and <span class="math">\(\vec{v}\)</span> the velocity of the target ion <span class="math">\(Z^{(\alpha +1)+}\)</span>.</td>
-<td><span class="math">\(eV/amu\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(E_c\)</span></td>
+<td>Collision energy: <span class="math notranslate nohighlight">\(\frac{1}{2}\left(\vec{v_H}-\vec{v}\right)^2\)</span> with <span class="math notranslate nohighlight">\(\vec{v_H}\)</span> the velocity of the neutral H and <span class="math notranslate nohighlight">\(\vec{v}\)</span> the velocity of the target ion <span class="math notranslate nohighlight">\(Z^{(\alpha +1)+}\)</span>.</td>
+<td><span class="math notranslate nohighlight">\(eV/amu\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(n_Z\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(n_Z\)</span></td>
 <td>Target ion density</td>
-<td><span class="math">\(cm^{-3}\)</span></td>
+<td><span class="math notranslate nohighlight">\(cm^{-3}\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(T_Z\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(T_Z\)</span></td>
 <td>Target ion temperature</td>
-<td><span class="math">\(eV\)</span></td>
+<td><span class="math notranslate nohighlight">\(eV\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(Z_{eff}\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(Z_{eff}\)</span></td>
 <td>Plasma effective charge</td>
 <td>dimensionless</td>
 </tr>
-<tr class="row-even"><td><span class="math">\(B_{mag}\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(B_{mag}\)</span></td>
 <td>Magnetic field</td>
-<td><span class="math">\(T\)</span></td>
+<td><span class="math notranslate nohighlight">\(T\)</span></td>
 </tr>
 <tr class="row-odd"><td>isel</td>
-<td>Identification of line transition <span class="math">\(n\rightarrow n'\)</span></td>
+<td>Identification of line transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span></td>
 <td>dimensionless (integer)</td>
 </tr>
 </tbody>
@@ -317,33 +339,33 @@ within the main CHERAB.</p>
 <p>The adf12 data file have the following format:</p>
 <blockquote>
 <div><ul class="simple">
-<li>1 grid in collision energy <span class="math">\(E_c\)</span> at reference values of <span class="math">\(n_Z\)</span>, <span class="math">\(T_Z\)</span>, <span class="math">\(Z_{eff}\)</span>, <span class="math">\(B_{mag}\)</span></li>
-<li>1 grid in target ion density <span class="math">\(n_Z\)</span> at reference values of <span class="math">\(E_c\)</span>, <span class="math">\(T_Z\)</span>, <span class="math">\(Z_{eff}\)</span>, <span class="math">\(B_{mag}\)</span></li>
-<li>1 grid in target ion temperature <span class="math">\(T_Z\)</span> at reference values of <span class="math">\(E_c\)</span>, <span class="math">\(n_Z\)</span>, <span class="math">\(Z_{eff}\)</span>, <span class="math">\(B_{mag}\)</span></li>
-<li>1 grid in plasma effective charge <span class="math">\(Z_{eff}\)</span> at reference values of <span class="math">\(E_c\)</span>, <span class="math">\(n_Z\)</span>, <span class="math">\(T_Z\)</span>, <span class="math">\(B_{mag}\)</span></li>
-<li>1 grid in magnetic field <span class="math">\(B_{mag}\)</span> at reference values of <span class="math">\(E_c\)</span>, <span class="math">\(n_Z\)</span>, <span class="math">\(T_Z\)</span>, <span class="math">\(Z_{eff}\)</span></li>
+<li>1 grid in collision energy <span class="math notranslate nohighlight">\(E_c\)</span> at reference values of <span class="math notranslate nohighlight">\(n_Z\)</span>, <span class="math notranslate nohighlight">\(T_Z\)</span>, <span class="math notranslate nohighlight">\(Z_{eff}\)</span>, <span class="math notranslate nohighlight">\(B_{mag}\)</span></li>
+<li>1 grid in target ion density <span class="math notranslate nohighlight">\(n_Z\)</span> at reference values of <span class="math notranslate nohighlight">\(E_c\)</span>, <span class="math notranslate nohighlight">\(T_Z\)</span>, <span class="math notranslate nohighlight">\(Z_{eff}\)</span>, <span class="math notranslate nohighlight">\(B_{mag}\)</span></li>
+<li>1 grid in target ion temperature <span class="math notranslate nohighlight">\(T_Z\)</span> at reference values of <span class="math notranslate nohighlight">\(E_c\)</span>, <span class="math notranslate nohighlight">\(n_Z\)</span>, <span class="math notranslate nohighlight">\(Z_{eff}\)</span>, <span class="math notranslate nohighlight">\(B_{mag}\)</span></li>
+<li>1 grid in plasma effective charge <span class="math notranslate nohighlight">\(Z_{eff}\)</span> at reference values of <span class="math notranslate nohighlight">\(E_c\)</span>, <span class="math notranslate nohighlight">\(n_Z\)</span>, <span class="math notranslate nohighlight">\(T_Z\)</span>, <span class="math notranslate nohighlight">\(B_{mag}\)</span></li>
+<li>1 grid in magnetic field <span class="math notranslate nohighlight">\(B_{mag}\)</span> at reference values of <span class="math notranslate nohighlight">\(E_c\)</span>, <span class="math notranslate nohighlight">\(n_Z\)</span>, <span class="math notranslate nohighlight">\(T_Z\)</span>, <span class="math notranslate nohighlight">\(Z_{eff}\)</span></li>
 </ul>
 </div></blockquote>
 <p>We do not use the l-resolve effective emission charge-exchange coefficient although the detail of the calculation is taking this into account.</p>
 <div class="section" id="best-method-to-calculate-from-adf12-files">
-<h3>&gt; Best method to calculate <span class="math">\(q^{eff}_{n\rightarrow n'}\)</span> from adf12 files?<a class="headerlink" href="#best-method-to-calculate-from-adf12-files" title="Permalink to this headline">¶</a></h3>
+<h3>9.4.1.1. &gt; Best method to calculate <span class="math notranslate nohighlight">\(q^{eff}_{n\rightarrow n'}\)</span> from adf12 files?<a class="headerlink" href="#best-method-to-calculate-from-adf12-files" title="Permalink to this headline">¶</a></h3>
 <p>Note from Alfonso Baciero / Ephrem Delabie: what is the best method for doing interpolation? x vs y, log(x) vs y, x vs log(y) or log(x) vs log(y)? It is not clear what the best interpolation is, it could be better to use a new interpolated grid in the range of interest.</p>
 </div>
 <div class="section" id="best-method-to-calculate-simulated-spectral-line-with-maxwellian-distribution-of-velocity-for-target-ion-but-taking-into-account-the-cross-section-effet">
-<h3>&gt; Best method to calculate simulated spectral line with Maxwellian distribution of velocity for target ion <span class="math">\(Z^{(\alpha+1)+}\)</span> but taking into account the cross-section effet<a class="headerlink" href="#best-method-to-calculate-simulated-spectral-line-with-maxwellian-distribution-of-velocity-for-target-ion-but-taking-into-account-the-cross-section-effet" title="Permalink to this headline">¶</a></h3>
+<h3>9.4.1.2. &gt; Best method to calculate simulated spectral line with Maxwellian distribution of velocity for target ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span> but taking into account the cross-section effet<a class="headerlink" href="#best-method-to-calculate-simulated-spectral-line-with-maxwellian-distribution-of-velocity-for-target-ion-but-taking-into-account-the-cross-section-effet" title="Permalink to this headline">¶</a></h3>
 <p>We need to calculate the following:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[I_{n\rightarrow n'}^{obs}(\lambda) = \iiint_V d\vec{x} n^H n^{Z^{(\alpha+1)+}} \iiint d\vec{u} f^{Z^{(\alpha+1)+}}(\vec{u}-\vec{v}) q^{CX, Z^{(\alpha+1)+}}_{n\rightarrow n'} \delta(\lambda-\lambda_n\left(1+\frac{\vec{u}.\vec{l}}{c}\right))\]</div>
-<p>We can perform this calculation by calculating the composite charge-exchange emission coefficient with the lowest plasma ion temperature. We would need to simulate the new ADAS adf12 files for velocity cross-sections where, instead of <span class="math">\(T_i\)</span>, <span class="math">\(T_e\)</span> is the input. (Baciero / Delabie)</p>
+<p>We can perform this calculation by calculating the composite charge-exchange emission coefficient with the lowest plasma ion temperature. We would need to simulate the new ADAS adf12 files for velocity cross-sections where, instead of <span class="math notranslate nohighlight">\(T_i\)</span>, <span class="math notranslate nohighlight">\(T_e\)</span> is the input. (Baciero / Delabie)</p>
 </div>
 </div>
 <div class="section" id="effective-beam-population-coefficient">
-<h2>Effective beam population coefficient<a class="headerlink" href="#effective-beam-population-coefficient" title="Permalink to this headline">¶</a></h2>
+<h2>9.4.2. Effective beam population coefficient<a class="headerlink" href="#effective-beam-population-coefficient" title="Permalink to this headline">¶</a></h2>
 <p>Open ADAS: <a class="reference external" href="http://open.adas.ac.uk/adf22">http://open.adas.ac.uk/adf22</a></p>
 <p>ADAS304: <a class="reference external" href="http://www.adas.ac.uk/man/chap3-04.pdf">http://www.adas.ac.uk/man/chap3-04.pdf</a></p>
 <p>ADAS file: adf22</p>
 <p>Type of adf22 file:</p>
-<p>To obtain the <span class="math">\(bmp(H, m_{i=2})[E_c, n_e, T_i]\)</span></p>
+<p>To obtain the <span class="math notranslate nohighlight">\(bmp(H, m_{i=2})[E_c, n_e, T_i]\)</span></p>
 <table border="1" class="docutils" id="id3">
 <caption><span class="caption-text">ADAS inputs for effective beam population coefficient</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -360,30 +382,30 @@ within the main CHERAB.</p>
 <tbody valign="top">
 <tr class="row-even"><td>Filename</td>
 <td>Target ion fraction: same as number of adf21 files</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>Fraction</td>
 <td>Target ion fraction. 1st dimension: fraction for each ion. 2nd dimension: list of adf21 files to use for each ion given in 1st dimension.</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
-<tr class="row-even"><td><span class="math">\(T_i\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(T_i\)</span></td>
 <td>Target ion temperature</td>
-<td><span class="math">\(eV\)</span></td>
+<td><span class="math notranslate nohighlight">\(eV\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(E_c\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(E_c\)</span></td>
 <td>Collision energy between the target ion and neutral atom.</td>
-<td><span class="math">\(eV/amu\)</span></td>
+<td><span class="math notranslate nohighlight">\(eV/amu\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(n_e^{i, equiv}\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(n_e^{i, equiv}\)</span></td>
 <td>Equivalent electron density to be used in the extraction of the stopping coefficient contribution from the ith pure impurity archive for a plasma with multi ions</td>
-<td><span class="math">\(cm^{-3}\)</span></td>
+<td><span class="math notranslate nohighlight">\(cm^{-3}\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>These data are build up in the same way as the beam stopping coefficient. From a known composition of the plasma. Build up the beam population. Should write the equation down properly even if it is case.</p>
 </div>
 <div class="section" id="effective-beam-stopping-coefficient">
-<h2>Effective beam stopping coefficient <span class="math">\(S_{CR}^{Z}\)</span><a class="headerlink" href="#effective-beam-stopping-coefficient" title="Permalink to this headline">¶</a></h2>
+<h2>9.4.3. Effective beam stopping coefficient <span class="math notranslate nohighlight">\(S_{CR}^{Z}\)</span><a class="headerlink" href="#effective-beam-stopping-coefficient" title="Permalink to this headline">¶</a></h2>
 <p>Open ADAS: <a class="reference external" href="http://open.adas.ac.uk/adf21">http://open.adas.ac.uk/adf21</a></p>
 <p>ADAS304: <a class="reference external" href="http://www.adas.ac.uk/man/chap3-04.pdf">http://www.adas.ac.uk/man/chap3-04.pdf</a></p>
 <p>ADAS file: adf21</p>
@@ -402,21 +424,21 @@ within the main CHERAB.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><span class="math">\(S_{CR}^{e, i}[E_c, n_e, T_i]\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(S_{CR}^{e, i}[E_c, n_e, T_i]\)</span></td>
 <td>Stopping coefficient contribution from the ith pure impurity archive for a plasma with multi-ions</td>
-<td><span class="math">\(cm^3/s\)</span></td>
+<td><span class="math notranslate nohighlight">\(cm^3/s\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(E_c\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(E_c\)</span></td>
 <td>Collision energy between the target ion and the neutral atom.</td>
-<td><span class="math">\(eV/amu\)</span></td>
+<td><span class="math notranslate nohighlight">\(eV/amu\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(n_e^{i, equiv}\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(n_e^{i, equiv}\)</span></td>
 <td>Equivalent electron density to be used in the extraction of the stopping coefficient contribution from the ith pure impurity archive for a plasma with multi ions</td>
-<td><span class="math">\(cm^{-3}\)</span></td>
+<td><span class="math notranslate nohighlight">\(cm^{-3}\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(T_i\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(T_i\)</span></td>
 <td>Target ion temperature</td>
-<td><span class="math">\(eV\)</span></td>
+<td><span class="math notranslate nohighlight">\(eV\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -424,10 +446,10 @@ within the main CHERAB.</p>
 <p>The adf21 data: (I am fed up and need a break)</p>
 </div>
 <div class="section" id="list-of-adas-file-used-at-present-in-cheap">
-<h2>List of ADAS file used at present in CHEAP<a class="headerlink" href="#list-of-adas-file-used-at-present-in-cheap" title="Permalink to this headline">¶</a></h2>
+<h2>9.4.4. List of ADAS file used at present in CHEAP<a class="headerlink" href="#list-of-adas-file-used-at-present-in-cheap" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="list-of-cx-lines-transition-and-accurate-wavelength">
-<h2>List of CX lines, transition and accurate wavelength<a class="headerlink" href="#list-of-cx-lines-transition-and-accurate-wavelength" title="Permalink to this headline">¶</a></h2>
+<h2>9.4.5. List of CX lines, transition and accurate wavelength<a class="headerlink" href="#list-of-cx-lines-transition-and-accurate-wavelength" title="Permalink to this headline">¶</a></h2>
 <p>Fundamental data in ADAS</p>
 <p>Adf02: fundamental ion-atom collision cross-section</p>
 <p>Adf04: fundamental electron collisional rate coefficient data and A values</p>
@@ -441,11 +463,18 @@ within the main CHERAB.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../bes/bes_model.html" class="btn btn-neutral float-right" title="9.5. BES - Beam Emission Spectroscopy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="charge_exchange_calculation.html" class="btn btn-neutral" title="9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -473,33 +502,28 @@ within the main CHERAB.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

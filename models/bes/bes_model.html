@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.4. BES - Beam Emission Spectroscopy &mdash; CHERAB 0.99 documentation</title>
+  <title>9.5. BES - Beam Emission Spectroscopy &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,27 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/>
-        <link rel="up" title="7. Emission Models" href="../emission_models.html"/>
-        <link rel="next" title="7.5. Total Radiated Power" href="../radiated_power/radiated_power.html"/>
-        <link rel="prev" title="7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight" href="../cxs/charge_exchange_calculation.html"/> 
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9.6. Total Radiated Power" href="../radiated_power/radiated_power.html" />
+    <link rel="prev" title="9.4. Atomic data calculation" href="../cxs/atomic_data_calculation.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -66,7 +59,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -94,22 +87,25 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">7. Emission Models</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../custom_models.html">7.1. Custom emission models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cxs/cxs_model.html">7.2. CXS models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cxs/charge_exchange_calculation.html">7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.4. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">7.5. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">7.6. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">7.7. Basic Line Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">9. Emission Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../custom_models.html">9.1. Custom emission models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxs/cxs_model.html">9.2. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxs/charge_exchange_calculation.html">9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxs/atomic_data_calculation.html">9.4. Atomic data calculation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">9.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">9.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">9.8. Basic Line Emission</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -125,7 +121,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">CHERAB</a>
@@ -133,9 +129,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -158,15 +155,15 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../emission_models.html">7. Emission Models</a> &raquo;</li>
+          <li><a href="../emission_models.html">9. Emission Models</a> &raquo;</li>
         
-      <li>7.4. BES - Beam Emission Spectroscopy</li>
+      <li>9.5. BES - Beam Emission Spectroscopy</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/models/bes/bes_model.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/models/bes/bes_model.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -180,24 +177,22 @@
            <div itemprop="articleBody">
             
   <div class="section" id="bes-beam-emission-spectroscopy">
-<h1>7.4. BES - Beam Emission Spectroscopy<a class="headerlink" href="#bes-beam-emission-spectroscopy" title="Permalink to this headline">¶</a></h1>
-<p>Documentation for this model will go here soon...</p>
+<h1>9.5. BES - Beam Emission Spectroscopy<a class="headerlink" href="#bes-beam-emission-spectroscopy" title="Permalink to this headline">¶</a></h1>
+<p>Documentation for this model will go here soon…</p>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../radiated_power/radiated_power.html" class="btn btn-neutral float-right" title="7.5. Total Radiated Power" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../radiated_power/radiated_power.html" class="btn btn-neutral float-right" title="9.6. Total Radiated Power" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../cxs/charge_exchange_calculation.html" class="btn btn-neutral" title="7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../cxs/atomic_data_calculation.html" class="btn btn-neutral" title="9.4. Atomic data calculation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -227,33 +222,28 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

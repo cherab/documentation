@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.1. Elements and Isotopes &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.2. Spectroscopic Emission Lines" href="emission_lines.html" />
+    <link rel="prev" title="5. Atomic Data" href="atomic_data.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="atomic_data.html">5. Atomic Data</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. Elements and Isotopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emission_lines.html">5.2. Spectroscopic Emission Lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">5.3. Rate Coefficients</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">9. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utility.html">11. Utilities</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="atomic_data.html">5. Atomic Data</a> &raquo;</li>
+        
+      <li>5.1. Elements and Isotopes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/atomic/elements_and_isotopes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="elements-and-isotopes">
+<h1>5.1. Elements and Isotopes<a class="headerlink" href="#elements-and-isotopes" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cherab.core.atomic.elements.Element">
+<em class="property">class </em><code class="descclassname">cherab.core.atomic.elements.</code><code class="descname">Element</code><a class="headerlink" href="#cherab.core.atomic.elements.Element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing an atomic element.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – Element name.</li>
+<li><strong>symbol</strong> (<em>str</em>) – Element symbol, e.g. ‘H’.</li>
+<li><strong>atomic_number</strong> (<em>int</em>) – Number of protons.</li>
+<li><strong>atomic_weight</strong> (<em>float</em>) – average atomic weight in amu</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – Element name.</li>
+<li><strong>symbol</strong> (<em>str</em>) – Element symbol, e.g. ‘H’.</li>
+<li><strong>atomic_number</strong> (<em>int</em>) – Number of protons.</li>
+<li><strong>atomic_weight</strong> (<em>float</em>) – average atomic weight in amu</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">Element</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">helium</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="s1">&#39;helium&#39;</span><span class="p">,</span> <span class="s1">&#39;He&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">4.002602</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p>Some examples of commonly used pre-defined elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="k">import</span> <span class="n">hydrogen</span><span class="p">,</span> <span class="n">helium</span><span class="p">,</span> <span class="n">lithium</span><span class="p">,</span> <span class="n">beryllium</span><span class="p">,</span> <span class="n">boron</span><span class="p">,</span> \
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">carbon</span><span class="p">,</span> <span class="n">nitrogen</span><span class="p">,</span> <span class="n">oxygen</span><span class="p">,</span> <span class="n">fluorine</span><span class="p">,</span> <span class="n">neon</span><span class="p">,</span> <span class="n">argon</span><span class="p">,</span> <span class="n">krypton</span><span class="p">,</span> <span class="n">xenon</span>
+</pre></div>
+</div>
+<p>For the full list of available elements please consult the
+<a class="reference external" href="https://github.com/cherab/core/blob/master/cherab/core/atomic/elements.pyx">source file</a> .</p>
+<dl class="function">
+<dt id="cherab.core.atomic.elements.lookup_element">
+<code class="descclassname">cherab.core.atomic.elements.</code><code class="descname">lookup_element</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.elements.lookup_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds an element by name, symbol or atomic number.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">lookup_element</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hydrogen</span> <span class="o">=</span> <span class="n">lookup_element</span><span class="p">(</span><span class="s1">&#39;hydrogen&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neon</span> <span class="o">=</span> <span class="n">lookup_element</span><span class="p">(</span><span class="s1">&#39;Ne&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argon</span> <span class="o">=</span> <span class="n">lookup_element</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>v</strong> – Search string or integer.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Element object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.atomic.elements.Isotope">
+<em class="property">class </em><code class="descclassname">cherab.core.atomic.elements.</code><code class="descname">Isotope</code><a class="headerlink" href="#cherab.core.atomic.elements.Isotope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing an atomic isotope.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – Isotope name.</li>
+<li><strong>symbol</strong> (<em>str</em>) – Isotope symbol, e.g. ‘T’.</li>
+<li><strong>element</strong> (<a class="reference internal" href="#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – The parent element of this isotope,
+e.g. for Tritium it would be Hydrogen.</li>
+<li><strong>mass_number</strong> (<em>int</em>) – Atomic mass number, which is total number of protons
+and neutrons. Allows identification of specific isotopes.</li>
+<li><strong>atomic_weight</strong> (<em>float</em>) – atomic weight in amu</li>
+<li><strong>element</strong> – The parent element of this isotope,
+e.g. for Tritium it would be Hydrogen.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – Isotope name.</li>
+<li><strong>symbol</strong> (<em>str</em>) – Isotope symbol, e.g. ‘T’.</li>
+<li><strong>atomic_number</strong> (<em>int</em>) – Number of protons.</li>
+<li><strong>mass_number</strong> (<em>int</em>) – Atomic mass number, which is total number of protons
+and neutrons. Allows identification of specific isotopes.</li>
+<li><strong>atomic_weight</strong> (<em>float</em>) – atomic weight in amu</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">Isotope</span><span class="p">,</span> <span class="n">hydrogen</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tritium</span> <span class="o">=</span> <span class="n">Isotope</span><span class="p">(</span><span class="s1">&#39;tritium&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">hydrogen</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">3.0160492777</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p>Some examples of commonly used pre-defined isotopes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="k">import</span> <span class="n">protium</span><span class="p">,</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">tritium</span><span class="p">,</span> <span class="n">helium3</span><span class="p">,</span> <span class="n">helium4</span>
+</pre></div>
+</div>
+<p>For the full list of available isotopes please consult the
+<a class="reference external" href="https://github.com/cherab/core/blob/master/cherab/core/atomic/elements.pyx">source file</a> .</p>
+<dl class="function">
+<dt id="cherab.core.atomic.elements.lookup_isotope">
+<code class="descclassname">cherab.core.atomic.elements.</code><code class="descname">lookup_isotope</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.elements.lookup_isotope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds an isotope by name, symbol or number.</p>
+<p>Isotopes are uniquely determined by the element type and mass number. These
+can be specified as a single string or a combination of element and mass number.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">lookup_isotope</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deuterium</span> <span class="o">=</span> <span class="n">lookup_element</span><span class="p">(</span><span class="s1">&#39;deuterium&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tritium</span> <span class="o">=</span> <span class="n">lookup_element</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">helium3</span> <span class="o">=</span> <span class="n">lookup_element</span><span class="p">(</span><span class="s1">&#39;he3&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">helium4</span> <span class="o">=</span> <span class="n">lookup_element</span><span class="p">(</span><span class="s1">&#39;he&#39;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – Search string, integer or element.</li>
+<li><strong>number</strong> – Integer mass number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Element object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="emission_lines.html" class="btn btn-neutral float-right" title="5.2. Spectroscopic Emission Lines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="atomic_data.html" class="btn btn-neutral" title="5. Atomic Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

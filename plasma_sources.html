@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6. Plasma sources &mdash; CHERAB 0.99 documentation</title>
+  <title>8. Plasma sources &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,26 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="index.html"/>
-        <link rel="next" title="7. Emission Models" href="models/emission_models.html"/>
-        <link rel="prev" title="5. Plasma equilibrium" href="equilibrium.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9. Emission Models" href="models/emission_models.html" />
+    <link rel="prev" title="7. Plasma equilibrium" href="equilibrium.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -65,7 +59,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -93,20 +87,22 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Plasma sources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#measured-profiles">6.1. Measured profiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solps-simulations">6.2. SOLPS Simulations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#solpsmesh-class">6.2.1. SOLPSMesh Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Plasma sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#measured-profiles">8.1. Measured profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solps-simulations">8.2. SOLPS Simulations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#solpsmesh-class">8.2.1. SOLPSMesh Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">9. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -122,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">CHERAB</a>
@@ -130,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,13 +152,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>6. Plasma sources</li>
+      <li>8. Plasma sources</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/plasma_sources.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/plasma_sources.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,14 +172,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="plasma-sources">
-<h1>6. Plasma sources<a class="headerlink" href="#plasma-sources" title="Permalink to this headline">¶</a></h1>
+<h1>8. Plasma sources<a class="headerlink" href="#plasma-sources" title="Permalink to this headline">¶</a></h1>
 <p>The core plasma object needs to be populated with distributions for each species in the model. The two most common ways
 of providing a plasma model are by using existing measured core profiles, and loading from a simulation such as SOLPS.</p>
 <div class="section" id="measured-profiles">
-<h2>6.1. Measured profiles<a class="headerlink" href="#measured-profiles" title="Permalink to this headline">¶</a></h2>
+<h2>8.1. Measured profiles<a class="headerlink" href="#measured-profiles" title="Permalink to this headline">¶</a></h2>
 <p>In this example, we use the PPF system to load a JET plasma from analysed diagnostic PPFs. Start by loading the
 equilibrium and creating a psi mapping function.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Load equilibrium object</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load equilibrium object</span>
 <span class="n">src</span> <span class="o">=</span> <span class="n">DataSource</span><span class="p">()</span>
 <span class="n">src</span><span class="o">.</span><span class="n">n_pulse</span> <span class="o">=</span> <span class="n">SHOT</span>
 <span class="n">src</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">ANALYSIS_TIME</span>
@@ -191,7 +188,7 @@ equilibrium and creating a psi mapping function.</p>
 </pre></div>
 </div>
 <p>Use the JETMeasuredProfile class to load required input data from PPF system.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Load all required reference data for seeding plasma profiles</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load all required reference data for seeding plasma profiles</span>
 
 <span class="c1"># HRTS profiles</span>
 <span class="n">hrts_te</span> <span class="o">=</span> <span class="n">JETMeasuredProfile</span><span class="p">(</span><span class="s2">&quot;HRTS_te&quot;</span><span class="p">,</span> <span class="n">SHOT</span><span class="p">,</span> <span class="s2">&quot;HRTS&quot;</span><span class="p">,</span> <span class="s2">&quot;te&quot;</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="n">errvar_code</span><span class="o">=</span><span class="s2">&quot;dte&quot;</span><span class="p">,</span>
@@ -205,7 +202,7 @@ equilibrium and creating a psi mapping function.</p>
 </pre></div>
 </div>
 <p>Setup 3d flux functions for each species and profile type.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flow_velocity_tor</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">vel_profile</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flow_velocity_tor</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">vel_profile</span><span class="p">)</span>
 <span class="n">ion_temperature</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">hrts_te</span><span class="p">)</span>
 <span class="n">electron_density</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">hrts_ne</span><span class="p">)</span>
 <span class="n">density_c6</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">hrts_ne</span> <span class="o">*</span> <span class="mf">0.03</span><span class="p">)</span>
@@ -217,7 +214,7 @@ equilibrium and creating a psi mapping function.</p>
 </pre></div>
 </div>
 <p>Load the plasma profiles into distribution functions for each species.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">d_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">density_d</span><span class="p">,</span> <span class="n">ion_temperature</span><span class="p">,</span> <span class="n">flow_velocity</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">density_d</span><span class="p">,</span> <span class="n">ion_temperature</span><span class="p">,</span> <span class="n">flow_velocity</span><span class="p">,</span>
                             <span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
 <span class="n">c6_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">density_c6</span><span class="p">,</span> <span class="n">ion_temperature</span><span class="p">,</span> <span class="n">flow_velocity</span><span class="p">,</span>
                              <span class="n">carbon</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
@@ -228,17 +225,17 @@ equilibrium and creating a psi mapping function.</p>
 </pre></div>
 </div>
 <p>Attach all the species to the plasma.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">plasma</span><span class="o">.</span><span class="n">inside</span> <span class="o">=</span> <span class="n">inside</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plasma</span><span class="o">.</span><span class="n">inside</span> <span class="o">=</span> <span class="n">inside</span>
 <span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span> <span class="o">=</span> <span class="n">e_distribution</span>
 <span class="n">plasma</span><span class="o">.</span><span class="n">set_species</span><span class="p">([</span><span class="n">d_species</span><span class="p">,</span> <span class="n">c6_species</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="solps-simulations">
-<h2>6.2. SOLPS Simulations<a class="headerlink" href="#solps-simulations" title="Permalink to this headline">¶</a></h2>
+<h2>8.2. SOLPS Simulations<a class="headerlink" href="#solps-simulations" title="Permalink to this headline">¶</a></h2>
 <p>Using an existing simulation can make it much easier to load a plasma. In this case, a reference simulation will be
 loaded from the AUG MDSplus server.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cherab_contrib.simulation_data.solps.solps_plasma</span> <span class="k">import</span> <span class="n">SOLPSSimulation</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cherab_contrib.simulation_data.solps.solps_plasma</span> <span class="k">import</span> <span class="n">SOLPSSimulation</span>
 
 <span class="c1"># Load plasma from SOLPS model</span>
 <span class="n">sim</span> <span class="o">=</span> <span class="n">SOLPSSimulation</span><span class="o">.</span><span class="n">load_from_mdsplus</span><span class="p">(</span><span class="n">mds_server</span><span class="o">=</span><span class="s1">&#39;solps-mdsplus.aug.ipp.mpg.de:8001&#39;</span><span class="p">,</span>
@@ -248,14 +245,14 @@ loaded from the AUG MDSplus server.</p>
 </pre></div>
 </div>
 <p>If you have the raw SOLPS output, it is also possible to load the simulation from files.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SIM_PATH</span> <span class="o">=</span> <span class="s1">&#39;/home/mcarr/mst1/aug_2016/&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SIM_PATH</span> <span class="o">=</span> <span class="s1">&#39;/home/mcarr/mst1/aug_2016/&#39;</span>
 <span class="n">sim</span> <span class="o">=</span> <span class="n">SOLPSSimulation</span><span class="o">.</span><span class="n">load_from_output_files</span><span class="p">(</span><span class="n">SIM_PATH</span><span class="o">+</span><span class="s1">&#39;b2fgmtry&#39;</span><span class="p">,</span> <span class="n">SIM_PATH</span><span class="o">+</span><span class="s1">&#39;b2fstate&#39;</span><span class="p">)</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">mesh</span>
 <span class="n">plasma</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">plasma</span>
 </pre></div>
 </div>
 <div class="section" id="solpsmesh-class">
-<h3>6.2.1. SOLPSMesh Class<a class="headerlink" href="#solpsmesh-class" title="Permalink to this headline">¶</a></h3>
+<h3>8.2.1. SOLPSMesh Class<a class="headerlink" href="#solpsmesh-class" title="Permalink to this headline">¶</a></h3>
 <p>Documentation coming soon.</p>
 </div>
 </div>
@@ -263,18 +260,16 @@ loaded from the AUG MDSplus server.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="models/emission_models.html" class="btn btn-neutral float-right" title="7. Emission Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="models/emission_models.html" class="btn btn-neutral float-right" title="9. Emission Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="equilibrium.html" class="btn btn-neutral" title="5. Plasma equilibrium" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="equilibrium.html" class="btn btn-neutral" title="7. Plasma equilibrium" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -304,33 +299,28 @@ loaded from the AUG MDSplus server.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

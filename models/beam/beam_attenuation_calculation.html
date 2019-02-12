@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Beam attenuation calcualtion &mdash; CHERAB 0.99 documentation</title>
+  <title>Beam attenuation calcualtion &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,24 +24,18 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/> 
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -63,7 +57,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -91,13 +85,15 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../emission_models.html">9. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -113,7 +109,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">CHERAB</a>
@@ -121,9 +117,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -152,7 +149,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/models/beam/beam_attenuation_calculation.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/models/beam/beam_attenuation_calculation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -192,95 +189,95 @@ documentation manager. Thanks.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><span class="math">\(n_e\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(n_e\)</span></td>
 <td>Electron density</td>
-<td><span class="math">\(m^{-3}\)</span></td>
+<td><span class="math notranslate nohighlight">\(m^{-3}\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(n_{H^0}\)</span></td>
-<td>Density of atom <span class="math">\(H^0\)</span></td>
-<td><span class="math">\(m^{-3}\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(n_{H^0}\)</span></td>
+<td>Density of atom <span class="math notranslate nohighlight">\(H^0\)</span></td>
+<td><span class="math notranslate nohighlight">\(m^{-3}\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(n_I\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(n_I\)</span></td>
 <td>Total ion density</td>
-<td><span class="math">\(m^{-3}\)</span></td>
+<td><span class="math notranslate nohighlight">\(m^{-3}\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(n_I^{i, equiv}\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(n_I^{i, equiv}\)</span></td>
 <td>Equivalent ion density of ion <em>i</em></td>
-<td><span class="math">\(m^{-3}\)</span></td>
+<td><span class="math notranslate nohighlight">\(m^{-3}\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(n_i\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(n_i\)</span></td>
 <td>Density of plasma ion <em>i</em></td>
-<td><span class="math">\(m^{-3}\)</span></td>
+<td><span class="math notranslate nohighlight">\(m^{-3}\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(n_e^i\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(n_e^i\)</span></td>
 <td>Electron density corresponding to ion <em>i</em></td>
-<td><span class="math">\(m^{-3}\)</span></td>
+<td><span class="math notranslate nohighlight">\(m^{-3}\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(n_e^{i, equiv}\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(n_e^{i, equiv}\)</span></td>
 <td>Equivalent electron density of ion <em>i</em>, to be used in the extraction of the stopping coefficient.</td>
-<td><span class="math">\(m^{-3}\)</span></td>
+<td><span class="math notranslate nohighlight">\(m^{-3}\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(\alpha_i\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(\alpha_i\)</span></td>
 <td>Charge of plasma ion <em>i</em></td>
 <td>dimensionless (integer)</td>
 </tr>
-<tr class="row-even"><td><span class="math">\(f_i\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(f_i\)</span></td>
 <td>Ionic fraction of ion <em>i</em></td>
 <td>dimensionless</td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(T_i\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(T_i\)</span></td>
 <td>Temperature of ion <em>i</em></td>
 <td><em>eV</em></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(E_c^i\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(E_c^i\)</span></td>
 <td>Collision energy between plasma ions <em>i</em> and beam neutrals</td>
 <td><em>eV/amu</em></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(Q_{ST}\)</span></td>
-<td>Ionisation rate of atom <span class="math">\(H^0\)</span></td>
-<td><span class="math">\(m^{-3}.s^{-1}\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(Q_{ST}\)</span></td>
+<td>Ionisation rate of atom <span class="math notranslate nohighlight">\(H^0\)</span></td>
+<td><span class="math notranslate nohighlight">\(m^{-3}.s^{-1}\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(Q_{ST}^i\)</span></td>
-<td>Ionisation rate of atom <span class="math">\(H^0\)</span> by ions <em>i</em> and their electrons</td>
-<td><span class="math">\(m^{-3}.s^{-1}\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(Q_{ST}^i\)</span></td>
+<td>Ionisation rate of atom <span class="math notranslate nohighlight">\(H^0\)</span> by ions <em>i</em> and their electrons</td>
+<td><span class="math notranslate nohighlight">\(m^{-3}.s^{-1}\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(S_{ST}\)</span></td>
-<td>Composite beam stopping coefficient for atom <span class="math">\(H^0\)</span> defined with respect to electron density.</td>
-<td><span class="math">\(m^3/s\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(S_{ST}\)</span></td>
+<td>Composite beam stopping coefficient for atom <span class="math notranslate nohighlight">\(H^0\)</span> defined with respect to electron density.</td>
+<td><span class="math notranslate nohighlight">\(m^3/s\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(S_{ST}^i\)</span></td>
-<td>Beam stopping coefficient for atom <span class="math">\(H^0\)</span> by ions <em>i</em> and their electrons defined with respect to ion density.</td>
-<td><span class="math">\(m^3/s\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(S_{ST}^i\)</span></td>
+<td>Beam stopping coefficient for atom <span class="math notranslate nohighlight">\(H^0\)</span> by ions <em>i</em> and their electrons defined with respect to ion density.</td>
+<td><span class="math notranslate nohighlight">\(m^3/s\)</span></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(S_{ST}^{i, e}\)</span></td>
-<td>Beam stopping coefficient for atom <span class="math">\(H^0\)</span> by ions <em>i</em> and their electrons defined with respect to electron density.</td>
-<td><span class="math">\(m^3/s\)</span></td>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(S_{ST}^{i, e}\)</span></td>
+<td>Beam stopping coefficient for atom <span class="math notranslate nohighlight">\(H^0\)</span> by ions <em>i</em> and their electrons defined with respect to electron density.</td>
+<td><span class="math notranslate nohighlight">\(m^3/s\)</span></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(Z_{eff}\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(Z_{eff}\)</span></td>
 <td>Plasma effective charge</td>
 <td>dimensionless</td>
 </tr>
 </tbody>
 </table>
-<p>The rate <span class="math">\(Q_{ST}^i\)</span> at which neutrals are ionised in the beam by one
+<p>The rate <span class="math notranslate nohighlight">\(Q_{ST}^i\)</span> at which neutrals are ionised in the beam by one
 ionic species <em>i</em> can be calculated from the beam stopping coefficient
-<span class="math">\(S_{ST}^i\)</span> with the formula:</p>
-<div class="math">
+<span class="math notranslate nohighlight">\(S_{ST}^i\)</span> with the formula:</p>
+<div class="math notranslate nohighlight">
 \[Q_{ST}^i = n_i.n_{H^0}.S_{ST}^i \quad \text{with} \quad \left.\frac{n_{H^0}}{dt}\right|_{\text{(ionisation by ion i)}} = - Q_{ST}^i\]</div>
-<p><span class="math">\(S_{ST}^i\)</span> corresponds closely to the effective ionisation coefficient.
+<p><span class="math notranslate nohighlight">\(S_{ST}^i\)</span> corresponds closely to the effective ionisation coefficient.
 It depends on the collisional energy between ions and neutrals, ion temperature
-and ion density: <span class="math">\(S_{ST}^i = S_{ST}^i[E_c^i, n_i, T_i]\)</span>. Here we consider
+and ion density: <span class="math notranslate nohighlight">\(S_{ST}^i = S_{ST}^i[E_c^i, n_i, T_i]\)</span>. Here we consider
 both main ion and impurities.</p>
 <div class="section" id="stopping-coefficients-with-respect-to-electron-density">
 <h2>Stopping coefficients with respect to electron density<a class="headerlink" href="#stopping-coefficients-with-respect-to-electron-density" title="Permalink to this headline">¶</a></h2>
 <p>Although ion impact ionisation and charge transfer are the most efficient
 reactions causing beam stopping, it is usual in fusion to define the stopping
 coefficient with respect to the electron density:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[Q_{ST}^i = n_e^i.n_{H^0}.S_{ST}^{i, e}\]</div>
-<p>Still considering only one ionic species <em>i</em>, quasi-neutrality gives: <span class="math">\(n_i.\alpha_i = n_e^i\)</span></p>
-<p>So: <span class="math">\(Q_{ST}^i = n_i.n_{H^0}.\alpha_i.S_{ST}^{i, e}\)</span></p>
-<p>Which means: <span class="math">\(S_{ST}^{i, e} = S_{ST}^i/\alpha_i\)</span></p>
+<p>Still considering only one ionic species <em>i</em>, quasi-neutrality gives: <span class="math notranslate nohighlight">\(n_i.\alpha_i = n_e^i\)</span></p>
+<p>So: <span class="math notranslate nohighlight">\(Q_{ST}^i = n_i.n_{H^0}.\alpha_i.S_{ST}^{i, e}\)</span></p>
+<p>Which means: <span class="math notranslate nohighlight">\(S_{ST}^{i, e} = S_{ST}^i/\alpha_i\)</span></p>
 <p>In reality, there is more than one ion specie in the plasma, and therefore the
 calculation of the stopping coefficient is dependent on the plasma composition.
 We will see below how an accurate calculation can be made for the effective
@@ -315,7 +312,7 @@ related to the collisional radiative and ionisation rate coefficients.</li>
 <li>The upper levels approach Saha-Boltzmann population density because the
 probability for radiative transition, A, decreases with increasing
 quantum number whilst the collisional rate increases. Therefore, for
-energy levels higher than a level <span class="math">\(n_s\)</span>, the population densities are
+energy levels higher than a level <span class="math notranslate nohighlight">\(n_s\)</span>, the population densities are
 governed by collisional processes, leading to the Saha-Boltzmann
 population.</li>
 </ul>
@@ -326,9 +323,9 @@ population.</li>
 <ul class="simple">
 <li>The localisation of beam emission measurements of the confined plasma,
 analysed with adoption of the theoretical quasi-static equilibrium
-assumption, cannot be better than <span class="math">\(3.10^{-2} m\)</span> in the JET experiment [Anderson2000].</li>
+assumption, cannot be better than <span class="math notranslate nohighlight">\(3.10^{-2} m\)</span> in the JET experiment [Anderson2000].</li>
 <li>Neutral beam diagnostic probes of edge/scrape-off-layer plasma with
-temperature and density scale lengths of about <span class="math">\(3.10^{-2} m\)</span> must be modelled
+temperature and density scale lengths of about <span class="math notranslate nohighlight">\(3.10^{-2} m\)</span> must be modelled
 in the full , spatially non-equilibrium picture.</li>
 <li>As has been discussed in previous work, hydrogen with its high first
 excitation energy is suited as an equilibrium, fast, deep neutral beam
@@ -351,9 +348,9 @@ the bundle-n approximation.</p>
 bundled-n approximation. It iterates through sets of plasma conditions,
 which include the plasma density, temperature and neutral beam energy.
 Output from ADAS310 includes all collisional-radiative ionization and
-recombination coefficients <span class="math">\(S_{CR}\)</span> and <span class="math">\(\alpha_{CR}\)</span>, with
+recombination coefficients <span class="math notranslate nohighlight">\(S_{CR}\)</span> and <span class="math notranslate nohighlight">\(\alpha_{CR}\)</span>, with
 and without the influence of charge-transfer, at each set if plasma
-conditions. <span class="math">\(S_{CR}\)</span> are in fact the <span class="math">\(S_{ST}^{i, e}\)</span> mentioned
+conditions. <span class="math notranslate nohighlight">\(S_{CR}\)</span> are in fact the <span class="math notranslate nohighlight">\(S_{ST}^{i, e}\)</span> mentioned
 above. This is a structured output organised according to ADAS data format
 adf26. ADAS310 accepts as input the definitions of these scans. Established
 an extended list of cases required to achieve the latter and then executes
@@ -385,35 +382,35 @@ and then a one-dimensional vector of coefficients as a function of the
 plasma ion temperature at the reference conditions of the other parameters.</p>
 </div>
 <p>If now instead of one ion species, we consider n ion species, the rate at which
-atoms <span class="math">\(H^0\)</span> in a beam are ionised <span class="math">\(Q_{ST}\)</span> can be written as:</p>
-<div class="math">
+atoms <span class="math notranslate nohighlight">\(H^0\)</span> in a beam are ionised <span class="math notranslate nohighlight">\(Q_{ST}\)</span> can be written as:</p>
+<div class="math notranslate nohighlight">
 \[Q_{ST}=\sum_iQ_{ST}^i=\sum_i n_in_{H^0}S_{ST}^i\quad\text{where}\quad\left.\frac{n_{H^0}}{dt}\right|_{\text{(all ionisations)}}=-Q_{ST}\]</div>
-<p>Now replacing <span class="math">\(S_{ST}^i\)</span> with <span class="math">\(S_{ST}^{i, e}\)</span>:</p>
-<div class="math">
+<p>Now replacing <span class="math notranslate nohighlight">\(S_{ST}^i\)</span> with <span class="math notranslate nohighlight">\(S_{ST}^{i, e}\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[Q_{ST}=\sum_in_in_{H^0}\alpha_iS_{ST}^{i, e}=n_{H^0}\sum_in_i^eS_{ST}^{i, e}\]</div>
-<p>Defining the composite stopping coefficient with respect to electron density <span class="math">\(S_{ST}\)</span> by:</p>
-<div class="math">
+<p>Defining the composite stopping coefficient with respect to electron density <span class="math notranslate nohighlight">\(S_{ST}\)</span> by:</p>
+<div class="math notranslate nohighlight">
 \[Q_{ST}=n_en_{H^0}S_{ST}\]</div>
 <p>This leads to:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[n_e.S_{ST}=n_{H^0}\sum_in_i^eS_{ST}^{i, e}\]</div>
-<p>The coefficient is written in terms of the primary parameters <span class="math">\(E_c^i, n_i, T_i\)</span>.
+<p>The coefficient is written in terms of the primary parameters <span class="math notranslate nohighlight">\(E_c^i, n_i, T_i\)</span>.
 It remains to define what should be taken as the parameter for electron density
 which is equivalent electron density to be used in the extraction of the
-stopping coefficient contribution from the <span class="math">\(i^{th}\)</span> pure impurity archive
-equivalent to the ion density <span class="math">\(n_i\)</span> in the case of this multi-ion plasma.</p>
+stopping coefficient contribution from the <span class="math notranslate nohighlight">\(i^{th}\)</span> pure impurity archive
+equivalent to the ion density <span class="math notranslate nohighlight">\(n_i\)</span> in the case of this multi-ion plasma.</p>
 <p>In this composite ion plasma, the effective charge is:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[Z_{eff}=\frac{\sum_jn_j\alpha_j^2}{\sum_jn_j\alpha_j}=\frac{\sum_jn_j\alpha_j^2}{n_e}\]</div>
 <p>The following assumption is made, that the quantity we are keeping constant for
-the plasma conditions is <span class="math">\(n_e.Z_{eff}\)</span>. Then, the equivalent ion density is defined by:</p>
-<div class="math">
+the plasma conditions is <span class="math notranslate nohighlight">\(n_e.Z_{eff}\)</span>. Then, the equivalent ion density is defined by:</p>
+<div class="math notranslate nohighlight">
 \[n_e.Z_{eff}=n_I^{i, equiv}\alpha_i^2\]</div>
 <p>Therefore, the equivalent electron density is:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[n_e^{i, equiv}=\alpha_in_I^{i, equiv}=\frac{n_e}{\alpha_i}Z_{eff}\]</div>
 <p>Finally:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[n_e^{i, equiv}=\frac{\sum_jn_j\alpha_j^2}{\alpha_i}\]</div>
 <p>A detailed error analysis of the effect of this approximations has been carried
 out by Anderson[1999] by comparison with ADAS310 calculations using the true
@@ -440,9 +437,7 @@ conditions for application to other plasma/injection systems. (He beams, …..)<
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -472,33 +467,28 @@ conditions for application to other plasma/injection systems. (He beams, …..)<
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Calculating wall surface radiation loads &mdash; CHERAB 0.99 documentation</title>
+  <title>Calculating wall surface radiation loads &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,24 +24,18 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/> 
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -63,7 +57,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -91,13 +85,15 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">9. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -113,7 +109,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">CHERAB</a>
@@ -121,9 +117,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -152,7 +149,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/demonstrations/radiation_wall_loads/surface_radiation_loads.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/demonstrations/radiation_wall_loads/surface_radiation_loads.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -173,7 +170,7 @@ radiation power profile wrapping around the machine. The full demo file for
 this tutorial can be downloaded from
 <a class="reference external" href="https://git.ccfe.ac.uk/cherab/cherab-core/tree/master/docs/demonstrations/radiation_wall_loads/wall_radiation.py">here</a>.
 Start by importing all required modules and creating world.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># External imports</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># External imports</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -204,7 +201,7 @@ Start by importing all required modules and creating world.</p>
 <h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Permalink to this headline">¶</a></h2>
 <p>Load all parts of the machine mesh from files. We are using a perfect absorbing surface so that
 no emission will be reflected.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MESH_PATH</span> <span class="o">=</span> <span class="s1">&#39;/projects/cadmesh/aug/&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MESH_PATH</span> <span class="o">=</span> <span class="s1">&#39;/projects/cadmesh/aug/&#39;</span>
 
 <span class="c1"># Load all parts of mesh with chosen material</span>
 <span class="n">MESH_PARTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;vessel_s02-03.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;vessel_s04-05.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;vessel_s06-07.rsm&#39;</span><span class="p">,</span> <span class="s1">&#39;vessel_s08-09.rsm&#39;</span><span class="p">,</span>
@@ -231,7 +228,7 @@ no emission will be reflected.</p>
 <p>The core Plasma object will be populated from the output of a AUG SOLPS simulation, this example
 provided by Felix Reimold (2016). The simulation can be loaded from the AUG MDSplus server
 or locally from files.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Load simulation from MDSplus</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load simulation from MDSplus</span>
 <span class="n">mds_server</span> <span class="o">=</span> <span class="s1">&#39;solps-mdsplus.aug.ipp.mpg.de:8001&#39;</span>
 <span class="n">ref_number</span> <span class="o">=</span> <span class="mi">40195</span>
 <span class="n">sim</span> <span class="o">=</span> <span class="n">SOLPSSimulation</span><span class="o">.</span><span class="n">load_from_mdsplus</span><span class="p">(</span><span class="n">mds_server</span><span class="p">,</span> <span class="n">ref_number</span><span class="p">)</span>
@@ -259,7 +256,7 @@ much small in the divertor region where radiation gradients are much steeper.</p
 <p>For every tile the minimum description needed is the (xwidth, ywidth) dimensions,
 a Point3D indicating the centre point of the tile, a surface normal vector, and
 a y-axis vector. An example description could be a list like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># (detector index, xwidth, ywidth, centre_point, normal_vector, y_vector)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># (detector index, xwidth, ywidth, centre_point, normal_vector, y_vector)</span>
 <span class="n">aug_wall_detectors</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.2027</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">(</span><span class="mf">1.0566</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.072559</span><span class="p">),</span>
      <span class="n">Vector3D</span><span class="p">(</span><span class="mf">0.99958</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.028904</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">0.028904</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.99958</span><span class="p">)),</span>
@@ -285,7 +282,7 @@ radiation is absorbed by the CAD surface instead of the observing surface.</span
 These pixels are rectangular surfaces with arbitrary orientation. Random sample points
 and vectors are generated across the rectangular surface to cover the full etendue of
 the tile.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Storage lists for results</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Storage lists for results</span>
 <span class="n">powers</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">power_errors</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">detector_numbers</span> <span class="o">=</span> <span class="p">[]</span>
@@ -347,7 +344,7 @@ the tile.</p>
 <p>We can check that energy is being conserved by looping over each cell in the SOLPS simulation and adding
 up its power to find the total power emitted in the simulation. Total radiated power should equal total
 power collected on the walls.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">total_rad_data</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">total_rad_data</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">total_rad_data</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">total_rad_data</span>
 <span class="n">vol</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vol</span>
 <span class="n">radius</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">cr</span>
 
@@ -365,9 +362,7 @@ power collected on the walls.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -397,33 +392,28 @@ power collected on the walls.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

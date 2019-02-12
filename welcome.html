@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1. Welcome &mdash; CHERAB 0.99 documentation</title>
+  <title>1. Welcome &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,26 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="index.html"/>
-        <link rel="next" title="2. Licence" href="licence.html"/>
-        <link rel="prev" title="CHERAB’s documentation" href="index.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Licence" href="licence.html" />
+    <link rel="prev" title="CHERAB’s documentation" href="index.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -65,7 +59,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -96,16 +90,19 @@
 <li class="toctree-l2"><a class="reference internal" href="#contributors">1.2. Contributors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#project-history">1.3. Project History</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#citations">1.4. Citations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#publications">1.5. Publications</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">9. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -121,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">CHERAB</a>
@@ -129,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -160,7 +158,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/welcome.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/welcome.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -200,6 +198,7 @@ interested collaborators should make contact with Dr Carine Giroud
 <ul class="simple">
 <li>Corentin Bertrand (Code)</li>
 <li>Andrea Callarelli (Code)</li>
+<li>Jack Lovell (Code)</li>
 <li>Nick Hawkes (Physics)</li>
 <li>Ephrem Delabie (Physics)</li>
 <li>Andy Meigs (Physics)</li>
@@ -216,18 +215,34 @@ prior to this point, please contact the JET project.</p>
 <div class="section" id="citations">
 <h2>1.4. Citations<a class="headerlink" href="#citations" title="Permalink to this headline">¶</a></h2>
 <p>CHERAB does not yet have a published overview paper, one is planned in the near future.
-Until then you can cite &#8220;Carr, M., Meakins, A., Baciero, A., Bernert, M., Callarelli, A.,
-Field, A., Giroud, C., Harrison, J., Hawkes, N., Henderson, S. and Lipschultz, B.,
-Towards integrated data analysis of divertor diagnostics with ray-tracing. 44th EPS Conference
-on Plasma Physics (2017), Belfast, Northern Ireland UK.&#8221;</p>
+Until then you can cite:</p>
+<p>“M. Carr, A. Meakins, A. Baciero, M. Bernert, A. Callarelli, A. Field, C. Giroud, J. Harrison,
+N. Hawkes, S. Henderson and B. Lipschultz, Towards integrated data analysis of divertor
+diagnostics with ray-tracing. 44th EPS Conference on Plasma Physics (2017), Belfast,
+Northern Ireland UK.”</p>
+<p>You can also cite the code base itself:</p>
+<p>“Dr Carine Giroud, Dr Alex Meakins, Dr Matthew Carr, Dr Alfonso Baciero, &amp; Mr Corentin Bertrand.
+(2018, March 23). CHERAB Spectroscopy Modelling Framework (Version v0.1.0).
+Zenodo. <a class="reference external" href="http://doi.org/10.5281/zenodo.1206142">http://doi.org/10.5281/zenodo.1206142</a>”</p>
+</div>
+<div class="section" id="publications">
+<h2>1.5. Publications<a class="headerlink" href="#publications" title="Permalink to this headline">¶</a></h2>
+<p>Noteable publications on or using the CHERAB framework:</p>
+<ul class="simple">
+<li>M. Carr, A. Meakins, A. Baciero, M. Bernert, A. Callarelli, A. Field, C. Giroud,
+J. Harrison, N. Hawkes, S. Henderson and B. Lipschultz,
+<a class="reference external" href="http://ocs.ciemat.es/EPS2017PAP/pdf/O5.130.pdf">Towards integrated data analysis of divertor diagnostics with ray-tracing</a>.
+44th EPS Conference on Plasma Physics (2017), Belfast, Northern Ireland UK.</li>
+<li>M. Carr, A. Meakins, M. Bernert, P. David, C. Giroud, J. Harrison, S. Henderson, B. Lipschultz, F. Reimold,
+<a class="reference external" href="https://aip.scitation.org/doi/abs/10.1063/1.5031087">Description of complex viewing geometries of fusion tomography diagnostics by ray-tracing</a>.
+Rev. Sci. Instrum. 89, 083506 (2018).</li>
+</ul>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -266,33 +281,28 @@ on Plasma Physics (2017), Belfast, Northern Ireland UK.&#8221;</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight &mdash; CHERAB 0.99 documentation</title>
+  <title>9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,27 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/>
-        <link rel="up" title="7. Emission Models" href="../emission_models.html"/>
-        <link rel="next" title="7.4. BES - Beam Emission Spectroscopy" href="../bes/bes_model.html"/>
-        <link rel="prev" title="7.2. CXS models" href="cxs_model.html"/> 
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9.4. Atomic data calculation" href="atomic_data_calculation.html" />
+    <link rel="prev" title="9.2. CXS models" href="cxs_model.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -66,7 +59,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -94,29 +87,32 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">7. Emission Models</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../custom_models.html">7.1. Custom emission models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs_model.html">7.2. CXS models</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#definition-of-charge-exchange-coefficients">7.3.1. Definition of charge-exchange coefficients</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-without-predicting-observed-spectra">7.3.2. Calculation of the line intensity of CX spectral lines (without predicting observed spectra)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#in-more-details-charge-exchange-cross-section">7.3.3. In more details charge-exchange cross-section</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#in-more-details-calculation-of-excited-level-populations-of-impurity-ions">7.3.4. In more details calculation of excited level populations of impurity ions <span class="math">\(Z^{* \alpha+}(n, l, j)\)</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-using-a-statistical-description-prediction-of-spectra">7.3.5. Calculation of the line intensity of CX spectral lines using a statistical description (prediction of spectra)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">9. Emission Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../custom_models.html">9.1. Custom emission models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs_model.html">9.2. CXS models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#definition-of-charge-exchange-coefficients">9.3.1. Definition of charge-exchange coefficients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-without-predicting-observed-spectra">9.3.2. Calculation of the line intensity of CX spectral lines (without predicting observed spectra)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#in-more-details-charge-exchange-cross-section">9.3.3. In more details charge-exchange cross-section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#in-more-details-calculation-of-excited-level-populations-of-impurity-ions">9.3.4. In more details calculation of excited level populations of impurity ions <span class="math notranslate nohighlight">\(Z^{* \alpha+}(n, l, j)\)</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-using-a-statistical-description-prediction-of-spectra">9.3.5. Calculation of the line intensity of CX spectral lines using a statistical description (prediction of spectra)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">7.4. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">7.5. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">7.6. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">7.7. Basic Line Emission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic_data_calculation.html">9.4. Atomic data calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">9.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">9.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">9.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">9.8. Basic Line Emission</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -132,7 +128,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">CHERAB</a>
@@ -140,9 +136,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -165,15 +162,15 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../emission_models.html">7. Emission Models</a> &raquo;</li>
+          <li><a href="../emission_models.html">9. Emission Models</a> &raquo;</li>
         
-      <li>7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</li>
+      <li>9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/models/cxs/charge_exchange_calculation.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/models/cxs/charge_exchange_calculation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -187,9 +184,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="calculation-of-predicted-charge-exchange-spectra-seen-by-a-line-of-sight">
-<h1>7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight<a class="headerlink" href="#calculation-of-predicted-charge-exchange-spectra-seen-by-a-line-of-sight" title="Permalink to this headline">¶</a></h1>
+<h1>9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight<a class="headerlink" href="#calculation-of-predicted-charge-exchange-spectra-seen-by-a-line-of-sight" title="Permalink to this headline">¶</a></h1>
 <p>In this section, the calculation of a predicted spectral line
-<span class="math">\(I_{obs}(\lambda)\)</span> resulting from a charge-exchange process is presented
+<span class="math notranslate nohighlight">\(I_{obs}(\lambda)\)</span> resulting from a charge-exchange process is presented
 together with the different possible simplifications and details of what is
 currently implemented in CHERAB. This documentation is not meant to be a
 course on charge-exchange but a concise compilation of the main aspects in
@@ -202,7 +199,7 @@ documentation manager. Thanks.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><span class="math">\(I_{obs}(\lambda)\)</span> in ray-tracer and therefore CHERAB is in <span class="math">\(W.m^{-2}.str^{-1}.nm^{-1}\)</span>.</p>
+<p class="last"><span class="math notranslate nohighlight">\(I_{obs}(\lambda)\)</span> in ray-tracer and therefore CHERAB is in <span class="math notranslate nohighlight">\(W.m^{-2}.str^{-1}.nm^{-1}\)</span>.</p>
 </div>
 <table border="1" class="docutils" id="id1">
 <caption><span class="caption-text">Notations for this section</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
@@ -218,95 +215,95 @@ documentation manager. Thanks.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><span class="math">\(n_e\)</span></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(n_e\)</span></td>
 <td>Electron density</td>
-<td><span class="math">\(m^{-3}\)</span></td>
+<td><span class="math notranslate nohighlight">\(m^{-3}\)</span></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="definition-of-charge-exchange-coefficients">
-<h2>7.3.1. Definition of charge-exchange coefficients<a class="headerlink" href="#definition-of-charge-exchange-coefficients" title="Permalink to this headline">¶</a></h2>
-<p>The charge exchange reaction between an ion <span class="math">\(Z^{(\alpha +1)+}\)</span> and a
-donor <span class="math">\(H^0\)</span> (can be in this section deuterium, tritium, hydrogen or helium) is:</p>
-<div class="math">
+<h2>9.3.1. Definition of charge-exchange coefficients<a class="headerlink" href="#definition-of-charge-exchange-coefficients" title="Permalink to this headline">¶</a></h2>
+<p>The charge exchange reaction between an ion <span class="math notranslate nohighlight">\(Z^{(\alpha +1)+}\)</span> and a
+donor <span class="math notranslate nohighlight">\(H^0\)</span> (can be in this section deuterium, tritium, hydrogen or helium) is:</p>
+<div class="math notranslate nohighlight">
 \[H^0(m) + Z^{(\alpha +1)+} \longrightarrow H^+ + Z^{* \alpha+}(n, l, j) \longrightarrow H^+ + Z^{\alpha+} + h\nu_1 + h\nu_2 + ...\]</div>
-<p>Where <span class="math">\(Z^{(\alpha +1)+}\)</span> is the ion capturing the donor electron into a
-specific shell (n,l,j). The excited ions, <span class="math">\(Z^{* \alpha+}(n, l, j)\)</span>, decay
+<p>Where <span class="math notranslate nohighlight">\(Z^{(\alpha +1)+}\)</span> is the ion capturing the donor electron into a
+specific shell (n,l,j). The excited ions, <span class="math notranslate nohighlight">\(Z^{* \alpha+}(n, l, j)\)</span>, decay
 in one or more steps to their ground state under photon emission. It is
-possible for the ion <span class="math">\(Z^{(\alpha +1)+}\)</span> to capture a donor electron from
-the ground-state <span class="math">\(H^0(m=1)\)</span> but also from high-lying shells if the
-electron donor is not ground-state but excited <span class="math">\(H^0(m=2)\)</span>.</p>
-<p>A charge-exchange line observed from an ion <span class="math">\(Z^{\alpha+}\)</span> will be the
+possible for the ion <span class="math notranslate nohighlight">\(Z^{(\alpha +1)+}\)</span> to capture a donor electron from
+the ground-state <span class="math notranslate nohighlight">\(H^0(m=1)\)</span> but also from high-lying shells if the
+electron donor is not ground-state but excited <span class="math notranslate nohighlight">\(H^0(m=2)\)</span>.</p>
+<p>A charge-exchange line observed from an ion <span class="math notranslate nohighlight">\(Z^{\alpha+}\)</span> will be the
 result of individual primary capture of donor electron onto specific shell of
-the ion <span class="math">\(Z^{(\alpha +1)+}\)</span> which then will undergo a redistribution
+the ion <span class="math notranslate nohighlight">\(Z^{(\alpha +1)+}\)</span> which then will undergo a redistribution
 process and cascade process affecting the excited populations of the recombined
-ion <span class="math">\(Z^{* \alpha+}\)</span> in a thermal plasma. The quantity linking the
+ion <span class="math notranslate nohighlight">\(Z^{* \alpha+}\)</span> in a thermal plasma. The quantity linking the
 fundamental cross-sections and the charge-exchange observations is the
-effective emission coefficient. The effective emission coefficient <span class="math">\(q^{CX, Z^{(\alpha+1)+}, H^0(m)}_{n\rightarrow n'}\)</span>
-for a particular charge-exchange line (such as CVI <span class="math">\(n=8\rightarrow n'=7\)</span>)
+effective emission coefficient. The effective emission coefficient <span class="math notranslate nohighlight">\(q^{CX, Z^{(\alpha+1)+}, H^0(m)}_{n\rightarrow n'}\)</span>
+for a particular charge-exchange line (such as CVI <span class="math notranslate nohighlight">\(n=8\rightarrow n'=7\)</span>)
 incorporate these effects. The coefficient is defined such that the number of
-<span class="math">\(n\rightarrow n'\)</span> photons emitted per unit volume per second per
-<span class="math">\(4\pi\)</span> steradian is <span class="math">\(q^{CX, Z^{(\alpha+1)+}, H^0(m)}_{n\rightarrow n'}.n_{Z^{(\alpha +1)+}}.n_{H^0(m)}\)</span>
-with <span class="math">\(n_{Z^{(\alpha +1)+}}\)</span> the number density of impurity receiver ions
-of charge <span class="math">\(\alpha+1\)</span> in the plasma and <span class="math">\(n_{H^0(m)}\)</span> the number
-density of beam donor atoms in the state <span class="math">\(m\)</span>. For example for D(n=2)
+<span class="math notranslate nohighlight">\(n\rightarrow n'\)</span> photons emitted per unit volume per second per
+<span class="math notranslate nohighlight">\(4\pi\)</span> steradian is <span class="math notranslate nohighlight">\(q^{CX, Z^{(\alpha+1)+}, H^0(m)}_{n\rightarrow n'}.n_{Z^{(\alpha +1)+}}.n_{H^0(m)}\)</span>
+with <span class="math notranslate nohighlight">\(n_{Z^{(\alpha +1)+}}\)</span> the number density of impurity receiver ions
+of charge <span class="math notranslate nohighlight">\(\alpha+1\)</span> in the plasma and <span class="math notranslate nohighlight">\(n_{H^0(m)}\)</span> the number
+density of beam donor atoms in the state <span class="math notranslate nohighlight">\(m\)</span>. For example for D(n=2)
 donors, m=2 and for the ground state D(n=1), m=1. The methods used to calculate
-the effective emission coefficients, <span class="math">\(q^{CX, Z^{(\alpha+1)+}, H^0(m)}_{n\rightarrow n'}\)</span>
+the effective emission coefficients, <span class="math notranslate nohighlight">\(q^{CX, Z^{(\alpha+1)+}, H^0(m)}_{n\rightarrow n'}\)</span>
 is calculated in a collisional-radiative nl-resolved l-mixing model of all the
-excited populations of the <span class="math">\(\alpha+1\)</span> times ionized receiver ion. The
+excited populations of the <span class="math notranslate nohighlight">\(\alpha+1\)</span> times ionized receiver ion. The
 effective coefficients depend on the collision energy with the neutral beam
-<span class="math">\(E_c\)</span>, plasma electron and ion temperatures, plasma impurity ion species
+<span class="math notranslate nohighlight">\(E_c\)</span>, plasma electron and ion temperatures, plasma impurity ion species
 mix and number densities and electron density. The strongest dependences are on
-collisional energy <span class="math">\(E_c\)</span> and ion density <span class="math">\(n_I\)</span>. (For more specific
+collisional energy <span class="math notranslate nohighlight">\(E_c\)</span> and ion density <span class="math notranslate nohighlight">\(n_I\)</span>. (For more specific
 use of ADAS effective charge-exchange coefficient look at CHERAB atomic data
 note). For a mixed impurity plasma of known fractions with charge neutrality,
 the electron and ion densities are related and it is usual to use the electron
 density as a parameter.</p>
-<p>The composite charge-exchange emission coefficient with both <span class="math">\(H^0(m=1)\)</span>
-and <span class="math">\(H^0(m=2)\)</span> beam donors is defined as:</p>
-<div class="math">
+<p>The composite charge-exchange emission coefficient with both <span class="math notranslate nohighlight">\(H^0(m=1)\)</span>
+and <span class="math notranslate nohighlight">\(H^0(m=2)\)</span> beam donors is defined as:</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}q^{CX, Z^{(\alpha+1)+}}_{n\rightarrow n'} &amp;= \frac{n_{H^0(1)} q^{CX, Z^{(\alpha+1)+}, H^0(1)}_{n\rightarrow n'} + n_{H^0(2)}.q^{CX, Z^{(\alpha+1)+}, H^0(2)}_{n\rightarrow n'}}{n_{H^0(1)} + n_{H^0(2)}} \\
                                           &amp;= \frac{q^{CX, Z^{(\alpha+1)+}, H^0(1)}_{n\rightarrow n'} + bmp(2).q^{CX, Z^{(\alpha+1)+}, H^0(2)}_{n\rightarrow n'}}{1 + bmp(2)} \quad \text{with} \quad bmp(m) = \frac{n_{H^0(m)}}{n_{H^0(1)}}\end{split}\]</div>
 <p>Or in a more general way:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[q^{CX, Z^{(\alpha+1)+}}_{n\rightarrow n'} = \frac{q^{CX, Z^{(\alpha+1)+}, H^0(1)}_{n\rightarrow n'} + \sum_{m=2}^M bmp(m).q^{CX, Z^{(\alpha+1)+}, H^0(m)}_{n\rightarrow n'}}{1 + \sum_{m=2}^M bmp(m)}\]</div>
-<p>The ratio of population between <span class="math">\(n_{H^0(m)}\)</span> and <span class="math">\(n_{H^0(1)}\)</span> is
-called <span class="math">\(bmp(m)\)</span>. The calculation of the donor population requires a
+<p>The ratio of population between <span class="math notranslate nohighlight">\(n_{H^0(m)}\)</span> and <span class="math notranslate nohighlight">\(n_{H^0(1)}\)</span> is
+called <span class="math notranslate nohighlight">\(bmp(m)\)</span>. The calculation of the donor population requires a
 detailed collisional-radiative model including many ion and electron
 collisional processes. For information, the fraction of excited beam atoms
-depends not only on the beam energy but also on <span class="math">\(Z_{eff}\)</span>, plasma
+depends not only on the beam energy but also on <span class="math notranslate nohighlight">\(Z_{eff}\)</span>, plasma
 temperature and densities. Note that D(n=1) donor dominates at high beam energy
 and the small fraction of D(n=2) donor dominates at low beam energy
 [Hoekstra1998]. For more practical information, look at the CHERAB atomic data
 note.</p>
 </div>
 <div class="section" id="calculation-of-the-line-intensity-of-cx-spectral-lines-without-predicting-observed-spectra">
-<h2>7.3.2. Calculation of the line intensity of CX spectral lines (without predicting observed spectra)<a class="headerlink" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-without-predicting-observed-spectra" title="Permalink to this headline">¶</a></h2>
-<p>As already mentioned above the number of <span class="math">\(n\rightarrow n'\)</span> photons
-emitted per unit volume per second per <span class="math">\(4\pi\)</span> steradian can be calculated
+<h2>9.3.2. Calculation of the line intensity of CX spectral lines (without predicting observed spectra)<a class="headerlink" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-without-predicting-observed-spectra" title="Permalink to this headline">¶</a></h2>
+<p>As already mentioned above the number of <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span> photons
+emitted per unit volume per second per <span class="math notranslate nohighlight">\(4\pi\)</span> steradian can be calculated
 by:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[I_{n\rightarrow n'} = n_{H^0}.n_{Z^{(\alpha +1)+}}.q^{CX, Z^{(\alpha+1)+}}_{n\rightarrow n'}\]</div>
-<p>The light emitted by a specie <span class="math">\(Z^{\alpha+}\)</span> due to a transition of
-electron from quantum <span class="math">\(n\rightarrow n'\)</span> has a natural wavelength <span class="math">\(\lambda_n\)</span>
-associated and a natural line width <span class="math">\(\Delta\lambda_n\)</span>. It can be calculated
+<p>The light emitted by a specie <span class="math notranslate nohighlight">\(Z^{\alpha+}\)</span> due to a transition of
+electron from quantum <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span> has a natural wavelength <span class="math notranslate nohighlight">\(\lambda_n\)</span>
+associated and a natural line width <span class="math notranslate nohighlight">\(\Delta\lambda_n\)</span>. It can be calculated
 that this width is small and can be neglected. The spectral line intensity as
 a function of wavelength is then given by:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[I_{n\rightarrow n'}(\lambda) = I_{n\rightarrow n'}.\delta(\lambda - \lambda_n)\]</div>
 <p><strong>Assumption: natural width of the line neglected</strong></p>
-<p>An observer looking at a direction <span class="math">\(\vec{l}\)</span> (<span class="math">\(\|\vec{l}\|=1\)</span>) at a photon with a velocity
-<span class="math">\(\vec{u}\)</span> will see this photon at a wavelength <span class="math">\(\lambda_D = \lambda_n + \Delta\lambda_D\)</span>
-with a Doppler shift <span class="math">\(\Delta\lambda_D = \lambda_n \frac{\vec{u}.\vec{l}}{c}\)</span>
+<p>An observer looking at a direction <span class="math notranslate nohighlight">\(\vec{l}\)</span> (<span class="math notranslate nohighlight">\(\|\vec{l}\|=1\)</span>) at a photon with a velocity
+<span class="math notranslate nohighlight">\(\vec{u}\)</span> will see this photon at a wavelength <span class="math notranslate nohighlight">\(\lambda_D = \lambda_n + \Delta\lambda_D\)</span>
+with a Doppler shift <span class="math notranslate nohighlight">\(\Delta\lambda_D = \lambda_n \frac{\vec{u}.\vec{l}}{c}\)</span>
 with c the speed of light.</p>
 <p>The observed spectral line intensity can then be defined as (ignoring all effects
 but Doppler effect):</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[I_{n\rightarrow n'}(\lambda) = I_{n\rightarrow n'}.\delta(\lambda - \lambda_D)
                              = I_{n\rightarrow n'}.\delta\left(\lambda - \lambda_n \left(1 + \frac{\vec{u}.\vec{l}}{c}\right)\right)\]</div>
 </div>
 <div class="section" id="in-more-details-charge-exchange-cross-section">
-<h2>7.3.3. In more details charge-exchange cross-section<a class="headerlink" href="#in-more-details-charge-exchange-cross-section" title="Permalink to this headline">¶</a></h2>
+<h2>9.3.3. In more details charge-exchange cross-section<a class="headerlink" href="#in-more-details-charge-exchange-cross-section" title="Permalink to this headline">¶</a></h2>
 <p>Primary charge-exchange cross-section plays a principal role in this calculation,
 since final derived impurity ion densities depend absolutely on their reliability.
 Theoretical charge-exchange calculations especially for capture to the highly
@@ -315,59 +312,59 @@ the total charge exchange capture cross-section, that is summed over all levels,
 is the most reliable quantity [Boileau89]. Very few experimental measurements
 exist even of charge-exchange capture cross-section summed over all levels.
 One such measurement was made with [Phaneuf82, Isler94], where a collimating
-beam of multiply charge ions of charge <span class="math">\(\alpha+1\)</span> through a calibrated
-atomic hydrogen gas target and detecting scattered product ions of charge <span class="math">\(\alpha\)</span>
-separately from the primary ions of charge <span class="math">\(\alpha+1\)</span>.</p>
-<p>When charged ions <span class="math">\(Z^{(\alpha +1)+}\)</span> are thrown against an atomic hydrogen
-gas, the cross-section <span class="math">\(\sigma^{CX}_{Z^{(\alpha+1)+}}\)</span> is a hypothetical
+beam of multiply charge ions of charge <span class="math notranslate nohighlight">\(\alpha+1\)</span> through a calibrated
+atomic hydrogen gas target and detecting scattered product ions of charge <span class="math notranslate nohighlight">\(\alpha\)</span>
+separately from the primary ions of charge <span class="math notranslate nohighlight">\(\alpha+1\)</span>.</p>
+<p>When charged ions <span class="math notranslate nohighlight">\(Z^{(\alpha +1)+}\)</span> are thrown against an atomic hydrogen
+gas, the cross-section <span class="math notranslate nohighlight">\(\sigma^{CX}_{Z^{(\alpha+1)+}}\)</span> is a hypothetical
 area measure around the target particle of atoms that represents a surface. If
 an ion crosses this surface, there will be some kind of interaction. In the
 charge-exchange reaction, the cross-section is specific to a donor electron in
-the level <span class="math">\(H^0(m)\)</span> and capture in the shell (n,l) of the ion <span class="math">\(Z^{(\alpha+1)+}\)</span>
-(abandoning j for now), hence <span class="math">\(\sigma^{CX}_{Z^{(\alpha +1)+}}(m,n,l)\)</span>.</p>
-<p>In general, the rate <span class="math">\(Q\)</span> at which a specific reaction occurs is a physical
+the level <span class="math notranslate nohighlight">\(H^0(m)\)</span> and capture in the shell (n,l) of the ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span>
+(abandoning j for now), hence <span class="math notranslate nohighlight">\(\sigma^{CX}_{Z^{(\alpha +1)+}}(m,n,l)\)</span>.</p>
+<p>In general, the rate <span class="math notranslate nohighlight">\(Q\)</span> at which a specific reaction occurs is a physical
 quantity measuring the number of reactions per unit of time which can be written
 as follow:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[Q = N.J.\sigma\]</div>
-<p>with <span class="math">\(N\)</span> the number of target particles, illuminated by the beam containing
-<span class="math">\(n\)</span> particles per unit volume (number density of particles) travelling with
-the average velocity <span class="math">\(v\)</span> in the rest frame of the target and these two
-quantities combine in the particle current density of the beam <span class="math">\(J=n.v\)</span>.
+<p>with <span class="math notranslate nohighlight">\(N\)</span> the number of target particles, illuminated by the beam containing
+<span class="math notranslate nohighlight">\(n\)</span> particles per unit volume (number density of particles) travelling with
+the average velocity <span class="math notranslate nohighlight">\(v\)</span> in the rest frame of the target and these two
+quantities combine in the particle current density of the beam <span class="math notranslate nohighlight">\(J=n.v\)</span>.
 So the rate can be rewritten as:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[Q = N.n.v.\sigma\]</div>
 <p>Now, we want to get back to the specific equation for the charge-exchange rate.
-For our charge-exchange reaction, the target ions <span class="math">\(Z^{(\alpha+1)+}\)</span> have
-a certain distribution <span class="math">\(f_{Z^{(\alpha+1)+}(n,l)}(\vec{x}, \vec{u}, t)\)</span>
+For our charge-exchange reaction, the target ions <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span> have
+a certain distribution <span class="math notranslate nohighlight">\(f_{Z^{(\alpha+1)+}(n,l)}(\vec{x}, \vec{u}, t)\)</span>
 that needs to be taken into account in the calculation:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[Q^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n'}(E_c) =
 n_{H^0(m)}.n_{Z^{(\alpha +1)+}}(n,l).\int_{\vec{u}}f_{Z^{(\alpha+1)+}(n,l)}(\vec{u}-\vec{v_B})
 .\|\vec{u}-\vec{v_B}\|.\sigma^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n'}(\|\vec{u}-\vec{v_B}\|).d\vec{u}\]</div>
-<p>With the collision velocity between the impurity ion and the neutral atom <span class="math">\(E_c = \|\vec{u}-\vec{v_B}\|\)</span></p>
+<p>With the collision velocity between the impurity ion and the neutral atom <span class="math notranslate nohighlight">\(E_c = \|\vec{u}-\vec{v_B}\|\)</span></p>
 <p>The above equation point out that the charge-exchange rate coefficient needs the
 distribution of the impurity. The general case is that a Maxwellian distribution
 function can be assumed in the velocity space, but there are cases such as for
 the He-ash where a Maxwellian distribution does not apply and a more general
 calculation of the charge-exchange rate would be needed and a new effective
-emission coefficients would be needed <span class="math">\(q^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n', \text{non Max}}\)</span>.</p>
+emission coefficients would be needed <span class="math notranslate nohighlight">\(q^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n', \text{non Max}}\)</span>.</p>
 <p>As a result there are possibly three different calculations for the effective
 charge-exchange emission coefficient, of which only two are used in practise.</p>
 <p><strong>Two different composite charge exchange emission coefficients:</strong></p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>A Maxwellian distribution function in velocity space is assumed for the ion <span class="math">\(Z^{(\alpha+1)+}\)</span>:
-<span class="math">\(q^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n'}\)</span></li>
-<li>A Maxwellian distribution function in velocity space is not assumed for the ion <span class="math">\(Z^{(\alpha+1)+}\)</span>:
+<li>A Maxwellian distribution function in velocity space is assumed for the ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span>:
+<span class="math notranslate nohighlight">\(q^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n'}\)</span></li>
+<li>A Maxwellian distribution function in velocity space is not assumed for the ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span>:
 this requires a new set of effective charge-exchange emission coefficient
-<span class="math">\(q^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n', \text{non Max}}\)</span>,
+<span class="math notranslate nohighlight">\(q^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n', \text{non Max}}\)</span>,
 additional parameters in respect to 1. will be needed.</li>
 </ol>
 </div></blockquote>
 </div>
 <div class="section" id="in-more-details-calculation-of-excited-level-populations-of-impurity-ions">
-<h2>7.3.4. In more details calculation of excited level populations of impurity ions <span class="math">\(Z^{* \alpha+}(n, l, j)\)</span><a class="headerlink" href="#in-more-details-calculation-of-excited-level-populations-of-impurity-ions" title="Permalink to this headline">¶</a></h2>
+<h2>9.3.4. In more details calculation of excited level populations of impurity ions <span class="math notranslate nohighlight">\(Z^{* \alpha+}(n, l, j)\)</span><a class="headerlink" href="#in-more-details-calculation-of-excited-level-populations-of-impurity-ions" title="Permalink to this headline">¶</a></h2>
 <p>The calculation of excited level populations of impurity ions in plasma has been
 discussed in details in [Spence and Summer86]. A concise summary is given here.
 Subsequent to the primary direct capture process, it is supposed that four
@@ -376,23 +373,23 @@ There are:</p>
 <ul class="simple">
 <li>Spontaneous emission:</li>
 </ul>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[Z^{*, \alpha+}(n,l,j) \longrightarrow Z^{*, \alpha+}(n',l',j') + h\nu\]</div>
 <ul class="simple">
 <li>Collisional ionisation by electrons:</li>
 </ul>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[Z^{\alpha+}(n,l,j) + e \longrightarrow Z^{(\alpha+1)+} + e + e\]</div>
 <ul class="simple">
 <li>Collisional transitions between nearly degenerate levels by electron and positive ion impact:</li>
 </ul>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}Z^{\alpha+}(n,l,j) + \left\{\begin{array}{ll}e\\Z_{\mu} \end{array} \right\}
 \longrightarrow Z^{\alpha+}(n,l',j') + \left\{\begin{array}{ll}e\\Z_{\mu} \end{array} \right\}\end{split}\]</div>
 <ul class="simple">
 <li>Transitions between nearly degenerate levels due to ion motion and magnetic field:</li>
 </ul>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[Z^{\alpha+}(n,l,j) \overset{B_{mag}}{\longrightarrow} Z^{\alpha+}(n,l',j')\]</div>
 <p>A statistical view of excited ion level populations is appropriate, the number
 densities of ions in various excited levels being determined by the balance of
@@ -416,8 +413,8 @@ in full magnetic field effects are included only in the nlj picture.</li>
 <p><strong>Two different composite charge exchange emission coefficients depending on the model chosen for the excited population model:</strong></p>
 <blockquote>
 <div><ol class="arabic simple" start="3">
-<li>nl picture: <span class="math">\(q^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n'}\)</span></li>
-<li>nlj picture: <span class="math">\(q^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n'}(\vec{B})\)</span>
+<li>nl picture: <span class="math notranslate nohighlight">\(q^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n'}\)</span></li>
+<li>nlj picture: <span class="math notranslate nohighlight">\(q^{CX, Z^{(\alpha+1)+}(n,l), H^0(m)}_{n\rightarrow n'}(\vec{B})\)</span>
 these coefficients exist in ADAS but are mostly not used.</li>
 </ol>
 </div></blockquote>
@@ -428,18 +425,18 @@ these coefficients exist in ADAS but are mostly not used.</li>
 <div><p>Collisional transitions between nearly degenerate levels play a significant
 role for the densities, ions and principal quantum shells of concern in
 JET studies of charge exchange by visible spectroscopy. The transitions
-are of the form <span class="math">\(nl\rightarrow nl\pm 1\)</span> in the nl picture and
-<span class="math">\(nlj\rightarrow nl\pm 1, j\pm 1\)</span> in the nlj picture and are induced
+are of the form <span class="math notranslate nohighlight">\(nl\rightarrow nl\pm 1\)</span> in the nl picture and
+<span class="math notranslate nohighlight">\(nlj\rightarrow nl\pm 1, j\pm 1\)</span> in the nlj picture and are induced
 by both electron and positive ion impact. As the transition energies
 approach zero, ions become relatively more efficient than electrons in
 causing transitions. Detailed expressions for collisions rate coefficients
 are given in Spence[1986] are are adopted here. For greatest precision,
 rate coefficients for the different positive ions present in the plasma
 should be combined, weighted by their fractional number densities. Since
-the cross-section is essentially proportional to <span class="math">\(Z^2_{\mu}\)</span> where
-<span class="math">\(Z_{\mu}\)</span> is the impacting ion charge number, an error less than
+the cross-section is essentially proportional to <span class="math notranslate nohighlight">\(Z^2_{\mu}\)</span> where
+<span class="math notranslate nohighlight">\(Z_{\mu}\)</span> is the impacting ion charge number, an error less than
 the intrinsic uncertainty in the cross-sections is introduced by considering
-a single ion species to be present of charge <span class="math">\(Z_{eff}\)</span> (the usually
+a single ion species to be present of charge <span class="math notranslate nohighlight">\(Z_{eff}\)</span> (the usually
 defined plasma effective ion charge). The rate expressions depend sensitively
 on the transition energies and so the latter must be evaluated quite precisely.
 Rates are calculated in the nlj picture initially. Since at high l, where
@@ -455,7 +452,7 @@ low l un vuv and xuv measurements and then the nlj picture is appropriate.</p>
 <p>There is a critical plasma density at which a given transition is fully
 mixed: this is usually a problem for the edge densities of plasmas.</p>
 <p>The sigma component are dominant for observation angles perpendicular to
-the magnetic field, while the <span class="math">\(\pi\)</span>-component dominates in the case
+the magnetic field, while the <span class="math notranslate nohighlight">\(\pi\)</span>-component dominates in the case
 of observation angles perpendicular to the magnetic field. In summary,
 in the standard analysis of the CXRS measurements on AUG the corrections
 due to the CX cross-section and gyro-motion effects are not taken into
@@ -470,7 +467,7 @@ instead of one line.</p>
 <p>Collisional l-mixing:</p>
 <blockquote>
 <div>Which of the l-levels ae populated in a charge-exchange reactions depends
-on the beam energy. If the lifetime <span class="math">\(\tau\)</span> of the excited states is considerably
+on the beam energy. If the lifetime <span class="math notranslate nohighlight">\(\tau\)</span> of the excited states is considerably
 larger than the ion-ion collision time, collisions will cause a transfer
 between the different l-states of n=8 shell before the charge-exchange
 electron drops to a lower level and emits a photon. This phenomenon is
@@ -493,52 +490,52 @@ every sublevel is taken into account. When we treat every emission line separate
 the analysis of a CX spectrum gets quite complicated. Therefore the total profile
 of all transition lines is presented as a single, but broadened Gaussian, of
 which the peak position depends on the l-mixing and Zeeman splitting. This
-Gaussian replace the <span class="math">\(\delta\)</span>-function in equation.</p>
+Gaussian replace the <span class="math notranslate nohighlight">\(\delta\)</span>-function in equation.</p>
 </div></blockquote>
 <p><strong>Assumption: at the moment the collisional l-mixing and Zeeman splitting is not taken into account</strong></p>
 <blockquote>
 <div>It can however be easily done.</div></blockquote>
 </div>
 <div class="section" id="calculation-of-the-line-intensity-of-cx-spectral-lines-using-a-statistical-description-prediction-of-spectra">
-<h2>7.3.5. Calculation of the line intensity of CX spectral lines using a statistical description (prediction of spectra)<a class="headerlink" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-using-a-statistical-description-prediction-of-spectra" title="Permalink to this headline">¶</a></h2>
+<h2>9.3.5. Calculation of the line intensity of CX spectral lines using a statistical description (prediction of spectra)<a class="headerlink" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-using-a-statistical-description-prediction-of-spectra" title="Permalink to this headline">¶</a></h2>
 <p>We want to be able to calculate the spectra observed in the case of a charge-exchange
-reaction between an ion <span class="math">\(Z^{(\alpha+1)+}\)</span> and neutral atom present in the plasma
-whatever the direction of observation <span class="math">\(\vec{l}\)</span> and velocity <span class="math">\(\vec{u}\)</span>
+reaction between an ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span> and neutral atom present in the plasma
+whatever the direction of observation <span class="math notranslate nohighlight">\(\vec{l}\)</span> and velocity <span class="math notranslate nohighlight">\(\vec{u}\)</span>
 of the ion.</p>
-<p>The most general description for the the ion <span class="math">\(Z^{\alpha+}\)</span> is to have a distribution
-function associated to it, <span class="math">\(f_{Z^{\alpha+}}(\vec{x}, \vec{u}, t)\)</span>. The most
-general description for the statistical behaviour of specie <span class="math">\(Z^{\alpha+}\)</span>
-is described by the Boltzmann equation <a href="#equation-boltzman">(1)</a>:</p>
-<div class="math" id="equation-boltzman">
-<span class="eqno">(1)</span>\[\frac{\partial f_{Z^{\alpha+}}}{\partial t} + \vec{u}.\vec{\nabla} f_{Z^{\alpha+}}
+<p>The most general description for the the ion <span class="math notranslate nohighlight">\(Z^{\alpha+}\)</span> is to have a distribution
+function associated to it, <span class="math notranslate nohighlight">\(f_{Z^{\alpha+}}(\vec{x}, \vec{u}, t)\)</span>. The most
+general description for the statistical behaviour of specie <span class="math notranslate nohighlight">\(Z^{\alpha+}\)</span>
+is described by the Boltzmann equation <a class="reference internal" href="#equation-boltzman">(1)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-boltzman">
+<span class="eqno">(1)<a class="headerlink" href="#equation-boltzman" title="Permalink to this equation">¶</a></span>\[\frac{\partial f_{Z^{\alpha+}}}{\partial t} + \vec{u}.\vec{\nabla} f_{Z^{\alpha+}}
 + \frac{\vec{F}}{m_{Z^{\alpha+}}}.\vec{\nabla_{\vec{u}}} f_{Z^{\alpha+}}
 = \left(\frac{\partial f_{Z^{\alpha+}}}{\partial t}\right)_{col}\]</div>
-<p>The distribution function changes as a result of the forces <span class="math">\(F\)</span> and collisions
-<span class="math">\(\left(\frac{\partial f_{Z^{\alpha+}}}{\partial t}\right)_{col}\)</span>.</p>
-<p>In a plasma the main forces are long-range Lorentz force <span class="math">\(\vec{F} = q_{\alpha}(\vec{E} + \vec{u}\times\vec{B})\)</span></p>
-<p>The distribution of an ion <span class="math">\(Z^{*,\alpha+}\)</span> experiencing a charge-exchange
+<p>The distribution function changes as a result of the forces <span class="math notranslate nohighlight">\(F\)</span> and collisions
+<span class="math notranslate nohighlight">\(\left(\frac{\partial f_{Z^{\alpha+}}}{\partial t}\right)_{col}\)</span>.</p>
+<p>In a plasma the main forces are long-range Lorentz force <span class="math notranslate nohighlight">\(\vec{F} = q_{\alpha}(\vec{E} + \vec{u}\times\vec{B})\)</span></p>
+<p>The distribution of an ion <span class="math notranslate nohighlight">\(Z^{*,\alpha+}\)</span> experiencing a charge-exchange
 reaction can be written as follows:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\frac{\partial f_{Z^{*,\alpha+}}}{\partial t} + \vec{u}.\vec{\nabla} f_{Z^{*,\alpha+}}
 + \frac{\vec{F}}{m_{Z^{*,\alpha+}}}.\vec{\nabla_{\vec{u}}} f_{Z^{*,\alpha+}}
 = source\left(Z^{*,\alpha+}\right) - sink\left(Z^{*,\alpha+}\right)\]</div>
-<p>As source for ion <span class="math">\(Z^{*,\alpha+}\)</span>, the charge exchange reaction with a
+<p>As source for ion <span class="math notranslate nohighlight">\(Z^{*,\alpha+}\)</span>, the charge exchange reaction with a
 neutral is considered and for sink it is the re-ionisation taking place in the plasma.</p>
-<p><strong>Assumption: we ignore the transport of ion in space:</strong> <span class="math">\(\vec{u}.\vec{\nabla} f_{Z^{*,\alpha+}} \approx 0\)</span> <strong>, local calculation.</strong></p>
+<p><strong>Assumption: we ignore the transport of ion in space:</strong> <span class="math notranslate nohighlight">\(\vec{u}.\vec{\nabla} f_{Z^{*,\alpha+}} \approx 0\)</span> <strong>, local calculation.</strong></p>
 <blockquote>
-<div>In the case of <span class="math">\(He^{*,+}\)</span> (plume), the transport in space cannot be ignored.</div></blockquote>
-<p><strong>Assumption: we neglect the electric field in the Lorentz force</strong> <span class="math">\(q_{\alpha}\vec{E} \approx \vec{0}\)</span></p>
-<div class="math">
+<div>In the case of <span class="math notranslate nohighlight">\(He^{*,+}\)</span> (plume), the transport in space cannot be ignored.</div></blockquote>
+<p><strong>Assumption: we neglect the electric field in the Lorentz force</strong> <span class="math notranslate nohighlight">\(q_{\alpha}\vec{E} \approx \vec{0}\)</span></p>
+<div class="math notranslate nohighlight">
 \[\frac{\partial f_{Z^{*,\alpha+}}}{\partial t}
 + \frac{q_{\alpha}\vec{u}\times\vec{B}}{m_{Z^{*,\alpha+}}}.\vec{\nabla_{\vec{u}}} f_{Z^{*,\alpha+}}
 = source\left(Z^{*,\alpha+}\right) - sink\left(Z^{*,\alpha+}\right)\]</div>
 <ul class="simple">
-<li>With a sink <span class="math">\(sink\left(Z^{*,\alpha+}\right) = \frac{f_{Z^{*,\alpha+}}}{\tau_{Z^{*,\alpha+}}}\)</span>
-With <span class="math">\(\tau_{Z^{*,\alpha+}}\)</span> being the lifetime of the excited ion.</li>
-<li>And the source <span class="math">\(source\left(Z^{*,\alpha+}\right) = Q^{CX, Z^{(\alpha+1)+}, H^0}_{n\rightarrow n'}(E_c).f_{Z^{(\alpha+1)+}}.n_{H^0}\)</span>
+<li>With a sink <span class="math notranslate nohighlight">\(sink\left(Z^{*,\alpha+}\right) = \frac{f_{Z^{*,\alpha+}}}{\tau_{Z^{*,\alpha+}}}\)</span>
+With <span class="math notranslate nohighlight">\(\tau_{Z^{*,\alpha+}}\)</span> being the lifetime of the excited ion.</li>
+<li>And the source <span class="math notranslate nohighlight">\(source\left(Z^{*,\alpha+}\right) = Q^{CX, Z^{(\alpha+1)+}, H^0}_{n\rightarrow n'}(E_c).f_{Z^{(\alpha+1)+}}.n_{H^0}\)</span>
 due to the charge-exchange reaction.</li>
 </ul>
-<p><strong>Assumption: no gyro-motion of excited ions</strong> <span class="math">\(Z^{*,\alpha+}\)</span></p>
+<p><strong>Assumption: no gyro-motion of excited ions</strong> <span class="math notranslate nohighlight">\(Z^{*,\alpha+}\)</span></p>
 <blockquote>
 <div>This is only important in tokamak for poloidal views and more information will
 be given in section on how to take this into account.</div></blockquote>
@@ -546,16 +543,16 @@ be given in section on how to take this into account.</div></blockquote>
 <blockquote>
 <div>This is only important for poloidal views and if gyro-effects are taken into account.</div></blockquote>
 <p>Having made a little detour, we can now get back to the calculation of the spectra
-from a transition <span class="math">\(n\rightarrow n'\)</span> due to a charge-exchange reaction between
-an ion <span class="math">\(Z^{(\alpha+1)+}\)</span> and neutral atom present in the plasma whatever
+from a transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span> due to a charge-exchange reaction between
+an ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span> and neutral atom present in the plasma whatever
 the direction of observation and velocity of the ion.</p>
 <p>The assumption here is that we have a distribution function in the velocity space
-<span class="math">\(f_{Z^{(\alpha+1)+}}(\vec{u})\)</span> of ion <span class="math">\(Z^{(\alpha+1)+}\)</span>, and we assume
-that the excited population of ion <span class="math">\(f_{Z^{*,\alpha+}}(\vec{u})\)</span> after the
+<span class="math notranslate nohighlight">\(f_{Z^{(\alpha+1)+}}(\vec{u})\)</span> of ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span>, and we assume
+that the excited population of ion <span class="math notranslate nohighlight">\(f_{Z^{*,\alpha+}}(\vec{u})\)</span> after the
 electron capture is of the same description.</p>
 <p>The spectrum of light coming from a small volume dV and observed in the direction
-<span class="math">\(\vec{l}\)</span> can be written as:</p>
-<div class="math">
+<span class="math notranslate nohighlight">\(\vec{l}\)</span> can be written as:</p>
+<div class="math notranslate nohighlight">
 \[dI_{obs, n\rightarrow n'}(\lambda) = n_{H^0}.n_{Z^{(\alpha+1)+}}.\int_{\vec{u}}
 f_{Z^{(\alpha+1)+}}(\vec{u}-\vec{v}).q^{CX, Z^{(\alpha+1)+}, H^0}_{n\rightarrow n'}(E_c).
 \delta(\lambda-\lambda_D).d\vec{u}\]</div>
@@ -564,18 +561,16 @@ f_{Z^{(\alpha+1)+}}(\vec{u}-\vec{v}).q^{CX, Z^{(\alpha+1)+}, H^0}_{n\rightarrow 
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../bes/bes_model.html" class="btn btn-neutral float-right" title="7.4. BES - Beam Emission Spectroscopy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="atomic_data_calculation.html" class="btn btn-neutral float-right" title="9.4. Atomic data calculation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cxs_model.html" class="btn btn-neutral" title="7.2. CXS models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cxs_model.html" class="btn btn-neutral" title="9.2. CXS models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -605,33 +600,28 @@ f_{Z^{(\alpha+1)+}}(\vec{u}-\vec{v}).q^{CX, Z^{(\alpha+1)+}, H^0}_{n\rightarrow 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5. Plasma equilibrium &mdash; CHERAB 0.99 documentation</title>
+  <title>7. Plasma equilibrium &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,26 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="index.html"/>
-        <link rel="next" title="6. Plasma sources" href="plasma_sources.html"/>
-        <link rel="prev" title="4. Atomic Classes" href="atomic_classes.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. Plasma sources" href="plasma_sources.html" />
+    <link rel="prev" title="6. Core Plasma Classes" href="core.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -65,7 +59,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -93,17 +87,18 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Plasma equilibrium</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#efit">5.1. EFIT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#other">5.2. Other</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Plasma equilibrium</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#efit">7.1. EFIT</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">9. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -119,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">CHERAB</a>
@@ -127,9 +122,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -152,13 +148,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>5. Plasma equilibrium</li>
+      <li>7. Plasma equilibrium</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/equilibrium.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/equilibrium.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,9 +168,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="plasma-equilibrium">
-<h1>5. Plasma equilibrium<a class="headerlink" href="#plasma-equilibrium" title="Permalink to this headline">¶</a></h1>
+<h1>7. Plasma equilibrium<a class="headerlink" href="#plasma-equilibrium" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="efit">
-<h2>5.1. EFIT<a class="headerlink" href="#efit" title="Permalink to this headline">¶</a></h2>
+<h2>7.1. EFIT<a class="headerlink" href="#efit" title="Permalink to this headline">¶</a></h2>
 <p>The workhorse equilibrium class.</p>
 <dl class="class">
 <dt id="cherab.tools.equilibrium.efit.EFITEquilibrium">
@@ -183,28 +179,73 @@
 <p>The EFIT data is interpolated to produced continuous functions of the
 equilibrium attributes, such as the magnetic flux (psi) and magnetic
 field.</p>
+<p>Note: psin_to_r mapping only exists if the psi axis is monotonic.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>r</strong> &#8211; EFIT grid radius axis values (array).</li>
-<li><strong>z</strong> &#8211; EFIT grid height axis values (array).</li>
-<li><strong>psi_grid</strong> &#8211; EFIT psi grid values (array).</li>
-<li><strong>psi_axis</strong> (<em>float</em>) &#8211; The psi value at the magnetic axis.</li>
-<li><strong>psi_lcfs</strong> (<em>float</em>) &#8211; The psi value at the LCFS.</li>
-<li><strong>magnetic_axis</strong> (<em>Point2D</em>) &#8211; The coordinates of the magnetic axis.</li>
-<li><strong>f_profile_psin</strong> &#8211; The normalised psi axis values for the current flux profile (array).</li>
-<li><strong>f_profile_magnitude</strong> &#8211; The magnitudes of the current flux profile (array).</li>
-<li><strong>b_vacuum_radius</strong> (<em>float</em>) &#8211; Vacuum B-field reference radius (in meters).</li>
-<li><strong>b_vacuum_magnitude</strong> (<em>float</em>) &#8211; Vacuum B-Field magnitude at the reference radius.</li>
-<li><strong>lcfs_polygon</strong> &#8211; An Nx2 array of (x, y) vertices specifying the LCFS boundary.</li>
-<li><strong>time</strong> (<em>float</em>) &#8211; The time stamp of the time-slice (in seconds).</li>
+<li><strong>r</strong> – EFIT grid radius axis values (array).</li>
+<li><strong>z</strong> – EFIT grid height axis values (array).</li>
+<li><strong>psi_grid</strong> – EFIT psi grid values (array).</li>
+<li><strong>psi_axis</strong> (<em>float</em>) – The psi value at the magnetic axis.</li>
+<li><strong>psi_lcfs</strong> (<em>float</em>) – The psi value at the LCFS.</li>
+<li><strong>magnetic_axis</strong> (<em>Point2D</em>) – The coordinates of the magnetic axis.</li>
+<li><strong>x_points</strong> (<em>Point2D</em>) – The list of x-points.</li>
+<li><strong>x_points</strong> – The list of strike-points.</li>
+<li><strong>f_profile</strong> – The current flux profile on psin (2xN array).</li>
+<li><strong>b_vacuum_radius</strong> (<em>float</em>) – Vacuum B-field reference radius (in meters).</li>
+<li><strong>b_vacuum_magnitude</strong> (<em>float</em>) – Vacuum B-Field magnitude at the reference radius.</li>
+<li><strong>lcfs_polygon</strong> – A 2xN array of [[x0, …], [y0, …]] vertices specifying the LCFS boundary.</li>
+<li><strong>limiter_polygon</strong> – A 2xN array of [[x0, …], [y0, …]] vertices specifying the limiter.</li>
+<li><strong>time</strong> (<em>float</em>) – The time stamp of the time-slice (in seconds).</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="cherab.tools.equilibrium.efit.EFITEquilibrium.map2d">
+<code class="descname">map2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maps a 1D profile onto the equilibrium to give a 2D profile.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>profile</strong> – A 1D function or 2xN array.</li>
+<li><strong>value_outside_lcfs</strong> – Value returned if point requested outside the LCFS (default=0.0).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Function2D object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.tools.equilibrium.efit.EFITEquilibrium.map3d">
+<code class="descname">map3d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maps a 1D profile onto the equilibrium to give a 3D profile.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>profile</strong> – A 1D function or Nx2 array.</li>
+<li><strong>value_outside_lcfs</strong> – Value returned if point requested outside the LCFS (default=0.0).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Function3D object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -218,8 +259,8 @@ the Last Closed Flux Surface (LCFS). A value of 0.0 is returns outside the LCFS.
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>lcfs_polygon</strong> &#8211; An Nx2 array of (x, y) vertices specifying the LCFS boundary.</li>
-<li><strong>psi_normalised</strong> &#8211; A 2D function of normalised poloidal flux.</li>
+<li><strong>lcfs_polygon</strong> – An Nx2 array of (x, y) vertices specifying the LCFS boundary.</li>
+<li><strong>psi_normalised</strong> – A 2D function of normalised poloidal flux.</li>
 </ul>
 </td>
 </tr>
@@ -236,13 +277,13 @@ the Last Closed Flux Surface (LCFS). A value of 0.0 is returns outside the LCFS.
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>psi_normalised</strong> &#8211; A 2D function of normalised poloidal flux.</li>
-<li><strong>dpsi_dr</strong> &#8211; A 2D function of the radius differential of poloidal flux.</li>
-<li><strong>dpsi_dz</strong> &#8211; A 2D function of the height differential of poloidal flux.</li>
-<li><strong>f_profile</strong> &#8211; A 1D function containing a current flux profile.</li>
-<li><strong>b_vacuum_radius</strong> &#8211; Vacuum B-field reference radius (in meters).</li>
-<li><strong>b_vacuum_magnitude</strong> &#8211; Vacuum B-Field magnitude at the reference radius.</li>
-<li><strong>inside_lcfs</strong> &#8211; A 2D mask function returning 1 if inside the LCFS and 0 otherwise.</li>
+<li><strong>psi_normalised</strong> – A 2D function of normalised poloidal flux.</li>
+<li><strong>dpsi_dr</strong> – A 2D function of the radius differential of poloidal flux.</li>
+<li><strong>dpsi_dz</strong> – A 2D function of the height differential of poloidal flux.</li>
+<li><strong>f_profile</strong> – A 1D function containing a current flux profile.</li>
+<li><strong>b_vacuum_radius</strong> – Vacuum B-field reference radius (in meters).</li>
+<li><strong>b_vacuum_magnitude</strong> – Vacuum B-Field magnitude at the reference radius.</li>
+<li><strong>inside_lcfs</strong> – A 2D mask function returning 1 if inside the LCFS and 0 otherwise.</li>
 </ul>
 </td>
 </tr>
@@ -252,16 +293,16 @@ the Last Closed Flux Surface (LCFS). A value of 0.0 is returns outside the LCFS.
 
 <dl class="function">
 <dt id="cherab.tools.equilibrium.plot.plot_equilibrium">
-<code class="descclassname">cherab.tools.equilibrium.plot.</code><code class="descname">plot_equilibrium</code><span class="sig-paren">(</span><em>equilibrium</em>, <em>resolution=0.025</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.plot.plot_equilibrium" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cherab.tools.equilibrium.plot.</code><code class="descname">plot_equilibrium</code><span class="sig-paren">(</span><em>equilibrium</em>, <em>detail=False</em>, <em>resolution=0.025</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.plot.plot_equilibrium" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates some overview plots of a given EFIT equilibrium.</p>
-<p>Generates plots of normalised psi,</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>equilibrium</strong> &#8211; The input EFIT equilibrium object.</li>
-<li><strong>resolution</strong> (<em>float</em>) &#8211; Spatial resolution for sampling.</li>
+<li><strong>equilibrium</strong> – The input EFIT equilibrium object.</li>
+<li><strong>detail</strong> – If true, prints additional information about the equilibrium.</li>
+<li><strong>resolution</strong> (<em>float</em>) – Spatial resolution for sampling.</li>
 </ul>
 </td>
 </tr>
@@ -281,7 +322,7 @@ the Last Closed Flux Surface (LCFS). A value of 0.0 is returns outside the LCFS.
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<em>str</em>) &#8211; Path to the EFIT eqdsk file.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<em>str</em>) – Path to the EFIT eqdsk file.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#cherab.tools.equilibrium.efit.EFITEquilibrium" title="cherab.tools.equilibrium.efit.EFITEquilibrium">EFITEquilibrium</a></td>
 </tr>
@@ -290,43 +331,20 @@ the Last Closed Flux Surface (LCFS). A value of 0.0 is returns outside the LCFS.
 </dd></dl>
 
 </div>
-<div class="section" id="other">
-<h2>5.2. Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="cherab.tools.equilibrium.equ.import_equ_psi">
-<code class="descclassname">cherab.tools.equilibrium.equ.</code><code class="descname">import_equ_psi</code><span class="sig-paren">(</span><em>equ_file</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.equ.import_equ_psi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Imports a 2D Psi grid from an equ mesh equilibrium.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>equ_file</strong> (<em>str</em>) &#8211; The .EQU mesh generator equilibrium file.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A 2D Psi(r,z) function</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Interpolate2DCubic</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plasma_sources.html" class="btn btn-neutral float-right" title="6. Plasma sources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plasma_sources.html" class="btn btn-neutral float-right" title="8. Plasma sources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="atomic_classes.html" class="btn btn-neutral" title="4. Atomic Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="core.html" class="btn btn-neutral" title="6. Core Plasma Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -356,33 +374,28 @@ the Last Closed Flux Surface (LCFS). A value of 0.0 is returns outside the LCFS.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

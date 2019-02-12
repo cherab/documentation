@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. Core Plasma Classes &mdash; CHERAB 0.99 documentation</title>
+  <title>6. Core Plasma Classes &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,26 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="index.html"/>
-        <link rel="next" title="4. Atomic Classes" href="atomic_classes.html"/>
-        <link rel="prev" title="2. Licence" href="licence.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Plasma equilibrium" href="equilibrium.html" />
+    <link rel="prev" title="5.3. Rate Coefficients" href="atomic/rate_coefficients.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -65,7 +59,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -93,19 +87,21 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="licence.html">2. Licence</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Core Plasma Classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#plasma-species">3.1. Plasma Species</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#main-plasma-object">3.2. Main Plasma Object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#distribution-functions">3.3. Distribution functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#neutral-heating-beam">3.4. Neutral Heating Beam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Core Plasma Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#plasma-species">6.1. Plasma Species</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#main-plasma-object">6.2. Main Plasma Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distribution-functions">6.3. Distribution functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#neutral-heating-beam">6.4. Neutral Heating Beam</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">9. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -121,7 +117,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">CHERAB</a>
@@ -129,9 +125,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -154,13 +151,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>3. Core Plasma Classes</li>
+      <li>6. Core Plasma Classes</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/core.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/core.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -174,9 +171,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="core-plasma-classes">
-<h1>3. Core Plasma Classes<a class="headerlink" href="#core-plasma-classes" title="Permalink to this headline">¶</a></h1>
+<h1>6. Core Plasma Classes<a class="headerlink" href="#core-plasma-classes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="plasma-species">
-<h2>3.1. Plasma Species<a class="headerlink" href="#plasma-species" title="Permalink to this headline">¶</a></h2>
+<h2>6.1. Plasma Species<a class="headerlink" href="#plasma-species" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.Species">
 <em class="property">class </em><code class="descclassname">cherab.core.</code><code class="descname">Species</code><a class="headerlink" href="#cherab.core.Species" title="Permalink to this definition">¶</a></dt>
@@ -186,9 +183,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>element</strong> &#8211; An element object.</li>
-<li><strong>ionisation</strong> &#8211; The ionisation state of the species.</li>
-<li><strong>distribution</strong> &#8211; A distribution function for the species.</li>
+<li><strong>element</strong> – An element object.</li>
+<li><strong>ionisation</strong> – The ionisation state of the species.</li>
+<li><strong>distribution</strong> – A distribution function for the species.</li>
 </ul>
 </td>
 </tr>
@@ -198,7 +195,7 @@
 
 </div>
 <div class="section" id="main-plasma-object">
-<h2>3.2. Main Plasma Object<a class="headerlink" href="#main-plasma-object" title="Permalink to this headline">¶</a></h2>
+<h2>6.2. Main Plasma Object<a class="headerlink" href="#main-plasma-object" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.Plasma">
 <em class="property">class </em><code class="descclassname">cherab.core.</code><code class="descname">Plasma</code><a class="headerlink" href="#cherab.core.Plasma" title="Permalink to this definition">¶</a></dt>
@@ -206,10 +203,10 @@
 <p>This class holds the plasma profiles and properties used by the various
 emission models. Each plasma attribute must be a reference to a Function3D
 or VectorFunction3D object that returns the value of the relevant plasma
-parameter at a given (x, y, z) coordinate in the plasma&#8217;s coordinate
+parameter at a given (x, y, z) coordinate in the plasma’s coordinate
 system.</p>
-<p>The Plasma object is a scene-graph node and therefore lives in it&#8217;s own
-coordinate space. This coordinate space is defined relative to it&#8217;s parent
+<p>The Plasma object is a scene-graph node and therefore lives in it’s own
+coordinate space. This coordinate space is defined relative to it’s parent
 scene-graph object by an AffineTransform. The plasma parameters are defined
 in the Plasma object coordinate space. Models using the plasma object must
 convert any spatial coordinates into plasma space before requesting values
@@ -218,16 +215,16 @@ from the Plasma object.</p>
 <dt id="cherab.core.Plasma.ion_density">
 <code class="descname">ion_density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Plasma.ion_density" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the total ion density of the plasma.</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[n_I = \sum_{k=1}^N n_i(k)\]</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> &#8211; x coordinate in meters.</li>
-<li><strong>y</strong> &#8211; y coordinate in meters.</li>
-<li><strong>z</strong> &#8211; z coordinate in meters.</li>
+<li><strong>x</strong> – x coordinate in meters.</li>
+<li><strong>y</strong> – y coordinate in meters.</li>
+<li><strong>z</strong> – z coordinate in meters.</li>
 </ul>
 </td>
 </tr>
@@ -242,7 +239,7 @@ from the Plasma object.</p>
 <dt id="cherab.core.Plasma.z_effective">
 <code class="descname">z_effective</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Plasma.z_effective" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the effective Z of the plasma.</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[Z_{eff} = \sum_{j=1}^N n_{i(j)} Z_j^2 / \sum_{k=1}^N n_{i(k)} Z_k\]</div>
 <p>where n is the species density and Z is the ionisation of the species.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -250,16 +247,16 @@ from the Plasma object.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> &#8211; x coordinate in meters.</li>
-<li><strong>y</strong> &#8211; y coordinate in meters.</li>
-<li><strong>z</strong> &#8211; z coordinate in meters.</li>
+<li><strong>x</strong> – x coordinate in meters.</li>
+<li><strong>y</strong> – y coordinate in meters.</li>
+<li><strong>z</strong> – z coordinate in meters.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Calculated Z effective.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>ValueError</strong> &#8211; If plasma does not contain any ionised species.</p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>ValueError</strong> – If plasma does not contain any ionised species.</p>
 </td>
 </tr>
 </tbody>
@@ -270,7 +267,7 @@ from the Plasma object.</p>
 
 </div>
 <div class="section" id="distribution-functions">
-<h2>3.3. Distribution functions<a class="headerlink" href="#distribution-functions" title="Permalink to this headline">¶</a></h2>
+<h2>6.3. Distribution functions<a class="headerlink" href="#distribution-functions" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.distribution.DistributionFunction">
 <em class="property">class </em><code class="descclassname">cherab.core.distribution.</code><code class="descname">DistributionFunction</code><a class="headerlink" href="#cherab.core.distribution.DistributionFunction" title="Permalink to this definition">¶</a></dt>
@@ -288,9 +285,9 @@ from the Plasma object.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> &#8211; position in meters</li>
-<li><strong>y</strong> &#8211; position in meters</li>
-<li><strong>z</strong> &#8211; position in meters</li>
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
 </ul>
 </td>
 </tr>
@@ -309,9 +306,9 @@ from the Plasma object.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> &#8211; position in meters</li>
-<li><strong>y</strong> &#8211; position in meters</li>
-<li><strong>z</strong> &#8211; position in meters</li>
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
 </ul>
 </td>
 </tr>
@@ -330,9 +327,9 @@ from the Plasma object.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> &#8211; position in meters</li>
-<li><strong>y</strong> &#8211; position in meters</li>
-<li><strong>z</strong> &#8211; position in meters</li>
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
 </ul>
 </td>
 </tr>
@@ -356,9 +353,9 @@ from the Plasma object.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> &#8211; position in meters</li>
-<li><strong>y</strong> &#8211; position in meters</li>
-<li><strong>z</strong> &#8211; position in meters</li>
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
 </ul>
 </td>
 </tr>
@@ -377,9 +374,9 @@ from the Plasma object.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> &#8211; position in meters</li>
-<li><strong>y</strong> &#8211; position in meters</li>
-<li><strong>z</strong> &#8211; position in meters</li>
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
 </ul>
 </td>
 </tr>
@@ -398,9 +395,9 @@ from the Plasma object.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> &#8211; position in meters</li>
-<li><strong>y</strong> &#8211; position in meters</li>
-<li><strong>z</strong> &#8211; position in meters</li>
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
 </ul>
 </td>
 </tr>
@@ -415,7 +412,7 @@ from the Plasma object.</p>
 
 </div>
 <div class="section" id="neutral-heating-beam">
-<h2>3.4. Neutral Heating Beam<a class="headerlink" href="#neutral-heating-beam" title="Permalink to this headline">¶</a></h2>
+<h2>6.4. Neutral Heating Beam<a class="headerlink" href="#neutral-heating-beam" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.Beam">
 <em class="property">class </em><code class="descclassname">cherab.core.</code><code class="descname">Beam</code><a class="headerlink" href="#cherab.core.Beam" title="Permalink to this definition">¶</a></dt>
@@ -425,19 +422,9 @@ from the Plasma object.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>plasma</strong> &#8211; A Plasma object.</li>
-<li><strong>energy</strong> &#8211; energy of beam&#8217;s particles in eV/amu</li>
-<li><strong>power</strong> &#8211; total beam power in W</li>
-<li><strong>element</strong> &#8211; beam material, an Element object</li>
-<li><strong>sigma</strong> &#8211; gaussian beam width in meters</li>
-<li><strong>divergence</strong> &#8211; beam divergence in radian</li>
-<li><strong>length</strong> &#8211; length in meters</li>
-<li><strong>attenuation_model</strong> &#8211; </li>
-<li><strong>emission_models</strong> &#8211; </li>
-<li><strong>atomic_data</strong> &#8211; </li>
-<li><strong>parent</strong> &#8211; </li>
-<li><strong>transform</strong> &#8211; </li>
-<li><strong>name</strong> &#8211; </li>
+<li><strong>parent</strong> – </li>
+<li><strong>transform</strong> – </li>
+<li><strong>name</strong> – </li>
 </ul>
 </td>
 </tr>
@@ -455,9 +442,9 @@ from the Plasma object.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> &#8211; x coordinate in meters.</li>
-<li><strong>y</strong> &#8211; y coordinate in meters.</li>
-<li><strong>z</strong> &#8211; z coordinate in meters.</li>
+<li><strong>x</strong> – x coordinate in meters.</li>
+<li><strong>y</strong> – y coordinate in meters.</li>
+<li><strong>z</strong> – z coordinate in meters.</li>
 </ul>
 </td>
 </tr>
@@ -479,9 +466,9 @@ treated with caution.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> &#8211; x coordinate in meters.</li>
-<li><strong>y</strong> &#8211; y coordinate in meters.</li>
-<li><strong>z</strong> &#8211; z coordinate in meters.</li>
+<li><strong>x</strong> – x coordinate in meters.</li>
+<li><strong>y</strong> – y coordinate in meters.</li>
+<li><strong>z</strong> – z coordinate in meters.</li>
 </ul>
 </td>
 </tr>
@@ -499,18 +486,16 @@ treated with caution.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="atomic_classes.html" class="btn btn-neutral float-right" title="4. Atomic Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="equilibrium.html" class="btn btn-neutral float-right" title="7. Plasma equilibrium" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="licence.html" class="btn btn-neutral" title="2. Licence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="atomic/rate_coefficients.html" class="btn btn-neutral" title="5.3. Rate Coefficients" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -540,33 +525,28 @@ treated with caution.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

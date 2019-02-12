@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8. Math functions &mdash; CHERAB 0.99 documentation</title>
+  <title>10. Math functions &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,26 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="index.html"/>
-        <link rel="next" title="9. Utilities" href="utility.html"/>
-        <link rel="prev" title="7.7. Basic Line Emission" href="models/basic_line/basic_line_emission.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="11. Utilities" href="utility.html" />
+    <link rel="prev" title="9.8. Basic Line Emission" href="models/basic_line/basic_line_emission.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -65,7 +59,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -93,17 +87,19 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Math functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.math.samplers">8.1. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.math.mappers">8.2. Mappers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">9. Emission Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Math functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.math.samplers">10.1. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.math.mappers">10.2. Mappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -119,7 +115,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">CHERAB</a>
@@ -127,9 +123,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -152,13 +149,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>8. Math functions</li>
+      <li>10. Math functions</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/math.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/math.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,10 +169,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="math-functions">
-<h1>8. Math functions<a class="headerlink" href="#math-functions" title="Permalink to this headline">¶</a></h1>
+<h1>10. Math functions<a class="headerlink" href="#math-functions" title="Permalink to this headline">¶</a></h1>
 <p>Classes to do mathematical calculations.</p>
 <div class="section" id="module-cherab.core.math.samplers">
-<span id="samplers"></span><h2>8.1. Samplers<a class="headerlink" href="#module-cherab.core.math.samplers" title="Permalink to this headline">¶</a></h2>
+<span id="samplers"></span><h2>10.1. Samplers<a class="headerlink" href="#module-cherab.core.math.samplers" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="cherab.core.math.samplers.sample1d">
 <code class="descclassname">cherab.core.math.samplers.</code><code class="descname">sample1d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample1d" title="Permalink to this definition">¶</a></dt>
@@ -185,8 +182,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>function1d</strong> &#8211; a Python function or Function1D object</li>
-<li><strong>x_range</strong> &#8211; a tuple defining the sample range: (min, max, samples)</li>
+<li><strong>function1d</strong> – a Python function or Function1D object</li>
+<li><strong>x_range</strong> – a tuple defining the sample range: (min, max, samples)</li>
 </ul>
 </td>
 </tr>
@@ -206,9 +203,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>function2d</strong> &#8211; a Python function or Function2D object</li>
-<li><strong>x_range</strong> &#8211; a tuple defining the x sample range: (x_min, x_max, x_samples)</li>
-<li><strong>y_range</strong> &#8211; a tuple defining the y sample range: (y_min, y_max, y_samples)</li>
+<li><strong>function2d</strong> – a Python function or Function2D object</li>
+<li><strong>x_range</strong> – a tuple defining the x sample range: (x_min, x_max, x_samples)</li>
+<li><strong>y_range</strong> – a tuple defining the y sample range: (y_min, y_max, y_samples)</li>
 </ul>
 </td>
 </tr>
@@ -228,10 +225,10 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>function3d</strong> &#8211; a Python function or Function2D object</li>
-<li><strong>x_range</strong> &#8211; a tuple defining the x sample range: (x_min, x_max, x_samples)</li>
-<li><strong>y_range</strong> &#8211; a tuple defining the y sample range: (y_min, y_max, y_samples)</li>
-<li><strong>z_range</strong> &#8211; a tuple defining the z sample range: (z_min, z_max, z_samples)</li>
+<li><strong>function3d</strong> – a Python function or Function2D object</li>
+<li><strong>x_range</strong> – a tuple defining the x sample range: (x_min, x_max, x_samples)</li>
+<li><strong>y_range</strong> – a tuple defining the y sample range: (y_min, y_max, y_samples)</li>
+<li><strong>z_range</strong> – a tuple defining the z sample range: (z_min, z_max, z_samples)</li>
 </ul>
 </td>
 </tr>
@@ -253,9 +250,9 @@ x, y, and z components of the vector respectively.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>function2d</strong> &#8211; a Python function or Function2D object</li>
-<li><strong>x_range</strong> &#8211; a tuple defining the x sample range: (x_min, x_max, x_samples)</li>
-<li><strong>y_range</strong> &#8211; a tuple defining the y sample range: (y_min, y_max, y_samples)</li>
+<li><strong>function2d</strong> – a Python function or Function2D object</li>
+<li><strong>x_range</strong> – a tuple defining the x sample range: (x_min, x_max, x_samples)</li>
+<li><strong>y_range</strong> – a tuple defining the y sample range: (y_min, y_max, y_samples)</li>
 </ul>
 </td>
 </tr>
@@ -277,10 +274,10 @@ x, y, and z components of the vector respectively.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>function3d</strong> &#8211; a Python function or Function2D object</li>
-<li><strong>x_range</strong> &#8211; a tuple defining the x sample range: (x_min, x_max, x_samples)</li>
-<li><strong>y_range</strong> &#8211; a tuple defining the y sample range: (y_min, y_max, y_samples)</li>
-<li><strong>z_range</strong> &#8211; a tuple defining the z sample range: (z_min, z_max, z_samples)</li>
+<li><strong>function3d</strong> – a Python function or Function2D object</li>
+<li><strong>x_range</strong> – a tuple defining the x sample range: (x_min, x_max, x_samples)</li>
+<li><strong>y_range</strong> – a tuple defining the y sample range: (y_min, y_max, y_samples)</li>
+<li><strong>z_range</strong> – a tuple defining the z sample range: (z_min, z_max, z_samples)</li>
 </ul>
 </td>
 </tr>
@@ -293,7 +290,7 @@ x, y, and z components of the vector respectively.</p>
 
 </div>
 <div class="section" id="module-cherab.core.math.mappers">
-<span id="mappers"></span><h2>8.2. Mappers<a class="headerlink" href="#module-cherab.core.math.mappers" title="Permalink to this headline">¶</a></h2>
+<span id="mappers"></span><h2>10.2. Mappers<a class="headerlink" href="#module-cherab.core.math.mappers" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.math.mappers.AxisymmetricMapper">
 <em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">AxisymmetricMapper</code><a class="headerlink" href="#cherab.core.math.mappers.AxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
@@ -305,7 +302,7 @@ of the supplied function is mapped.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> &#8211; The function to be mapped.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> – The function to be mapped.</td>
 </tr>
 </tbody>
 </table>
@@ -362,7 +359,7 @@ of the supplied function is mapped.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> &#8211; The vector function to be mapped.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> – The vector function to be mapped.</td>
 </tr>
 </tbody>
 </table>
@@ -373,18 +370,16 @@ of the supplied function is mapped.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="utility.html" class="btn btn-neutral float-right" title="9. Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="utility.html" class="btn btn-neutral float-right" title="11. Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="models/basic_line/basic_line_emission.html" class="btn btn-neutral" title="7.7. Basic Line Emission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="models/basic_line/basic_line_emission.html" class="btn btn-neutral" title="9.8. Basic Line Emission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -414,33 +409,28 @@ of the supplied function is mapped.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

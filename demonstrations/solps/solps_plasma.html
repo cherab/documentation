@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Loading a MAST-U plasma from SOLPS &mdash; CHERAB 0.99 documentation</title>
+  <title>Loading a MAST-U plasma from SOLPS &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,24 +24,18 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/> 
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -63,7 +57,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -91,13 +85,15 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">9. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -113,7 +109,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">CHERAB</a>
@@ -121,9 +117,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -152,7 +149,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/demonstrations/solps/solps_plasma.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/demonstrations/solps/solps_plasma.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -171,7 +168,7 @@
 (<a class="reference external" href="https://github.com/cherab/solps/blob/master/demos/mastu_solps_plasma.py">demo file</a>).
 Also, shows how to inspect the plasma parameters. Start by importing
 all required modules.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">cherab.core.atomic.elements</span> <span class="k">import</span> <span class="n">carbon</span><span class="p">,</span> <span class="n">deuterium</span>
 <span class="kn">from</span> <span class="nn">cherab.solps</span> <span class="k">import</span> <span class="n">SOLPSSimulation</span>
@@ -179,7 +176,7 @@ all required modules.</p>
 </pre></div>
 </div>
 <p>Import the SOLPS simulation from AUG MDSplus server.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mds_server</span> <span class="o">=</span> <span class="s1">&#39;solps-mdsplus.aug.ipp.mpg.de:8001&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mds_server</span> <span class="o">=</span> <span class="s1">&#39;solps-mdsplus.aug.ipp.mpg.de:8001&#39;</span>
 <span class="n">ref_number</span> <span class="o">=</span> <span class="mi">69636</span>
 
 <span class="n">sim</span> <span class="o">=</span> <span class="n">SOLPSSimulation</span><span class="o">.</span><span class="n">load_from_mdsplus</span><span class="p">(</span><span class="n">mds_server</span><span class="p">,</span> <span class="n">ref_number</span><span class="p">)</span>
@@ -191,7 +188,7 @@ all required modules.</p>
 <p>The plasma parameters are loaded automatically from the simulation. We can now access an individual species using the
 <cite>get_species</cite> method. It takes as argument the element/isotope of interest and the desired charge state. If the species
 requested was not in the simulation, an exception will be thrown.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">d0</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d0</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">d1</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">c0</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">c1</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -206,7 +203,7 @@ requested was not in the simulation, an exception will be thrown.</p>
 attribute, <cite>plasma.electron_distribution</cite>.</p>
 <p>Now we will sample the different species values over a regular grid in the poloidal plane. Results for density,
 temperature and velocity are plotted, along with the SOLPS simulation grid.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xl</span><span class="p">,</span> <span class="n">xu</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xl</span><span class="p">,</span> <span class="n">xu</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
 <span class="n">yl</span><span class="p">,</span> <span class="n">yu</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
 <span class="n">te_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
 <span class="n">ne_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
@@ -334,15 +331,13 @@ temperature and velocity are plotted, along with the SOLPS simulation grid.</p>
 </div>
 <div class="figure align-center" id="id1">
 <img alt="../../_images/species_wide.png" src="../../_images/species_wide.png" />
-<p class="caption"><span class="caption-text">Some example plots of the plasma&#8217;s temperature and density profiles.</span></p>
+<p class="caption"><span class="caption-text">Some example plots of the plasma’s temperature and density profiles.</span></p>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -372,33 +367,28 @@ temperature and velocity are plotted, along with the SOLPS simulation grid.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

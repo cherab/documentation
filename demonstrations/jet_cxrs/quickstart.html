@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quickstart Example &mdash; CHERAB 0.99 documentation</title>
+  <title>Quickstart Example &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,24 +24,18 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="CHERAB 0.99 documentation" href="../../index.html"/> 
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -63,7 +57,7 @@
             
             
               <div class="version">
-                0.99
+                1.01
               </div>
             
           
@@ -91,13 +85,15 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../core.html">3. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../atomic_classes.html">4. Atomic Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">5. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">6. Plasma sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">6. Core Plasma Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equilibrium.html">7. Plasma equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasma_sources.html">8. Plasma sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">9. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">10. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">11. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -113,7 +109,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">CHERAB</a>
@@ -121,9 +117,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -152,7 +149,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/demonstrations/jet_cxrs/quickstart.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/demonstrations/jet_cxrs/quickstart.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,7 +169,7 @@
 <p>This is a commented demo file about how to use CHERAB. It aims to give an
 example with the main steps for a basic use of CHERAB. We start by importing
 the classes used in this demo.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># External imports</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># External imports</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="k">import</span> <span class="n">electron_mass</span><span class="p">,</span> <span class="n">atomic_mass</span>
@@ -197,7 +194,7 @@ the classes used in this demo.:</p>
 <p>In this demo we will simulate the carbon active CX spectra emitted by octant
 8 PINIs and seen from different lines of sight. We use input data from
 pulse 79503 at t=61s.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PULSE</span> <span class="o">=</span> <span class="mi">79503</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PULSE</span> <span class="o">=</span> <span class="mi">79503</span>
 <span class="n">TIME</span> <span class="o">=</span> <span class="mf">61.</span>
 </pre></div>
 </div>
@@ -218,7 +215,7 @@ the scenegraph components whose geometry is defined in these files. For pulse 79
 want to use:</p>
 <p><cite>ADAS</cite> is the atomic data provider to be used for JET. It is the result of a
 home-made submodule (cherab.atomic.adas):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">ADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">ADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Physical models:
@@ -227,18 +224,18 @@ and for CX active emissions we use <cite>CXSBeamPlasmaIntersection</cite> (chera
 These models must not be called here, as they will be separately for each beam.
 Instead they must be given as a tuple with the class object in the first place
 and a dictionary containing arguments in the second place:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">attenuation_instruction</span> <span class="o">=</span> <span class="p">(</span><span class="n">SingleRayAttenuator</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;clamp_to_zero&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">attenuation_instruction</span> <span class="o">=</span> <span class="p">(</span><span class="n">SingleRayAttenuator</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;clamp_to_zero&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
 </pre></div>
 </div>
-<p>We want to observe the C5+ lines n=8-&gt;7 and n=10-&gt;8, so let&#8217;s define these lines:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">line_1</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<p>We want to observe the C5+ lines n=8-&gt;7 and n=10-&gt;8, so let’s define these lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">line_1</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="n">line_2</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>The CX active emission model uses this line as a parameter.
 As it is possible to use different emission models (eg for different lines),
 they must be given in a list of tuples as defined above:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">emission_instructions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">CXSBeamPlasmaIntersection</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;line&#39;</span><span class="p">:</span> <span class="n">line_1</span><span class="p">,</span>  <span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">}),</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">emission_instructions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">CXSBeamPlasmaIntersection</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;line&#39;</span><span class="p">:</span> <span class="n">line_1</span><span class="p">,</span>  <span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">}),</span>
                          <span class="p">(</span><span class="n">CXSBeamPlasmaIntersection</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;line&#39;</span><span class="p">:</span> <span class="n">line_2</span><span class="p">,</span>  <span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">})]</span>
 </pre></div>
 </div>
@@ -247,7 +244,7 @@ of the scenegraph created, a Plasma object which will contain and provide all
 plasma profiles, and a dictionary named components which contains the main components
 of the scenegraph with which you will be able to adjust parameters. Here we extract
 NIB8 (containing the PINIs) and two groups of lines of sight.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">world</span><span class="p">,</span> <span class="n">plasma</span><span class="p">,</span> <span class="n">components</span> <span class="o">=</span> <span class="n">build_jet_scenegraph</span><span class="p">(</span><span class="n">PULSE</span><span class="p">,</span> <span class="n">atomic_data</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">world</span><span class="p">,</span> <span class="n">plasma</span><span class="p">,</span> <span class="n">components</span> <span class="o">=</span> <span class="n">build_jet_scenegraph</span><span class="p">(</span><span class="n">PULSE</span><span class="p">,</span> <span class="n">atomic_data</span><span class="p">,</span>
                                                  <span class="n">attenuation_instruction</span><span class="p">,</span>
                                                  <span class="n">emission_instructions</span><span class="p">)</span>
 
@@ -257,7 +254,7 @@ NIB8 (containing the PINIs) and two groups of lines of sight.</p>
 </pre></div>
 </div>
 <p>We can adjust observation parameters for a whole group of lines of sight:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ks5_oct1</span><span class="o">.</span><span class="n">min_wavelength</span> <span class="o">=</span> <span class="mi">440</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ks5_oct1</span><span class="o">.</span><span class="n">min_wavelength</span> <span class="o">=</span> <span class="mi">440</span>
 <span class="n">ks5_oct1</span><span class="o">.</span><span class="n">max_wavelength</span> <span class="o">=</span> <span class="mi">540</span>
 <span class="n">ks5_oct1</span><span class="o">.</span><span class="n">spectral_samples</span> <span class="o">=</span> <span class="mi">1000</span>
 </pre></div>
@@ -271,7 +268,7 @@ in the PPF system. Here they are generally given as profile arrays along
 normalised psi values. As CHERAB need any plasma input given as a 3D function
 the first step is to get normalised psi as a 3D function through the <cite>DataSource</cite>
 object:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">src</span> <span class="o">=</span> <span class="n">DataSource</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">src</span> <span class="o">=</span> <span class="n">DataSource</span><span class="p">()</span>
 <span class="n">src</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">TIME</span>
 <span class="n">src</span><span class="o">.</span><span class="n">n_pulse</span> <span class="o">=</span> <span class="n">PULSE</span>
 <span class="n">psi</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">get_psi_normalised</span><span class="p">(</span><span class="n">exterior_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cached2d</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -285,15 +282,15 @@ to define the plasma later.</p>
 <p>To get data from PPF system one can use the python ppf library or a wrapped
 version of it (cherab.machine.jet.ppf_access) which uses python exceptions
 instead of error integers (so the content is exactly the same):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ppfsetdevice</span><span class="p">(</span><span class="s2">&quot;JET&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ppfsetdevice</span><span class="p">(</span><span class="s2">&quot;JET&quot;</span><span class="p">)</span>
 <span class="n">ppfuid</span><span class="p">(</span><span class="s1">&#39;cgiroud&#39;</span><span class="p">,</span> <span class="n">rw</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
 <span class="n">ppfgo</span><span class="p">(</span><span class="n">pulse</span><span class="o">=</span><span class="n">PULSE</span><span class="p">,</span> <span class="n">seq</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Here a personal DDA is used. We use ppfget to read Data Types as they don&#8217;t have a
+<p>Here a personal DDA is used. We use ppfget to read Data Types as they don’t have a
 time axis. However one should use ppfgts to read Data Types at a specific time (<cite>TIME</cite>)
 if it contains a time axis as CHERAB require data at a specific time only:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># normalised psi coordinates</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># normalised psi coordinates</span>
 <span class="n">psi_coord</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ppfget</span><span class="p">(</span><span class="n">PULSE</span><span class="p">,</span> <span class="s1">&#39;PRFL&#39;</span><span class="p">,</span> <span class="s1">&#39;C6&#39;</span><span class="p">)[</span><span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">psi_coord</span> <span class="o">&lt;=</span> <span class="mf">1.0</span>  <span class="c1"># a mask is created to get only the values inside the LCFS</span>
 <span class="n">psi_coord</span> <span class="o">=</span> <span class="n">psi_coord</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
@@ -315,7 +312,7 @@ if it contains a time axis as CHERAB require data at a specific time only:</p>
 velocity, temperature, etc. We use <cite>IsoMapper3D</cite> from a home-made submodule
 (cherab.math.mapping.mappers) as it is written in cython and then is faster
 than using <cite>lambda</cite> functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flow_velocity_tor</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">flow_velocity_tor_psi</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flow_velocity_tor</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">flow_velocity_tor_psi</span><span class="p">)</span>
 <span class="n">ion_temperature</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">ion_temperature_psi</span><span class="p">)</span>
 <span class="n">electron_density</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">electron_density_psi</span><span class="p">)</span>
 <span class="n">density_c6</span> <span class="o">=</span> <span class="n">IsoMapper3D</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">density_c6_psi</span><span class="p">)</span>
@@ -323,14 +320,14 @@ than using <cite>lambda</cite> functions:</p>
 </div>
 <p>So as to be able to handle any velocity profile, The flow velocity must be
 described as a vector field. Here we just use a toroidal velocity.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">flow_velocity</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">flow_velocity_tor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flow_velocity</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">flow_velocity_tor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span>
                                          <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">flow_velocity_tor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span>
                                          <span class="mf">0.</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In this simulation the plasma is composed of only deuterium and carbon. To get
 the deuterium density we just have to deduce it from carbon and electron densities:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">density_d</span> <span class="o">=</span> <span class="n">electron_density</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">density_c6</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">density_d</span> <span class="o">=</span> <span class="n">electron_density</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">density_c6</span>
 </pre></div>
 </div>
 <p>Note that <cite>electron_density</cite> and <cite>density_c6</cite> can be added and multiplied so
@@ -341,7 +338,7 @@ they are also written in cython allowing fast evaluation.</p>
 space is described in a <cite>Distribution</cite> object. Any distribution can be used,
 but here we only need maxwellian distributions. A <cite>Maxwellian</cite> function is used
 to give this distribution directly out of density, temperature, velocity and particle mass (in kg):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">d_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">density_d</span><span class="p">,</span> <span class="n">ion_temperature</span><span class="p">,</span> <span class="n">flow_velocity</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">density_d</span><span class="p">,</span> <span class="n">ion_temperature</span><span class="p">,</span> <span class="n">flow_velocity</span><span class="p">,</span>
                             <span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
 <span class="n">c6_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">density_c6</span><span class="p">,</span> <span class="n">ion_temperature</span><span class="p">,</span> <span class="n">flow_velocity</span><span class="p">,</span>
                              <span class="n">elements</span><span class="o">.</span><span class="n">carbon</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
@@ -361,15 +358,15 @@ used to create the species distributions.</li>
 </ol>
 <p>Now the distributions have been defined, we must associate them to a species.
 Species are created from an element, a ionisation and a distribution. Electron
-distribution will be used directly by CHERAB so we don&#8217;t need to create a species
+distribution will be used directly by CHERAB so we don’t need to create a species
 for electrons:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">d_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d_distribution</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d_distribution</span><span class="p">)</span>
 <span class="n">c6_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">c6_distribution</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We fill the plasma with the species and the electron distribution
 we just built, and the <cite>inside</cite> function for the plasma to know its boundaries.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">plasma</span><span class="o">.</span><span class="n">inside</span> <span class="o">=</span> <span class="n">inside</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plasma</span><span class="o">.</span><span class="n">inside</span> <span class="o">=</span> <span class="n">inside</span>
 <span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span> <span class="o">=</span> <span class="n">e_distribution</span>
 <span class="n">plasma</span><span class="o">.</span><span class="n">set_species</span><span class="p">([</span><span class="n">d_species</span><span class="p">,</span> <span class="n">c6_species</span><span class="p">])</span>
 </pre></div>
@@ -377,19 +374,19 @@ we just built, and the <cite>inside</cite> function for the plasma to know its b
 <p>A plasma is also describe with a magnetic field which must be given (as a 3D
 vector field, in Tesla). Even if it is not actually used, it is necessary to
 get ADAS CX rates. Here a toroidal unitary vector field is given:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">plasma</span><span class="o">.</span><span class="n">b_field</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span><span class="o">.</span><span class="n">normalise</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plasma</span><span class="o">.</span><span class="n">b_field</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span><span class="o">.</span><span class="n">normalise</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="pini-configuration">
 <h2>PINI Configuration<a class="headerlink" href="#pini-configuration" title="Permalink to this headline">¶</a></h2>
-<p>The plasma have been entirely set up, let&#8217;s set the PINIs parameters. PINIs will be composed of deuterium:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">beam_element</span> <span class="o">=</span> <span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span>
+<p>The plasma have been entirely set up, let’s set the PINIs parameters. PINIs will be composed of deuterium:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam_element</span> <span class="o">=</span> <span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span>
 </pre></div>
 </div>
 <p>PINIs parameters are regrouped under an instance of <cite>PINIParameters</cite>. For JET
 octant 8 PINIs, we need information about 8 PINIS, so:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># an array of 8 energies (from PINI1 to PINI8) in eV/amu:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># an array of 8 energies (from PINI1 to PINI8) in eV/amu:</span>
 <span class="n">energy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">99707.2</span><span class="p">,</span> <span class="mf">99707.2</span><span class="p">,</span> <span class="mf">102295.</span><span class="p">,</span> <span class="mf">102295.</span><span class="p">,</span>
                    <span class="mf">96386.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">101416.</span><span class="p">,</span> <span class="mf">101855.</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>  <span class="c1"># in eV</span>
 <span class="n">energy</span> <span class="o">=</span> <span class="n">energy</span> <span class="o">/</span> <span class="n">beam_element</span><span class="o">.</span><span class="n">atomic_weight</span>  <span class="c1"># in eV/amu</span>
@@ -418,47 +415,47 @@ octant 8 PINIs, we need information about 8 PINIS, so:</p>
 <h2>Observation<a class="headerlink" href="#observation" title="Permalink to this headline">¶</a></h2>
 <p>The scenegraph have been completely set up now! To be sure, we can have a look
 at it with <cite>print_scenegraph</cite> from raysect.core.scenegraph.utility:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">print_scenegraph</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_scenegraph</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To make observations, we must choose a line of sight or a group of lines of sight
 and call the <cite>observe</cite> method. The <cite>display</cite> method allow to plot the result.</p>
 <p>From a line of sight group, each line of sight can be accessed by calling <cite>get_los</cite>
 with the name of the line of sight. Names are defined in the geometry files.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">los_o8l10</span> <span class="o">=</span> <span class="n">ks7_oct8</span><span class="o">.</span><span class="n">get_los</span><span class="p">(</span><span class="s1">&#39;O8L_10&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">los_o8l10</span> <span class="o">=</span> <span class="n">ks7_oct8</span><span class="o">.</span><span class="n">get_los</span><span class="p">(</span><span class="s1">&#39;O8L_10&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>ks5_oct1 is a particular case as it is a group of groups. Each of its group has
 a name which is defined in its geometry file too (they represents C, D, B from
 1 to 3 and B from 4 to 6 lines of sight). You can access a particular group with
 <cite>get_los_group</cite> method:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">los_d5</span> <span class="o">=</span> <span class="n">ks5_oct1</span><span class="o">.</span><span class="n">get_los_group</span><span class="p">(</span><span class="s1">&#39;D Lines&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_los</span><span class="p">(</span><span class="s1">&#39;D5&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">los_d5</span> <span class="o">=</span> <span class="n">ks5_oct1</span><span class="o">.</span><span class="n">get_los_group</span><span class="p">(</span><span class="s1">&#39;D Lines&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_los</span><span class="p">(</span><span class="s1">&#39;D5&#39;</span><span class="p">)</span>
 <span class="c1"># Or get directly a particular line of sight:</span>
 <span class="n">los_d5_direct</span> <span class="o">=</span> <span class="n">ks5_oct1</span><span class="o">.</span><span class="n">get_los</span><span class="p">(</span><span class="s1">&#39;D5&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">los_d5</span> <span class="ow">is</span> <span class="n">los_d5_direct</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For instance let&#8217;s make all the D lines from ks5_oct1 observe and display the result:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ks5_oct1</span><span class="o">.</span><span class="n">get_los_group</span><span class="p">(</span><span class="s1">&#39;D Lines&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+<p>For instance let’s make all the D lines from ks5_oct1 observe and display the result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ks5_oct1</span><span class="o">.</span><span class="n">get_los_group</span><span class="p">(</span><span class="s1">&#39;D Lines&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
 <span class="n">ks5_oct1</span><span class="o">.</span><span class="n">get_los_group</span><span class="p">(</span><span class="s1">&#39;D Lines&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>If you want to have a look at a particular spectrum, eg the one of D5:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">los_d5</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">los_d5</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
 
 <span class="c1"># the display is by default in J/s/m^3/str/nm, it can be turned in photons/s/m^3/str/nm:</span>
 <span class="n">los_d5</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="s1">&#39;ph&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>After observing, any line of sight store the measured spectrum in a <cite>spectrum</cite> attribute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">d5_spectrum</span> <span class="o">=</span> <span class="n">los_d5</span><span class="o">.</span><span class="n">spectrum</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d5_spectrum</span> <span class="o">=</span> <span class="n">los_d5</span><span class="o">.</span><span class="n">spectrum</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d5_spectrum</span><span class="o">.</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">d5_spectrum</span><span class="o">.</span><span class="n">samples</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>As for the display, the spectrum is in J/s/m^3/str/nm, you can generate an array
 of data in photons/s/m^3/str/nm using <cite>to_photons</cite> method:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">photons_samples</span> <span class="o">=</span> <span class="n">d5_spectrum</span><span class="o">.</span><span class="n">to_photons</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">photons_samples</span> <span class="o">=</span> <span class="n">d5_spectrum</span><span class="o">.</span><span class="n">to_photons</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d5_spectrum</span><span class="o">.</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">photons_samples</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -469,9 +466,7 @@ of data in photons/s/m^3/str/nm using <cite>to_photons</cite> method:</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -501,33 +496,28 @@ of data in photons/s/m^3/str/nm using <cite>to_photons</cite> method:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.99',
+            VERSION:'1.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
