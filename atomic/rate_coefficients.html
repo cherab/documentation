@@ -95,6 +95,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. Rate Coefficients</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#photon-emissivity-coefficients">5.3.1. Photon Emissivity Coefficients</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#beam-plasma-interaction-rates">5.3.2. Beam-Plasma Interaction Rates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#abundances">5.3.3. Abundances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#radiated-power">5.3.4. Radiated Power</a></li>
 </ul>
 </li>
 </ul>
@@ -108,7 +110,8 @@
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Code examples gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
             
@@ -255,32 +258,12 @@ method.</p>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># evaluate D-alpha ImpactExcitationRate PEC at n_e = 1E19 m^-3 and t_e = 2 eV</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dalpha_excit</span><span class="p">(</span><span class="mf">1E19</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="go">2.503529003169861e-36</span>
+<span class="go">2.50352900-36</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># settings for plot range</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">temp_low</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">temp_high</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">num_points</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">electron_density</span> <span class="o">=</span> <span class="mf">1E19</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">electron_temperatures</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="o">**</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">temp_low</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">temp_high</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="n">num_points</span><span class="p">)]</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># sample the PECs with __call__()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dalpha_excit_pecs</span> <span class="o">=</span> <span class="p">[</span><span class="n">dalpha_excit</span><span class="p">(</span><span class="n">electron_density</span><span class="p">,</span> <span class="n">te</span><span class="p">)</span> <span class="k">for</span> <span class="n">te</span> <span class="ow">in</span> <span class="n">electron_temperatures</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dalpha_recom_pecs</span> <span class="o">=</span> <span class="p">[</span><span class="n">dalpha_recom</span><span class="p">(</span><span class="n">electron_density</span><span class="p">,</span> <span class="n">te</span><span class="p">)</span> <span class="k">for</span> <span class="n">te</span> <span class="ow">in</span> <span class="n">electron_temperatures</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plot the PEC rates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">electron_temperatures</span><span class="p">,</span> <span class="n">dalpha_excit_pecs</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;D-alpha excitation&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">electron_temperatures</span><span class="p">,</span> <span class="n">dalpha_recom_pecs</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;D-alpha recombination&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature (eV)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PECs (W m^-3)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># evaluate D-alpha ImpactExcitationRate PEC at n_e = 1E19 m^-3 and t_e = 2 eV</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dalpha_recom</span><span class="p">(</span><span class="mf">1E19</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">1.09586154-38</span>
 </pre></div>
-</div>
-<div class="figure align-center" id="id2">
-<a class="reference internal image-reference" href="../_images/D_alpha_PECs.png"><img alt="../_images/D_alpha_PECs.png" src="../_images/D_alpha_PECs.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A plot of balmer D-alpha PEC coefficients generated by the above code snippet.</span></p>
 </div>
 </div>
 <div class="section" id="beam-plasma-interaction-rates">
@@ -346,78 +329,27 @@ the same call signatures.</p>
 
 <p>Some example code for requesting beam rate objects and sampling them with the __call__()
 method.</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="kn">import</span> <span class="n">OpenADAS</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Make Latex available in matplotlib figures</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span> <span class="s1">&#39;serif&#39;</span><span class="p">,</span> <span class="s1">&#39;serif&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Computer Modern&#39;</span><span class="p">]})</span>
-<span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># initialise the atomic data provider</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">()</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Request beam stopping rate and sample at three different electron temperatures</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Request beam stopping rate and sample</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bms</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_stopping_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">beam_energies</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="o">**</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">5000</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">125000</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="n">num_points</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bms_rates_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">bms</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bms_rates_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">bms</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bms_rates_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">bms</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bms</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">1.777336e-13</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plot the beam stopping rates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bms_rates_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bms_rates_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 100eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bms_rates_3</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1000eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$S^{e, i}_{CR}$ ($m^3s^{-1}$)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beam Stopping Rates&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample the beam population rates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample the beam population rate</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bmp</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_population_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bmp_rates_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">bmp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bmp_rates_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">bmp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bmp_rates_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">bmp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bmp</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">7.599066e-10</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plot the beam population rates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bmp_rates_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bmp_rates_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 100eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bmp_rates_3</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1000eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Beam population rate (dimensionless)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beam Population Rates&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample the beam emission rates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample the beam emission rate</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bme</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_emission_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bme_rates_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">bme</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bme_rates_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">bme</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bme_rates_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">bme</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plot the beam emission rates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bme_rates_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bme_rates_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 100eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bme_rates_3</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1000eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$q^{eff}_{n\rightarrow n&#39;}$ [$W m^{3} s^{-1} str^{-1}$]&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beam Emission Rates&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bme</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">8.651598e-34</span>
 </pre></div>
-</div>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/beam_stopping_rates.png"><img alt="../_images/beam_stopping_rates.png" src="../_images/beam_stopping_rates.png" style="width: 450px;" /></a>
-</div>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/beam_population_rates.png"><img alt="../_images/beam_population_rates.png" src="../_images/beam_population_rates.png" style="width: 450px;" /></a>
-</div>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/beam_emission_rates.png"><img alt="../_images/beam_emission_rates.png" src="../_images/beam_emission_rates.png" style="width: 450px;" /></a>
 </div>
 <dl class="class">
 <dt id="cherab.core.atomic.rates.BeamCXRate">
@@ -427,18 +359,16 @@ method.</p>
 transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span> of ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span> with electron donor
 <span class="math notranslate nohighlight">\(H^0\)</span> in metastable state <span class="math notranslate nohighlight">\(m_{i}\)</span>. Equivalent to
 <span class="math notranslate nohighlight">\(q^{eff}_{n\rightarrow n'}\)</span> in <a class="reference external" href="http://open.adas.ac.uk/adf12">adf12</a>.</p>
-</dd></dl>
-
 <dl class="function">
-<dt>
-<code class="descname">__call__</code><span class="sig-paren">(</span><em>energy</em>, <em>temperature</em>, <em>density</em>, <em>z_effective</em>, <em>b_field</em><span class="sig-paren">)</span></dt>
+<dt id="cherab.core.atomic.rates.BeamCXRate.__call__">
+<code class="descname">__call__</code><span class="sig-paren">(</span><em>energy</em>, <em>temperature</em>, <em>density</em>, <em>z_effective</em>, <em>b_field</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.BeamCXRate.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the associated beam CX rate at the specified plasma conditions.</p>
 <p>This function just wraps the cython evaluate() method.</p>
 </dd></dl>
 
 <dl class="function">
-<dt>
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>energy</em>, <em>temperature</em>, <em>density</em>, <em>z_effective</em>, <em>b_field</em><span class="sig-paren">)</span></dt>
+<dt id="cherab.core.atomic.rates.BeamCXRate.evaluate">
+<code class="descname">evaluate</code><span class="sig-paren">(</span><em>energy</em>, <em>temperature</em>, <em>density</em>, <em>z_effective</em>, <em>b_field</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.BeamCXRate.evaluate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the beam CX rate for the supplied parameters.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -460,38 +390,159 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
 </table>
 </dd></dl>
 
+</dd></dl>
+
 <p>Some example code for requesting beam CX rate object and sampling it with the __call__() method.</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="kn">import</span> <span class="n">OpenADAS</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Make Latex available in matplotlib figures</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span> <span class="s1">&#39;serif&#39;</span><span class="p">,</span> <span class="s1">&#39;serif&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Computer Modern&#39;</span><span class="p">]})</span>
-<span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># initialise the atomic data provider</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">()</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cxr</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_cx_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cxr_n1</span><span class="p">,</span> <span class="n">cxr_n2</span> <span class="o">=</span> <span class="n">cxr</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cxr_rate_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">cxr</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cxr_rate_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">cxr</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plot the effective CX emission rate</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">cxr_rate_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;n=1 donor&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">cxr_rate_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;n=2 donor&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$q^{eff}_{n\rightarrow n&#39;}$ [$W m^{3} s^{-1} str^{-1}$]&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Effective CX rate&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cxr_n1</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">5.826619e-33</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cxr_n2</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">1.203986e-32</span>
 </pre></div>
 </div>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/effective_cx_rates.png"><img alt="../_images/effective_cx_rates.png" src="../_images/effective_cx_rates.png" style="width: 450px;" /></a>
+</div>
+<div class="section" id="abundances">
+<h2>5.3.3. Abundances<a class="headerlink" href="#abundances" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cherab.core.atomic.rates.FractionalAbundance">
+<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">FractionalAbundance</code><a class="headerlink" href="#cherab.core.atomic.rates.FractionalAbundance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rate provider for fractional abundances in thermodynamic equilibrium.</p>
+<dl class="function">
+<dt id="cherab.core.atomic.rates.FractionalAbundance.__call__">
+<code class="descname">__call__</code><span class="sig-paren">(</span><em>electron_density</em>, <em>electron_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.FractionalAbundance.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the fractional abundance of this ionisation stage at the given plasma conditions.</p>
+<p>This function just wraps the cython evaluate() method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>electron_density</strong> (<em>float</em>) – electron density in m^-3</li>
+<li><strong>electron_temperature</strong> (<em>float</em>) – electron temperature in eV</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">neon</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.adas</span> <span class="kn">import</span> <span class="n">ADAS</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">ADAS</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ne0_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ne0_frac</span><span class="p">(</span><span class="mf">1E19</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="go">0.999899505093943</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="radiated-power">
+<h2>5.3.4. Radiated Power<a class="headerlink" href="#radiated-power" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cherab.core.atomic.rates.RadiatedPower">
+<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">RadiatedPower</code><a class="headerlink" href="#cherab.core.atomic.rates.RadiatedPower" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total radiated power for a given species and radiation type.</p>
+<p>Radiation type can be:
+- ‘total’ (line + recombination + bremsstrahlung + charge exchange)
+- ‘line’ radiation
+- ‘continuum’ (recombination + bremsstrahlung)
+- ‘cx’ charge exchange</p>
+<dl class="function">
+<dt id="cherab.core.atomic.rates.RadiatedPower.__call__">
+<code class="descname">__call__</code><span class="sig-paren">(</span><em>electron_density</em>, <em>electron_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.RadiatedPower.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the total radiated power of this species at the given plasma conditions.</p>
+<p>This function just wraps the cython evaluate() method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>electron_density</strong> (<em>float</em>) – electron density in m^-3</li>
+<li><strong>electron_temperature</strong> (<em>float</em>) – electron temperature in eV</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">neon</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.adas</span> <span class="kn">import</span> <span class="n">ADAS</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">ADAS</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ne_total_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">radiated_power_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ne_total_rad</span><span class="p">(</span><span class="mf">1E19</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1E19</span>
+<span class="go">9.2261136594e-08</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ne_continuum_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">radiated_power_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="s1">&#39;continuum&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ne_continuum_rad</span><span class="p">(</span><span class="mf">1E19</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1E19</span>
+<span class="go">3.4387672228e-10</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="cherab.core.atomic.rates.StageResolvedLineRadiation">
+<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">StageResolvedLineRadiation</code><a class="headerlink" href="#cherab.core.atomic.rates.StageResolvedLineRadiation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total ionisation state resolved line radiated power rate.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>element</strong> (<a class="reference internal" href="elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – the radiating element</li>
+<li><strong>ionisation</strong> (<em>int</em>) – the integer charge state for this ionisation stage</li>
+<li><strong>name</strong> (<em>str</em>) – optional label identifying this rate</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="cherab.core.atomic.rates.StageResolvedLineRadiation.__call__">
+<code class="descname">__call__</code><span class="sig-paren">(</span><em>electron_density</em>, <em>electron_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.StageResolvedLineRadiation.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the total radiated power of this species at the given plasma conditions.</p>
+<p>This function just wraps the cython evaluate() method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>electron_density</strong> (<em>float</em>) – electron density in m^-3</li>
+<li><strong>electron_temperature</strong> (<em>float</em>) – electron temperature in eV</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">neon</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.adas</span> <span class="kn">import</span> <span class="n">ADAS</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">ADAS</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ne0_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ne0_line_rad</span><span class="p">(</span><span class="mf">1E19</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1E19</span>
+<span class="go">6.1448254527e-16</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ne1_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ne1_line_rad</span><span class="p">(</span><span class="mf">1E19</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1E19</span>
+<span class="go">1.7723122151e-11</span>
+</pre></div>
 </div>
 </div>
 </div>
