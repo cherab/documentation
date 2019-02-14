@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.4. Mono-energetic Particle Beams &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Emission Models" href="../models/emission_models.html" />
+    <link rel="prev" title="6.3. Plasma sources" href="plasma_sources.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="plasmas.html">6. Plasmas</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html">6.1. Core Plasma Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="equilibrium.html">6.2. Plasma equilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plasma_sources.html">6.3. Plasma sources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.4. Mono-energetic Particle Beams</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utility.html">9. Utilities</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="plasmas.html">6. Plasmas</a> &raquo;</li>
+        
+      <li>6.4. Mono-energetic Particle Beams</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/plasmas/particle_beams.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mono-energetic-particle-beams">
+<h1>6.4. Mono-energetic Particle Beams<a class="headerlink" href="#mono-energetic-particle-beams" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cherab.core.Beam">
+<em class="property">class </em><code class="descclassname">cherab.core.</code><code class="descname">Beam</code><a class="headerlink" href="#cherab.core.Beam" title="Permalink to this definition">¶</a></dt>
+<dd><p>A scene-graph object representing a Gaussian mono-energetic beam.</p>
+<p>The CHERAB beam object holds all the properties and state of a mono-energetic
+particle beam to which beam attenuation and emission models may be attached.</p>
+<p>To define a Beam object you need to define the</p>
+<p>plasma composition,
+magnetic field and electron distribution. The Plasma composition consists
+of a collection of Species objects that define the individual distribution
+functions of specific neutral atoms or ions in the plasma. Each individual
+species can only appear once in the composition. For more information see
+the related objects, Species, Composition, and DistributionFunction. To
+define the magnetic field you must provide a function that returns a
+Vector3D describing the field vector at the requested coordinate in the
+local plasma coordinate system.</p>
+<p>The Beam object is a Raysect scene-graph node and lives in it’s own
+coordinate space. This coordinate space is defined relative to it’s parent
+scene-graph object by an AffineTransform. The beam parameters are defined
+in the Beam object coordinate space. Models using the beam object must
+convert any spatial coordinates into beam space before requesting values
+from the Beam object. The Beam axis is defined to lie along the positive
+z-axis with its origin at the origin of the local coordinate system.</p>
+<p>While a Beam object can be used to simple hold and sample beam properties,
+it can also be used as an emitter in Raysect scenes by attaching
+emission models. The Beam’s bounding geometry is automatically defined from
+the Beam’s initial width and divergence. The length of the Beam geometry
+needs to be set by the user.</p>
+<p>Beam emission models may be attached to the beam
+object by either setting the full list of models or adding to the list of
+models. See the Beam’s ModelManager for more information. The beam emission models
+must be derived from the BeamModel base class.</p>
+<p>Any change to the beam object properties and models
+will result in a automatic notification being sent to objects that register
+with the Beam objects’ Notifier. All CHERAB models and associated scene-graph
+objects automatically handle the notifications internally to clear
+cached data. If you need to keep track of beam changes in your own classes,
+a callback can be registered with the beam Notifier which will be called in
+the event of a change to the Beam object. See the Notifier documentation.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In the current implementation of the Beam class, the Beam can only be associated
+with a single plasma instance. If your scene has overlapping plasmas the
+beam attenuation will only be calculated for the plasma instance to which
+this beam is attached.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>parent</strong> (<em>Node</em>) – The parent node in the Raysect scene-graph.
+See the Raysect documentation for more guidance.</li>
+<li><strong>transform</strong> (<em>AffineMatrix3D</em>) – The transform defining the spatial position
+and orientation of this plasma. See the Raysect documentation if you need
+guidance on how to use AffineMatrix3D transforms.</li>
+<li><strong>name</strong> (<em>str</em>) – The name for this plasma.</li>
+<li><strong>integrator</strong> (<em>VolumeIntegrator</em>) – The configurable method for doing
+volumetric integration through the plasma along a Ray’s path. Defaults to
+a numerical integrator with 1mm step size, NumericalIntegrator(step=0.001).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>atomic_data</strong> (<em>AtomicData</em>) – The atomic data provider class for this plasma.
+All plasma emission from this plasma will be calculated with the same provider.</li>
+<li><strong>b_field</strong> (<em>VectorFunction3D</em>) – A vector function in 3D space that returns the
+magnetic field vector at any requested point.</li>
+<li><strong>composition</strong> (<a class="reference internal" href="core_plasma_classes.html#cherab.core.plasma.node.Composition" title="cherab.core.plasma.node.Composition"><em>Composition</em></a>) – The composition object manages all the atomic plasma
+species and provides access to their distribution functions.</li>
+<li><strong>electron_distribution</strong> (<a class="reference internal" href="core_plasma_classes.html#cherab.core.distribution.DistributionFunction" title="cherab.core.distribution.DistributionFunction"><em>DistributionFunction</em></a>) – A distribution function object
+describing the electron species properties.</li>
+<li><strong>geometry</strong> (<em>Primitive</em>) – The Raysect primitive that defines the geometric extent
+of this plasma.</li>
+<li><strong>geometry_transform</strong> (<em>AffineMatrix3D</em>) – The underlying geometry transform, different
+to the plasma node’s transform.</li>
+<li><strong>models</strong> (<em>ModelManager</em>) – The manager class that sets and provides access to the emission
+models for this plasma.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Represents a mono-energetic beam of particles with a Gaussian profile.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>parent</strong> – </li>
+<li><strong>transform</strong> – </li>
+<li><strong>name</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="cherab.core.Beam.density">
+<code class="descname">density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the bean density at the specified coordinates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – x coordinate in meters.</li>
+<li><strong>y</strong> – y coordinate in meters.</li>
+<li><strong>z</strong> – z coordinate in meters.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Beam density in m^-3</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.Beam.direction">
+<code class="descname">direction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the beam direction vector at a point in space.</p>
+<p>Note the values of the beam outside of the beam envelope should be
+treated with caution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – x coordinate in meters.</li>
+<li><strong>y</strong> – y coordinate in meters.</li>
+<li><strong>z</strong> – z coordinate in meters.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Direction vector.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../models/emission_models.html" class="btn btn-neutral float-right" title="7. Emission Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plasma_sources.html" class="btn btn-neutral" title="6.3. Plasma sources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

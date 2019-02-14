@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5. Atomic Data &mdash; CHERAB 1.01 documentation</title>
+  <title>6. Plasmas &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.1. Elements and Isotopes" href="elements_and_isotopes.html" />
-    <link rel="prev" title="4. Available Packages" href="../available_modules.html" /> 
+    <link rel="next" title="6.1. Core Plasma Classes" href="core_plasma_classes.html" />
+    <link rel="prev" title="5.3. Rate Coefficients" href="../atomic/rate_coefficients.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -89,13 +89,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Atomic Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="elements_and_isotopes.html">5.1. Elements and Isotopes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emission_lines.html">5.2. Spectroscopic Emission Lines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">5.3. Rate Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Plasmas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html">6.1. Core Plasma Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="equilibrium.html">6.2. Plasma equilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plasma_sources.html">6.3. Plasma sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="particle_beams.html">6.4. Mono-energetic Particle Beams</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utility.html">9. Utilities</a></li>
@@ -149,13 +150,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>5. Atomic Data</li>
+      <li>6. Plasmas</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/atomic/atomic_data.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/plasmas/plasmas.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,19 +169,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="atomic-data">
-<h1>5. Atomic Data<a class="headerlink" href="#atomic-data" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="plasmas">
+<h1>6. Plasmas<a class="headerlink" href="#plasmas" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="elements_and_isotopes.html">5.1. Elements and Isotopes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="emission_lines.html">5.2. Spectroscopic Emission Lines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rate_coefficients.html">5.3. Rate Coefficients</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html#photon-emissivity-coefficients">5.3.1. Photon Emissivity Coefficients</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html#beam-plasma-interaction-rates">5.3.2. Beam-Plasma Interaction Rates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html#abundances">5.3.3. Abundances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html#radiated-power">5.3.4. Radiated Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_plasma_classes.html">6.1. Core Plasma Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html#main-plasma-object">6.1.1. Main Plasma Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html#plasma-species">6.1.2. Plasma Species</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html#distribution-functions">6.1.3. Distribution functions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">6.2. Plasma equilibrium</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="equilibrium.html#efit">6.2.1. EFIT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">6.3. Plasma sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plasma_sources.html#measured-profiles">6.3.1. Measured profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plasma_sources.html#solps-simulations">6.3.2. SOLPS Simulations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plasma_sources.html#solpsmesh-class">6.3.2.1. SOLPSMesh Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="particle_beams.html">6.4. Mono-energetic Particle Beams</a></li>
 </ul>
 </div>
 </div>
@@ -193,10 +204,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="elements_and_isotopes.html" class="btn btn-neutral float-right" title="5.1. Elements and Isotopes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="core_plasma_classes.html" class="btn btn-neutral float-right" title="6.1. Core Plasma Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../available_modules.html" class="btn btn-neutral" title="4. Available Packages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../atomic/rate_coefficients.html" class="btn btn-neutral" title="5.3. Rate Coefficients" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

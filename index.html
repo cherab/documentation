@@ -89,12 +89,10 @@
 <li class="toctree-l1"><a class="reference internal" href="installation_and_structure.html">3. Installation and Project Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="available_modules.html">4. Available Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">5. Atomic Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="core.html">6. Core Plasma Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">7. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">8. Plasma sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">9. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math.html">10. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utility.html">11. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plasmas/plasmas.html">6. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math.html">8. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">9. Utilities</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -205,42 +203,33 @@ become stable until we have finished moving the source code to github.</p>
 <li class="toctree-l2"><a class="reference internal" href="atomic/rate_coefficients.html">5.3. Rate Coefficients</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="core.html">6. Core Plasma Classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="core.html#plasma-species">6.1. Plasma Species</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core.html#main-plasma-object">6.2. Main Plasma Object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core.html#distribution-functions">6.3. Distribution functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core.html#neutral-heating-beam">6.4. Neutral Heating Beam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plasmas/plasmas.html">6. Plasmas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plasmas/core_plasma_classes.html">6.1. Core Plasma Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plasmas/equilibrium.html">6.2. Plasma equilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plasmas/plasma_sources.html">6.3. Plasma sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plasmas/particle_beams.html">6.4. Mono-energetic Particle Beams</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">7. Plasma equilibrium</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="equilibrium.html#efit">7.1. EFIT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="models/custom_models.html">7.1. Custom emission models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/cxs/cxs_model.html">7.2. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/cxs/charge_exchange_calculation.html">7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/cxs/atomic_data_calculation.html">7.4. Atomic data calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/bes/bes_model.html">7.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/radiated_power/radiated_power.html">7.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/brem/bremsstrahlung.html">7.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/basic_line/basic_line_emission.html">7.8. Basic Line Emission</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="plasma_sources.html">8. Plasma sources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="plasma_sources.html#measured-profiles">8.1. Measured profiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plasma_sources.html#solps-simulations">8.2. SOLPS Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math.html">8. Math functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="math.html#module-cherab.core.math.samplers">8.1. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math.html#module-cherab.core.math.mappers">8.2. Mappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">9. Emission Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="models/custom_models.html">9.1. Custom emission models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/cxs/cxs_model.html">9.2. CXS models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/cxs/charge_exchange_calculation.html">9.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/cxs/atomic_data_calculation.html">9.4. Atomic data calculation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/bes/bes_model.html">9.5. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/radiated_power/radiated_power.html">9.6. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/brem/bremsstrahlung.html">9.7. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/basic_line/basic_line_emission.html">9.8. Basic Line Emission</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="math.html">10. Math functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="math.html#module-cherab.core.math.samplers">10.1. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math.html#module-cherab.core.math.mappers">10.2. Mappers</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="utility.html">11. Utilities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.conversion">11.1. Unit Conversions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.notify">11.2. Notify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.recursivedict">11.3. Recursive Dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">9. Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.conversion">9.1. Unit Conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.notify">9.2. Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.recursivedict">9.3. Recursive Dict</a></li>
 </ul>
 </li>
 </ul>

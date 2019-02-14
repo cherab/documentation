@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.1. Core Plasma Classes &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.2. Plasma equilibrium" href="equilibrium.html" />
+    <link rel="prev" title="6. Plasmas" href="plasmas.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="plasmas.html">6. Plasmas</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. Core Plasma Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-plasma-object">6.1.1. Main Plasma Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plasma-species">6.1.2. Plasma Species</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distribution-functions">6.1.3. Distribution functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="equilibrium.html">6.2. Plasma equilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plasma_sources.html">6.3. Plasma sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="particle_beams.html">6.4. Mono-energetic Particle Beams</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utility.html">9. Utilities</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="plasmas.html">6. Plasmas</a> &raquo;</li>
+        
+      <li>6.1. Core Plasma Classes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/plasmas/core_plasma_classes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="core-plasma-classes">
+<h1>6.1. Core Plasma Classes<a class="headerlink" href="#core-plasma-classes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="main-plasma-object">
+<h2>6.1.1. Main Plasma Object<a class="headerlink" href="#main-plasma-object" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cherab.core.Plasma">
+<em class="property">class </em><code class="descclassname">cherab.core.</code><code class="descname">Plasma</code><a class="headerlink" href="#cherab.core.Plasma" title="Permalink to this definition">¶</a></dt>
+<dd><p>A scene-graph object representing a plasma.</p>
+<p>The CHERAB Plasma object holds all the properties and state of a plasma
+and can optionally have emission models attached to it.</p>
+<p>To define a Plasma object you need to define the plasma composition,
+magnetic field and electron distribution. The Plasma composition consists
+of a collection of Species objects that define the individual distribution
+functions of specific neutral atoms or ions in the plasma. Each individual
+species can only appear once in the composition. For more information see
+the related objects, Species, Composition, and DistributionFunction. To
+define the magnetic field you must provide a function that returns a
+magnetic field vector at the requested coordinate in the local plasma
+coordinate system.</p>
+<p>The Plasma object is a Raysect scene-graph Node and lives in it’s own
+coordinate space. This coordinate space is defined relative to it’s parent
+scene-graph object by an AffineTransform. The plasma parameters are defined
+in the Plasma object coordinate space. Models using the plasma object must
+convert any spatial coordinates into plasma space before requesting values
+from the Plasma object.</p>
+<p>While a Plasma object can be used to simply hold and sample plasma properties,
+it can also be used as an emitter in Raysect scenes by attaching geometry
+and emission models. To add emission models you first need to define a
+bounding geometry for the plasma. The geometry is described by a Raysect
+Primitive. The Primitive may be positioned relative to the plasma coordinate
+system by setting the geometry_transform attribute. If no geometry transform
+is set, the Primitive will share the same coordinate system as the
+plasma.</p>
+<p>Once geometry is defined, plasma emission models may be attached to the plasma
+object by either setting the full list of models or adding to the list of
+models. See the ModelManager for more information. The plasma emission models
+must be derived from the PlasmaModel base class.</p>
+<p>Any change to the plasma object including adding/removing of species or models
+will result in a automatic notification being sent to objects that register
+with the Plasma objects’ Notifier. All CHERAB models and associated scene-graph
+objects such as Beams automatically handle the notifications internally to clear
+cached data. If you need to keep track of plasma changes in your own classes,
+a callback can be registered with the plasma Notifier which will be called in
+the event of a change to the plasma object. See the Notifier documentation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>parent</strong> (<em>Node</em>) – The parent node in the Raysect scene-graph.
+See the Raysect documentation for more guidance.</li>
+<li><strong>transform</strong> (<em>AffineMatrix3D</em>) – The transform defining the spatial position
+and orientation of this plasma. See the Raysect documentation if you need
+guidance on how to use AffineMatrix3D transforms.</li>
+<li><strong>name</strong> (<em>str</em>) – The name for this plasma.</li>
+<li><strong>integrator</strong> (<em>VolumeIntegrator</em>) – The configurable method for doing
+volumetric integration through the plasma along a Ray’s path. Defaults to
+a numerical integrator with 1mm step size, NumericalIntegrator(step=0.001).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>atomic_data</strong> (<em>AtomicData</em>) – The atomic data provider class for this plasma.
+All plasma emission from this plasma will be calculated with the same provider.</li>
+<li><strong>b_field</strong> (<em>VectorFunction3D</em>) – A vector function in 3D space that returns the
+magnetic field vector at any requested point.</li>
+<li><strong>composition</strong> (<a class="reference internal" href="#cherab.core.plasma.node.Composition" title="cherab.core.plasma.node.Composition"><em>Composition</em></a>) – The composition object manages all the atomic plasma
+species and provides access to their distribution functions.</li>
+<li><strong>electron_distribution</strong> (<a class="reference internal" href="#cherab.core.distribution.DistributionFunction" title="cherab.core.distribution.DistributionFunction"><em>DistributionFunction</em></a>) – A distribution function object
+describing the electron species properties.</li>
+<li><strong>geometry</strong> (<em>Primitive</em>) – The Raysect primitive that defines the geometric extent
+of this plasma.</li>
+<li><strong>geometry_transform</strong> (<em>AffineMatrix3D</em>) – The relative difference between the plasmas’
+local coordinate system and the bounding geometries’ local coordinate system. Defaults
+to a Null transform.</li>
+<li><strong>models</strong> (<em>ModelManager</em>) – The manager class that sets and provides access to the
+emission models for this plasma.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># This example shows how to initialise and populate a basic plasma</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">atomic_mass</span><span class="p">,</span> <span class="n">electron_mass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="kn">import</span> <span class="n">Sphere</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core</span> <span class="kn">import</span> <span class="n">Plasma</span><span class="p">,</span> <span class="n">Species</span><span class="p">,</span> <span class="n">Maxwellian</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant3D</span><span class="p">,</span> <span class="n">ConstantVector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">deuterium</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="kn">import</span> <span class="n">OpenADAS</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># create atomic data source</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setup basic distribution functions for the species</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d0_density</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mf">1E17</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d0_temperature</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bulk_velocity</span> <span class="o">=</span> <span class="n">ConstantVector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d0_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">d0_density</span><span class="p">,</span> <span class="n">d0_temperature</span><span class="p">,</span> <span class="n">bulk_velocity</span><span class="p">,</span> <span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d0_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">d0_distribution</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1_density</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mf">1E18</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1_temperature</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">d1_density</span><span class="p">,</span> <span class="n">d1_temperature</span><span class="p">,</span> <span class="n">bulk_velocity</span><span class="p">,</span> <span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d1_distribution</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="mf">1E18</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="n">bulk_velocity</span><span class="p">,</span> <span class="n">electron_mass</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Initialise Plasma object and populate with species specifications</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span> <span class="o">=</span> <span class="n">Plasma</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">adas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">Sphere</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">b_field</span> <span class="o">=</span> <span class="n">ConstantVector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">composition</span> <span class="o">=</span> <span class="p">[</span><span class="n">d0_species</span><span class="p">,</span> <span class="n">d1_species</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span> <span class="o">=</span> <span class="n">e_distribution</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="cherab.core.Plasma.ion_density">
+<code class="descname">ion_density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Plasma.ion_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the total ion density of the plasma.</p>
+<div class="math notranslate nohighlight">
+\[n_I = \sum_{k=1}^N n_i(k)\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – x coordinate in meters.</li>
+<li><strong>y</strong> – y coordinate in meters.</li>
+<li><strong>z</strong> – z coordinate in meters.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Total ion density in m^-3.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># With an already initialised plasma object...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">ion_density</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">1.1e+18</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.Plasma.z_effective">
+<code class="descname">z_effective</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Plasma.z_effective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the effective Z of the plasma.</p>
+<div class="math notranslate nohighlight">
+\[Z_{eff} = \sum_{j=1}^N n_{i(j)} Z_j^2 / \sum_{k=1}^N n_{i(k)} Z_k\]</div>
+<p>where n is the species density and Z is the ionisation of the species.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – x coordinate in meters.</li>
+<li><strong>y</strong> – y coordinate in meters.</li>
+<li><strong>z</strong> – z coordinate in meters.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Calculated Z effective.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>ValueError</strong> – If plasma does not contain any ionised species.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># With an already initialised plasma object...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">z_effective</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="plasma-species">
+<h2>6.1.2. Plasma Species<a class="headerlink" href="#plasma-species" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cherab.core.Species">
+<em class="property">class </em><code class="descclassname">cherab.core.</code><code class="descname">Species</code><a class="headerlink" href="#cherab.core.Species" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class representing a given plasma species.</p>
+<p>A plasma in CHERAB will be composed of 1 or more Species objects. A species
+can be uniquely identified through its element and ionisation stage.</p>
+<p>When instantiating a Species object a 6D distribution function (3 space, 3 velocity)
+must be defined. The DistributionFunction object provides the base interface for
+defining a distribution function, it could be a reduced analytic representation
+(such as a Maxwellian for example) or a fully numerically interpolated 6D function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>element</strong> (<a class="reference internal" href="../atomic/elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – The element object of this species.</li>
+<li><strong>ionisation</strong> (<em>int</em>) – The ionisation state of the species.</li>
+<li><strong>distribution</strong> (<a class="reference internal" href="#cherab.core.distribution.DistributionFunction" title="cherab.core.distribution.DistributionFunction"><em>DistributionFunction</em></a>) – A distribution function for this species.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># In this example we define a single plasma species with spatially homogeneous properties</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">atomic_mass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core</span> <span class="kn">import</span> <span class="n">Species</span><span class="p">,</span> <span class="n">Maxwellian</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant3D</span><span class="p">,</span> <span class="n">ConstantVector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">deuterium</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setup a distribution function for the species</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">density</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mf">1E18</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temperature</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bulk_velocity</span> <span class="o">=</span> <span class="n">ConstantVector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mf">1e6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">density</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">bulk_velocity</span><span class="p">,</span> <span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># create the plasma Species object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d1_distribution</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Request some properties from the species&#39; distribution function.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">d1_species</span><span class="p">)</span>
+<span class="go">&lt;Species: element=deuterium, ionisation=1&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1_species</span><span class="o">.</span><span class="n">distribution</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="go">1e+18</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.plasma.node.Composition">
+<em class="property">class </em><code class="descclassname">cherab.core.plasma.node.</code><code class="descname">Composition</code><a class="headerlink" href="#cherab.core.plasma.node.Composition" title="Permalink to this definition">¶</a></dt>
+<dd><p>The plasma composition manager.</p>
+<p>Used to control the adding and removing of Species objects from the Plasma object.
+This is because there can only ever be one Species object instance for each plasma
+species of a given element and ionisation stage. Users never instantiate this class
+directly. Its always used indirectly through an instantiated Plasma object.</p>
+<dl class="attribute">
+<dt id="cherab.core.plasma.node.Composition.__getitem__">
+<code class="descname">__getitem__</code><a class="headerlink" href="#cherab.core.plasma.node.Composition.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Species objects can be indexed with a tuple specifying their element and ionisation.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="p">[(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="go">&lt;Species: element=deuterium, ionisation=0&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cherab.core.plasma.node.Composition.__iter__">
+<code class="descname">__iter__</code><a class="headerlink" href="#cherab.core.plasma.node.Composition.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to iterate over all the Species objects in the parent plasma.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">species</span> <span class="k">for</span> <span class="n">species</span> <span class="ow">in</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="p">]</span>
+<span class="go">[&lt;Species: element=deuterium, ionisation=0&gt;,</span>
+<span class="go"> &lt;Species: element=deuterium, ionisation=1&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.plasma.node.Composition.add">
+<code class="descname">add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a species to the plasma composition.</p>
+<p>Replaces any existing species with the same element and ionisation
+state already in the composition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>species</strong> (<a class="reference internal" href="#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – A Species object.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d1_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d1_distribution</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">d1_species</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.plasma.node.Composition.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all Species object instances from the parent plasma.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.plasma.node.Composition.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specified plasma species.</p>
+<p>Raises a ValueError if the specified species is not found in the composition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>element</strong> (<a class="reference internal" href="../atomic/elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – The element object of the requested species.</li>
+<li><strong>ionisation</strong> (<em>int</em>) – The ionisation state of the requested species.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The requested Species object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">&lt;Species: element=deuterium, ionisation=1&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.plasma.node.Composition.set">
+<code class="descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replaces the species in the composition with a new list of species.</p>
+<p>If there are multiple species with the same element and ionisation in
+the list, only the last species with that specification will be added
+to the composition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>species</strong> (<a class="reference internal" href="#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – A list containing the new species.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d0_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">d0_distribution</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d1_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d1_distribution</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">set</span><span class="p">([</span><span class="n">d0_species</span><span class="p">,</span> <span class="n">d1_species</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">species</span> <span class="k">for</span> <span class="n">species</span> <span class="ow">in</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="p">]</span>
+<span class="go">[&lt;Species: element=deuterium, ionisation=0&gt;,</span>
+<span class="go"> &lt;Species: element=deuterium, ionisation=1&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="distribution-functions">
+<h2>6.1.3. Distribution functions<a class="headerlink" href="#distribution-functions" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cherab.core.distribution.DistributionFunction">
+<em class="property">class </em><code class="descclassname">cherab.core.distribution.</code><code class="descname">DistributionFunction</code><a class="headerlink" href="#cherab.core.distribution.DistributionFunction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="cherab.core.distribution.DistributionFunction.__call__">
+<code class="descname">__call__</code><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call self as a function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.distribution.DistributionFunction.bulk_velocity">
+<code class="descname">bulk_velocity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.bulk_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">velocity vector in m/s</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.distribution.DistributionFunction.density">
+<code class="descname">density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.density" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">density in m^-3</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.distribution.DistributionFunction.effective_temperature">
+<code class="descname">effective_temperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.effective_temperature" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">temperature in eV</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.distribution.Maxwellian">
+<em class="property">class </em><code class="descclassname">cherab.core.distribution.</code><code class="descname">Maxwellian</code><a class="headerlink" href="#cherab.core.distribution.Maxwellian" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="cherab.core.distribution.Maxwellian.bulk_velocity">
+<code class="descname">bulk_velocity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.Maxwellian.bulk_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">velocity vector in m/s</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.distribution.Maxwellian.density">
+<code class="descname">density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.Maxwellian.density" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">density in m^-3</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.core.distribution.Maxwellian.effective_temperature">
+<code class="descname">effective_temperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.Maxwellian.effective_temperature" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – position in meters</li>
+<li><strong>y</strong> – position in meters</li>
+<li><strong>z</strong> – position in meters</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">temperature in eV</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="equilibrium.html" class="btn btn-neutral float-right" title="6.2. Plasma equilibrium" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plasmas.html" class="btn btn-neutral" title="6. Plasmas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
