@@ -530,27 +530,57 @@ to the composition.</p>
 <dl class="class">
 <dt id="cherab.core.distribution.DistributionFunction">
 <em class="property">class </em><code class="descclassname">cherab.core.distribution.</code><code class="descname">DistributionFunction</code><a class="headerlink" href="#cherab.core.distribution.DistributionFunction" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
+<dd><p>The distribution function base class.</p>
+<p>All plasma Species objects are defined through distribution functions. This base
+class defines the core interface which is used by the rest of the framework.
+This base class cannot be used on its own, it raises a NotImplementedError() on all
+method calls. Users should either use a simpler distribution instance
+(such as the Maxwellian distribution) or implement their own.</p>
+<dl class="attribute">
 <dt id="cherab.core.distribution.DistributionFunction.__call__">
 <code class="descname">__call__</code><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.__call__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Call self as a function.</p>
+<dd><p>Evaluates the phase space density at the specified point in 6D phase space.</p>
+<p>Wraps the cython evaluate() function for fast evaluation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<em>float</em>) – position in meters</li>
+<li><strong>y</strong> (<em>float</em>) – position in meters</li>
+<li><strong>z</strong> (<em>float</em>) – position in meters</li>
+<li><strong>vx</strong> (<em>float</em>) – velocity in meters per second</li>
+<li><strong>vy</strong> (<em>float</em>) – velocity in meters per second</li>
+<li><strong>vz</strong> (<em>float</em>) – velocity in meters per second</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">phase space density in s^3/m^6</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="cherab.core.distribution.DistributionFunction.bulk_velocity">
 <code class="descname">bulk_velocity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.bulk_velocity" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Evaluates the species’ bulk velocity at the specified 3D coordinate.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> – position in meters</li>
-<li><strong>y</strong> – position in meters</li>
-<li><strong>z</strong> – position in meters</li>
+<li><strong>x</strong> (<em>float</em>) – position in meters</li>
+<li><strong>y</strong> (<em>float</em>) – position in meters</li>
+<li><strong>z</strong> (<em>float</em>) – position in meters</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">velocity vector in m/s</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">velocity vector in m/s</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Vector3D</p>
 </td>
 </tr>
 </tbody>
@@ -560,18 +590,22 @@ to the composition.</p>
 <dl class="method">
 <dt id="cherab.core.distribution.DistributionFunction.density">
 <code class="descname">density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.density" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Evaluates the species’ density at the specified 3D coordinate.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> – position in meters</li>
-<li><strong>y</strong> – position in meters</li>
-<li><strong>z</strong> – position in meters</li>
+<li><strong>x</strong> (<em>float</em>) – position in meters</li>
+<li><strong>y</strong> (<em>float</em>) – position in meters</li>
+<li><strong>z</strong> (<em>float</em>) – position in meters</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">density in m^-3</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">density in m^-3</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
 </td>
 </tr>
 </tbody>
@@ -581,18 +615,22 @@ to the composition.</p>
 <dl class="method">
 <dt id="cherab.core.distribution.DistributionFunction.effective_temperature">
 <code class="descname">effective_temperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.effective_temperature" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Evaluates the species’ effective temperature at the specified 3D coordinate.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> – position in meters</li>
-<li><strong>y</strong> – position in meters</li>
-<li><strong>z</strong> – position in meters</li>
+<li><strong>x</strong> (<em>float</em>) – position in meters</li>
+<li><strong>y</strong> (<em>float</em>) – position in meters</li>
+<li><strong>z</strong> (<em>float</em>) – position in meters</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">temperature in eV</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">temperature in eV</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
 </td>
 </tr>
 </tbody>
@@ -604,10 +642,44 @@ to the composition.</p>
 <dl class="class">
 <dt id="cherab.core.distribution.Maxwellian">
 <em class="property">class </em><code class="descclassname">cherab.core.distribution.</code><code class="descname">Maxwellian</code><a class="headerlink" href="#cherab.core.distribution.Maxwellian" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.distribution.DistributionFunction" title="cherab.core.distribution.DistributionFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.distribution.DistributionFunction</span></code></a></p>
+<p>A Maxwellian distribution function.</p>
+<p>This class implements a Maxwell-Boltzmann distribution, the statistical distribution
+describing a system of particles that have reached thermodynamic equilibrium. The
+user supplies 3D functions that provide the mean density, temperature and velocity
+respectively.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>density</strong> (<em>Function3D</em>) – 3D function defining the density in cubic meters.</li>
+<li><strong>temperature</strong> (<em>Function3D</em>) – 3D function defining the temperature in eV.</li>
+<li><strong>velocity</strong> (<em>VectorFunction3D</em>) – 3D vector function defining the bulk velocity in meters per second.</li>
+<li><strong>atomic_mass</strong> (<em>double</em>) – Atomic mass of the species in kg.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">atomic_mass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core</span> <span class="kn">import</span> <span class="n">Maxwellian</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant3D</span><span class="p">,</span> <span class="n">ConstantVector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">deuterium</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setup distribution for a slab of plasma in thermodynamic equilibrium</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d0_density</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mf">1E17</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d0_temperature</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bulk_velocity</span> <span class="o">=</span> <span class="n">ConstantVector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d0_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">d0_density</span><span class="p">,</span> <span class="n">d0_temperature</span><span class="p">,</span> <span class="n">bulk_velocity</span><span class="p">,</span> <span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
 <dt id="cherab.core.distribution.Maxwellian.bulk_velocity">
 <code class="descname">bulk_velocity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.Maxwellian.bulk_velocity" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Evaluates the species’ bulk velocity at the specified 3D coordinate.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -623,6 +695,10 @@ to the composition.</p>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d0_distribution</span><span class="o">.</span><span class="n">bulk_velocity</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">Vector3D(0.0, 0.0, 0.0)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -644,6 +720,10 @@ to the composition.</p>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d0_distribution</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">1e+17</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -665,6 +745,10 @@ to the composition.</p>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d0_distribution</span><span class="o">.</span><span class="n">effective_temperature</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>

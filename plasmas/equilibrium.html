@@ -201,6 +201,7 @@ field.</p>
 <li><strong>x_points</strong> (<em>Point2D</em>) – The list of x-points.</li>
 <li><strong>x_points</strong> – The list of strike-points.</li>
 <li><strong>f_profile</strong> – The current flux profile on psin (2xN array).</li>
+<li><strong>q_profile</strong> – The safety factor (q) profile on psin (2xN array).</li>
 <li><strong>b_vacuum_radius</strong> (<em>float</em>) – Vacuum B-field reference radius (in meters).</li>
 <li><strong>b_vacuum_magnitude</strong> (<em>float</em>) – Vacuum B-Field magnitude at the reference radius.</li>
 <li><strong>lcfs_polygon</strong> – A 2xN array of [[x0, …], [y0, …]] vertices specifying the LCFS boundary.</li>
@@ -253,6 +254,48 @@ field.</p>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector2d">
+<code class="descname">map_vector2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector2d" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>toroidal</strong> – Toroidal vector magnitude,</li>
+<li><strong>poloidal</strong> – Poloidal vector magnitude.</li>
+<li><strong>normal</strong> – Flux surface normal magnitude.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">VectorFunction2D object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector3d">
+<code class="descname">map_vector3d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector3d" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>toroidal</strong> – Toroidal vector magnitude,</li>
+<li><strong>poloidal</strong> – Poloidal vector magnitude.</li>
+<li><strong>normal</strong> – Flux surface normal magnitude.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">VectorFunction3D object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -268,29 +311,6 @@ the Last Closed Flux Surface (LCFS). A value of 0.0 is returns outside the LCFS.
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>lcfs_polygon</strong> – An Nx2 array of (x, y) vertices specifying the LCFS boundary.</li>
 <li><strong>psi_normalised</strong> – A 2D function of normalised poloidal flux.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.tools.equilibrium.efit.EFITMagneticField">
-<em class="property">class </em><code class="descclassname">cherab.tools.equilibrium.efit.</code><code class="descname">EFITMagneticField</code><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITMagneticField" title="Permalink to this definition">¶</a></dt>
-<dd><p>A 2D magnetic field vector function derived from EFIT data.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>psi_normalised</strong> – A 2D function of normalised poloidal flux.</li>
-<li><strong>dpsi_dr</strong> – A 2D function of the radius differential of poloidal flux.</li>
-<li><strong>dpsi_dz</strong> – A 2D function of the height differential of poloidal flux.</li>
-<li><strong>f_profile</strong> – A 1D function containing a current flux profile.</li>
-<li><strong>b_vacuum_radius</strong> – Vacuum B-field reference radius (in meters).</li>
-<li><strong>b_vacuum_magnitude</strong> – Vacuum B-Field magnitude at the reference radius.</li>
-<li><strong>inside_lcfs</strong> – A 2D mask function returning 1 if inside the LCFS and 0 otherwise.</li>
 </ul>
 </td>
 </tr>
