@@ -178,17 +178,9 @@
 <em class="property">class </em><code class="descclassname">cherab.core.</code><code class="descname">Beam</code><a class="headerlink" href="#cherab.core.Beam" title="Permalink to this definition">¶</a></dt>
 <dd><p>A scene-graph object representing a Gaussian mono-energetic beam.</p>
 <p>The CHERAB beam object holds all the properties and state of a mono-energetic
-particle beam to which beam attenuation and emission models may be attached.</p>
-<p>To define a Beam object you need to define the</p>
-<p>plasma composition,
-magnetic field and electron distribution. The Plasma composition consists
-of a collection of Species objects that define the individual distribution
-functions of specific neutral atoms or ions in the plasma. Each individual
-species can only appear once in the composition. For more information see
-the related objects, Species, Composition, and DistributionFunction. To
-define the magnetic field you must provide a function that returns a
-Vector3D describing the field vector at the requested coordinate in the
-local plasma coordinate system.</p>
+particle beam to which beam attenuation and emission models may be attached.
+The Beam object is defined in terms of its power, energy, geometric properties
+and the plasma it interacts with.</p>
 <p>The Beam object is a Raysect scene-graph node and lives in it’s own
 coordinate space. This coordinate space is defined relative to it’s parent
 scene-graph object by an AffineTransform. The beam parameters are defined
@@ -196,7 +188,7 @@ in the Beam object coordinate space. Models using the beam object must
 convert any spatial coordinates into beam space before requesting values
 from the Beam object. The Beam axis is defined to lie along the positive
 z-axis with its origin at the origin of the local coordinate system.</p>
-<p>While a Beam object can be used to simple hold and sample beam properties,
+<p>While a Beam object can be used to simply hold and sample beam properties,
 it can also be used as an emitter in Raysect scenes by attaching
 emission models. The Beam’s bounding geometry is automatically defined from
 the Beam’s initial width and divergence. The length of the Beam geometry
@@ -227,35 +219,67 @@ this beam is attached.</p>
 <li><strong>parent</strong> (<em>Node</em>) – The parent node in the Raysect scene-graph.
 See the Raysect documentation for more guidance.</li>
 <li><strong>transform</strong> (<em>AffineMatrix3D</em>) – The transform defining the spatial position
-and orientation of this plasma. See the Raysect documentation if you need
+and orientation of this beam. See the Raysect documentation if you need
 guidance on how to use AffineMatrix3D transforms.</li>
-<li><strong>name</strong> (<em>str</em>) – The name for this plasma.</li>
-<li><strong>integrator</strong> (<em>VolumeIntegrator</em>) – The configurable method for doing
-volumetric integration through the plasma along a Ray’s path. Defaults to
-a numerical integrator with 1mm step size, NumericalIntegrator(step=0.001).</li>
+<li><strong>name</strong> (<em>str</em>) – The name for this beam object.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
-<li><strong>atomic_data</strong> (<em>AtomicData</em>) – The atomic data provider class for this plasma.
-All plasma emission from this plasma will be calculated with the same provider.</li>
-<li><strong>b_field</strong> (<em>VectorFunction3D</em>) – A vector function in 3D space that returns the
-magnetic field vector at any requested point.</li>
-<li><strong>composition</strong> (<a class="reference internal" href="core_plasma_classes.html#cherab.core.plasma.node.Composition" title="cherab.core.plasma.node.Composition"><em>Composition</em></a>) – The composition object manages all the atomic plasma
-species and provides access to their distribution functions.</li>
-<li><strong>electron_distribution</strong> (<a class="reference internal" href="core_plasma_classes.html#cherab.core.distribution.DistributionFunction" title="cherab.core.distribution.DistributionFunction"><em>DistributionFunction</em></a>) – A distribution function object
-describing the electron species properties.</li>
-<li><strong>geometry</strong> (<em>Primitive</em>) – The Raysect primitive that defines the geometric extent
-of this plasma.</li>
-<li><strong>geometry_transform</strong> (<em>AffineMatrix3D</em>) – The underlying geometry transform, different
-to the plasma node’s transform.</li>
-<li><strong>models</strong> (<em>ModelManager</em>) – The manager class that sets and provides access to the emission
-models for this plasma.</li>
+<li><strong>atomic_data</strong> (<em>AtomicData</em>) – The atomic data provider class for this beam.
+All beam emission and attenuation rates will be calculated from the same provider.</li>
+<li><strong>attenuator</strong> (<em>BeamAttenuator</em>) – The method used for calculating the attenuation
+of this beam into the plasma. Defaults to a SingleRayAttenuator().</li>
+<li><strong>divergence_x</strong> (<em>float</em>) – The beam profile divergence in the x dimension in beam
+coordinates (degrees).</li>
+<li><strong>divergence_y</strong> (<em>float</em>) – The beam profile divergence in the y dimension in beam
+coordinates (degrees).</li>
+<li><strong>element</strong> (<a class="reference internal" href="../atomic/elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – The element of which this beam is composed.</li>
+<li><strong>energy</strong> (<em>float</em>) – The beam energy in eV/amu.</li>
+<li><strong>integrator</strong> (<em>VolumeIntegrator</em>) – The configurable method for doing
+volumetric integration through the beam along a Ray’s path. Defaults to
+a numerical integrator with 1mm step size, NumericalIntegrator(step=0.001).</li>
+<li><strong>length</strong> (<em>float</em>) – The approximate length of this beam from source to extinction
+in the plasma. This is used for setting the bounding geometry over which calculations
+will occur. Units of m.</li>
+<li><strong>models</strong> (<em>ModelManager</em>) – The manager class that sets and provides access to the
+emission models for this beam.</li>
+<li><strong>plasma</strong> (<a class="reference internal" href="core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The plasma instance with which this beam interacts.</li>
+<li><strong>power</strong> (<em>float</em>) – The total beam power in W.</li>
+<li><strong>sigma</strong> (<em>float</em>) – The guassian beam width at the origin in m.</li>
+<li><strong>temperature</strong> (<em>float</em>) – The broadening of the beam (eV).</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># This example shows how to initialise and populate a basic beam</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">carbon</span><span class="p">,</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">Line</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.model</span> <span class="kn">import</span> <span class="n">BeamCXLine</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="kn">import</span> <span class="n">OpenADAS</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span> <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">translate</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">plasma</span> <span class="o">=</span> <span class="n">plasma</span>  <span class="c1"># put your plasma object here</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="mi">60000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">power</span> <span class="o">=</span> <span class="mf">1e4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">element</span> <span class="o">=</span> <span class="n">deuterium</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.025</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">divergence_x</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">divergence_y</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">BeamCXLine</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">)))]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">integrator</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">integrator</span><span class="o">.</span><span class="n">min_samples</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
 <dl class="method">
 <dt id="cherab.core.Beam.density">
 <code class="descname">density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.density" title="Permalink to this definition">¶</a></dt>
