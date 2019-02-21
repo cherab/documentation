@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.3. Plasma sources &mdash; CHERAB 1.01 documentation</title>
+  <title>Plasma sources &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -28,9 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.4. Mono-energetic Particle Beams" href="particle_beams.html" />
-    <link rel="prev" title="6.2. Plasma equilibrium" href="equilibrium.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -84,26 +82,13 @@
             
             
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="plasmas.html">6. Plasmas</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html">6.1. Core Plasma Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="equilibrium.html">6.2. Plasma equilibrium</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6.3. Plasma sources</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#measured-profiles">6.3.1. Measured profiles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#solps-simulations">6.3.2. SOLPS Simulations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#solpsmesh-class">6.3.2.1. SOLPSMesh Class</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="particle_beams.html">6.4. Mono-energetic Particle Beams</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="plasmas.html">6. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utility.html">9. Utilities</a></li>
@@ -111,6 +96,7 @@
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -157,9 +143,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="plasmas.html">6. Plasmas</a> &raquo;</li>
-        
-      <li>6.3. Plasma sources</li>
+      <li>Plasma sources</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -179,11 +163,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="plasma-sources">
-<h1>6.3. Plasma sources<a class="headerlink" href="#plasma-sources" title="Permalink to this headline">¶</a></h1>
+<h1>Plasma sources<a class="headerlink" href="#plasma-sources" title="Permalink to this headline">¶</a></h1>
 <p>The core plasma object needs to be populated with distributions for each species in the model. The two most common ways
 of providing a plasma model are by using existing measured core profiles, and loading from a simulation such as SOLPS.</p>
 <div class="section" id="measured-profiles">
-<h2>6.3.1. Measured profiles<a class="headerlink" href="#measured-profiles" title="Permalink to this headline">¶</a></h2>
+<h2>Measured profiles<a class="headerlink" href="#measured-profiles" title="Permalink to this headline">¶</a></h2>
 <p>In this example, we use the PPF system to load a JET plasma from analysed diagnostic PPFs. Start by loading the
 equilibrium and creating a psi mapping function.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load equilibrium object</span>
@@ -239,7 +223,7 @@ equilibrium and creating a psi mapping function.</p>
 </div>
 </div>
 <div class="section" id="solps-simulations">
-<h2>6.3.2. SOLPS Simulations<a class="headerlink" href="#solps-simulations" title="Permalink to this headline">¶</a></h2>
+<h2>SOLPS Simulations<a class="headerlink" href="#solps-simulations" title="Permalink to this headline">¶</a></h2>
 <p>Using an existing simulation can make it much easier to load a plasma. In this case, a reference simulation will be
 loaded from the AUG MDSplus server.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cherab_contrib.simulation_data.solps.solps_plasma</span> <span class="k">import</span> <span class="n">SOLPSSimulation</span>
@@ -259,7 +243,7 @@ loaded from the AUG MDSplus server.</p>
 </pre></div>
 </div>
 <div class="section" id="solpsmesh-class">
-<h3>6.3.2.1. SOLPSMesh Class<a class="headerlink" href="#solpsmesh-class" title="Permalink to this headline">¶</a></h3>
+<h3>SOLPSMesh Class<a class="headerlink" href="#solpsmesh-class" title="Permalink to this headline">¶</a></h3>
 <p>Documentation coming soon.</p>
 </div>
 </div>
@@ -270,15 +254,6 @@ loaded from the AUG MDSplus server.</p>
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="particle_beams.html" class="btn btn-neutral float-right" title="6.4. Mono-energetic Particle Beams" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="equilibrium.html" class="btn btn-neutral" title="6.2. Plasma equilibrium" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Flux Function Plasmas &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">6. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility.html">9. Utilities</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Flux Function Plasmas</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demonstrations/plasmas/flux_function_plasmas.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="flux-function-plasmas">
+<span id="id1"></span><h1>Flux Function Plasmas<a class="headerlink" href="#flux-function-plasmas" title="Permalink to this headline">¶</a></h1>
+<p>It is a common use case to approximate the core plasma of a tokamak with 1D flux
+functions. For example, we might assume the electron temperature can be defined
+as a 1D profile function of <span class="math notranslate nohighlight">\(\psi_n\)</span>, i.e. is constant on flux surfaces.
+This demonstration shows how to define plasma distributions in terms of 1D
+flux functions using the EFITEquilibrium’s mapping utilities.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample2d</span><span class="p">,</span> <span class="n">Slice3D</span><span class="p">,</span> <span class="n">Interpolate1DCubic</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a JET plasma EFITEquilibrium object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.jet</span> <span class="kn">import</span> <span class="n">JETEquilibrium</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">equilibria</span> <span class="o">=</span> <span class="n">JETEquilibrium</span><span class="p">(</span><span class="mi">91693</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">equilibrium</span> <span class="o">=</span> <span class="n">equilibria</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="mf">55.0</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The equilibrium object includes methods for mapping functions onto the</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flux</span> <span class="n">surfaces</span><span class="o">.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># These create 2D or 3D functions or e.g. temperature, density etc...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">according</span> <span class="n">to</span> <span class="n">the</span> <span class="n">profile</span> <span class="n">being</span> <span class="n">mapped</span><span class="o">.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The user can supply either a python function (with 1 argument -</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normalised</span> <span class="n">psi</span><span class="p">),</span> <span class="n">a</span> <span class="n">Function1D</span> <span class="nb">object</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">numerical</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># array holding the normalised psi and function values.</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># In this example we create fake 2D and 3D &quot;temperature&quot; profiles from</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">an</span> <span class="n">array</span> <span class="n">of</span> <span class="n">data</span><span class="o">.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The array is interpolated with cubic interpolation and then mapped</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">onto</span> <span class="n">the</span> <span class="n">normalised</span> <span class="n">psi</span> <span class="n">grid</span><span class="o">.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temperature_3d</span> <span class="o">=</span> <span class="n">equilibrium</span><span class="o">.</span><span class="n">map3d</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2000</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># display 3D temperature</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rmin</span><span class="p">,</span> <span class="n">rmax</span> <span class="o">=</span> <span class="n">equilibrium</span><span class="o">.</span><span class="n">r_range</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zmin</span><span class="p">,</span> <span class="n">zmax</span> <span class="o">=</span> <span class="n">equilibrium</span><span class="o">.</span><span class="n">z_range</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nr</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">rmax</span> <span class="o">-</span> <span class="n">rmin</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.025</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nz</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">zmax</span> <span class="o">-</span> <span class="n">zmin</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.025</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temperature_slicez</span> <span class="o">=</span> <span class="n">Slice3D</span><span class="p">(</span><span class="n">temperature_3d</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">temperature_grid</span> <span class="o">=</span> <span class="n">sample2d</span><span class="p">(</span><span class="n">temperature_slicez</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">rmax</span><span class="p">,</span> <span class="n">rmax</span><span class="p">,</span> <span class="n">nr</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="o">-</span><span class="n">rmax</span><span class="p">,</span> <span class="n">rmax</span><span class="p">,</span> <span class="n">nr</span><span class="p">))</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">temperature_grid</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">shading</span><span class="o">=</span><span class="s1">&#39;gouraud&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">autoscale</span><span class="p">(</span><span class="n">tight</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;3D Temperature (x-y slice)&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rmin</span><span class="p">,</span> <span class="n">rmax</span> <span class="o">=</span> <span class="n">equilibrium</span><span class="o">.</span><span class="n">r_range</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zmin</span><span class="p">,</span> <span class="n">zmax</span> <span class="o">=</span> <span class="n">equilibrium</span><span class="o">.</span><span class="n">z_range</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nr</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">rmax</span> <span class="o">-</span> <span class="n">rmin</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.025</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nz</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">zmax</span> <span class="o">-</span> <span class="n">zmin</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.025</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temperature_slicey</span> <span class="o">=</span> <span class="n">Slice3D</span><span class="p">(</span><span class="n">temperature_3d</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">temperature_grid</span> <span class="o">=</span> <span class="n">sample2d</span><span class="p">(</span><span class="n">temperature_slicey</span><span class="p">,</span> <span class="p">(</span><span class="n">rmin</span><span class="p">,</span> <span class="n">rmax</span><span class="p">,</span> <span class="n">nr</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">zmin</span><span class="p">,</span> <span class="n">zmax</span><span class="p">,</span> <span class="n">nz</span><span class="p">))</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">temperature_grid</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">shading</span><span class="o">=</span><span class="s1">&#39;gouraud&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">autoscale</span><span class="p">(</span><span class="n">tight</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;3D Temperature (x-z slice)&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/equilibrium_mapped_te_xz1.png"><img alt="../../_images/equilibrium_mapped_te_xz1.png" src="../../_images/equilibrium_mapped_te_xz1.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> A slice of the electron temperature through the x-z plane
+revealing Te as a flux quantitiy.</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../../_images/equilibrium_mapped_te_xy.png"><img alt="../../_images/equilibrium_mapped_te_xy.png" src="../../_images/equilibrium_mapped_te_xy.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> A slice of the electron temperature through the x-y plane.</span></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

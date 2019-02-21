@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.3. Plasma sources" href="plasma_sources.html" />
+    <link rel="next" title="6.3. Mono-energetic Particle Beams" href="particle_beams.html" />
     <link rel="prev" title="6.1. Core Plasma Classes" href="core_plasma_classes.html" /> 
 
   
@@ -92,12 +92,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="plasmas.html">6. Plasmas</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html">6.1. Core Plasma Classes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6.2. Plasma equilibrium</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#efit">6.2.1. EFIT</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="plasma_sources.html">6.3. Plasma sources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="particle_beams.html">6.4. Mono-energetic Particle Beams</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.2. Plasma equilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="particle_beams.html">6.3. Mono-energetic Particle Beams</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
@@ -107,6 +103,7 @@
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -176,22 +173,27 @@
             
   <div class="section" id="plasma-equilibrium">
 <h1>6.2. Plasma equilibrium<a class="headerlink" href="#plasma-equilibrium" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="efit">
-<h2>6.2.1. EFIT<a class="headerlink" href="#efit" title="Permalink to this headline">¶</a></h2>
-<p>The workhorse equilibrium class.</p>
 <dl class="class">
 <dt id="cherab.tools.equilibrium.efit.EFITEquilibrium">
 <em class="property">class </em><code class="descclassname">cherab.tools.equilibrium.efit.</code><code class="descname">EFITEquilibrium</code><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITEquilibrium" title="Permalink to this definition">¶</a></dt>
 <dd><p>An object representing an EFIT equilibrium time-slice.</p>
+<p>EFIT is a code commonly used throughout the Fusion research community
+for calculating the plasma magnetic equilibrium from a range of magnetics
+measurements (L. Lao et. al. Nucl. Fusion <strong>25</strong> 1985). This equilibrium object
+allows the calculation of the tokamak magnetic field from a number of EFIT
+code outputs. To use this class properly users should be familiar with
+the output data of EFIT.</p>
 <p>The EFIT data is interpolated to produced continuous functions of the
 equilibrium attributes, such as the magnetic flux (psi) and magnetic
 field.</p>
 <p>Note: psin_to_r mapping only exists if the psi axis is monotonic.</p>
+<p>For examples of how to instantiate this class, see the examples in the
+machine specific packages.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>r</strong> – EFIT grid radius axis values (array).</li>
 <li><strong>z</strong> – EFIT grid height axis values (array).</li>
 <li><strong>psi_grid</strong> – EFIT psi grid values (array).</li>
@@ -210,12 +212,31 @@ field.</p>
 </ul>
 </td>
 </tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>psi</strong> (<em>Function2D</em>) – The poloidal flux in the r-z plane, <span class="math notranslate nohighlight">\(\psi(r,z)\)</span>.</li>
+<li><strong>psi_normalised</strong> (<em>Function2D</em>) – The normalised poloidal flux in the r-z plane, <span class="math notranslate nohighlight">\(\psi_n(r,z)\)</span>.</li>
+<li><strong>q</strong> (<em>Function1D</em>) – The safety factor <span class="math notranslate nohighlight">\(q\)</span> at the specified normalised poloidal flux, <span class="math notranslate nohighlight">\(q(\psi_n)\)</span>.</li>
+<li><strong>b_field</strong> (<em>VectorFunction2D</em>) – A 2D function that returns the magnetic field vector at the specified
+point in the r-z plane, <span class="math notranslate nohighlight">\(B(r, z)\)</span>.</li>
+<li><strong>toroidal_vector</strong> (<em>VectorFunction2D</em>) – The toroidal flux coordinate basis vector, <span class="math notranslate nohighlight">\(\hat{\phi}(r, z)\)</span>.</li>
+<li><strong>poloidal_vector</strong> (<em>VectorFunction2D</em>) – The poloidal flux coordinate basis vector, <span class="math notranslate nohighlight">\(\hat{     heta }(r, z)\)</span>.</li>
+<li><strong>surface_normal</strong> (<em>VectorFunction2D</em>) – The surface normal flux coordinate basis vector, <span class="math notranslate nohighlight">\(\hat{\psi}(r, z)\)</span>.</li>
+<li><strong>inside_lcfs</strong> (<em>Function2D</em>) – A 2D function that identifies if a given (r, z) coordinate lies inside or outside
+the plasma Last Closed Flux Surface (LCFS). This mask function returns a value of 1 if the requested point
+lies inside the LCFS. A value of 0.0 is returned outside the LCFS.</li>
+<li><strong>inside_limiter</strong> (<em>Function2D</em>) – A 2D function that identifies if a given (r, z) coordinate lies inside or
+outside the first wall limiter polygon. This mask function returns a value of 1 if the requested point
+lies inside the limit polygon. A value of 0.0 is returned outside the polygon.</li>
+</ul>
+</td>
+</tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="cherab.tools.equilibrium.efit.EFITEquilibrium.map2d">
 <code class="descname">map2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maps a 1D profile onto the equilibrium to give a 2D profile.</p>
+<p>Useful for mapping flux surface quantities in the r-z plane.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -231,12 +252,24 @@ field.</p>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Hypothesise a 1D electron temperature profile as a function of psi_n.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">te_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">te_data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">te_data</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">550</span><span class="p">,</span> <span class="mi">600</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">te</span> <span class="o">=</span> <span class="n">equilibrium</span><span class="o">.</span><span class="n">map2d</span><span class="p">(</span><span class="n">te_data</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># evaluate temperature mapped on flux surfaces in (r, z)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">te</span><span class="p">(</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="go">487.924780234</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="cherab.tools.equilibrium.efit.EFITEquilibrium.map3d">
 <code class="descname">map3d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map3d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maps a 1D profile onto the equilibrium to give a 3D profile.</p>
+<p>Useful for mapping flux surface quantities in 3D space.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -252,70 +285,113 @@ field.</p>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Hypothesise a 1D electron temperature profile as a function of psi_n.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">te_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">te_data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">te_data</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">550</span><span class="p">,</span> <span class="mi">600</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">te</span> <span class="o">=</span> <span class="n">equilibrium</span><span class="o">.</span><span class="n">map3d</span><span class="p">(</span><span class="n">te_data</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># evaluate temperature mapped on flux surfaces in (r, z)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">te</span><span class="p">(</span><span class="mf">3.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="go">357.8793240</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector2d">
 <code class="descname">map_vector2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector2d" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Maps velocity components in flux coordinates onto flux surfaces in the r-z plane.</p>
+<p>It is often convenient to express the plasma velocity components in flux coordinates,
+assuming the velocities are flux functions. This function allows the user to
+specify velocity components as 1D functions of <span class="math notranslate nohighlight">\(\psi_n\)</span>. The three velocity
+components are combined to yield a velocity vector at the requested r-z coordinate.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>toroidal</strong> – Toroidal vector magnitude,</li>
-<li><strong>poloidal</strong> – Poloidal vector magnitude.</li>
-<li><strong>normal</strong> – Flux surface normal magnitude.</li>
+<li><strong>toroidal</strong> – Toroidal velocity <span class="math notranslate nohighlight">\(v_{\phi} (\psi_n)\)</span>, specified as a 1D function
+or Nx2 array.</li>
+<li><strong>poloidal</strong> – Poloidal vector <span class="math notranslate nohighlight">\(v_{     heta} (\psi_n)\)</span>, specified as a 1D function
+or Nx2 array.</li>
+<li><strong>normal</strong> – Velocity along the flux surface normal <span class="math notranslate nohighlight">\(v_{\psi} (\psi_n)\)</span>, specified
+as a 1D function or Nx2 array.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">VectorFunction2D object.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">VectorFunction2D object that returns the velocity vector at a given r,z coordinate,
+<span class="math notranslate nohighlight">\(v(r,z)\)</span>.</p>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Hypothesise 1D profiles for the toroidal and poloidal velocities on psi_n.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_toroidal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_toroidal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_toroidal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="mf">3e4</span><span class="p">,</span> <span class="mf">5e4</span><span class="p">,</span> <span class="mf">5.5e4</span><span class="p">,</span> <span class="mf">6e4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_poloidal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_poloidal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_poloidal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4e4</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="mf">3e3</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Assume zero velocity normal to flux surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant1D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_normal</span> <span class="o">=</span> <span class="n">Constant1D</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># generate VectorFunction2D and sample</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">equilibrium</span><span class="o">.</span><span class="n">map_vector2d</span><span class="p">(</span><span class="n">v_toroidal</span><span class="p">,</span> <span class="n">v_poloidal</span><span class="p">,</span> <span class="n">v_normal</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="p">(</span><span class="mf">3.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="go">Vector3D(134.523, 543.6347, 25342.16)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector3d">
 <code class="descname">map_vector3d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector3d" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>toroidal</strong> – Toroidal vector magnitude,</li>
-<li><strong>poloidal</strong> – Poloidal vector magnitude.</li>
-<li><strong>normal</strong> – Flux surface normal magnitude.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">VectorFunction3D object</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.tools.equilibrium.efit.EFITLCFSMask">
-<em class="property">class </em><code class="descclassname">cherab.tools.equilibrium.efit.</code><code class="descname">EFITLCFSMask</code><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITLCFSMask" title="Permalink to this definition">¶</a></dt>
-<dd><p>A 2D function that identifies if a point lies inside or outside the plasma LCFS.</p>
-<p>This mask function returns a value of 1 if the requested point lies inside
-the Last Closed Flux Surface (LCFS). A value of 0.0 is returns outside the LCFS.</p>
+<dd><p>Maps velocity components in flux coordinates onto flux surfaces in 3D space.</p>
+<p>It is often convenient to express the plasma velocity components in flux coordinates,
+assuming the velocities are flux functions. This function allows the user to
+specify velocity components as 1D functions of <span class="math notranslate nohighlight">\(\psi_n\)</span>. The three velocity
+components are combined to yield a velocity vector at the requested 3D coordinate.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>lcfs_polygon</strong> – An Nx2 array of (x, y) vertices specifying the LCFS boundary.</li>
-<li><strong>psi_normalised</strong> – A 2D function of normalised poloidal flux.</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>toroidal</strong> – Toroidal velocity <span class="math notranslate nohighlight">\(v_{\phi} (\psi_n)\)</span>, specified as a 1D function
+or Nx2 array.</li>
+<li><strong>poloidal</strong> – Poloidal vector <span class="math notranslate nohighlight">\(v_{     heta} (\psi_n)\)</span>, specified as a 1D function
+or Nx2 array.</li>
+<li><strong>normal</strong> – Velocity along the flux surface normal <span class="math notranslate nohighlight">\(v_{\psi} (\psi_n)\)</span>, specified
+as a 1D function or Nx2 array.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">VectorFunction2D object that returns the velocity vector at a given r,z coordinate,
+<span class="math notranslate nohighlight">\(v(r,z)\)</span>.</p>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Hypothesise 1D profiles for the toroidal and poloidal velocities on psi_n.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_toroidal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_toroidal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_toroidal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="mf">3e4</span><span class="p">,</span> <span class="mf">5e4</span><span class="p">,</span> <span class="mf">5.5e4</span><span class="p">,</span> <span class="mf">6e4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_poloidal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_poloidal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_poloidal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4e4</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="mf">3e3</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Assume zero velocity normal to flux surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant1D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v_normal</span> <span class="o">=</span> <span class="n">Constant1D</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># generate VectorFunction2D and sample</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">equilibrium</span><span class="o">.</span><span class="n">map_vector3d</span><span class="p">(</span><span class="n">v_toroidal</span><span class="p">,</span> <span class="n">v_poloidal</span><span class="p">,</span> <span class="n">v_normal</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="p">(</span><span class="mf">3.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="go">Vector3D(134.523, 543.6347, 25342.16)</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="function">
@@ -329,14 +405,21 @@ the Last Closed Flux Surface (LCFS). A value of 0.0 is returns outside the LCFS.
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>equilibrium</strong> – The input EFIT equilibrium object.</li>
 <li><strong>detail</strong> – If true, prints additional information about the equilibrium.</li>
-<li><strong>resolution</strong> (<em>float</em>) – Spatial resolution for sampling.</li>
+<li><strong>resolution</strong> (<em>float</em>) – Spatial resolution for sampling (default=0.025).</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.equilibrium</span> <span class="kn">import</span> <span class="n">plot_equilibrium</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_equilibrium</span><span class="p">(</span><span class="n">equilibrium</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/equilibrium_plot.png"><img alt="../_images/equilibrium_plot.png" src="../_images/equilibrium_plot.png" style="width: 300px;" /></a>
+</div>
 <dl class="function">
 <dt id="cherab.tools.equilibrium.eqdsk.import_eqdsk">
 <code class="descclassname">cherab.tools.equilibrium.eqdsk.</code><code class="descname">import_eqdsk</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.eqdsk.import_eqdsk" title="Permalink to this definition">¶</a></dt>
@@ -355,9 +438,12 @@ the Last Closed Flux Surface (LCFS). A value of 0.0 is returns outside the LCFS.
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.equilibrium</span> <span class="kn">import</span> <span class="n">import_eqdsk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">equilibrium</span> <span class="o">=</span> <span class="n">import_eqdsk</span><span class="p">(</span><span class="s2">&quot;equilibrium.eqdsk&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
-</div>
 </div>
 
 
@@ -368,7 +454,7 @@ the Last Closed Flux Surface (LCFS). A value of 0.0 is returns outside the LCFS.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plasma_sources.html" class="btn btn-neutral float-right" title="6.3. Plasma sources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="particle_beams.html" class="btn btn-neutral float-right" title="6.3. Mono-energetic Particle Beams" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="core_plasma_classes.html" class="btn btn-neutral" title="6.1. Core Plasma Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
