@@ -98,7 +98,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">9. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -283,7 +283,8 @@ emission models for this beam.</li>
 <dl class="method">
 <dt id="cherab.core.Beam.density">
 <code class="descname">density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.density" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the bean density at the specified coordinates.</p>
+<dd><p>Returns the bean density at the specified position in beam coordinates.</p>
+<p>Note: this function is only defined over the domain 0 &lt; z &lt; beam_length.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

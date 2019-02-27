@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. Utilities &mdash; CHERAB 1.01 documentation</title>
+  <title>9.2. Utilities &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,16 +24,16 @@
 
   
 
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Atomic Data" href="demonstrations/demonstrations.html" />
-    <link rel="prev" title="8. Math functions" href="math.html" /> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Atomic Data" href="../demonstrations/demonstrations.html" />
+    <link rel="prev" title="9.1. Inversions" href="inversions.html" /> 
 
   
-  <script src="_static/js/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -49,7 +49,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> CHERAB
           
 
           
@@ -66,7 +66,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -85,26 +85,30 @@
             
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a></li>
-<li class="toctree-l1"><a class="reference internal" href="licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation_and_structure.html">3. Installation and Project Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="available_modules.html">4. Available Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">5. Atomic Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plasmas/plasmas.html">6. Plasmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math.html">8. Math functions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Utilities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.utility.conversion">9.1. Unit Conversions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.utility.notify">9.2. Notify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.utility.recursivedict">9.3. Recursive Dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tools.html">9. Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="inversions.html">9.1. Inversions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.2. Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-cherab.core.utility.conversion">9.2.1. Unit Conversions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cherab.core.utility.notify">9.2.2. Notify</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cherab.core.utility.recursivedict">9.2.3. Recursive Dict</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html">Atomic Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
             
@@ -119,7 +123,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">CHERAB</a>
+          <a href="../index.html">CHERAB</a>
         
       </nav>
 
@@ -148,15 +152,17 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>9. Utilities</li>
+          <li><a href="tools.html">9. Tools</a> &raquo;</li>
+        
+      <li>9.2. Utilities</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/utility.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tools/utility.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,10 +176,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="utilities">
-<h1>9. Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
+<h1>9.2. Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
 <p>Small module of helper functions and classes.</p>
 <div class="section" id="module-cherab.core.utility.conversion">
-<span id="unit-conversions"></span><h2>9.1. Unit Conversions<a class="headerlink" href="#module-cherab.core.utility.conversion" title="Permalink to this headline">¶</a></h2>
+<span id="unit-conversions"></span><h2>9.2.1. Unit Conversions<a class="headerlink" href="#module-cherab.core.utility.conversion" title="Permalink to this headline">¶</a></h2>
 <p>Utility functions shared for two or more modules</p>
 <dl class="class">
 <dt id="cherab.core.utility.conversion.AmuToKg">
@@ -261,7 +267,7 @@
 
 </div>
 <div class="section" id="module-cherab.core.utility.notify">
-<span id="notify"></span><h2>9.2. Notify<a class="headerlink" href="#module-cherab.core.utility.notify" title="Permalink to this headline">¶</a></h2>
+<span id="notify"></span><h2>9.2.2. Notify<a class="headerlink" href="#module-cherab.core.utility.notify" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.utility.notify.Notifier">
 <em class="property">class </em><code class="descclassname">cherab.core.utility.notify.</code><code class="descname">Notifier</code><a class="headerlink" href="#cherab.core.utility.notify.Notifier" title="Permalink to this definition">¶</a></dt>
@@ -341,7 +347,7 @@ a basic builtin list.</p>
 
 </div>
 <div class="section" id="module-cherab.core.utility.recursivedict">
-<span id="recursive-dict"></span><h2>9.3. Recursive Dict<a class="headerlink" href="#module-cherab.core.utility.recursivedict" title="Permalink to this headline">¶</a></h2>
+<span id="recursive-dict"></span><h2>9.2.3. Recursive Dict<a class="headerlink" href="#module-cherab.core.utility.recursivedict" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.utility.recursivedict.RecursiveDict">
 <em class="property">class </em><code class="descclassname">cherab.core.utility.recursivedict.</code><code class="descname">RecursiveDict</code><a class="headerlink" href="#cherab.core.utility.recursivedict.RecursiveDict" title="Permalink to this definition">¶</a></dt>
@@ -399,10 +405,10 @@ converting the tree to a nested set of basic python dictionaries.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="demonstrations/demonstrations.html" class="btn btn-neutral float-right" title="Atomic Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../demonstrations/demonstrations.html" class="btn btn-neutral float-right" title="Atomic Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="math.html" class="btn btn-neutral" title="8. Math functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="inversions.html" class="btn btn-neutral" title="9.1. Inversions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -431,7 +437,7 @@ converting the tree to a nested set of basic python dictionaries.</p>
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
+            URL_ROOT:'../',
             VERSION:'1.01',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
@@ -440,14 +446,14 @@ converting the tree to a nested set of basic python dictionaries.</p>
             SOURCELINK_SUFFIX: '.txt'
         };
     </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="_static/js/theme.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

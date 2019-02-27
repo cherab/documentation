@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>9.1. Inversions &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9.2. Utilities" href="utility.html" />
+    <link rel="prev" title="9. Tools" href="tools.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tools.html">9. Tools</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.1. Inversions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#voxels">9.1.1. Voxels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inversion-methods">9.1.2. Inversion Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">9.2. Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="tools.html">9. Tools</a> &raquo;</li>
+        
+      <li>9.1. Inversions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tools/inversions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="inversions">
+<h1>9.1. Inversions<a class="headerlink" href="#inversions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="voxels">
+<h2>9.1.1. Voxels<a class="headerlink" href="#voxels" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cherab.tools.inversions.voxels.Voxel">
+<em class="property">class </em><code class="descclassname">cherab.tools.inversions.voxels.</code><code class="descname">Voxel</code><a class="headerlink" href="#cherab.tools.inversions.voxels.Voxel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Voxel base class.</p>
+<p>Each Voxel is a Node in the scenegraph. Each Voxel type that
+inherits from this class defines its own geometry.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><strong>volume</strong> (<em>float</em>) – The geometric volume of this voxel.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.tools.inversions.voxels.AxisymmetricVoxel">
+<em class="property">class </em><code class="descclassname">cherab.tools.inversions.voxels.</code><code class="descname">AxisymmetricVoxel</code><a class="headerlink" href="#cherab.tools.inversions.voxels.AxisymmetricVoxel" title="Permalink to this definition">¶</a></dt>
+<dd><p>An axis-symmetric Voxel.</p>
+<p>This Voxel is symmetric about the vertical z-axis. The cross section
+of the voxel can be arbitrarily defined by a polygon in the r-z plane.
+The type of geometric primitive used to define the geometric extent of
+this Voxel can be selected by the user and either of type Mesh or CSG.
+The two representations should approximately the same geometry but have
+different performance goals. The CSG representation uses lower memory and
+is a better choice when large numbers of Voxels will be present in a single
+scene. The Mesh representation is split into smaller components and better
+for cases where multiple importance sampling is important, such as weight
+matrices including reflection effects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>vertices</strong> – A list/tuple of Point2D objects specifying the voxel’s
+polygon outline in the r-z plane.</li>
+<li><strong>parent</strong> (<em>Node</em>) – The scenegraph to which this Voxel is attached.</li>
+<li><strong>material</strong> (<em>Material</em>) – The emission material of this Voxel, defaults
+to a UnityVolumeEmitter() for weight matrix calculations.</li>
+<li><strong>primitive_type</strong> (<em>str</em>) – Specifies the primitive type, can be either
+‘mesh’ or ‘csg’. Defaults to the mesh representation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>volume</strong> (<em>float</em>) – The geometric volume of this voxel.</li>
+<li><strong>cross_sectional_area</strong> (<em>float</em>) – The cross sectional area of the voxel in
+the r-z plane.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.tools.inversions.voxels.VoxelCollection">
+<em class="property">class </em><code class="descclassname">cherab.tools.inversions.voxels.</code><code class="descname">VoxelCollection</code><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection" title="Permalink to this definition">¶</a></dt>
+<dd><p>The base class for collections of voxels.</p>
+<p>Used for managing a collection of voxels when calculating a weight
+matrix for example.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>count</strong> (<em>float</em>) – The number of voxels in this collection.</li>
+<li><strong>total_volume</strong> (<em>float</em>) – The total volume of all voxels.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function">
+<code class="descname">emissivities_from_function</code><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an array of sampled emissivities at each voxel location.</p>
+<p>This is a virtual method and must be implemented in the derived
+VoxelCollection class.</p>
+<p>Note that the results will be nonsense if you mix an emission function
+and VoxelCollection with incompatible symmetries.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>emission_function</strong> (<em>Function3D</em>) – Emission function to sample over.</li>
+<li><strong>grid_samples</strong> (<em>int</em>) – Number of emission samples to average over.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cherab.tools.inversions.voxels.VoxelCollection.parent_all_voxels">
+<code class="descname">parent_all_voxels</code><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.parent_all_voxels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add all voxels in this collection to the scenegraph.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cherab.tools.inversions.voxels.VoxelCollection.set_active">
+<code class="descname">set_active</code><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.set_active" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the ith voxel as an active emitter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>item</strong> – If item is an int, the ith voxel will be configured as an active emitter,
+all the others will be turned off. If item is the string ‘all’, all voxels will be
+active emitters.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels">
+<code class="descname">unparent_all_voxels</code><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all voxels in this collection from the scenegraph.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.tools.inversions.voxels.ToroidalVoxelGrid">
+<em class="property">class </em><code class="descclassname">cherab.tools.inversions.voxels.</code><code class="descname">ToroidalVoxelGrid</code><a class="headerlink" href="#cherab.tools.inversions.voxels.ToroidalVoxelGrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>A collection of toroidal voxels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>voxel_coordinates</strong> – </li>
+<li><strong>name</strong> – </li>
+<li><strong>parent</strong> – </li>
+<li><strong>transform</strong> – </li>
+<li><strong>active</strong> – </li>
+<li><strong>primitive_type</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="cherab.tools.inversions.voxels.ToroidalVoxelGrid.emissivities_from_function">
+<code class="descname">emissivities_from_function</code><a class="headerlink" href="#cherab.tools.inversions.voxels.ToroidalVoxelGrid.emissivities_from_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an array of sampled emissivities at each voxel location.</p>
+<p>Note that the results will be nonsense if you mix an emission function
+and VoxelCollection with incompatible symmetries.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>emission_function</strong> (<em>Function3D</em>) – Emission function to sample over.</li>
+<li><strong>grid_samples</strong> (<em>int</em>) – Number of emission samples to average over.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="inversion-methods">
+<h2>9.1.2. Inversion Methods<a class="headerlink" href="#inversion-methods" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="utility.html" class="btn btn-neutral float-right" title="9.2. Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tools.html" class="btn btn-neutral" title="9. Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Beams into plasmas &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">6. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">9. Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Beams into plasmas</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demonstrations/plasmas/beams_into_plasmas.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="beams-into-plasmas">
+<span id="id1"></span><h1>Beams into plasmas<a class="headerlink" href="#beams-into-plasmas" title="Permalink to this headline">¶</a></h1>
+<p>This demonstration shows how to define a mono-energetic neutral particle beam that interacts
+with a plasma. Beams such as these are commonly used in fusion plasmas for power injection
+and current drive, usually abbreviated as NBI.</p>
+<p>In this demo we create a slab of plasma that has a pedestal starting at x=0 in the y-z plane.
+The pedestal extends for some defined length before reaching a flat top for x&gt;pedestal_length.
+We then define a beam composed of three different energy components. The rest of the code
+visualises the results.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">raysect.core</span> <span class="k">import</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate_basis</span><span class="p">,</span> <span class="n">Vector3D</span>
+<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="k">import</span> <span class="n">World</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="k">import</span> <span class="n">PinholeCamera</span>
+
+<span class="kn">from</span> <span class="nn">cherab.core</span> <span class="k">import</span> <span class="n">Beam</span>
+<span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="k">import</span> <span class="n">sample3d</span>
+<span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="k">import</span> <span class="n">hydrogen</span><span class="p">,</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="n">Line</span>
+<span class="kn">from</span> <span class="nn">cherab.core.model</span> <span class="k">import</span> <span class="n">SingleRayAttenuator</span><span class="p">,</span> <span class="n">BeamCXLine</span>
+<span class="kn">from</span> <span class="nn">cherab.tools.plasmas.slab</span> <span class="k">import</span> <span class="n">build_slab_plasma</span>
+<span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="k">import</span> <span class="n">OpenADAS</span>
+
+
+<span class="c1">###############</span>
+<span class="c1"># Make Plasma #</span>
+
+<span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+
+<span class="n">plasma</span> <span class="o">=</span> <span class="n">build_slab_plasma</span><span class="p">(</span><span class="n">peak_density</span><span class="o">=</span><span class="mf">5e19</span><span class="p">,</span> <span class="n">impurities</span><span class="o">=</span><span class="p">[(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">)],</span> <span class="n">world</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+
+
+<span class="c1">####################</span>
+<span class="c1"># Visualise Plasma #</span>
+
+<span class="n">h0</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hydrogen</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">h1</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hydrogen</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c6</span> <span class="o">=</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># Run some plots to check the distribution functions and emission profile are as expected</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t_samples</span> <span class="o">=</span> <span class="n">sample3d</span><span class="p">(</span><span class="n">h1</span><span class="o">.</span><span class="n">distribution</span><span class="o">.</span><span class="n">effective_temperature</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">t_samples</span><span class="p">)),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;z axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ion temperature profile in x-z plane&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t_samples</span> <span class="o">=</span> <span class="n">sample3d</span><span class="p">(</span><span class="n">h1</span><span class="o">.</span><span class="n">distribution</span><span class="o">.</span><span class="n">effective_temperature</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">t_samples</span><span class="p">)),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ion temperature profile in y-z plane&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t_samples</span> <span class="o">=</span> <span class="n">sample3d</span><span class="p">(</span><span class="n">h0</span><span class="o">.</span><span class="n">distribution</span><span class="o">.</span><span class="n">density</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">t_samples</span><span class="p">)),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;z axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neutral Density profile in x-z plane&quot;</span><span class="p">)</span>
+
+
+<span class="c1">###########################</span>
+<span class="c1"># Inject beam into plasma #</span>
+
+<span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">missing_rates_return_null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">integration_step</span> <span class="o">=</span> <span class="mf">0.0025</span>
+<span class="n">beam_transform</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate_basis</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">beam_energy</span> <span class="o">=</span> <span class="mi">50000</span>  <span class="c1"># keV</span>
+
+<span class="n">beam_full</span> <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">beam_transform</span><span class="p">)</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">plasma</span> <span class="o">=</span> <span class="n">plasma</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">adas</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="n">beam_energy</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">power</span> <span class="o">=</span> <span class="mf">3e6</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">element</span> <span class="o">=</span> <span class="n">deuterium</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">divergence_x</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">divergence_y</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">attenuator</span> <span class="o">=</span> <span class="n">SingleRayAttenuator</span><span class="p">(</span><span class="n">clamp_to_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">BeamCXLine</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">)))]</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">integrator</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="n">integration_step</span>
+<span class="n">beam_full</span><span class="o">.</span><span class="n">integrator</span><span class="o">.</span><span class="n">min_samples</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">beam_half</span> <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">beam_transform</span><span class="p">)</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">plasma</span> <span class="o">=</span> <span class="n">plasma</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">adas</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="n">beam_energy</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">power</span> <span class="o">=</span> <span class="mf">3e6</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">element</span> <span class="o">=</span> <span class="n">deuterium</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">divergence_x</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">divergence_y</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">attenuator</span> <span class="o">=</span> <span class="n">SingleRayAttenuator</span><span class="p">(</span><span class="n">clamp_to_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">BeamCXLine</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">)))]</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">integrator</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="n">integration_step</span>
+<span class="n">beam_half</span><span class="o">.</span><span class="n">integrator</span><span class="o">.</span><span class="n">min_samples</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">beam_third</span> <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">beam_transform</span><span class="p">)</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">plasma</span> <span class="o">=</span> <span class="n">plasma</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">adas</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="n">beam_energy</span> <span class="o">/</span> <span class="mi">3</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">power</span> <span class="o">=</span> <span class="mf">3e6</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">element</span> <span class="o">=</span> <span class="n">deuterium</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">divergence_x</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">divergence_y</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">attenuator</span> <span class="o">=</span> <span class="n">SingleRayAttenuator</span><span class="p">(</span><span class="n">clamp_to_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">BeamCXLine</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">)))]</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">integrator</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="n">integration_step</span>
+<span class="n">beam_third</span><span class="o">.</span><span class="n">integrator</span><span class="o">.</span><span class="n">min_samples</span> <span class="o">=</span> <span class="mi">10</span>
+
+
+<span class="c1">######################################</span>
+<span class="c1"># Visualise beam behaviour in Plasma #</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">beam_density</span> <span class="o">=</span> <span class="n">sample3d</span><span class="p">(</span><span class="n">beam_full</span><span class="o">.</span><span class="n">density</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">beam_density</span><span class="p">)),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x axis (beam coords)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;z axis (beam coords)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beam full energy density profile in r-z plane&quot;</span><span class="p">)</span>
+
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">beam_full_densities</span> <span class="o">=</span> <span class="p">[</span><span class="n">beam_full</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">zz</span><span class="p">)</span> <span class="k">for</span> <span class="n">zz</span> <span class="ow">in</span> <span class="n">z</span><span class="p">]</span>
+<span class="n">beam_half_densities</span> <span class="o">=</span> <span class="p">[</span><span class="n">beam_half</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">zz</span><span class="p">)</span> <span class="k">for</span> <span class="n">zz</span> <span class="ow">in</span> <span class="n">z</span><span class="p">]</span>
+<span class="n">beam_third_densities</span> <span class="o">=</span> <span class="p">[</span><span class="n">beam_third</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">zz</span><span class="p">)</span> <span class="k">for</span> <span class="n">zz</span> <span class="ow">in</span> <span class="n">z</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">beam_full_densities</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;full energy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">beam_half_densities</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;half energy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">beam_third_densities</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;third energy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;z axis (beam coords)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;beam component density [m^-3]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beam attenuation by energy component&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+
+<span class="n">camera</span> <span class="o">=</span> <span class="n">PinholeCamera</span><span class="p">((</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">translate</span><span class="p">(</span><span class="mf">1.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate_basis</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">spectral_rays</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/beam_ion_temp.png"><img alt="../../_images/beam_ion_temp.png" src="../../_images/beam_ion_temp.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> The ion temperature profile in our slab plasma.</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../../_images/beam_neutral_temp.png"><img alt="../../_images/beam_neutral_temp.png" src="../../_images/beam_neutral_temp.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> The neutral temperature profile in our slab plasma.</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../../_images/beam_density_xz.png"><img alt="../../_images/beam_density_xz.png" src="../../_images/beam_density_xz.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> A plot of the full energy component beam density along
+the beam axis in the x-z plane. Note that the coordinates here are
+in the beam’s local coordinate system.</span></p>
+</div>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../../_images/beam_attenuation.png"><img alt="../../_images/beam_attenuation.png" src="../../_images/beam_attenuation.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> A plot of the beam attenuation for each of the beam energy
+components along the beam axis. Note these are plotted in local beam
+coordinates. So the beam origin is at the origin coordinate (0, 0, 0)
+and the beam axis is aligned along the z-axis.</span></p>
+</div>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="../../_images/beam_into_plasma1.png"><img alt="../../_images/beam_into_plasma1.png" src="../../_images/beam_into_plasma1.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> A camera observation of the charge exchange CVI 8-&gt;7 line.</span></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5.2. Spectroscopic Emission Lines &mdash; CHERAB 1.01 documentation</title>
+  <title>9. Tools &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.3. Rate Coefficients" href="rate_coefficients.html" />
-    <link rel="prev" title="5.1. Elements and Isotopes" href="elements_and_isotopes.html" /> 
+    <link rel="next" title="9.1. Inversions" href="inversions.html" />
+    <link rel="prev" title="8. Math functions" href="../math.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -89,16 +89,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="atomic_data.html">5. Atomic Data</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="elements_and_isotopes.html">5.1. Elements and Isotopes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.2. Spectroscopic Emission Lines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">5.3. Rate Coefficients</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">9. Tools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inversions.html">9.1. Inversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">9.2. Utilities</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -150,15 +149,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="atomic_data.html">5. Atomic Data</a> &raquo;</li>
-        
-      <li>5.2. Spectroscopic Emission Lines</li>
+      <li>9. Tools</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/atomic/emission_lines.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tools/tools.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -171,45 +168,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="spectroscopic-emission-lines">
-<h1>5.2. Spectroscopic Emission Lines<a class="headerlink" href="#spectroscopic-emission-lines" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="cherab.core.atomic.line.Line">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.line.</code><code class="descname">Line</code><a class="headerlink" href="#cherab.core.atomic.line.Line" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class fully specifies an observed spectroscopic emission line.</p>
-<p>Note that wavelengths are not arguments to this class. This is because in
-principle the transition has already been fully specified with the other three
-arguments. The wavelength is looked up in the wavelength database of the
-atomic data provider.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>element</strong> (<a class="reference internal" href="elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – The atomic element/isotope to which this emission line belongs.</li>
-<li><strong>ionisation</strong> (<em>int</em>) – The ionisation state of the element/isotope that emits this line.</li>
-<li><strong>transition</strong> (<em>tuple</em>) – A two element tuple that defines the upper and lower electron
-configuration states of the transition. For hydrogen-like ions it may be enough to
-specify the n-levels with integers (e.g. (3,2)). For all other ions the full spectroscopic
-configuration string should be specified for both states. It is up to the atomic data
-provider package to define the exact notation.</li>
+  <div class="section" id="tools">
+<h1>9. Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="inversions.html">9.1. Inversions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inversions.html#voxels">9.1.1. Voxels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inversions.html#inversion-methods">9.1.2. Inversion Methods</a></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">Line</span><span class="p">,</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Specifying the d-alpha and d-gamma balmer lines</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d_alpha</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d_beta</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Specifying a CIII line at 465nm</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ciii_465</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;2s1 3p1 3P4.0&#39;</span><span class="p">,</span> <span class="s1">&#39;2s1 3s1 3S1.0&#39;</span><span class="p">))</span>
-</pre></div>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">9.2. Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.conversion">9.2.1. Unit Conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.notify">9.2.2. Notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.recursivedict">9.2.3. Recursive Dict</a></li>
+</ul>
+</li>
+</ul>
 </div>
-</dd></dl>
-
 </div>
 
 
@@ -220,10 +195,10 @@ provider package to define the exact notation.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="rate_coefficients.html" class="btn btn-neutral float-right" title="5.3. Rate Coefficients" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="inversions.html" class="btn btn-neutral float-right" title="9.1. Inversions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="elements_and_isotopes.html" class="btn btn-neutral" title="5.1. Elements and Isotopes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../math.html" class="btn btn-neutral" title="8. Math functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

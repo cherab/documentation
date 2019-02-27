@@ -92,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="plasmas/plasmas.html">6. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="math.html">8. Math functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utility.html">9. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tools.html">9. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -181,6 +181,7 @@
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
  | <a href="#Z"><strong>Z</strong></a>
  
@@ -208,15 +209,17 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.add">add() (cherab.core.plasma.node.Composition method)</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.conversion.AmuToKg">AmuToKg (class in cherab.core.utility.conversion)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.conversion.AmuToKg">AmuToKg (class in cherab.core.utility.conversion)</a>
+</li>
+      <li><a href="tools/utility.html#cherab.core.utility.conversion.AngstromToNm">AngstromToNm (class in cherab.core.utility.conversion)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="utility.html#cherab.core.utility.conversion.AngstromToNm">AngstromToNm (class in cherab.core.utility.conversion)</a>
-</li>
-      <li><a href="utility.html#cherab.core.utility.notify.NotifyingList.append">append() (cherab.core.utility.notify.NotifyingList method)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.append">append() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
       <li><a href="math.html#cherab.core.math.mappers.AxisymmetricMapper">AxisymmetricMapper (class in cherab.core.math.mappers)</a>
+</li>
+      <li><a href="tools/inversions.html#cherab.tools.inversions.voxels.AxisymmetricVoxel">AxisymmetricVoxel (class in cherab.tools.inversions.voxels)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -224,7 +227,7 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="utility.html#cherab.core.utility.conversion.BaseFactorConversion">BaseFactorConversion (class in cherab.core.utility.conversion)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.conversion.BaseFactorConversion">BaseFactorConversion (class in cherab.core.utility.conversion)</a>
 </li>
       <li><a href="plasmas/particle_beams.html#cherab.core.Beam">Beam (class in cherab.core)</a>
 </li>
@@ -278,19 +281,19 @@
 </li>
       <li><a href="math.html#module-cherab.core.math.samplers">cherab.core.math.samplers (module)</a>
 </li>
-      <li><a href="utility.html#module-cherab.core.utility.conversion">cherab.core.utility.conversion (module)</a>
+      <li><a href="tools/utility.html#module-cherab.core.utility.conversion">cherab.core.utility.conversion (module)</a>
 </li>
-      <li><a href="utility.html#module-cherab.core.utility.notify">cherab.core.utility.notify (module)</a>
+      <li><a href="tools/utility.html#module-cherab.core.utility.notify">cherab.core.utility.notify (module)</a>
 </li>
-      <li><a href="utility.html#module-cherab.core.utility.recursivedict">cherab.core.utility.recursivedict (module)</a>
+      <li><a href="tools/utility.html#module-cherab.core.utility.recursivedict">cherab.core.utility.recursivedict (module)</a>
 </li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.clear">clear() (cherab.core.plasma.node.Composition method)</a>
 
       <ul>
-        <li><a href="utility.html#cherab.core.utility.notify.NotifyingList.clear">(cherab.core.utility.notify.NotifyingList method)</a>
+        <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.clear">(cherab.core.utility.notify.NotifyingList method)</a>
 </li>
       </ul></li>
-      <li><a href="utility.html#cherab.core.utility.conversion.Cm3ToM3">Cm3ToM3 (class in cherab.core.utility.conversion)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.conversion.Cm3ToM3">Cm3ToM3 (class in cherab.core.utility.conversion)</a>
 </li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition">Composition (class in cherab.core.plasma.node)</a>
 </li>
@@ -340,13 +343,19 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/inversions.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid.emissivities_from_function">emissivities_from_function (cherab.tools.inversions.voxels.ToroidalVoxelGrid attribute)</a>
+
+      <ul>
+        <li><a href="tools/inversions.html#cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function">(cherab.tools.inversions.voxels.VoxelCollection attribute)</a>
+</li>
+      </ul></li>
       <li><a href="atomic/rate_coefficients.html#evaluate">evaluate() (built-in function)</a>, <a href="atomic/rate_coefficients.html#evaluate">[1]</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.conversion.EvAmuToMS">EvAmuToMS (class in cherab.core.utility.conversion)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.conversion.EvAmuToMS">EvAmuToMS (class in cherab.core.utility.conversion)</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.conversion.EvToJ">EvToJ (class in cherab.core.utility.conversion)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.conversion.EvToJ">EvToJ (class in cherab.core.utility.conversion)</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.notify.NotifyingList.extend">extend() (cherab.core.utility.notify.NotifyingList method)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.extend">extend() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -354,11 +363,11 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="utility.html#cherab.core.utility.recursivedict.RecursiveDict.freeze">freeze() (cherab.core.utility.recursivedict.RecursiveDict method)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.recursivedict.RecursiveDict.freeze">freeze() (cherab.core.utility.recursivedict.RecursiveDict method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="utility.html#cherab.core.utility.recursivedict.RecursiveDict.from_dict">from_dict() (cherab.core.utility.recursivedict.RecursiveDict class method)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.recursivedict.RecursiveDict.from_dict">from_dict() (cherab.core.utility.recursivedict.RecursiveDict class method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -378,14 +387,14 @@
 </li>
       <li><a href="plasmas/equilibrium.html#cherab.tools.equilibrium.eqdsk.import_eqdsk">import_eqdsk() (in module cherab.tools.equilibrium.eqdsk)</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.notify.NotifyingList.insert">insert() (cherab.core.utility.notify.NotifyingList method)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.insert">insert() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.conversion.BaseFactorConversion.inv">inv() (cherab.core.utility.conversion.BaseFactorConversion class method)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.conversion.BaseFactorConversion.inv">inv() (cherab.core.utility.conversion.BaseFactorConversion class method)</a>
 
       <ul>
-        <li><a href="utility.html#cherab.core.utility.conversion.EvAmuToMS.inv">(cherab.core.utility.conversion.EvAmuToMS class method)</a>
+        <li><a href="tools/utility.html#cherab.core.utility.conversion.EvAmuToMS.inv">(cherab.core.utility.conversion.EvAmuToMS class method)</a>
 </li>
-        <li><a href="utility.html#cherab.core.utility.conversion.PhotonToJ.inv">(cherab.core.utility.conversion.PhotonToJ class method)</a>
+        <li><a href="tools/utility.html#cherab.core.utility.conversion.PhotonToJ.inv">(cherab.core.utility.conversion.PhotonToJ class method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -436,11 +445,11 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="utility.html#cherab.core.utility.notify.Notifier">Notifier (class in cherab.core.utility.notify)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.notify.Notifier">Notifier (class in cherab.core.utility.notify)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="utility.html#cherab.core.utility.notify.NotifyingList">NotifyingList (class in cherab.core.utility.notify)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList">NotifyingList (class in cherab.core.utility.notify)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -448,9 +457,11 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="utility.html#cherab.core.utility.conversion.PerCm3ToPerM3">PerCm3ToPerM3 (class in cherab.core.utility.conversion)</a>
+      <li><a href="tools/inversions.html#cherab.tools.inversions.voxels.VoxelCollection.parent_all_voxels">parent_all_voxels (cherab.tools.inversions.voxels.VoxelCollection attribute)</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.conversion.PhotonToJ">PhotonToJ (class in cherab.core.utility.conversion)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.conversion.PerCm3ToPerM3">PerCm3ToPerM3 (class in cherab.core.utility.conversion)</a>
+</li>
+      <li><a href="tools/utility.html#cherab.core.utility.conversion.PhotonToJ">PhotonToJ (class in cherab.core.utility.conversion)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -458,7 +469,7 @@
 </li>
       <li><a href="plasmas/equilibrium.html#cherab.tools.equilibrium.plot.plot_equilibrium">plot_equilibrium() (in module cherab.tools.equilibrium.plot)</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.notify.NotifyingList.pop">pop() (cherab.core.utility.notify.NotifyingList method)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.pop">pop() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -468,13 +479,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.RecombinationRate">RecombinationRate (class in cherab.core.atomic.rates)</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.recursivedict.RecursiveDict">RecursiveDict (class in cherab.core.utility.recursivedict)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.recursivedict.RecursiveDict">RecursiveDict (class in cherab.core.utility.recursivedict)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="utility.html#cherab.core.utility.notify.NotifyingList.remove">remove() (cherab.core.utility.notify.NotifyingList method)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.remove">remove() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.notify.NotifyingList.reverse">reverse() (cherab.core.utility.notify.NotifyingList method)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.reverse">reverse() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -492,13 +503,15 @@
 </li>
       <li><a href="math.html#cherab.core.math.samplers.samplevector3d">samplevector3d() (in module cherab.core.math.samplers)</a>
 </li>
+      <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.set">set() (cherab.core.plasma.node.Composition method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.set">set() (cherab.core.plasma.node.Composition method)</a>
+      <li><a href="tools/inversions.html#cherab.tools.inversions.voxels.VoxelCollection.set_active">set_active (cherab.tools.inversions.voxels.VoxelCollection attribute)</a>
 </li>
       <li><a href="models/cxs/cxs_model.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator">SingleRayAttenuator (class in cherab.core.model.attenuator.singleray)</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.notify.NotifyingList.sort">sort() (cherab.core.utility.notify.NotifyingList method)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.sort">sort() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.Species">Species (class in cherab.core)</a>
 </li>
@@ -514,14 +527,26 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.ThermalCXRate">ThermalCXRate (class in cherab.core.atomic.rates)</a>
 </li>
-      <li><a href="utility.html#cherab.core.utility.conversion.BaseFactorConversion.to">to() (cherab.core.utility.conversion.BaseFactorConversion class method)</a>
+      <li><a href="tools/utility.html#cherab.core.utility.conversion.BaseFactorConversion.to">to() (cherab.core.utility.conversion.BaseFactorConversion class method)</a>
 
       <ul>
-        <li><a href="utility.html#cherab.core.utility.conversion.EvAmuToMS.to">(cherab.core.utility.conversion.EvAmuToMS class method)</a>
+        <li><a href="tools/utility.html#cherab.core.utility.conversion.EvAmuToMS.to">(cherab.core.utility.conversion.EvAmuToMS class method)</a>
 </li>
-        <li><a href="utility.html#cherab.core.utility.conversion.PhotonToJ.to">(cherab.core.utility.conversion.PhotonToJ class method)</a>
+        <li><a href="tools/utility.html#cherab.core.utility.conversion.PhotonToJ.to">(cherab.core.utility.conversion.PhotonToJ class method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/inversions.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid">ToroidalVoxelGrid (class in cherab.tools.inversions.voxels)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/inversions.html#cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels">unparent_all_voxels (cherab.tools.inversions.voxels.VoxelCollection attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -529,6 +554,12 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="math.html#cherab.core.math.mappers.VectorAxisymmetricMapper">VectorAxisymmetricMapper (class in cherab.core.math.mappers)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/inversions.html#cherab.tools.inversions.voxels.Voxel">Voxel (class in cherab.tools.inversions.voxels)</a>
+</li>
+      <li><a href="tools/inversions.html#cherab.tools.inversions.voxels.VoxelCollection">VoxelCollection (class in cherab.tools.inversions.voxels)</a>
 </li>
   </ul></td>
 </tr></table>
