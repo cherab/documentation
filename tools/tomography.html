@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.1. Tomography &mdash; CHERAB 1.01 documentation</title>
+  <title>9.2. Tomography &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.2. Utilities" href="utility.html" />
-    <link rel="prev" title="9. Tools" href="tools.html" /> 
+    <link rel="next" title="9.3. Utilities" href="utility.html" />
+    <link rel="prev" title="9.1. Observers" href="observers.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -94,12 +94,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="tools.html">9. Tools</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.1. Tomography</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#inversion-methods">9.1.1. Inversion Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#voxels">9.1.2. Voxels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="observers.html">9.1. Observers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.2. Tomography</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inversion-methods">9.2.1. Inversion Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#voxels">9.2.2. Voxels</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="utility.html">9.2. Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">9.3. Utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -155,7 +156,7 @@
         
           <li><a href="tools.html">9. Tools</a> &raquo;</li>
         
-      <li>9.1. Tomography</li>
+      <li>9.2. Tomography</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,7 +176,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tomography">
-<h1>9.1. Tomography<a class="headerlink" href="#tomography" title="Permalink to this headline">¶</a></h1>
+<h1>9.2. Tomography<a class="headerlink" href="#tomography" title="Permalink to this headline">¶</a></h1>
 <p>Tomographic inversion problems often arise in the study of plasma diagnostics, especially
 when making line integrated measurements. Tomographic inversion techniques allow us to
 try recovering the underlying plasma properties from a reduced set of measurements. In CHERAB
@@ -196,7 +197,7 @@ is typically represented as the matrix equation</p>
 vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> from a set of measurements <span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> and sensitivity
 matrix <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>.</p>
 <div class="section" id="inversion-methods">
-<h2>9.1.1. Inversion Methods<a class="headerlink" href="#inversion-methods" title="Permalink to this headline">¶</a></h2>
+<h2>9.2.1. Inversion Methods<a class="headerlink" href="#inversion-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="cherab.tools.inversions.sart.invert_sart">
 <code class="descclassname">cherab.tools.inversions.sart.</code><code class="descname">invert_sart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.sart.invert_sart" title="Permalink to this definition">¶</a></dt>
@@ -357,7 +358,7 @@ detectors and the voxels. Must be an array with shape <span class="math notransl
 
 </div>
 <div class="section" id="voxels">
-<h2>9.1.2. Voxels<a class="headerlink" href="#voxels" title="Permalink to this headline">¶</a></h2>
+<h2>9.2.2. Voxels<a class="headerlink" href="#voxels" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.tools.inversions.voxels.Voxel">
 <em class="property">class </em><code class="descclassname">cherab.tools.inversions.voxels.</code><code class="descname">Voxel</code><a class="headerlink" href="#cherab.tools.inversions.voxels.Voxel" title="Permalink to this definition">¶</a></dt>
@@ -540,6 +541,32 @@ and VoxelCollection with incompatible symmetries.</p>
 </table>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot">
+<code class="descname">plot</code><a class="headerlink" href="#cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a voxel grid.</p>
+<p>If no voxel data values are provided, the plot is an outline of the grid in the r-z plane. If
+voxel values are provided, this method plots the voxel grid coloured by the voxel intensities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>title</strong> (<em>str</em>) – The title of the plot.</li>
+<li><strong>voxel_values</strong> (<em>np.ndarray</em>) – A 1D numpy array with length equal to the number of voxels
+in the collection.</li>
+<li><strong>ax</strong> – The matplotlib Axes object on which the plot will be made. If None, this function
+generates a new plot.</li>
+<li><strong>vmin</strong> (<em>float</em>) – The minimum value for the colour map.</li>
+<li><strong>vmax</strong> (<em>float</em>) – The maximum value for the colour map.</li>
+<li><strong>cmap</strong> – The matplotlib colour map to use for colouring the voxel intensities.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -553,10 +580,10 @@ and VoxelCollection with incompatible symmetries.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="utility.html" class="btn btn-neutral float-right" title="9.2. Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="utility.html" class="btn btn-neutral float-right" title="9.3. Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tools.html" class="btn btn-neutral" title="9. Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="observers.html" class="btn btn-neutral" title="9.1. Observers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

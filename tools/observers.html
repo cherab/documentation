@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>9.1. Observers &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9.2. Tomography" href="tomography.html" />
+    <link rel="prev" title="9. Tools" href="tools.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tools.html">9. Tools</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.1. Observers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bolometers">9.1.1. Bolometers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tomography.html">9.2. Tomography</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">9.3. Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="tools.html">9. Tools</a> &raquo;</li>
+        
+      <li>9.1. Observers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tools/observers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="observers">
+<h1>9.1. Observers<a class="headerlink" href="#observers" title="Permalink to this headline">¶</a></h1>
+<p>Most plasma diagnostics can be easily modelled using the base observer types provided in
+Raysect. In CHERAB we only provide a few specialist observers with extra functionality.</p>
+<div class="section" id="bolometers">
+<h2>9.1.1. Bolometers<a class="headerlink" href="#bolometers" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cherab.tools.observers.bolometry.BolometerCamera">
+<em class="property">class </em><code class="descclassname">cherab.tools.observers.bolometry.</code><code class="descname">BolometerCamera</code><span class="sig-paren">(</span><em>camera_geometry=None</em>, <em>parent=None</em>, <em>transform=None</em>, <em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera" title="Permalink to this definition">¶</a></dt>
+<dd><p>A group of bolometer sight-lines under a single scenegraph node.</p>
+<p>A scenegraph object that manages a collection of <cite>BolometerFoil()</cite>
+objects. Allows combined observation and display control simultaneously.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>camera_geometry</strong> (<em>Primitive</em>) – An optional Raysect primitive to supply
+as the box/aperture geometry. If not supplied, a CSG aperture will be
+constructed from the slit parameters.</li>
+<li><strong>parent</strong> (<em>Node</em>) – The parent node of this camera in the scenegraph, often
+an optical World object.</li>
+<li><strong>transform</strong> (<em>AffineMatrix3D</em>) – The relative coordinate transform of this
+bolometer camera relative to the parent.</li>
+<li><strong>name</strong> (<em>str</em>) – The name for this bolometer camera.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>foil_detectors</strong> (<em>list</em>) – A list of the foil detector objects that belong
+to this camera.</li>
+<li><strong>slits</strong> (<em>list</em>) – A list of the bolometer slit objects that belong to
+this camera.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">BolometerCamera</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span> <span class="o">=</span> <span class="n">BolometerCamera</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;MyBolometer&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="cherab.tools.observers.bolometry.BolometerCamera.__getitem__">
+<code class="descname">__getitem__</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the detectors by integer index or the detector name.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detector_2</span> <span class="o">=</span> <span class="n">bolometer_camera</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">detector_a</span> <span class="o">=</span> <span class="n">bolometer_camera</span><span class="p">[</span><span class="s2">&quot;detector_a&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.tools.observers.bolometry.BolometerCamera.__iter__">
+<code class="descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.__iter__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterates over the foil detectors in this camera.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detector_a</span><span class="p">,</span> <span class="n">detector_b</span><span class="p">,</span> <span class="n">detector_c</span> <span class="o">=</span> <span class="n">bolometer_camera</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.tools.observers.bolometry.BolometerCamera.__len__">
+<code class="descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yields the number of detectors in this bolometer camera.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.tools.observers.bolometry.BolometerCamera.add_foil_detector">
+<code class="descname">add_foil_detector</code><span class="sig-paren">(</span><em>foil_detector</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.add_foil_detector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the given detector to this camera.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>foil_detector</strong> (<a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerFoil" title="cherab.tools.observers.bolometry.BolometerFoil"><em>BolometerFoil</em></a>) – An instanced bolometer foil detector.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bolometer_camera</span><span class="o">.</span><span class="n">add_foil_detector</span><span class="p">(</span><span class="n">foil_detector</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.tools.observers.bolometry.BolometerCamera.observe">
+<code class="descname">observe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.observe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take an observation with this camera.</p>
+<p>Calls observe() on each foil detector and returns their power measurements.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.tools.observers.bolometry.BolometerSlit">
+<em class="property">class </em><code class="descclassname">cherab.tools.observers.bolometry.</code><code class="descname">BolometerSlit</code><span class="sig-paren">(</span><em>slit_id</em>, <em>centre_point</em>, <em>basis_x</em>, <em>dx</em>, <em>basis_y</em>, <em>dy</em>, <em>dz=0.001</em>, <em>parent=None</em>, <em>csg_aperture=False</em>, <em>curvature_radius=0</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerSlit" title="Permalink to this definition">¶</a></dt>
+<dd><p>A rectangular bolometer slit.</p>
+<p>A single slit can be shared by multiple detectors in the parent camera. The slit
+geometry is specified in terms of its centre_point, basis vectors in the plane
+of the slit and their respective lengths.</p>
+<p>If an external mesh model has been loaded for ray occlusion evaluation then this
+object is only used for targeting rays on the slit. If no mesh has been supplied,
+this object can construct an effective slit primitive from CSG operations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>slit_id</strong> (<em>str</em>) – The name for this slit.</li>
+<li><strong>centre_point</strong> (<em>Point3D</em>) – The centre point of the slit.</li>
+<li><strong>basis_x</strong> (<em>Vector3D</em>) – The x basis vector for the slit.</li>
+<li><strong>dx</strong> (<em>float</em>) – The width of the slit along the x basis vector.</li>
+<li><strong>basis_y</strong> (<em>Vector3D</em>) – The y basis vector for the slit.</li>
+<li><strong>dy</strong> (<em>float</em>) – The height of the slit along the y basis vector.</li>
+<li><strong>dz</strong> (<em>float</em>) – The thickness of the slit along the z basis vector.</li>
+<li><strong>parent</strong> (<em>Node</em>) – The parent scenegraph node to which this slit belongs.
+Typically a BolometerCamera() or an optical World() object.</li>
+<li><strong>csg_aperture</strong> (<em>bool</em>) – Toggles whether an occluding surface should be
+constructed for this slit using CSG operations.</li>
+<li><strong>curvature_radius</strong> (<em>float</em>) – Slits in real bolometer cameras typically
+have curved corners due to machining limitations. This parameter species
+the corner radius.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><p class="first last"><strong>normal_vector</strong> (<em>Vector3D</em>) – The normal vector of the slit constructed from
+the cross product of the x and y basis vectors.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">BolometerSlit</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># construct basis vectors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis_x</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis_y</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis_z</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># specify the slit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dx</span> <span class="o">=</span> <span class="mf">0.0025</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dy</span> <span class="o">=</span> <span class="mf">0.005</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centre_point</span> <span class="o">=</span> <span class="n">Point3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slit</span> <span class="o">=</span> <span class="n">BolometerSlit</span><span class="p">(</span><span class="s2">&quot;slit&quot;</span><span class="p">,</span> <span class="n">centre_point</span><span class="p">,</span> <span class="n">basis_x</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">basis_y</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">camera</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.tools.observers.bolometry.BolometerFoil">
+<em class="property">class </em><code class="descclassname">cherab.tools.observers.bolometry.</code><code class="descname">BolometerFoil</code><span class="sig-paren">(</span><em>detector_id</em>, <em>centre_point</em>, <em>basis_x</em>, <em>dx</em>, <em>basis_y</em>, <em>dy</em>, <em>slit</em>, <em>parent=None</em>, <em>units='Power'</em>, <em>accumulate=False</em>, <em>curvature_radius=0</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil" title="Permalink to this definition">¶</a></dt>
+<dd><p>A rectangular bolometer detector.</p>
+<p>Can be configured to sample a single ray or fan of rays oriented along the
+observer’s z axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>detector_id</strong> (<em>str</em>) – The name for this detector.</li>
+<li><strong>centre_point</strong> (<em>Point3D</em>) – The centre point of the detector.</li>
+<li><strong>basis_x</strong> (<em>Vector3D</em>) – The x basis vector for the detector.</li>
+<li><strong>dx</strong> (<em>float</em>) – The width of the detector along the x basis vector.</li>
+<li><strong>basis_y</strong> (<em>Vector3D</em>) – The y basis vector for the detector.</li>
+<li><strong>dy</strong> (<em>float</em>) – The height of the detector along the y basis vector.</li>
+<li><strong>parent</strong> (<em>Node</em>) – The parent scenegraph node to which this detector belongs.
+Typically a BolometerCamera() or an optical World() object.</li>
+<li><strong>units</strong> (<em>bool</em>) – The units in which to perform observations, can
+be [‘Power’, ‘Radiance’], defaults to ‘Power’.</li>
+<li><strong>accumulate</strong> (<em>bool</em>) – Whether this observer should accumulate samples
+with multiple calls to observe. Defaults to False.</li>
+<li><strong>curvature_radius</strong> (<em>float</em>) – Detectors in real bolometer cameras typically
+have curved corners due to machining limitations. This parameter species
+the corner radius.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>normal_vector</strong> (<em>Vector3D</em>) – The normal vector of the detector constructed from
+the cross product of the x and y basis vectors.</li>
+<li><strong>sightline_vector</strong> (<em>Vector3D</em>) – The vector that points from the centre of the foil
+detector to the centre of the slit. Defines the effective sightline vector of the
+detector.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">BolometerFoil</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># construct basis vectors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis_x</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis_y</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis_z</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># specify a detector, you need already created slit and camera objects</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dx</span> <span class="o">=</span> <span class="mf">0.0025</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dy</span> <span class="o">=</span> <span class="mf">0.005</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centre_point</span> <span class="o">=</span> <span class="n">Point3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.08</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">detector</span> <span class="o">=</span> <span class="n">BolometerFoil</span><span class="p">(</span><span class="s2">&quot;ch#1&quot;</span><span class="p">,</span> <span class="n">centre_point</span><span class="p">,</span> <span class="n">basis_x</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">basis_y</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">slit</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">camera</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="cherab.tools.observers.bolometry.BolometerFoil.as_sightline">
+<code class="descname">as_sightline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.as_sightline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a SightLine observer for this bolometer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">SightLine</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.tools.observers.bolometry.BolometerFoil.calculate_etendue">
+<code class="descname">calculate_etendue</code><span class="sig-paren">(</span><em>ray_count=10000</em>, <em>batches=10</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.calculate_etendue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the etendue of this detector.</p>
+<p>This function calculates the detectors etendue by evaluating the ratio of rays that
+pass un-impeded through the detector’s aperture. For this method to work, the detector
+and its aperture structures should be the only primitives present in the scene. If any
+other primitives are present, the results may be misleading.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ray_count</strong> (<em>int</em>) – The number of rays used per batch.</li>
+<li><strong>batches</strong> (<em>int</em>) – The number of batches used to estimate the error on the etendue
+calculation.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.tools.observers.bolometry.BolometerFoil.calculate_sensitivity">
+<code class="descname">calculate_sensitivity</code><span class="sig-paren">(</span><em>voxel_collection</em>, <em>ray_count=10000</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.calculate_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates a sensitivity vector for this detector on the specified voxel collection.</p>
+<p>This function is used for calculating sensitivity matrices which can be combined for
+multiple detectors into a sensitivity matrix <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>voxel_collection</strong> (<a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.VoxelCollection" title="cherab.tools.inversions.voxels.VoxelCollection"><em>VoxelCollection</em></a>) – The voxel collection on which to calculate
+the sensitivities.</li>
+<li><strong>ray_count</strong> (<em>int</em>) – The number of rays to use in the calculation. This should be
+at least &gt;= 10000 for decent statistics.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A 1D array of sensitivities with length equal to the number of voxels
+in the collection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.tools.observers.bolometry.BolometerFoil.trace_sightline">
+<code class="descname">trace_sightline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.trace_sightline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Traces the central sightline through the detector to see where the sightline terminates.</p>
+<p>Raises a RuntimeError exception if no intersection was found.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Returns a tuple containing the origin point, hit point and terminating surface
+primitive.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tomography.html" class="btn btn-neutral float-right" title="9.2. Tomography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tools.html" class="btn btn-neutral" title="9. Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

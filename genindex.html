@@ -177,6 +177,7 @@
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
@@ -193,11 +194,17 @@
 </li>
       <li><a href="atomic/rate_coefficients.html#__call__">__call__() (built-in function)</a>, <a href="atomic/rate_coefficients.html#__call__">[1]</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.__getitem__">__getitem__ (cherab.core.plasma.node.Composition attribute)</a>
 </li>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.__getitem__">__getitem__() (cherab.tools.observers.bolometry.BolometerCamera method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.__iter__">__iter__ (cherab.core.plasma.node.Composition attribute)</a>
+</li>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.__iter__">__iter__() (cherab.tools.observers.bolometry.BolometerCamera method)</a>
+</li>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.__len__">__len__() (cherab.tools.observers.bolometry.BolometerCamera method)</a>
 </li>
       <li><a href="models/cxs/cxs_model.html#cherab.core.model.beam.charge_exchange.BeamCXLine._change">_change() (cherab.core.model.beam.charge_exchange.BeamCXLine method)</a>
 </li>
@@ -209,6 +216,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.add">add() (cherab.core.plasma.node.Composition method)</a>
 </li>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.add_foil_detector">add_foil_detector() (cherab.tools.observers.bolometry.BolometerCamera method)</a>
+</li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.AmuToKg">AmuToKg (class in cherab.core.utility.conversion)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.AngstromToNm">AngstromToNm (class in cherab.core.utility.conversion)</a>
@@ -216,6 +225,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.append">append() (cherab.core.utility.notify.NotifyingList method)</a>
+</li>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil.as_sightline">as_sightline() (cherab.tools.observers.bolometry.BolometerFoil method)</a>
 </li>
       <li><a href="math.html#cherab.core.math.mappers.AxisymmetricMapper">AxisymmetricMapper (class in cherab.core.math.mappers)</a>
 </li>
@@ -235,11 +246,17 @@
 </li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamEmissionRate">BeamEmissionRate (class in cherab.core.atomic.rates)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamPopulationRate">BeamPopulationRate (class in cherab.core.atomic.rates)</a>
 </li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamStoppingRate">BeamStoppingRate (class in cherab.core.atomic.rates)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera">BolometerCamera (class in cherab.tools.observers.bolometry)</a>
+</li>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil">BolometerFoil (class in cherab.tools.observers.bolometry)</a>
+</li>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerSlit">BolometerSlit (class in cherab.tools.observers.bolometry)</a>
 </li>
       <li><a href="models/brem/bremsstrahlung.html#cherab.core.model.plasma.bremsstrahlung.Bremsstrahlung">Bremsstrahlung (class in cherab.core.model.plasma.bremsstrahlung)</a>
 </li>
@@ -257,6 +274,10 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="models/cxs/cxs_model.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator.calculate_attenuation">calculate_attenuation() (cherab.core.model.attenuator.singleray.SingleRayAttenuator method)</a>
 </li>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil.calculate_etendue">calculate_etendue() (cherab.tools.observers.bolometry.BolometerFoil method)</a>
+</li>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil.calculate_sensitivity">calculate_sensitivity() (cherab.tools.observers.bolometry.BolometerFoil method)</a>
+</li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamCXRate">cherab.core.atomic.rates.BeamCXRate (built-in class)</a>
 </li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamCXRate.__call__">cherab.core.atomic.rates.BeamCXRate.__call__() (built-in function)</a>
@@ -271,10 +292,10 @@
 </li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.RadiatedPower.__call__">cherab.core.atomic.rates.RadiatedPower.__call__() (built-in function)</a>
 </li>
-      <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.StageResolvedLineRadiation">cherab.core.atomic.rates.StageResolvedLineRadiation (built-in class)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.StageResolvedLineRadiation">cherab.core.atomic.rates.StageResolvedLineRadiation (built-in class)</a>
+</li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.StageResolvedLineRadiation.__call__">cherab.core.atomic.rates.StageResolvedLineRadiation.__call__() (built-in function)</a>
 </li>
       <li><a href="math.html#module-cherab.core.math.mappers">cherab.core.math.mappers (module)</a>
@@ -462,6 +483,14 @@
   </ul></td>
 </tr></table>
 
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.observe">observe() (cherab.tools.observers.bolometry.BolometerCamera method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -474,6 +503,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.Plasma">Plasma (class in cherab.core)</a>
+</li>
+      <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot">plot (cherab.tools.inversions.voxels.ToroidalVoxelGrid attribute)</a>
 </li>
       <li><a href="plasmas/equilibrium.html#cherab.tools.equilibrium.plot.plot_equilibrium">plot_equilibrium() (in module cherab.tools.equilibrium.plot)</a>
 </li>
@@ -546,6 +577,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid">ToroidalVoxelGrid (class in cherab.tools.inversions.voxels)</a>
+</li>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil.trace_sightline">trace_sightline() (cherab.tools.observers.bolometry.BolometerFoil method)</a>
 </li>
   </ul></td>
 </tr></table>
