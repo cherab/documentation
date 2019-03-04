@@ -165,8 +165,7 @@
   <div class="section" id="analytic-function-plasma">
 <span id="id1"></span><h1>Analytic Function Plasma<a class="headerlink" href="#analytic-function-plasma" title="Permalink to this headline">¶</a></h1>
 <p>This demonstration shows how to define a set of plasma distributions using analytic functions.
-Each function must by implemented as a python callable. The functions are wrapped with
-PythonFunction3D allowing their use in the 3D function framework. The rest of the code
+Each function must by implemented as a python callable. The rest of the code
 shows how to use these functions in a plasma and visualises the results.</p>
 <p>Note that while it is possible to use pure python functions for development, they are typically
 ~100 times slower than their cython counterparts. Therefore, for use cases where speed is important
@@ -197,7 +196,6 @@ cython class in the demos folder.</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="k">import</span> <span class="n">electron_mass</span><span class="p">,</span> <span class="n">atomic_mass</span>
 
-<span class="kn">from</span> <span class="nn">raysect.core.math.function.function3d</span> <span class="k">import</span> <span class="n">PythonFunction3D</span>
 <span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="k">import</span> <span class="n">Cylinder</span>
 <span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="k">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">rotate_basis</span><span class="p">,</span> <span class="n">Spectrum</span>
 <span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="k">import</span> <span class="n">PinholeCamera</span><span class="p">,</span> <span class="n">PowerPipeline2D</span>
@@ -290,22 +288,22 @@ cython class in the demos folder.</p>
 <span class="n">zero_velocity</span> <span class="o">=</span> <span class="n">ConstantVector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 
 <span class="c1"># define neutral species distribution</span>
-<span class="n">d0_density</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">NeutralFunction</span><span class="p">(</span><span class="n">peak_density</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">))</span>
+<span class="n">d0_density</span> <span class="o">=</span> <span class="n">NeutralFunction</span><span class="p">(</span><span class="n">peak_density</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">)</span>
 <span class="n">d0_temperature</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># constant 0.5eV temperature for all neutrals</span>
 <span class="n">d0_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">d0_density</span><span class="p">,</span> <span class="n">d0_temperature</span><span class="p">,</span> <span class="n">zero_velocity</span><span class="p">,</span>
                              <span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
 <span class="n">d0_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">d0_distribution</span><span class="p">)</span>
 
 <span class="c1"># define deuterium ion species distribution</span>
-<span class="n">d1_density</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_density</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">))</span>
-<span class="n">d1_temperature</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">))</span>
+<span class="n">d1_density</span> <span class="o">=</span> <span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_density</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">)</span>
+<span class="n">d1_temperature</span> <span class="o">=</span> <span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">)</span>
 <span class="n">d1_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">d1_density</span><span class="p">,</span> <span class="n">d1_temperature</span><span class="p">,</span> <span class="n">zero_velocity</span><span class="p">,</span>
                              <span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
 <span class="n">d1_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d1_distribution</span><span class="p">)</span>
 
 <span class="c1"># define the electron distribution</span>
-<span class="n">e_density</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_density</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">))</span>
-<span class="n">e_temperature</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">))</span>
+<span class="n">e_density</span> <span class="o">=</span> <span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_density</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">)</span>
+<span class="n">e_temperature</span> <span class="o">=</span> <span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">)</span>
 <span class="n">e_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">e_density</span><span class="p">,</span> <span class="n">e_temperature</span><span class="p">,</span> <span class="n">zero_velocity</span><span class="p">,</span> <span class="n">electron_mass</span><span class="p">)</span>
 
 <span class="c1"># define species</span>
