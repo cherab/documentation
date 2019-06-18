@@ -192,24 +192,24 @@ them after they have been instantiated.</p>
 <div class="section" id="photon-emissivity-coefficients">
 <h2>5.3.1. Photon Emissivity Coefficients<a class="headerlink" href="#photon-emissivity-coefficients" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="cherab.core.atomic.rates.ImpactExcitationRate">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">ImpactExcitationRate</code><a class="headerlink" href="#cherab.core.atomic.rates.ImpactExcitationRate" title="Permalink to this definition">¶</a></dt>
+<dt id="cherab.core.atomic.rates.ImpactExcitationPEC">
+<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">ImpactExcitationPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.ImpactExcitationPEC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Impact excitation rate coefficient.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="cherab.core.atomic.rates.RecombinationRate">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">RecombinationRate</code><a class="headerlink" href="#cherab.core.atomic.rates.RecombinationRate" title="Permalink to this definition">¶</a></dt>
+<dt id="cherab.core.atomic.rates.RecombinationPEC">
+<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">RecombinationPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.RecombinationPEC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Recombination rate coefficient.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="cherab.core.atomic.rates.ThermalCXRate">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">ThermalCXRate</code><a class="headerlink" href="#cherab.core.atomic.rates.ThermalCXRate" title="Permalink to this definition">¶</a></dt>
+<dt id="cherab.core.atomic.rates.ThermalCXPEC">
+<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">ThermalCXPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.ThermalCXPEC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Thermal charge exchange rate coefficient.</p>
 </dd></dl>
 
-<p>The PEC <cite>ImpactExcitationRate</cite>, <cite>RecombinationRate</cite> and <cite>ThermalCXRate</cite> classes all share
+<p>The <cite>ImpactExcitationPEC</cite>, <cite>RecombinationPEC</cite> and <cite>ThermalCXPEC</cite> classes all share
 the same call signatures.</p>
 <dl class="function">
 <dt id="__call__">
@@ -233,7 +233,7 @@ the same call signatures.</p>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The effective PEC rate in W/m^3.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The effective PEC rate [Wm^3].</p>
 </td>
 </tr>
 </tbody>
@@ -251,9 +251,9 @@ method.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">()</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># request d-alpha instance of ImpactExcitationRate</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dalpha_excit</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">impact_excitation_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dalpha_excit</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">impact_excitation_pec</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># request d-alpha instance of RecombinationRate</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dalpha_recom</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">recombination_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dalpha_recom</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">recombination_pec</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># evaluate D-alpha ImpactExcitationRate PEC at n_e = 1E19 m^-3 and t_e = 2 eV</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dalpha_excit</span><span class="p">(</span><span class="mf">1E19</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -287,15 +287,15 @@ fully stripped ions <span class="math notranslate nohighlight">\(Y^i\)</span> an
 </dd></dl>
 
 <dl class="class">
-<dt id="cherab.core.atomic.rates.BeamEmissionRate">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">BeamEmissionRate</code><a class="headerlink" href="#cherab.core.atomic.rates.BeamEmissionRate" title="Permalink to this definition">¶</a></dt>
+<dt id="cherab.core.atomic.rates.BeamEmissionPEC">
+<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">BeamEmissionPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.BeamEmissionPEC" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(bme(X^0(m_i))\)</span> [dimensionless]</p>
 <p>Relative beam population of excited state <span class="math notranslate nohighlight">\(m_i\)</span> over ground state for atom <span class="math notranslate nohighlight">\(X^0\)</span>, <span class="math notranslate nohighlight">\(bme(X^0(m_i))\)</span>.</p>
 <p>The rate <span class="math notranslate nohighlight">\(bme(X^0(m_i))\)</span> is equivalent to the <span class="math notranslate nohighlight">\(BME\)</span> rate as defined in
 <a class="reference external" href="http://open.adas.ac.uk/adf22">adf22</a> and is dimensionless.</p>
 </dd></dl>
 
-<p>The <cite>BeamStoppingRate</cite>, <cite>BeamPopulationRate</cite> and <cite>BeamEmissionRate</cite> classes all share
+<p>The <cite>BeamStoppingRate</cite>, <cite>BeamPopulationRate</cite> and <cite>BeamEmissionPEC</cite> classes all share
 the same call signatures.</p>
 <dl class="function">
 <dt>
@@ -345,7 +345,7 @@ method.</p>
 <span class="go">7.599066e-10</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample the beam emission rate</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bme</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_emission_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bme</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_emission_pec</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bme</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="go">8.651598e-34</span>
 </pre></div>

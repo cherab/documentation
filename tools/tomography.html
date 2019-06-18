@@ -306,8 +306,6 @@ and the convergence achieved as a float.</p>
 using Tikhonov regulariastion.</p>
 <p>This is a thin wrapper around scipy.optimize.nnls, which modifies
 the arguments to include the supplied Tikhonov regularisation matrix.</p>
-<p>If tikhonov_matrix is None, the matrix used is alpha times the
-identity matrix.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -319,7 +317,7 @@ detectors and the voxels. Must be an array with shape <span class="math notransl
 <li><strong>alpha</strong> (<em>float</em>) – The regularisation hyperparameter <span class="math notranslate nohighlight">\(lpha\)</span> which determines
 the regularisation strength of the tikhonov matrix.</li>
 <li><strong>tikhonov_matrix</strong> (<em>np.ndarray</em>) – The tikhonov regularisation matrix operator, an array
-with shape <span class="math notranslate nohighlight">\((N_s, N_s)\)</span>.</li>
+with shape <span class="math notranslate nohighlight">\((N_s, N_s)\)</span>. If None, the identity matrix is used.</li>
 </ul>
 </td>
 </tr>

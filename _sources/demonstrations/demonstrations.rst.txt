@@ -48,8 +48,8 @@ Creating Plasmas
           :height: 150px
           :width: 150px
    * - :ref:`Flux Function Plasmas <flux_function_plasmas>`
-     - Specifying a plasma distribution in terms of 1D flux functions.
-     - .. image:: ./plasmas/equilibrium_mapped_te_xz.png
+     - Loading the example EFIT equilibrium and making 1D flux functions.
+     - .. image:: ./plasmas/equilibrium_surfaces.png
           :height: 150px
           :width: 150px
    * - :ref:`2D Mesh Plasmas <mesh2d_plasma>`

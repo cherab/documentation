@@ -395,6 +395,16 @@ as a 1D function or Nx2 array.</li>
 </dd></dl>
 
 <dl class="function">
+<dt id="cherab.tools.equilibrium.example.example_equilibrium">
+<code class="descclassname">cherab.tools.equilibrium.example.</code><code class="descname">example_equilibrium</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.example.example_equilibrium" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a populated instance of the example equilibrium.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.equilibrium</span> <span class="kn">import</span> <span class="n">example_equilibrium</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">equilibrium</span> <span class="o">=</span> <span class="n">example_equilibrium</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
 <dt id="cherab.tools.equilibrium.plot.plot_equilibrium">
 <code class="descclassname">cherab.tools.equilibrium.plot.</code><code class="descname">plot_equilibrium</code><span class="sig-paren">(</span><em>equilibrium</em>, <em>detail=False</em>, <em>resolution=0.025</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.plot.plot_equilibrium" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates some overview plots of a given EFIT equilibrium.</p>
@@ -411,19 +421,22 @@ as a 1D function or Nx2 array.</li>
 </tr>
 </tbody>
 </table>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.equilibrium</span> <span class="kn">import</span> <span class="n">plot_equilibrium</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.equilibrium</span> <span class="kn">import</span> <span class="n">example_equilibrium</span><span class="p">,</span> <span class="n">plot_equilibrium</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">equilibrium</span> <span class="o">=</span> <span class="n">example_equilibrium</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot_equilibrium</span><span class="p">(</span><span class="n">equilibrium</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/equilibrium_plot.png"><img alt="../_images/equilibrium_plot.png" src="../_images/equilibrium_plot.png" style="width: 300px;" /></a>
+<img alt="../_images/equilibrium_surfaces2.png" src="../_images/equilibrium_surfaces2.png" />
 </div>
 <dl class="function">
 <dt id="cherab.tools.equilibrium.eqdsk.import_eqdsk">
-<code class="descclassname">cherab.tools.equilibrium.eqdsk.</code><code class="descname">import_eqdsk</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.eqdsk.import_eqdsk" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cherab.tools.equilibrium.eqdsk.</code><code class="descname">import_eqdsk</code><span class="sig-paren">(</span><em>file_path</em>, <em>drop_nan=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.eqdsk.import_eqdsk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Imports equilibrium data from an EFIT G EQDSK file.</p>
+<p>The file format is described at <a class="reference external" href="https://w3.pppl.gov/ntcc/TORAY/G_EQDSK.pdf">https://w3.pppl.gov/ntcc/TORAY/G_EQDSK.pdf</a>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">The G EQDSK file format is unstable and unreliable. Use with caution.</p>
@@ -432,9 +445,14 @@ as a 1D function or Nx2 array.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_path</strong> (<em>str</em>) – Path to the EFIT eqdsk file.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>file_path</strong> (<em>str</em>) – Path to the EFIT eqdsk file.</li>
+<li><strong>drop_nan</strong> (<em>bool</em>) – Drop NaN values in the f and q profiles.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#cherab.tools.equilibrium.efit.EFITEquilibrium" title="cherab.tools.equilibrium.efit.EFITEquilibrium">EFITEquilibrium</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#cherab.tools.equilibrium.efit.EFITEquilibrium" title="cherab.tools.equilibrium.efit.EFITEquilibrium">EFITEquilibrium</a></p>
+</td>
 </tr>
 </tbody>
 </table>

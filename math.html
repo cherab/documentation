@@ -195,6 +195,27 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="cherab.core.math.samplers.sample1d_points">
+<code class="descclassname">cherab.core.math.samplers.</code><code class="descname">sample1d_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample1d_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a 1D function at the specified points</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>function1d</strong> – a Python function or Function1D object</li>
+<li><strong>x_points</strong> – an array of points at which to sample the function</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an array containing the sampled values</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="cherab.core.math.samplers.sample2d">
 <code class="descclassname">cherab.core.math.samplers.</code><code class="descname">sample2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Samples a 2D function over the specified range.</p>
@@ -214,6 +235,53 @@
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="function">
+<dt id="cherab.core.math.samplers.sample2d_grid">
+<code class="descclassname">cherab.core.math.samplers.</code><code class="descname">sample2d_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample2d_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a 2D function on a rectilinear grid</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>function2d</strong> – a Python function or Function2D object</li>
+<li><strong>x</strong> – the x coordinates of each column in the grid</li>
+<li><strong>y</strong> – the y coordinates of each row in the grid</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return v:</th><td class="field-body"><p class="first last">a 2D array containing the sampled values at each grid point</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that v[i, j] = f(x[i], y[j])</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cherab.core.math.samplers.sample2d_points">
+<code class="descclassname">cherab.core.math.samplers.</code><code class="descname">sample2d_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample2d_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a 2D function at the specified points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>function2d</strong> – a Python function or Function2D object</li>
+<li><strong>points</strong> – an Nx2 array of points at which to sample the function</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a 1D array containing the sampled values at each point</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This function is for sampling at an unstructured sequence of points.
+For sampling over a regular grid, consider sample2d or sample2d_grid
+instead.</p>
 </dd></dl>
 
 <dl class="function">
@@ -237,6 +305,54 @@
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="function">
+<dt id="cherab.core.math.samplers.sample3d_grid">
+<code class="descclassname">cherab.core.math.samplers.</code><code class="descname">sample3d_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample3d_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a 3D function on a rectilinear grid</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>function3d</strong> – a Python function or Function3D object</li>
+<li><strong>x</strong> – the x coordinates of each column in the grid</li>
+<li><strong>y</strong> – the y coordinates of each row in the grid</li>
+<li><strong>z</strong> – the z coordinates of each plane in the grid</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return v:</th><td class="field-body"><p class="first last">a 3D array containing the sampled values at each grid point</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that v[i, j, k] = f(x[i], y[j], z[k])</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cherab.core.math.samplers.sample3d_points">
+<code class="descclassname">cherab.core.math.samplers.</code><code class="descname">sample3d_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample3d_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a 3D function at the specified points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>function3d</strong> – a Python function or Function3D object</li>
+<li><strong>points</strong> – an Nx3 array of points at which to sample the function</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a 1D array containing the sampled values at each point</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This function is for sampling at an unstructured sequence of points.
+For sampling over a regular grid, consider sample3d or sample3d_grid
+instead.</p>
 </dd></dl>
 
 <dl class="function">
@@ -264,6 +380,53 @@ x, y, and z components of the vector respectively.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="cherab.core.math.samplers.samplevector2d_grid">
+<code class="descclassname">cherab.core.math.samplers.</code><code class="descname">samplevector2d_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector2d_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a 2D vector function on a rectilinear grid</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>function2d</strong> – a Python function or Function2D object</li>
+<li><strong>x</strong> – the x coordinates of each column in the grid</li>
+<li><strong>y</strong> – the y coordinates of each row in the grid</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return v:</th><td class="field-body"><p class="first last">a 3D array containing the sampled values at each grid point</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that v[i, j] = f(x[i], y[j])</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cherab.core.math.samplers.samplevector2d_points">
+<code class="descclassname">cherab.core.math.samplers.</code><code class="descname">samplevector2d_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector2d_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a 2D vector function at the specified points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>function2d</strong> – a Python function or Function2D object</li>
+<li><strong>points</strong> – an Nx2 array of points at which to sample the function</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a Nx3 array containing the sampled values at each point</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This function is for sampling at an unstructured sequence of points.
+For sampling over a regular grid, consider samplevector2d or
+samplevector2d_grid instead.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="cherab.core.math.samplers.samplevector3d">
 <code class="descclassname">cherab.core.math.samplers.</code><code class="descname">samplevector3d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector3d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Samples a 3D vector function over the specified range.</p>
@@ -286,6 +449,54 @@ x, y, and z components of the vector respectively.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="function">
+<dt id="cherab.core.math.samplers.samplevector3d_grid">
+<code class="descclassname">cherab.core.math.samplers.</code><code class="descname">samplevector3d_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector3d_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a 3D vector function on a rectilinear grid</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>function3d</strong> – a Python function or Function3D object</li>
+<li><strong>x</strong> – the x coordinates of each column in the grid</li>
+<li><strong>y</strong> – the y coordinates of each row in the grid</li>
+<li><strong>z</strong> – the z coordinates of each plane in the grid</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return v:</th><td class="field-body"><p class="first last">an NxMxkx3 array containing the sampled values at each grid point</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that v[i, j, k] = f(x[i], y[j], z[k])</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cherab.core.math.samplers.samplevector3d_points">
+<code class="descclassname">cherab.core.math.samplers.</code><code class="descname">samplevector3d_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector3d_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a 3D vector function at the specified points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>function3d</strong> – a Python function or Function3D object</li>
+<li><strong>points</strong> – an Nx3 array of points at which to sample the function</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an Nx3 array containing the sampled values at each point</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This function is for sampling at an unstructured sequence of points.
+For sampling over a regular grid, consider samplevector3d or
+samplevector3d_grid instead.</p>
 </dd></dl>
 
 </div>

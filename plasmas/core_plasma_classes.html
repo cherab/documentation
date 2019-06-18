@@ -372,7 +372,7 @@ emission models for this plasma.</li>
 <em class="property">class </em><code class="descclassname">cherab.core.</code><code class="descname">Species</code><a class="headerlink" href="#cherab.core.Species" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class representing a given plasma species.</p>
 <p>A plasma in CHERAB will be composed of 1 or more Species objects. A species
-can be uniquely identified through its element and ionisation stage.</p>
+can be uniquely identified through its element and charge state.</p>
 <p>When instantiating a Species object a 6D distribution function (3 space, 3 velocity)
 must be defined. The DistributionFunction object provides the base interface for
 defining a distribution function, it could be a reduced analytic representation
@@ -383,7 +383,7 @@ defining a distribution function, it could be a reduced analytic representation
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>element</strong> (<a class="reference internal" href="../atomic/elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – The element object of this species.</li>
-<li><strong>ionisation</strong> (<em>int</em>) – The ionisation state of the species.</li>
+<li><strong>charge</strong> (<em>int</em>) – The charge state of the species.</li>
 <li><strong>distribution</strong> (<a class="reference internal" href="#cherab.core.distribution.DistributionFunction" title="cherab.core.distribution.DistributionFunction"><em>DistributionFunction</em></a>) – A distribution function for this species.</li>
 </ul>
 </td>
@@ -409,7 +409,7 @@ defining a distribution function, it could be a reduced analytic representation
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Request some properties from the species&#39; distribution function.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">d1_species</span><span class="p">)</span>
-<span class="go">&lt;Species: element=deuterium, ionisation=1&gt;</span>
+<span class="go">&lt;Species: element=deuterium, charge=1&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d1_species</span><span class="o">.</span><span class="n">distribution</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 <span class="go">1e+18</span>
 </pre></div>
@@ -422,14 +422,14 @@ defining a distribution function, it could be a reduced analytic representation
 <dd><p>The plasma composition manager.</p>
 <p>Used to control the adding and removing of Species objects from the Plasma object.
 This is because there can only ever be one Species object instance for each plasma
-species of a given element and ionisation stage. Users never instantiate this class
+species of a given element and charge state. Users never instantiate this class
 directly. Its always used indirectly through an instantiated Plasma object.</p>
 <dl class="attribute">
 <dt id="cherab.core.plasma.node.Composition.__getitem__">
 <code class="descname">__getitem__</code><a class="headerlink" href="#cherab.core.plasma.node.Composition.__getitem__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Species objects can be indexed with a tuple specifying their element and ionisation.</p>
+<dd><p>Species objects can be indexed with a tuple specifying their element and charge state.</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="p">[(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
-<span class="go">&lt;Species: element=deuterium, ionisation=0&gt;</span>
+<span class="go">&lt;Species: element=deuterium, charge=0&gt;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -439,8 +439,8 @@ directly. Its always used indirectly through an instantiated Plasma object.</p>
 <code class="descname">__iter__</code><a class="headerlink" href="#cherab.core.plasma.node.Composition.__iter__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to iterate over all the Species objects in the parent plasma.</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">species</span> <span class="k">for</span> <span class="n">species</span> <span class="ow">in</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="p">]</span>
-<span class="go">[&lt;Species: element=deuterium, ionisation=0&gt;,</span>
-<span class="go"> &lt;Species: element=deuterium, ionisation=1&gt;]</span>
+<span class="go">[&lt;Species: element=deuterium, charge=0&gt;,</span>
+<span class="go"> &lt;Species: element=deuterium, charge=1&gt;]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -449,7 +449,7 @@ directly. Its always used indirectly through an instantiated Plasma object.</p>
 <dt id="cherab.core.plasma.node.Composition.add">
 <code class="descname">add</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a species to the plasma composition.</p>
-<p>Replaces any existing species with the same element and ionisation
+<p>Replaces any existing species with the same element and charge
 state already in the composition.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -482,7 +482,7 @@ state already in the composition.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>element</strong> (<a class="reference internal" href="../atomic/elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – The element object of the requested species.</li>
-<li><strong>ionisation</strong> (<em>int</em>) – The ionisation state of the requested species.</li>
+<li><strong>charge</strong> (<em>int</em>) – The charge state of the requested species.</li>
 </ul>
 </td>
 </tr>
@@ -492,7 +492,7 @@ state already in the composition.</p>
 </tbody>
 </table>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="go">&lt;Species: element=deuterium, ionisation=1&gt;</span>
+<span class="go">&lt;Species: element=deuterium, charge=1&gt;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -501,7 +501,7 @@ state already in the composition.</p>
 <dt id="cherab.core.plasma.node.Composition.set">
 <code class="descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replaces the species in the composition with a new list of species.</p>
-<p>If there are multiple species with the same element and ionisation in
+<p>If there are multiple species with the same element and charge state in
 the list, only the last species with that specification will be added
 to the composition.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -516,8 +516,8 @@ to the composition.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d1_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d1_distribution</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">set</span><span class="p">([</span><span class="n">d0_species</span><span class="p">,</span> <span class="n">d1_species</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">species</span> <span class="k">for</span> <span class="n">species</span> <span class="ow">in</span> <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span><span class="p">]</span>
-<span class="go">[&lt;Species: element=deuterium, ionisation=0&gt;,</span>
-<span class="go"> &lt;Species: element=deuterium, ionisation=1&gt;]</span>
+<span class="go">[&lt;Species: element=deuterium, charge=0&gt;,</span>
+<span class="go"> &lt;Species: element=deuterium, charge=1&gt;]</span>
 </pre></div>
 </div>
 </dd></dl>
