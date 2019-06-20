@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Defining A Radiation Function &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">6. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">9. Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Defining A Radiation Function</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demonstrations/radiation_loads/radiation_function.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="defining-a-radiation-function">
+<span id="radiation-function"></span><h1>Defining A Radiation Function<a class="headerlink" href="#defining-a-radiation-function" title="Permalink to this headline">¶</a></h1>
+<p>When calculating surface radiation loads on reactor components it is necessary
+to define a radiation function. This could be some output from a physics code,
+or perhaps an analytic function. In CHERAB, the source function will always be
+prescribed as a 3D function regardless of the data source.</p>
+<p>All emission models in CHERAB and Raysect are fully spectral. It is possible to
+create arbitrary radiation functions using the Material interface in Raysect.
+However it is often sufficient to specify a simple total radiated power
+function in terms of W/m^2 for many physics applications. In such cases, the
+<a class="reference internal" href="../../tools/materials.html#cherab.tools.emitters.radiation_function.RadiationFunction" title="cherab.tools.emitters.radiation_function.RadiationFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">RadiationFunction</span></code></a> utility
+material is particularly useful. In this example we give it a user specified
+python function that specifies the emission, and attach it to a cylinder. The
+surface of the cylinder is transparent, but its volume emits proportional to
+the specified function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">raysect.core</span> <span class="k">import</span> <span class="n">Point2D</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">rotate_basis</span>
+<span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="k">import</span> <span class="n">Cylinder</span>
+<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="k">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">Spectrum</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="k">import</span> <span class="n">PinholeCamera</span><span class="p">,</span> <span class="n">PowerPipeline2D</span>
+
+<span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="k">import</span> <span class="n">sample2d</span><span class="p">,</span> <span class="n">AxisymmetricMapper</span>
+<span class="kn">from</span> <span class="nn">cherab.tools.emitters</span> <span class="k">import</span> <span class="n">RadiationFunction</span>
+
+
+<span class="c1">#############################</span>
+<span class="c1"># define radiation function #</span>
+
+
+<span class="n">PLASMA_AXIS</span> <span class="o">=</span> <span class="n">Point2D</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">LCFS_RADIUS</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">RING_RADIUS</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">RADIATION_PEAK</span> <span class="o">=</span> <span class="mf">1e6</span>
+<span class="n">CENTRE_PEAK_WIDTH</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">RING_WIDTH</span> <span class="o">=</span> <span class="mf">0.025</span>
+
+<span class="c1"># distance of wall from LCFS</span>
+<span class="n">WALL_LCFS_OFFSET</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">CYLINDER_RADIUS</span> <span class="o">=</span> <span class="n">PLASMA_AXIS</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">LCFS_RADIUS</span> <span class="o">+</span> <span class="n">WALL_LCFS_OFFSET</span> <span class="o">*</span> <span class="mf">1.1</span>
+<span class="n">CYLINDER_HEIGHT</span> <span class="o">=</span> <span class="p">(</span><span class="n">LCFS_RADIUS</span> <span class="o">+</span> <span class="n">WALL_LCFS_OFFSET</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+
+
+<span class="k">def</span> <span class="nf">rad_function</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+
+    <span class="n">sample_point</span> <span class="o">=</span> <span class="n">Point2D</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">PLASMA_AXIS</span><span class="o">.</span><span class="n">vector_to</span><span class="p">(</span><span class="n">sample_point</span><span class="p">)</span>
+    <span class="n">bearing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">direction</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">direction</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># calculate radius of coordinate from magnetic axis</span>
+    <span class="n">radius_from_axis</span> <span class="o">=</span> <span class="n">direction</span><span class="o">.</span><span class="n">length</span>
+    <span class="n">closest_ring_point</span> <span class="o">=</span> <span class="n">PLASMA_AXIS</span> <span class="o">+</span> <span class="p">(</span><span class="n">direction</span><span class="o">.</span><span class="n">normalise</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">radius_from_ring</span> <span class="o">=</span> <span class="n">sample_point</span><span class="o">.</span><span class="n">distance_to</span><span class="p">(</span><span class="n">closest_ring_point</span><span class="p">)</span>
+
+    <span class="c1"># evaluate pedestal-&gt; core function</span>
+    <span class="k">if</span> <span class="n">radius_from_axis</span> <span class="o">&lt;=</span> <span class="n">LCFS_RADIUS</span><span class="p">:</span>
+
+        <span class="n">central_radiatior</span> <span class="o">=</span> <span class="n">RADIATION_PEAK</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">radius_from_axis</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">CENTRE_PEAK_WIDTH</span><span class="p">)</span>
+
+        <span class="n">ring_radiator</span> <span class="o">=</span> <span class="n">RADIATION_PEAK</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">bearing</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">radius_from_ring</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">RING_WIDTH</span><span class="p">)</span>
+        <span class="n">ring_radiator</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ring_radiator</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">central_radiatior</span> <span class="o">+</span> <span class="n">ring_radiator</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="c1">#################################</span>
+<span class="c1"># add radiation source to world #</span>
+
+<span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+
+<span class="n">rad_function_3d</span> <span class="o">=</span> <span class="n">AxisymmetricMapper</span><span class="p">(</span><span class="n">rad_function</span><span class="p">)</span>
+<span class="n">radiation_emitter</span> <span class="o">=</span> <span class="n">RadiationFunction</span><span class="p">(</span><span class="n">rad_function_3d</span><span class="p">,</span> <span class="n">vertical_offset</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">geom</span> <span class="o">=</span> <span class="n">Cylinder</span><span class="p">(</span><span class="n">CYLINDER_RADIUS</span><span class="p">,</span> <span class="n">CYLINDER_HEIGHT</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="n">radiation_emitter</span><span class="p">)</span>
+
+
+<span class="c1">######################</span>
+<span class="c1"># visualise emission #</span>
+
+<span class="c1"># run some plots to check the distribution functions and emission profile are as expected</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t_samples</span> <span class="o">=</span> <span class="n">sample2d</span><span class="p">(</span><span class="n">rad_function</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">t_samples</span><span class="p">)),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;r axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;z axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Radiation profile in r-z plane&quot;</span><span class="p">)</span>
+
+
+<span class="n">camera</span> <span class="o">=</span> <span class="n">PinholeCamera</span><span class="p">((</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span> <span class="n">pipelines</span><span class="o">=</span><span class="p">[</span><span class="n">PowerPipeline2D</span><span class="p">()],</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="n">rotate_basis</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/radiation_function_rz.png" src="../../_images/radiation_function_rz.png" />
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> A slice through the specified 3D emission function in the R-Z plane..</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/radiation_function1.png" src="../../_images/radiation_function1.png" />
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> A camera visualiation of the emission function. Notice that
+the bounding cylinder is transparent so there are effectively no walls.
+The emission function is defined inside the bounding cylinder and zero
+everywhere else.</span></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -104,6 +104,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -284,7 +285,8 @@ emission models for this beam.</li>
 <dt id="cherab.core.Beam.density">
 <code class="descname">density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.density" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the bean density at the specified position in beam coordinates.</p>
-<p>Note: this function is only defined over the domain 0 &lt; z &lt; beam_length.</p>
+<p>Note: this function is only defined over the domain 0 &lt; z &lt; beam_length.
+Outside of this range the density is clamped to zero.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

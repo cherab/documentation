@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>9.2. Primitives &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9.3. Observers" href="observers.html" />
+    <link rel="prev" title="9.1. Materials" href="materials.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math.html">8. Math functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tools.html">9. Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="materials.html">9.1. Materials</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.2. Primitives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="observers.html">9.3. Observers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tomography.html">9.4. Tomography</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">9.5. Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="tools.html">9. Tools</a> &raquo;</li>
+        
+      <li>9.2. Primitives</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tools/primitives.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="primitives">
+<h1>9.2. Primitives<a class="headerlink" href="#primitives" title="Permalink to this headline">¶</a></h1>
+<p>A few useful utilities for creating primitives particularly relevant for fusion.</p>
+<dl class="function">
+<dt id="cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon">
+<code class="descclassname">cherab.tools.primitives.axisymmetric_mesh.</code><code class="descname">axisymmetric_mesh_from_polygon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates an Raysect Mesh primitive from the specified 2D polygon.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>polygon</strong> (<em>np.ndarray</em>) – A numpy array with shape [N,2] specifying the wall outline polygon
+in the R-Z plane. The polygon should not be closed, i.e. vertex i = 0 and i = N should not
+be the same vertex, but neighbours.</li>
+<li><strong>num_toroidal_segments</strong> (<em>int</em>) – The number of repeating toroidal segments that will be used
+to construct the mesh.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A Raysect Mesh primitive constructed from the R-Z polygon using symmetry.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.primitives</span> <span class="kn">import</span> <span class="n">axisymmetric_mesh_from_polygon</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># wall_polygon is your (N, 2) ndarray describing the polygon</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">axisymmetric_mesh_from_polygon</span><span class="p">(</span><span class="n">wall_polygon</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="observers.html" class="btn btn-neutral float-right" title="9.3. Observers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="materials.html" class="btn btn-neutral" title="9.1. Materials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

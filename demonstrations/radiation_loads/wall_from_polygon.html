@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Defining A Wall From A 2D Polygon &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">6. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math.html">8. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">9. Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Defining A Wall From A 2D Polygon</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demonstrations/radiation_loads/wall_from_polygon.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="defining-a-wall-from-a-2d-polygon">
+<span id="wall-from-polygon"></span><h1>Defining A Wall From A 2D Polygon<a class="headerlink" href="#defining-a-wall-from-a-2d-polygon" title="Permalink to this headline">¶</a></h1>
+<p>When studying candidate reactor designs for future machines, detailed engineering
+meshes are not always available. Sometimes all we have is a simple 2D outline
+representing a candidate wall design.</p>
+<p>In this example we make a 3D mesh from a simple outline. The wall mesh is intended
+to wrap the plasma emission function from the previous
+<a class="reference internal" href="radiation_function.html#radiation-function"><span class="std std-ref">radiation function example</span></a>. The utility function
+<a class="reference internal" href="../../tools/primitives.html#cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon" title="cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon"><code class="xref py py-meth docutils literal notranslate"><span class="pre">axisymmetric_mesh_from_polygon()</span></code></a>
+is useful for creating a 3D mesh from a 2D polygon.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">raysect.core</span> <span class="k">import</span> <span class="n">Point2D</span>
+<span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="k">import</span> <span class="n">export_obj</span>
+
+<span class="kn">from</span> <span class="nn">cherab.tools.primitives</span> <span class="k">import</span> <span class="n">axisymmetric_mesh_from_polygon</span>
+
+
+<span class="n">PLASMA_AXIS</span> <span class="o">=</span> <span class="n">Point2D</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">LCFS_RADIUS</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">RING_RADIUS</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">RADIATION_PEAK</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">CENTRE_PEAK_WIDTH</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">RING_WIDTH</span> <span class="o">=</span> <span class="mf">0.025</span>
+
+<span class="c1"># distance of wall from LCFS</span>
+<span class="n">WALL_LCFS_OFFSET</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">CYLINDER_RADIUS</span> <span class="o">=</span> <span class="n">PLASMA_AXIS</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">LCFS_RADIUS</span> <span class="o">+</span> <span class="n">WALL_LCFS_OFFSET</span> <span class="o">*</span> <span class="mf">1.1</span>
+<span class="n">CYLINDER_HEIGHT</span> <span class="o">=</span> <span class="p">(</span><span class="n">LCFS_RADIUS</span> <span class="o">+</span> <span class="n">WALL_LCFS_OFFSET</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">WALL_RADIUS</span> <span class="o">=</span> <span class="n">LCFS_RADIUS</span> <span class="o">+</span> <span class="n">WALL_LCFS_OFFSET</span>
+
+
+<span class="c1">##########################################</span>
+<span class="c1"># make toroidal wall wrapping the plasma #</span>
+
+<span class="c1"># number of poloidal wall elements</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">250</span>
+<span class="n">d_angle</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">/</span> <span class="n">num</span>
+
+<span class="n">wall_polygon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">pr</span> <span class="o">=</span> <span class="n">PLASMA_AXIS</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">WALL_RADIUS</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">d_angle</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">pz</span> <span class="o">=</span> <span class="n">PLASMA_AXIS</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">WALL_RADIUS</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">d_angle</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">wall_polygon</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">pr</span><span class="p">,</span> <span class="n">pz</span>
+
+<span class="c1"># Note - its important for this application that the resulting mesh triangles</span>
+<span class="c1"># are facing inwards. This will be determined by the polygon winding direction.</span>
+<span class="c1"># Positive winding angles produce outward facing meshes so we need to flip</span>
+<span class="c1"># the polygon to achieve an inward facing mesh.</span>
+<span class="n">wall_polygon</span> <span class="o">=</span> <span class="n">wall_polygon</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># create a 3D mesh from the 2D polygon outline using symmetry</span>
+<span class="n">wall_mesh</span> <span class="o">=</span> <span class="n">axisymmetric_mesh_from_polygon</span><span class="p">(</span><span class="n">wall_polygon</span><span class="p">)</span>
+
+<span class="c1"># write out the mesh to the OBJ triangular mesh format for visualisation in external tools</span>
+<span class="c1"># (e.g. Meshlab, Blender, etc)</span>
+<span class="n">export_obj</span><span class="p">(</span><span class="n">wall_mesh</span><span class="p">,</span> <span class="s1">&#39;toroidal_wall.obj&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/toroidal_wall1.png" src="../../_images/toroidal_wall1.png" />
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> The resulting toroidal mesh visualised in Meshlab.</span></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
