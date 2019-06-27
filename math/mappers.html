@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.3. Primitives &mdash; CHERAB 1.01 documentation</title>
+  <title>8.2. Mappers &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.4. Observers" href="observers.html" />
-    <link rel="prev" title="9.2. Materials" href="materials.html" /> 
+    <link rel="next" title="8.3. Clamp" href="clamp.html" />
+    <link rel="prev" title="8.1. Samplers" href="samplers.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -92,16 +92,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../math/math.html">8. Math functions</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="tools.html">9. Tools</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plasmas.html">9.1. Plasmas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="materials.html">9.2. Materials</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.3. Primitives</a></li>
-<li class="toctree-l2"><a class="reference internal" href="observers.html">9.4. Observers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tomography.html">9.5. Tomography</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utility.html">9.6. Utilities</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="math.html">8. Math functions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">8.1. Samplers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.2. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clamp.html">8.3. Clamp</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">9. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -154,15 +151,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="tools.html">9. Tools</a> &raquo;</li>
+          <li><a href="math.html">8. Math functions</a> &raquo;</li>
         
-      <li>9.3. Primitives</li>
+      <li>8.2. Mappers</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/tools/primitives.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/math/mappers.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,37 +172,80 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="primitives">
-<h1>9.3. Primitives<a class="headerlink" href="#primitives" title="Permalink to this headline">¶</a></h1>
-<p>A few useful utilities for creating primitives particularly relevant for fusion.</p>
-<dl class="function">
-<dt id="cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon">
-<code class="descclassname">cherab.tools.primitives.axisymmetric_mesh.</code><code class="descname">axisymmetric_mesh_from_polygon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generates an Raysect Mesh primitive from the specified 2D polygon.</p>
+  <div class="section" id="module-cherab.core.math.mappers">
+<span id="mappers"></span><h1>8.2. Mappers<a class="headerlink" href="#module-cherab.core.math.mappers" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cherab.core.math.mappers.AxisymmetricMapper">
+<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">AxisymmetricMapper</code><a class="headerlink" href="#cherab.core.math.mappers.AxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs an 360 degree rotation of a 2D function (defined on the xz plane)
+around the z-axis.</p>
+<p>Due to the nature of this mapping, only the positive region of the x range
+of the supplied function is mapped.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>polygon</strong> (<em>np.ndarray</em>) – A numpy array with shape [N,2] specifying the wall outline polygon
-in the R-Z plane. The polygon should not be closed, i.e. vertex i = 0 and i = N should not
-be the same vertex, but neighbours.</li>
-<li><strong>num_toroidal_segments</strong> (<em>int</em>) – The number of repeating toroidal segments that will be used
-to construct the mesh.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A Raysect Mesh primitive constructed from the R-Z polygon using symmetry.</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> – The function to be mapped.</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.primitives</span> <span class="kn">import</span> <span class="n">axisymmetric_mesh_from_polygon</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># wall_polygon is your (N, 2) ndarray describing the polygon</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">axisymmetric_mesh_from_polygon</span><span class="p">(</span><span class="n">wall_polygon</span><span class="p">)</span>
-</pre></div>
-</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.math.mappers.IsoMapper2D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">IsoMapper2D</code><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a 1D function to modify the value of a 2D scalar field.</p>
+<p>For a given 2D scalar field f(x,y) and 1D function g(x) this object
+returns g(f(x,y)).</p>
+<p>function2d is the 2D scalar field and function1d the 1D function.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.math.mappers.IsoMapper3D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">IsoMapper3D</code><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a 1D function to modify the value of a 3D scalar field.</p>
+<p>For a given 3D scalar field f(x,y,z) and 1D function g(x) this object
+returns g(f(x,y,z)).</p>
+<p>function3d is the 3D scalar field and function1d the 1D function.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.math.mappers.Swizzle2D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">Swizzle2D</code><a class="headerlink" href="#cherab.core.math.mappers.Swizzle2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverts the argument order of the specified function.</p>
+<p>function2d is the 2D function you want to inverse the arguments.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.math.mappers.Swizzle3D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">Swizzle3D</code><a class="headerlink" href="#cherab.core.math.mappers.Swizzle3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rearranges the order of a 3D functions arguments.</p>
+<p>For instance, a 90 degree rotation of function coordinates can be performed
+by swapping arguments: xyz -&gt; xzy</p>
+<p>function3d is the 3D function you want to reorder the arguments.
+shape is a tuple of 3 integers from 0,1,2 imposing the order of
+arguments. 0, 1 and 2 correspond respectively to x, y and z where (
+x,y,z) are the initial arguments.
+For instance:
+shape = (0,2,1) transforms f(x,y,z) in f(x,z,y)
+shape = (1,0,1) transforms f(x,y,z) in f(y,x,y)</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.math.mappers.VectorAxisymmetricMapper">
+<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">VectorAxisymmetricMapper</code><a class="headerlink" href="#cherab.core.math.mappers.VectorAxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs an 360 degree rotation of a 2D vector function (defined on the xz plane)
+around the z-axis.</p>
+<p>Due to the nature of this mapping, only the positive region of the x range
+of the supplied function is mapped.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> – The vector function to be mapped.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -218,10 +258,10 @@ to construct the mesh.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="observers.html" class="btn btn-neutral float-right" title="9.4. Observers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="clamp.html" class="btn btn-neutral float-right" title="8.3. Clamp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="materials.html" class="btn btn-neutral" title="9.2. Materials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="samplers.html" class="btn btn-neutral" title="8.1. Samplers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

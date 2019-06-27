@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8. Math functions &mdash; CHERAB 1.01 documentation</title>
+  <title>8.1. Samplers &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -24,16 +24,16 @@
 
   
 
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="9. Tools" href="tools/tools.html" />
-    <link rel="prev" title="7.8. Basic Line Emission" href="models/basic_line/basic_line_emission.html" /> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.2. Mappers" href="mappers.html" />
+    <link rel="prev" title="8. Math functions" href="math.html" /> 
 
   
-  <script src="_static/js/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -49,7 +49,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> CHERAB
           
 
           
@@ -66,7 +66,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -85,26 +85,27 @@
             
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a></li>
-<li class="toctree-l1"><a class="reference internal" href="licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation_and_structure.html">3. Installation and Project Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="available_modules.html">4. Available Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">5. Atomic Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plasmas/plasmas.html">6. Plasmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Math functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.math.samplers">8.1. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-cherab.core.math.mappers">8.2. Mappers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="math.html">8. Math functions</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.1. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">8.2. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clamp.html">8.3. Clamp</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tools/tools.html">9. Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">9. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html">Atomic Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
             
@@ -119,7 +120,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">CHERAB</a>
+          <a href="../index.html">CHERAB</a>
         
       </nav>
 
@@ -148,15 +149,17 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>8. Math functions</li>
+          <li><a href="math.html">8. Math functions</a> &raquo;</li>
+        
+      <li>8.1. Samplers</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/math.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/math/samplers.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -169,11 +172,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="math-functions">
-<h1>8. Math functions<a class="headerlink" href="#math-functions" title="Permalink to this headline">¶</a></h1>
-<p>Classes to do mathematical calculations.</p>
-<div class="section" id="module-cherab.core.math.samplers">
-<span id="samplers"></span><h2>8.1. Samplers<a class="headerlink" href="#module-cherab.core.math.samplers" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="module-cherab.core.math.samplers">
+<span id="samplers"></span><h1>8.1. Samplers<a class="headerlink" href="#module-cherab.core.math.samplers" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cherab.core.math.samplers.sample1d">
 <code class="descclassname">cherab.core.math.samplers.</code><code class="descname">sample1d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample1d" title="Permalink to this definition">¶</a></dt>
@@ -501,84 +501,6 @@ samplevector3d_grid instead.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-cherab.core.math.mappers">
-<span id="mappers"></span><h2>8.2. Mappers<a class="headerlink" href="#module-cherab.core.math.mappers" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="cherab.core.math.mappers.AxisymmetricMapper">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">AxisymmetricMapper</code><a class="headerlink" href="#cherab.core.math.mappers.AxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs an 360 degree rotation of a 2D function (defined on the xz plane)
-around the z-axis.</p>
-<p>Due to the nature of this mapping, only the positive region of the x range
-of the supplied function is mapped.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> – The function to be mapped.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.mappers.IsoMapper2D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">IsoMapper2D</code><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a 1D function to modify the value of a 2D scalar field.</p>
-<p>For a given 2D scalar field f(x,y) and 1D function g(x) this object
-returns g(f(x,y)).</p>
-<p>function2d is the 2D scalar field and function1d the 1D function.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.mappers.IsoMapper3D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">IsoMapper3D</code><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a 1D function to modify the value of a 3D scalar field.</p>
-<p>For a given 3D scalar field f(x,y,z) and 1D function g(x) this object
-returns g(f(x,y,z)).</p>
-<p>function3d is the 3D scalar field and function1d the 1D function.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.mappers.Swizzle2D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">Swizzle2D</code><a class="headerlink" href="#cherab.core.math.mappers.Swizzle2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Inverts the argument order of the specified function.</p>
-<p>function2d is the 2D function you want to inverse the arguments.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.mappers.Swizzle3D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">Swizzle3D</code><a class="headerlink" href="#cherab.core.math.mappers.Swizzle3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rearranges the order of a 3D functions arguments.</p>
-<p>For instance, a 90 degree rotation of function coordinates can be performed
-by swapping arguments: xyz -&gt; xzy</p>
-<p>function3d is the 3D function you want to reorder the arguments.
-shape is a tuple of 3 integers from 0,1,2 imposing the order of
-arguments. 0, 1 and 2 correspond respectively to x, y and z where (
-x,y,z) are the initial arguments.
-For instance:
-shape = (0,2,1) transforms f(x,y,z) in f(x,z,y)
-shape = (1,0,1) transforms f(x,y,z) in f(y,x,y)</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.mappers.VectorAxisymmetricMapper">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">VectorAxisymmetricMapper</code><a class="headerlink" href="#cherab.core.math.mappers.VectorAxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs an 360 degree rotation of a 2D vector function (defined on the xz plane)
-around the z-axis.</p>
-<p>Due to the nature of this mapping, only the positive region of the x range
-of the supplied function is mapped.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> – The vector function to be mapped.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
-</div>
 
 
            </div>
@@ -588,10 +510,10 @@ of the supplied function is mapped.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tools/tools.html" class="btn btn-neutral float-right" title="9. Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mappers.html" class="btn btn-neutral float-right" title="8.2. Mappers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="models/basic_line/basic_line_emission.html" class="btn btn-neutral" title="7.8. Basic Line Emission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="math.html" class="btn btn-neutral" title="8. Math functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -620,7 +542,7 @@ of the supplied function is mapped.</p>
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
+            URL_ROOT:'../',
             VERSION:'1.01',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
@@ -629,14 +551,14 @@ of the supplied function is mapped.</p>
             SOURCELINK_SUFFIX: '.txt'
         };
     </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="_static/js/theme.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {

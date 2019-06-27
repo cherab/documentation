@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5. Atomic Data &mdash; CHERAB 1.01 documentation</title>
+  <title>8. Math functions &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.1. Elements and Isotopes" href="elements_and_isotopes.html" />
-    <link rel="prev" title="4. Available Packages" href="../available_modules.html" /> 
+    <link rel="next" title="8.1. Samplers" href="samplers.html" />
+    <link rel="prev" title="7.8. Basic Line Emission" href="../models/basic_line/basic_line_emission.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -89,15 +89,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Atomic Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="elements_and_isotopes.html">5.1. Elements and Isotopes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emission_lines.html">5.2. Spectroscopic Emission Lines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">5.3. Rate Coefficients</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../math/math.html">8. Math functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Math functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">8.1. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">8.2. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clamp.html">8.3. Clamp</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">9. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
@@ -151,13 +151,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>5. Atomic Data</li>
+      <li>8. Math functions</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/atomic/atomic_data.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/math/math.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,19 +170,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="atomic-data">
-<h1>5. Atomic Data<a class="headerlink" href="#atomic-data" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="math-functions">
+<h1>8. Math functions<a class="headerlink" href="#math-functions" title="Permalink to this headline">¶</a></h1>
+<p>Classes to do mathematical calculations.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="elements_and_isotopes.html">5.1. Elements and Isotopes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="emission_lines.html">5.2. Spectroscopic Emission Lines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rate_coefficients.html">5.3. Rate Coefficients</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html#photon-emissivity-coefficients">5.3.1. Photon Emissivity Coefficients</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html#beam-plasma-interaction-rates">5.3.2. Beam-Plasma Interaction Rates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html#abundances">5.3.3. Abundances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html#radiated-power">5.3.4. Radiated Power</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="samplers.html">8.1. Samplers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mappers.html">8.2. Mappers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clamp.html">8.3. Clamp</a></li>
 </ul>
 </div>
 </div>
@@ -195,10 +190,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="elements_and_isotopes.html" class="btn btn-neutral float-right" title="5.1. Elements and Isotopes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="samplers.html" class="btn btn-neutral float-right" title="8.1. Samplers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../available_modules.html" class="btn btn-neutral" title="4. Available Packages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../models/basic_line/basic_line_emission.html" class="btn btn-neutral" title="7.8. Basic Line Emission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
