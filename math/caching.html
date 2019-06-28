@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.7. Mappers &mdash; CHERAB 1.01 documentation</title>
+  <title>8.2. Caching &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.8. Masks" href="mask.html" />
-    <link rel="prev" title="8.6. Interpolators" href="interpolators.html" /> 
+    <link rel="next" title="8.3. Clamps" href="clamp.html" />
+    <link rel="prev" title="8.1. Blending" href="blend.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -94,12 +94,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="math.html">8. Function Framework</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="blend.html">8.1. Blending</a></li>
-<li class="toctree-l2"><a class="reference internal" href="caching.html">8.2. Caching</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.2. Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="clamp.html">8.3. Clamps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constant.html">8.4. Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="function.html">8.5. Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interpolators.html">8.6. Interpolators</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8.7. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">8.7. Mappers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mask.html">8.8. Masks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samplers.html">8.9. Samplers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slice.html">8.10. Slicing</a></li>
@@ -160,13 +160,13 @@
         
           <li><a href="math.html">8. Function Framework</a> &raquo;</li>
         
-      <li>8.7. Mappers</li>
+      <li>8.2. Caching</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/math/mappers.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/math/caching.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -179,77 +179,106 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-cherab.core.math.mappers">
-<span id="mappers"></span><h1>8.7. Mappers<a class="headerlink" href="#module-cherab.core.math.mappers" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-cherab.core.math.caching.caching1d">
+<span id="caching"></span><h1>8.2. Caching<a class="headerlink" href="#module-cherab.core.math.caching.caching1d" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="cherab.core.math.mappers.AxisymmetricMapper">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">AxisymmetricMapper</code><a class="headerlink" href="#cherab.core.math.mappers.AxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs an 360 degree rotation of a 2D function (defined on the xz plane)
-around the z-axis.</p>
-<p>Due to the nature of this mapping, only the positive region of the x range
-of the supplied function is mapped.</p>
+<dt id="cherab.core.math.caching.caching1d.Caching1D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.caching.caching1d.</code><code class="descname">Caching1D</code><a class="headerlink" href="#cherab.core.math.caching.caching1d.Caching1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Precalculate and cache a 1D function on a finite space area.</p>
+<p>The function is sampled and a cubic interpolation is then used to calculate
+a cubic spline approximation of the function. As the spline has a constant
+cost of evaluation, this decreases the evaluation time of functions which
+are very often used.</p>
+<p>The sampling and interpolation are done locally and on demand, so that the
+caching is done progressively when the function is evaluated. Coordinates
+are normalised to the range [0, 1] to avoid float accuracy troubles. The
+values of the function are normalised if their boundaries are given.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> – The function to be mapped.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>function1d</strong> (<em>object</em>) – 1D function to be cached.</li>
+<li><strong>space_area</strong> (<em>tuple</em>) – space area where the function has to be cached:
+(minx, maxx).</li>
+<li><strong>resolution</strong> (<em>double</em>) – resolution of the sampling</li>
+<li><strong>no_boundary_error</strong> – Behaviour when evaluated outside the caching area.
+When False a ValueError is raised. When True the function is directly
+evaluated (without caching). Default is False.</li>
+<li><strong>function_boundaries</strong> – Boundaries of the function values for
+normalisation: (min, max). If None, function values are not normalised.
+Default is None.</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.core.math.mappers.IsoMapper2D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">IsoMapper2D</code><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a 1D function to modify the value of a 2D scalar field.</p>
-<p>For a given 2D scalar field f(x,y) and 1D function g(x) this object
-returns g(f(x,y)).</p>
-<p>function2d is the 2D scalar field and function1d the 1D function.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.mappers.IsoMapper3D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">IsoMapper3D</code><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a 1D function to modify the value of a 3D scalar field.</p>
-<p>For a given 3D scalar field f(x,y,z) and 1D function g(x) this object
-returns g(f(x,y,z)).</p>
-<p>function3d is the 3D scalar field and function1d the 1D function.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.mappers.Swizzle2D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">Swizzle2D</code><a class="headerlink" href="#cherab.core.math.mappers.Swizzle2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Inverts the argument order of the specified function.</p>
-<p>function2d is the 2D function you want to inverse the arguments.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.mappers.Swizzle3D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">Swizzle3D</code><a class="headerlink" href="#cherab.core.math.mappers.Swizzle3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rearranges the order of a 3D functions arguments.</p>
-<p>For instance, a 90 degree rotation of function coordinates can be performed
-by swapping arguments: xyz -&gt; xzy</p>
-<p>function3d is the 3D function you want to reorder the arguments.
-shape is a tuple of 3 integers from 0,1,2 imposing the order of
-arguments. 0, 1 and 2 correspond respectively to x, y and z where (
-x,y,z) are the initial arguments.
-For instance:
-shape = (0,2,1) transforms f(x,y,z) in f(x,z,y)
-shape = (1,0,1) transforms f(x,y,z) in f(y,x,y)</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.mappers.VectorAxisymmetricMapper">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">VectorAxisymmetricMapper</code><a class="headerlink" href="#cherab.core.math.mappers.VectorAxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs an 360 degree rotation of a 2D vector function (defined on the xz plane)
-around the z-axis.</p>
-<p>Due to the nature of this mapping, only the positive region of the x range
-of the supplied function is mapped.</p>
+<span class="target" id="module-cherab.core.math.caching.caching2d"></span><dl class="class">
+<dt id="cherab.core.math.caching.caching2d.Caching2D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.caching.caching2d.</code><code class="descname">Caching2D</code><a class="headerlink" href="#cherab.core.math.caching.caching2d.Caching2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Precalculate and cache a 2D function on a finite space area.</p>
+<p>The function is sampled and a cubic interpolation is then used to calculate
+a cubic spline approximation of the function. As the spline has a constant
+cost of evaluation, this decreases the evaluation time of functions which
+are very often used.</p>
+<p>The sampling and interpolation are done locally and on demand, so that the
+caching is done progressively when the function is evaluated. Coordinates
+are normalised to the range [0, 1] to avoid float accuracy troubles. The
+values of the function are normalised if their boundaries are given.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> – The vector function to be mapped.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>function2d</strong> (<em>object</em>) – 2D function to be cached.</li>
+<li><strong>space_area</strong> (<em>tuple</em>) – space area where the function has to be cached:
+(minx, maxx, miny, maxy).</li>
+<li><strong>resolution</strong> (<em>tuple</em>) – resolution of the sampling: (resolutionx, resolutiony).</li>
+<li><strong>no_boundary_error</strong> – Behaviour when evaluated outside the caching area.
+When False a ValueError is raised. When True the function is directly
+evaluated (without caching). Default is False.</li>
+<li><strong>function_boundaries</strong> – Boundaries of the function values for
+normalisation: (min, max). If None, function values are not normalised.
+Default is None.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="module-cherab.core.math.caching.caching3d"></span><dl class="class">
+<dt id="cherab.core.math.caching.caching3d.Caching3D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.caching.caching3d.</code><code class="descname">Caching3D</code><a class="headerlink" href="#cherab.core.math.caching.caching3d.Caching3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Precalculate and cache a 3D function on a finite space area.</p>
+<p>The function is sampled and a cubic interpolation is then used to calculate
+a cubic spline approximation of the function. As the spline has a constant
+cost of evaluation, this decreases the evaluation time of functions which
+are very often used.</p>
+<p>The sampling and interpolation are done locally and on demand, so that the
+caching is done progressively when the function is evaluated. Coordinates
+are normalised to the range [0, 1] to avoid float accuracy troubles. The
+values of the function are normalised if their boundaries are given.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>function3d</strong> (<em>object</em>) – 3D function to be cached.</li>
+<li><strong>space_area</strong> (<em>tuple</em>) – space area where the function has to be cached:
+(minx, maxx, miny, maxy, minz, maxz).</li>
+<li><strong>resolution</strong> (<em>tuple</em>) – resolution of the sampling:
+(resolutionx, resolutiony, resolutionz).</li>
+<li><strong>no_boundary_error</strong> – Behaviour when evaluated outside the caching area.
+When False a ValueError is raised. When True the function is directly
+evaluated (without caching). Default is False.</li>
+<li><strong>function_boundaries</strong> – Boundaries of the function values for
+normalisation: (min, max). If None, function values are not normalised.
+Default is None.</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
@@ -265,10 +294,10 @@ of the supplied function is mapped.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mask.html" class="btn btn-neutral float-right" title="8.8. Masks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="clamp.html" class="btn btn-neutral float-right" title="8.3. Clamps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="interpolators.html" class="btn btn-neutral" title="8.6. Interpolators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="blend.html" class="btn btn-neutral" title="8.1. Blending" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

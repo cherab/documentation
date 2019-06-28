@@ -102,7 +102,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../math/math.html">8. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">8. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">9. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
@@ -241,7 +241,7 @@ a numerical integrator with 1mm step size, NumericalIntegrator(step=0.001).</li>
 <tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
 <li><strong>atomic_data</strong> (<em>AtomicData</em>) – The atomic data provider class for this plasma.
 All plasma emission from this plasma will be calculated with the same provider.</li>
-<li><strong>b_field</strong> (<em>VectorFunction3D</em>) – A vector function in 3D space that returns the
+<li><strong>b_field</strong> (<a class="reference internal" href="../math/function.html#cherab.core.math.function.vectorfunction3d.VectorFunction3D" title="cherab.core.math.function.vectorfunction3d.VectorFunction3D"><em>VectorFunction3D</em></a>) – A vector function in 3D space that returns the
 magnetic field vector at any requested point.</li>
 <li><strong>composition</strong> (<a class="reference internal" href="#cherab.core.plasma.node.Composition" title="cherab.core.plasma.node.Composition"><em>Composition</em></a>) – The composition object manages all the atomic plasma
 species and provides access to their distribution functions.</li>
@@ -656,7 +656,7 @@ respectively.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>density</strong> (<em>Function3D</em>) – 3D function defining the density in cubic meters.</li>
 <li><strong>temperature</strong> (<em>Function3D</em>) – 3D function defining the temperature in eV.</li>
-<li><strong>velocity</strong> (<em>VectorFunction3D</em>) – 3D vector function defining the bulk velocity in meters per second.</li>
+<li><strong>velocity</strong> (<a class="reference internal" href="../math/function.html#cherab.core.math.function.vectorfunction3d.VectorFunction3D" title="cherab.core.math.function.vectorfunction3d.VectorFunction3D"><em>VectorFunction3D</em></a>) – 3D vector function defining the bulk velocity in meters per second.</li>
 <li><strong>atomic_mass</strong> (<em>double</em>) – Atomic mass of the species in kg.</li>
 </ul>
 </td>
@@ -777,7 +777,7 @@ respectively.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team.
 
     </p>
   </div> 

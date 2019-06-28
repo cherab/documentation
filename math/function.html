@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.7. Mappers &mdash; CHERAB 1.01 documentation</title>
+  <title>8.5. Functions &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.8. Masks" href="mask.html" />
-    <link rel="prev" title="8.6. Interpolators" href="interpolators.html" /> 
+    <link rel="next" title="8.6. Interpolators" href="interpolators.html" />
+    <link rel="prev" title="8.4. Constants" href="constant.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -97,9 +97,9 @@
 <li class="toctree-l2"><a class="reference internal" href="caching.html">8.2. Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="clamp.html">8.3. Clamps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constant.html">8.4. Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function.html">8.5. Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.5. Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interpolators.html">8.6. Interpolators</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8.7. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">8.7. Mappers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mask.html">8.8. Masks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samplers.html">8.9. Samplers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slice.html">8.10. Slicing</a></li>
@@ -160,13 +160,13 @@
         
           <li><a href="math.html">8. Function Framework</a> &raquo;</li>
         
-      <li>8.7. Mappers</li>
+      <li>8.5. Functions</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/math/mappers.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/math/function.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -179,80 +179,86 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-cherab.core.math.mappers">
-<span id="mappers"></span><h1>8.7. Mappers<a class="headerlink" href="#module-cherab.core.math.mappers" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-cherab.core.math.function.vectorfunction2d">
+<span id="functions"></span><h1>8.5. Functions<a class="headerlink" href="#module-cherab.core.math.function.vectorfunction2d" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="cherab.core.math.mappers.AxisymmetricMapper">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">AxisymmetricMapper</code><a class="headerlink" href="#cherab.core.math.mappers.AxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs an 360 degree rotation of a 2D function (defined on the xz plane)
-around the z-axis.</p>
-<p>Due to the nature of this mapping, only the positive region of the x range
-of the supplied function is mapped.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> – The function to be mapped.</td>
-</tr>
-</tbody>
-</table>
+<dt id="cherab.core.math.function.vectorfunction2d.PythonVectorFunction2D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction2d.</code><code class="descname">PythonVectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction2d.PythonVectorFunction2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps a python callable object with a VectorFunction2D object.</p>
+<p>This class allows a python object to interact with cython code that requires
+a VectorFunction3D object. The python object must implement __call__()
+expecting three arguments and return a Vector object.</p>
+<p>This class is intended to be used to transparently wrap python objects that
+are passed via constructors or methods into cython optimised code. It is not
+intended that the users should need to directly interact with these wrapping
+objects. Constructors and methods expecting a VectorFunction3D object should
+be designed to accept a generic python object and then test that object to
+determine if it is an instance of VectorFunction3D. If the object is not a
+VectorFunction3D object it should be wrapped using this class for internal
+use.</p>
+<p>See also: autowrap_vectorfunction3d()</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="cherab.core.math.mappers.IsoMapper2D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">IsoMapper2D</code><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a 1D function to modify the value of a 2D scalar field.</p>
-<p>For a given 2D scalar field f(x,y) and 1D function g(x) this object
-returns g(f(x,y)).</p>
-<p>function2d is the 2D scalar field and function1d the 1D function.</p>
+<dt id="cherab.core.math.function.vectorfunction2d.ScalarToVectorFunction2D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction2d.</code><code class="descname">ScalarToVectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction2d.ScalarToVectorFunction2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines three Function2D objects to produce a VectorFunction2D.</p>
+<p>The three Function2D objects correspond to the x, y and z components of the
+resulting vector object.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="cherab.core.math.mappers.IsoMapper3D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">IsoMapper3D</code><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies a 1D function to modify the value of a 3D scalar field.</p>
-<p>For a given 3D scalar field f(x,y,z) and 1D function g(x) this object
-returns g(f(x,y,z)).</p>
-<p>function3d is the 3D scalar field and function1d the 1D function.</p>
+<dt id="cherab.core.math.function.vectorfunction2d.VectorFunction2D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction2d.</code><code class="descname">VectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction2d.VectorFunction2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cython optimised class for representing an arbitrary 3D vector function.</p>
+<p>Returns a Vector3D for a given 2D coordinate.</p>
+<p>Using __call__() in cython is slow. This class provides an overloadable
+cython cdef evaluate() method which has much less overhead than a python
+function call.</p>
+<p>For use in cython code only, this class cannot be extended via python.</p>
+<p>To create a new function object, inherit this class and implement the
+evaluate() method. The new function object can then be used with any code
+that accepts a function object.</p>
+</dd></dl>
+
+<span class="target" id="module-cherab.core.math.function.vectorfunction3d"></span><dl class="class">
+<dt id="cherab.core.math.function.vectorfunction3d.PythonVectorFunction3D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction3d.</code><code class="descname">PythonVectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction3d.PythonVectorFunction3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps a python callable object with a VectorFunction3D object.</p>
+<p>This class allows a python object to interact with cython code that requires
+a VectorFunction3D object. The python object must implement __call__()
+expecting three arguments and return a Vector object.</p>
+<p>This class is intended to be used to transparently wrap python objects that
+are passed via constructors or methods into cython optimised code. It is not
+intended that the users should need to directly interact with these wrapping
+objects. Constructors and methods expecting a VectorFunction3D object should
+be designed to accept a generic python object and then test that object to
+determine if it is an instance of VectorFunction3D. If the object is not a
+VectorFunction3D object it should be wrapped using this class for internal
+use.</p>
+<p>See also: autowrap_vectorfunction3d()</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="cherab.core.math.mappers.Swizzle2D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">Swizzle2D</code><a class="headerlink" href="#cherab.core.math.mappers.Swizzle2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Inverts the argument order of the specified function.</p>
-<p>function2d is the 2D function you want to inverse the arguments.</p>
+<dt id="cherab.core.math.function.vectorfunction3d.ScalarToVectorFunction3D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction3d.</code><code class="descname">ScalarToVectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction3d.ScalarToVectorFunction3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines three Function3D objects to produce a VectorFunction3D.</p>
+<p>The three Function3D objects correspond to the x, y and z components of the
+resulting vector object.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="cherab.core.math.mappers.Swizzle3D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">Swizzle3D</code><a class="headerlink" href="#cherab.core.math.mappers.Swizzle3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rearranges the order of a 3D functions arguments.</p>
-<p>For instance, a 90 degree rotation of function coordinates can be performed
-by swapping arguments: xyz -&gt; xzy</p>
-<p>function3d is the 3D function you want to reorder the arguments.
-shape is a tuple of 3 integers from 0,1,2 imposing the order of
-arguments. 0, 1 and 2 correspond respectively to x, y and z where (
-x,y,z) are the initial arguments.
-For instance:
-shape = (0,2,1) transforms f(x,y,z) in f(x,z,y)
-shape = (1,0,1) transforms f(x,y,z) in f(y,x,y)</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.mappers.VectorAxisymmetricMapper">
-<em class="property">class </em><code class="descclassname">cherab.core.math.mappers.</code><code class="descname">VectorAxisymmetricMapper</code><a class="headerlink" href="#cherab.core.math.mappers.VectorAxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs an 360 degree rotation of a 2D vector function (defined on the xz plane)
-around the z-axis.</p>
-<p>Due to the nature of this mapping, only the positive region of the x range
-of the supplied function is mapped.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function2d</strong> – The vector function to be mapped.</td>
-</tr>
-</tbody>
-</table>
+<dt id="cherab.core.math.function.vectorfunction3d.VectorFunction3D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction3d.</code><code class="descname">VectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction3d.VectorFunction3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cython optimised class for representing an arbitrary 3D vector function.</p>
+<p>Returns a Vector3D for a given 3D coordinate.</p>
+<p>Using __call__() in cython is slow. This class provides an overloadable
+cython cdef evaluate() method which has much less overhead than a python
+function call.</p>
+<p>For use in cython code only, this class cannot be extended via python.</p>
+<p>To create a new function object, inherit this class and implement the
+evaluate() method. The new function object can then be used with any code
+that accepts a function object.</p>
 </dd></dl>
 
 </div>
@@ -265,10 +271,10 @@ of the supplied function is mapped.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mask.html" class="btn btn-neutral float-right" title="8.8. Masks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="interpolators.html" class="btn btn-neutral float-right" title="8.6. Interpolators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="interpolators.html" class="btn btn-neutral" title="8.6. Interpolators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="constant.html" class="btn btn-neutral" title="8.4. Constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

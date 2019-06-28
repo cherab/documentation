@@ -91,7 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">5. Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plasmas/plasmas.html">6. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math/math.html">8. Math functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/math.html">8. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tools/tools.html">9. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
@@ -253,8 +253,14 @@
 </li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamStoppingRate">BeamStoppingRate (class in cherab.core.atomic.rates)</a>
 </li>
+      <li><a href="math/blend.html#cherab.core.math.blend.Blend1D">Blend1D (class in cherab.core.math.blend)</a>
+</li>
+      <li><a href="math/blend.html#cherab.core.math.blend.Blend2D">Blend2D (class in cherab.core.math.blend)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="math/blend.html#cherab.core.math.blend.Blend3D">Blend3D (class in cherab.core.math.blend)</a>
+</li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera">BolometerCamera (class in cherab.tools.observers.bolometry)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil">BolometerFoil (class in cherab.tools.observers.bolometry)</a>
@@ -277,6 +283,12 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="math/caching.html#cherab.core.math.caching.caching1d.Caching1D">Caching1D (class in cherab.core.math.caching.caching1d)</a>
+</li>
+      <li><a href="math/caching.html#cherab.core.math.caching.caching2d.Caching2D">Caching2D (class in cherab.core.math.caching.caching2d)</a>
+</li>
+      <li><a href="math/caching.html#cherab.core.math.caching.caching3d.Caching3D">Caching3D (class in cherab.core.math.caching.caching3d)</a>
+</li>
       <li><a href="models/cxs/cxs_model.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator.calculate_attenuation">calculate_attenuation() (cherab.core.model.attenuator.singleray.SingleRayAttenuator method)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil.calculate_etendue">calculate_etendue() (cherab.tools.observers.bolometry.BolometerFoil method)</a>
@@ -301,13 +313,37 @@
 </li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.StageResolvedLineRadiation.__call__">cherab.core.atomic.rates.StageResolvedLineRadiation.__call__() (built-in function)</a>
 </li>
+      <li><a href="math/blend.html#module-cherab.core.math.blend">cherab.core.math.blend (module)</a>
+</li>
+      <li><a href="math/caching.html#module-cherab.core.math.caching.caching1d">cherab.core.math.caching.caching1d (module)</a>
+</li>
+      <li><a href="math/caching.html#module-cherab.core.math.caching.caching2d">cherab.core.math.caching.caching2d (module)</a>
+</li>
+      <li><a href="math/caching.html#module-cherab.core.math.caching.caching3d">cherab.core.math.caching.caching3d (module)</a>
+</li>
       <li><a href="math/clamp.html#module-cherab.core.math.clamp">cherab.core.math.clamp (module)</a>
 </li>
-      <li><a href="math/mappers.html#module-cherab.core.math.mappers">cherab.core.math.mappers (module)</a>
+      <li><a href="math/constant.html#module-cherab.core.math.constant">cherab.core.math.constant (module)</a>
+</li>
+      <li><a href="math/function.html#module-cherab.core.math.function.vectorfunction2d">cherab.core.math.function.vectorfunction2d (module)</a>
+</li>
+      <li><a href="math/function.html#module-cherab.core.math.function.vectorfunction3d">cherab.core.math.function.vectorfunction3d (module)</a>
+</li>
+      <li><a href="math/interpolators.html#module-cherab.core.math.interpolators.interpolators1d">cherab.core.math.interpolators.interpolators1d (module)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="math/interpolators.html#module-cherab.core.math.interpolators.interpolators2d">cherab.core.math.interpolators.interpolators2d (module)</a>
+</li>
+      <li><a href="math/interpolators.html#module-cherab.core.math.interpolators.interpolators3d">cherab.core.math.interpolators.interpolators3d (module)</a>
+</li>
+      <li><a href="math/mappers.html#module-cherab.core.math.mappers">cherab.core.math.mappers (module)</a>
+</li>
+      <li><a href="math/mask.html#module-cherab.core.math.mask">cherab.core.math.mask (module)</a>
+</li>
       <li><a href="math/samplers.html#module-cherab.core.math.samplers">cherab.core.math.samplers (module)</a>
+</li>
+      <li><a href="math/slice.html#module-cherab.core.math.slice">cherab.core.math.slice (module)</a>
 </li>
       <li><a href="tools/utility.html#module-cherab.core.utility.conversion">cherab.core.utility.conversion (module)</a>
 </li>
@@ -336,6 +372,16 @@
       <li><a href="tools/utility.html#cherab.core.utility.conversion.Cm3ToM3">Cm3ToM3 (class in cherab.core.utility.conversion)</a>
 </li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition">Composition (class in cherab.core.plasma.node)</a>
+</li>
+      <li><a href="math/constant.html#cherab.core.math.constant.Constant1D">Constant1D (class in cherab.core.math.constant)</a>
+</li>
+      <li><a href="math/constant.html#cherab.core.math.constant.Constant2D">Constant2D (class in cherab.core.math.constant)</a>
+</li>
+      <li><a href="math/constant.html#cherab.core.math.constant.Constant3D">Constant3D (class in cherab.core.math.constant)</a>
+</li>
+      <li><a href="math/constant.html#cherab.core.math.constant.ConstantVector2D">ConstantVector2D (class in cherab.core.math.constant)</a>
+</li>
+      <li><a href="math/constant.html#cherab.core.math.constant.ConstantVector3D">ConstantVector3D (class in cherab.core.math.constant)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -431,6 +477,18 @@
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.insert">insert() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
+      <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators1d.Interpolate1DCubic">Interpolate1DCubic (class in cherab.core.math.interpolators.interpolators1d)</a>
+</li>
+      <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators1d.Interpolate1DLinear">Interpolate1DLinear (class in cherab.core.math.interpolators.interpolators1d)</a>
+</li>
+      <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators2d.Interpolate2DCubic">Interpolate2DCubic (class in cherab.core.math.interpolators.interpolators2d)</a>
+</li>
+      <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators2d.Interpolate2DLinear">Interpolate2DLinear (class in cherab.core.math.interpolators.interpolators2d)</a>
+</li>
+      <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators3d.Interpolate3DCubic">Interpolate3DCubic (class in cherab.core.math.interpolators.interpolators3d)</a>
+</li>
+      <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators3d.Interpolate3DLinear">Interpolate3DLinear (class in cherab.core.math.interpolators.interpolators3d)</a>
+</li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.BaseFactorConversion.inv">inv() (cherab.core.utility.conversion.BaseFactorConversion class method)</a>
 
       <ul>
@@ -439,10 +497,10 @@
         <li><a href="tools/utility.html#cherab.core.utility.conversion.PhotonToJ.inv">(cherab.core.utility.conversion.PhotonToJ class method)</a>
 </li>
       </ul></li>
-      <li><a href="tools/tomography.html#cherab.tools.inversions.sart.invert_constrained_sart">invert_constrained_sart() (in module cherab.tools.inversions.sart)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/tomography.html#cherab.tools.inversions.sart.invert_constrained_sart">invert_constrained_sart() (in module cherab.tools.inversions.sart)</a>
+</li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.nnls.invert_regularised_nnls">invert_regularised_nnls() (in module cherab.tools.inversions.nnls)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.sart.invert_sart">invert_sart() (in module cherab.tools.inversions.sart)</a>
@@ -521,15 +579,21 @@
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.PhotonToJ">PhotonToJ (class in cherab.core.utility.conversion)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.Plasma">Plasma (class in cherab.core)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot">plot (cherab.tools.inversions.voxels.ToroidalVoxelGrid attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/equilibrium.html#cherab.tools.equilibrium.plot.plot_equilibrium">plot_equilibrium() (in module cherab.tools.equilibrium.plot)</a>
 </li>
+      <li><a href="math/mask.html#cherab.core.math.mask.PolygonMask2D">PolygonMask2D (class in cherab.core.math.mask)</a>
+</li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.pop">pop() (cherab.core.utility.notify.NotifyingList method)</a>
+</li>
+      <li><a href="math/function.html#cherab.core.math.function.vectorfunction2d.PythonVectorFunction2D">PythonVectorFunction2D (class in cherab.core.math.function.vectorfunction2d)</a>
+</li>
+      <li><a href="math/function.html#cherab.core.math.function.vectorfunction3d.PythonVectorFunction3D">PythonVectorFunction3D (class in cherab.core.math.function.vectorfunction3d)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -575,21 +639,29 @@
 </li>
       <li><a href="math/samplers.html#cherab.core.math.samplers.samplevector2d_grid">samplevector2d_grid() (in module cherab.core.math.samplers)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="math/samplers.html#cherab.core.math.samplers.samplevector2d_points">samplevector2d_points() (in module cherab.core.math.samplers)</a>
 </li>
       <li><a href="math/samplers.html#cherab.core.math.samplers.samplevector3d">samplevector3d() (in module cherab.core.math.samplers)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="math/samplers.html#cherab.core.math.samplers.samplevector3d_grid">samplevector3d_grid() (in module cherab.core.math.samplers)</a>
 </li>
       <li><a href="math/samplers.html#cherab.core.math.samplers.samplevector3d_points">samplevector3d_points() (in module cherab.core.math.samplers)</a>
+</li>
+      <li><a href="math/function.html#cherab.core.math.function.vectorfunction2d.ScalarToVectorFunction2D">ScalarToVectorFunction2D (class in cherab.core.math.function.vectorfunction2d)</a>
+</li>
+      <li><a href="math/function.html#cherab.core.math.function.vectorfunction3d.ScalarToVectorFunction3D">ScalarToVectorFunction3D (class in cherab.core.math.function.vectorfunction3d)</a>
 </li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.set">set() (cherab.core.plasma.node.Composition method)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.set_active">set_active (cherab.tools.inversions.voxels.VoxelCollection attribute)</a>
 </li>
       <li><a href="models/cxs/cxs_model.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator">SingleRayAttenuator (class in cherab.core.model.attenuator.singleray)</a>
+</li>
+      <li><a href="math/slice.html#cherab.core.math.slice.Slice2D">Slice2D (class in cherab.core.math.slice)</a>
+</li>
+      <li><a href="math/slice.html#cherab.core.math.slice.Slice3D">Slice3D (class in cherab.core.math.slice)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.sort">sort() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
@@ -637,8 +709,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="math/mappers.html#cherab.core.math.mappers.VectorAxisymmetricMapper">VectorAxisymmetricMapper (class in cherab.core.math.mappers)</a>
 </li>
+      <li><a href="math/function.html#cherab.core.math.function.vectorfunction2d.VectorFunction2D">VectorFunction2D (class in cherab.core.math.function.vectorfunction2d)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="math/function.html#cherab.core.math.function.vectorfunction3d.VectorFunction3D">VectorFunction3D (class in cherab.core.math.function.vectorfunction3d)</a>
+</li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.Voxel">Voxel (class in cherab.tools.inversions.voxels)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection">VoxelCollection (class in cherab.tools.inversions.voxels)</a>
@@ -666,7 +742,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team.
 
     </p>
   </div> 

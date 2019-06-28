@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8. Math functions &mdash; CHERAB 1.01 documentation</title>
+  <title>8. Function Framework &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.1. Samplers" href="samplers.html" />
+    <link rel="next" title="8.1. Blending" href="blend.html" />
     <link rel="prev" title="7.8. Basic Line Emission" href="../models/basic_line/basic_line_emission.html" /> 
 
   
@@ -92,10 +92,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Math functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="samplers.html">8.1. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mappers.html">8.2. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clamp.html">8.3. Clamp</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Function Framework</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="blend.html">8.1. Blending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">8.2. Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clamp.html">8.3. Clamps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constant.html">8.4. Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function.html">8.5. Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolators.html">8.6. Interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">8.7. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">8.8. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">8.9. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slice.html">8.10. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">9. Tools</a></li>
@@ -151,7 +158,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>8. Math functions</li>
+      <li>8. Function Framework</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,14 +177,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="math-functions">
-<h1>8. Math functions<a class="headerlink" href="#math-functions" title="Permalink to this headline">¶</a></h1>
-<p>Classes to do mathematical calculations.</p>
+  <div class="section" id="function-framework">
+<h1>8. Function Framework<a class="headerlink" href="#function-framework" title="Permalink to this headline">¶</a></h1>
+<p>One of CHERAB’s most powerful features is the way it is designed to support mathematical
+functions. Most of the physics interfaces in CHERAB are specified in terms of math functions
+of a specified dimension. I.e. density is a 3D function f(x, y, z), while <span class="math notranslate nohighlight">\(\psi_n(r,z)\)</span>
+is a 2D function in the r-z plane. The section of the documentation describes the various
+utilities that are provided for slicing, dicing and projecting these functions.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="samplers.html">8.1. Samplers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mappers.html">8.2. Mappers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clamp.html">8.3. Clamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blend.html">8.1. Blending</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">8.2. Caching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clamp.html">8.3. Clamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constant.html">8.4. Constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function.html">8.5. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interpolators.html">8.6. Interpolators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mappers.html">8.7. Mappers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mask.html">8.8. Masks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplers.html">8.9. Samplers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slice.html">8.10. Slicing</a></li>
 </ul>
 </div>
 </div>
@@ -190,7 +208,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="samplers.html" class="btn btn-neutral float-right" title="8.1. Samplers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="blend.html" class="btn btn-neutral float-right" title="8.1. Blending" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../models/basic_line/basic_line_emission.html" class="btn btn-neutral" title="7.8. Basic Line Emission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -202,7 +220,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team.
 
     </p>
   </div> 
