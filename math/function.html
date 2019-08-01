@@ -97,7 +97,11 @@
 <li class="toctree-l2"><a class="reference internal" href="caching.html">8.2. Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="clamp.html">8.3. Clamps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constant.html">8.4. Constants</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8.5. Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.5. Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d-vector-functions">8.5.1. 2D Vector Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">8.5.2. 3D Vector Functions</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="interpolators.html">8.6. Interpolators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mappers.html">8.7. Mappers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mask.html">8.8. Masks</a></li>
@@ -179,38 +183,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-cherab.core.math.function.vectorfunction2d">
-<span id="functions"></span><h1>8.5. Functions<a class="headerlink" href="#module-cherab.core.math.function.vectorfunction2d" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="functions">
+<h1>8.5. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+<p>The CHERAB function framework is built on the core Raysect 1D, 2D and 3D
+<a class="reference external" href="https://raysect.github.io/documentation/api_reference/core/functions.html">function framework</a>.
+For more details on the base functionality refer to the Raysect
+documentation and the CHERAB function tutorials. The only new classes of functions
+added by CHERAB are 2D and 3D Vector functions.</p>
+<div class="section" id="d-vector-functions">
+<h2>8.5.1. 2D Vector Functions<a class="headerlink" href="#d-vector-functions" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="cherab.core.math.function.vectorfunction2d.PythonVectorFunction2D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction2d.</code><code class="descname">PythonVectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction2d.PythonVectorFunction2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wraps a python callable object with a VectorFunction2D object.</p>
-<p>This class allows a python object to interact with cython code that requires
-a VectorFunction3D object. The python object must implement __call__()
-expecting three arguments and return a Vector object.</p>
-<p>This class is intended to be used to transparently wrap python objects that
-are passed via constructors or methods into cython optimised code. It is not
-intended that the users should need to directly interact with these wrapping
-objects. Constructors and methods expecting a VectorFunction3D object should
-be designed to accept a generic python object and then test that object to
-determine if it is an instance of VectorFunction3D. If the object is not a
-VectorFunction3D object it should be wrapped using this class for internal
-use.</p>
-<p>See also: autowrap_vectorfunction3d()</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.function.vectorfunction2d.ScalarToVectorFunction2D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction2d.</code><code class="descname">ScalarToVectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction2d.ScalarToVectorFunction2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Combines three Function2D objects to produce a VectorFunction2D.</p>
-<p>The three Function2D objects correspond to the x, y and z components of the
-resulting vector object.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.function.vectorfunction2d.VectorFunction2D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction2d.</code><code class="descname">VectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction2d.VectorFunction2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Cython optimised class for representing an arbitrary 3D vector function.</p>
+<dt id="cherab.core.math.function.VectorFunction2D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.</code><code class="descname">VectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.VectorFunction2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cython optimised class for representing an arbitrary 2D vector function.</p>
 <p>Returns a Vector3D for a given 2D coordinate.</p>
 <p>Using __call__() in cython is slow. This class provides an overloadable
 cython cdef evaluate() method which has much less overhead than a python
@@ -221,10 +206,11 @@ evaluate() method. The new function object can then be used with any code
 that accepts a function object.</p>
 </dd></dl>
 
-<span class="target" id="module-cherab.core.math.function.vectorfunction3d"></span><dl class="class">
-<dt id="cherab.core.math.function.vectorfunction3d.PythonVectorFunction3D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction3d.</code><code class="descname">PythonVectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction3d.PythonVectorFunction3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wraps a python callable object with a VectorFunction3D object.</p>
+<dl class="class">
+<dt id="cherab.core.math.function.vectorfunction2d.PythonVectorFunction2D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction2d.</code><code class="descname">PythonVectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction2d.PythonVectorFunction2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.math.function.vectorfunction2d.VectorFunction2D</span></code></p>
+<p>Wraps a python callable object with a VectorFunction2D object.</p>
 <p>This class allows a python object to interact with cython code that requires
 a VectorFunction3D object. The python object must implement __call__()
 expecting three arguments and return a Vector object.</p>
@@ -236,20 +222,68 @@ be designed to accept a generic python object and then test that object to
 determine if it is an instance of VectorFunction3D. If the object is not a
 VectorFunction3D object it should be wrapped using this class for internal
 use.</p>
-<p>See also: autowrap_vectorfunction3d()</p>
+<p>See also: autowrap_vectorfunction2d()</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function</strong> (<em>object</em>) – the 2d vector function object to wrap.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">PythonVectorFunction2D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">vectorfunction2d</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fv2</span> <span class="o">=</span> <span class="n">PythonVectorFunction2D</span><span class="p">(</span><span class="n">vectorfunction2d</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fv2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">)</span>
+<span class="go">Vector3D(1.0, 0.0, 0.0)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
-<dt id="cherab.core.math.function.vectorfunction3d.ScalarToVectorFunction3D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction3d.</code><code class="descname">ScalarToVectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction3d.ScalarToVectorFunction3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Combines three Function3D objects to produce a VectorFunction3D.</p>
-<p>The three Function3D objects correspond to the x, y and z components of the
+<dt id="cherab.core.math.function.ScalarToVectorFunction2D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.</code><code class="descname">ScalarToVectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.math.function.vectorfunction2d.VectorFunction2D</span></code></p>
+<p>Combines three Function2D objects to produce a VectorFunction2D.</p>
+<p>The three Function2D objects correspond to the x, y and z components of the
 resulting vector object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x_function</strong> (<em>Function2D</em>) – the Vx(x, y) 2d function.</li>
+<li><strong>y_function</strong> (<em>Function2D</em>) – the Vy(x, y) 2d function.</li>
+<li><strong>z_function</strong> (<em>Function2D</em>) – the Vz(x, y) 2d function.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant2D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math.function</span> <span class="kn">import</span> <span class="n">ScalarToVectorFunction2D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vx</span> <span class="o">=</span> <span class="n">Constant2D</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vy</span> <span class="o">=</span> <span class="n">Constant2D</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vz</span> <span class="o">=</span> <span class="n">Constant2D</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fv</span> <span class="o">=</span> <span class="n">ScalarToVectorFunction2D</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="n">vz</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fv</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">)</span>
+<span class="go">Vector3D(1.0, 2.0, 3.0)</span>
+</pre></div>
+</div>
 </dd></dl>
 
+</div>
+<div class="section" id="id1">
+<h2>8.5.2. 3D Vector Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="cherab.core.math.function.vectorfunction3d.VectorFunction3D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction3d.</code><code class="descname">VectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction3d.VectorFunction3D" title="Permalink to this definition">¶</a></dt>
+<dt id="cherab.core.math.function.VectorFunction3D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.</code><code class="descname">VectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.VectorFunction3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cython optimised class for representing an arbitrary 3D vector function.</p>
 <p>Returns a Vector3D for a given 3D coordinate.</p>
 <p>Using __call__() in cython is slow. This class provides an overloadable
@@ -261,6 +295,79 @@ evaluate() method. The new function object can then be used with any code
 that accepts a function object.</p>
 </dd></dl>
 
+<dl class="class">
+<dt id="cherab.core.math.function.vectorfunction3d.PythonVectorFunction3D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.vectorfunction3d.</code><code class="descname">PythonVectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction3d.PythonVectorFunction3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.math.function.vectorfunction3d.VectorFunction3D</span></code></p>
+<p>Wraps a python callable object with a VectorFunction3D object.</p>
+<p>This class allows a python object to interact with cython code that requires
+a VectorFunction3D object. The python object must implement __call__()
+expecting three arguments and return a Vector object.</p>
+<p>This class is intended to be used to transparently wrap python objects that
+are passed via constructors or methods into cython optimised code. It is not
+intended that the users should need to directly interact with these wrapping
+objects. Constructors and methods expecting a VectorFunction3D object should
+be designed to accept a generic python object and then test that object to
+determine if it is an instance of VectorFunction3D. If the object is not a
+VectorFunction3D object it should be wrapped using this class for internal
+use.</p>
+<p>See also: autowrap_vectorfunction3d()</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>function</strong> (<em>object</em>) – the 3d vector function object to wrap.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">PythonVectorFunction3D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">vectorfunction3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fv3</span> <span class="o">=</span> <span class="n">PythonVectorFunction3D</span><span class="p">(</span><span class="n">vectorfunction3d</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fv3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">)</span>
+<span class="go">Vector3D(1.0, 0.0, 0.0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="cherab.core.math.function.ScalarToVectorFunction3D">
+<em class="property">class </em><code class="descclassname">cherab.core.math.function.</code><code class="descname">ScalarToVectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.math.function.vectorfunction3d.VectorFunction3D</span></code></p>
+<p>Combines three Function3D objects to produce a VectorFunction3D.</p>
+<p>The three Function3D objects correspond to the x, y and z components of the
+resulting vector object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x_function</strong> (<em>Function3D</em>) – the Vx(x, y, z) 3d function.</li>
+<li><strong>y_function</strong> (<em>Function3D</em>) – the Vy(x, y, z) 3d function.</li>
+<li><strong>z_function</strong> (<em>Function3D</em>) – the Vz(x, y, z) 3d function.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math.function</span> <span class="kn">import</span> <span class="n">ScalarToVectorFunction3D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vx</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vy</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vz</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fv</span> <span class="o">=</span> <span class="n">ScalarToVectorFunction3D</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="n">vz</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fv</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.2</span><span class="p">)</span>
+<span class="go">Vector3D(1.0, 2.0, 3.0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
 </div>
 
 

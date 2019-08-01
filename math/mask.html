@@ -185,12 +185,23 @@
 <dt id="cherab.core.math.mask.PolygonMask2D">
 <em class="property">class </em><code class="descclassname">cherab.core.math.mask.</code><code class="descname">PolygonMask2D</code><a class="headerlink" href="#cherab.core.math.mask.PolygonMask2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>A 2D mask defined by a simple n-sided closed polygon.</p>
+<p>Inherits from Function2D, implements <cite>__call__(x, y)</cite>.</p>
 <p>This 2D function returns 1.0 if the (x, y) point lies inside the polygon
 and 0.0 outside.</p>
 <p>The mesh is specified as a set of 2D vertices supplied as an Nx2 numpy
 array or a suitably sized sequence that can be converted to a numpy array.</p>
 <p>The vertex list must define a closed polygon without self intersections -
 a mathematically “simple” polygon.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">PolygonMask2D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fp</span> <span class="o">=</span> <span class="n">PolygonMask2D</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fp</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>

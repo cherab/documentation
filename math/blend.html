@@ -184,7 +184,8 @@
 <dl class="class">
 <dt id="cherab.core.math.blend.Blend1D">
 <em class="property">class </em><code class="descclassname">cherab.core.math.blend.</code><code class="descname">Blend1D</code><a class="headerlink" href="#cherab.core.math.blend.Blend1D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a linear interpolation between two 1D functions controlled by a third.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function1d.Function1D</span></code></p>
+<p>Performs a linear interpolation between two 1D functions controlled by a third.</p>
 <p>This function is a functional equivalent to the computer graphics Lerp
 function. The value returned when this function is evaluated is a linear
 interpolation between the sampled values of f1 and f2. The interpolation
@@ -195,12 +196,55 @@ in the range [0, 1].</p>
 \[r = (1 - f_m(x)) f_1(x) + f_m(x) f_2(x)\]</div>
 <p>The value of the mask function is clamped to the range [0, 1] if the
 sampled value exceeds the required range.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>f1</strong> (<em>Function1D</em>) – the first 1D function.</li>
+<li><strong>f2</strong> (<em>Function1D</em>) – the second 1D function.</li>
+<li><strong>mask</strong> (<em>Function1D</em>) – the masking 1D function.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Blend1D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function1d</span> <span class="kn">import</span> <span class="n">PythonFunction1D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">PythonFunction1D</span><span class="p">(</span><span class="n">my_f1</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonFunction1D</span><span class="p">(</span><span class="n">my_f2</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_fmask</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">elif</span> <span class="mi">0</span><span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="n">x</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_mask</span> <span class="o">=</span> <span class="n">PythonFunction1D</span><span class="p">(</span><span class="n">my_fmask</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span> <span class="o">=</span> <span class="n">Blend1D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f_mask</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="go">0.3581</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="go">3.375</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
 <dt id="cherab.core.math.blend.Blend2D">
 <em class="property">class </em><code class="descclassname">cherab.core.math.blend.</code><code class="descname">Blend2D</code><a class="headerlink" href="#cherab.core.math.blend.Blend2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a linear interpolation between two 2D functions controlled by a third.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function2d.Function2D</span></code></p>
+<p>Performs a linear interpolation between two 2D functions controlled by a third.</p>
 <p>This function is a functional equivalent to the computer graphics Lerp
 function. The value returned when this function is evaluated is a linear
 interpolation between the sampled values of f1 and f2. The interpolation
@@ -211,12 +255,57 @@ in the range [0, 1].</p>
 \[r = (1 - f_m(x,y)) f_1(x,y) + f_m(x,y) f_2(x,y)\]</div>
 <p>The value of the mask function is clamped to the range [0, 1] if the
 sampled value exceeds the required range.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>f1</strong> (<em>Function2D</em>) – the first 2D function.</li>
+<li><strong>f2</strong> (<em>Function2D</em>) – the second 2D function.</li>
+<li><strong>mask</strong> (<em>Function2D</em>) – the masking 2D function.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Blend2D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function2d</span> <span class="kn">import</span> <span class="n">PythonFunction2D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">PythonFunction2D</span><span class="p">(</span><span class="n">my_f1</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonFunction2D</span><span class="p">(</span><span class="n">my_f2</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_fmask</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">radius</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="k">if</span> <span class="n">radius</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="k">elif</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">radius</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="n">radius</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="k">else</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_mask</span> <span class="o">=</span> <span class="n">PythonFunction2D</span><span class="p">(</span><span class="n">my_fmask</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span> <span class="o">=</span> <span class="n">Blend2D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f_mask</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">1.121320</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">6.0</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
 <dt id="cherab.core.math.blend.Blend3D">
 <em class="property">class </em><code class="descclassname">cherab.core.math.blend.</code><code class="descname">Blend3D</code><a class="headerlink" href="#cherab.core.math.blend.Blend3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a linear interpolation between two 3D functions controlled by a third.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function3d.Function3D</span></code></p>
+<p>Performs a linear interpolation between two 3D functions controlled by a third.</p>
 <p>This function is a functional equivalent to the computer graphics Lerp
 function. The value returned when this function is evaluated is a linear
 interpolation between the sampled values of f1 and f2. The interpolation
@@ -227,6 +316,50 @@ in the range [0, 1].</p>
 \[r = (1 - f_m(x,y,z)) f_1(x,y,z) + f_m(x,y,z) f_2(x,y,z)\]</div>
 <p>The value of the mask function is clamped to the range [0, 1] if the
 sampled value exceeds the required range.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>f1</strong> (<em>Function3D</em>) – the first 3D function.</li>
+<li><strong>f2</strong> (<em>Function3D</em>) – the second 3D function.</li>
+<li><strong>mask</strong> (<em>Function3D</em>) – the masking 3D function.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Blend3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function3d</span> <span class="kn">import</span> <span class="n">PythonFunction3D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">my_f1</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">my_f2</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_fmask</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">radius</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="k">if</span> <span class="n">radius</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="k">elif</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">radius</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="n">radius</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="k">else</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_mask</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">my_fmask</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span> <span class="o">=</span> <span class="n">Blend3D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f_mask</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">2.3301270189221928</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">14.0</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>

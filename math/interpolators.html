@@ -179,12 +179,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-cherab.core.math.interpolators.interpolators1d">
-<span id="interpolators"></span><h1>8.6. Interpolators<a class="headerlink" href="#module-cherab.core.math.interpolators.interpolators1d" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="interpolators">
+<h1>8.6. Interpolators<a class="headerlink" href="#interpolators" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cherab.core.math.interpolators.interpolators1d.Interpolate1DLinear">
+<em class="property">class </em><code class="descclassname">cherab.core.math.interpolators.interpolators1d.</code><code class="descname">Interpolate1DLinear</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators1d.Interpolate1DLinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpolates 1D data using linear interpolation.</p>
+<p>Inherits from Function1D, implements <cite>__call__(x)</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<em>object</em>) – A 1D array-like object of real values.</li>
+<li><strong>f</strong> (<em>object</em>) – A 1D array-like object of real values. The length
+of <cite>f_data</cite> must be equal to the length of <cite>x_data</cite>.</li>
+<li><strong>extrapolate</strong> (<em>bint</em>) – If True, the extrapolation of data is enabled
+outside the range of the data set. The default is False. A ValueError
+is raised if extrapolation is disabled and a point is requested outside
+the data set.</li>
+<li><strong>extrapolation_type</strong> (<em>object</em>) – Sets the method of extrapolation. The
+options are: ‘nearest’ (default), ‘linear’.</li>
+<li><strong>extrapolation_range</strong> (<em>double</em>) – The attribute can be set to limit the
+range beyond the data set bounds that extrapolation is permitted. The
+default range is set to infinity. Requesting data beyond the extrapolation
+range will result in a ValueError being raised.</li>
+<li><strong>tolerate_single_value</strong> – If True, single-value arrays will be tolerated
+as inputs. If a single value is supplied, that value will be extrapolated
+over the entire real range. If False (default), supplying a single value
+will result in a ValueError being raised.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Interpolate1DLinear</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1d</span> <span class="o">=</span> <span class="n">Interpolate1DLinear</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1d</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="go">2300.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1d</span><span class="p">(</span><span class="mf">0.875</span><span class="p">)</span>
+<span class="go">1062.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1d</span><span class="p">(</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="go">ValueError: The specified value (x=1.2) is outside the range of the supplied</span>
+<span class="go">data and/or extrapolation range: x bounds=(0.0, 1.0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
 <dl class="class">
 <dt id="cherab.core.math.interpolators.interpolators1d.Interpolate1DCubic">
 <em class="property">class </em><code class="descclassname">cherab.core.math.interpolators.interpolators1d.</code><code class="descname">Interpolate1DCubic</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators1d.Interpolate1DCubic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interpolates 1D data using cubic interpolation.</p>
+<p>Inherits from Function1D, implements <cite>__call__(x)</cite>.</p>
 <p>Data and coordinates are first normalised to the range [0, 1] so as to
 prevent inaccuracy from float numbers. Spline coefficients are cached
 so they have to be calculated at initialisation only.</p>
@@ -222,45 +270,81 @@ supplying a single value will result in a ValueError being raised.</li>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Interpolate1DCubic</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1d</span> <span class="o">=</span> <span class="n">Interpolate1DCubic</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1d</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="go">2197.4683</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1d</span><span class="p">(</span><span class="mf">0.875</span><span class="p">)</span>
+<span class="go">1184.4343</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1d</span><span class="p">(</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="go">ValueError: The specified value (x=1.2) is outside the range of the supplied</span>
+<span class="go">data and/or extrapolation range: x bounds=(0.0, 1.0)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
-<dt id="cherab.core.math.interpolators.interpolators1d.Interpolate1DLinear">
-<em class="property">class </em><code class="descclassname">cherab.core.math.interpolators.interpolators1d.</code><code class="descname">Interpolate1DLinear</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators1d.Interpolate1DLinear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interpolates 1D data using linear interpolation.</p>
+<dt id="cherab.core.math.interpolators.interpolators2d.Interpolate2DLinear">
+<em class="property">class </em><code class="descclassname">cherab.core.math.interpolators.interpolators2d.</code><code class="descname">Interpolate2DLinear</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators2d.Interpolate2DLinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpolates 2D data using linear interpolation.</p>
+<p>Inherits from Function2D, implements <cite>__call__(x, y)</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>x</strong> (<em>object</em>) – A 1D array-like object of real values.</li>
-<li><strong>f</strong> (<em>object</em>) – A 1D array-like object of real values. The length
-of <cite>f_data</cite> must be equal to the length of <cite>x_data</cite>.</li>
-<li><strong>extrapolate</strong> (<em>bint</em>) – If True, the extrapolation of data is enabled
-outside the range of the data set. The default is False. A ValueError
-is raised if extrapolation is disabled and a point is requested outside
-the data set.</li>
-<li><strong>extrapolation_type</strong> (<em>object</em>) – Sets the method of extrapolation. The
-options are: ‘nearest’ (default), ‘linear’.</li>
-<li><strong>extrapolation_range</strong> (<em>double</em>) – The attribute can be set to limit the
-range beyond the data set bounds that extrapolation is permitted. The
-default range is set to infinity. Requesting data beyond the extrapolation
-range will result in a ValueError being raised.</li>
-<li><strong>tolerate_single_value</strong> – If True, single-value arrays will be tolerated
-as inputs. If a single value is supplied, that value will be extrapolated
-over the entire real range. If False (default), supplying a single value
-will result in a ValueError being raised.</li>
+<li><strong>x</strong> (<em>object</em>) – An array-like object containing real values.</li>
+<li><strong>y</strong> (<em>object</em>) – An array-like object containing real values.</li>
+<li><strong>f</strong> (<em>object</em>) – A 2D array-like object of sample values corresponding to the
+<cite>x</cite> and <cite>y</cite> array points.</li>
+<li><strong>extrapolate</strong> (<em>bint</em>) – If True, the extrapolation of data is enabled outside
+the range of the data set. The default is False. A ValueError is raised if
+extrapolation is disabled and a point is requested outside the data set.</li>
+<li><strong>extrapolation_type</strong> (<em>object</em>) – Sets the method of extrapolation. The options
+are: ‘nearest’ (default), ‘linear’</li>
+<li><strong>extrapolation_range</strong> (<em>double</em>) – The attribute can be set to limit the range
+beyond the data set bounds that extrapolation is permitted. The default range
+is set to infinity. Requesting data beyond the extrapolation range will result
+in a ValueError being raised.</li>
+<li><strong>tolerate_single_value</strong> – If True, single-value arrays will be tolerated as
+inputs. If a single value is supplied, that value will be extrapolated over
+the entire real range. If False (default), supplying a single value will
+result in a ValueError being raised.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Interpolate2DLinear</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># implements x**2 + y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">drange</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">drange</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2d</span> <span class="o">=</span> <span class="n">Interpolate2DLinear</span><span class="p">(</span><span class="n">drange</span><span class="p">,</span> <span class="n">drange</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">0.00063769</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2d</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">5.00022956</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2d</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">ValueError: The specified value (x=-2.0, y=3.0) is outside the range of the supplied</span>
+<span class="go">data and/or extrapolation range: x bounds=(-2.5, 2.5), y bounds=(-2.5, 2.5)</span>
+</pre></div>
+</div>
 </dd></dl>
 
-<span class="target" id="module-cherab.core.math.interpolators.interpolators2d"></span><dl class="class">
+<dl class="class">
 <dt id="cherab.core.math.interpolators.interpolators2d.Interpolate2DCubic">
 <em class="property">class </em><code class="descclassname">cherab.core.math.interpolators.interpolators2d.</code><code class="descname">Interpolate2DCubic</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators2d.Interpolate2DCubic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interpolates 2D data using cubic interpolation.</p>
+<p>Inherits from Function2D, implements <cite>__call__(x, y)</cite>.</p>
 <p>Data and coordinates are first normalised to the range [0, 1] so as to
 prevent inaccuracy from float numbers. A local calculation based on finite
 differences is used. The splines coefficients are not calculated before
@@ -295,12 +379,34 @@ result in a ValueError being raised.</li>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Interpolate2DCubic</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># implements x**2 + y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">drange</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">drange</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2d</span> <span class="o">=</span> <span class="n">Interpolate2DCubic</span><span class="p">(</span><span class="n">drange</span><span class="p">,</span> <span class="n">drange</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">0.00063769</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2d</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">5.00022956</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2d</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">ValueError: The specified value (x=-2.0, y=3.0) is outside the range of the supplied</span>
+<span class="go">data and/or extrapolation range: x bounds=(-2.5, 2.5), y bounds=(-2.5, 2.5)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
-<dt id="cherab.core.math.interpolators.interpolators2d.Interpolate2DLinear">
-<em class="property">class </em><code class="descclassname">cherab.core.math.interpolators.interpolators2d.</code><code class="descname">Interpolate2DLinear</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators2d.Interpolate2DLinear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interpolates 2D data using linear interpolation.</p>
+<dt id="cherab.core.math.interpolators.interpolators3d.Interpolate3DLinear">
+<em class="property">class </em><code class="descclassname">cherab.core.math.interpolators.interpolators3d.</code><code class="descname">Interpolate3DLinear</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators3d.Interpolate3DLinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpolates 3D data using linear interpolation.</p>
+<p>Inherits from Function3D, implements <cite>__call__(x, y, z)</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -308,13 +414,14 @@ result in a ValueError being raised.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>x</strong> (<em>object</em>) – An array-like object containing real values.</li>
 <li><strong>y</strong> (<em>object</em>) – An array-like object containing real values.</li>
-<li><strong>f</strong> (<em>object</em>) – A 2D array-like object of sample values corresponding to the
-<cite>x</cite> and <cite>y</cite> array points.</li>
+<li><strong>z</strong> (<em>object</em>) – An array-like object containing real values.</li>
+<li><strong>f</strong> (<em>object</em>) – A 3D array-like object of sample values corresponding to the
+<cite>x</cite>, <cite>y</cite> and <cite>z</cite> array points.</li>
 <li><strong>extrapolate</strong> (<em>bint</em>) – If True, the extrapolation of data is enabled outside
 the range of the data set. The default is False. A ValueError is raised if
 extrapolation is disabled and a point is requested outside the data set.</li>
-<li><strong>extrapolation_type</strong> (<em>object</em>) – Sets the method of extrapolation. The options
-are: ‘nearest’ (default), ‘linear’</li>
+<li><strong>extrapolation_type</strong> (<em>object</em>) – Sets the method of extrapolation.
+The options are: ‘nearest’ (default), ‘linear’.</li>
 <li><strong>extrapolation_range</strong> (<em>double</em>) – The attribute can be set to limit the range
 beyond the data set bounds that extrapolation is permitted. The default range
 is set to infinity. Requesting data beyond the extrapolation range will result
@@ -328,12 +435,36 @@ result in a ValueError being raised.</li>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Interpolate3DLinear</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># implements x**3 + y**2 + z</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">drange</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">drange</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">drange</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3d</span> <span class="o">=</span> <span class="n">Interpolate3DLinear</span><span class="p">(</span><span class="n">drange</span><span class="p">,</span> <span class="n">drange</span><span class="p">,</span> <span class="n">drange</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">0.00063769</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3d</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">-5.50085102</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3d</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">ValueError: The specified value (x=-3.0, y=1.0, z=0.0) is outside the range</span>
+<span class="go">of the supplied data and/or extrapolation range: x bounds=(-2.5, 2.5),</span>
+<span class="go">y bounds=(-2.5, 2.5), z bounds=(-2.5, 2.5)</span>
+</pre></div>
+</div>
 </dd></dl>
 
-<span class="target" id="module-cherab.core.math.interpolators.interpolators3d"></span><dl class="class">
+<dl class="class">
 <dt id="cherab.core.math.interpolators.interpolators3d.Interpolate3DCubic">
 <em class="property">class </em><code class="descclassname">cherab.core.math.interpolators.interpolators3d.</code><code class="descname">Interpolate3DCubic</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators3d.Interpolate3DCubic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interpolates 3D data using cubic interpolation.</p>
+<p>Inherits from Function3D, implements <cite>__call__(x, y, z)</cite>.</p>
 <p>Data and coordinates are first normalised to the range [0, 1] so as to
 prevent inaccuracy from float numbers. A local calculation based on
 finite differences is used. The splines coefficients are calculated
@@ -371,40 +502,29 @@ supplying a single value will result in a ValueError being raised.</li>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.interpolators.interpolators3d.Interpolate3DLinear">
-<em class="property">class </em><code class="descclassname">cherab.core.math.interpolators.interpolators3d.</code><code class="descname">Interpolate3DLinear</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators3d.Interpolate3DLinear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interpolates 3D data using linear interpolation.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>x</strong> (<em>object</em>) – An array-like object containing real values.</li>
-<li><strong>y</strong> (<em>object</em>) – An array-like object containing real values.</li>
-<li><strong>z</strong> (<em>object</em>) – An array-like object containing real values.</li>
-<li><strong>f</strong> (<em>object</em>) – A 3D array-like object of sample values corresponding to the
-<cite>x</cite>, <cite>y</cite> and <cite>z</cite> array points.</li>
-<li><strong>extrapolate</strong> (<em>bint</em>) – If True, the extrapolation of data is enabled outside
-the range of the data set. The default is False. A ValueError is raised if
-extrapolation is disabled and a point is requested outside the data set.</li>
-<li><strong>extrapolation_type</strong> (<em>object</em>) – Sets the method of extrapolation.
-The options are: ‘nearest’ (default), ‘linear’.</li>
-<li><strong>extrapolation_range</strong> (<em>double</em>) – The attribute can be set to limit the range
-beyond the data set bounds that extrapolation is permitted. The default range
-is set to infinity. Requesting data beyond the extrapolation range will result
-in a ValueError being raised.</li>
-<li><strong>tolerate_single_value</strong> – If True, single-value arrays will be tolerated as
-inputs. If a single value is supplied, that value will be extrapolated over
-the entire real range. If False (default), supplying a single value will
-result in a ValueError being raised.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Interpolate3DCubic</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># implements x**3 + y**2 + z</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">drange</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">drange</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">drange</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3d</span> <span class="o">=</span> <span class="n">Interpolate3DCubic</span><span class="p">(</span><span class="n">drange</span><span class="p">,</span> <span class="n">drange</span><span class="p">,</span> <span class="n">drange</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">-1.7763e-14</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3d</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">-5.50000927</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3d</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">ValueError: The specified value (x=-3.0, y=1.0, z=0.0) is outside the range</span>
+<span class="go">of the supplied data and/or extrapolation range: x bounds=(-2.5, 2.5),</span>
+<span class="go">y bounds=(-2.5, 2.5), z bounds=(-2.5, 2.5)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>

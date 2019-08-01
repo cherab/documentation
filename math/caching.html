@@ -184,7 +184,8 @@
 <dl class="class">
 <dt id="cherab.core.math.caching.caching1d.Caching1D">
 <em class="property">class </em><code class="descclassname">cherab.core.math.caching.caching1d.</code><code class="descname">Caching1D</code><a class="headerlink" href="#cherab.core.math.caching.caching1d.Caching1D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Precalculate and cache a 1D function on a finite space area.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function1d.Function1D</span></code></p>
+<p>Precalculate and cache a 1D function on a finite space area.</p>
 <p>The function is sampled and a cubic interpolation is then used to calculate
 a cubic spline approximation of the function. As the spline has a constant
 cost of evaluation, this decreases the evaluation time of functions which
@@ -213,12 +214,34 @@ Default is None.</li>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Caching1D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function1d</span> <span class="kn">import</span> <span class="n">PythonFunction1D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">expensive_sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">PythonFunction1D</span><span class="p">(</span><span class="n">expensive_sqrt</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">Caching1D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># if you try this, first two executions will be slow, third will be fast</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="go">1.5811388</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="p">(</span><span class="mf">2.6</span><span class="p">)</span>
+<span class="go">1.6124515</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="p">(</span><span class="mf">2.55</span><span class="p">)</span>
+<span class="go">1.5968720</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <span class="target" id="module-cherab.core.math.caching.caching2d"></span><dl class="class">
 <dt id="cherab.core.math.caching.caching2d.Caching2D">
 <em class="property">class </em><code class="descclassname">cherab.core.math.caching.caching2d.</code><code class="descname">Caching2D</code><a class="headerlink" href="#cherab.core.math.caching.caching2d.Caching2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Precalculate and cache a 2D function on a finite space area.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function2d.Function2D</span></code></p>
+<p>Precalculate and cache a 2D function on a finite space area.</p>
 <p>The function is sampled and a cubic interpolation is then used to calculate
 a cubic spline approximation of the function. As the spline has a constant
 cost of evaluation, this decreases the evaluation time of functions which
@@ -247,12 +270,34 @@ Default is None.</li>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Caching2D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function2d</span> <span class="kn">import</span> <span class="n">PythonFunction2D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">expensive_radius</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonFunction2D</span><span class="p">(</span><span class="n">expensive_radius</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">Caching2D</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># if you try this, first two executions will be slow, third will be fast</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">2.121320343595476</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">2.19317121996626</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mf">1.55</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">2.156964925578382</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <span class="target" id="module-cherab.core.math.caching.caching3d"></span><dl class="class">
 <dt id="cherab.core.math.caching.caching3d.Caching3D">
 <em class="property">class </em><code class="descclassname">cherab.core.math.caching.caching3d.</code><code class="descname">Caching3D</code><a class="headerlink" href="#cherab.core.math.caching.caching3d.Caching3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Precalculate and cache a 3D function on a finite space area.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function3d.Function3D</span></code></p>
+<p>Precalculate and cache a 3D function on a finite space area.</p>
 <p>The function is sampled and a cubic interpolation is then used to calculate
 a cubic spline approximation of the function. As the spline has a constant
 cost of evaluation, this decreases the evaluation time of functions which
@@ -282,6 +327,29 @@ Default is None.</li>
 </tr>
 </tbody>
 </table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Caching3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function3d</span> <span class="kn">import</span> <span class="n">PythonFunction3D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">expensive_radius</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">expensive_radius</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">Caching3D</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># if you try this, first two executions will be slow, third will be fast</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Note: the first execution might be particularly slow, this is because it</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># sets up the caching structures on first execution.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">2.598076</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">2.657066</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="mf">1.55</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">2.627260</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
