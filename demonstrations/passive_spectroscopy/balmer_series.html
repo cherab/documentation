@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Impact Excitation and Recombination &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">6. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">7. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math/math.html">8. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">9. Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Impact Excitation and Recombination</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demonstrations/passive_spectroscopy/balmer_series.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="impact-excitation-and-recombination">
+<span id="impact-recom-lines"></span><h1>Impact Excitation and Recombination<a class="headerlink" href="#impact-excitation-and-recombination" title="Permalink to this headline">¶</a></h1>
+<p>This demonstration shows how to model the commonly observed passive emission lines due
+to electron impact excitation and recombination. A spherical plasma is initialised in
+a similar way to other demonstrations on creating plasmas. Then the ExcitationLine()
+and RecombinationLine() emission models for the first five Balmer series lines are
+attached to the plasma.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copyright 2016-2018 Euratom</span>
+<span class="c1"># Copyright 2016-2018 United Kingdom Atomic Energy Authority</span>
+<span class="c1"># Copyright 2016-2018 Centro de Investigaciones Energéticas, Medioambientales y Tecnológicas</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the EUPL, Version 1.1 or – as soon they will be approved by the</span>
+<span class="c1"># European Commission - subsequent versions of the EUPL (the &quot;Licence&quot;);</span>
+<span class="c1"># You may not use this work except in compliance with the Licence.</span>
+<span class="c1"># You may obtain a copy of the Licence at:</span>
+<span class="c1">#</span>
+<span class="c1"># https://joinup.ec.europa.eu/software/page/eupl5</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software distributed</span>
+<span class="c1"># under the Licence is distributed on an &quot;AS IS&quot; basis, WITHOUT WARRANTIES OR</span>
+<span class="c1"># CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1">#</span>
+<span class="c1"># See the Licence for the specific language governing permissions and limitations</span>
+<span class="c1"># under the Licence.</span>
+
+
+<span class="c1"># External imports</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="k">import</span> <span class="n">electron_mass</span><span class="p">,</span> <span class="n">atomic_mass</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">cherab.core.model</span> <span class="k">import</span> <span class="n">ExcitationLine</span><span class="p">,</span> <span class="n">RecombinationLine</span><span class="p">,</span> <span class="n">Bremsstrahlung</span>
+<span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="k">import</span> <span class="n">Constant3D</span><span class="p">,</span> <span class="n">ConstantVector3D</span>
+
+<span class="c1"># Cherab and raysect imports</span>
+<span class="kn">from</span> <span class="nn">cherab.core</span> <span class="k">import</span> <span class="n">Species</span><span class="p">,</span> <span class="n">Maxwellian</span><span class="p">,</span> <span class="n">Plasma</span><span class="p">,</span> <span class="n">Line</span><span class="p">,</span> <span class="n">elements</span>
+<span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="k">import</span> <span class="n">OpenADAS</span>
+<span class="kn">from</span> <span class="nn">cherab.tools.plasmas</span> <span class="k">import</span> <span class="n">GaussianVolume</span>
+
+<span class="c1"># Core and external imports</span>
+<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="k">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Ray</span>
+<span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="k">import</span> <span class="n">Sphere</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="k">import</span> <span class="n">PinholeCamera</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.material.emitter.inhomogeneous</span> <span class="k">import</span> <span class="n">NumericalIntegrator</span>
+
+<span class="c1"># tunables</span>
+<span class="n">ion_density</span> <span class="o">=</span> <span class="mf">1e19</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.25</span>
+
+<span class="c1"># setup scenegraph</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+
+<span class="c1"># create atomic data source</span>
+<span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># PLASMA ----------------------------------------------------------------------</span>
+<span class="n">plasma</span> <span class="o">=</span> <span class="n">Plasma</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">adas</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">Sphere</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">geometry_transform</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">integrator</span> <span class="o">=</span> <span class="n">NumericalIntegrator</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="n">sigma</span> <span class="o">/</span> <span class="mf">5.0</span><span class="p">)</span>
+
+<span class="c1"># define basic distributions</span>
+<span class="n">d_density</span> <span class="o">=</span> <span class="n">GaussianVolume</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">ion_density</span><span class="p">,</span> <span class="n">sigma</span><span class="o">*</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">e_density</span> <span class="o">=</span> <span class="n">GaussianVolume</span><span class="p">(</span><span class="n">ion_density</span><span class="p">,</span> <span class="n">sigma</span><span class="o">*</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">temperature</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">GaussianVolume</span><span class="p">(</span><span class="mi">79</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">bulk_velocity</span> <span class="o">=</span> <span class="n">ConstantVector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mf">1e5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">d_mass</span> <span class="o">=</span> <span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span>
+<span class="n">d_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">d_density</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">bulk_velocity</span><span class="p">,</span> <span class="n">d_mass</span><span class="p">)</span>
+<span class="n">e_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">e_density</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">bulk_velocity</span><span class="p">,</span> <span class="n">electron_mass</span><span class="p">)</span>
+
+<span class="n">d0_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">d_distribution</span><span class="p">)</span>
+<span class="n">d1_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d_distribution</span><span class="p">)</span>
+
+<span class="c1"># define species</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">b_field</span> <span class="o">=</span> <span class="n">ConstantVector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span> <span class="o">=</span> <span class="n">e_distribution</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">composition</span> <span class="o">=</span> <span class="p">[</span><span class="n">d0_species</span><span class="p">,</span> <span class="n">d1_species</span><span class="p">]</span>
+
+<span class="c1"># Setup elements.deuterium lines</span>
+<span class="n">d_alpha</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">d_beta</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">d_gamma</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">d_delta</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">d_epsilon</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">plasma</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Bremsstrahlung</span><span class="p">(),</span>
+    <span class="n">ExcitationLine</span><span class="p">(</span><span class="n">d_alpha</span><span class="p">),</span>
+    <span class="n">ExcitationLine</span><span class="p">(</span><span class="n">d_beta</span><span class="p">),</span>
+    <span class="n">ExcitationLine</span><span class="p">(</span><span class="n">d_gamma</span><span class="p">),</span>
+    <span class="n">ExcitationLine</span><span class="p">(</span><span class="n">d_delta</span><span class="p">),</span>
+    <span class="n">ExcitationLine</span><span class="p">(</span><span class="n">d_epsilon</span><span class="p">),</span>
+    <span class="n">RecombinationLine</span><span class="p">(</span><span class="n">d_alpha</span><span class="p">),</span>
+    <span class="n">RecombinationLine</span><span class="p">(</span><span class="n">d_beta</span><span class="p">),</span>
+    <span class="n">RecombinationLine</span><span class="p">(</span><span class="n">d_gamma</span><span class="p">),</span>
+    <span class="n">RecombinationLine</span><span class="p">(</span><span class="n">d_delta</span><span class="p">),</span>
+    <span class="n">RecombinationLine</span><span class="p">(</span><span class="n">d_epsilon</span><span class="p">)</span>
+<span class="p">]</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">Ray</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">Point3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">direction</span><span class="o">=</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">min_wavelength</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_wavelength</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">samples</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">Ray</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">Point3D</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">direction</span><span class="o">=</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">min_wavelength</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_wavelength</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">samples</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">Ray</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">Point3D</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">direction</span><span class="o">=</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">min_wavelength</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_wavelength</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">samples</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Radiance (W/m^2/str/nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sampled Balmer Series Spectrum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">camera</span> <span class="o">=</span> <span class="n">PinholeCamera</span><span class="p">((</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.5</span><span class="p">))</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">spectral_rays</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../_images/BalmerSeries_spectrum.png"><img alt="../../_images/BalmerSeries_spectrum.png" src="../../_images/BalmerSeries_spectrum.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> The observed Balmer series spectrum.</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/BalmerSeries_spectrum_zoomed.png"><img alt="../../_images/BalmerSeries_spectrum_zoomed.png" src="../../_images/BalmerSeries_spectrum_zoomed.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> A zoomed in view on the h-alpha lines reveals the doppler shifts observable
+by varying the viewing angle.</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../../_images/BalmerSeries_camera1.png"><img alt="../../_images/BalmerSeries_camera1.png" src="../../_images/BalmerSeries_camera1.png" style="width: 450px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Caption:</strong> A zoomed in spectral view of the commonly studied CVI n = 8-&gt;7 CXS line.
+The lines are doppler shifted due to the velocity of the plasma.</span></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
