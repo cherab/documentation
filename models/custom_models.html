@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.1. Custom emission models &mdash; CHERAB 1.01 documentation</title>
+  <title>8.1. Custom emission models &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.2. CXS models" href="cxs/cxs_model.html" />
-    <link rel="prev" title="7. Emission Models" href="emission_models.html" /> 
+    <link rel="next" title="8.2. CXS models" href="cxs/cxs_model.html" />
+    <link rel="prev" title="8. Emission Models" href="emission_models.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,23 +87,23 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="emission_models.html">7. Emission Models</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.1. Custom emission models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/cxs_model.html">7.2. CXS models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html">7.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/atomic_data_calculation.html">7.4. Atomic data calculation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bes/bes_model.html">7.5. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="radiated_power/radiated_power.html">7.6. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brem/bremsstrahlung.html">7.7. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic_line/basic_line_emission.html">7.8. Basic Line Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="emission_models.html">8. Emission Models</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.1. Custom emission models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/cxs_model.html">8.2. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html">8.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bes/bes_model.html">8.4. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="radiated_power/radiated_power.html">8.5. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../math/math.html">8. Function Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">9. Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -158,9 +158,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="emission_models.html">7. Emission Models</a> &raquo;</li>
+          <li><a href="emission_models.html">8. Emission Models</a> &raquo;</li>
         
-      <li>7.1. Custom emission models</li>
+      <li>8.1. Custom emission models</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,7 +180,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="custom-emission-models">
-<h1>7.1. Custom emission models<a class="headerlink" href="#custom-emission-models" title="Permalink to this headline">¶</a></h1>
+<h1>8.1. Custom emission models<a class="headerlink" href="#custom-emission-models" title="Permalink to this headline">¶</a></h1>
 <p>Custom emitters are implemented as Raysect materials with the <cite>VolumeEmitterInhomogeneous</cite> class.
 You model should inherit from this base class, only two methods need to be implemented,
 the <cite>__init__()</cite> and <cite>emission_function()</cite> methods.</p>
@@ -289,10 +289,10 @@ should add your local emission at the current point in space to the measured spe
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cxs/cxs_model.html" class="btn btn-neutral float-right" title="7.2. CXS models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="cxs/cxs_model.html" class="btn btn-neutral float-right" title="8.2. CXS models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="emission_models.html" class="btn btn-neutral" title="7. Emission Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="emission_models.html" class="btn btn-neutral" title="8. Emission Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

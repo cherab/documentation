@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.5. Tomography &mdash; CHERAB 1.01 documentation</title>
+  <title>10.5. Tomography &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.6. Utilities" href="utility.html" />
-    <link rel="prev" title="9.4. Observers" href="observers.html" /> 
+    <link rel="next" title="10.6. Utilities" href="utility.html" />
+    <link rel="prev" title="10.4. Observers" href="observers.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,23 +87,24 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../math/math.html">8. Function Framework</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="tools.html">9. Tools</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plasmas.html">9.1. Plasmas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="materials.html">9.2. Materials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="primitives.html">9.3. Primitives</a></li>
-<li class="toctree-l2"><a class="reference internal" href="observers.html">9.4. Observers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.5. Tomography</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#inversion-methods">9.5.1. Inversion Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#voxels">9.5.2. Voxels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tools.html">10. Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plasmas.html">10.1. Plasmas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="materials.html">10.2. Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primitives.html">10.3. Primitives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="observers.html">10.4. Observers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10.5. Tomography</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inversion-methods">10.5.1. Inversion Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#voxels">10.5.2. Voxels</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="utility.html">9.6. Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">10.6. Utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -160,9 +161,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="tools.html">9. Tools</a> &raquo;</li>
+          <li><a href="tools.html">10. Tools</a> &raquo;</li>
         
-      <li>9.5. Tomography</li>
+      <li>10.5. Tomography</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -182,7 +183,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tomography">
-<h1>9.5. Tomography<a class="headerlink" href="#tomography" title="Permalink to this headline">¶</a></h1>
+<h1>10.5. Tomography<a class="headerlink" href="#tomography" title="Permalink to this headline">¶</a></h1>
 <p>Tomographic inversion problems often arise in the study of plasma diagnostics, especially
 when making line integrated measurements. Tomographic inversion techniques allow us to
 try recovering the underlying plasma properties from a reduced set of measurements. In CHERAB
@@ -203,7 +204,7 @@ is typically represented as the matrix equation</p>
 vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> from a set of measurements <span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> and sensitivity
 matrix <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>.</p>
 <div class="section" id="inversion-methods">
-<h2>9.5.1. Inversion Methods<a class="headerlink" href="#inversion-methods" title="Permalink to this headline">¶</a></h2>
+<h2>10.5.1. Inversion Methods<a class="headerlink" href="#inversion-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="cherab.tools.inversions.sart.invert_sart">
 <code class="descclassname">cherab.tools.inversions.sart.</code><code class="descname">invert_sart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.sart.invert_sart" title="Permalink to this definition">¶</a></dt>
@@ -305,6 +306,98 @@ and the convergence achieved as a float.</p>
 </div>
 </dd></dl>
 
+<dl class="class">
+<dt id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl">
+<em class="property">class </em><code class="descclassname">cherab.tools.inversions.opencl.sart_opencl.</code><code class="descname">SartOpencl</code><span class="sig-paren">(</span><em>geometry_matrix</em>, <em>laplacian_matrix=None</em>, <em>device=None</em>, <em>block_size=256</em>, <em>copy_column_major=True</em>, <em>block_size_row_maj=64</em>, <em>use_atomic=True</em>, <em>steps_per_thread=64</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl" title="Permalink to this definition">¶</a></dt>
+<dd><p>A GPU-accelerated version of SART inversion.
+The geometry matrix and Laplacian matrix are provided on initialisation because they must be copied
+to GPU memory, which takes time. Inversions may be performed multiple times for different measurement
+vectors without copying the matrices each time. If required, the Laplacian matrix can be updated
+by calling <cite>update_laplacian_matrix(new_laplacian_matrix)</cite> method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>geometry_matrix</strong> (<em>np.ndarray</em>) – The sensitivity matrix describing the coupling between the detectors
+and the voxels. Must be an array with shape <span class="math notranslate nohighlight">\((N_d, N_s)\)</span>.</li>
+<li><strong>laplacian_matrix</strong> (<em>np.ndarray</em>) – The laplacian regularisation matrix of shape <span class="math notranslate nohighlight">\((N_s, N_s)\)</span>.
+Default value: <cite>laplacian_matrix=None</cite>.</li>
+<li><strong>device</strong> (<em>pyopencl.Device</em>) – OpenCL device which will be used for computations. Default value: <cite>device=None</cite> (autoselect).</li>
+<li><strong>block_size</strong> (<em>int</em>) – Number of GPU threads per block. Must be the power of 2.
+For the best performance try from 256 to 1024 for Nvidia (use 1024 on high-end GPUs),
+from 64 to 256 for AMD and from 16 to 64 for Intel GPUs. Default value: <cite>block_size=256</cite>.</li>
+<li><strong>copy_column_major</strong> (<em>bool</em>) – If True, the two copies of geometry matrix will be stored in the GPU memory.
+One in row-major order and the other one in column-major order. This provides much better performance of the
+inversions but requires twice as much GPU memory. Default value: <cite>copy_column_major=True</cite>.</li>
+<li><strong>block_size_row_maj</strong> (<em>int</em>) – If <cite>copy_column_major</cite> is set to False, this parameter defines the number of GPU threads per block
+in mat_vec_mult_row_maj() kernel used to calculate y_hat. Must be lower than <cite>block_size</cite>.
+Default value: <cite>block_size_row_maj=64</cite> (optimal value for Nvidia GPUs).</li>
+<li><strong>use_atomic</strong> (<em>bool</em>) – If True, increases the number of thread blocks that can run in parallel with the help of atomic
+operations (custom atomic add on floats). Set this to False, if the atomic operations are running slow
+on your device (Nvidia GPUs before Kepler, some AMD APUs, some Intel GPUs). Default value: <cite>use_atomic=True</cite>.</li>
+<li><strong>steps_per_thread</strong> (<em>int</em>) – If <cite>use_atomic</cite> is set to True, this parameters defines the maximum number of loop steps performed
+by the parallel threads in a single thread block. Default value: <cite>steps_per_thread=64</cite> (optimal for Nvidia GPUs).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl.__call__">
+<code class="descname">__call__</code><span class="sig-paren">(</span><em>measurement_vector</em>, <em>initial_guess=None</em>, <em>max_iterations=250</em>, <em>relaxation=1.0</em>, <em>beta_laplace=0.01</em>, <em>conv_tol=0.0001</em>, <em>time_limit=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the inversion for a given measurement vector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>measurement_vector</strong> (<em>np.ndarray</em>) – The measured power/radiance vector with shape <span class="math notranslate nohighlight">\((N_d)\)</span>.</li>
+<li><strong>initial_guess</strong> – An optional initial guess, can be an array of shape <span class="math notranslate nohighlight">\((N_s)\)</span> or a constant
+value that will be used to seed the algorithm.</li>
+<li><strong>max_iterations</strong> (<em>int</em>) – The maximum number of iterations to run the SART algorithm before returning
+a result, defaults to <cite>max_iterations=250</cite>.</li>
+<li><strong>relaxation</strong> (<em>float</em>) – The relaxation hyperparameter, defaults to <cite>relaxation=1</cite>. Consult the reference
+papers for more information on this hyperparameter.</li>
+<li><strong>beta_laplace</strong> (<em>float</em>) – The regularisation hyperparameter in the range [0, 1]. Defaults to <cite>beta_laplace=0.01</cite>.</li>
+<li><strong>conv_tol</strong> (<em>float</em>) – The convergence limit at which the algorithm will be terminated, unless the maximum
+number of iterations has been reached. The convergence is calculated as the normalised squared difference
+between the measurement and solution vectors.</li>
+<li><strong>time_limit</strong> (<em>float</em>) – If set, the iterations will stop after this time limit (in seconds) is reached.
+Default value: <cite>time_limit=None</cite>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A tuple with the inverted solution vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> as an ndarray with shape <span class="math notranslate nohighlight">\((N_s)\)</span>,
+and the list of convergence values achieved after each iteration step.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl.clean">
+<code class="descname">clean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Releases GPU buffers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl.update_laplacian_matrix">
+<code class="descname">update_laplacian_matrix</code><span class="sig-paren">(</span><em>laplacian_matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.update_laplacian_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the Laplacian matrix in GPU memory</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>laplacian_matrix</strong> (<em>np.ndarray</em>) – The laplacian regularisation matrix of shape <span class="math notranslate nohighlight">\((N_s, N_s)\)</span>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="function">
 <dt id="cherab.tools.inversions.nnls.invert_regularised_nnls">
 <code class="descclassname">cherab.tools.inversions.nnls.</code><code class="descname">invert_regularised_nnls</code><span class="sig-paren">(</span><em>w_matrix</em>, <em>b_vector</em>, <em>alpha=0.01</em>, <em>tikhonov_matrix=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.nnls.invert_regularised_nnls" title="Permalink to this definition">¶</a></dt>
@@ -362,7 +455,7 @@ detectors and the voxels. Must be an array with shape <span class="math notransl
 
 </div>
 <div class="section" id="voxels">
-<h2>9.5.2. Voxels<a class="headerlink" href="#voxels" title="Permalink to this headline">¶</a></h2>
+<h2>10.5.2. Voxels<a class="headerlink" href="#voxels" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.tools.inversions.voxels.Voxel">
 <em class="property">class </em><code class="descclassname">cherab.tools.inversions.voxels.</code><code class="descname">Voxel</code><a class="headerlink" href="#cherab.tools.inversions.voxels.Voxel" title="Permalink to this definition">¶</a></dt>
@@ -412,11 +505,40 @@ to a UnityVolumeEmitter() for weight matrix calculations.</li>
 <li><strong>volume</strong> (<em>float</em>) – The geometric volume of this voxel.</li>
 <li><strong>cross_sectional_area</strong> (<em>float</em>) – The cross sectional area of the voxel in
 the r-z plane.</li>
+<li><strong>cross_section_centroid</strong> (<em>Point2D</em>) – The centroid of the voxel in
+the r-z plane.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function">
+<code class="descname">emissivity_from_function</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the average emissivity in the voxel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>emission_function</strong> (<em>callable</em>) – a function defining the emissivity
+in (r, ϕ, z) space</li>
+<li><strong>grid_samples</strong> (<em>int</em>) – the number of samples of the emissivitiy to use
+to calculate the average</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Return float emissivity:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last">the average emissivity in the voxel cross section</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that while the emissivity function is a 3D function, for
+Axisymmetric voxels the return value should be independent of
+toroidal angle ϕ.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -441,8 +563,6 @@ matrix for example.</p>
 <dt id="cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function">
 <code class="descname">emissivities_from_function</code><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an array of sampled emissivities at each voxel location.</p>
-<p>This is a virtual method and must be implemented in the derived
-VoxelCollection class.</p>
 <p>Note that the results will be nonsense if you mix an emission function
 and VoxelCollection with incompatible symmetries.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -523,29 +643,6 @@ Defaults to <cite>primitive_type=’csg’</cite>.</li>
 </tbody>
 </table>
 <dl class="attribute">
-<dt id="cherab.tools.inversions.voxels.ToroidalVoxelGrid.emissivities_from_function">
-<code class="descname">emissivities_from_function</code><a class="headerlink" href="#cherab.tools.inversions.voxels.ToroidalVoxelGrid.emissivities_from_function" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns an array of sampled emissivities at each voxel location.</p>
-<p>Note that the results will be nonsense if you mix an emission function
-and VoxelCollection with incompatible symmetries.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>emission_function</strong> (<em>Function3D</em>) – Emission function to sample over.</li>
-<li><strong>grid_samples</strong> (<em>int</em>) – Number of emission samples to average over.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
 <dt id="cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot">
 <code class="descname">plot</code><a class="headerlink" href="#cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plots a voxel grid.</p>
@@ -584,10 +681,10 @@ generates a new plot.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="utility.html" class="btn btn-neutral float-right" title="9.6. Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="utility.html" class="btn btn-neutral float-right" title="10.6. Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="observers.html" class="btn btn-neutral" title="9.4. Observers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="observers.html" class="btn btn-neutral" title="10.4. Observers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

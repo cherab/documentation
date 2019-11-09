@@ -272,7 +272,7 @@ measurements in the ASDEX Upgrade divertor.” Nuclear Fusion 58.1 (2017):
 
 
 <span class="c1"># Ray-trace and plot the results</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">Ray</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">Point3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">direction</span><span class="o">=</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
         <span class="n">min_wavelength</span><span class="o">=</span><span class="mi">395</span><span class="p">,</span> <span class="n">max_wavelength</span><span class="o">=</span><span class="mi">415</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>

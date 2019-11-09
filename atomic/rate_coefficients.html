@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5.3. Rate Coefficients &mdash; CHERAB 1.01 documentation</title>
+  <title>6.3. Rate Coefficients &mdash; CHERAB 1.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Plasmas" href="../plasmas/plasmas.html" />
-    <link rel="prev" title="5.2. Spectroscopic Emission Lines" href="emission_lines.html" /> 
+    <link rel="next" title="7. Plasmas" href="../plasmas/plasmas.html" />
+    <link rel="prev" title="6.2. Spectroscopic Emission Lines" href="emission_lines.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,24 +87,25 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="atomic_data.html">5. Atomic Data</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="elements_and_isotopes.html">5.1. Elements and Isotopes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emission_lines.html">5.2. Spectroscopic Emission Lines</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. Rate Coefficients</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#photon-emissivity-coefficients">5.3.1. Photon Emissivity Coefficients</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#beam-plasma-interaction-rates">5.3.2. Beam-Plasma Interaction Rates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#abundances">5.3.3. Abundances</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#radiated-power">5.3.4. Radiated Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="atomic_data.html">6. Atomic Data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="elements_and_isotopes.html">6.1. Elements and Isotopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emission_lines.html">6.2. Spectroscopic Emission Lines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.3. Rate Coefficients</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#photon-emissivity-coefficients">6.3.1. Photon Emissivity Coefficients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beam-plasma-interaction-rates">6.3.2. Beam-Plasma Interaction Rates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#abundances">6.3.3. Abundances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#radiated-power">6.3.4. Radiated Power</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../math/math.html">8. Function Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">9. Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -159,9 +160,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="atomic_data.html">5. Atomic Data</a> &raquo;</li>
+          <li><a href="atomic_data.html">6. Atomic Data</a> &raquo;</li>
         
-      <li>5.3. Rate Coefficients</li>
+      <li>6.3. Rate Coefficients</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -181,7 +182,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="rate-coefficients">
-<h1>5.3. Rate Coefficients<a class="headerlink" href="#rate-coefficients" title="Permalink to this headline">¶</a></h1>
+<h1>6.3. Rate Coefficients<a class="headerlink" href="#rate-coefficients" title="Permalink to this headline">¶</a></h1>
 <p>All atomic rate coefficients specify a calling signature that must be used for this rate,
 e.g. <cite>__call__(arg1, arg2, …)</cite>. The calculations associated with this calling signature
 are actually implemented in a separate function called <cite>evaluate(arg1, arg2, …)</cite>. No other
@@ -193,7 +194,7 @@ For example, some atomic data providers might use interpolated data while others
 provide theoretical equations. CHERAB emission models only need to know how to call
 them after they have been instantiated.</p>
 <div class="section" id="photon-emissivity-coefficients">
-<h2>5.3.1. Photon Emissivity Coefficients<a class="headerlink" href="#photon-emissivity-coefficients" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.1. Photon Emissivity Coefficients<a class="headerlink" href="#photon-emissivity-coefficients" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.atomic.rates.ImpactExcitationPEC">
 <em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">ImpactExcitationPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.ImpactExcitationPEC" title="Permalink to this definition">¶</a></dt>
@@ -269,7 +270,7 @@ method.</p>
 </div>
 </div>
 <div class="section" id="beam-plasma-interaction-rates">
-<h2>5.3.2. Beam-Plasma Interaction Rates<a class="headerlink" href="#beam-plasma-interaction-rates" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.2. Beam-Plasma Interaction Rates<a class="headerlink" href="#beam-plasma-interaction-rates" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.atomic.rates.BeamStoppingRate">
 <em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">BeamStoppingRate</code><a class="headerlink" href="#cherab.core.atomic.rates.BeamStoppingRate" title="Permalink to this definition">¶</a></dt>
@@ -411,7 +412,7 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
 </div>
 </div>
 <div class="section" id="abundances">
-<h2>5.3.3. Abundances<a class="headerlink" href="#abundances" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.3. Abundances<a class="headerlink" href="#abundances" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.atomic.rates.FractionalAbundance">
 <em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">FractionalAbundance</code><a class="headerlink" href="#cherab.core.atomic.rates.FractionalAbundance" title="Permalink to this definition">¶</a></dt>
@@ -449,7 +450,7 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
 </div>
 </div>
 <div class="section" id="radiated-power">
-<h2>5.3.4. Radiated Power<a class="headerlink" href="#radiated-power" title="Permalink to this headline">¶</a></h2>
+<h2>6.3.4. Radiated Power<a class="headerlink" href="#radiated-power" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.atomic.rates.RadiatedPower">
 <em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">RadiatedPower</code><a class="headerlink" href="#cherab.core.atomic.rates.RadiatedPower" title="Permalink to this definition">¶</a></dt>
@@ -557,10 +558,10 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../plasmas/plasmas.html" class="btn btn-neutral float-right" title="6. Plasmas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../plasmas/plasmas.html" class="btn btn-neutral float-right" title="7. Plasmas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="emission_lines.html" class="btn btn-neutral" title="5.2. Spectroscopic Emission Lines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="emission_lines.html" class="btn btn-neutral" title="6.2. Spectroscopic Emission Lines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

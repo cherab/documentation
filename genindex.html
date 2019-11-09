@@ -86,13 +86,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation_and_structure.html">3. Installation and Project Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="available_modules.html">4. Available Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">5. Atomic Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plasmas/plasmas.html">6. Plasmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="math/math.html">8. Function Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools/tools.html">9. Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tools.html">10. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -196,13 +197,17 @@
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.distribution.DistributionFunction.__call__">__call__ (cherab.core.distribution.DistributionFunction attribute)</a>
 </li>
       <li><a href="atomic/rate_coefficients.html#__call__">__call__() (built-in function)</a>, <a href="atomic/rate_coefficients.html#__call__">[1]</a>
+
+      <ul>
+        <li><a href="tools/tomography.html#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.__call__">(cherab.tools.inversions.opencl.sart_opencl.SartOpencl method)</a>
 </li>
+      </ul></li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.__getitem__">__getitem__ (cherab.core.plasma.node.Composition attribute)</a>
-</li>
-      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.__getitem__">__getitem__() (cherab.tools.observers.bolometry.BolometerCamera method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.__getitem__">__getitem__() (cherab.tools.observers.bolometry.BolometerCamera method)</a>
+</li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.__iter__">__iter__ (cherab.core.plasma.node.Composition attribute)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.__iter__">__iter__() (cherab.tools.observers.bolometry.BolometerCamera method)</a>
@@ -353,6 +358,8 @@
 </li>
       <li><a href="math/clamp.html#cherab.core.math.clamp.ClampOutput3D">ClampOutput3D (class in cherab.core.math.clamp)</a>
 </li>
+      <li><a href="tools/tomography.html#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.clean">clean() (cherab.tools.inversions.opencl.sart_opencl.SartOpencl method)</a>
+</li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.clear">clear() (cherab.core.plasma.node.Composition method)</a>
 
       <ul>
@@ -419,12 +426,10 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid.emissivities_from_function">emissivities_from_function (cherab.tools.inversions.voxels.ToroidalVoxelGrid attribute)</a>
-
-      <ul>
-        <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function">(cherab.tools.inversions.voxels.VoxelCollection attribute)</a>
+      <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function">emissivities_from_function (cherab.tools.inversions.voxels.VoxelCollection attribute)</a>
 </li>
-      </ul></li>
+      <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function">emissivity_from_function() (cherab.tools.inversions.voxels.AxisymmetricVoxel method)</a>
+</li>
       <li><a href="atomic/rate_coefficients.html#evaluate">evaluate() (built-in function)</a>, <a href="atomic/rate_coefficients.html#evaluate">[1]</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.EvAmuToMS">EvAmuToMS (class in cherab.core.utility.conversion)</a>
@@ -633,11 +638,13 @@
 </li>
       <li><a href="math/samplers.html#cherab.core.math.samplers.samplevector3d">samplevector3d() (in module cherab.core.math.samplers)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="math/samplers.html#cherab.core.math.samplers.samplevector3d_grid">samplevector3d_grid() (in module cherab.core.math.samplers)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="math/samplers.html#cherab.core.math.samplers.samplevector3d_points">samplevector3d_points() (in module cherab.core.math.samplers)</a>
+</li>
+      <li><a href="tools/tomography.html#cherab.tools.inversions.opencl.sart_opencl.SartOpencl">SartOpencl (class in cherab.tools.inversions.opencl.sart_opencl)</a>
 </li>
       <li><a href="math/function.html#cherab.core.math.function.ScalarToVectorFunction2D">ScalarToVectorFunction2D (class in cherab.core.math.function)</a>
 </li>
@@ -690,6 +697,10 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels">unparent_all_voxels (cherab.tools.inversions.voxels.VoxelCollection attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/tomography.html#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.update_laplacian_matrix">update_laplacian_matrix() (cherab.tools.inversions.opencl.sart_opencl.SartOpencl method)</a>
 </li>
   </ul></td>
 </tr></table>

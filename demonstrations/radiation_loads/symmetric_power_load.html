@@ -191,7 +191,7 @@ with some small numerical scale length.</p>
 <span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="k">import</span> <span class="n">Cylinder</span>
 <span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="k">import</span> <span class="n">PowerPipeline0D</span>
 <span class="kn">from</span> <span class="nn">raysect.optical.observer.nonimaging.pixel</span> <span class="k">import</span> <span class="n">Pixel</span>
-<span class="kn">from</span> <span class="nn">raysect.optical.material</span> <span class="k">import</span> <span class="n">AbsorbingSurface</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.material</span> <span class="k">import</span> <span class="n">AbsorbingSurface</span><span class="p">,</span> <span class="n">VolumeTransform</span>
 
 <span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="k">import</span> <span class="n">sample2d</span><span class="p">,</span> <span class="n">AxisymmetricMapper</span>
 <span class="kn">from</span> <span class="nn">cherab.tools.emitters</span> <span class="k">import</span> <span class="n">RadiationFunction</span>
@@ -248,12 +248,13 @@ with some small numerical scale length.</p>
 
 
 <span class="c1"># add radiation source to world</span>
+<span class="n">shift</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">rad_function_3d</span> <span class="o">=</span> <span class="n">AxisymmetricMapper</span><span class="p">(</span><span class="n">rad_function</span><span class="p">)</span>
-<span class="n">radiation_emitter</span> <span class="o">=</span> <span class="n">RadiationFunction</span><span class="p">(</span><span class="n">rad_function_3d</span><span class="p">,</span> <span class="n">vertical_offset</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">radiation_emitter</span> <span class="o">=</span> <span class="n">VolumeTransform</span><span class="p">(</span><span class="n">RadiationFunction</span><span class="p">(</span><span class="n">rad_function_3d</span><span class="p">),</span> <span class="n">shift</span><span class="o">.</span><span class="n">inverse</span><span class="p">())</span>
 
 <span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
 <span class="n">geom</span> <span class="o">=</span> <span class="n">Cylinder</span><span class="p">(</span><span class="n">CYLINDER_RADIUS</span><span class="p">,</span> <span class="n">CYLINDER_HEIGHT</span><span class="p">,</span>
-                <span class="n">transform</span><span class="o">=</span><span class="n">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="n">radiation_emitter</span><span class="p">)</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">shift</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="n">radiation_emitter</span><span class="p">)</span>
 
 
 <span class="c1">############################################</span>

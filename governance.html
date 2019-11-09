@@ -1,0 +1,406 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Project Governance &mdash; CHERAB 1.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Installation and Project Structure" href="installation_and_structure.html" />
+    <link rel="prev" title="2. Licence" href="licence.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CHERAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">2. Licence</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Project Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rationale">3.1. Rationale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview">3.2. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#roles-and-responsibilities">3.3. Roles and responsibilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#users">3.3.1. Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contributors">3.3.2. Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#committers">3.3.3. Committers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-management-committee-tmc">3.3.4. Technical Management Committee (TMC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tmc-chair">3.3.5. TMC Chair</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-making-process">3.4. Decision making process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lazy-consensus">3.4.1. Lazy consensus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#voting">3.4.2. Voting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CHERAB</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>3. Project Governance</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/governance.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="project-governance">
+<h1>3. Project Governance<a class="headerlink" href="#project-governance" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rationale">
+<h2>3.1. Rationale<a class="headerlink" href="#rationale" title="Permalink to this headline">¶</a></h2>
+<p>The governance model is a document that clearly describes how third parties are
+to engage with the CHERAB project and provides the rules and boundaries that
+ensure that the project remains manageable within the resources available. In
+this next phase of the CHERAB project it makes sense to use an open community
+led management model, such as the Meritocracy model used by Mozilla, Apache and
+other large open source projects.</p>
+<p>A key reason for setting up an open governance model is to prevent the code
+from being forked. Forking, or taking the source code and setting up a competing
+project, is an issue open source projects must be prepared to deal with. If
+there is disagreement within the community, forking may seem to be the most
+efficient solution in the early stages of a project. However, this will over
+time create significant maintenance problems for everyone. There are a number
+of examples in the fusion community where forking has led to code duplication
+and a more costly programme.</p>
+</div>
+<div class="section" id="overview">
+<h2>3.2. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>CHERAB is a meritocratic, consensus-based community project. Anyone with an
+interest in the project can join the community, contribute to the project design
+and participate in the decision making process. This document describes how that
+participation takes place and how to set about earning merit within the CHERAB
+community. This governance model is based on the Open Meritocracy model used by
+a number of large open source software projects (e.g. Apache foundation).</p>
+<p>Most users will be members of the scientific community, contributing to physics
+models and diagnostic designs. The scientific strategy for CHERAB will be set
+through the existing management channels, such as the JET Task Force and
+EUROfusion meetings. The bulk of this document deals with the technical
+management of the project, to ensure the integrity of the code base is
+protected and maintained at a high standard. This will be achieved through the
+use of a Technical Management Committee.</p>
+</div>
+<div class="section" id="roles-and-responsibilities">
+<h2>3.3. Roles and responsibilities<a class="headerlink" href="#roles-and-responsibilities" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="users">
+<h3>3.3.1. Users<a class="headerlink" href="#users" title="Permalink to this headline">¶</a></h3>
+<p>Users are community members who have a need for the project. Anyone can be a
+user; there are no special requirements.</p>
+<p>User contributions enable the project team to ensure that they are satisfying
+the needs of those users. Common user contributions include (but are not
+limited to):</p>
+<ul class="simple">
+<li>using the project for physics analysis</li>
+<li>evangelising about the project</li>
+<li>informing developers of strengths and weaknesses from a new user perspective</li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<h3>3.3.2. Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h3>
+<p>Contributors are community members who contribute in concrete ways to the
+project. Anyone can become a contributor. In addition to their actions as users,
+contributors may also find themselves doing one or more of the following:</p>
+<ul class="simple">
+<li>adding new physics models and features</li>
+<li>supporting new users</li>
+<li>reporting bugs</li>
+<li>identifying requirements</li>
+<li>providing graphics and web design</li>
+<li>programming</li>
+<li>assisting with project infrastructure</li>
+<li>writing documentation</li>
+<li>fixing bugs</li>
+</ul>
+<p>Contributors engage with the project through the issue tracker and mailing
+list, or by writing or editing documentation. They submit changes to the
+project itself via patches, which will be considered for inclusion in the
+project by existing committers (see next section).</p>
+<p>As contributors gain experience and familiarity with the project, they may
+find themselves being nominated for committership.</p>
+</div>
+<div class="section" id="committers">
+<h3>3.3.3. Committers<a class="headerlink" href="#committers" title="Permalink to this headline">¶</a></h3>
+<p>Committers are community members who have shown that they are committed to the
+continued development of the project through ongoing engagement with the
+community. Committership allows contributors to more easily carry on with
+their project related activities by giving them direct access to the project’s
+resources. That is, they can make changes directly to project outputs, without
+having to submit changes via patches.</p>
+<p>The key difference between a committer and a contributor is when this approval
+is sought from the community. A committer seeks approval after the contribution
+is made, rather than before. Seeking approval after making a contribution is
+known as a commit-then-review process. It is more efficient to allow trusted
+people to make direct contributions, as the majority of those contributions
+will be accepted by the project. The project employs various communication
+mechanisms to ensure that all contributions are reviewed by the community
+as a whole.</p>
+<p>New committers can be nominated by any existing committer. Once they have been
+nominated, there will be a vote by the Technical Management Committee (TMC;
+see below) to approve their membership.</p>
+</div>
+<div class="section" id="technical-management-committee-tmc">
+<h3>3.3.4. Technical Management Committee (TMC)<a class="headerlink" href="#technical-management-committee-tmc" title="Permalink to this headline">¶</a></h3>
+<p>The TMC is the technical decision making body and acts as stewards of the
+project. The main role of the TMC members is to review code contributions and
+participate in technical strategic planning. It also makes decisions when
+community consensus cannot be reached.</p>
+<p>Membership of the TMC is by invitation from the existing TMC members. A
+nomination will result in a vote by the existing TMC members, requiring
+consensus approval.</p>
+</div>
+<div class="section" id="tmc-chair">
+<h3>3.3.5. TMC Chair<a class="headerlink" href="#tmc-chair" title="Permalink to this headline">¶</a></h3>
+<p>The TMC Chair is a single individual, voted for by the TMC members. Once
+someone has been appointed Chair, they remain in that role until they choose to
+retire, or the TMC casts a two-thirds majority vote to remove them. The TMC
+Chair has no additional authority over other members of the TMC: the role is
+one of coordinator and facilitator. The Chair is also expected to ensure that
+all governance processes are adhered to, and has the casting vote when the
+project fails to reach consensus.</p>
+</div>
+</div>
+<div class="section" id="decision-making-process">
+<h2>3.4. Decision making process<a class="headerlink" href="#decision-making-process" title="Permalink to this headline">¶</a></h2>
+<p>Decisions about the future of the project are made through discussion with all
+members of the community. In order to ensure that the project is not bogged
+down by endless discussion and continual voting, the project operates a policy
+of lazy consensus. This allows the majority of decisions to be made without
+resorting to a formal vote.</p>
+<div class="section" id="lazy-consensus">
+<h3>3.4.1. Lazy consensus<a class="headerlink" href="#lazy-consensus" title="Permalink to this headline">¶</a></h3>
+<p>Decision making typically involves the following steps:
+- Proposal
+- Discussion
+- Vote (if consensus is not reached through discussion)
+- Decision</p>
+<p>Any community member can make a proposal for consideration by the community. In
+order to initiate a discussion about a new idea for a physics model or
+diagnostic they should raise their idea through the usual scientific channels
+(e.g. EUROfusion task force meetings). They can then submit a patch
+implementing the idea to the issue tracker (or version-control system if they
+have commit access). This will prompt a review and, if necessary, a discussion
+of the idea. The goal of this review and discussion is to gain approval for the
+contribution. Since most people in the project community have a shared vision,
+there is often little need for discussion in order to reach consensus.</p>
+<p>In general, as long as nobody explicitly opposes a proposal or patch, it is
+recognised as having the support of the community. This is called lazy
+consensus - that is, those who have not stated their opinion explicitly have
+implicitly agreed to the implementation of the proposal.</p>
+</div>
+<div class="section" id="voting">
+<h3>3.4.2. Voting<a class="headerlink" href="#voting" title="Permalink to this headline">¶</a></h3>
+<p>Not all decisions can be made using lazy consensus. Issues such as those
+affecting the core architecture of the project must gain explicit approval in
+the form of a vote. Every member of the community is encouraged to express
+their opinions in all discussion and all votes. However, only TMC members have
+binding votes for the purposes of technical decision making.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="installation_and_structure.html" class="btn btn-neutral float-right" title="4. Installation and Project Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="licence.html" class="btn btn-neutral" title="2. Licence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, CHERAB Team.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

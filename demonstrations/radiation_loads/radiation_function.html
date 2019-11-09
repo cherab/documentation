@@ -176,18 +176,24 @@ create arbitrary radiation functions using the Material interface in Raysect.
 However it is often sufficient to specify a simple total radiated power
 function in terms of W/m^2 for many physics applications. In such cases, the
 <a class="reference internal" href="../../tools/materials.html#cherab.tools.emitters.radiation_function.RadiationFunction" title="cherab.tools.emitters.radiation_function.RadiationFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">RadiationFunction</span></code></a> utility
-material is particularly useful. In this example we give it a user specified
-python function that specifies the emission, and attach it to a cylinder. The
-surface of the cylinder is transparent, but its volume emits proportional to
-the specified function.</p>
+material is particularly useful.</p>
+<p>In this example we give it a user specified python function that specifies the
+emission, and attach it to a cylinder. The surface of the cylinder is
+transparent, but its volume emits proportional to the specified function. Note
+that the radiation function is evaluated in the local coordinate system of the
+primitive to which the material is attached. In this example we create a
+cylinder which is shifted in the Z direction, but we want to evaluate the
+radiation function in the unshifted “global” coordinate system. For this we can
+use raysect’s <cite>VolumeMaterial</cite> material modifier.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="kn">from</span> <span class="nn">raysect.core</span> <span class="k">import</span> <span class="n">Point2D</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">rotate_basis</span>
 <span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="k">import</span> <span class="n">Cylinder</span>
-<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="k">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">Spectrum</span>
+<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="k">import</span> <span class="n">World</span>
 <span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="k">import</span> <span class="n">PinholeCamera</span><span class="p">,</span> <span class="n">PowerPipeline2D</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.material</span> <span class="k">import</span> <span class="n">VolumeTransform</span>
 
 <span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="k">import</span> <span class="n">sample2d</span><span class="p">,</span> <span class="n">AxisymmetricMapper</span>
 <span class="kn">from</span> <span class="nn">cherab.tools.emitters</span> <span class="k">import</span> <span class="n">RadiationFunction</span>
@@ -242,9 +248,13 @@ the specified function.</p>
 <span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
 
 <span class="n">rad_function_3d</span> <span class="o">=</span> <span class="n">AxisymmetricMapper</span><span class="p">(</span><span class="n">rad_function</span><span class="p">)</span>
-<span class="n">radiation_emitter</span> <span class="o">=</span> <span class="n">RadiationFunction</span><span class="p">(</span><span class="n">rad_function_3d</span><span class="p">,</span> <span class="n">vertical_offset</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># We shift the cylinder containing the emission function relative to the world,</span>
+<span class="c1"># so need to apply the opposite shift to the material to ensure the radiation</span>
+<span class="c1"># function is evaluated in the correct coordinate system.</span>
+<span class="n">shift</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">radiation_emitter</span> <span class="o">=</span> <span class="n">VolumeTransform</span><span class="p">(</span><span class="n">RadiationFunction</span><span class="p">(</span><span class="n">rad_function_3d</span><span class="p">),</span> <span class="n">shift</span><span class="o">.</span><span class="n">inverse</span><span class="p">())</span>
 <span class="n">geom</span> <span class="o">=</span> <span class="n">Cylinder</span><span class="p">(</span><span class="n">CYLINDER_RADIUS</span><span class="p">,</span> <span class="n">CYLINDER_HEIGHT</span><span class="p">,</span>
-                <span class="n">transform</span><span class="o">=</span><span class="n">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="n">radiation_emitter</span><span class="p">)</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">shift</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="n">radiation_emitter</span><span class="p">)</span>
 
 
 <span class="c1">######################</span>

@@ -179,12 +179,13 @@ to be used in the testing of emission models.</p>
 <span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="k">import</span> <span class="n">sample3d</span>
 <span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="k">import</span> <span class="n">hydrogen</span><span class="p">,</span> <span class="n">carbon</span>
 <span class="kn">from</span> <span class="nn">cherab.tools.plasmas.slab</span> <span class="k">import</span> <span class="n">build_slab_plasma</span>
+<span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="k">import</span> <span class="n">OpenADAS</span>
 
 
 <span class="c1"># make a slab plasma</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
 <span class="n">plasma</span> <span class="o">=</span> <span class="n">build_slab_plasma</span><span class="p">(</span><span class="n">peak_density</span><span class="o">=</span><span class="mf">5e19</span><span class="p">,</span> <span class="n">impurities</span><span class="o">=</span><span class="p">[(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">)],</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
-
+<span class="n">plasma</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1">####################</span>
 <span class="c1"># Visualise Plasma #</span>
