@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Custom emission model &mdash; CHERAB 1.01 documentation</title>
+  <title>Custom emission model &mdash; CHERAB 1.2.0 documentation</title>
   
 
   
@@ -17,33 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -57,7 +60,7 @@
             
             
               <div class="version">
-                1.01
+                1.2
               </div>
             
           
@@ -85,13 +88,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">3. Installation and Project Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">4. Available Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">5. Atomic Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">6. Plasmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../math/math.html">8. Function Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">9. Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -100,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -246,16 +251,16 @@ super method, e.g. <cite>super().__init__(step=step)</cite>.</p>
 in space where the ray-tracer would like to know the emission. The arguments are fixed and are
 as follows:</p>
 <ul class="simple">
-<li><cite>point</cite> (<cite>Point3D</cite>) - current position in local primitive coordinates</li>
-<li><cite>direction</cite> (<cite>Vector3D</cite>) - current ray direction in local primitive coordinates</li>
-<li><cite>spectrum</cite> (<cite>Spectrum</cite>) - measured spectrum so far. Don’t overwrite it. Add your local
-emission to the measured spectrum. Units are in spectral radiance (W/m3/str/nm).</li>
-<li><cite>world</cite> (<cite>World</cite>) - the world being ray-traced. You may have multiple worlds.</li>
-<li><cite>ray</cite> (<cite>Ray</cite>) - the current ray being traced.</li>
-<li><cite>primitive</cite> (<cite>Primitive</cite>) - the primitive container for this material. Could be a sphere,
-cyliner, or CAD mesh for example.</li>
-<li><cite>to_local</cite> (<cite>AffineMatrix3D</cite>) - Affine matrix for coordinate transformations to local coordinates.</li>
-<li><cite>to_world</cite> (<cite>AffineMatrix3D</cite>) - Affine matrix for coordinate transformations to world coordinates.</li>
+<li><p><cite>point</cite> (<cite>Point3D</cite>) - current position in local primitive coordinates</p></li>
+<li><p><cite>direction</cite> (<cite>Vector3D</cite>) - current ray direction in local primitive coordinates</p></li>
+<li><p><cite>spectrum</cite> (<cite>Spectrum</cite>) - measured spectrum so far. Don’t overwrite it. Add your local
+emission to the measured spectrum. Units are in spectral radiance (W/m3/str/nm).</p></li>
+<li><p><cite>world</cite> (<cite>World</cite>) - the world being ray-traced. You may have multiple worlds.</p></li>
+<li><p><cite>ray</cite> (<cite>Ray</cite>) - the current ray being traced.</p></li>
+<li><p><cite>primitive</cite> (<cite>Primitive</cite>) - the primitive container for this material. Could be a sphere,
+cyliner, or CAD mesh for example.</p></li>
+<li><p><cite>to_local</cite> (<cite>AffineMatrix3D</cite>) - Affine matrix for coordinate transformations to local coordinates.</p></li>
+<li><p><cite>to_world</cite> (<cite>AffineMatrix3D</cite>) - Affine matrix for coordinate transformations to world coordinates.</p></li>
 </ul>
 <p>Here is an example class implementation of an excitation line.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExcitationLine</span><span class="p">(</span><span class="n">VolumeEmitterInhomogeneous</span><span class="p">):</span>
@@ -365,7 +370,7 @@ to a cylinder with the approximate vessel geometry.</p>
 <img alt="../../_images/mastu_bulletb_midplane_dalpha1.png" src="../../_images/mastu_bulletb_midplane_dalpha1.png" />
 <p class="caption"><span class="caption-text">D-alpha with the mid-plane bullet camera. This example combines excitation and
 recombination rates. Divertor recombination dominates when line integration is
-taking into account.</span></p>
+taking into account.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -381,7 +386,7 @@ taking into account.</span></p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team
 
     </p>
   </div> 
@@ -397,33 +402,16 @@ taking into account.</span></p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'1.01',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

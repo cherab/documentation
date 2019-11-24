@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.3. Mono-energetic Particle Beams &mdash; CHERAB 1.01 documentation</title>
+  <title>7.3. Mono-energetic Particle Beams &mdash; CHERAB 1.2.0 documentation</title>
   
 
   
@@ -17,13 +17,21 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
@@ -31,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8. Emission Models" href="../models/emission_models.html" />
     <link rel="prev" title="7.2. Plasma equilibrium" href="equilibrium.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +62,7 @@
             
             
               <div class="version">
-                1.01
+                1.2
               </div>
             
           
@@ -108,6 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -179,7 +183,7 @@
 <h1>7.3. Mono-energetic Particle Beams<a class="headerlink" href="#mono-energetic-particle-beams" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="cherab.core.Beam">
-<em class="property">class </em><code class="descclassname">cherab.core.</code><code class="descname">Beam</code><a class="headerlink" href="#cherab.core.Beam" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.</code><code class="sig-name descname">Beam</code><a class="headerlink" href="#cherab.core.Beam" title="Permalink to this definition">¶</a></dt>
 <dd><p>A scene-graph object representing a Gaussian mono-energetic beam.</p>
 <p>The CHERAB beam object holds all the properties and state of a mono-energetic
 particle beam to which beam attenuation and emission models may be attached.
@@ -209,54 +213,50 @@ cached data. If you need to keep track of beam changes in your own classes,
 a callback can be registered with the beam Notifier which will be called in
 the event of a change to the Beam object. See the Notifier documentation.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">In the current implementation of the Beam class, the Beam can only be associated
+<p class="admonition-title">Warning</p>
+<p>In the current implementation of the Beam class, the Beam can only be associated
 with a single plasma instance. If your scene has overlapping plasmas the
 beam attenuation will only be calculated for the plasma instance to which
 this beam is attached.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parent</strong> (<em>Node</em>) – The parent node in the Raysect scene-graph.
-See the Raysect documentation for more guidance.</li>
-<li><strong>transform</strong> (<em>AffineMatrix3D</em>) – The transform defining the spatial position
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>Node</em>) – The parent node in the Raysect scene-graph.
+See the Raysect documentation for more guidance.</p></li>
+<li><p><strong>transform</strong> (<em>AffineMatrix3D</em>) – The transform defining the spatial position
 and orientation of this beam. See the Raysect documentation if you need
-guidance on how to use AffineMatrix3D transforms.</li>
-<li><strong>name</strong> (<em>str</em>) – The name for this beam object.</li>
+guidance on how to use AffineMatrix3D transforms.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – The name for this beam object.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
-<li><strong>atomic_data</strong> (<em>AtomicData</em>) – The atomic data provider class for this beam.
-All beam emission and attenuation rates will be calculated from the same provider.</li>
-<li><strong>attenuator</strong> (<em>BeamAttenuator</em>) – The method used for calculating the attenuation
-of this beam into the plasma. Defaults to a SingleRayAttenuator().</li>
-<li><strong>divergence_x</strong> (<em>float</em>) – The beam profile divergence in the x dimension in beam
-coordinates (degrees).</li>
-<li><strong>divergence_y</strong> (<em>float</em>) – The beam profile divergence in the y dimension in beam
-coordinates (degrees).</li>
-<li><strong>element</strong> (<a class="reference internal" href="../atomic/elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – The element of which this beam is composed.</li>
-<li><strong>energy</strong> (<em>float</em>) – The beam energy in eV/amu.</li>
-<li><strong>integrator</strong> (<em>VolumeIntegrator</em>) – The configurable method for doing
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>atomic_data</strong> (<em>AtomicData</em>) – The atomic data provider class for this beam.
+All beam emission and attenuation rates will be calculated from the same provider.</p></li>
+<li><p><strong>attenuator</strong> (<em>BeamAttenuator</em>) – The method used for calculating the attenuation
+of this beam into the plasma. Defaults to a SingleRayAttenuator().</p></li>
+<li><p><strong>divergence_x</strong> (<em>float</em>) – The beam profile divergence in the x dimension in beam
+coordinates (degrees).</p></li>
+<li><p><strong>divergence_y</strong> (<em>float</em>) – The beam profile divergence in the y dimension in beam
+coordinates (degrees).</p></li>
+<li><p><strong>element</strong> (<a class="reference internal" href="../atomic/elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – The element of which this beam is composed.</p></li>
+<li><p><strong>energy</strong> (<em>float</em>) – The beam energy in eV/amu.</p></li>
+<li><p><strong>integrator</strong> (<em>VolumeIntegrator</em>) – The configurable method for doing
 volumetric integration through the beam along a Ray’s path. Defaults to
-a numerical integrator with 1mm step size, NumericalIntegrator(step=0.001).</li>
-<li><strong>length</strong> (<em>float</em>) – The approximate length of this beam from source to extinction
+a numerical integrator with 1mm step size, NumericalIntegrator(step=0.001).</p></li>
+<li><p><strong>length</strong> (<em>float</em>) – The approximate length of this beam from source to extinction
 in the plasma. This is used for setting the bounding geometry over which calculations
-will occur. Units of m.</li>
-<li><strong>models</strong> (<em>ModelManager</em>) – The manager class that sets and provides access to the
-emission models for this beam.</li>
-<li><strong>plasma</strong> (<a class="reference internal" href="core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The plasma instance with which this beam interacts.</li>
-<li><strong>power</strong> (<em>float</em>) – The total beam power in W.</li>
-<li><strong>sigma</strong> (<em>float</em>) – The Gaussian beam width at the origin in m.</li>
-<li><strong>temperature</strong> (<em>float</em>) – The broadening of the beam (eV).</li>
+will occur. Units of m.</p></li>
+<li><p><strong>models</strong> (<em>ModelManager</em>) – The manager class that sets and provides access to the
+emission models for this beam.</p></li>
+<li><p><strong>plasma</strong> (<a class="reference internal" href="core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The plasma instance with which this beam interacts.</p></li>
+<li><p><strong>power</strong> (<em>float</em>) – The total beam power in W.</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – The Gaussian beam width at the origin in m.</p></li>
+<li><p><strong>temperature</strong> (<em>float</em>) – The broadening of the beam (eV).</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># This example shows how to initialise and populate a basic beam</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate</span>
@@ -286,50 +286,42 @@ emission models for this beam.</li>
 </div>
 <dl class="method">
 <dt id="cherab.core.Beam.density">
-<code class="descname">density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.density" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.density" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the bean density at the specified position in beam coordinates.</p>
 <p>Note: this function is only defined over the domain 0 &lt; z &lt; beam_length.
 Outside of this range the density is clamped to zero.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> – x coordinate in meters.</li>
-<li><strong>y</strong> – y coordinate in meters.</li>
-<li><strong>z</strong> – z coordinate in meters.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – x coordinate in meters.</p></li>
+<li><p><strong>y</strong> – y coordinate in meters.</p></li>
+<li><p><strong>z</strong> – z coordinate in meters.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Beam density in m^-3</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Beam density in m^-3</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="cherab.core.Beam.direction">
-<code class="descname">direction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.direction" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">direction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.direction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the beam direction vector at a point in space.</p>
 <p>Note the values of the beam outside of the beam envelope should be
 treated with caution.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> – x coordinate in meters.</li>
-<li><strong>y</strong> – y coordinate in meters.</li>
-<li><strong>z</strong> – z coordinate in meters.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – x coordinate in meters.</p></li>
+<li><p><strong>y</strong> – y coordinate in meters.</p></li>
+<li><p><strong>z</strong> – z coordinate in meters.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Direction vector.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Direction vector.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -347,7 +339,7 @@ treated with caution.</p>
         <a href="../models/emission_models.html" class="btn btn-neutral float-right" title="8. Emission Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="equilibrium.html" class="btn btn-neutral" title="7.2. Plasma equilibrium" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="equilibrium.html" class="btn btn-neutral float-left" title="7.2. Plasma equilibrium" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -356,7 +348,7 @@ treated with caution.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team
 
     </p>
   </div> 
@@ -372,33 +364,16 @@ treated with caution.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.01',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

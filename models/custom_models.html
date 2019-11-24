@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.1. Custom emission models &mdash; CHERAB 1.01 documentation</title>
+  <title>8.1. Custom emission models &mdash; CHERAB 1.2.0 documentation</title>
   
 
   
@@ -17,13 +17,21 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
@@ -31,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8.2. CXS models" href="cxs/cxs_model.html" />
     <link rel="prev" title="8. Emission Models" href="emission_models.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +62,7 @@
             
             
               <div class="version">
-                1.01
+                1.2
               </div>
             
           
@@ -112,6 +115,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -200,20 +204,20 @@ super method, e.g. <cite>super().__init__(step=step)</cite>.</p>
 in space where the ray-tracer would like to know the emission. The arguments are fixed and are
 as follows:</p>
 <ul class="simple">
-<li><cite>point</cite> (<cite>Point3D</cite>) - current position in local primitive coordinates</li>
-<li><cite>direction</cite> (<cite>Vector3D</cite>) - current ray direction in local primitive coordinates</li>
-<li><cite>spectrum</cite> (<cite>Spectrum</cite>) - measured spectrum so far. Don’t overwrite it. Add your local
-emission to the measured spectrum. Units are in spectral radiance (W/m3/str/nm).</li>
-<li><cite>world</cite> (<cite>World</cite>) - the world being ray-traced. You may have multiple worlds.</li>
-<li><cite>ray</cite> (<cite>Ray</cite>) - the current ray being traced.</li>
-<li><cite>primitive</cite> (<cite>Primitive</cite>) - the primitive container for this material. Could be a sphere,
-cyliner, or CAD mesh for example.</li>
-<li><cite>to_local</cite> (<cite>AffineMatrix3D</cite>) - Affine matrix for coordinate transformations to local coordinates.</li>
-<li><cite>to_world</cite> (<cite>AffineMatrix3D</cite>) - Affine matrix for coordinate transformations to world coordinates.</li>
+<li><p><cite>point</cite> (<cite>Point3D</cite>) - current position in local primitive coordinates</p></li>
+<li><p><cite>direction</cite> (<cite>Vector3D</cite>) - current ray direction in local primitive coordinates</p></li>
+<li><p><cite>spectrum</cite> (<cite>Spectrum</cite>) - measured spectrum so far. Don’t overwrite it. Add your local
+emission to the measured spectrum. Units are in spectral radiance (W/m3/str/nm).</p></li>
+<li><p><cite>world</cite> (<cite>World</cite>) - the world being ray-traced. You may have multiple worlds.</p></li>
+<li><p><cite>ray</cite> (<cite>Ray</cite>) - the current ray being traced.</p></li>
+<li><p><cite>primitive</cite> (<cite>Primitive</cite>) - the primitive container for this material. Could be a sphere,
+cyliner, or CAD mesh for example.</p></li>
+<li><p><cite>to_local</cite> (<cite>AffineMatrix3D</cite>) - Affine matrix for coordinate transformations to local coordinates.</p></li>
+<li><p><cite>to_world</cite> (<cite>AffineMatrix3D</cite>) - Affine matrix for coordinate transformations to world coordinates.</p></li>
 </ul>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Don’t override the spectrum parameter, you will loose all the previous ray samples. Instead you
+<p class="admonition-title">Warning</p>
+<p>Don’t override the spectrum parameter, you will loose all the previous ray samples. Instead you
 should add your local emission at the current point in space to the measured spectrum array.</p>
 </div>
 <p>Here is an example class implementation of an excitation line.</p>
@@ -292,7 +296,7 @@ should add your local emission at the current point in space to the measured spe
         <a href="cxs/cxs_model.html" class="btn btn-neutral float-right" title="8.2. CXS models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="emission_models.html" class="btn btn-neutral" title="8. Emission Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="emission_models.html" class="btn btn-neutral float-left" title="8. Emission Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -301,7 +305,7 @@ should add your local emission at the current point in space to the measured spe
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team
 
     </p>
   </div> 
@@ -317,33 +321,16 @@ should add your local emission at the current point in space to the measured spe
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.01',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

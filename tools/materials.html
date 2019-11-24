@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10.2. Materials &mdash; CHERAB 1.01 documentation</title>
+  <title>10.2. Materials &mdash; CHERAB 1.2.0 documentation</title>
   
 
   
@@ -17,13 +17,21 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
@@ -31,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="10.3. Primitives" href="primitives.html" />
     <link rel="prev" title="10.1. Plasmas" href="plasmas.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +62,7 @@
             
             
               <div class="version">
-                1.01
+                1.2
               </div>
             
           
@@ -111,6 +114,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -184,7 +188,7 @@
 API interfaces. In CHERAB we provide a few useful materials.</p>
 <dl class="class">
 <dt id="cherab.tools.emitters.radiation_function.RadiationFunction">
-<em class="property">class </em><code class="descclassname">cherab.tools.emitters.radiation_function.</code><code class="descname">RadiationFunction</code><a class="headerlink" href="#cherab.tools.emitters.radiation_function.RadiationFunction" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.emitters.radiation_function.</code><code class="sig-name descname">RadiationFunction</code><a class="headerlink" href="#cherab.tools.emitters.radiation_function.RadiationFunction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.optical.material.emitter.inhomogeneous.InhomogeneousVolumeEmitter</span></code></p>
 <p>A general purpose radiation material.</p>
 <p>Radiates power over 4 pi according to the supplied 3D radiation
@@ -197,19 +201,15 @@ primitive to which this material is attached. For radiation
 functions defined in a different coordinate system, consider
 wrapping this in a VolumeTransform material to ensure the function
 evaluation takes place in the correct coordinate system.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>radiation_function</strong> (<em>Function3D</em>) – A 3D radiation function that specifies the amount of radiation
-to be radiated at a given point, <span class="math notranslate nohighlight">\(\phi(x, y, z)\)</span> [W/m^2].</li>
-<li><strong>step</strong> (<em>float</em>) – The scale length for integration of the radiation function.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radiation_function</strong> (<em>Function3D</em>) – A 3D radiation function that specifies the amount of radiation
+to be radiated at a given point, <span class="math notranslate nohighlight">\(\phi(x, y, z)\)</span> [W/m^2].</p></li>
+<li><p><strong>step</strong> (<em>float</em>) – The scale length for integration of the radiation function.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.emitters</span> <span class="kn">import</span> <span class="n">RadiationFunction</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># define your own 3D radiation function and insert it into this class</span>
@@ -232,7 +232,7 @@ to be radiated at a given point, <span class="math notranslate nohighlight">\(\p
         <a href="primitives.html" class="btn btn-neutral float-right" title="10.3. Primitives" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plasmas.html" class="btn btn-neutral" title="10.1. Plasmas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plasmas.html" class="btn btn-neutral float-left" title="10.1. Plasmas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -241,7 +241,7 @@ to be radiated at a given point, <span class="math notranslate nohighlight">\(\p
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team
 
     </p>
   </div> 
@@ -257,33 +257,16 @@ to be radiated at a given point, <span class="math notranslate nohighlight">\(\p
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.01',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

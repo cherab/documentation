@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.10. Slicing &mdash; CHERAB 1.01 documentation</title>
+  <title>9.10. Slicing &mdash; CHERAB 1.2.0 documentation</title>
   
 
   
@@ -17,13 +17,21 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
@@ -31,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="10. Tools" href="../tools/tools.html" />
     <link rel="prev" title="9.9. Samplers" href="samplers.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +62,7 @@
             
             
               <div class="version">
-                1.01
+                1.2
               </div>
             
           
@@ -115,6 +118,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -186,21 +190,17 @@
 <span id="slicing"></span><h1>9.10. Slicing<a class="headerlink" href="#module-cherab.core.math.slice" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="cherab.core.math.slice.Slice2D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.slice.</code><code class="descname">Slice2D</code><a class="headerlink" href="#cherab.core.math.slice.Slice2D" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.slice.</code><code class="sig-name descname">Slice2D</code><a class="headerlink" href="#cherab.core.math.slice.Slice2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exposes a slice of a Function2D as a Function1D.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>function</strong> (<em>Function2D</em>) – the function to be sliced.</li>
-<li><strong>axis</strong> – the axis to be sliced. Must be [‘x’, ‘y’] or [0, 1].</li>
-<li><strong>value</strong> (<em>float</em>) – the axis value at which to return a slice</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<em>Function2D</em>) – the function to be sliced.</p></li>
+<li><p><strong>axis</strong> – the axis to be sliced. Must be [‘x’, ‘y’] or [0, 1].</p></li>
+<li><p><strong>value</strong> (<em>float</em>) – the axis value at which to return a slice</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Slice2D</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function2d</span> <span class="kn">import</span> <span class="n">PythonFunction2D</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -220,21 +220,17 @@
 
 <dl class="class">
 <dt id="cherab.core.math.slice.Slice3D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.slice.</code><code class="descname">Slice3D</code><a class="headerlink" href="#cherab.core.math.slice.Slice3D" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.slice.</code><code class="sig-name descname">Slice3D</code><a class="headerlink" href="#cherab.core.math.slice.Slice3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exposes a slice of a Function3D as a Function2D.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>function</strong> (<em>Function3D</em>) – the function to be sliced.</li>
-<li><strong>axis</strong> – the axis to be sliced. Must be [‘x’, ‘y’, ‘z’] or [0, 1, 2].</li>
-<li><strong>value</strong> (<em>float</em>) – the axis value at which to return a slice</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<em>Function3D</em>) – the function to be sliced.</p></li>
+<li><p><strong>axis</strong> – the axis to be sliced. Must be [‘x’, ‘y’, ‘z’] or [0, 1, 2].</p></li>
+<li><p><strong>value</strong> (<em>float</em>) – the axis value at which to return a slice</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Slice3D</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function3d</span> <span class="kn">import</span> <span class="n">PythonFunction3D</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -265,7 +261,7 @@
         <a href="../tools/tools.html" class="btn btn-neutral float-right" title="10. Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="samplers.html" class="btn btn-neutral" title="9.9. Samplers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="samplers.html" class="btn btn-neutral float-left" title="9.9. Samplers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -274,7 +270,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team
 
     </p>
   </div> 
@@ -290,33 +286,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.01',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

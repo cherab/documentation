@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. Project Governance &mdash; CHERAB 1.01 documentation</title>
+  <title>3. Project Governance &mdash; CHERAB 1.2.0 documentation</title>
   
 
   
@@ -17,13 +17,21 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
@@ -31,21 +39,16 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="4. Installation and Project Structure" href="installation_and_structure.html" />
     <link rel="prev" title="2. Licence" href="licence.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +62,7 @@
             
             
               <div class="version">
-                1.01
+                1.2
               </div>
             
           
@@ -120,6 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -230,9 +234,9 @@ user; there are no special requirements.</p>
 the needs of those users. Common user contributions include (but are not
 limited to):</p>
 <ul class="simple">
-<li>using the project for physics analysis</li>
-<li>evangelising about the project</li>
-<li>informing developers of strengths and weaknesses from a new user perspective</li>
+<li><p>using the project for physics analysis</p></li>
+<li><p>evangelising about the project</p></li>
+<li><p>informing developers of strengths and weaknesses from a new user perspective</p></li>
 </ul>
 </div>
 <div class="section" id="contributors">
@@ -241,15 +245,15 @@ limited to):</p>
 project. Anyone can become a contributor. In addition to their actions as users,
 contributors may also find themselves doing one or more of the following:</p>
 <ul class="simple">
-<li>adding new physics models and features</li>
-<li>supporting new users</li>
-<li>reporting bugs</li>
-<li>identifying requirements</li>
-<li>providing graphics and web design</li>
-<li>programming</li>
-<li>assisting with project infrastructure</li>
-<li>writing documentation</li>
-<li>fixing bugs</li>
+<li><p>adding new physics models and features</p></li>
+<li><p>supporting new users</p></li>
+<li><p>reporting bugs</p></li>
+<li><p>identifying requirements</p></li>
+<li><p>providing graphics and web design</p></li>
+<li><p>programming</p></li>
+<li><p>assisting with project infrastructure</p></li>
+<li><p>writing documentation</p></li>
+<li><p>fixing bugs</p></li>
 </ul>
 <p>Contributors engage with the project through the issue tracker and mailing
 list, or by writing or editing documentation. They submit changes to the
@@ -349,7 +353,7 @@ binding votes for the purposes of technical decision making.</p>
         <a href="installation_and_structure.html" class="btn btn-neutral float-right" title="4. Installation and Project Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="licence.html" class="btn btn-neutral" title="2. Licence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="licence.html" class="btn btn-neutral float-left" title="2. Licence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -358,7 +362,7 @@ binding votes for the purposes of technical decision making.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team
 
     </p>
   </div> 
@@ -374,33 +378,16 @@ binding votes for the purposes of technical decision making.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.01',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

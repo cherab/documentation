@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.3. Rate Coefficients &mdash; CHERAB 1.01 documentation</title>
+  <title>6.3. Rate Coefficients &mdash; CHERAB 1.2.0 documentation</title>
   
 
   
@@ -17,13 +17,21 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
@@ -31,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7. Plasmas" href="../plasmas/plasmas.html" />
     <link rel="prev" title="6.2. Spectroscopic Emission Lines" href="emission_lines.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +62,7 @@
             
             
               <div class="version">
-                1.01
+                1.2
               </div>
             
           
@@ -114,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -197,19 +201,19 @@ them after they have been instantiated.</p>
 <h2>6.3.1. Photon Emissivity Coefficients<a class="headerlink" href="#photon-emissivity-coefficients" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.atomic.rates.ImpactExcitationPEC">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">ImpactExcitationPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.ImpactExcitationPEC" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.atomic.rates.</code><code class="sig-name descname">ImpactExcitationPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.ImpactExcitationPEC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Impact excitation rate coefficient.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="cherab.core.atomic.rates.RecombinationPEC">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">RecombinationPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.RecombinationPEC" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.atomic.rates.</code><code class="sig-name descname">RecombinationPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.RecombinationPEC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Recombination rate coefficient.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="cherab.core.atomic.rates.ThermalCXPEC">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">ThermalCXPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.ThermalCXPEC" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.atomic.rates.</code><code class="sig-name descname">ThermalCXPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.ThermalCXPEC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Thermal charge exchange rate coefficient.</p>
 </dd></dl>
 
@@ -217,31 +221,27 @@ them after they have been instantiated.</p>
 the same call signatures.</p>
 <dl class="function">
 <dt id="__call__">
-<code class="descname">__call__</code><span class="sig-paren">(</span><em>density</em>, <em>temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#__call__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param">density</em>, <em class="sig-param">temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a photon emissivity coefficient at the specified plasma conditions.</p>
 <p>This function just wraps the cython evaluate() method.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="evaluate">
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>density</em>, <em>temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param">density</em>, <em class="sig-param">temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#evaluate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a photon emissivity coefficient at the specified plasma conditions.</p>
 <p>This function needs to be implemented by the atomic data provider.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>temperature</strong> (<em>float</em>) – Receiver ion temperature in eV.</li>
-<li><strong>density</strong> (<em>float</em>) – Receiver ion density in m^-3</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temperature</strong> (<em>float</em>) – Receiver ion temperature in eV.</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – Receiver ion density in m^-3</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The effective PEC rate [Wm^3].</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The effective PEC rate [Wm^3].</p>
+</dd>
+</dl>
 </dd></dl>
 
 <p>Some example code for requesting PEC objects and sampling them with the __call__()
@@ -273,7 +273,7 @@ method.</p>
 <h2>6.3.2. Beam-Plasma Interaction Rates<a class="headerlink" href="#beam-plasma-interaction-rates" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.atomic.rates.BeamStoppingRate">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">BeamStoppingRate</code><a class="headerlink" href="#cherab.core.atomic.rates.BeamStoppingRate" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.atomic.rates.</code><code class="sig-name descname">BeamStoppingRate</code><a class="headerlink" href="#cherab.core.atomic.rates.BeamStoppingRate" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(S^{e, i}_{CR}\)</span> [<span class="math notranslate nohighlight">\(m^3.s^{-1}\)</span>]</p>
 <p>The effective collisional radiative stopping coefficient <span class="math notranslate nohighlight">\(S^{e, i}_{CR}\)</span>
 [<span class="math notranslate nohighlight">\(m^3.s^{-1}\)</span>] for neutral atom <span class="math notranslate nohighlight">\(X^0\)</span> in a mono-energetic beam by
@@ -283,7 +283,7 @@ fully stripped ions <span class="math notranslate nohighlight">\(Y^i\)</span> an
 
 <dl class="class">
 <dt id="cherab.core.atomic.rates.BeamPopulationRate">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">BeamPopulationRate</code><a class="headerlink" href="#cherab.core.atomic.rates.BeamPopulationRate" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.atomic.rates.</code><code class="sig-name descname">BeamPopulationRate</code><a class="headerlink" href="#cherab.core.atomic.rates.BeamPopulationRate" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(bmp(X^0(m_i))\)</span> [dimensionless]</p>
 <p>Relative beam population of excited state <span class="math notranslate nohighlight">\(m_i\)</span> over ground state for atom <span class="math notranslate nohighlight">\(X^0\)</span>, <span class="math notranslate nohighlight">\(bmp(X^0(m_i))\)</span>.</p>
 <p>The rate <span class="math notranslate nohighlight">\(bmp(X^0(m_i))\)</span> is equivalent to the <span class="math notranslate nohighlight">\(BMP\)</span> rate as defined in
@@ -292,7 +292,7 @@ fully stripped ions <span class="math notranslate nohighlight">\(Y^i\)</span> an
 
 <dl class="class">
 <dt id="cherab.core.atomic.rates.BeamEmissionPEC">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">BeamEmissionPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.BeamEmissionPEC" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.atomic.rates.</code><code class="sig-name descname">BeamEmissionPEC</code><a class="headerlink" href="#cherab.core.atomic.rates.BeamEmissionPEC" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(bme(X^0(m_i))\)</span> [dimensionless]</p>
 <p>Relative beam population of excited state <span class="math notranslate nohighlight">\(m_i\)</span> over ground state for atom <span class="math notranslate nohighlight">\(X^0\)</span>, <span class="math notranslate nohighlight">\(bme(X^0(m_i))\)</span>.</p>
 <p>The rate <span class="math notranslate nohighlight">\(bme(X^0(m_i))\)</span> is equivalent to the <span class="math notranslate nohighlight">\(BME\)</span> rate as defined in
@@ -303,31 +303,27 @@ fully stripped ions <span class="math notranslate nohighlight">\(Y^i\)</span> an
 the same call signatures.</p>
 <dl class="function">
 <dt>
-<code class="descname">__call__</code><span class="sig-paren">(</span><em>energy</em>, <em>density</em>, <em>temperature</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param">energy</em>, <em class="sig-param">density</em>, <em class="sig-param">temperature</em><span class="sig-paren">)</span></dt>
 <dd><p>Returns the associated beam reaction rate at the specified plasma conditions.</p>
 <p>This function just wraps the cython evaluate() method.</p>
 </dd></dl>
 
 <dl class="function">
 <dt>
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>energy</em>, <em>density</em>, <em>temperature</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param">energy</em>, <em class="sig-param">density</em>, <em class="sig-param">temperature</em><span class="sig-paren">)</span></dt>
 <dd><p>Returns the beam coefficient for the supplied parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>energy</strong> (<em>float</em>) – Interaction energy in eV/amu.</li>
-<li><strong>density</strong> (<em>float</em>) – Target electron density in m^-3</li>
-<li><strong>temperature</strong> (<em>float</em>) – Target temperature in eV.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> (<em>float</em>) – Interaction energy in eV/amu.</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – Target electron density in m^-3</p></li>
+<li><p><strong>temperature</strong> (<em>float</em>) – Target temperature in eV.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The beam coefficient</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The beam coefficient</p>
+</dd>
+</dl>
 </dd></dl>
 
 <p>Some example code for requesting beam rate objects and sampling them with the __call__()
@@ -356,7 +352,7 @@ method.</p>
 </div>
 <dl class="class">
 <dt id="cherab.core.atomic.rates.BeamCXRate">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">BeamCXRate</code><a class="headerlink" href="#cherab.core.atomic.rates.BeamCXRate" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.atomic.rates.</code><code class="sig-name descname">BeamCXRate</code><a class="headerlink" href="#cherab.core.atomic.rates.BeamCXRate" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(q^{eff}_{n\rightarrow n'}\)</span> [<span class="math notranslate nohighlight">\(photon.m^{3}.s^{-1}.str^{-1}\)</span>]</p>
 <p>Effective emission coefficient (or rate) for a charge-exchange line corresponding to a
 transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span> of ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span> with electron donor
@@ -364,33 +360,29 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
 <span class="math notranslate nohighlight">\(q^{eff}_{n\rightarrow n'}\)</span> in <a class="reference external" href="http://open.adas.ac.uk/adf12">adf12</a>.</p>
 <dl class="function">
 <dt id="cherab.core.atomic.rates.BeamCXRate.__call__">
-<code class="descname">__call__</code><span class="sig-paren">(</span><em>energy</em>, <em>temperature</em>, <em>density</em>, <em>z_effective</em>, <em>b_field</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.BeamCXRate.__call__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param">energy</em>, <em class="sig-param">temperature</em>, <em class="sig-param">density</em>, <em class="sig-param">z_effective</em>, <em class="sig-param">b_field</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.BeamCXRate.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the associated beam CX rate at the specified plasma conditions.</p>
 <p>This function just wraps the cython evaluate() method.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="cherab.core.atomic.rates.BeamCXRate.evaluate">
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>energy</em>, <em>temperature</em>, <em>density</em>, <em>z_effective</em>, <em>b_field</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.BeamCXRate.evaluate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param">energy</em>, <em class="sig-param">temperature</em>, <em class="sig-param">density</em>, <em class="sig-param">z_effective</em>, <em class="sig-param">b_field</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.BeamCXRate.evaluate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the beam CX rate for the supplied parameters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>energy</strong> (<em>float</em>) – Interaction energy in eV/amu.</li>
-<li><strong>temperature</strong> (<em>float</em>) – Receiver ion temperature in eV.</li>
-<li><strong>density</strong> (<em>float</em>) – Receiver ion density in m^-3</li>
-<li><strong>z_effective</strong> (<em>float</em>) – Plasma Z-effective.</li>
-<li><strong>b_field</strong> (<em>float</em>) – Magnetic field magnitude in Tesla.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> (<em>float</em>) – Interaction energy in eV/amu.</p></li>
+<li><p><strong>temperature</strong> (<em>float</em>) – Receiver ion temperature in eV.</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – Receiver ion density in m^-3</p></li>
+<li><p><strong>z_effective</strong> (<em>float</em>) – Plasma Z-effective.</p></li>
+<li><p><strong>b_field</strong> (<em>float</em>) – Magnetic field magnitude in Tesla.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The effective rate</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The effective rate</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -415,25 +407,21 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
 <h2>6.3.3. Abundances<a class="headerlink" href="#abundances" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.atomic.rates.FractionalAbundance">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">FractionalAbundance</code><a class="headerlink" href="#cherab.core.atomic.rates.FractionalAbundance" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.atomic.rates.</code><code class="sig-name descname">FractionalAbundance</code><a class="headerlink" href="#cherab.core.atomic.rates.FractionalAbundance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rate provider for fractional abundances in thermodynamic equilibrium.</p>
 <dl class="function">
 <dt id="cherab.core.atomic.rates.FractionalAbundance.__call__">
-<code class="descname">__call__</code><span class="sig-paren">(</span><em>electron_density</em>, <em>electron_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.FractionalAbundance.__call__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param">electron_density</em>, <em class="sig-param">electron_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.FractionalAbundance.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the fractional abundance of this ionisation stage at the given plasma conditions.</p>
 <p>This function just wraps the cython evaluate() method.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>electron_density</strong> (<em>float</em>) – electron density in m^-3</li>
-<li><strong>electron_temperature</strong> (<em>float</em>) – electron temperature in eV</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>electron_density</strong> (<em>float</em>) – electron density in m^-3</p></li>
+<li><p><strong>electron_temperature</strong> (<em>float</em>) – electron temperature in eV</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -453,7 +441,7 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
 <h2>6.3.4. Radiated Power<a class="headerlink" href="#radiated-power" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="cherab.core.atomic.rates.RadiatedPower">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">RadiatedPower</code><a class="headerlink" href="#cherab.core.atomic.rates.RadiatedPower" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.atomic.rates.</code><code class="sig-name descname">RadiatedPower</code><a class="headerlink" href="#cherab.core.atomic.rates.RadiatedPower" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total radiated power for a given species and radiation type.</p>
 <p>Radiation type can be:
 - ‘total’ (line + recombination + bremsstrahlung + charge exchange)
@@ -462,21 +450,17 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
 - ‘cx’ charge exchange</p>
 <dl class="function">
 <dt id="cherab.core.atomic.rates.RadiatedPower.__call__">
-<code class="descname">__call__</code><span class="sig-paren">(</span><em>electron_density</em>, <em>electron_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.RadiatedPower.__call__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param">electron_density</em>, <em class="sig-param">electron_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.RadiatedPower.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the total radiated power of this species at the given plasma conditions.</p>
 <p>This function just wraps the cython evaluate() method.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>electron_density</strong> (<em>float</em>) – electron density in m^-3</li>
-<li><strong>electron_temperature</strong> (<em>float</em>) – electron temperature in eV</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>electron_density</strong> (<em>float</em>) – electron density in m^-3</p></li>
+<li><p><strong>electron_temperature</strong> (<em>float</em>) – electron temperature in eV</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -497,38 +481,30 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
 </div>
 <dl class="class">
 <dt id="cherab.core.atomic.rates.StageResolvedLineRadiation">
-<em class="property">class </em><code class="descclassname">cherab.core.atomic.rates.</code><code class="descname">StageResolvedLineRadiation</code><a class="headerlink" href="#cherab.core.atomic.rates.StageResolvedLineRadiation" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.atomic.rates.</code><code class="sig-name descname">StageResolvedLineRadiation</code><a class="headerlink" href="#cherab.core.atomic.rates.StageResolvedLineRadiation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total ionisation state resolved line radiated power rate.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>element</strong> (<a class="reference internal" href="elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – the radiating element</li>
-<li><strong>ionisation</strong> (<em>int</em>) – the integer charge state for this ionisation stage</li>
-<li><strong>name</strong> (<em>str</em>) – optional label identifying this rate</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<a class="reference internal" href="elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – the radiating element</p></li>
+<li><p><strong>ionisation</strong> (<em>int</em>) – the integer charge state for this ionisation stage</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – optional label identifying this rate</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <dl class="function">
 <dt id="cherab.core.atomic.rates.StageResolvedLineRadiation.__call__">
-<code class="descname">__call__</code><span class="sig-paren">(</span><em>electron_density</em>, <em>electron_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.StageResolvedLineRadiation.__call__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param">electron_density</em>, <em class="sig-param">electron_temperature</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.rates.StageResolvedLineRadiation.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the total radiated power of this species at the given plasma conditions.</p>
 <p>This function just wraps the cython evaluate() method.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>electron_density</strong> (<em>float</em>) – electron density in m^-3</li>
-<li><strong>electron_temperature</strong> (<em>float</em>) – electron temperature in eV</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>electron_density</strong> (<em>float</em>) – electron density in m^-3</p></li>
+<li><p><strong>electron_temperature</strong> (<em>float</em>) – electron temperature in eV</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -561,7 +537,7 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
         <a href="../plasmas/plasmas.html" class="btn btn-neutral float-right" title="7. Plasmas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="emission_lines.html" class="btn btn-neutral" title="6.2. Spectroscopic Emission Lines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="emission_lines.html" class="btn btn-neutral float-left" title="6.2. Spectroscopic Emission Lines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -570,7 +546,7 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team
 
     </p>
   </div> 
@@ -586,33 +562,16 @@ transition <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.01',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

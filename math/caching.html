@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.2. Caching &mdash; CHERAB 1.01 documentation</title>
+  <title>9.2. Caching &mdash; CHERAB 1.2.0 documentation</title>
   
 
   
@@ -17,13 +17,21 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
@@ -31,21 +39,16 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9.3. Clamps" href="clamp.html" />
     <link rel="prev" title="9.1. Blending" href="blend.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +62,7 @@
             
             
               <div class="version">
-                1.01
+                1.2
               </div>
             
           
@@ -115,6 +118,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -186,8 +190,8 @@
 <span id="caching"></span><h1>9.2. Caching<a class="headerlink" href="#module-cherab.core.math.caching.caching1d" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="cherab.core.math.caching.caching1d.Caching1D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.caching.caching1d.</code><code class="descname">Caching1D</code><a class="headerlink" href="#cherab.core.math.caching.caching1d.Caching1D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function1d.Function1D</span></code></p>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.caching.caching1d.</code><code class="sig-name descname">Caching1D</code><a class="headerlink" href="#cherab.core.math.caching.caching1d.Caching1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function1d.base.Function1D</span></code></p>
 <p>Precalculate and cache a 1D function on a finite space area.</p>
 <p>The function is sampled and a cubic interpolation is then used to calculate
 a cubic spline approximation of the function. As the spline has a constant
@@ -197,26 +201,22 @@ are very often used.</p>
 caching is done progressively when the function is evaluated. Coordinates
 are normalised to the range [0, 1] to avoid float accuracy troubles. The
 values of the function are normalised if their boundaries are given.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>function1d</strong> (<em>object</em>) – 1D function to be cached.</li>
-<li><strong>space_area</strong> (<em>tuple</em>) – space area where the function has to be cached:
-(minx, maxx).</li>
-<li><strong>resolution</strong> (<em>double</em>) – resolution of the sampling</li>
-<li><strong>no_boundary_error</strong> – Behaviour when evaluated outside the caching area.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function1d</strong> (<em>object</em>) – 1D function to be cached.</p></li>
+<li><p><strong>space_area</strong> (<em>tuple</em>) – space area where the function has to be cached:
+(minx, maxx).</p></li>
+<li><p><strong>resolution</strong> (<em>double</em>) – resolution of the sampling</p></li>
+<li><p><strong>no_boundary_error</strong> – Behaviour when evaluated outside the caching area.
 When False a ValueError is raised. When True the function is directly
-evaluated (without caching). Default is False.</li>
-<li><strong>function_boundaries</strong> – Boundaries of the function values for
+evaluated (without caching). Default is False.</p></li>
+<li><p><strong>function_boundaries</strong> – Boundaries of the function values for
 normalisation: (min, max). If None, function values are not normalised.
-Default is None.</li>
+Default is None.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Caching1D</span>
@@ -242,8 +242,8 @@ Default is None.</li>
 
 <span class="target" id="module-cherab.core.math.caching.caching2d"></span><dl class="class">
 <dt id="cherab.core.math.caching.caching2d.Caching2D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.caching.caching2d.</code><code class="descname">Caching2D</code><a class="headerlink" href="#cherab.core.math.caching.caching2d.Caching2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function2d.Function2D</span></code></p>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.caching.caching2d.</code><code class="sig-name descname">Caching2D</code><a class="headerlink" href="#cherab.core.math.caching.caching2d.Caching2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function2d.base.Function2D</span></code></p>
 <p>Precalculate and cache a 2D function on a finite space area.</p>
 <p>The function is sampled and a cubic interpolation is then used to calculate
 a cubic spline approximation of the function. As the spline has a constant
@@ -253,26 +253,22 @@ are very often used.</p>
 caching is done progressively when the function is evaluated. Coordinates
 are normalised to the range [0, 1] to avoid float accuracy troubles. The
 values of the function are normalised if their boundaries are given.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>function2d</strong> (<em>object</em>) – 2D function to be cached.</li>
-<li><strong>space_area</strong> (<em>tuple</em>) – space area where the function has to be cached:
-(minx, maxx, miny, maxy).</li>
-<li><strong>resolution</strong> (<em>tuple</em>) – resolution of the sampling: (resolutionx, resolutiony).</li>
-<li><strong>no_boundary_error</strong> – Behaviour when evaluated outside the caching area.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function2d</strong> (<em>object</em>) – 2D function to be cached.</p></li>
+<li><p><strong>space_area</strong> (<em>tuple</em>) – space area where the function has to be cached:
+(minx, maxx, miny, maxy).</p></li>
+<li><p><strong>resolution</strong> (<em>tuple</em>) – resolution of the sampling: (resolutionx, resolutiony).</p></li>
+<li><p><strong>no_boundary_error</strong> – Behaviour when evaluated outside the caching area.
 When False a ValueError is raised. When True the function is directly
-evaluated (without caching). Default is False.</li>
-<li><strong>function_boundaries</strong> – Boundaries of the function values for
+evaluated (without caching). Default is False.</p></li>
+<li><p><strong>function_boundaries</strong> – Boundaries of the function values for
 normalisation: (min, max). If None, function values are not normalised.
-Default is None.</li>
+Default is None.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Caching2D</span>
@@ -298,8 +294,8 @@ Default is None.</li>
 
 <span class="target" id="module-cherab.core.math.caching.caching3d"></span><dl class="class">
 <dt id="cherab.core.math.caching.caching3d.Caching3D">
-<em class="property">class </em><code class="descclassname">cherab.core.math.caching.caching3d.</code><code class="descname">Caching3D</code><a class="headerlink" href="#cherab.core.math.caching.caching3d.Caching3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function3d.Function3D</span></code></p>
+<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.caching.caching3d.</code><code class="sig-name descname">Caching3D</code><a class="headerlink" href="#cherab.core.math.caching.caching3d.Caching3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function3d.base.Function3D</span></code></p>
 <p>Precalculate and cache a 3D function on a finite space area.</p>
 <p>The function is sampled and a cubic interpolation is then used to calculate
 a cubic spline approximation of the function. As the spline has a constant
@@ -309,27 +305,23 @@ are very often used.</p>
 caching is done progressively when the function is evaluated. Coordinates
 are normalised to the range [0, 1] to avoid float accuracy troubles. The
 values of the function are normalised if their boundaries are given.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>function3d</strong> (<em>object</em>) – 3D function to be cached.</li>
-<li><strong>space_area</strong> (<em>tuple</em>) – space area where the function has to be cached:
-(minx, maxx, miny, maxy, minz, maxz).</li>
-<li><strong>resolution</strong> (<em>tuple</em>) – resolution of the sampling:
-(resolutionx, resolutiony, resolutionz).</li>
-<li><strong>no_boundary_error</strong> – Behaviour when evaluated outside the caching area.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function3d</strong> (<em>object</em>) – 3D function to be cached.</p></li>
+<li><p><strong>space_area</strong> (<em>tuple</em>) – space area where the function has to be cached:
+(minx, maxx, miny, maxy, minz, maxz).</p></li>
+<li><p><strong>resolution</strong> (<em>tuple</em>) – resolution of the sampling:
+(resolutionx, resolutiony, resolutionz).</p></li>
+<li><p><strong>no_boundary_error</strong> – Behaviour when evaluated outside the caching area.
 When False a ValueError is raised. When True the function is directly
-evaluated (without caching). Default is False.</li>
-<li><strong>function_boundaries</strong> – Boundaries of the function values for
+evaluated (without caching). Default is False.</p></li>
+<li><p><strong>function_boundaries</strong> – Boundaries of the function values for
 normalisation: (min, max). If None, function values are not normalised.
-Default is None.</li>
+Default is None.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Caching3D</span>
@@ -368,7 +360,7 @@ Default is None.</li>
         <a href="clamp.html" class="btn btn-neutral float-right" title="9.3. Clamps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="blend.html" class="btn btn-neutral" title="9.1. Blending" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="blend.html" class="btn btn-neutral float-left" title="9.1. Blending" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -377,7 +369,7 @@ Default is None.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team
 
     </p>
   </div> 
@@ -393,33 +385,16 @@ Default is None.</li>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.01',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

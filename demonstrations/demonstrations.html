@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Atomic Data &mdash; CHERAB 1.01 documentation</title>
+  <title>Atomic Data &mdash; CHERAB 1.2.0 documentation</title>
   
 
   
@@ -17,34 +17,37 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="9.6. Utilities" href="../tools/utility.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+    <link rel="prev" title="10.6. Utilities" href="../tools/utility.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -58,7 +61,7 @@
             
             
               <div class="version">
-                1.01
+                1.2
               </div>
             
           
@@ -86,13 +89,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">3. Installation and Project Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">4. Available Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">5. Atomic Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">6. Plasmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">7. Emission Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../math/math.html">8. Function Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">9. Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Demonstrations</span></p>
 <ul class="current">
@@ -101,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
@@ -168,38 +173,38 @@
             
   <div class="section" id="atomic-data">
 <h1>Atomic Data<a class="headerlink" href="#atomic-data" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="28%" />
-<col width="50%" />
-<col width="22%" />
+<col style="width: 28%" />
+<col style="width: 50%" />
+<col style="width: 22%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Description</th>
-<th class="head">Preview</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Preview</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference internal" href="atomic_data/photon_emissivity_coefficients.html#photon-emissivity-coefficients"><span class="std std-ref">Photon Emissivity Coefficients</span></a></td>
-<td>Sampling and plotting PEC rates provided by OPEN-ADAS.</td>
-<td><a class="first last reference internal image-reference" href="../_images/D_alpha_PECs1.png"><img alt="../_images/D_alpha_PECs1.png" src="../_images/D_alpha_PECs1.png" style="width: 150px; height: 150px;" /></a>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="atomic_data/photon_emissivity_coefficients.html#photon-emissivity-coefficients"><span class="std std-ref">Photon Emissivity Coefficients</span></a></p></td>
+<td><p>Sampling and plotting PEC rates provided by OPEN-ADAS.</p></td>
+<td><a class="reference internal image-reference" href="../_images/D_alpha_PECs1.png"><img alt="../_images/D_alpha_PECs1.png" src="../_images/D_alpha_PECs1.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="atomic_data/beam_plasma_interactions.html#beam-plasma-interaction-rates"><span class="std std-ref">Beam-Plasma Interaction Rates</span></a></td>
-<td>Sampling and plotting various beam-plasma interaction rates provided by OPEN-ADAS.</td>
-<td><a class="first last reference internal image-reference" href="../_images/effective_cx_rates1.png"><img alt="../_images/effective_cx_rates1.png" src="../_images/effective_cx_rates1.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-odd"><td><p><a class="reference internal" href="atomic_data/beam_plasma_interactions.html#beam-plasma-interaction-rates"><span class="std std-ref">Beam-Plasma Interaction Rates</span></a></p></td>
+<td><p>Sampling and plotting various beam-plasma interaction rates provided by OPEN-ADAS.</p></td>
+<td><a class="reference internal image-reference" href="../_images/effective_cx_rates1.png"><img alt="../_images/effective_cx_rates1.png" src="../_images/effective_cx_rates1.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="atomic_data/fractional_abundance.html#fractional-abundances"><span class="std std-ref">Fractional Abundances</span></a></td>
-<td>Sampling and plotting Neon fractional abundances with the ADAS subscription package.</td>
-<td><a class="first last reference internal image-reference" href="../_images/fractional_abundance1.png"><img alt="../_images/fractional_abundance1.png" src="../_images/fractional_abundance1.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-even"><td><p><a class="reference internal" href="atomic_data/fractional_abundance.html#fractional-abundances"><span class="std std-ref">Fractional Abundances</span></a></p></td>
+<td><p>Sampling and plotting Neon fractional abundances with the ADAS subscription package.</p></td>
+<td><a class="reference internal image-reference" href="../_images/fractional_abundance1.png"><img alt="../_images/fractional_abundance1.png" src="../_images/fractional_abundance1.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="atomic_data/radiated_powers.html#radiated-powers"><span class="std std-ref">Radiated Powers</span></a></td>
-<td>Sampling and plotting total and stage resolved radiated powers with the ADAS
-subscription package.</td>
-<td><a class="first last reference internal image-reference" href="../_images/stage_resolved_radiation1.png"><img alt="../_images/stage_resolved_radiation1.png" src="../_images/stage_resolved_radiation1.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-odd"><td><p><a class="reference internal" href="atomic_data/radiated_powers.html#radiated-powers"><span class="std std-ref">Radiated Powers</span></a></p></td>
+<td><p>Sampling and plotting total and stage resolved radiated powers with the ADAS
+subscription package.</p></td>
+<td><a class="reference internal image-reference" href="../_images/stage_resolved_radiation1.png"><img alt="../_images/stage_resolved_radiation1.png" src="../_images/stage_resolved_radiation1.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
 </tbody>
@@ -207,42 +212,42 @@ subscription package.</td>
 </div>
 <div class="section" id="creating-plasmas">
 <h1>Creating Plasmas<a class="headerlink" href="#creating-plasmas" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="28%" />
-<col width="50%" />
-<col width="22%" />
+<col style="width: 28%" />
+<col style="width: 50%" />
+<col style="width: 22%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Description</th>
-<th class="head">Preview</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Preview</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference internal" href="plasmas/analytic_function_plasma.html#analytic-function-plasma"><span class="std std-ref">Analytic Functions</span></a></td>
-<td>Specifying plasma distributions with analytic functions.</td>
-<td><a class="first last reference internal image-reference" href="../_images/analytic_plasma.png"><img alt="../_images/analytic_plasma.png" src="../_images/analytic_plasma.png" style="width: 150px; height: 150px;" /></a>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="plasmas/analytic_function_plasma.html#analytic-function-plasma"><span class="std std-ref">Analytic Functions</span></a></p></td>
+<td><p>Specifying plasma distributions with analytic functions.</p></td>
+<td><a class="reference internal image-reference" href="../_images/analytic_plasma.png"><img alt="../_images/analytic_plasma.png" src="../_images/analytic_plasma.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="plasmas/equilibrium.html#flux-function-plasmas"><span class="std std-ref">Flux Function Plasmas</span></a></td>
-<td>Loading the example EFIT equilibrium and making 1D flux functions.</td>
-<td><a class="first last reference internal image-reference" href="../_images/equilibrium_surfaces.png"><img alt="../_images/equilibrium_surfaces.png" src="../_images/equilibrium_surfaces.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-odd"><td><p><a class="reference internal" href="plasmas/equilibrium.html#flux-function-plasmas"><span class="std std-ref">Flux Function Plasmas</span></a></p></td>
+<td><p>Loading the example EFIT equilibrium and making 1D flux functions.</p></td>
+<td><a class="reference internal image-reference" href="../_images/equilibrium_surfaces.png"><img alt="../_images/equilibrium_surfaces.png" src="../_images/equilibrium_surfaces.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="plasmas/mesh2d_plasma.html#mesh2d-plasma"><span class="std std-ref">2D Mesh Plasmas</span></a></td>
-<td>Specifying a plasma distribution with a 2D r-z triangular mesh.</td>
-<td><a class="first last reference internal image-reference" href="../_images/mesh_plasma_column.png"><img alt="../_images/mesh_plasma_column.png" src="../_images/mesh_plasma_column.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-even"><td><p><a class="reference internal" href="plasmas/mesh2d_plasma.html#mesh2d-plasma"><span class="std std-ref">2D Mesh Plasmas</span></a></p></td>
+<td><p>Specifying a plasma distribution with a 2D r-z triangular mesh.</p></td>
+<td><a class="reference internal image-reference" href="../_images/mesh_plasma_column.png"><img alt="../_images/mesh_plasma_column.png" src="../_images/mesh_plasma_column.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="plasmas/slab_plasma.html#slab-plasma"><span class="std std-ref">Slab Plasma</span></a></td>
-<td>Constructing a slab of plasma defined along +ve x.</td>
-<td><a class="first last reference internal image-reference" href="../_images/slab_plasma.png"><img alt="../_images/slab_plasma.png" src="../_images/slab_plasma.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-odd"><td><p><a class="reference internal" href="plasmas/slab_plasma.html#slab-plasma"><span class="std std-ref">Slab Plasma</span></a></p></td>
+<td><p>Constructing a slab of plasma defined along +ve x.</p></td>
+<td><a class="reference internal image-reference" href="../_images/slab_plasma.png"><img alt="../_images/slab_plasma.png" src="../_images/slab_plasma.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="plasmas/beams_into_plasmas.html#beams-into-plasmas"><span class="std std-ref">Beams into Plasmas</span></a></td>
-<td>Specifying a mono-energetic neutral beam that interacts with a plasma.</td>
-<td><a class="first last reference internal image-reference" href="../_images/beam_into_plasma.png"><img alt="../_images/beam_into_plasma.png" src="../_images/beam_into_plasma.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-even"><td><p><a class="reference internal" href="plasmas/beams_into_plasmas.html#beams-into-plasmas"><span class="std std-ref">Beams into Plasmas</span></a></p></td>
+<td><p>Specifying a mono-energetic neutral beam that interacts with a plasma.</p></td>
+<td><a class="reference internal image-reference" href="../_images/beam_into_plasma.png"><img alt="../_images/beam_into_plasma.png" src="../_images/beam_into_plasma.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
 </tbody>
@@ -250,45 +255,45 @@ subscription package.</td>
 </div>
 <div class="section" id="surface-radiation-loads">
 <h1>Surface Radiation Loads<a class="headerlink" href="#surface-radiation-loads" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="28%" />
-<col width="50%" />
-<col width="22%" />
+<col style="width: 28%" />
+<col style="width: 50%" />
+<col style="width: 22%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Description</th>
-<th class="head">Preview</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Preview</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference internal" href="radiation_loads/radiation_function.html#radiation-function"><span class="std std-ref">Defining A Radiation Function</span></a></td>
-<td>Defining an example radiation function.</td>
-<td><a class="first last reference internal image-reference" href="../_images/radiation_function.png"><img alt="../_images/radiation_function.png" src="../_images/radiation_function.png" style="width: 150px; height: 150px;" /></a>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="radiation_loads/radiation_function.html#radiation-function"><span class="std std-ref">Defining A Radiation Function</span></a></p></td>
+<td><p>Defining an example radiation function.</p></td>
+<td><a class="reference internal image-reference" href="../_images/radiation_function.png"><img alt="../_images/radiation_function.png" src="../_images/radiation_function.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="radiation_loads/wall_from_polygon.html#wall-from-polygon"><span class="std std-ref">Defining A Wall From A 2D Polygon</span></a></td>
-<td>A toroidal mesh representing the tokamak wall is made from a
-2D polygon outline.</td>
-<td><a class="first last reference internal image-reference" href="../_images/toroidal_wall.png"><img alt="../_images/toroidal_wall.png" src="../_images/toroidal_wall.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-odd"><td><p><a class="reference internal" href="radiation_loads/wall_from_polygon.html#wall-from-polygon"><span class="std std-ref">Defining A Wall From A 2D Polygon</span></a></p></td>
+<td><p>A toroidal mesh representing the tokamak wall is made from a
+2D polygon outline.</p></td>
+<td><a class="reference internal image-reference" href="../_images/toroidal_wall.png"><img alt="../_images/toroidal_wall.png" src="../_images/toroidal_wall.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="radiation_loads/symmetric_power_load.html#symmetric-power-load"><span class="std std-ref">Symmetric Power Load Calculation</span></a></td>
-<td>Calculating the power load by exploiting symmetry. We manually
-create an array of detectors for sampling.</td>
-<td><a class="first last reference internal image-reference" href="../_images/symmetric_power_load.png"><img alt="../_images/symmetric_power_load.png" src="../_images/symmetric_power_load.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-even"><td><p><a class="reference internal" href="radiation_loads/symmetric_power_load.html#symmetric-power-load"><span class="std std-ref">Symmetric Power Load Calculation</span></a></p></td>
+<td><p>Calculating the power load by exploiting symmetry. We manually
+create an array of detectors for sampling.</p></td>
+<td><a class="reference internal image-reference" href="../_images/symmetric_power_load.png"><img alt="../_images/symmetric_power_load.png" src="../_images/symmetric_power_load.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://raysect.github.io/documentation/demonstrations/observers/mesh_observers.html">Mesh Observer</a></td>
-<td>Calculating powers on an arbitrary 3D surface (Raysect docs).</td>
-<td><a class="first last reference internal image-reference" href="https://raysect.github.io/documentation/_images/mesh_observers.jpg"><img alt="https://raysect.github.io/documentation/_images/mesh_observers.jpg" src="https://raysect.github.io/documentation/_images/mesh_observers.jpg" style="width: 150px; height: 150px;" /></a>
+<tr class="row-odd"><td><p><a class="reference external" href="https://raysect.github.io/documentation/demonstrations/observers/mesh_observers.html">Mesh Observer</a></p></td>
+<td><p>Calculating powers on an arbitrary 3D surface (Raysect docs).</p></td>
+<td><a class="reference internal image-reference" href="https://raysect.github.io/documentation/_images/mesh_observers.jpg"><img alt="https://raysect.github.io/documentation/_images/mesh_observers.jpg" src="https://raysect.github.io/documentation/_images/mesh_observers.jpg" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="radiation_loads/surface_radiation_loads.html#aug-solps-radiation-load"><span class="std std-ref">AUG - SOLPS radiation load example</span></a></td>
-<td>An older demonstration of the tutorials above using a SOLPS simulation
-and an AUG wall outline.</td>
-<td><a class="first last reference internal image-reference" href="../_images/AUG_wall_outline.png"><img alt="../_images/AUG_wall_outline.png" src="../_images/AUG_wall_outline.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-even"><td><p><a class="reference internal" href="radiation_loads/surface_radiation_loads.html#aug-solps-radiation-load"><span class="std std-ref">AUG - SOLPS radiation load example</span></a></p></td>
+<td><p>An older demonstration of the tutorials above using a SOLPS simulation
+and an AUG wall outline.</p></td>
+<td><a class="reference internal image-reference" href="../_images/AUG_wall_outline.png"><img alt="../_images/AUG_wall_outline.png" src="../_images/AUG_wall_outline.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
 </tbody>
@@ -296,27 +301,27 @@ and an AUG wall outline.</td>
 </div>
 <div class="section" id="active-spectroscopy">
 <h1>Active Spectroscopy<a class="headerlink" href="#active-spectroscopy" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="28%" />
-<col width="50%" />
-<col width="22%" />
+<col style="width: 28%" />
+<col style="width: 50%" />
+<col style="width: 22%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Description</th>
-<th class="head">Preview</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Preview</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference internal" href="active_spectroscopy/beam_cxs.html#beam-cxs"><span class="std std-ref">Charge Exchange Spectroscopy (CXS)</span></a></td>
-<td>A simple CXS model for a beam into a plasma slab.</td>
-<td><a class="first last reference internal image-reference" href="../_images/CXS_multi_sightlines1.png"><img alt="../_images/CXS_multi_sightlines1.png" src="../_images/CXS_multi_sightlines1.png" style="width: 150px; height: 150px;" /></a>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="active_spectroscopy/beam_cxs.html#beam-cxs"><span class="std std-ref">Charge Exchange Spectroscopy (CXS)</span></a></p></td>
+<td><p>A simple CXS model for a beam into a plasma slab.</p></td>
+<td><a class="reference internal image-reference" href="../_images/CXS_multi_sightlines1.png"><img alt="../_images/CXS_multi_sightlines1.png" src="../_images/CXS_multi_sightlines1.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="active_spectroscopy/beam_bes.html#beam-bes"><span class="std std-ref">Beam Emission Spectroscopy</span></a></td>
-<td>A simple Beam Emission Spectroscopy (BES) model for a beam into a plasma slab.</td>
-<td><a class="first last reference internal image-reference" href="../_images/BES_spectrum_zoomed1.png"><img alt="../_images/BES_spectrum_zoomed1.png" src="../_images/BES_spectrum_zoomed1.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-odd"><td><p><a class="reference internal" href="active_spectroscopy/beam_bes.html#beam-bes"><span class="std std-ref">Beam Emission Spectroscopy</span></a></p></td>
+<td><p>A simple Beam Emission Spectroscopy (BES) model for a beam into a plasma slab.</p></td>
+<td><a class="reference internal image-reference" href="../_images/BES_spectrum_zoomed1.png"><img alt="../_images/BES_spectrum_zoomed1.png" src="../_images/BES_spectrum_zoomed1.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
 </tbody>
@@ -324,32 +329,70 @@ and an AUG wall outline.</td>
 </div>
 <div class="section" id="passive-spectroscopy">
 <h1>Passive Spectroscopy<a class="headerlink" href="#passive-spectroscopy" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="28%" />
-<col width="50%" />
-<col width="22%" />
+<col style="width: 28%" />
+<col style="width: 50%" />
+<col style="width: 22%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Description</th>
-<th class="head">Preview</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Preview</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference internal" href="passive_spectroscopy/balmer_series.html#impact-recom-lines"><span class="std std-ref">Impact Excitation and Recombination</span></a></td>
-<td>Modelling background lines due to electron impact excitation and recombination.</td>
-<td><a class="first last reference internal image-reference" href="../_images/BalmerSeries_camera.png"><img alt="../_images/BalmerSeries_camera.png" src="../_images/BalmerSeries_camera.png" style="width: 150px; height: 150px;" /></a>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="passive_spectroscopy/balmer_series.html#impact-recom-lines"><span class="std std-ref">Impact Excitation and Recombination</span></a></p></td>
+<td><p>Modelling background lines due to electron impact excitation and recombination.</p></td>
+<td><a class="reference internal image-reference" href="../_images/BalmerSeries_camera.png"><img alt="../_images/BalmerSeries_camera.png" src="../_images/BalmerSeries_camera.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="passive_spectroscopy/multiplet.html#multiplet-lines"><span class="std std-ref">Multiplet Line Ratios</span></a></td>
-<td>Including experimentally determined multiplet line ratios.</td>
-<td><a class="first last reference internal image-reference" href="../_images/multiplet_spectrum.png"><img alt="../_images/multiplet_spectrum.png" src="../_images/multiplet_spectrum.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-odd"><td><p><a class="reference internal" href="passive_spectroscopy/multiplet.html#multiplet-lines"><span class="std std-ref">Multiplet Line Ratios</span></a></p></td>
+<td><p>Including experimentally determined multiplet line ratios.</p></td>
+<td><a class="reference internal image-reference" href="../_images/multiplet_spectrum.png"><img alt="../_images/multiplet_spectrum.png" src="../_images/multiplet_spectrum.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="passive_spectroscopy/stark_broadening.html#stark-broadening"><span class="std std-ref">Stark Broadened Lines</span></a></td>
-<td>Specifying a Stark broadened lineshape instead of Doppler broadening.</td>
-<td><a class="first last reference internal image-reference" href="../_images/stark_line_zoomed.png"><img alt="../_images/stark_line_zoomed.png" src="../_images/stark_line_zoomed.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-even"><td><p><a class="reference internal" href="passive_spectroscopy/stark_broadening.html#stark-broadening"><span class="std std-ref">Stark Broadened Lines</span></a></p></td>
+<td><p>Specifying a Stark broadened lineshape instead of Doppler broadening.</p></td>
+<td><a class="reference internal image-reference" href="../_images/stark_line_zoomed.png"><img alt="../_images/stark_line_zoomed.png" src="../_images/stark_line_zoomed.png" style="width: 150px; height: 150px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="geometry-matrices">
+<h1>Geometry Matrices<a class="headerlink" href="#geometry-matrices" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 50%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Preview</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="ray_transfer/ray_transfer_box.html#ray-transfer-box"><span class="std std-ref">Rectangular regular grid</span></a></p></td>
+<td><p>Calculating the geometry matrix for a rectangular emitter defined on a regular grid.</p></td>
+<td><a class="reference internal image-reference" href="../_images/ray_transfer_box_demo.png"><img alt="../_images/ray_transfer_box_demo.png" src="../_images/ray_transfer_box_demo.png" style="width: 150px; height: 150px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ray_transfer/ray_transfer_cylinder.html#ray-transfer-cylinder"><span class="std std-ref">Cylindrical regular grid</span></a></p></td>
+<td><p>Calculating the geometry matrix for a cylindrical emitter defined on a regular grid.</p></td>
+<td><a class="reference internal image-reference" href="../_images/ray_transfer_cylinder_demo.gif"><img alt="../_images/ray_transfer_cylinder_demo.gif" src="../_images/ray_transfer_cylinder_demo.gif" style="width: 150px; height: 150px;" /></a>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ray_transfer/ray_transfer_mask.html#ray-transfer-mask"><span class="std std-ref">Axisymmetrical (toroidal) regular grid</span></a></p></td>
+<td><p>Calculating the geometry matrix for an axisymmetrical toroidal emitter defined on a regular grid. Applying a mask to filter out extra grid cells.</p></td>
+<td><a class="reference internal image-reference" href="../_images/ray_transfer_mask_demo.gif"><img alt="../_images/ray_transfer_mask_demo.gif" src="../_images/ray_transfer_mask_demo.gif" style="width: 150px; height: 150px;" /></a>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ray_transfer/ray_transfer_map.html#ray-transfer-map"><span class="std std-ref">Axisymmetrical (toroidal) regular grid with custom mapping of light sources</span></a></p></td>
+<td><p>Mapping multiple grid cells into a single light source.</p></td>
+<td><a class="reference internal image-reference" href="../_images/ray_transfer_map_demo.gif"><img alt="../_images/ray_transfer_map_demo.gif" src="../_images/ray_transfer_map_demo.gif" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
 </tbody>
@@ -357,50 +400,50 @@ and an AUG wall outline.</td>
 </div>
 <div class="section" id="code-examples-gallery">
 <h1>Code examples gallery<a class="headerlink" href="#code-examples-gallery" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="28%" />
-<col width="50%" />
-<col width="22%" />
+<col style="width: 28%" />
+<col style="width: 50%" />
+<col style="width: 22%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Name</th>
-<th class="head">Description</th>
-<th class="head">Preview</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Preview</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference internal" href="jet_cxrs/quickstart.html#jet-cxrs-quickstart"><span class="std std-ref">CXRS Quickstart</span></a></td>
-<td>Commented demo file about how to use CHERAB for JET CX simulations.</td>
-<td><a class="first last reference internal image-reference" href="../_images/JET_CXRS_d5lines.png"><img alt="../_images/JET_CXRS_d5lines.png" src="../_images/JET_CXRS_d5lines.png" style="width: 150px; height: 150px;" /></a>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="jet_cxrs/quickstart.html#jet-cxrs-quickstart"><span class="std std-ref">CXRS Quickstart</span></a></p></td>
+<td><p>Commented demo file about how to use CHERAB for JET CX simulations.</p></td>
+<td><a class="reference internal image-reference" href="../_images/JET_CXRS_d5lines.png"><img alt="../_images/JET_CXRS_d5lines.png" src="../_images/JET_CXRS_d5lines.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="jet_cxrs/jet_demo_76666.html#jet-cxrs-76666"><span class="std std-ref">#76666 sample analysis</span></a></td>
-<td>Demo CX analysis for pulse 76666 at t=61s</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="jet_cxrs/jet_demo_76666.html#jet-cxrs-76666"><span class="std std-ref">#76666 sample analysis</span></a></p></td>
+<td><p>Demo CX analysis for pulse 76666 at t=61s</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="line_emission/mastu_forward_cameras.html#mastu-forward-cameras"><span class="std std-ref">MAST-U filtered cameras</span></a></td>
-<td>Example of using SOLPS simulation and ADAS rates to model filtered cameras.</td>
-<td><a class="first last reference internal image-reference" href="../_images/mastu_bulletb_midplane_dgamma.png"><img alt="../_images/mastu_bulletb_midplane_dgamma.png" src="../_images/mastu_bulletb_midplane_dgamma.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-even"><td><p><a class="reference internal" href="line_emission/mastu_forward_cameras.html#mastu-forward-cameras"><span class="std std-ref">MAST-U filtered cameras</span></a></p></td>
+<td><p>Example of using SOLPS simulation and ADAS rates to model filtered cameras.</p></td>
+<td><a class="reference internal image-reference" href="../_images/mastu_bulletb_midplane_dgamma.png"><img alt="../_images/mastu_bulletb_midplane_dgamma.png" src="../_images/mastu_bulletb_midplane_dgamma.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="solps/solps_plasma.html#mastu-solps-plasma"><span class="std std-ref">MAST-U SOLPS plasma</span></a></td>
-<td>Example of loading a plasma from a SOLPS simulation and inspecting the various
-plasma species parameters.</td>
-<td><a class="first last reference internal image-reference" href="../_images/species_narrow.png"><img alt="../_images/species_narrow.png" src="../_images/species_narrow.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-odd"><td><p><a class="reference internal" href="solps/solps_plasma.html#mastu-solps-plasma"><span class="std std-ref">MAST-U SOLPS plasma</span></a></p></td>
+<td><p>Example of loading a plasma from a SOLPS simulation and inspecting the various
+plasma species parameters.</p></td>
+<td><a class="reference internal image-reference" href="../_images/species_narrow.png"><img alt="../_images/species_narrow.png" src="../_images/species_narrow.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="line_emission/custom_emitter.html#custom-emitter"><span class="std std-ref">Custom Emission Model</span></a></td>
-<td>Example of making a custom emitter class in CHERAB. D-alpha impact excitation
-is used for the example.</td>
-<td><a class="first last reference internal image-reference" href="../_images/mastu_bulletb_midplane_dalpha.png"><img alt="../_images/mastu_bulletb_midplane_dalpha.png" src="../_images/mastu_bulletb_midplane_dalpha.png" style="width: 150px; height: 150px;" /></a>
+<tr class="row-even"><td><p><a class="reference internal" href="line_emission/custom_emitter.html#custom-emitter"><span class="std std-ref">Custom Emission Model</span></a></p></td>
+<td><p>Example of making a custom emitter class in CHERAB. D-alpha impact excitation
+is used for the example.</p></td>
+<td><a class="reference internal image-reference" href="../_images/mastu_bulletb_midplane_dalpha.png"><img alt="../_images/mastu_bulletb_midplane_dalpha.png" src="../_images/mastu_bulletb_midplane_dalpha.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="line_emission/balmer_series_spectra.html#balmer-series-spectra"><span class="std std-ref">Measuring line of sight spectra</span></a></td>
-<td>Basic balmer series measurement in the MAST-U divertor with an optical fibre.
+<tr class="row-odd"><td><p><a class="reference internal" href="line_emission/balmer_series_spectra.html#balmer-series-spectra"><span class="std std-ref">Measuring line of sight spectra</span></a></p></td>
+<td><p>Basic balmer series measurement in the MAST-U divertor with an optical fibre.
 Localisation of the plasma emission is examined by plotting profiles of parameters
-such as density and temperature along the ray trajectory.</td>
-<td><a class="first last reference internal image-reference" href="../_images/balmer_series_spectra.png"><img alt="../_images/balmer_series_spectra.png" src="../_images/balmer_series_spectra.png" style="width: 150px; height: 150px;" /></a>
+such as density and temperature along the ray trajectory.</p></td>
+<td><a class="reference internal image-reference" href="../_images/balmer_series_spectra.png"><img alt="../_images/balmer_series_spectra.png" src="../_images/balmer_series_spectra.png" style="width: 150px; height: 150px;" /></a>
 </td>
 </tr>
 </tbody>
@@ -416,7 +459,7 @@ such as density and temperature along the ray trajectory.</td>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../tools/utility.html" class="btn btn-neutral" title="9.6. Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../tools/utility.html" class="btn btn-neutral float-left" title="10.6. Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -425,7 +468,7 @@ such as density and temperature along the ray trajectory.</td>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team.
+        &copy; Copyright 2019, CHERAB Team
 
     </p>
   </div> 
@@ -441,33 +484,16 @@ such as density and temperature along the ray trajectory.</td>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.01',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
