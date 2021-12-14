@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CHERAB’s documentation &mdash; CHERAB 1.2.0 documentation</title>
+  <title>Cherab’s documentation &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,41 +17,38 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. Welcome" href="welcome.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="#" class="icon icon-home"> CHERAB
+            <a href="#" class="icon icon-home"> Cherab
           
 
           
@@ -61,7 +58,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -85,7 +82,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="licence.html">2. Licence</a></li>
@@ -98,13 +95,14 @@
 <li class="toctree-l1"><a class="reference internal" href="math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -121,7 +119,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">CHERAB</a>
+          <a href="#">Cherab</a>
         
       </nav>
 
@@ -152,7 +150,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>CHERAB’s documentation</li>
+      <li>Cherab’s documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -172,13 +170,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="cherab-s-documentation">
-<h1>CHERAB’s documentation<a class="headerlink" href="#cherab-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Welcome to the CHERAB project. A python library for forward modelling
+<h1>Cherab’s documentation<a class="headerlink" href="#cherab-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the Cherab project. A python library for forward modelling
 diagnostics based on spectroscopic plasma emission.</p>
 <p>Please note that these documentation pages are in a state of flux and might not
 become stable until we have finished moving the source code to github.</p>
 <div class="toctree-wrapper compound" id="mastertoc">
-<p class="caption"><span class="caption-text">Table of Contents</span><a class="headerlink" href="#mastertoc" title="Permalink to this toctree">¶</a></p>
+<p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="welcome.html#current-development-team">1.1. Current Development Team</a></li>
@@ -233,19 +231,18 @@ become stable until we have finished moving the source code to github.</p>
 <li class="toctree-l2"><a class="reference internal" href="models/radiated_power/radiated_power.html">8.5. Total Radiated Power</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models/brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models/basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/line_shapes/spectral_line_shapes.html">8.8. Spectral Line Shapes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="math/math.html">9. Function Framework</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="math/blend.html">9.1. Blending</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/caching.html">9.2. Caching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/clamp.html">9.3. Clamps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/constant.html">9.4. Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/function.html">9.5. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/interpolators.html">9.6. Interpolators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/mappers.html">9.7. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/mask.html">9.8. Masks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/samplers.html">9.9. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/slice.html">9.10. Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/caching.html">9.1. Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/clamp.html">9.2. Clamps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/function.html">9.3. Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/interpolators.html">9.4. Interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/mappers.html">9.5. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/mask.html">9.6. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/samplers.html">9.7. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/slice.html">9.8. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tools/tools.html">10. Tools</a><ul>
@@ -260,13 +257,14 @@ become stable until we have finished moving the source code to github.</p>
 </ul>
 </div>
 <div class="toctree-wrapper compound" id="demonstrations">
-<p class="caption"><span class="caption-text">Demonstrations</span><a class="headerlink" href="#demonstrations" title="Permalink to this toctree">¶</a></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -298,7 +296,7 @@ become stable until we have finished moving the source code to github.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -314,16 +312,26 @@ become stable until we have finished moving the source code to github.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

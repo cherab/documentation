@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10.5. Tomography &mdash; CHERAB 1.2.0 documentation</title>
+  <title>10.5. Tomography &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,21 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
@@ -39,20 +31,25 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="10.6. Utilities" href="utility.html" />
     <link rel="prev" title="10.4. Observers" href="observers.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -62,7 +59,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -86,7 +83,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
@@ -112,13 +109,14 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -135,7 +133,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CHERAB</a>
+          <a href="../index.html">Cherab</a>
         
       </nav>
 
@@ -166,9 +164,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="tools.html">10. Tools</a> &raquo;</li>
+          <li><a href="tools.html"><span class="section-number">10. </span>Tools</a> &raquo;</li>
         
-      <li>10.5. Tomography</li>
+      <li><span class="section-number">10.5. </span>Tomography</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -188,10 +186,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tomography">
-<h1>10.5. Tomography<a class="headerlink" href="#tomography" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">10.5. </span>Tomography<a class="headerlink" href="#tomography" title="Permalink to this headline">¶</a></h1>
 <p>Tomographic inversion problems often arise in the study of plasma diagnostics, especially
 when making line integrated measurements. Tomographic inversion techniques allow us to
-try recovering the underlying plasma properties from a reduced set of measurements. In CHERAB
+try recovering the underlying plasma properties from a reduced set of measurements. In Cherab
 we implement a basic set of tomography algorithms, for a wider range of options please
 consult the dedicated tomography libraries such as <a class="reference external" href="https://github.com/ToFuProject/tofu">ToFu</a>.</p>
 <p>In general, recovering a plasma emission profile with tomography is an ill-posed problem.
@@ -209,10 +207,10 @@ is typically represented as the matrix equation</p>
 vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> from a set of measurements <span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> and sensitivity
 matrix <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>.</p>
 <div class="section" id="inversion-methods">
-<h2>10.5.1. Inversion Methods<a class="headerlink" href="#inversion-methods" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="cherab.tools.inversions.sart.invert_sart">
-<code class="sig-prename descclassname">cherab.tools.inversions.sart.</code><code class="sig-name descname">invert_sart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.sart.invert_sart" title="Permalink to this definition">¶</a></dt>
+<h2><span class="section-number">10.5.1. </span>Inversion Methods<a class="headerlink" href="#inversion-methods" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.tools.inversions.sart.invert_sart">
+<span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.sart.</span></span><span class="sig-name descname"><span class="pre">invert_sart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.sart.invert_sart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs a SART inversion on the specified measurement vector.</p>
 <p>This function implements the Simultaneous Algebraic Reconstruction Technique (SART), as published in
 A. Andersen, and A. Kak, Ultrasonic imaging 6, 81 (1984). The SART method is an iterative inversion 
@@ -255,9 +253,9 @@ and the convergence achieved as a float.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.tools.inversions.sart.invert_constrained_sart">
-<code class="sig-prename descclassname">cherab.tools.inversions.sart.</code><code class="sig-name descname">invert_constrained_sart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.sart.invert_constrained_sart" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.tools.inversions.sart.invert_constrained_sart">
+<span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.sart.</span></span><span class="sig-name descname"><span class="pre">invert_constrained_sart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.sart.invert_constrained_sart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs a constrained SART inversion on the specified measurement vector.</p>
 <p>The core of the constrained SART algorithm is identical to the basic SART algorithm implemented in 
 <cite>invert_sart()</cite>. The only difference is that now the iterative update formula includes a 
@@ -303,90 +301,111 @@ and the convergence achieved as a float.</p>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.inversions.opencl.sart_opencl.</code><code class="sig-name descname">SartOpencl</code><span class="sig-paren">(</span><em class="sig-param">geometry_matrix</em>, <em class="sig-param">laplacian_matrix=None</em>, <em class="sig-param">device=None</em>, <em class="sig-param">block_size=256</em>, <em class="sig-param">copy_column_major=True</em>, <em class="sig-param">block_size_row_maj=64</em>, <em class="sig-param">use_atomic=True</em>, <em class="sig-param">steps_per_thread=64</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.opencl.sart_opencl.</span></span><span class="sig-name descname"><span class="pre">SartOpencl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laplacian_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_column_major</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size_row_maj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_atomic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps_per_thread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl" title="Permalink to this definition">¶</a></dt>
 <dd><p>A GPU-accelerated version of SART inversion.
-The geometry matrix and Laplacian matrix are provided on initialisation because they must be copied
-to GPU memory, which takes time. Inversions may be performed multiple times for different measurement
-vectors without copying the matrices each time. If required, the Laplacian matrix can be updated
-by calling <cite>update_laplacian_matrix(new_laplacian_matrix)</cite> method.</p>
+The geometry matrix and Laplacian matrix are provided on initialisation because they must
+be copied to GPU memory, which takes time. Inversions may be performed multiple times
+for different measurement vectors without copying the matrices each time. If required,
+the Laplacian matrix can be updated by calling
+<cite>update_laplacian_matrix(new_laplacian_matrix)</cite> method. Note that computations are
+performed with single precision.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>geometry_matrix</strong> (<em>np.ndarray</em>) – The sensitivity matrix describing the coupling between the detectors
-and the voxels. Must be an array with shape <span class="math notranslate nohighlight">\((N_d, N_s)\)</span>.</p></li>
-<li><p><strong>laplacian_matrix</strong> (<em>np.ndarray</em>) – The laplacian regularisation matrix of shape <span class="math notranslate nohighlight">\((N_s, N_s)\)</span>.
-Default value: <cite>laplacian_matrix=None</cite>.</p></li>
-<li><p><strong>device</strong> (<em>pyopencl.Device</em>) – OpenCL device which will be used for computations. Default value: <cite>device=None</cite> (autoselect).</p></li>
+<li><p><strong>geometry_matrix</strong> (<em>np.ndarray</em>) – The sensitivity matrix describing the coupling between
+the detectors and the voxels. Must be an array with shape <span class="math notranslate nohighlight">\((N_d, N_s)\)</span>.</p></li>
+<li><p><strong>laplacian_matrix</strong> (<em>np.ndarray</em>) – The laplacian regularisation matrix of
+shape <span class="math notranslate nohighlight">\((N_s, N_s)\)</span>. Default value: <cite>laplacian_matrix=None</cite>.</p></li>
+<li><p><strong>device</strong> (<em>pyopencl.Device</em>) – OpenCL device which will be used for computations.
+Default value: <cite>device=None</cite> (autoselect).</p></li>
 <li><p><strong>block_size</strong> (<em>int</em>) – Number of GPU threads per block. Must be the power of 2.
 For the best performance try from 256 to 1024 for Nvidia (use 1024 on high-end GPUs),
 from 64 to 256 for AMD and from 16 to 64 for Intel GPUs. Default value: <cite>block_size=256</cite>.</p></li>
-<li><p><strong>copy_column_major</strong> (<em>bool</em>) – If True, the two copies of geometry matrix will be stored in the GPU memory.
-One in row-major order and the other one in column-major order. This provides much better performance of the
-inversions but requires twice as much GPU memory. Default value: <cite>copy_column_major=True</cite>.</p></li>
-<li><p><strong>block_size_row_maj</strong> (<em>int</em>) – If <cite>copy_column_major</cite> is set to False, this parameter defines the number of GPU threads per block
-in mat_vec_mult_row_maj() kernel used to calculate y_hat. Must be lower than <cite>block_size</cite>.
-Default value: <cite>block_size_row_maj=64</cite> (optimal value for Nvidia GPUs).</p></li>
-<li><p><strong>use_atomic</strong> (<em>bool</em>) – If True, increases the number of thread blocks that can run in parallel with the help of atomic
-operations (custom atomic add on floats). Set this to False, if the atomic operations are running slow
-on your device (Nvidia GPUs before Kepler, some AMD APUs, some Intel GPUs). Default value: <cite>use_atomic=True</cite>.</p></li>
-<li><p><strong>steps_per_thread</strong> (<em>int</em>) – If <cite>use_atomic</cite> is set to True, this parameters defines the maximum number of loop steps performed
-by the parallel threads in a single thread block. Default value: <cite>steps_per_thread=64</cite> (optimal for Nvidia GPUs).</p></li>
+<li><p><strong>copy_column_major</strong> (<em>bool</em>) – If True, the two copies of geometry matrix will be stored in
+GPU memory. One in row-major order and the other one in column-major order. This
+provides much better performance of the inversions but requires twice as much GPU memory.
+Default value: <cite>copy_column_major=True</cite>.</p></li>
+<li><p><strong>block_size_row_maj</strong> (<em>int</em>) – If <cite>copy_column_major</cite> is set to False, this parameter defines
+the number of GPU threads per block in mat_vec_mult_row_maj() kernel used to calculate
+y_hat. Must be lower than <cite>block_size</cite>. Default value: <cite>block_size_row_maj=64</cite> (optimal
+value for Nvidia GPUs).</p></li>
+<li><p><strong>use_atomic</strong> (<em>bool</em>) – If True, increases the number of thread blocks that can run in
+parallel with the help of atomic operations (custom atomic add on floats). Set this
+to False, if the atomic operations are running slow on your device (Nvidia GPUs before
+Kepler, some AMD APUs, some Intel GPUs). Default value: <cite>use_atomic=True</cite>.</p></li>
+<li><p><strong>steps_per_thread</strong> (<em>int</em>) – If <cite>use_atomic</cite> is set to True, this parameters defines the
+maximum number of loop steps performed by the parallel threads in a single thread block.
+Default value: <cite>steps_per_thread=64</cite> (optimal for Nvidia GPUs).</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
-<dt id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl.__call__">
-<code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param">measurement_vector</em>, <em class="sig-param">initial_guess=None</em>, <em class="sig-param">max_iterations=250</em>, <em class="sig-param">relaxation=1.0</em>, <em class="sig-param">beta_laplace=0.01</em>, <em class="sig-param">conv_tol=0.0001</em>, <em class="sig-param">time_limit=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.__call__" title="Permalink to this definition">¶</a></dt>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">SartOpencl</span><span class="p">(</span><span class="n">geometry_matrix</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span> <span class="k">as</span> <span class="n">invert_sart</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">solution</span><span class="p">,</span> <span class="n">residual</span> <span class="o">=</span> <span class="n">invert_sart</span><span class="p">(</span><span class="n">measurement_vector</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">### or ###</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inv_sart</span> <span class="o">=</span> <span class="n">SartOpencl</span><span class="p">(</span><span class="n">geometry_matrix</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solution</span><span class="p">,</span> <span class="n">residual</span> <span class="o">=</span> <span class="n">inv_sart</span><span class="p">(</span><span class="n">measurement_vector</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inv_sart</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measurement_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relaxation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_laplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conv_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs the inversion for a given measurement vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>measurement_vector</strong> (<em>np.ndarray</em>) – The measured power/radiance vector with shape <span class="math notranslate nohighlight">\((N_d)\)</span>.</p></li>
-<li><p><strong>initial_guess</strong> – An optional initial guess, can be an array of shape <span class="math notranslate nohighlight">\((N_s)\)</span> or a constant
-value that will be used to seed the algorithm.</p></li>
-<li><p><strong>max_iterations</strong> (<em>int</em>) – The maximum number of iterations to run the SART algorithm before returning
-a result, defaults to <cite>max_iterations=250</cite>.</p></li>
-<li><p><strong>relaxation</strong> (<em>float</em>) – The relaxation hyperparameter, defaults to <cite>relaxation=1</cite>. Consult the reference
-papers for more information on this hyperparameter.</p></li>
-<li><p><strong>beta_laplace</strong> (<em>float</em>) – The regularisation hyperparameter in the range [0, 1]. Defaults to <cite>beta_laplace=0.01</cite>.</p></li>
-<li><p><strong>conv_tol</strong> (<em>float</em>) – The convergence limit at which the algorithm will be terminated, unless the maximum
-number of iterations has been reached. The convergence is calculated as the normalised squared difference
-between the measurement and solution vectors.</p></li>
-<li><p><strong>time_limit</strong> (<em>float</em>) – If set, the iterations will stop after this time limit (in seconds) is reached.
-Default value: <cite>time_limit=None</cite>.</p></li>
+<li><p><strong>measurement_vector</strong> (<em>np.ndarray</em>) – The measured power/radiance vector with
+shape <span class="math notranslate nohighlight">\((N_d)\)</span>.</p></li>
+<li><p><strong>initial_guess</strong> – An optional initial guess, can be an array of shape <span class="math notranslate nohighlight">\((N_s)\)</span>
+or a constant value that will be used to seed the algorithm.</p></li>
+<li><p><strong>max_iterations</strong> (<em>int</em>) – The maximum number of iterations to run the SART algorithm
+before returning a result, defaults to <cite>max_iterations=250</cite>.</p></li>
+<li><p><strong>relaxation</strong> (<em>float</em>) – The relaxation hyperparameter, defaults to <cite>relaxation=1</cite>.
+Consult the reference papers for more information on this hyperparameter.</p></li>
+<li><p><strong>beta_laplace</strong> (<em>float</em>) – The regularisation hyperparameter in the range [0, 1].
+Defaults to <cite>beta_laplace=0.01</cite>.</p></li>
+<li><p><strong>conv_tol</strong> (<em>float</em>) – The convergence limit at which the algorithm will be terminated,
+unless the maximum number of iterations has been reached. The convergence is
+calculated as the normalised squared difference between the measurement and solution
+vectors. Note that reaching convergence lower than 1.e-6 is hardly possible
+on GPUs due to single precision calculations and relaxed math.</p></li>
+<li><p><strong>time_limit</strong> (<em>float</em>) – If set, the iterations will stop after this time limit (in
+seconds) is reached. Default value: <cite>time_limit=None</cite>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A tuple with the inverted solution vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> as an ndarray with shape <span class="math notranslate nohighlight">\((N_s)\)</span>,
-and the list of convergence values achieved after each iteration step.</p>
+<dd class="field-even"><p>A tuple with the inverted solution vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> as an ndarray with
+shape <span class="math notranslate nohighlight">\((N_s)\)</span>, and the list of convergence values achieved after each iteration
+step.</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl.clean">
-<code class="sig-name descname">clean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.clean" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl.clean">
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.clean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Releases GPU buffers</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl.update_laplacian_matrix">
-<code class="sig-name descname">update_laplacian_matrix</code><span class="sig-paren">(</span><em class="sig-param">laplacian_matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.update_laplacian_matrix" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl.update_laplacian_matrix">
+<span class="sig-name descname"><span class="pre">update_laplacian_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">laplacian_matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.update_laplacian_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the Laplacian matrix in GPU memory</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>laplacian_matrix</strong> (<em>np.ndarray</em>) – The laplacian regularisation matrix of shape <span class="math notranslate nohighlight">\((N_s, N_s)\)</span>.</p>
+<dd class="field-odd"><p><strong>laplacian_matrix</strong> (<em>np.ndarray</em>) – The laplacian regularisation matrix of
+shape <span class="math notranslate nohighlight">\((N_s, N_s)\)</span>.</p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.tools.inversions.nnls.invert_regularised_nnls">
-<code class="sig-prename descclassname">cherab.tools.inversions.nnls.</code><code class="sig-name descname">invert_regularised_nnls</code><span class="sig-paren">(</span><em class="sig-param">w_matrix</em>, <em class="sig-param">b_vector</em>, <em class="sig-param">alpha=0.01</em>, <em class="sig-param">tikhonov_matrix=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.nnls.invert_regularised_nnls" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.tools.inversions.nnls.invert_regularised_nnls">
+<span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.nnls.</span></span><span class="sig-name descname"><span class="pre">invert_regularised_nnls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tikhonov_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.nnls.invert_regularised_nnls" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves <span class="math notranslate nohighlight">\(\mathbf{b} = \mathbf{W} \mathbf{x}\)</span> for the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>,
 using Tikhonov regulariastion.</p>
 <p>This is a thin wrapper around scipy.optimize.nnls, which modifies
@@ -413,9 +432,9 @@ with shape <span class="math notranslate nohighlight">\((N_s, N_s)\)</span>. If 
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.tools.inversions.svd.invert_svd">
-<code class="sig-prename descclassname">cherab.tools.inversions.svd.</code><code class="sig-name descname">invert_svd</code><span class="sig-paren">(</span><em class="sig-param">w_matrix</em>, <em class="sig-param">b_vector</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.svd.invert_svd" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.tools.inversions.svd.invert_svd">
+<span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.svd.</span></span><span class="sig-name descname"><span class="pre">invert_svd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_vector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.svd.invert_svd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs a Singular Value Decomposition (SVD) operation inversion.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -433,10 +452,10 @@ detectors and the voxels. Must be an array with shape <span class="math notransl
 
 </div>
 <div class="section" id="voxels">
-<h2>10.5.2. Voxels<a class="headerlink" href="#voxels" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="cherab.tools.inversions.voxels.Voxel">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.inversions.voxels.</code><code class="sig-name descname">Voxel</code><a class="headerlink" href="#cherab.tools.inversions.voxels.Voxel" title="Permalink to this definition">¶</a></dt>
+<h2><span class="section-number">10.5.2. </span>Voxels<a class="headerlink" href="#voxels" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.inversions.voxels.Voxel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.voxels.</span></span><span class="sig-name descname"><span class="pre">Voxel</span></span><a class="headerlink" href="#cherab.tools.inversions.voxels.Voxel" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Voxel base class.</p>
 <p>Each Voxel is a Node in the scenegraph. Each Voxel type that
 inherits from this class defines its own geometry.</p>
@@ -447,9 +466,9 @@ inherits from this class defines its own geometry.</p>
 </dl>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.inversions.voxels.AxisymmetricVoxel">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.inversions.voxels.</code><code class="sig-name descname">AxisymmetricVoxel</code><a class="headerlink" href="#cherab.tools.inversions.voxels.AxisymmetricVoxel" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.inversions.voxels.AxisymmetricVoxel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.voxels.</span></span><span class="sig-name descname"><span class="pre">AxisymmetricVoxel</span></span><a class="headerlink" href="#cherab.tools.inversions.voxels.AxisymmetricVoxel" title="Permalink to this definition">¶</a></dt>
 <dd><p>An axis-symmetric Voxel.</p>
 <p>This Voxel is symmetric about the vertical z-axis. The cross section
 of the voxel can be arbitrarily defined by a polygon in the r-z plane.
@@ -483,9 +502,9 @@ the r-z plane.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
-<dt id="cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function">
-<code class="sig-name descname">emissivity_from_function</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function">
+<span class="sig-name descname"><span class="pre">emissivity_from_function</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the average emissivity in the voxel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -507,9 +526,9 @@ toroidal angle ϕ.</p>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.inversions.voxels.VoxelCollection">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.inversions.voxels.</code><code class="sig-name descname">VoxelCollection</code><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.inversions.voxels.VoxelCollection">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.voxels.</span></span><span class="sig-name descname"><span class="pre">VoxelCollection</span></span><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection" title="Permalink to this definition">¶</a></dt>
 <dd><p>The base class for collections of voxels.</p>
 <p>Used for managing a collection of voxels when calculating a weight
 matrix for example.</p>
@@ -521,9 +540,9 @@ matrix for example.</p>
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
-<dt id="cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function">
-<code class="sig-name descname">emissivities_from_function</code><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function">
+<span class="sig-name descname"><span class="pre">emissivities_from_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">emission_function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an array of sampled emissivities at each voxel location.</p>
 <p>Note that the results will be nonsense if you mix an emission function
 and VoxelCollection with incompatible symmetries.</p>
@@ -540,15 +559,15 @@ and VoxelCollection with incompatible symmetries.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="cherab.tools.inversions.voxels.VoxelCollection.parent_all_voxels">
-<code class="sig-name descname">parent_all_voxels</code><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.parent_all_voxels" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.inversions.voxels.VoxelCollection.parent_all_voxels">
+<span class="sig-name descname"><span class="pre">parent_all_voxels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.parent_all_voxels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add all voxels in this collection to the scenegraph.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="cherab.tools.inversions.voxels.VoxelCollection.set_active">
-<code class="sig-name descname">set_active</code><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.set_active" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.inversions.voxels.VoxelCollection.set_active">
+<span class="sig-name descname"><span class="pre">set_active</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.set_active" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the ith voxel as an active emitter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -559,17 +578,17 @@ active emitters.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels">
-<code class="sig-name descname">unparent_all_voxels</code><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels">
+<span class="sig-name descname"><span class="pre">unparent_all_voxels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove all voxels in this collection from the scenegraph.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.inversions.voxels.ToroidalVoxelGrid">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.inversions.voxels.</code><code class="sig-name descname">ToroidalVoxelGrid</code><a class="headerlink" href="#cherab.tools.inversions.voxels.ToroidalVoxelGrid" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.inversions.voxels.ToroidalVoxelGrid">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.voxels.</span></span><span class="sig-name descname"><span class="pre">ToroidalVoxelGrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voxel_coordinates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primitive_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'csg'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.voxels.ToroidalVoxelGrid" title="Permalink to this definition">¶</a></dt>
 <dd><p>A collection of axis-symmetric toroidal voxels.</p>
 <p>This object manages a collection of voxels, where each voxel in the collection
 is an AxisymmetricVoxel object.</p>
@@ -593,9 +612,9 @@ Defaults to <cite>primitive_type=’csg’</cite>.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
-<dt id="cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot">
-<code class="sig-name descname">plot</code><a class="headerlink" href="#cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voxel_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plots a voxel grid.</p>
 <p>If no voxel data values are provided, the plot is an outline of the grid in the r-z plane. If
 voxel values are provided, this method plots the voxel grid coloured by the voxel intensities.</p>
@@ -619,7 +638,7 @@ generates a new plot.</p></li>
 
 </div>
 <div class="section" id="ray-transfer-objects">
-<h2>10.5.3. Ray Transfer Objects<a class="headerlink" href="#ray-transfer-objects" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.5.3. </span>Ray Transfer Objects<a class="headerlink" href="#ray-transfer-objects" title="Permalink to this headline">¶</a></h2>
 <p>Ray transfer objects accelerate the calculation of geometry matrices (or Ray Transfer Matrices as they were called
 in <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/ctpp.201500124">S. Kajita, et al. Contrib. Plasma Phys., 2016, 1-9</a>)
 in the case of regular spatial grids. As in the case of Voxels, the spectral array is used to store the data
@@ -632,9 +651,9 @@ and <cite>RayTransferCylinder</cite> class for cylindrical grids (3D or axisymme
 <li><p>The best performance is achieved when Ray Transfer Objects are used with special pipelines and optimised materials (currently only rough metals are optimised, see the demos).</p></li>
 <li><p>When the number of individual light sources and respective bins in the spectral array is higher than ~50-70 thousands, the lack of CPU cache memory becomes a serious factor affecting performance. Therefore, it is not recommended to use hyper-threading when calculating geometry matrices for a large number of light sources. It is also recommended to divide the calculation into several parts and to calculate partial geometry matrices for not more than ~50-70 thousands of light sources in a single run. Partial geometry matrices can easily be combined into one when all computations are complete.</p></li>
 </ul>
-<dl class="class">
-<dt id="cherab.tools.raytransfer.raytransfer.RayTransferObject">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.raytransfer.</code><code class="sig-name descname">RayTransferObject</code><span class="sig-paren">(</span><em class="sig-param">primitive</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.raytransfer.RayTransferObject" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.raytransfer.RayTransferObject">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.raytransfer.</span></span><span class="sig-name descname"><span class="pre">RayTransferObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">primitive</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.raytransfer.RayTransferObject" title="Permalink to this definition">¶</a></dt>
 <dd><p>Basic class for ray transfer objects.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
@@ -649,18 +668,18 @@ relative to the scene-graph parent.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
-<dt id="cherab.tools.raytransfer.raytransfer.RayTransferObject.invert_voxel_map">
-<code class="sig-name descname">invert_voxel_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.raytransfer.RayTransferObject.invert_voxel_map" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.raytransfer.RayTransferObject.invert_voxel_map">
+<span class="sig-name descname"><span class="pre">invert_voxel_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.raytransfer.RayTransferObject.invert_voxel_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of arrays of cell indices belonging to each light source.
 This list is an inversion of <cite>voxel_map</cite> array.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.raytransfer.raytransfer.RayTransferBox">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.raytransfer.</code><code class="sig-name descname">RayTransferBox</code><span class="sig-paren">(</span><em class="sig-param">xmax</em>, <em class="sig-param">ymax</em>, <em class="sig-param">zmax</em>, <em class="sig-param">nx</em>, <em class="sig-param">ny</em>, <em class="sig-param">nz</em>, <em class="sig-param">step=None</em>, <em class="sig-param">voxel_map=None</em>, <em class="sig-param">mask=None</em>, <em class="sig-param">parent=None</em>, <em class="sig-param">transform=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.raytransfer.RayTransferBox" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.raytransfer.RayTransferBox">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.raytransfer.</span></span><span class="sig-name descname"><span class="pre">RayTransferBox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ny</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voxel_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.raytransfer.RayTransferBox" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ray transfer object for rectangular emitter defined on a regular 3D <span class="math notranslate nohighlight">\((X, Y, Z)\)</span> grid.
 The grid starts at (0, 0, 0). Use <cite>transform</cite> parameter to move it.</p>
 <dl class="field-list simple">
@@ -702,7 +721,7 @@ relative to the scene-graph parent (default = identity matrix).</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.495</span><span class="p">,</span> <span class="mf">0.495</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xsqr</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">### mask is a bollean array of shape (100, 100, 100) ###</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">xsqr</span><span class="p">[:,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span> <span class="o">+</span> <span class="n">xsqr</span><span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="p">:,</span> <span class="bp">None</span><span class="p">]</span> <span class="o">+</span> <span class="n">xsqr</span><span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">&lt;</span> <span class="mf">0.25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">xsqr</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">+</span> <span class="n">xsqr</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">+</span> <span class="n">xsqr</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">&lt;</span> <span class="mf">0.25</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rtb</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span>  <span class="c1"># all cells outside this sphere are excluded</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="n">rtb</span><span class="o">.</span><span class="n">bins</span>
@@ -713,12 +732,12 @@ relative to the scene-graph parent (default = identity matrix).</p></li>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.raytransfer.raytransfer.RayTransferCylinder">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.raytransfer.</code><code class="sig-name descname">RayTransferCylinder</code><span class="sig-paren">(</span><em class="sig-param">radius_outer</em>, <em class="sig-param">height</em>, <em class="sig-param">n_radius</em>, <em class="sig-param">n_height</em>, <em class="sig-param">radius_inner=0</em>, <em class="sig-param">n_polar=0</em>, <em class="sig-param">period=360.0</em>, <em class="sig-param">step=None</em>, <em class="sig-param">voxel_map=None</em>, <em class="sig-param">mask=None</em>, <em class="sig-param">parent=None</em>, <em class="sig-param">transform=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.raytransfer.RayTransferCylinder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ray transfer object for cylindrical emitter defined on a regular 2D (RZ plane) or
-3D <span class="math notranslate nohighlight">\((R, \phi, Z)\)</span> grid. In case of 3D grid this emitter is periodic in <span class="math notranslate nohighlight">\(\phi\)</span>
-direction. The base of the cylinder is located at <cite>Z = 0</cite> plane. Use <cite>transform</cite>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.raytransfer.RayTransferCylinder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.raytransfer.</span></span><span class="sig-name descname"><span class="pre">RayTransferCylinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius_outer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_inner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_polar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">360.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voxel_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.raytransfer.RayTransferCylinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ray transfer object for cylindrical emitter defined on a regular 3D <span class="math notranslate nohighlight">\((R, \phi, Z)\)</span> grid.
+This emitter is periodic in <span class="math notranslate nohighlight">\(\phi\)</span> direction.
+The base of the cylinder is located at <cite>Z = 0</cite> plane. Use <cite>transform</cite>
 parameter to move it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -732,24 +751,24 @@ parameter to move it.</p>
 <li><p><strong>radius_inner</strong> (<em>float</em>) – Radius of the inner cylinder and the lower bound of grid in
 <cite>R</cite> direction (in meters), defaults to <cite>radius_inner=0</cite>.</p></li>
 <li><p><strong>n_polar</strong> (<em>int</em>) – Number of grid points in <span class="math notranslate nohighlight">\(\phi\)</span> direction, defaults to
-<cite>n_polar=0</cite> (2D grid).</p></li>
-<li><p><strong>period</strong> (<em>float</em>) – A period in <span class="math notranslate nohighlight">\(\phi\)</span> direction (in degree). Used only if
-<cite>n_polar &gt; 0</cite>, defaults to <cite>period=360</cite>.</p></li>
+<cite>n_polar=1</cite> (axisymmetric case).</p></li>
+<li><p><strong>period</strong> (<em>float</em>) – A period in <span class="math notranslate nohighlight">\(\phi\)</span> direction (in degree), defaults to <cite>period=360</cite>.</p></li>
 <li><p><strong>step</strong> (<em>float</em>) – The step of integration along the ray (in meters),
 defaults to <cite>step = 0.1 * min((radius_outer - radius_inner)/n_radius, height/n_height)</cite>.</p></li>
-<li><p><strong>voxel_map</strong> (<em>np.ndarray</em>) – An array with shape <cite>(n_radius, n_height)</cite> (axisymmetric case)
-or <cite>(n_radius, n_polar, n_height)</cite> (3D case) containing the indices of the light sources.
+<li><p><strong>voxel_map</strong> (<em>np.ndarray</em>) – An array with shape <cite>(n_radius, n_polar, n_height)</cite>
+containing the indices of the light sources.
 This array maps the cells in <span class="math notranslate nohighlight">\((R, \phi, Z)\)</span> space to the respective voxels
 (light sources). The cells with identical indices in <cite>voxel_map</cite> array form a single voxel
 (light source). If <cite>voxel_map[ir, iphi, iz] == -1</cite>, the cell with index <cite>(ir, iphi, iz)</cite>
 will not be mapped to any light source. This parameters allows to apply a custom geometry
-(pixelated though) to the light sources. Default value: <cite>voxel_map=None</cite>.</p></li>
-<li><p><strong>mask</strong> (<em>np.ndarray</em>) – A boolean mask array with shape <cite>(n_radius, n_height)</cite>
-(axisymmetric case) or <cite>(n_radius, n_polar, n_height)</cite> (3D case). Allows to include
-(<cite>mask[ir, iphi, iz] == True</cite>) or exclude (<cite>mask[ir, iphi, iz] == False</cite>) the cells
-from the calculation. The ray tranfer matrix will be calculated only for those cells for
-which mask is True. This parameter is ignored if <cite>voxel_map</cite> is provided, defaults to
-<cite>mask=None</cite> (all cells are included).</p></li>
+(pixelated though) to the light sources. Default value: <cite>voxel_map=None</cite>.
+Convert 2D (axisymmetric) <cite>voxel_map</cite> to 3D with <cite>voxel_map = voxel_map[:, None, :]</cite>.</p></li>
+<li><p><strong>mask</strong> (<em>np.ndarray</em>) – A boolean mask array with shape <cite>(n_radius, n_polar, n_height)</cite>.
+Allows to include (<cite>mask[ir, iphi, iz] == True</cite>) or exclude (<cite>mask[ir, iphi, iz] == False</cite>)
+the cells from the calculation. The ray tranfer matrix will be calculated only for those
+cells for which mask is True. This parameter is ignored if <cite>voxel_map</cite> is provided,
+defaults to <cite>mask=None</cite> (all cells are included).
+Convert 2D (axisymmetric) <cite>mask</cite> to 3D with <cite>mask = mask[:, None, :]</cite>.</p></li>
 <li><p><strong>parent</strong> (<em>Node</em>) – Scene-graph parent node or None (default = None).</p></li>
 <li><p><strong>transform</strong> (<em>AffineMatrix3D</em>) – An AffineMatrix3D defining the local co-ordinate system
 relative to the scene-graph parent (default = identity matrix).</p></li>
@@ -776,10 +795,10 @@ relative to the scene-graph parent (default = identity matrix).</p></li>
 <p>The following emitters and integrators are used in ray transfer objects.
 Note that these emitters support other integrators as well, however high performance
 with other integrators is not guaranteed.</p>
-<dl class="class">
-<dt id="cherab.tools.raytransfer.emitters.RayTransferEmitter">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.emitters.</code><code class="sig-name descname">RayTransferEmitter</code><span class="sig-paren">(</span><em class="sig-param">grid_shape</em>, <em class="sig-param">grid_steps</em>, <em class="sig-param">voxel_map=None</em>, <em class="sig-param">mask=None</em>, <em class="sig-param">integrator=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.RayTransferEmitter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Basic class for ray transfer emitters defined on a regular grid. Ray transfer emitters
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.emitters.RayTransferEmitter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.emitters.</span></span><span class="sig-name descname"><span class="pre">RayTransferEmitter</span></span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.RayTransferEmitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basic class for ray transfer emitters defined on a regular 3D grid. Ray transfer emitters
 are used to calculate ray transfer matrices (geometry matrices) for a single value
 of wavelength.</p>
 <dl class="field-list simple">
@@ -791,14 +810,14 @@ along each direction).</p></li>
 <li><p><strong>voxel_map</strong> (<em>np.ndarray</em>) – An array with shape <cite>grid_shape</cite> containing the indices of
 the light sources. This array maps the cells of regular grid to the respective voxels
 (light sources). The cells with identical indices in <cite>voxel_map</cite> array form a single
-voxel (light source). If <cite>voxel_map[i1, i2, …] == -1</cite>, the cell with indices
-<cite>(i1, i2, …)</cite> will not be mapped to any light source. This parameters allows to
+voxel (light source). If <cite>voxel_map[i1, i2, i3] == -1</cite>, the cell with indices
+<cite>(i1, i2, i3)</cite> will not be mapped to any light source. This parameters allows to
 apply a custom geometry (pixelated though) to the light sources.
 Default value: <cite>voxel_map=None</cite>.</p></li>
 <li><p><strong>mask</strong> (<em>np.ndarray</em>) – A boolean mask array with shape <cite>grid_shape</cite>.
-Allows to include (<cite>mask[…] == True</cite>) or exclude (<cite>mask[…] == False</cite>) the cells
-from the calculation. The ray tranfer matrix will be calculated only for those cells
-for which mask is True. This parameter is ignored if <cite>voxel_map</cite> is provided,
+Allows to include (<cite>mask[i1, i2, i3] == True</cite>) or exclude (<cite>mask[i1, i2, i3] == False</cite>)
+the cells from the calculation. The ray tranfer matrix will be calculated only for those
+cells for which mask is True. This parameter is ignored if <cite>voxel_map</cite> is provided,
 defaults to <cite>mask=None</cite> (all cells are included).</p></li>
 <li><p><strong>integrator</strong> (<em>raysect.optical.material.VolumeIntegrator</em>) – Volume integrator,
 defaults to <cite>integrator=NumericalVolumeIntegrator()</cite></p></li>
@@ -806,7 +825,7 @@ defaults to <cite>integrator=NumericalVolumeIntegrator()</cite></p></li>
 </dd>
 <dt class="field-even">Variables</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>grid_shape</strong> (<em>tuple</em>) – The shape of regular grid.</p></li>
+<li><p><strong>grid_shape</strong> (<em>tuple</em>) – The shape of regular 3D grid.</p></li>
 <li><p><strong>grid_steps</strong> (<em>tuple</em>) – The sizes of grid cells along each direction.</p></li>
 <li><p><strong>voxel_map</strong> (<em>np.ndarray</em>) – An array containing the indices of the light sources.</p></li>
 <li><p><strong>mask</strong> (<em>np.ndarray</em>) – A boolean mask array showing active (True) and inactive
@@ -817,9 +836,9 @@ defaults to <cite>integrator=NumericalVolumeIntegrator()</cite></p></li>
 </dl>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.raytransfer.emitters.RayTransferIntegrator">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.emitters.</code><code class="sig-name descname">RayTransferIntegrator</code><span class="sig-paren">(</span><em class="sig-param">step=0.001</em>, <em class="sig-param">min_samples=2</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.RayTransferIntegrator" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.emitters.RayTransferIntegrator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.emitters.</span></span><span class="sig-name descname"><span class="pre">RayTransferIntegrator</span></span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.RayTransferIntegrator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Basic class for ray transfer integrators that calculate distances traveled by the ray
 through the voxels defined on a regular grid.</p>
 <dl class="field-list simple">
@@ -839,9 +858,9 @@ defaults to <cite>min_samples=2</cite>.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.raytransfer.emitters.CartesianRayTransferEmitter">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.emitters.</code><code class="sig-name descname">CartesianRayTransferEmitter</code><span class="sig-paren">(</span><em class="sig-param">grid_shape</em>, <em class="sig-param">grid_steps</em>, <em class="sig-param">voxel_map=None</em>, <em class="sig-param">mask=None</em>, <em class="sig-param">integrator=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.CartesianRayTransferEmitter" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.emitters.CartesianRayTransferEmitter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.emitters.</span></span><span class="sig-name descname"><span class="pre">CartesianRayTransferEmitter</span></span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.CartesianRayTransferEmitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>A unit emitter defined on a regular 3D <span class="math notranslate nohighlight">\((X, Y, Z)\)</span> grid, which can be used
 to calculate ray transfer matrices (geometry matrices).
 Note that for performance reason there are no boundary checks in <cite>emission_function()</cite>,
@@ -901,9 +920,9 @@ defaults to <cite>integrator=CartesianRayTransferIntegrator(step=0.1 * min(grid_
 </dl>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.raytransfer.emitters.CartesianRayTransferIntegrator">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.emitters.</code><code class="sig-name descname">CartesianRayTransferIntegrator</code><span class="sig-paren">(</span><em class="sig-param">step=0.001</em>, <em class="sig-param">min_samples=2</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.CartesianRayTransferIntegrator" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.emitters.CartesianRayTransferIntegrator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.emitters.</span></span><span class="sig-name descname"><span class="pre">CartesianRayTransferIntegrator</span></span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.CartesianRayTransferIntegrator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the distances traveled by the ray through the voxels defined on a regular grid
 in Cartesian coordinate system: <span class="math notranslate nohighlight">\((X, Y, Z)\)</span>. This integrator is used with
 the <cite>CartesianRayTransferEmitter</cite> material to calculate ray transfer matrices (geometry
@@ -912,24 +931,25 @@ The distances traveled by the ray through the voxel is calculated approximately 
 the accuracy depends on the integration step.</p>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.raytransfer.emitters.CylindricalRayTransferEmitter">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.emitters.</code><code class="sig-name descname">CylindricalRayTransferEmitter</code><span class="sig-paren">(</span><em class="sig-param">grid_shape</em>, <em class="sig-param">grid_steps</em>, <em class="sig-param">voxel_map=None</em>, <em class="sig-param">mask=None</em>, <em class="sig-param">integrator=None</em>, <em class="sig-param">rmin=0</em>, <em class="sig-param">period=360.0</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.CylindricalRayTransferEmitter" title="Permalink to this definition">¶</a></dt>
-<dd><p>A unit emitter defined on a regular 2D (RZ plane) or 3D <span class="math notranslate nohighlight">\((R, \phi, Z)\)</span> grid, which
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.emitters.CylindricalRayTransferEmitter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.emitters.</span></span><span class="sig-name descname"><span class="pre">CylindricalRayTransferEmitter</span></span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.CylindricalRayTransferEmitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unit emitter defined on a regular 3D <span class="math notranslate nohighlight">\((R, \phi, Z)\)</span> grid, which
 can be used to calculate ray transfer matrices (geometry matrices) for a single value
 of wavelength.
-In case of 3D grid this emitter is periodic in <span class="math notranslate nohighlight">\(\phi\)</span> direction.
+This emitter is periodic in <span class="math notranslate nohighlight">\(\phi\)</span> direction.
 Note that for performance reason there are no boundary checks in <cite>emission_function()</cite>,
 or in <cite>CylindricalRayTranferIntegrator</cite>, so this emitter must be placed between a couple
 of coaxial cylinders that act like a bounding box.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>grid_shape</strong> (<em>tuple</em>) – The shape of regular <span class="math notranslate nohighlight">\((R, \phi, Z)\)</span> (3D case)
-or <span class="math notranslate nohighlight">\((R, Z)\)</span> (axisymmetric case) grid.</p></li>
+<li><p><strong>grid_shape</strong> (<em>tuple</em>) – The shape of regular <span class="math notranslate nohighlight">\((R, \phi, Z)\)</span> 3D grid.
+If <cite>grid_shape[1] = 1</cite>, the emitter is axisymmetric.</p></li>
 <li><p><strong>grid_steps</strong> (<em>tuple</em>) – The sizes of grid cells in <cite>R</cite>, <span class="math notranslate nohighlight">\(\phi\)</span> and <cite>Z</cite>
-(3D case) or <cite>R</cite> and <cite>Z</cite> (axisymmetric case) directions. The size in <span class="math notranslate nohighlight">\(\phi\)</span>
-must be provided in degrees (sizes in <cite>R</cite> and <cite>Z</cite> are provided in meters).</p></li>
+directions. The size in <span class="math notranslate nohighlight">\(\phi\)</span> must be provided in degrees (sizes in <cite>R</cite> and <cite>Z</cite>
+are provided in meters). The period in <span class="math notranslate nohighlight">\(\phi\)</span> direction is defined as
+<cite>grid_shape[1] * grid_steps[1]</cite>. Note that the period must be a multiple of 360.</p></li>
 <li><p><strong>voxel_map</strong> (<em>np.ndarray</em>) – An array with shape <cite>grid_shape</cite> containing the indices of
 the light sources. This array maps the cells in <span class="math notranslate nohighlight">\((R, \phi, Z)\)</span> space to
 the respective voxels (light sources). The cells with identical indices in <cite>voxel_map</cite>
@@ -945,19 +965,16 @@ defaults to <cite>mask=None</cite> (all cells are included).</p></li>
 <li><p><strong>integrator</strong> (<em>raysect.optical.material.VolumeIntegrator</em>) – Volume integrator, defaults to
 <cite>integrator=CylindricalRayTransferIntegrator(step=0.1*min(grid_shape[0], grid_shape[-1]))</cite>.</p></li>
 <li><p><strong>rmin</strong> (<em>float</em>) – Lower bound of grid in <cite>R</cite> direction (in meters), defaults to <cite>rmin=0</cite>.</p></li>
-<li><p><strong>period</strong> (<em>float</em>) – A period in <span class="math notranslate nohighlight">\(\phi\)</span> direction (in degree).
-Used only in 3D case, defaults to <cite>period=360</cite>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Variables</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>period</strong> (<em>float</em>) – The period in <span class="math notranslate nohighlight">\(\phi\)</span> direction in 3D case or <cite>None</cite> in
-axisymmetric case.</p></li>
+<li><p><strong>period</strong> (<em>float</em>) – The period in <span class="math notranslate nohighlight">\(\phi\)</span> direction (equals to
+<cite>grid_shape[1] * grid_steps[1]</cite>).</p></li>
 <li><p><strong>rmin</strong> (<em>float</em>) – Lower bound of grid in <cite>R</cite> direction.</p></li>
 <li><p><strong>dr</strong> (<em>float</em>) – The size of grid cell in <cite>R</cite> direction (equals to <cite>grid_shape[0]</cite>).</p></li>
-<li><p><strong>dz</strong> (<em>float</em>) – The size of grid cell in <cite>Z</cite> direction (equals to <cite>grid_shape[-1]</cite>).</p></li>
-<li><p><strong>dphi</strong> (<em>float</em>) – The size of grid cell in <span class="math notranslate nohighlight">\(\phi\)</span> direction
-(equals to None in axisymmetric case or to <cite>grid_shape[1]</cite> in 3D case).</p></li>
+<li><p><strong>dphi</strong> (<em>float</em>) – The size of grid cell in <span class="math notranslate nohighlight">\(\phi\)</span> direction (equals to <cite>grid_shape[1]</cite>).</p></li>
+<li><p><strong>dz</strong> (<em>float</em>) – The size of grid cell in <cite>Z</cite> direction (equals to <cite>grid_shape[2]</cite>).</p></li>
 </ul>
 </dd>
 </dl>
@@ -965,13 +982,13 @@ axisymmetric case.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="kn">import</span> <span class="n">Cylinder</span><span class="p">,</span> <span class="n">Subtract</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.raytransfer</span> <span class="kn">import</span> <span class="n">CylindricalRayTransferEmitter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">grid_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">grid_steps</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># axisymmetric case</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid_steps</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rmin</span> <span class="o">=</span> <span class="mf">2.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">material</span> <span class="o">=</span> <span class="n">CylindricalRayTransferEmitter</span><span class="p">(</span><span class="n">grid_shape</span><span class="p">,</span> <span class="n">grid_steps</span><span class="p">,</span> <span class="n">rmin</span><span class="o">=</span><span class="n">rmin</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-6</span>  <span class="c1"># ray must never leave the grid when passing through the volume</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">radius_outer</span> <span class="o">=</span> <span class="n">grid_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">grid_steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">eps</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="n">grid_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">grid_steps</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">eps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="n">grid_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">grid_steps</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">eps</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">radius_inner</span> <span class="o">=</span> <span class="n">rmin</span> <span class="o">+</span> <span class="n">eps</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bounding_box</span> <span class="o">=</span> <span class="n">Subtract</span><span class="p">(</span><span class="n">Cylinder</span><span class="p">(</span><span class="n">radius_outer</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="n">Cylinder</span><span class="p">(</span><span class="n">radius_inner</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span>
 <span class="go">                            material=material, parent=world)  # bounding primitive</span>
@@ -985,9 +1002,9 @@ axisymmetric case.</p></li>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.raytransfer.emitters.CylindricalRayTransferIntegrator">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.emitters.</code><code class="sig-name descname">CylindricalRayTransferIntegrator</code><span class="sig-paren">(</span><em class="sig-param">step=0.001</em>, <em class="sig-param">min_samples=2</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.CylindricalRayTransferIntegrator" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.emitters.CylindricalRayTransferIntegrator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.emitters.</span></span><span class="sig-name descname"><span class="pre">CylindricalRayTransferIntegrator</span></span><a class="headerlink" href="#cherab.tools.raytransfer.emitters.CylindricalRayTransferIntegrator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the distances traveled by the ray through the voxels defined on a regular grid
 in cylindrical coordinate system: <span class="math notranslate nohighlight">\((R, \phi, Z)\)</span>. This integrator is used
 with the <cite>CylindricalRayTransferEmitter</cite> material class to calculate ray transfer matrices
@@ -1006,9 +1023,9 @@ Spectral pipelines from Raysect still can be used, but they are slower compared 
 transfer pipelines. Note that the standard error is not calculated in these pipelines, only the mean value.
 Dispersive rendering and adaptive sampling features are removed to improve the performance.
 Use spectral pipelines from Raysect if you need these features.</p>
-<dl class="class">
-<dt id="cherab.tools.raytransfer.pipelines.RayTransferPipeline0D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.pipelines.</code><code class="sig-name descname">RayTransferPipeline0D</code><span class="sig-paren">(</span><em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.pipelines.RayTransferPipeline0D" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.pipelines.RayTransferPipeline0D">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.pipelines.</span></span><span class="sig-name descname"><span class="pre">RayTransferPipeline0D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.pipelines.RayTransferPipeline0D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple 0D pipeline for ray transfer matrix (geometry matrix) calculation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
@@ -1021,9 +1038,9 @@ Use spectral pipelines from Raysect if you need these features.</p>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.raytransfer.pipelines.RayTransferPipeline1D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.pipelines.</code><code class="sig-name descname">RayTransferPipeline1D</code><span class="sig-paren">(</span><em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.pipelines.RayTransferPipeline1D" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.pipelines.RayTransferPipeline1D">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.pipelines.</span></span><span class="sig-name descname"><span class="pre">RayTransferPipeline1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.pipelines.RayTransferPipeline1D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple 1D pipeline for ray transfer matrix (geometry matrix) calculation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
@@ -1036,9 +1053,9 @@ Use spectral pipelines from Raysect if you need these features.</p>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.raytransfer.pipelines.RayTransferPipeline2D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.raytransfer.pipelines.</code><code class="sig-name descname">RayTransferPipeline2D</code><span class="sig-paren">(</span><em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.pipelines.RayTransferPipeline2D" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.raytransfer.pipelines.RayTransferPipeline2D">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.raytransfer.pipelines.</span></span><span class="sig-name descname"><span class="pre">RayTransferPipeline2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.raytransfer.pipelines.RayTransferPipeline2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple 2D pipeline for ray transfer matrix (geometry matrix) calculation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
@@ -1065,7 +1082,7 @@ Use spectral pipelines from Raysect if you need these features.</p>
         <a href="utility.html" class="btn btn-neutral float-right" title="10.6. Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="observers.html" class="btn btn-neutral float-left" title="10.4. Observers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="observers.html" class="btn btn-neutral" title="10.4. Observers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1074,7 +1091,7 @@ Use spectral pipelines from Raysect if you need these features.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -1090,16 +1107,27 @@ Use spectral pipelines from Raysect if you need these features.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Beam-Plasma Interaction Rates &mdash; CHERAB 1.2.0 documentation</title>
+  <title>Beam-Plasma Interaction Rates &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,40 +17,37 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CHERAB
+            <a href="../../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -60,7 +57,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -84,7 +81,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
@@ -97,13 +94,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -120,7 +118,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CHERAB</a>
+          <a href="../../index.html">Cherab</a>
         
       </nav>
 
@@ -174,83 +172,85 @@
 <span id="id1"></span><h1>Beam-Plasma Interaction Rates<a class="headerlink" href="#beam-plasma-interaction-rates" title="Permalink to this headline">¶</a></h1>
 <p>Some example code for requesting beam rate objects and sampling them with the __call__()
 method.</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="kn">import</span> <span class="n">OpenADAS</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Make Latex available in matplotlib figures</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span> <span class="s1">&#39;serif&#39;</span><span class="p">,</span> <span class="s1">&#39;serif&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Computer Modern&#39;</span><span class="p">]})</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># initialise the atomic data provider</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Request beam stopping rate and sample at three different electron temperatures</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bms</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_stopping_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">beam_energies</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="o">**</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">5000</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">125000</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="n">num_points</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bms_rates_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">bms</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bms_rates_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">bms</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bms_rates_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">bms</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plot the beam stopping rates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bms_rates_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bms_rates_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 100eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bms_rates_3</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1000eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$S^{e, i}_{CR}$ ($m^3s^{-1}$)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beam Stopping Rates&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample the beam population rates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bmp</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_population_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bmp_rates_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">bmp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bmp_rates_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">bmp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bmp_rates_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">bmp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plot the beam population rates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bmp_rates_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bmp_rates_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 100eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bmp_rates_3</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1000eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Beam population rate (dimensionless)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beam Population Rates&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample the beam emission rates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bme</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_emission_pec</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bme_rates_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">bme</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bme_rates_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">bme</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bme_rates_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">bme</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plot the beam emission rates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bme_rates_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bme_rates_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 100eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bme_rates_3</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1000eV&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$q^{eff}_{n\rightarrow n&#39;}$ [$W m^{3} s^{-1} str^{-1}$]&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beam Emission Rates&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample the effective CX emission rates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cxr</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_cx_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cxr_n1</span><span class="p">,</span> <span class="n">cxr_n2</span> <span class="o">=</span> <span class="n">cxr</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cxr_rate_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">cxr</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cxr_rate_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">cxr</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plot the effective CX emission rates</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">cxr_rate_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;n=1 donor&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">cxr_rate_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;n=2 donor&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$q^{eff}_{n\rightarrow n&#39;}$ [$W m^{3} s^{-1} str^{-1}$]&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Effective CX rate&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span>
+<span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="kn">import</span> <span class="n">OpenADAS</span>
+
+<span class="c1"># Make Latex available in matplotlib figures</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">})</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span> <span class="s1">&#39;serif&#39;</span><span class="p">,</span> <span class="s1">&#39;serif&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Computer Modern&#39;</span><span class="p">]})</span>
+
+<span class="c1"># initialise the atomic data provider</span>
+<span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Request beam stopping rate and sample at three different electron temperatures</span>
+<span class="n">bms</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_stopping_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">beam_energies</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="o">**</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">5000</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">125000</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="mi">512</span><span class="p">)]</span>
+<span class="n">bms_rates_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">bms</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+<span class="n">bms_rates_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">bms</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+<span class="n">bms_rates_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">bms</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+
+<span class="c1"># plot the beam stopping rates</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bms_rates_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bms_rates_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 100eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bms_rates_3</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1000eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$S^{e, i}_</span><span class="si">{CR}</span><span class="s2">$ ($m^3s^{-1}$)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beam Stopping Rates&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Sample the beam population rates</span>
+<span class="n">bmp</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_population_rate</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">bmp_rates_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">bmp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+<span class="n">bmp_rates_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">bmp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+<span class="n">bmp_rates_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">bmp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+
+<span class="c1"># plot the beam population rates</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bmp_rates_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bmp_rates_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 100eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bmp_rates_3</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1000eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Beam population rate (dimensionless)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beam Population Rates&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Sample the beam emission rates</span>
+<span class="n">bme</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_emission_pec</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">bme_rates_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">bme</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+<span class="n">bme_rates_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">bme</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+<span class="n">bme_rates_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">bme</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+
+<span class="c1"># plot the beam emission rates</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bme_rates_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bme_rates_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 100eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">bme_rates_3</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_e$ = 1000eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Beam emission rate [$W m^</span><span class="si">{3}</span><span class="s2">$]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beam Emission Rates&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Sample the effective CX emission rates</span>
+<span class="n">cxr</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">beam_cx_pec</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">cxr_n1</span><span class="p">,</span> <span class="n">cxr_n2</span> <span class="o">=</span> <span class="n">cxr</span>
+<span class="n">cxr_rate_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">cxr</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+<span class="n">cxr_rate_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">cxr</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">1E19</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">beam_energies</span><span class="p">]</span>
+
+<span class="c1"># plot the effective CX emission rates</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">cxr_rate_1</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;n=1 donor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">beam_energies</span><span class="p">,</span> <span class="n">cxr_rate_2</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;n=2 donor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Interaction Energy (eV/amu)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$q^</span><span class="si">{eff}</span><span class="s2">_{n\rightarrow n&#39;}$ [$W m^</span><span class="si">{3}</span><span class="s2">$]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Effective CX rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="figure align-center">
@@ -278,7 +278,7 @@ method.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -294,16 +294,26 @@ method.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

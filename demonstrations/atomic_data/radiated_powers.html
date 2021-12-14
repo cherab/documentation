@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Radiated Powers &mdash; CHERAB 1.2.0 documentation</title>
+  <title>Radiated Powers &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,40 +17,37 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CHERAB
+            <a href="../../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -60,7 +57,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -84,7 +81,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
@@ -97,13 +94,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -120,7 +118,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CHERAB</a>
+          <a href="../../index.html">Cherab</a>
         
       </nav>
 
@@ -174,64 +172,55 @@
 <span id="id1"></span><h1>Radiated Powers<a class="headerlink" href="#radiated-powers" title="Permalink to this headline">¶</a></h1>
 <p>Sampling and plotting total and stage resolved radiated powers with the ADAS
 subscription package.</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">neon</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample2d_grid</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.adas</span> <span class="kn">import</span> <span class="n">ADAS</span>
-<span class="go">&gt;&gt;&gt;</span>
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing total radiation for Neon.&quot;</span><span class="p">)</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">ADAS</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">electron_density</span> <span class="o">=</span> <span class="mf">1.e19</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">electron_temperature</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">41</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtaining total radiation using ADAS405 code (equilibrium balance)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">total_radiated_power</span><span class="p">(</span><span class="n">neon</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total_power</span> <span class="o">=</span> <span class="n">sample2d_grid</span><span class="p">(</span><span class="n">total_rad</span><span class="p">,</span> <span class="n">electron_density</span><span class="p">,</span> <span class="n">electron_temperature</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtaining fractional abundance using ADAS405 code</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fractional_abundance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">neon</span><span class="o">.</span><span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">electron_temperature</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">charge</span><span class="p">,</span> <span class="n">abundance</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fractional_abundance</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">fraction</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="n">charge</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">abundance</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">sample2d_grid</span><span class="p">(</span><span class="n">fraction</span><span class="p">,</span> <span class="n">electron_density</span><span class="p">,</span> <span class="n">electron_temperature</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtaining line and continuum radiation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line_power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">neon</span><span class="o">.</span><span class="n">atomic_number</span><span class="p">,</span> <span class="n">electron_temperature</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">continuum_power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">neon</span><span class="o">.</span><span class="n">atomic_number</span><span class="p">,</span> <span class="n">electron_temperature</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">charge</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">neon</span><span class="o">.</span><span class="n">atomic_number</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">line_radiated_power_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="n">charge</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">continuum_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">continuum_radiated_power_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="n">charge</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">line_power</span><span class="p">[</span><span class="n">charge</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample2d_grid</span><span class="p">(</span><span class="n">line_rad</span><span class="p">,</span> <span class="n">electron_density</span><span class="p">,</span> <span class="n">electron_temperature</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="o">*</span> <span class="n">fractional_abundance</span><span class="p">[</span><span class="n">charge</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">continuum_power</span><span class="p">[</span><span class="n">charge</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample2d_grid</span><span class="p">(</span><span class="n">continuum_rad</span><span class="p">,</span> <span class="n">electron_density</span><span class="p">,</span> <span class="n">electron_temperature</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="o">*</span> <span class="n">fractional_abundance</span><span class="p">[</span><span class="n">charge</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne_total_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">radiated_power_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne_total_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">radiated_power_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="s1">&#39;line&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne_continuum_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">radiated_power_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="s1">&#39;continuum&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne_continuum_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">electron_temperature</span><span class="p">,</span> <span class="n">total_power</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total radiation&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">electron_temperature</span><span class="p">,</span> <span class="n">continuum_power</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Recombination + Bremsstr.&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">electron_temperature</span><span class="p">,</span> <span class="n">line_power</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total line radiation&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">charge</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">line_power</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">electron_temperature</span><span class="p">,</span> <span class="n">line_power</span><span class="p">[</span><span class="n">charge</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ne(+</span><span class="si">{}</span><span class="s1">) line radiation&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">charge</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1.e-39</span><span class="p">,</span> <span class="mf">1.e-31</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Electron Temperature (eV)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total emission (W/m^3)&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power function (W m^3)&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neon radiation&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne0_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne0_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne1_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne1_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne2_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne2_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne3_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne3_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne4_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne4_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne5_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne5_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne6_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne6_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne7_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne7_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne8_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne8_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne9_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne9_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne10_line_rad</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">stage_resolved_line_radiation_rate</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne10_line_rad</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Electron Temperature (eV)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total Line Emission (W/m^3)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neon - Stage Resolved Line Radiation&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
-</div>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="../../_images/total_radiation.png"><img alt="../../_images/total_radiation.png" src="../../_images/total_radiation.png" style="width: 450px;" /></a>
 </div>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../../_images/stage_resolved_radiation.png"><img alt="../../_images/stage_resolved_radiation.png" src="../../_images/stage_resolved_radiation.png" style="width: 450px;" /></a>
@@ -249,7 +238,7 @@ subscription package.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -265,16 +254,26 @@ subscription package.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.10. Slicing &mdash; CHERAB 1.2.0 documentation</title>
+  <title>9.8. Slicing &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,42 +17,39 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="10. Tools" href="../tools/tools.html" />
-    <link rel="prev" title="9.9. Samplers" href="samplers.html" /> 
+    <link rel="prev" title="9.7. Samplers" href="samplers.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -62,7 +59,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -86,7 +83,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
@@ -97,27 +94,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="math.html">9. Function Framework</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="blend.html">9.1. Blending</a></li>
-<li class="toctree-l2"><a class="reference internal" href="caching.html">9.2. Caching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.3. Clamps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="constant.html">9.4. Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function.html">9.5. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.6. Interpolators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.7. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mask.html">9.8. Masks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.9. Samplers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.10. Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">9.1. Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.2. Clamps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function.html">9.3. Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.4. Interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.5. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">9.6. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.7. Samplers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.8. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -134,7 +130,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CHERAB</a>
+          <a href="../index.html">Cherab</a>
         
       </nav>
 
@@ -165,9 +161,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="math.html">9. Function Framework</a> &raquo;</li>
+          <li><a href="math.html"><span class="section-number">9. </span>Function Framework</a> &raquo;</li>
         
-      <li>9.10. Slicing</li>
+      <li><span class="section-number">9.8. </span>Slicing</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,10 +183,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="module-cherab.core.math.slice">
-<span id="slicing"></span><h1>9.10. Slicing<a class="headerlink" href="#module-cherab.core.math.slice" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="cherab.core.math.slice.Slice2D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.slice.</code><code class="sig-name descname">Slice2D</code><a class="headerlink" href="#cherab.core.math.slice.Slice2D" title="Permalink to this definition">¶</a></dt>
+<span id="slicing"></span><h1><span class="section-number">9.8. </span>Slicing<a class="headerlink" href="#module-cherab.core.math.slice" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.slice.Slice2D">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.slice.</span></span><span class="sig-name descname"><span class="pre">Slice2D</span></span><a class="headerlink" href="#cherab.core.math.slice.Slice2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exposes a slice of a Function2D as a Function1D.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -202,25 +198,23 @@
 </dd>
 </dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Slice2D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function2d</span> <span class="kn">import</span> <span class="n">PythonFunction2D</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonFunction2D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">Slice2D</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">Slice2D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">2.25</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="go">3.25</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.core.math.slice.Slice3D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.slice.</code><code class="sig-name descname">Slice3D</code><a class="headerlink" href="#cherab.core.math.slice.Slice3D" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.slice.Slice3D">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.slice.</span></span><span class="sig-name descname"><span class="pre">Slice3D</span></span><a class="headerlink" href="#cherab.core.math.slice.Slice3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exposes a slice of a Function3D as a Function2D.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -232,13 +226,11 @@
 </dd>
 </dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Slice3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function3d</span> <span class="kn">import</span> <span class="n">PythonFunction3D</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">Slice3D</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">Slice3D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="go">3.375</span>
@@ -261,7 +253,7 @@
         <a href="../tools/tools.html" class="btn btn-neutral float-right" title="10. Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="samplers.html" class="btn btn-neutral float-left" title="9.9. Samplers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="samplers.html" class="btn btn-neutral" title="9.7. Samplers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -270,7 +262,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -286,16 +278,26 @@
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.4. Constants &mdash; CHERAB 1.2.0 documentation</title>
+  <title>9.4. Constants &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,21 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
@@ -39,20 +31,25 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9.5. Functions" href="function.html" />
     <link rel="prev" title="9.3. Clamps" href="clamp.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -62,7 +59,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -86,7 +83,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
@@ -111,13 +108,14 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -134,7 +132,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CHERAB</a>
+          <a href="../index.html">Cherab</a>
         
       </nav>
 
@@ -165,9 +163,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="math.html">9. Function Framework</a> &raquo;</li>
+          <li><a href="math.html"><span class="section-number">9. </span>Function Framework</a> &raquo;</li>
         
-      <li>9.4. Constants</li>
+      <li><span class="section-number">9.4. </span>Constants</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -186,95 +184,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-cherab.core.math.constant">
-<span id="constants"></span><h1>9.4. Constants<a class="headerlink" href="#module-cherab.core.math.constant" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="cherab.core.math.constant.Constant1D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.constant.</code><code class="sig-name descname">Constant1D</code><a class="headerlink" href="#cherab.core.math.constant.Constant1D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constant 1D real function.</p>
-<p>Inherits from Function1D, implements <cite>__call__(x)</cite>.</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant1D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">Constant1D</span><span class="p">(</span><span class="mf">5.3</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
-<span class="go">5.3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="o">-</span><span class="mf">1.3e6</span><span class="p">)</span>
-<span class="go">5.3</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.constant.Constant2D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.constant.</code><code class="sig-name descname">Constant2D</code><a class="headerlink" href="#cherab.core.math.constant.Constant2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constant 2D real function.</p>
-<p>Inherits from Function2D, implements <cite>__call__(x, y)</cite>.</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant2D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">Constant2D</span><span class="p">(</span><span class="o">-</span><span class="mf">7.9</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mf">3.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.3</span><span class="p">)</span>
-<span class="go">-7.9</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mf">3e999</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span>
-<span class="go">-7.9</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.constant.Constant3D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.constant.</code><code class="sig-name descname">Constant3D</code><a class="headerlink" href="#cherab.core.math.constant.Constant3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constant 3D real function.</p>
-<p>Inherits from Function3D, implements <cite>__call__(x, y, z)</cite>.</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant3D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">0.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mf">7e999</span><span class="p">)</span>
-<span class="go">0.0</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.constant.ConstantVector2D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.constant.</code><code class="sig-name descname">ConstantVector2D</code><a class="headerlink" href="#cherab.core.math.constant.ConstantVector2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constant 2D real vector function.</p>
-<p>Inherits from Function2D, implements <cite>__call__(x, y)</cite>.</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">ConstantVector2D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">ConstantVector2D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="go">Vector3D(0.5, 0.5, 0.5)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">7e6</span><span class="p">)</span>
-<span class="go">Vector3D(0.5, 0.5, 0.5)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.constant.ConstantVector3D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.constant.</code><code class="sig-name descname">ConstantVector3D</code><a class="headerlink" href="#cherab.core.math.constant.ConstantVector3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constant 3D real vector function.</p>
-<p>Inherits from Function3D, implements <cite>__call__(x, y, z)</cite>.</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">ConstantVector3D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">ConstantVector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="go">Vector3D(0.5, 0.5, 0.5)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">7e6</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e999</span><span class="p">)</span>
-<span class="go">Vector3D(0.5, 0.5, 0.5)</span>
-</pre></div>
-</div>
-</dd></dl>
-
+  <div class="section" id="constants">
+<h1><span class="section-number">9.4. </span>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -288,7 +199,7 @@
         <a href="function.html" class="btn btn-neutral float-right" title="9.5. Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="clamp.html" class="btn btn-neutral float-left" title="9.3. Clamps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="clamp.html" class="btn btn-neutral" title="9.3. Clamps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -297,7 +208,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -313,16 +224,26 @@
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

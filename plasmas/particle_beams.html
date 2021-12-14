@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.3. Mono-energetic Particle Beams &mdash; CHERAB 1.2.0 documentation</title>
+  <title>7.3. Mono-energetic Particle Beams &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,21 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
@@ -39,20 +31,25 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8. Emission Models" href="../models/emission_models.html" />
     <link rel="prev" title="7.2. Plasma equilibrium" href="equilibrium.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -62,7 +59,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -86,7 +83,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
@@ -104,13 +101,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -127,7 +125,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CHERAB</a>
+          <a href="../index.html">Cherab</a>
         
       </nav>
 
@@ -158,9 +156,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="plasmas.html">7. Plasmas</a> &raquo;</li>
+          <li><a href="plasmas.html"><span class="section-number">7. </span>Plasmas</a> &raquo;</li>
         
-      <li>7.3. Mono-energetic Particle Beams</li>
+      <li><span class="section-number">7.3. </span>Mono-energetic Particle Beams</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,12 +178,12 @@
            <div itemprop="articleBody">
             
   <div class="section" id="mono-energetic-particle-beams">
-<h1>7.3. Mono-energetic Particle Beams<a class="headerlink" href="#mono-energetic-particle-beams" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="cherab.core.Beam">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.</code><code class="sig-name descname">Beam</code><a class="headerlink" href="#cherab.core.Beam" title="Permalink to this definition">¶</a></dt>
+<h1><span class="section-number">7.3. </span>Mono-energetic Particle Beams<a class="headerlink" href="#mono-energetic-particle-beams" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.Beam">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.</span></span><span class="sig-name descname"><span class="pre">Beam</span></span><a class="headerlink" href="#cherab.core.Beam" title="Permalink to this definition">¶</a></dt>
 <dd><p>A scene-graph object representing a Gaussian mono-energetic beam.</p>
-<p>The CHERAB beam object holds all the properties and state of a mono-energetic
+<p>The Cherab beam object holds all the properties and state of a mono-energetic
 particle beam to which beam attenuation and emission models may be attached.
 The Beam object is defined in terms of its power, energy, geometric properties
 and the plasma it interacts with.</p>
@@ -207,7 +205,7 @@ models. See the Beam’s ModelManager for more information. The beam emission mo
 must be derived from the BeamModel base class.</p>
 <p>Any change to the beam object properties and models
 will result in a automatic notification being sent to objects that register
-with the Beam objects’ Notifier. All CHERAB models and associated scene-graph
+with the Beam objects’ Notifier. All Cherab models and associated scene-graph
 objects automatically handle the notifications internally to clear
 cached data. If you need to keep track of beam changes in your own classes,
 a callback can be registered with the beam Notifier which will be called in
@@ -284,9 +282,9 @@ emission models for this beam.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">integrator</span><span class="o">.</span><span class="n">min_samples</span> <span class="o">=</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<dl class="method">
-<dt id="cherab.core.Beam.density">
-<code class="sig-name descname">density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.density" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.Beam.density">
+<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.density" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the bean density at the specified position in beam coordinates.</p>
 <p>Note: this function is only defined over the domain 0 &lt; z &lt; beam_length.
 Outside of this range the density is clamped to zero.</p>
@@ -304,9 +302,9 @@ Outside of this range the density is clamped to zero.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="cherab.core.Beam.direction">
-<code class="sig-name descname">direction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.direction" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.Beam.direction">
+<span class="sig-name descname"><span class="pre">direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.direction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the beam direction vector at a point in space.</p>
 <p>Note the values of the beam outside of the beam envelope should be
 treated with caution.</p>
@@ -339,7 +337,7 @@ treated with caution.</p>
         <a href="../models/emission_models.html" class="btn btn-neutral float-right" title="8. Emission Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="equilibrium.html" class="btn btn-neutral float-left" title="7.2. Plasma equilibrium" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="equilibrium.html" class="btn btn-neutral" title="7.2. Plasma equilibrium" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -348,7 +346,7 @@ treated with caution.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -364,16 +362,26 @@ treated with caution.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

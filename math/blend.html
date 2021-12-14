@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.1. Blending &mdash; CHERAB 1.2.0 documentation</title>
+  <title>9.1. Blending &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,21 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
@@ -39,20 +31,25 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9.2. Caching" href="caching.html" />
     <link rel="prev" title="9. Function Framework" href="math.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -62,7 +59,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -86,7 +83,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
@@ -111,13 +108,14 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -134,7 +132,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CHERAB</a>
+          <a href="../index.html">Cherab</a>
         
       </nav>
 
@@ -165,9 +163,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="math.html">9. Function Framework</a> &raquo;</li>
+          <li><a href="math.html"><span class="section-number">9. </span>Function Framework</a> &raquo;</li>
         
-      <li>9.1. Blending</li>
+      <li><span class="section-number">9.1. </span>Blending</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -186,177 +184,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-cherab.core.math.blend">
-<span id="blending"></span><h1>9.1. Blending<a class="headerlink" href="#module-cherab.core.math.blend" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="cherab.core.math.blend.Blend1D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.blend.</code><code class="sig-name descname">Blend1D</code><a class="headerlink" href="#cherab.core.math.blend.Blend1D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function1d.base.Function1D</span></code></p>
-<p>Performs a linear interpolation between two 1D functions controlled by a third.</p>
-<p>This function is a functional equivalent to the computer graphics Lerp
-function. The value returned when this function is evaluated is a linear
-interpolation between the sampled values of f1 and f2. The interpolation
-weighting is supplied by a third ‘mask’ function that must return a value
-in the range [0, 1].</p>
-<p>Mathematically the value returned by this function is as follows:</p>
-<div class="math notranslate nohighlight">
-\[r = (1 - f_m(x)) f_1(x) + f_m(x) f_2(x)\]</div>
-<p>The value of the mask function is clamped to the range [0, 1] if the
-sampled value exceeds the required range.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>f1</strong> (<em>Function1D</em>) – the first 1D function.</p></li>
-<li><p><strong>f2</strong> (<em>Function1D</em>) – the second 1D function.</p></li>
-<li><p><strong>mask</strong> (<em>Function1D</em>) – the masking 1D function.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Blend1D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function1d</span> <span class="kn">import</span> <span class="n">PythonFunction1D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="mf">0.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">PythonFunction1D</span><span class="p">(</span><span class="n">my_f1</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonFunction1D</span><span class="p">(</span><span class="n">my_f2</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_fmask</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">elif</span> <span class="mi">0</span><span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="n">x</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">else</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f_mask</span> <span class="o">=</span> <span class="n">PythonFunction1D</span><span class="p">(</span><span class="n">my_fmask</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span> <span class="o">=</span> <span class="n">Blend1D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f_mask</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">0.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
-<span class="go">0.3581</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
-<span class="go">3.375</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.blend.Blend2D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.blend.</code><code class="sig-name descname">Blend2D</code><a class="headerlink" href="#cherab.core.math.blend.Blend2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function2d.base.Function2D</span></code></p>
-<p>Performs a linear interpolation between two 2D functions controlled by a third.</p>
-<p>This function is a functional equivalent to the computer graphics Lerp
-function. The value returned when this function is evaluated is a linear
-interpolation between the sampled values of f1 and f2. The interpolation
-weighting is supplied by a third ‘mask’ function that must return a value
-in the range [0, 1].</p>
-<p>Mathematically the value returned by this function is as follows:</p>
-<div class="math notranslate nohighlight">
-\[r = (1 - f_m(x,y)) f_1(x,y) + f_m(x,y) f_2(x,y)\]</div>
-<p>The value of the mask function is clamped to the range [0, 1] if the
-sampled value exceeds the required range.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>f1</strong> (<em>Function2D</em>) – the first 2D function.</p></li>
-<li><p><strong>f2</strong> (<em>Function2D</em>) – the second 2D function.</p></li>
-<li><p><strong>mask</strong> (<em>Function2D</em>) – the masking 2D function.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Blend2D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function2d</span> <span class="kn">import</span> <span class="n">PythonFunction2D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="mf">0.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">PythonFunction2D</span><span class="p">(</span><span class="n">my_f1</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonFunction2D</span><span class="p">(</span><span class="n">my_f2</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_fmask</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="n">radius</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="k">if</span> <span class="n">radius</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="k">elif</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">radius</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="n">radius</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="k">else</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f_mask</span> <span class="o">=</span> <span class="n">PythonFunction2D</span><span class="p">(</span><span class="n">my_fmask</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span> <span class="o">=</span> <span class="n">Blend2D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f_mask</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="go">0.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="go">1.121320</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="go">6.0</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.blend.Blend3D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.blend.</code><code class="sig-name descname">Blend3D</code><a class="headerlink" href="#cherab.core.math.blend.Blend3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.function3d.base.Function3D</span></code></p>
-<p>Performs a linear interpolation between two 3D functions controlled by a third.</p>
-<p>This function is a functional equivalent to the computer graphics Lerp
-function. The value returned when this function is evaluated is a linear
-interpolation between the sampled values of f1 and f2. The interpolation
-weighting is supplied by a third ‘mask’ function that must return a value
-in the range [0, 1].</p>
-<p>Mathematically the value returned by this function is as follows:</p>
-<div class="math notranslate nohighlight">
-\[r = (1 - f_m(x,y,z)) f_1(x,y,z) + f_m(x,y,z) f_2(x,y,z)\]</div>
-<p>The value of the mask function is clamped to the range [0, 1] if the
-sampled value exceeds the required range.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>f1</strong> (<em>Function3D</em>) – the first 3D function.</p></li>
-<li><p><strong>f2</strong> (<em>Function3D</em>) – the second 3D function.</p></li>
-<li><p><strong>mask</strong> (<em>Function3D</em>) – the masking 3D function.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Blend3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function3d</span> <span class="kn">import</span> <span class="n">PythonFunction3D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="mf">0.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">my_f1</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">my_f2</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_fmask</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="n">radius</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="k">if</span> <span class="n">radius</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="k">elif</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">radius</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="n">radius</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="k">else</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>       <span class="k">return</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f_mask</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">my_fmask</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span> <span class="o">=</span> <span class="n">Blend3D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f_mask</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="go">0.5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="go">2.3301270189221928</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fb</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="go">14.0</span>
-</pre></div>
-</div>
-</dd></dl>
-
+  <div class="section" id="blending">
+<h1><span class="section-number">9.1. </span>Blending<a class="headerlink" href="#blending" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -370,7 +199,7 @@ sampled value exceeds the required range.</p>
         <a href="caching.html" class="btn btn-neutral float-right" title="9.2. Caching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="math.html" class="btn btn-neutral float-left" title="9. Function Framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="math.html" class="btn btn-neutral" title="9. Function Framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -379,7 +208,7 @@ sampled value exceeds the required range.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -395,16 +224,26 @@ sampled value exceeds the required range.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.5. Functions &mdash; CHERAB 1.2.0 documentation</title>
+  <title>9.3. Functions &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,42 +17,39 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.6. Interpolators" href="interpolators.html" />
-    <link rel="prev" title="9.4. Constants" href="constant.html" /> 
+    <link rel="next" title="9.4. Interpolators" href="interpolators.html" />
+    <link rel="prev" title="9.2. Clamps" href="clamp.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -62,7 +59,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -86,7 +83,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
@@ -97,31 +94,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="math.html">9. Function Framework</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="blend.html">9.1. Blending</a></li>
-<li class="toctree-l2"><a class="reference internal" href="caching.html">9.2. Caching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.3. Clamps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="constant.html">9.4. Constants</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.5. Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#d-vector-functions">9.5.1. 2D Vector Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">9.5.2. 3D Vector Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">9.1. Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.2. Clamps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.3. Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d-vector-functions">9.3.1. 2D Vector Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">9.3.2. 3D Vector Functions</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.6. Interpolators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.7. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mask.html">9.8. Masks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.9. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slice.html">9.10. Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.4. Interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.5. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">9.6. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.7. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slice.html">9.8. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -138,7 +134,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CHERAB</a>
+          <a href="../index.html">Cherab</a>
         
       </nav>
 
@@ -169,9 +165,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="math.html">9. Function Framework</a> &raquo;</li>
+          <li><a href="math.html"><span class="section-number">9. </span>Function Framework</a> &raquo;</li>
         
-      <li>9.5. Functions</li>
+      <li><span class="section-number">9.3. </span>Functions</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -191,173 +187,40 @@
            <div itemprop="articleBody">
             
   <div class="section" id="functions">
-<h1>9.5. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
-<p>The CHERAB function framework is built on the core Raysect 1D, 2D and 3D
+<h1><span class="section-number">9.3. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+<p>The Cherab function framework is built on the core Raysect 1D, 2D and 3D
 <a class="reference external" href="https://raysect.github.io/documentation/api_reference/core/functions.html">function framework</a>.
 For more details on the base functionality refer to the Raysect
-documentation and the CHERAB function tutorials. The only new classes of functions
-added by CHERAB are 2D and 3D Vector functions.</p>
+documentation and the Cherab function tutorials.</p>
+<p>Cherab previously provided vector functions which were not present in Raysect.
+New codes should prefer the Raysect vector functions, but the old aliases are preserved for backwards compatibility.</p>
 <div class="section" id="d-vector-functions">
-<h2>9.5.1. 2D Vector Functions<a class="headerlink" href="#d-vector-functions" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="cherab.core.math.function.VectorFunction2D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.function.</code><code class="sig-name descname">VectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.VectorFunction2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Cython optimised class for representing an arbitrary 2D vector function.</p>
-<p>Returns a Vector3D for a given 2D coordinate.</p>
-<p>Using __call__() in cython is slow. This class provides an overloadable
-cython cdef evaluate() method which has much less overhead than a python
-function call.</p>
-<p>For use in cython code only, this class cannot be extended via python.</p>
-<p>To create a new function object, inherit this class and implement the
-evaluate() method. The new function object can then be used with any code
-that accepts a function object.</p>
+<h2><span class="section-number">9.3.1. </span>2D Vector Functions<a class="headerlink" href="#d-vector-functions" title="Permalink to this headline">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.function.VectorFunction2D">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">VectorFunction2D</span></span><a class="headerlink" href="#cherab.core.math.function.VectorFunction2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.vector3d.function2d.base.Function2D</span></code></p>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.core.math.function.vectorfunction2d.PythonVectorFunction2D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.function.vectorfunction2d.</code><code class="sig-name descname">PythonVectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction2d.PythonVectorFunction2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.math.function.vectorfunction2d.VectorFunction2D</span></code></p>
-<p>Wraps a python callable object with a VectorFunction2D object.</p>
-<p>This class allows a python object to interact with cython code that requires
-a VectorFunction3D object. The python object must implement __call__()
-expecting three arguments and return a Vector object.</p>
-<p>This class is intended to be used to transparently wrap python objects that
-are passed via constructors or methods into cython optimised code. It is not
-intended that the users should need to directly interact with these wrapping
-objects. Constructors and methods expecting a VectorFunction3D object should
-be designed to accept a generic python object and then test that object to
-determine if it is an instance of VectorFunction3D. If the object is not a
-VectorFunction3D object it should be wrapped using this class for internal
-use.</p>
-<p>See also: autowrap_vectorfunction2d()</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>function</strong> (<em>object</em>) – the 2d vector function object to wrap.</p>
-</dd>
-</dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">Vector3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">PythonVectorFunction2D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">vectorfunction2d</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fv2</span> <span class="o">=</span> <span class="n">PythonVectorFunction2D</span><span class="p">(</span><span class="n">vectorfunction2d</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fv2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">)</span>
-<span class="go">Vector3D(1.0, 0.0, 0.0)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.function.ScalarToVectorFunction2D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.function.</code><code class="sig-name descname">ScalarToVectorFunction2D</code><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.math.function.vectorfunction2d.VectorFunction2D</span></code></p>
-<p>Combines three Function2D objects to produce a VectorFunction2D.</p>
-<p>The three Function2D objects correspond to the x, y and z components of the
-resulting vector object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x_function</strong> (<em>Function2D</em>) – the Vx(x, y) 2d function.</p></li>
-<li><p><strong>y_function</strong> (<em>Function2D</em>) – the Vy(x, y) 2d function.</p></li>
-<li><p><strong>z_function</strong> (<em>Function2D</em>) – the Vz(x, y) 2d function.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant2D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math.function</span> <span class="kn">import</span> <span class="n">ScalarToVectorFunction2D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vx</span> <span class="o">=</span> <span class="n">Constant2D</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vy</span> <span class="o">=</span> <span class="n">Constant2D</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vz</span> <span class="o">=</span> <span class="n">Constant2D</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fv</span> <span class="o">=</span> <span class="n">ScalarToVectorFunction2D</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="n">vz</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fv</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">)</span>
-<span class="go">Vector3D(1.0, 2.0, 3.0)</span>
-</pre></div>
-</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.function.ScalarToVectorFunction2D">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">ScalarToVectorFunction2D</span></span><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.vector3d.function2d.utility.FloatToVector3DFunction2D</span></code></p>
 </dd></dl>
 
 </div>
 <div class="section" id="id1">
-<h2>9.5.2. 3D Vector Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="cherab.core.math.function.VectorFunction3D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.function.</code><code class="sig-name descname">VectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.VectorFunction3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Cython optimised class for representing an arbitrary 3D vector function.</p>
-<p>Returns a Vector3D for a given 3D coordinate.</p>
-<p>Using __call__() in cython is slow. This class provides an overloadable
-cython cdef evaluate() method which has much less overhead than a python
-function call.</p>
-<p>For use in cython code only, this class cannot be extended via python.</p>
-<p>To create a new function object, inherit this class and implement the
-evaluate() method. The new function object can then be used with any code
-that accepts a function object.</p>
+<h2><span class="section-number">9.3.2. </span>3D Vector Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.function.VectorFunction3D">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">VectorFunction3D</span></span><a class="headerlink" href="#cherab.core.math.function.VectorFunction3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.vector3d.function3d.base.Function3D</span></code></p>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.core.math.function.vectorfunction3d.PythonVectorFunction3D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.function.vectorfunction3d.</code><code class="sig-name descname">PythonVectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.vectorfunction3d.PythonVectorFunction3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.math.function.vectorfunction3d.VectorFunction3D</span></code></p>
-<p>Wraps a python callable object with a VectorFunction3D object.</p>
-<p>This class allows a python object to interact with cython code that requires
-a VectorFunction3D object. The python object must implement __call__()
-expecting three arguments and return a Vector object.</p>
-<p>This class is intended to be used to transparently wrap python objects that
-are passed via constructors or methods into cython optimised code. It is not
-intended that the users should need to directly interact with these wrapping
-objects. Constructors and methods expecting a VectorFunction3D object should
-be designed to accept a generic python object and then test that object to
-determine if it is an instance of VectorFunction3D. If the object is not a
-VectorFunction3D object it should be wrapped using this class for internal
-use.</p>
-<p>See also: autowrap_vectorfunction3d()</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>function</strong> (<em>object</em>) – the 3d vector function object to wrap.</p>
-</dd>
-</dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">Vector3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">PythonVectorFunction3D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">vectorfunction3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fv3</span> <span class="o">=</span> <span class="n">PythonVectorFunction3D</span><span class="p">(</span><span class="n">vectorfunction3d</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fv3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">)</span>
-<span class="go">Vector3D(1.0, 0.0, 0.0)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="class">
-<dt id="cherab.core.math.function.ScalarToVectorFunction3D">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.function.</code><code class="sig-name descname">ScalarToVectorFunction3D</code><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.math.function.vectorfunction3d.VectorFunction3D</span></code></p>
-<p>Combines three Function3D objects to produce a VectorFunction3D.</p>
-<p>The three Function3D objects correspond to the x, y and z components of the
-resulting vector object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x_function</strong> (<em>Function3D</em>) – the Vx(x, y, z) 3d function.</p></li>
-<li><p><strong>y_function</strong> (<em>Function3D</em>) – the Vy(x, y, z) 3d function.</p></li>
-<li><p><strong>z_function</strong> (<em>Function3D</em>) – the Vz(x, y, z) 3d function.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Constant3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math.function</span> <span class="kn">import</span> <span class="n">ScalarToVectorFunction3D</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vx</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vy</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vz</span> <span class="o">=</span> <span class="n">Constant3D</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fv</span> <span class="o">=</span> <span class="n">ScalarToVectorFunction3D</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="n">vz</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fv</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.2</span><span class="p">)</span>
-<span class="go">Vector3D(1.0, 2.0, 3.0)</span>
-</pre></div>
-</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.function.ScalarToVectorFunction3D">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">ScalarToVectorFunction3D</span></span><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.vector3d.function3d.utility.FloatToVector3DFunction3D</span></code></p>
 </dd></dl>
 
 </div>
@@ -371,10 +234,10 @@ resulting vector object.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="interpolators.html" class="btn btn-neutral float-right" title="9.6. Interpolators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="interpolators.html" class="btn btn-neutral float-right" title="9.4. Interpolators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="constant.html" class="btn btn-neutral float-left" title="9.4. Constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="clamp.html" class="btn btn-neutral" title="9.2. Clamps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -383,7 +246,7 @@ resulting vector object.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -399,16 +262,26 @@ resulting vector object.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

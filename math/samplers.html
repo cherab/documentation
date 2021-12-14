@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.9. Samplers &mdash; CHERAB 1.2.0 documentation</title>
+  <title>9.7. Samplers &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,42 +17,39 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.10. Slicing" href="slice.html" />
-    <link rel="prev" title="9.8. Masks" href="mask.html" /> 
+    <link rel="next" title="9.8. Slicing" href="slice.html" />
+    <link rel="prev" title="9.6. Masks" href="mask.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -62,7 +59,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -86,7 +83,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
@@ -97,32 +94,31 @@
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="math.html">9. Function Framework</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="blend.html">9.1. Blending</a></li>
-<li class="toctree-l2"><a class="reference internal" href="caching.html">9.2. Caching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.3. Clamps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="constant.html">9.4. Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function.html">9.5. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.6. Interpolators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.7. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mask.html">9.8. Masks</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.9. Samplers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#d-sampling">9.9.1. 1D Sampling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">9.9.2. 2D Sampling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">9.9.3. 3D Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">9.1. Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.2. Clamps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function.html">9.3. Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.4. Interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.5. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">9.6. Masks</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.7. Samplers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d-sampling">9.7.1. 1D Sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">9.7.2. 2D Sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">9.7.3. 3D Sampling</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="slice.html">9.10. Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slice.html">9.8. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -139,7 +135,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CHERAB</a>
+          <a href="../index.html">Cherab</a>
         
       </nav>
 
@@ -170,9 +166,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="math.html">9. Function Framework</a> &raquo;</li>
+          <li><a href="math.html"><span class="section-number">9. </span>Function Framework</a> &raquo;</li>
         
-      <li>9.9. Samplers</li>
+      <li><span class="section-number">9.7. </span>Samplers</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -192,16 +188,16 @@
            <div itemprop="articleBody">
             
   <div class="section" id="samplers">
-<h1>9.9. Samplers<a class="headerlink" href="#samplers" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">9.7. </span>Samplers<a class="headerlink" href="#samplers" title="Permalink to this headline">¶</a></h1>
 <p>This module provides a set of sampling functions for rapidly generating samples
 of 1D, 2D and 3D functions.</p>
 <p>These functions use C calls when sampling Function1D, Function2D and Function3D
 objects and are therefore considerably faster than the equivalent Python code.</p>
 <div class="section" id="d-sampling">
-<h2>9.9.1. 1D Sampling<a class="headerlink" href="#d-sampling" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="cherab.core.math.samplers.sample1d">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">sample1d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample1d" title="Permalink to this definition">¶</a></dt>
+<h2><span class="section-number">9.7.1. </span>1D Sampling<a class="headerlink" href="#d-sampling" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.sample1d">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample1d</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Samples a 1D function over the specified range.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -214,13 +210,10 @@ objects and are therefore considerably faster than the equivalent Python code.</
 <dd class="field-even"><p>a tuple containing the sampled values: (x_points, function_samples)</p>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function1d</span> <span class="kn">import</span> <span class="n">PythonFunction1D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample1d</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample1d</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">PythonFunction1D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span><span class="p">,</span> <span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample1d</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span>
@@ -231,9 +224,9 @@ objects and are therefore considerably faster than the equivalent Python code.</
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.core.math.samplers.sample1d_points">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">sample1d_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample1d_points" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.sample1d_points">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample1d_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample1d_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a 1D function at the specified points</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -246,13 +239,10 @@ objects and are therefore considerably faster than the equivalent Python code.</
 <dd class="field-even"><p>an array containing the sampled values</p>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function1d</span> <span class="kn">import</span> <span class="n">PythonFunction1D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample1d_points</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample1d_points</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">PythonFunction1D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample1d_points</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span>
@@ -263,10 +253,10 @@ objects and are therefore considerably faster than the equivalent Python code.</
 
 </div>
 <div class="section" id="id1">
-<h2>9.9.2. 2D Sampling<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="cherab.core.math.samplers.sample2d">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">sample2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample2d" title="Permalink to this definition">¶</a></dt>
+<h2><span class="section-number">9.7.2. </span>2D Sampling<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.sample2d">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample2d</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Samples a 2D function over the specified range.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -280,15 +270,12 @@ objects and are therefore considerably faster than the equivalent Python code.</
 <dd class="field-even"><p>a tuple containing the sampled values: (x_points, y_points, function_samples)</p>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function2d</span> <span class="kn">import</span> <span class="n">PythonFunction2D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample2d</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample2d</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonFunction2D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span><span class="p">,</span> <span class="n">y_pts</span><span class="p">,</span> <span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample2d</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span><span class="p">,</span> <span class="n">y_pts</span><span class="p">,</span> <span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample2d</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span>
 <span class="go">array([1. , 1.5, 2. , 2.5, 3. ])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pts</span>
@@ -303,9 +290,9 @@ objects and are therefore considerably faster than the equivalent Python code.</
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.core.math.samplers.sample2d_points">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">sample2d_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample2d_points" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.sample2d_points">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample2d_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample2d_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a 2D function at the specified points.</p>
 <p>This function is for sampling at an unstructured sequence of points.
 For sampling over a regular grid, consider sample2d or sample2d_grid
@@ -321,24 +308,21 @@ instead.</p>
 <dd class="field-even"><p>a 1D array containing the sampled values at each point</p>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function2d</span> <span class="kn">import</span> <span class="n">PythonFunction2D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample2d</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample2d</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonFunction2D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample2d_points</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample2d_points</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span>
 <span class="go">array([ 2.,  6., 12.])</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.core.math.samplers.sample2d_grid">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">sample2d_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample2d_grid" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.sample2d_grid">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample2d_grid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample2d_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a 2D function on a rectilinear grid</p>
 <p>Note that v[i, j] = f(x[i], y[j])</p>
 <dl class="field-list simple">
@@ -353,15 +337,12 @@ instead.</p>
 <dd class="field-even"><p>a 2D array containing the sampled values at each grid point</p>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function2d</span> <span class="kn">import</span> <span class="n">PythonFunction2D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample2d_grid</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample2d_grid</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonFunction2D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample2d_grid</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample2d_grid</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span>
 <span class="go">array([[2., 3., 4.],</span>
 <span class="go">       [5., 6., 7.]])</span>
@@ -369,9 +350,9 @@ instead.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.core.math.samplers.samplevector2d">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">samplevector2d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector2d" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.samplevector2d">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">samplevector2d</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Samples a 2D vector function over the specified range.</p>
 <p>The function samples returns are an NxMx3 array where the last axis are the
 x, y, and z components of the vector respectively.</p>
@@ -389,14 +370,11 @@ x, y, and z components of the vector respectively.</p>
 </dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">samplevector2d</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math.function.vectorfunction2d</span> <span class="kn">import</span> <span class="n">PythonVectorFunction2D</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonVectorFunction2D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span><span class="p">,</span> <span class="n">y_pts</span><span class="p">,</span> <span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector2d</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span><span class="p">,</span> <span class="n">y_pts</span><span class="p">,</span> <span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector2d</span><span class="p">(</span><span class="n">my_func</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span>
 <span class="go">array([1., 2., 3.])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pts</span>
@@ -415,9 +393,9 @@ x, y, and z components of the vector respectively.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.core.math.samplers.samplevector2d_points">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">samplevector2d_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector2d_points" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.samplevector2d_points">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">samplevector2d_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector2d_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a 2D vector function at the specified points.</p>
 <p>This function is for sampling at an unstructured sequence of points.
 For sampling over a regular grid, consider samplevector2d or
@@ -435,14 +413,11 @@ samplevector2d_grid instead.</p>
 </dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">samplevector2d_points</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math.function.vectorfunction2d</span> <span class="kn">import</span> <span class="n">PythonVectorFunction2D</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonVectorFunction2D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector2d_points</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector2d_points</span><span class="p">(</span><span class="n">my_func</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span>
 <span class="go">array([[1., 1., 0.],</span>
 <span class="go">       [2., 2., 0.],</span>
@@ -451,9 +426,9 @@ samplevector2d_grid instead.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.core.math.samplers.samplevector2d_grid">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">samplevector2d_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector2d_grid" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.samplevector2d_grid">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">samplevector2d_grid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector2d_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a 2D vector function on a rectilinear grid</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -470,14 +445,11 @@ samplevector2d_grid instead.</p>
 <p>Note that v[i, j] = f(x[i], y[j])</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">samplevector2d_grid</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math.function.vectorfunction2d</span> <span class="kn">import</span> <span class="n">PythonVectorFunction2D</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PythonVectorFunction2D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector2d_grid</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector2d_grid</span><span class="p">(</span><span class="n">my_func</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span>
 <span class="go">array([[[1., 1., 0.],</span>
 <span class="go">        [1., 2., 0.],</span>
@@ -491,10 +463,10 @@ samplevector2d_grid instead.</p>
 
 </div>
 <div class="section" id="id2">
-<h2>9.9.3. 3D Sampling<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="cherab.core.math.samplers.sample3d">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">sample3d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample3d" title="Permalink to this definition">¶</a></dt>
+<h2><span class="section-number">9.7.3. </span>3D Sampling<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.sample3d">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample3d</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample3d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Samples a 3D function over the specified range.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -509,15 +481,12 @@ samplevector2d_grid instead.</p>
 <dd class="field-even"><p>a tuple containing the sampled values: (x_points, y_points, z_points, function_samples)</p>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function3d</span> <span class="kn">import</span> <span class="n">PythonFunction3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample3d</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample3d</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span><span class="p">,</span> <span class="n">y_pts</span><span class="p">,</span> <span class="n">z_pts</span><span class="p">,</span> <span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample3d</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span><span class="p">,</span> <span class="n">y_pts</span><span class="p">,</span> <span class="n">z_pts</span><span class="p">,</span> <span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample3d</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span>
 <span class="go">array([1., 2., 3.])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span>
@@ -534,9 +503,9 @@ samplevector2d_grid instead.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.core.math.samplers.sample3d_points">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">sample3d_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample3d_points" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.sample3d_points">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample3d_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample3d_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a 3D function at the specified points.</p>
 <p>This function is for sampling at an unstructured sequence of points.
 For sampling over a regular grid, consider sample3d or sample3d_grid
@@ -552,24 +521,21 @@ instead.</p>
 <dd class="field-even"><p>a 1D array containing the sampled values at each point</p>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function3d</span> <span class="kn">import</span> <span class="n">PythonFunction3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample3d_points</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample3d_points</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample3d_points</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample3d_points</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span>
 <span class="go">array([ 3., 14., 39.])</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.core.math.samplers.sample3d_grid">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">sample3d_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample3d_grid" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.sample3d_grid">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample3d_grid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample3d_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a 3D function on a rectilinear grid</p>
 <p>Note that v[i, j, k] = f(x[i], y[j], z[k])</p>
 <dl class="field-list simple">
@@ -585,15 +551,12 @@ instead.</p>
 <dd class="field-even"><p>a 3D array containing the sampled values at each grid point</p>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math.function.function3d</span> <span class="kn">import</span> <span class="n">PythonFunction3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample3d_grid</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample3d_grid</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">PythonFunction3D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample3d_grid</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">sample3d_grid</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span>
 <span class="go">array([[[ 3.,  5.,  5.],</span>
 <span class="go">        [11., 13., 13.],</span>
@@ -608,9 +571,9 @@ instead.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.core.math.samplers.samplevector3d">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">samplevector3d</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector3d" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.samplevector3d">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">samplevector3d</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector3d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Samples a 3D vector function over the specified range.</p>
 <p>The function samples returns are an NxMxKx3 array where the last axis are the
 x, y, and z components of the vector respectively.</p>
@@ -629,14 +592,11 @@ x, y, and z components of the vector respectively.</p>
 </dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">samplevector3d</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math.function.vectorfunction3d</span> <span class="kn">import</span> <span class="n">PythonVectorFunction3D</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">PythonVectorFunction3D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span><span class="p">,</span> <span class="n">y_pts</span><span class="p">,</span> <span class="n">z_pts</span><span class="p">,</span> <span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector3d</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span><span class="p">,</span> <span class="n">y_pts</span><span class="p">,</span> <span class="n">z_pts</span><span class="p">,</span> <span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector3d</span><span class="p">(</span><span class="n">my_func</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x_pts</span>
 <span class="go">array([1., 2.])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span>
@@ -663,9 +623,9 @@ x, y, and z components of the vector respectively.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.core.math.samplers.samplevector3d_points">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">samplevector3d_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector3d_points" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.samplevector3d_points">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">samplevector3d_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector3d_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a 3D vector function at the specified points.</p>
 <p>This function is for sampling at an unstructured sequence of points.
 For sampling over a regular grid, consider samplevector3d or
@@ -683,14 +643,11 @@ samplevector3d_grid instead.</p>
 </dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">samplevector3d_points</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math.function.vectorfunction3d</span> <span class="kn">import</span> <span class="n">PythonVectorFunction3D</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">PythonVectorFunction3D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector3d_points</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector3d_points</span><span class="p">(</span><span class="n">my_func</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span>
 <span class="go">array([[1., 1., 1.],</span>
 <span class="go">       [2., 2., 2.],</span>
@@ -699,9 +656,9 @@ samplevector3d_grid instead.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="cherab.core.math.samplers.samplevector3d_grid">
-<code class="sig-prename descclassname">cherab.core.math.samplers.</code><code class="sig-name descname">samplevector3d_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector3d_grid" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.core.math.samplers.samplevector3d_grid">
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">samplevector3d_grid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector3d_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a 3D vector function on a rectilinear grid</p>
 <p>Note that v[i, j, k] = f(x[i], y[j], z[k])</p>
 <dl class="field-list simple">
@@ -719,14 +676,11 @@ samplevector3d_grid instead.</p>
 </dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">samplevector3d_grid</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math.function.vectorfunction3d</span> <span class="kn">import</span> <span class="n">PythonVectorFunction3D</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">PythonVectorFunction3D</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector3d_grid</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span> <span class="o">=</span> <span class="n">samplevector3d_grid</span><span class="p">(</span><span class="n">my_func</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f_vals</span>
 <span class="go">array([[[[1., 1., 1.],</span>
 <span class="go">         [1., 1., 2.],</span>
@@ -762,10 +716,10 @@ samplevector3d_grid instead.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="slice.html" class="btn btn-neutral float-right" title="9.10. Slicing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="slice.html" class="btn btn-neutral float-right" title="9.8. Slicing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="mask.html" class="btn btn-neutral float-left" title="9.8. Masks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mask.html" class="btn btn-neutral" title="9.6. Masks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -774,7 +728,7 @@ samplevector3d_grid instead.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -790,16 +744,26 @@ samplevector3d_grid instead.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

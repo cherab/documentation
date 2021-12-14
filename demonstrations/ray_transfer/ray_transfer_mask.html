@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Axisymmetrical (toroidal) regular grid &mdash; CHERAB 1.2.0 documentation</title>
+  <title>Axisymmetrical (toroidal) regular grid &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,40 +17,37 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CHERAB
+            <a href="../../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -60,7 +57,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -84,7 +81,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
@@ -97,13 +94,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -120,7 +118,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CHERAB</a>
+          <a href="../../index.html">Cherab</a>
         
       </nav>
 
@@ -210,14 +208,14 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
-<span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="k">import</span> <span class="n">Cylinder</span><span class="p">,</span> <span class="n">Subtract</span>
-<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="k">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate</span>
-<span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="k">import</span> <span class="n">PinholeCamera</span><span class="p">,</span> <span class="n">FullFrameSampler2D</span>
+<span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="kn">import</span> <span class="n">Cylinder</span><span class="p">,</span> <span class="n">Subtract</span>
+<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">PinholeCamera</span><span class="p">,</span> <span class="n">FullFrameSampler2D</span>
 
-<span class="kn">from</span> <span class="nn">cherab.tools.raytransfer</span> <span class="k">import</span> <span class="n">RayTransferPipeline2D</span><span class="p">,</span> <span class="n">RayTransferCylinder</span>
-<span class="kn">from</span> <span class="nn">cherab.tools.raytransfer</span> <span class="k">import</span> <span class="n">RoughNickel</span>
+<span class="kn">from</span> <span class="nn">cherab.tools.raytransfer</span> <span class="kn">import</span> <span class="n">RayTransferPipeline2D</span><span class="p">,</span> <span class="n">RayTransferCylinder</span>
+<span class="kn">from</span> <span class="nn">cherab.tools.raytransfer</span> <span class="kn">import</span> <span class="n">RoughNickel</span>
 
 <span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
 
@@ -239,7 +237,7 @@
 <span class="n">xsqr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">49.5</span><span class="p">,</span> <span class="mf">49.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
 <span class="n">rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">xsqr</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">+</span> <span class="n">xsqr</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:])</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">rad</span> <span class="o">&lt;</span> <span class="n">rad_circle</span>  <span class="c1"># a boolean array 100x100 (True inside the circle, False - outside)</span>
-<span class="n">rtc</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span>
+<span class="n">rtc</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># making 3D mask from 2D (RZ-plane) mask</span>
 
 <span class="c1"># creating ray transfer pipeline</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">RayTransferPipeline2D</span><span class="p">()</span>
@@ -293,7 +291,7 @@
 </pre></div>
 </div>
 <div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="../../_images/ray_transfer_mask_demo1.gif"><img alt="../../_images/ray_transfer_mask_demo1.gif" src="../../_images/ray_transfer_mask_demo1.gif" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ray_transfer_mask_demo.gif"><img alt="../../_images/ray_transfer_mask_demo.gif" src="../../_images/ray_transfer_mask_demo.gif" style="width: 450px;" /></a>
 <p class="caption"><span class="caption-text"><strong>Caption:</strong> The result of collapsing geometry matrix with 30 different emission profiles.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -309,7 +307,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -325,16 +323,26 @@
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

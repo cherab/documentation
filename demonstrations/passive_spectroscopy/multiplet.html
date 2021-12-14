@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Multiplet Line Ratios &mdash; CHERAB 1.2.0 documentation</title>
+  <title>Multiplet Line Ratios &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,40 +17,37 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CHERAB
+            <a href="../../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -60,7 +57,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -84,7 +81,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
@@ -97,13 +94,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -120,7 +118,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CHERAB</a>
+          <a href="../../index.html">Cherab</a>
         
       </nav>
 
@@ -173,7 +171,7 @@
   <div class="section" id="multiplet-line-ratios">
 <span id="multiplet-lines"></span><h1>Multiplet Line Ratios<a class="headerlink" href="#multiplet-line-ratios" title="Permalink to this headline">¶</a></h1>
 <p>Some lines split into multiple components, requiring a higher spectroscopy
-resolution than is normally modelled in CHERAB. It is possible to add the
+resolution than is normally modelled in Cherab. It is possible to add the
 experimentally measured multiplet ratios by using the MultipletLineShape()
 class. The ratios between the multiplet lines will be constant, but the total
 emissivity of the multiplet will match the original emissivity as specified
@@ -204,18 +202,17 @@ measurements in the ASDEX Upgrade divertor.” Nuclear Fusion 58.1 (2017):
 
 <span class="c1"># External imports</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="k">import</span> <span class="n">electron_mass</span><span class="p">,</span> <span class="n">atomic_mass</span>
-<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="k">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Ray</span>
-<span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="k">import</span> <span class="n">Sphere</span>
-<span class="kn">from</span> <span class="nn">raysect.optical.material.emitter.inhomogeneous</span> <span class="k">import</span> <span class="n">NumericalIntegrator</span>
+<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">electron_mass</span><span class="p">,</span> <span class="n">atomic_mass</span>
+<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Ray</span>
+<span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="kn">import</span> <span class="n">Sphere</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.material.emitter.inhomogeneous</span> <span class="kn">import</span> <span class="n">NumericalIntegrator</span>
 
 <span class="c1"># Cherab imports</span>
-<span class="kn">from</span> <span class="nn">cherab.core</span> <span class="k">import</span> <span class="n">Species</span><span class="p">,</span> <span class="n">Maxwellian</span><span class="p">,</span> <span class="n">Plasma</span><span class="p">,</span> <span class="n">Line</span>
-<span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="k">import</span> <span class="n">ConstantVector3D</span>
-<span class="kn">from</span> <span class="nn">cherab.core.atomic.elements</span> <span class="k">import</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">nitrogen</span>
-<span class="kn">from</span> <span class="nn">cherab.core.model</span> <span class="k">import</span> <span class="n">ExcitationLine</span><span class="p">,</span> <span class="n">RecombinationLine</span><span class="p">,</span> <span class="n">MultipletLineShape</span>
-<span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="k">import</span> <span class="n">OpenADAS</span>
-<span class="kn">from</span> <span class="nn">cherab.tools.plasmas</span> <span class="k">import</span> <span class="n">GaussianVolume</span>
+<span class="kn">from</span> <span class="nn">cherab.core</span> <span class="kn">import</span> <span class="n">Species</span><span class="p">,</span> <span class="n">Maxwellian</span><span class="p">,</span> <span class="n">Plasma</span><span class="p">,</span> <span class="n">Line</span>
+<span class="kn">from</span> <span class="nn">cherab.core.atomic.elements</span> <span class="kn">import</span> <span class="n">deuterium</span><span class="p">,</span> <span class="n">nitrogen</span>
+<span class="kn">from</span> <span class="nn">cherab.core.model</span> <span class="kn">import</span> <span class="n">ExcitationLine</span><span class="p">,</span> <span class="n">RecombinationLine</span><span class="p">,</span> <span class="n">MultipletLineShape</span>
+<span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="kn">import</span> <span class="n">OpenADAS</span>
+<span class="kn">from</span> <span class="nn">cherab.tools.plasmas</span> <span class="kn">import</span> <span class="n">GaussianVolume</span>
 
 
 <span class="c1"># tunables</span>
@@ -240,7 +237,7 @@ measurements in the ASDEX Upgrade divertor.” Nuclear Fusion 58.1 (2017):
 <span class="n">n_density</span> <span class="o">=</span> <span class="n">d_density</span> <span class="o">*</span> <span class="mf">0.01</span>
 <span class="n">e_density</span> <span class="o">=</span> <span class="n">GaussianVolume</span><span class="p">(</span><span class="n">ion_density</span><span class="p">,</span> <span class="n">sigma</span><span class="o">*</span><span class="mi">10000</span><span class="p">)</span>
 <span class="n">temperature</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">GaussianVolume</span><span class="p">(</span><span class="mi">79</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
-<span class="n">bulk_velocity</span> <span class="o">=</span> <span class="n">ConstantVector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mf">1e6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">bulk_velocity</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mf">1e6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">deuterium_mass</span> <span class="o">=</span> <span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span>
 <span class="n">d_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">d_density</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">bulk_velocity</span><span class="p">,</span> <span class="n">deuterium_mass</span><span class="p">)</span>
@@ -253,7 +250,7 @@ measurements in the ASDEX Upgrade divertor.” Nuclear Fusion 58.1 (2017):
 <span class="n">n1_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">nitrogen</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_distribution</span><span class="p">)</span>
 
 <span class="c1"># define species</span>
-<span class="n">plasma</span><span class="o">.</span><span class="n">b_field</span> <span class="o">=</span> <span class="n">ConstantVector3D</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">b_field</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span> <span class="o">=</span> <span class="n">e_distribution</span>
 <span class="n">plasma</span><span class="o">.</span><span class="n">composition</span> <span class="o">=</span> <span class="p">[</span><span class="n">d0_species</span><span class="p">,</span> <span class="n">d1_species</span><span class="p">,</span> <span class="n">n1_species</span><span class="p">]</span>
 
@@ -291,7 +288,7 @@ measurements in the ASDEX Upgrade divertor.” Nuclear Fusion 58.1 (2017):
 </pre></div>
 </div>
 <div class="figure align-center" id="id1">
-<a class="reference internal image-reference" href="../../_images/multiplet_spectrum1.png"><img alt="../../_images/multiplet_spectrum1.png" src="../../_images/multiplet_spectrum1.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../../_images/multiplet_spectrum.png"><img alt="../../_images/multiplet_spectrum.png" src="../../_images/multiplet_spectrum.png" style="width: 450px;" /></a>
 <p class="caption"><span class="caption-text"><strong>Caption:</strong> An observed NII multiplet in the region of 402-407nm. The multiplet
 is surrounded by two brighter hydrogen Balmer series lines.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
@@ -308,7 +305,7 @@ is surrounded by two brighter hydrogen Balmer series lines.</span><a class="head
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -324,16 +321,26 @@ is surrounded by two brighter hydrogen Balmer series lines.</span><a class="head
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

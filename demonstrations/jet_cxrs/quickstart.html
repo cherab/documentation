@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quickstart Example &mdash; CHERAB 1.2.0 documentation</title>
+  <title>Quickstart Example &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,40 +17,37 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CHERAB
+            <a href="../../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -60,7 +57,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -84,7 +81,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
@@ -97,13 +94,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -120,7 +118,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CHERAB</a>
+          <a href="../../index.html">Cherab</a>
         
       </nav>
 
@@ -174,29 +172,29 @@
 <span id="jet-cxrs-quickstart"></span><h1>Quickstart Example<a class="headerlink" href="#quickstart-example" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="preamble">
 <h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this headline">¶</a></h2>
-<p>This is a commented demo file about how to use CHERAB. It aims to give an
-example with the main steps for a basic use of CHERAB. We start by importing
+<p>This is a commented demo file about how to use Cherab. It aims to give an
+example with the main steps for a basic use of Cherab. We start by importing
 the classes used in this demo.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># External imports</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="k">import</span> <span class="n">electron_mass</span><span class="p">,</span> <span class="n">atomic_mass</span>
-<span class="kn">from</span> <span class="nn">raysect.core</span> <span class="k">import</span> <span class="n">Vector3D</span>
-<span class="kn">from</span> <span class="nn">raysect.core.scenegraph.utility</span> <span class="k">import</span> <span class="n">print_scenegraph</span>
+<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">electron_mass</span><span class="p">,</span> <span class="n">atomic_mass</span>
+<span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">Vector3D</span>
+<span class="kn">from</span> <span class="nn">raysect.core.scenegraph.utility</span> <span class="kn">import</span> <span class="n">print_scenegraph</span>
 
 <span class="c1"># Internal imports</span>
-<span class="kn">from</span> <span class="nn">cherab</span> <span class="k">import</span> <span class="n">Species</span>
-<span class="kn">from</span> <span class="nn">cherab.atomic</span> <span class="k">import</span> <span class="n">elements</span><span class="p">,</span> <span class="n">Line</span>
-<span class="kn">from</span> <span class="nn">cherab.atomic.adas</span> <span class="k">import</span> <span class="n">ADAS</span>
-<span class="kn">from</span> <span class="nn">cherab.distribution</span> <span class="k">import</span> <span class="n">Maxwellian</span>
-<span class="kn">from</span> <span class="nn">cherab.math.mapping.interpolators.interpolators1d</span> <span class="k">import</span> <span class="n">Interpolate1DCubic</span>
-<span class="kn">from</span> <span class="nn">cherab.math.mapping.mappers</span> <span class="k">import</span> <span class="n">IsoMapper3D</span>
-<span class="kn">from</span> <span class="nn">cherab.model.cxs.beaminteraction</span> <span class="k">import</span> <span class="n">CXSBeamPlasmaIntersection</span>
-<span class="kn">from</span> <span class="nn">cherab.model.beam.singleray</span> <span class="k">import</span> <span class="n">SingleRayAttenuator</span>
-<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.ppf_access</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.data_source</span> <span class="k">import</span> <span class="n">DataSource</span>
-<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.neutralbeam</span> <span class="k">import</span> <span class="n">PINIParameters</span>
-<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.scenegraph</span> <span class="k">import</span> <span class="n">build_jet_scenegraph</span>
+<span class="kn">from</span> <span class="nn">cherab</span> <span class="kn">import</span> <span class="n">Species</span>
+<span class="kn">from</span> <span class="nn">cherab.atomic</span> <span class="kn">import</span> <span class="n">elements</span><span class="p">,</span> <span class="n">Line</span>
+<span class="kn">from</span> <span class="nn">cherab.atomic.adas</span> <span class="kn">import</span> <span class="n">ADAS</span>
+<span class="kn">from</span> <span class="nn">cherab.distribution</span> <span class="kn">import</span> <span class="n">Maxwellian</span>
+<span class="kn">from</span> <span class="nn">cherab.math.mapping.interpolators.interpolators1d</span> <span class="kn">import</span> <span class="n">Interpolate1DCubic</span>
+<span class="kn">from</span> <span class="nn">cherab.math.mapping.mappers</span> <span class="kn">import</span> <span class="n">IsoMapper3D</span>
+<span class="kn">from</span> <span class="nn">cherab.model.cxs.beaminteraction</span> <span class="kn">import</span> <span class="n">CXSBeamPlasmaIntersection</span>
+<span class="kn">from</span> <span class="nn">cherab.model.beam.singleray</span> <span class="kn">import</span> <span class="n">SingleRayAttenuator</span>
+<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.ppf_access</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.data_source</span> <span class="kn">import</span> <span class="n">DataSource</span>
+<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.neutralbeam</span> <span class="kn">import</span> <span class="n">PINIParameters</span>
+<span class="kn">from</span> <span class="nn">cherab_contrib.jet.corentin.scenegraph</span> <span class="kn">import</span> <span class="n">build_jet_scenegraph</span>
 </pre></div>
 </div>
 <p>In this demo we will simulate the carbon active CX spectra emitted by octant
@@ -273,7 +271,7 @@ NIB8 (containing the PINIs) and two groups of lines of sight.</p>
 <p>To set up a real plasma, we need to feed <cite>plasma</cite> with profiles and composition.</p>
 <p>Now we are looking for information about the plasma (temperature, density, etc)
 in the PPF system. Here they are generally given as profile arrays along
-normalised psi values. As CHERAB need any plasma input given as a 3D function
+normalised psi values. As Cherab need any plasma input given as a 3D function
 the first step is to get normalised psi as a 3D function through the <cite>DataSource</cite>
 object:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">src</span> <span class="o">=</span> <span class="n">DataSource</span><span class="p">()</span>
@@ -297,7 +295,7 @@ instead of error integers (so the content is exactly the same):</p>
 </div>
 <p>Here a personal DDA is used. We use ppfget to read Data Types as they don’t have a
 time axis. However one should use ppfgts to read Data Types at a specific time (<cite>TIME</cite>)
-if it contains a time axis as CHERAB require data at a specific time only:</p>
+if it contains a time axis as Cherab require data at a specific time only:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># normalised psi coordinates</span>
 <span class="n">psi_coord</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ppfget</span><span class="p">(</span><span class="n">PULSE</span><span class="p">,</span> <span class="s1">&#39;PRFL&#39;</span><span class="p">,</span> <span class="s1">&#39;C6&#39;</span><span class="p">)[</span><span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">psi_coord</span> <span class="o">&lt;=</span> <span class="mf">1.0</span>  <span class="c1"># a mask is created to get only the values inside the LCFS</span>
@@ -357,16 +355,16 @@ to give this distribution directly out of density, temperature, velocity and par
 <ol class="arabic simple">
 <li><p>Here we use the same temperature and velocity for all species, but it is not
 a requirement at all.</p></li>
-<li><p>In CHERAB, information about species are often given through an <cite>Element</cite>
+<li><p>In Cherab, information about species are often given through an <cite>Element</cite>
 object from the elements submodule (cherab.atomic.elements). eg the mass of
 deuterium (in amu) is given by <cite>elements.deuterium.atomic_weight</cite>.</p></li>
-<li><p>From here units become important. In CHERAB, any density must be given in
+<li><p>From here units become important. In Cherab, any density must be given in
 m^-3, any temperature in eV and any velocity in m/s. These units must be
 used to create the species distributions.</p></li>
 </ol>
 <p>Now the distributions have been defined, we must associate them to a species.
 Species are created from an element, a ionisation and a distribution. Electron
-distribution will be used directly by CHERAB so we don’t need to create a species
+distribution will be used directly by Cherab so we don’t need to create a species
 for electrons:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d_distribution</span><span class="p">)</span>
 <span class="n">c6_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">c6_distribution</span><span class="p">)</span>
@@ -468,7 +466,7 @@ of data in photons/s/m^3/str/nm using <cite>to_photons</cite> method:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../../_images/JET_CXRS_d5lines1.png" class="align-center" src="../../_images/JET_CXRS_d5lines1.png" />
+<img alt="../../_images/JET_CXRS_d5lines.png" class="align-center" src="../../_images/JET_CXRS_d5lines.png" />
 </div>
 </div>
 
@@ -483,7 +481,7 @@ of data in photons/s/m^3/str/nm using <cite>to_photons</cite> method:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -499,16 +497,26 @@ of data in photons/s/m^3/str/nm using <cite>to_photons</cite> method:</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

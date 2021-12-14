@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Fractional Abundances &mdash; CHERAB 1.2.0 documentation</title>
+  <title>Fractional Abundances &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,40 +17,37 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../../index.html" class="icon icon-home"> CHERAB
+            <a href="../../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -60,7 +57,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -84,7 +81,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
@@ -97,13 +94,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -120,7 +118,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">CHERAB</a>
+          <a href="../../index.html">Cherab</a>
         
       </nav>
 
@@ -173,42 +171,163 @@
   <div class="section" id="fractional-abundances">
 <span id="id1"></span><h1>Fractional Abundances<a class="headerlink" href="#fractional-abundances" title="Permalink to this headline">¶</a></h1>
 <p>Some example code for requesting fractional abundances and plotting them.</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">neon</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.adas</span> <span class="kn">import</span> <span class="n">ADAS</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">ADAS</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne0_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne0_frac</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne1_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne1_frac</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne2_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne2_frac</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne3_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne3_frac</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne4_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne4_frac</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne5_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne5_frac</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne6_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne6_frac</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne7_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne7_frac</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne8_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne8_frac</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne9_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne9_frac</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne10_frac</span> <span class="o">=</span> <span class="n">atomic_data</span><span class="o">.</span><span class="n">fractional_abundance</span><span class="p">(</span><span class="n">neon</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ne10_frac</span><span class="o">.</span><span class="n">plot_temperature</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fractional abundance of Neon in coronal equilibrium&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Electron Temperature (eV)&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fractional Abundance (%)&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">neon</span><span class="p">,</span> <span class="n">hydrogen</span>
+<span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="kn">import</span> <span class="n">OpenADAS</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">lsq_linear</span>
+
+
+<span class="k">def</span> <span class="nf">get_rates_recombination</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    load recombinatio rates for all ionic stages</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">coef_recom</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">elem</span><span class="o">.</span><span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">coef_recom</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">recombination_rate</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">coef_recom</span>
+
+
+<span class="k">def</span> <span class="nf">get_rates_tcx</span><span class="p">(</span><span class="n">donor</span><span class="p">,</span> <span class="n">donor_charge</span><span class="p">,</span> <span class="n">receiver</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    load thermal charge-exchange recombination rates for all ionic stages</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">coef_tcx</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">elem</span><span class="o">.</span><span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">coef_tcx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">thermal_cx_rate</span><span class="p">(</span><span class="n">donor</span><span class="p">,</span> <span class="n">donor_charge</span><span class="p">,</span> <span class="n">receiver</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">coef_tcx</span>
+
+
+<span class="k">def</span> <span class="nf">get_rates_ionisation</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    load ionisation rates for all ionic stages</span>
+<span class="sd">    :param element:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">coef_ionis</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">elem</span><span class="o">.</span><span class="n">atomic_number</span><span class="p">):</span>
+        <span class="n">coef_ionis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">adas</span><span class="o">.</span><span class="n">ionisation_rate</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">coef_ionis</span>
+
+
+<span class="k">def</span> <span class="nf">solve_ion_balance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">,</span> <span class="n">coef_ion</span><span class="p">,</span> <span class="n">coef_recom</span><span class="p">,</span> <span class="n">nh0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">coef_tcx</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="n">atomic_number</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">atomic_number</span>
+
+    <span class="c1"># construct the fractional abundance matrix</span>
+    <span class="n">matbal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">matbal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">coef_ion</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">)</span>
+    <span class="n">matbal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">coef_recom</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">)</span>
+    <span class="n">matbal</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">coef_recom</span><span class="p">[</span><span class="n">atomic_number</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">)</span>
+    <span class="n">matbal</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">coef_ion</span><span class="p">[</span><span class="n">atomic_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">nh0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">matbal</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">nh0</span> <span class="o">/</span> <span class="n">n_e</span> <span class="o">*</span> <span class="n">coef_tcx</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">)</span>
+        <span class="n">matbal</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">nh0</span> <span class="o">/</span> <span class="n">n_e</span> <span class="o">*</span> <span class="n">coef_tcx</span><span class="p">[</span><span class="n">atomic_number</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">atomic_number</span><span class="p">):</span>
+        <span class="n">matbal</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">coef_ion</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">)</span>
+        <span class="n">matbal</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="p">(</span><span class="n">coef_ion</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">)</span> <span class="o">+</span> <span class="n">coef_recom</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">))</span>
+        <span class="n">matbal</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">coef_recom</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nh0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">matbal</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">nh0</span> <span class="o">/</span> <span class="n">n_e</span> <span class="o">*</span> <span class="n">coef_tcx</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">)</span>
+            <span class="n">matbal</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">nh0</span> <span class="o">/</span> <span class="n">n_e</span> <span class="o">*</span> <span class="n">coef_tcx</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">](</span><span class="n">n_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">)</span>
+
+    <span class="c1"># for some reason calculation of stage abundance seems to yield better results than calculation of fractional abun.</span>
+    <span class="n">matbal</span> <span class="o">=</span> <span class="n">matbal</span> <span class="o">*</span> <span class="n">ne</span>  <span class="c1"># multiply by ne to calculate abundance instead of fractional abundance</span>
+
+    <span class="c1"># add sum constraints. Sum of all stages should be equal to electron density</span>
+    <span class="n">matbal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">matbal</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">matbal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># construct RHS of the balance steady-state equation</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">matbal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ne</span>
+
+    <span class="n">abundance</span> <span class="o">=</span> <span class="n">lsq_linear</span><span class="p">(</span><span class="n">matbal</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ne</span><span class="p">))[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span>
+
+    <span class="c1"># normalize to ne to get fractional abundance</span>
+    <span class="n">frac_abundance</span> <span class="o">=</span> <span class="n">abundance</span> <span class="o">/</span> <span class="n">ne</span>
+
+    <span class="k">return</span> <span class="n">frac_abundance</span>
+
+
+<span class="c1"># initialise the atomic data provider</span>
+<span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">elem</span> <span class="o">=</span> <span class="n">neon</span>
+<span class="n">temperature_steps</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">ne</span> <span class="o">=</span> <span class="mf">1E19</span>
+<span class="n">nh0</span> <span class="o">=</span> <span class="mf">1e15</span>
+<span class="n">numstates</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># Collect rate coefficients</span>
+<span class="n">rates_ion</span> <span class="o">=</span> <span class="n">get_rates_ionisation</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+<span class="n">rates_recom</span> <span class="o">=</span> <span class="n">get_rates_recombination</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+<span class="n">rates_tcx</span> <span class="o">=</span> <span class="n">get_rates_tcx</span><span class="p">(</span><span class="n">hydrogen</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+
+<span class="n">electron_temperatures</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="o">**</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">rates_recom</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="s2">&quot;te&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span>
+                                                      <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">rates_recom</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="s2">&quot;te&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span>
+                                                      <span class="n">num</span><span class="o">=</span><span class="n">temperature_steps</span><span class="p">)]</span>
+
+<span class="c1"># calculate ionization balance for electron temperature rates</span>
+<span class="n">ion_balance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">elem</span><span class="o">.</span><span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">electron_temperatures</span><span class="p">)))</span>
+<span class="n">ion_balance_tcx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">elem</span><span class="o">.</span><span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">electron_temperatures</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">te</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">electron_temperatures</span><span class="p">):</span>
+    <span class="n">ion_balance</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve_ion_balance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">ne</span><span class="p">,</span> <span class="n">te</span><span class="p">,</span> <span class="n">rates_ion</span><span class="p">,</span> <span class="n">rates_recom</span><span class="p">)</span>
+    <span class="n">ion_balance_tcx</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve_ion_balance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">ne</span><span class="p">,</span> <span class="n">te</span><span class="p">,</span> <span class="n">rates_ion</span><span class="p">,</span> <span class="n">rates_recom</span><span class="p">,</span> <span class="n">nh0</span><span class="p">,</span> <span class="n">rates_tcx</span><span class="p">)</span>
+
+
+<span class="c1"># plot results</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ionisation_rates</span> <span class="o">=</span> <span class="p">[</span><span class="n">rates_ion</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="mf">1E19</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">electron_temperatures</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">electron_temperatures</span><span class="p">,</span> <span class="n">ionisation_rates</span><span class="p">,</span> <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> </span><span class="si">{1}</span><span class="s1">+&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">continue</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1E-21</span><span class="p">,</span> <span class="mf">1E-10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Electron Temperature (eV)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ionisation Rates&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">recombination_rates</span> <span class="o">=</span> <span class="p">[</span><span class="n">rates_recom</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="mf">1E19</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">electron_temperatures</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">electron_temperatures</span><span class="p">,</span> <span class="n">recombination_rates</span><span class="p">,</span> <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> </span><span class="si">{1}</span><span class="s1">+&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">continue</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1E-21</span><span class="p">,</span> <span class="mf">1E-10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Electron Temperature (eV)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Recombination Rates&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tcx_rates</span> <span class="o">=</span> <span class="p">[</span><span class="n">rates_tcx</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="mf">1E19</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">electron_temperatures</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">electron_temperatures</span><span class="p">,</span> <span class="n">tcx_rates</span><span class="p">,</span> <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> </span><span class="si">{1}</span><span class="s1">+&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">continue</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1E-21</span><span class="p">,</span> <span class="mf">1E-10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Electron Temperature (eV)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; Thermal Charge-Exchange Recombination Rates&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">atomic_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">pl</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">electron_temperatures</span><span class="p">,</span> <span class="n">ion_balance</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> </span><span class="si">{1}</span><span class="s1">+&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">electron_temperatures</span><span class="p">,</span> <span class="n">ion_balance_tcx</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="n">pl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_color</span><span class="p">(),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;nh0 = 0&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;nh0 = 1e16 m^-3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Electron Temperature (eV)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fractional Abundance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="figure align-center">
@@ -227,7 +346,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -243,16 +362,26 @@
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

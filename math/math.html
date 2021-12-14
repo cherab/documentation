@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. Function Framework &mdash; CHERAB 1.2.0 documentation</title>
+  <title>9. Function Framework &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,42 +17,39 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.1. Blending" href="blend.html" />
-    <link rel="prev" title="8.7. Basic Line Emission" href="../models/basic_line/basic_line_emission.html" /> 
+    <link rel="next" title="9.1. Caching" href="caching.html" />
+    <link rel="prev" title="8.8. Spectral Line Shapes" href="../models/line_shapes/spectral_line_shapes.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -62,7 +59,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -86,7 +83,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
@@ -97,27 +94,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">9. Function Framework</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="blend.html">9.1. Blending</a></li>
-<li class="toctree-l2"><a class="reference internal" href="caching.html">9.2. Caching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.3. Clamps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="constant.html">9.4. Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function.html">9.5. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.6. Interpolators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.7. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mask.html">9.8. Masks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.9. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slice.html">9.10. Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">9.1. Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.2. Clamps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function.html">9.3. Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.4. Interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.5. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">9.6. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.7. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slice.html">9.8. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -134,7 +130,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CHERAB</a>
+          <a href="../index.html">Cherab</a>
         
       </nav>
 
@@ -165,7 +161,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>9. Function Framework</li>
+      <li><span class="section-number">9. </span>Function Framework</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -185,33 +181,33 @@
            <div itemprop="articleBody">
             
   <div class="section" id="function-framework">
-<h1>9. Function Framework<a class="headerlink" href="#function-framework" title="Permalink to this headline">¶</a></h1>
-<p>One of CHERAB’s most powerful features is the way it is designed to support mathematical
-functions. Most of the physics interfaces in CHERAB are specified in terms of math functions
+<h1><span class="section-number">9. </span>Function Framework<a class="headerlink" href="#function-framework" title="Permalink to this headline">¶</a></h1>
+<p>One of Cherab’s most powerful features is the way it is designed to support mathematical
+functions. Most of the physics interfaces in Cherab are specified in terms of math functions
 of a specified dimension. I.e. density is a 3D function f(x, y, z), while <span class="math notranslate nohighlight">\(\psi_n(r,z)\)</span>
-is a 2D function in the r-z plane. The section of the documentation describes the various
-utilities that are provided for slicing, dicing and projecting these functions.</p>
+is a 2D function in the r-z plane. Cherab leverages Raysect’s function framework which provides
+arithmetic, blending, interpolation and wrapping capabilities.</p>
+<p>This section of the documentation describes the various additional
+utilities that Cherab provides for slicing, dicing and projecting these functions.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="blend.html">9.1. Blending</a></li>
-<li class="toctree-l1"><a class="reference internal" href="caching.html">9.2. Caching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clamp.html">9.3. Clamps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="constant.html">9.4. Constants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="function.html">9.5. Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="function.html#d-vector-functions">9.5.1. 2D Vector Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function.html#id1">9.5.2. 3D Vector Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">9.1. Caching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clamp.html">9.2. Clamps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function.html">9.3. Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function.html#d-vector-functions">9.3.1. 2D Vector Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function.html#id1">9.3.2. 3D Vector Functions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="interpolators.html">9.6. Interpolators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mappers.html">9.7. Mappers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mask.html">9.8. Masks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="samplers.html">9.9. Samplers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="samplers.html#d-sampling">9.9.1. 1D Sampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samplers.html#id1">9.9.2. 2D Sampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samplers.html#id2">9.9.3. 3D Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interpolators.html">9.4. Interpolators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mappers.html">9.5. Mappers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mask.html">9.6. Masks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samplers.html">9.7. Samplers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html#d-sampling">9.7.1. 1D Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html#id1">9.7.2. 2D Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html#id2">9.7.3. 3D Sampling</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="slice.html">9.10. Slicing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slice.html">9.8. Slicing</a></li>
 </ul>
 </div>
 </div>
@@ -224,10 +220,10 @@ utilities that are provided for slicing, dicing and projecting these functions.<
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="blend.html" class="btn btn-neutral float-right" title="9.1. Blending" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="caching.html" class="btn btn-neutral float-right" title="9.1. Caching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../models/basic_line/basic_line_emission.html" class="btn btn-neutral float-left" title="8.7. Basic Line Emission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../models/line_shapes/spectral_line_shapes.html" class="btn btn-neutral" title="8.8. Spectral Line Shapes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -236,7 +232,7 @@ utilities that are provided for slicing, dicing and projecting these functions.<
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -252,16 +248,27 @@ utilities that are provided for slicing, dicing and projecting these functions.<
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

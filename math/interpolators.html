@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.6. Interpolators &mdash; CHERAB 1.2.0 documentation</title>
+  <title>9.4. Interpolators &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,42 +17,39 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.7. Mappers" href="mappers.html" />
-    <link rel="prev" title="9.5. Functions" href="function.html" /> 
+    <link rel="next" title="9.5. Mappers" href="mappers.html" />
+    <link rel="prev" title="9.3. Functions" href="function.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -62,7 +59,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -86,7 +83,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
@@ -97,27 +94,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="math.html">9. Function Framework</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="blend.html">9.1. Blending</a></li>
-<li class="toctree-l2"><a class="reference internal" href="caching.html">9.2. Caching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.3. Clamps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="constant.html">9.4. Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="function.html">9.5. Functions</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.6. Interpolators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.7. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mask.html">9.8. Masks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.9. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slice.html">9.10. Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">9.1. Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.2. Clamps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function.html">9.3. Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.4. Interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.5. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">9.6. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.7. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slice.html">9.8. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -134,7 +130,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CHERAB</a>
+          <a href="../index.html">Cherab</a>
         
       </nav>
 
@@ -165,9 +161,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="math.html">9. Function Framework</a> &raquo;</li>
+          <li><a href="math.html"><span class="section-number">9. </span>Function Framework</a> &raquo;</li>
         
-      <li>9.6. Interpolators</li>
+      <li><span class="section-number">9.4. </span>Interpolators</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,11 +183,17 @@
            <div itemprop="articleBody">
             
   <div class="section" id="interpolators">
-<h1>9.6. Interpolators<a class="headerlink" href="#interpolators" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="cherab.core.math.interpolators.interpolators1d.Interpolate1DLinear">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.interpolators.interpolators1d.</code><code class="sig-name descname">Interpolate1DLinear</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators1d.Interpolate1DLinear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interpolates 1D data using linear interpolation.</p>
+<h1><span class="section-number">9.4. </span>Interpolators<a class="headerlink" href="#interpolators" title="Permalink to this headline">¶</a></h1>
+<p>Historically Cherab provided 1D, 2D and 3D interpolators.
+New codes are encouraged to use Raysect’s <a class="reference external" href="https://www.raysect.org/api_reference/core/functions.html#interpolators">interpolators</a> instead.
+For backwards compatibility the Cherab interpolators are retained for now.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.interpolators.interpolators1d.Interpolate1DLinear">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.interpolators.interpolators1d.</span></span><span class="sig-name descname"><span class="pre">Interpolate1DLinear</span></span><a class="headerlink" href="#cherab.core.math.interpolators.interpolators1d.Interpolate1DLinear" title="Permalink to this definition">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.3.0: </span>Use <cite>raysect.core.math.function.float.Interpolator1DArray</cite> instead.</p>
+</div>
+<p>Interpolates 1D data using linear interpolation.</p>
 <p>Inherits from Function1D, implements <cite>__call__(x)</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -231,10 +233,13 @@ will result in a ValueError being raised.</p></li>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.core.math.interpolators.interpolators1d.Interpolate1DCubic">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.interpolators.interpolators1d.</code><code class="sig-name descname">Interpolate1DCubic</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators1d.Interpolate1DCubic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interpolates 1D data using cubic interpolation.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.interpolators.interpolators1d.Interpolate1DCubic">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.interpolators.interpolators1d.</span></span><span class="sig-name descname"><span class="pre">Interpolate1DCubic</span></span><a class="headerlink" href="#cherab.core.math.interpolators.interpolators1d.Interpolate1DCubic" title="Permalink to this definition">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.3.0: </span>Use <cite>raysect.core.math.function.float.Interpolator1DArray</cite> instead.</p>
+</div>
+<p>Interpolates 1D data using cubic interpolation.</p>
 <p>Inherits from Function1D, implements <cite>__call__(x)</cite>.</p>
 <p>Data and coordinates are first normalised to the range [0, 1] so as to
 prevent inaccuracy from float numbers. Spline coefficients are cached
@@ -284,10 +289,13 @@ supplying a single value will result in a ValueError being raised.</p></li>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.core.math.interpolators.interpolators2d.Interpolate2DLinear">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.interpolators.interpolators2d.</code><code class="sig-name descname">Interpolate2DLinear</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators2d.Interpolate2DLinear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interpolates 2D data using linear interpolation.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.interpolators.interpolators2d.Interpolate2DLinear">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.interpolators.interpolators2d.</span></span><span class="sig-name descname"><span class="pre">Interpolate2DLinear</span></span><a class="headerlink" href="#cherab.core.math.interpolators.interpolators2d.Interpolate2DLinear" title="Permalink to this definition">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.3.0: </span>Use <cite>raysect.core.math.function.float.Interpolator2DArray</cite> instead.</p>
+</div>
+<p>Interpolates 2D data using linear interpolation.</p>
 <p>Inherits from Function2D, implements <cite>__call__(x, y)</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -312,7 +320,7 @@ result in a ValueError being raised.</p></li>
 </ul>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Interpolate2DLinear</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># implements x**2 + y</span>
@@ -335,10 +343,13 @@ result in a ValueError being raised.</p></li>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.core.math.interpolators.interpolators2d.Interpolate2DCubic">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.interpolators.interpolators2d.</code><code class="sig-name descname">Interpolate2DCubic</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators2d.Interpolate2DCubic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interpolates 2D data using cubic interpolation.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.interpolators.interpolators2d.Interpolate2DCubic">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.interpolators.interpolators2d.</span></span><span class="sig-name descname"><span class="pre">Interpolate2DCubic</span></span><a class="headerlink" href="#cherab.core.math.interpolators.interpolators2d.Interpolate2DCubic" title="Permalink to this definition">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.3.0: </span>Use <cite>raysect.core.math.function.float.Interpolator2DArray</cite> instead.</p>
+</div>
+<p>Interpolates 2D data using cubic interpolation.</p>
 <p>Inherits from Function2D, implements <cite>__call__(x, y)</cite>.</p>
 <p>Data and coordinates are first normalised to the range [0, 1] so as to
 prevent inaccuracy from float numbers. A local calculation based on finite
@@ -370,7 +381,7 @@ result in a ValueError being raised.</p></li>
 </ul>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Interpolate2DCubic</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># implements x**2 + y</span>
@@ -393,10 +404,13 @@ result in a ValueError being raised.</p></li>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.core.math.interpolators.interpolators3d.Interpolate3DLinear">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.interpolators.interpolators3d.</code><code class="sig-name descname">Interpolate3DLinear</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators3d.Interpolate3DLinear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interpolates 3D data using linear interpolation.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.interpolators.interpolators3d.Interpolate3DLinear">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.interpolators.interpolators3d.</span></span><span class="sig-name descname"><span class="pre">Interpolate3DLinear</span></span><a class="headerlink" href="#cherab.core.math.interpolators.interpolators3d.Interpolate3DLinear" title="Permalink to this definition">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.3.0: </span>Use <cite>raysect.core.math.function.float.Interpolator3DArray</cite> instead.</p>
+</div>
+<p>Interpolates 3D data using linear interpolation.</p>
 <p>Inherits from Function3D, implements <cite>__call__(x, y, z)</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -422,7 +436,7 @@ result in a ValueError being raised.</p></li>
 </ul>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Interpolate3DLinear</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># implements x**3 + y**2 + z</span>
@@ -447,10 +461,13 @@ result in a ValueError being raised.</p></li>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.core.math.interpolators.interpolators3d.Interpolate3DCubic">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.core.math.interpolators.interpolators3d.</code><code class="sig-name descname">Interpolate3DCubic</code><a class="headerlink" href="#cherab.core.math.interpolators.interpolators3d.Interpolate3DCubic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interpolates 3D data using cubic interpolation.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.interpolators.interpolators3d.Interpolate3DCubic">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.interpolators.interpolators3d.</span></span><span class="sig-name descname"><span class="pre">Interpolate3DCubic</span></span><a class="headerlink" href="#cherab.core.math.interpolators.interpolators3d.Interpolate3DCubic" title="Permalink to this definition">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.3.0: </span>Use <cite>raysect.core.math.function.float.Interpolator3DArray</cite> instead.</p>
+</div>
+<p>Interpolates 3D data using cubic interpolation.</p>
 <p>Inherits from Function3D, implements <cite>__call__(x, y, z)</cite>.</p>
 <p>Data and coordinates are first normalised to the range [0, 1] so as to
 prevent inaccuracy from float numbers. A local calculation based on
@@ -485,7 +502,7 @@ supplying a single value will result in a ValueError being raised.</p></li>
 </ul>
 </dd>
 </dl>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">Interpolate3DCubic</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># implements x**3 + y**2 + z</span>
@@ -520,10 +537,10 @@ supplying a single value will result in a ValueError being raised.</p></li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mappers.html" class="btn btn-neutral float-right" title="9.7. Mappers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mappers.html" class="btn btn-neutral float-right" title="9.5. Mappers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="function.html" class="btn btn-neutral float-left" title="9.5. Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="function.html" class="btn btn-neutral" title="9.3. Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -532,7 +549,7 @@ supplying a single value will result in a ValueError being raised.</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -548,16 +565,26 @@ supplying a single value will result in a ValueError being raised.</p></li>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

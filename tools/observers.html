@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10.4. Observers &mdash; CHERAB 1.2.0 documentation</title>
+  <title>10.4. Observers &mdash; Cherab 1.3.0 documentation</title>
   
 
   
@@ -17,21 +17,13 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  
+  
     
 
   
+
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
@@ -39,20 +31,25 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="10.5. Tomography" href="tomography.html" />
     <link rel="prev" title="10.3. Primitives" href="primitives.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
-            <a href="../index.html" class="icon icon-home"> CHERAB
+            <a href="../index.html" class="icon icon-home"> Cherab
           
 
           
@@ -62,7 +59,7 @@
             
             
               <div class="version">
-                1.2
+                1.3
               </div>
             
           
@@ -86,7 +83,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
@@ -103,6 +100,8 @@
 <li class="toctree-l2"><a class="reference internal" href="primitives.html">10.3. Primitives</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">10.4. Observers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#bolometers">10.4.1. Bolometers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spectroscopic-lines-of-sight">10.4.2. Spectroscopic lines of sight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-observers">10.4.3. Group observers</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tomography.html">10.5. Tomography</a></li>
@@ -110,13 +109,14 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
@@ -133,7 +133,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">CHERAB</a>
+          <a href="../index.html">Cherab</a>
         
       </nav>
 
@@ -164,9 +164,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="tools.html">10. Tools</a> &raquo;</li>
+          <li><a href="tools.html"><span class="section-number">10. </span>Tools</a> &raquo;</li>
         
-      <li>10.4. Observers</li>
+      <li><span class="section-number">10.4. </span>Observers</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -186,23 +186,74 @@
            <div itemprop="articleBody">
             
   <div class="section" id="observers">
-<h1>10.4. Observers<a class="headerlink" href="#observers" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">10.4. </span>Observers<a class="headerlink" href="#observers" title="Permalink to this headline">¶</a></h1>
 <p>Most plasma diagnostics can be easily modelled using the base observer types provided in
-Raysect. In CHERAB we only provide a few specialist observers with extra functionality.</p>
+Raysect. In Cherab we only provide a few specialist observers with extra functionality.</p>
 <div class="section" id="bolometers">
-<h2>10.4.1. Bolometers<a class="headerlink" href="#bolometers" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="cherab.tools.observers.bolometry.BolometerCamera">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.observers.bolometry.</code><code class="sig-name descname">BolometerCamera</code><span class="sig-paren">(</span><em class="sig-param">camera_geometry=None</em>, <em class="sig-param">parent=None</em>, <em class="sig-param">transform=None</em>, <em class="sig-param">name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera" title="Permalink to this definition">¶</a></dt>
+<span id="observers-bolometers"></span><h2><span class="section-number">10.4.1. </span>Bolometers<a class="headerlink" href="#bolometers" title="Permalink to this headline">¶</a></h2>
+<p>Bolometer systems are modelled as a collection of foils viewing emission through
+a collection of apertures. The foils and slits are grouped together into a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerCamera</span></code> object, which acts as the parent node for the apertures
+and detectors. Bolometer cameras contain one or more slits (apertures), which
+provide targetting information for the foils (detectors) to improve
+computational efficiency.  Bolometer cameras also contain one or more foils,
+which are modelled as pixels and which fire rays in the direction of the slit.</p>
+<p>A note on units: the <code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerFoil</span></code> class can be used to measure
+emission in units of power [W] or radiance [W/m²/sr]. In the latter case, the
+radiance is defined as the mean radiance over the entire solid angle
+<span class="math notranslate nohighlight">\(\Omega = 2 \pi\)</span> subtended by the foil:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\overline{L} &amp;= \frac{\Phi}{A \Omega} \\ \Phi &amp;= \int_0^{\Omega}
+\mathrm{d}\omega \int_0^A \mathrm{d}A \, L(\mathbf{x}, \omega) \cos(\theta)\end{split}\]</div>
+<p>When a bolometer is approximated by a single line of sight, the radiance
+measured is taken at a single angle and position: it is equivalent to the above
+equations in the limits <span class="math notranslate nohighlight">\(\Omega \to 0\)</span> and <span class="math notranslate nohighlight">\(A \to 0\)</span>. A real
+bolometer needs some finite area and solid angle to measure signal, and as long
+as the solid angle <span class="math notranslate nohighlight">\(\omega_s\)</span> subtended by the slit at the foil surface is
+small, a meaningful comparison to a sightline can be made using:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}L_B &amp;= \frac{\Phi_B}{A \omega_s} \\
+\Phi_B &amp;= \int_0^{\omega_s} \mathrm{d}\omega \int_0^A \mathrm{d}A \, L(\mathbf{x}, \omega) \cos(\theta)\end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\Phi_B = \Phi\)</span>, since no power is incident on the bolometer for
+solid angles <span class="math notranslate nohighlight">\(\omega &gt; \omega_s\)</span>, and this allows us to directly relate
+the radiance reported by Cherab with the radiance expected from a finite
+bolometer system being modelled as a sightline:</p>
+<div class="math notranslate nohighlight">
+\[\frac{L_B}{\overline{L}} = \frac{\omega_s}{\Omega}\]</div>
+<p>When comparing radiance measurements from Cherab with other modelling tools
+which treat the bolometer as a single sightline, applying this conversion factor
+is necessary. The fractional solid angle can be easily determined from the
+bolometer etendue <span class="math notranslate nohighlight">\(G\)</span>, which is given by:</p>
+<div class="math notranslate nohighlight">
+\[G = A \omega_s = A \Omega \frac{\omega_s}{\Omega}.\]</div>
+<p>CHERAB also provides an Infra-Red Video Bolometer (IRVB) class. These are typically
+large foil bolometers which are imaged with an IR camera. CHERAB models only the
+incoming radiation incident on the foil, not the subsequent IR emission on the IR
+camera-facing side of the foil: solving the heat transfer equation to calculate this is
+left to downstream codes.</p>
+<p>Practically, the IRVB foil is typically divided up into separate regions, and the
+incident power on each of these individual regions is the quantity of interest. The foil
+can then be treated as a 2D array of pixels, where each pixel corresponds to a separate
+region on the foil. In this sense, the IRVB is used in a similar manner to a CCD array:
+observations will return a 2D array of measured powers. The pixels the foil is divided
+into are specified at instantiation time, along with the width of the foil: the height
+is calculated from the width and the pixel dimensions.</p>
+<p>Although the IRVB observations produce data similar to that of a CCD array,
+instantiation of the <code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerIRVB</span></code> is done in much the same way as for the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerFoil</span></code>. The two have similar methods too, with the caveat that some
+methods of the <code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerIRVB</span></code> return 2D arrays in place of a single return value
+for the <code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerFoil</span></code>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerCamera">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.bolometry.</span></span><span class="sig-name descname"><span class="pre">BolometerCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_geometry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera" title="Permalink to this definition">¶</a></dt>
 <dd><p>A group of bolometer sight-lines under a single scenegraph node.</p>
-<p>A scenegraph object that manages a collection of <cite>BolometerFoil()</cite>
+<p>A scenegraph object that manages a collection of <a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerFoil" title="cherab.tools.observers.bolometry.BolometerFoil"><code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerFoil</span></code></a>
 objects. Allows combined observation and display control simultaneously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>camera_geometry</strong> (<em>Primitive</em>) – An optional Raysect primitive to supply
-as the box/aperture geometry. If not supplied, a CSG aperture will be
-constructed from the slit parameters.</p></li>
+<li><p><strong>camera_geometry</strong> (<em>Primitive</em>) – A Raysect primitive to supply as the
+box/aperture geometry.</p></li>
 <li><p><strong>parent</strong> (<em>Node</em>) – The parent node of this camera in the scenegraph, often
 an optical World object.</p></li>
 <li><p><strong>transform</strong> (<em>AffineMatrix3D</em>) – The relative coordinate transform of this
@@ -226,9 +277,9 @@ this camera.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span> <span class="o">=</span> <span class="n">BolometerCamera</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;MyBolometer&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="method">
-<dt id="cherab.tools.observers.bolometry.BolometerCamera.__getitem__">
-<code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerCamera.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.__getitem__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the detectors by integer index or the detector name.</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detector_2</span> <span class="o">=</span> <span class="n">bolometer_camera</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">detector_a</span> <span class="o">=</span> <span class="n">bolometer_camera</span><span class="p">[</span><span class="s2">&quot;detector_a&quot;</span><span class="p">]</span>
@@ -236,28 +287,28 @@ this camera.</p></li>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="cherab.tools.observers.bolometry.BolometerCamera.__iter__">
-<code class="sig-name descname">__iter__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.__iter__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerCamera.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.__iter__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Iterates over the foil detectors in this camera.</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detector_a</span><span class="p">,</span> <span class="n">detector_b</span><span class="p">,</span> <span class="n">detector_c</span> <span class="o">=</span> <span class="n">bolometer_camera</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="cherab.tools.observers.bolometry.BolometerCamera.__len__">
-<code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.__len__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerCamera.__len__">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.__len__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Yields the number of detectors in this bolometer camera.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="cherab.tools.observers.bolometry.BolometerCamera.add_foil_detector">
-<code class="sig-name descname">add_foil_detector</code><span class="sig-paren">(</span><em class="sig-param">foil_detector</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.add_foil_detector" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerCamera.add_foil_detector">
+<span class="sig-name descname"><span class="pre">add_foil_detector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">foil_detector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.add_foil_detector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add the given detector to this camera.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>foil_detector</strong> (<a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerFoil" title="cherab.tools.observers.bolometry.BolometerFoil"><em>BolometerFoil</em></a>) – An instanced bolometer foil detector.</p>
+<dd class="field-odd"><p><strong>foil_detector</strong> (<em>(</em><a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerFoil" title="cherab.tools.observers.bolometry.BolometerFoil"><em>BolometerFoil</em></a><em>, </em><a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerIRVB" title="cherab.tools.observers.bolometry.BolometerIRVB"><em>BolometerIRVB</em></a><em>)</em>) – An instanced bolometer foil detector.</p>
 </dd>
 </dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bolometer_camera</span><span class="o">.</span><span class="n">add_foil_detector</span><span class="p">(</span><span class="n">foil_detector</span><span class="p">)</span>
@@ -265,25 +316,39 @@ this camera.</p></li>
 </div>
 </dd></dl>
 
-<dl class="method">
-<dt id="cherab.tools.observers.bolometry.BolometerCamera.observe">
-<code class="sig-name descname">observe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.observe" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerCamera.observe">
+<span class="sig-name descname"><span class="pre">observe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerCamera.observe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Take an observation with this camera.</p>
 <p>Calls observe() on each foil detector and returns their power measurements.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.observers.bolometry.BolometerSlit">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.observers.bolometry.</code><code class="sig-name descname">BolometerSlit</code><span class="sig-paren">(</span><em class="sig-param">slit_id</em>, <em class="sig-param">centre_point</em>, <em class="sig-param">basis_x</em>, <em class="sig-param">dx</em>, <em class="sig-param">basis_y</em>, <em class="sig-param">dy</em>, <em class="sig-param">dz=0.001</em>, <em class="sig-param">parent=None</em>, <em class="sig-param">csg_aperture=False</em>, <em class="sig-param">curvature_radius=0</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerSlit" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerSlit">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.bolometry.</span></span><span class="sig-name descname"><span class="pre">BolometerSlit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slit_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centre_point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csg_aperture</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curvature_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerSlit" title="Permalink to this definition">¶</a></dt>
 <dd><p>A rectangular bolometer slit.</p>
 <p>A single slit can be shared by multiple detectors in the parent camera. The slit
-geometry is specified in terms of its centre_point, basis vectors in the plane
-of the slit and their respective lengths.</p>
+geometry is specified in terms of its centre_point, basis vectors in the plane of
+the slit and their respective lengths. When instantiating a
+<a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerSlit" title="cherab.tools.observers.bolometry.BolometerSlit"><code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerSlit</span></code></a> object these values are defined in the local coordinate
+system of the slit’s parent, usually a <a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerCamera" title="cherab.tools.observers.bolometry.BolometerCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerCamera</span></code></a> object. Accessing
+these properties on an existing <a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerSlit" title="cherab.tools.observers.bolometry.BolometerSlit"><code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerSlit</span></code></a> object returns them in the
+world’s coordinate system.</p>
 <p>If an external mesh model has been loaded for ray occlusion evaluation then this
 object is only used for targeting rays on the slit. If no mesh has been supplied,
 this object can construct an effective slit primitive from CSG operations.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be very careful when using a CSG aperture. The aperture geometry is slightly
+larger than the slit dx and dy, which can cause partial occlusion of
+nearby primitives. It also relies on no rays being launched with directions
+outside the solid angle of the aperture’s bounding sphere: depending on the
+foil-slit distance and slit size, and also the foil’s targetted_path_prob,
+this may not be guaranteed. Supplying a proper mesh geometry for the camera
+is recommended instead of using a CSG aperture.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -295,10 +360,10 @@ this object can construct an effective slit primitive from CSG operations.</p>
 <li><p><strong>dy</strong> (<em>float</em>) – The height of the slit along the y basis vector.</p></li>
 <li><p><strong>dz</strong> (<em>float</em>) – The thickness of the slit along the z basis vector.</p></li>
 <li><p><strong>parent</strong> (<em>Node</em>) – The parent scenegraph node to which this slit belongs.
-Typically a BolometerCamera() or an optical World() object.</p></li>
+Typically a <a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerCamera" title="cherab.tools.observers.bolometry.BolometerCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerCamera</span></code></a> or an optical <code class="xref py py-class docutils literal notranslate"><span class="pre">World</span></code> object.</p></li>
 <li><p><strong>csg_aperture</strong> (<em>bool</em>) – Toggles whether an occluding surface should be
 constructed for this slit using CSG operations.</p></li>
-<li><p><strong>curvature_radius</strong> (<em>float</em>) – Slits in real bolometer cameras typically
+<li><p><strong>curvature_radius</strong> (<em>float</em>) – Slits in real bolometer cameras may
 have curved corners due to machining limitations. This parameter species
 the corner radius.</p></li>
 </ul>
@@ -328,12 +393,15 @@ the cross product of the x and y basis vectors.</p>
 </div>
 </dd></dl>
 
-<dl class="class">
-<dt id="cherab.tools.observers.bolometry.BolometerFoil">
-<em class="property">class </em><code class="sig-prename descclassname">cherab.tools.observers.bolometry.</code><code class="sig-name descname">BolometerFoil</code><span class="sig-paren">(</span><em class="sig-param">detector_id</em>, <em class="sig-param">centre_point</em>, <em class="sig-param">basis_x</em>, <em class="sig-param">dx</em>, <em class="sig-param">basis_y</em>, <em class="sig-param">dy</em>, <em class="sig-param">slit</em>, <em class="sig-param">parent=None</em>, <em class="sig-param">units='Power'</em>, <em class="sig-param">accumulate=False</em>, <em class="sig-param">curvature_radius=0</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil" title="Permalink to this definition">¶</a></dt>
-<dd><p>A rectangular bolometer detector.</p>
-<p>Can be configured to sample a single ray or fan of rays oriented along the
-observer’s z axis.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerFoil">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.bolometry.</span></span><span class="sig-name descname"><span class="pre">BolometerFoil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">detector_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centre_point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Power'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accumulate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curvature_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil" title="Permalink to this definition">¶</a></dt>
+<dd><p>A rectangular foil bolometer detector.</p>
+<p>When instantiating a detector, the position and orientation
+(i.e. centre_point, basis_x and basis_y) are given in the local coordinate
+system of the foil’s parent, usually a <a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerCamera" title="cherab.tools.observers.bolometry.BolometerCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerCamera</span></code></a> instance.
+When these properties are accessed after instantiation, they are given in
+the coordinate system of the world.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -344,11 +412,11 @@ observer’s z axis.</p>
 <li><p><strong>basis_y</strong> (<em>Vector3D</em>) – The y basis vector for the detector.</p></li>
 <li><p><strong>dy</strong> (<em>float</em>) – The height of the detector along the y basis vector.</p></li>
 <li><p><strong>parent</strong> (<em>Node</em>) – The parent scenegraph node to which this detector belongs.
-Typically a BolometerCamera() or an optical World() object.</p></li>
-<li><p><strong>units</strong> (<em>bool</em>) – The units in which to perform observations, can
-be [‘Power’, ‘Radiance’], defaults to ‘Power’.</p></li>
+Typically a <a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerCamera" title="cherab.tools.observers.bolometry.BolometerCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerCamera</span></code></a> or an optical <code class="xref py py-class docutils literal notranslate"><span class="pre">World</span></code> object.</p></li>
+<li><p><strong>units</strong> (<em>str</em>) – The units in which to perform observations, can
+be [‘Power’, ‘Radiance’].</p></li>
 <li><p><strong>accumulate</strong> (<em>bool</em>) – Whether this observer should accumulate samples
-with multiple calls to observe. Defaults to False.</p></li>
+with multiple calls to observe.</p></li>
 <li><p><strong>curvature_radius</strong> (<em>float</em>) – Detectors in real bolometer cameras typically
 have curved corners due to machining limitations. This parameter species
 the corner radius.</p></li>
@@ -382,9 +450,9 @@ detector.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">detector</span> <span class="o">=</span> <span class="n">BolometerFoil</span><span class="p">(</span><span class="s2">&quot;ch#1&quot;</span><span class="p">,</span> <span class="n">centre_point</span><span class="p">,</span> <span class="n">basis_x</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">basis_y</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">slit</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">camera</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="method">
-<dt id="cherab.tools.observers.bolometry.BolometerFoil.as_sightline">
-<code class="sig-name descname">as_sightline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.as_sightline" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerFoil.as_sightline">
+<span class="sig-name descname"><span class="pre">as_sightline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.as_sightline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a SightLine observer for this bolometer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -393,9 +461,9 @@ detector.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="cherab.tools.observers.bolometry.BolometerFoil.calculate_etendue">
-<code class="sig-name descname">calculate_etendue</code><span class="sig-paren">(</span><em class="sig-param">ray_count=10000</em>, <em class="sig-param">batches=10</em>, <em class="sig-param">max_distance=inf</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.calculate_etendue" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerFoil.calculate_etendue">
+<span class="sig-name descname"><span class="pre">calculate_etendue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ray_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batches</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.calculate_etendue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the etendue of this detector.</p>
 <p>This function calculates the detectors etendue by evaluating the fraction of rays that
 pass un-impeded through the detector’s aperture.</p>
@@ -410,15 +478,22 @@ regardless of what it hits. Use this if there are other primitives present in th
 which do not form the aperture.</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple (etendue, etendue_error).</p>
+</dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="cherab.tools.observers.bolometry.BolometerFoil.calculate_sensitivity">
-<code class="sig-name descname">calculate_sensitivity</code><span class="sig-paren">(</span><em class="sig-param">voxel_collection</em>, <em class="sig-param">ray_count=10000</em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.calculate_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerFoil.calculate_sensitivity">
+<span class="sig-name descname"><span class="pre">calculate_sensitivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voxel_collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ray_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.calculate_sensitivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates a sensitivity vector for this detector on the specified voxel collection.</p>
-<p>This function is used for calculating sensitivity matrices which can be combined for
-multiple detectors into a sensitivity matrix <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>.</p>
+<p>This function is used for calculating sensitivity matrices which can be
+combined for multiple detectors into a sensitivity matrix
+<span class="math notranslate nohighlight">\(\mathbf{W}\)</span>. If the <a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerFoil" title="cherab.tools.observers.bolometry.BolometerFoil"><code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerFoil</span></code></a> has units of “Power”, the
+returned sensitivity matrix has units of [m³ sr]. If the
+<a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerFoil" title="cherab.tools.observers.bolometry.BolometerFoil"><code class="xref py py-class docutils literal notranslate"><span class="pre">BolometerFoil</span></code></a> has units of “Radiance”, the returned sensitivity
+matrix has units of [m sr].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -435,15 +510,529 @@ in the collection.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="cherab.tools.observers.bolometry.BolometerFoil.trace_sightline">
-<code class="sig-name descname">trace_sightline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.trace_sightline" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerFoil.trace_sightline">
+<span class="sig-name descname"><span class="pre">trace_sightline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerFoil.trace_sightline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Traces the central sightline through the detector to see where the sightline terminates.</p>
 <p>Raises a RuntimeError exception if no intersection was found.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Returns a tuple containing the origin point, hit point and terminating surface
+<dd class="field-odd"><p>A tuple containing the origin point, hit point and terminating surface
 primitive.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerIRVB">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.bolometry.</span></span><span class="sig-name descname"><span class="pre">BolometerIRVB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'power'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accumulate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curvature_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerIRVB" title="Permalink to this definition">¶</a></dt>
+<dd><p>A rectangular infra red video bolometer (IRVB).</p>
+<p>Can be configured to sample a single ray per pixel, or fan of rays
+oriented along the observer’s z axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The name for this detector.</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – The width of the detector along the x basis vector.</p></li>
+<li><p><strong>pixels</strong> (<em>tuple</em>) – The number of pixels to divide the foil into.
+Pixels are square, so the height of the foil is determined by the
+width of the foil and the number of rows and columns of pixels.</p></li>
+<li><p><strong>slit</strong> (<a class="reference internal" href="#cherab.tools.observers.bolometry.BolometerSlit" title="cherab.tools.observers.bolometry.BolometerSlit"><em>BolometerSlit</em></a>) – The slit the IRVB views through.</p></li>
+<li><p><strong>transform</strong> (<em>AffineMatrix3D</em>) – The foil’s transform relative to its parent.</p></li>
+<li><p><strong>parent</strong> (<em>Node</em>) – The parent scenegraph node to which this detector belongs.
+Typically a BolometerCamera() or an optical World() object.</p></li>
+<li><p><strong>units</strong> (<em>bool</em>) – The units in which to perform observations, can
+be [‘power’, ‘radiance’], defaults to ‘power’.</p></li>
+<li><p><strong>accumulate</strong> (<em>bool</em>) – Whether this observer should accumulate samples
+with multiple calls to observe. Defaults to False.</p></li>
+<li><p><strong>curvature_radius</strong> (<em>float</em>) – Detectors in real bolometer cameras may
+have curved corners due to machining limitations. This parameter species
+the corner radius.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>normal_vector</strong> (<em>Vector3D</em>) – The normal vector of the detector constructed from
+the cross product of the x and y basis vectors.</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – The extent of the bolometer foil in the basis_x direction.</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – The extent of the bolometer foil in the basis_y direction.</p></li>
+<li><p><strong>pixels_as_foils</strong> (<em>array</em>) – A 2D array of pixels as individual BolometerFoil objects,
+useful for calling BolometerFoil methods on each pixel (e.g. sightline tracing).
+The array is indexed by (column, row).</p></li>
+<li><p><strong>sightline_vectors</strong> (<em>Vector3D</em>) – A 2D array of vectors that point from the centre
+of each pixel on the foil detector to the centre of the slit. Defines the
+effective sightline vectors of the pixels of the detector. The array is indexed by
+(column, row).</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate_basis</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">BolometerIRVB</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># construct transform, relative to parent&#39;s transform</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centre_point</span> <span class="o">=</span> <span class="n">Point3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.08</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis_x</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis_y</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normal</span> <span class="o">=</span> <span class="n">basis_x</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">basis_y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transform</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="o">*</span><span class="n">centre_point</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate_basis</span><span class="p">(</span><span class="n">normal</span><span class="p">,</span> <span class="n">basis_y</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># specify a detector, you need already created slit and camera objects</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">width</span> <span class="o">=</span> <span class="mf">0.0025</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pixels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">detector</span> <span class="o">=</span> <span class="n">BolometerIRVB</span><span class="p">(</span><span class="s2">&quot;irvb&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">pixels</span><span class="p">,</span> <span class="n">slit</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">camera</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerIRVB.as_sightlines">
+<span class="sig-name descname"><span class="pre">as_sightlines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerIRVB.as_sightlines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a SightLine observer for each pixel in this bolometer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A 2D array of Sightline objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerIRVB.calculate_etendue">
+<span class="sig-name descname"><span class="pre">calculate_etendue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ray_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batches</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerIRVB.calculate_etendue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the etendue of each pixel in this detector.</p>
+<p>This function calculates the detector etendue by evaluating the ratio of rays that
+pass un-impeded through the detector’s aperture. For this method to work, the detector
+and its aperture structures should be the only primitives present in the scene. If any
+other primitives are present, the results may be misleading.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ray_count</strong> (<em>int</em>) – The number of rays used per batch (default 10000).</p></li>
+<li><p><strong>batches</strong> (<em>int</em>) – The number of batches used to estimate the error on the etendue
+calculation. Default is 10.</p></li>
+<li><p><strong>max_distance</strong> (<em>float</em>) – The maximum distance from the detector to consider intersections.
+If a ray makes it further than this, it is assumed to have passed through the aperture,
+regardless of what it hits. Use this if there are other primitives present in the scene
+which do not form the aperture. Default is infinity (no max distance).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple (etendue, etendue_error), each of which is a 2D
+array of size (ncol, nrow)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerIRVB.calculate_sensitivity">
+<span class="sig-name descname"><span class="pre">calculate_sensitivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voxel_collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ray_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerIRVB.calculate_sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates a sensitivity vector for this detector on the specified voxel collection.</p>
+<p>This function is used for calculating sensitivity matrices which can be combined for
+multiple detectors into a sensitivity matrix <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>voxel_collection</strong> (<a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.VoxelCollection" title="cherab.tools.inversions.voxels.VoxelCollection"><em>VoxelCollection</em></a>) – The voxel collection on which to calculate
+the sensitivities.</p></li>
+<li><p><strong>ray_count</strong> (<em>int</em>) – The number of rays to use in the calculation. This should be
+at least &gt;= 10000 for decent statistics. Default is 10000.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A 3D array of sensitivities (ncol, nrow, nvoxels)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.bolometry.BolometerIRVB.trace_sightlines">
+<span class="sig-name descname"><span class="pre">trace_sightlines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.bolometry.BolometerIRVB.trace_sightlines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trace the central sightlines through each pixel in the detector
+to see where the sightline terminates.</p>
+<p>Raises a RuntimeError exception if no intersections were found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A 2D array of tuples containing the origin point, hit
+point and terminating surface primitive for each pixel.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="spectroscopic-lines-of-sight">
+<span id="observers-spectroscopic"></span><h2><span class="section-number">10.4.2. </span>Spectroscopic lines of sight<a class="headerlink" href="#spectroscopic-lines-of-sight" title="Permalink to this headline">¶</a></h2>
+<p>Spectroscopic line of sight allows to control main parameters of the pipeline
+without accessing the pipeline directly. Multiple spectroscopic line of sight can be
+combined into a group.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.spectroscopy.base.</span></span><span class="sig-name descname"><span class="pre">_SpectroscopicObserver0DBase</span></span><a class="headerlink" href="#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>A base class for spectroscopic 0D observers.</p>
+<p>The observer allows to control some of the pipeline properties
+without accessing the pipelines. It has a built-in plotting method.</p>
+<p>Multiple spectroscopic 0D observers can be combined into a group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>origin</strong> (<em>Point3D</em>) – The origin point of the sight line.</p></li>
+<li><p><strong>direction</strong> (<em>Vector3D</em>) – The observation direction of the sight line.</p></li>
+<li><p><strong>display_progress</strong> (<em>bool</em>) – Toggles the display of live render progress.</p></li>
+<li><p><strong>accumulate</strong> (<em>bool</em>) – Toggles whether to accumulate samples with subsequent
+calls to observe().</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.connect_pipelines">
+<span class="sig-name descname"><span class="pre">connect_pipelines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">properties=[(&lt;class</span> <span class="pre">'raysect.optical.observer.pipeline.spectral.radiance.SpectralRadiancePipeline0D'&gt;,</span> <span class="pre">None,</span> <span class="pre">None)]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.connect_pipelines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects pipelines of given kinds and names to this sight line.
+Connected pipelines are non-accumulating by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>properties</strong> (<em>list</em>) – <p>3-tuple list of pipeline properties in order (class, name, filter).
+Default is [(SpectralRadiancePipeline0D, None, None)].
+The following pipeline classes are supported:</p>
+<blockquote>
+<div><p>SpectralRadiacnePipeline0D,
+SpectralPowerPipeline0D,
+RadiacnePipeline0D,
+PowerPipeline0D.</p>
+</div></blockquote>
+<p>Filters are applied to the mono pipelines only, namely,
+PowerPipeline0D or RadiacnePipeline0D. The values provided for spectral
+pipelines will be ignored. The filter must be an instance of
+SpectralFunction or None.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.get_pipeline">
+<span class="sig-name descname"><span class="pre">get_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.get_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a pipeline by its name or index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>str/int</em>) – The name of the pipeline or its index in the list.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Pipeline0D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.plot_spectrum">
+<span class="sig-name descname"><span class="pre">plot_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_photons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extras</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.plot_spectrum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the observed spectrum for a given spectral pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>str/int</em>) – The index or name of the pipeline. Default: 0.</p></li>
+<li><p><strong>in_photons</strong> (<em>bool</em>) – If True, plots the spectrum in photon/s/nm instead of W/nm.
+Default is False.</p></li>
+<li><p><strong>ax</strong> (<em>Axes</em>) – Existing matplotlib axes.</p></li>
+<li><p><strong>extras</strong> (<em>bool</em>) – If True, set title and axis labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>matplotlib.pyplot.axes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.spectroscopy.SpectroscopicSightLine">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.spectroscopy.</span></span><span class="sig-name descname"><span class="pre">SpectroscopicSightLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipelines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.spectroscopy.SpectroscopicSightLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple line of sight observer.</p>
+<p>Multiple <cite>SpectroscopicSightLine</cite> observers can be combined into <cite>SightLineGroup</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>origin</strong> (<em>Point3D</em>) – The origin point for this sight-line. (optional)</p></li>
+<li><p><strong>direction</strong> (<em>Vector3D</em>) – The observation direction for this sight-line. (optional)</p></li>
+<li><p><strong>pipelines</strong> (<em>list</em>) – A list of pipelines that will process the resulting spectra
+from this observer.
+Default is [SpectralRadiancePipeline0D(accumulate=False)].</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">SpectroscopicSightLine</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sightline</span> <span class="o">=</span> <span class="n">SpectroscopicSightLine</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;MySightLine&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sightline</span><span class="o">.</span><span class="n">display_progress</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># control pipeline parameters through the group observer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sightline</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sightline</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sightline</span><span class="o">.</span><span class="n">plot_spectrum</span><span class="p">(</span><span class="n">in_photons</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># plot the spectrum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.spectroscopy.SpectroscopicFibreOptic">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.spectroscopy.</span></span><span class="sig-name descname"><span class="pre">SpectroscopicFibreOptic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipelines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acceptance_angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.spectroscopy.SpectroscopicFibreOptic" title="Permalink to this definition">¶</a></dt>
+<dd><p>An optic fibre spectroscopic observer with non-zero acceptance angle.</p>
+<p>Rays are sampled over a circular area at the fibre tip and a conical solid angle
+defined by the acceptance_angle parameter.</p>
+<p>Multiple <cite>SpectroscopicFibreOptic</cite> observers can be combined into <cite>FibreOpticGroup</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>origin</strong> (<em>Point3D</em>) – The origin point for this sight-line. (optional)</p></li>
+<li><p><strong>direction</strong> (<em>Vector3D</em>) – The observation direction for this sight-line. (optional)</p></li>
+<li><p><strong>pipelines</strong> (<em>list</em>) – A list of pipelines that will process the resulting spectra
+from this observer.
+Default is [SpectralRadiancePipeline0D(accumulate=False)].</p></li>
+<li><p><strong>acceptance_angle</strong> (<em>float</em>) – The angle in degrees between the z axis and the cone surface
+which defines the fibres solid angle sampling area.</p></li>
+<li><p><strong>radius</strong> (<em>float</em>) – The radius of the fibre tip in metres. This radius defines a circular
+area at the fibre tip which will be sampled over.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">SpectroscopicFibreOptic</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span> <span class="o">=</span> <span class="n">SpectroscopicFibreOptic</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;MyFibreOptic&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">acceptance_angle</span> <span class="o">=</span> <span class="mf">5.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">2.e-3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">display_progress</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># control pipeline parameters through the group observer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">plot_spectrum</span><span class="p">(</span><span class="n">in_photons</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># plots the spectrum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="group-observers">
+<span id="observers-group"></span><h2><span class="section-number">10.4.3. </span>Group observers<a class="headerlink" href="#group-observers" title="Permalink to this headline">¶</a></h2>
+<p>Group observer is a collection of observers of the same type, for example an array of line of
+sight. The parameters of individual observers in a group may differ.
+Group observer allows combined observation, namely, calling the observe function for a group
+leads to a sequential call of this function for each observer in the group.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.group.base.</span></span><span class="sig-name descname"><span class="pre">Observer0DGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A base class for a group of 0D spectroscopic observers under a single scene-graph node.</p>
+<p>A scene-graph object regrouping a series of observers as a scene-graph parent.
+Allows combined observation and display control simultaneously.
+Note that for any property except <cite>names</cite> and <cite>pipelines</cite>, the same value can be shared between
+all sight lines, or each sight line can be assigned with individual value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>names</strong> (<em>list</em>) – A list of sight-line names.</p></li>
+<li><p><strong>pipelines</strong> (<em>list</em>) – A list of all pipelines connected to each sight-line in the group.</p></li>
+<li><p><strong>origin</strong> (<em>list/Point3D</em>) – The origin points for the sight lines.</p></li>
+<li><p><strong>direction</strong> (<em>list/Vector3D</em>) – The observation directions for the sight lines.</p></li>
+<li><p><strong>render_engine</strong> (<em>list/RenderEngine</em>) – Rendering engine used by the sight lines.
+Note that if the engine is shared, changing its
+parameters for one sight line in a group will affect
+all sight lines.</p></li>
+<li><p><strong>display_progress</strong> (<em>list/bool</em>) – Toggles the display of live render progress.</p></li>
+<li><p><strong>accumulate</strong> (<em>list/bool</em>) – Toggles whether to accumulate samples with subsequent
+observations.</p></li>
+<li><p><strong>min_wavelength</strong> (<em>list/float</em>) – Lower wavelength bound for sampled spectral range.</p></li>
+<li><p><strong>max_wavelength</strong> (<em>list/float</em>) – Upper wavelength bound for sampled spectral range.</p></li>
+<li><p><strong>spectral_bins</strong> (<em>list/int</em>) – The number of spectral samples over the wavelength range.</p></li>
+<li><p><strong>ray_extinction_prob</strong> (<em>list/float</em>) – Probability of ray extinction after every material
+intersection.</p></li>
+<li><p><strong>ray_extinction_min_depth</strong> (<em>list/float</em>) – Minimum number of paths before russian roulette
+style ray extinction.</p></li>
+<li><p><strong>ray_max_depth</strong> (<em>list/int</em>) – Maximum number of Ray paths before terminating Ray.</p></li>
+<li><p><strong>ray_important_path_weight</strong> (<em>list/float</em>) – Relative weight of important path sampling.</p></li>
+<li><p><strong>pixel_samples</strong> (<em>list/int</em>) – The number of samples to take per pixel.</p></li>
+<li><p><strong>samples_per_task</strong> (<em>list/int</em>) – Minimum number of samples to request per task.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.connect_pipelines">
+<span class="sig-name descname"><span class="pre">connect_pipelines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">properties=[(&lt;class</span> <span class="pre">'raysect.optical.observer.pipeline.spectral.radiance.SpectralRadiancePipeline0D'&gt;,</span> <span class="pre">None,</span> <span class="pre">None)]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.connect_pipelines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects pipelines of given kinds and names to each sight-line in the group.
+Connected pipelines are non-accumulating by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>properties</strong> (<em>list</em>) – <p>3-tuple list of pipeline properties in order (class, name, filter).
+Default is [(SpectralRadiancePipeline0D, None, None)].
+The following pipeline classes are supported:</p>
+<blockquote>
+<div><p>SpectralRadiacnePipeline0D,
+SpectralPowerPipeline0D,
+RadiacnePipeline0D,
+PowerPipeline0D.</p>
+</div></blockquote>
+<p>Filters are applied to the mono pipelines only, namely,
+PowerPipeline0D or RadiacnePipeline0D. The values provided for spectral
+pipelines will be ignored. The filter must be an instance of
+SpectralFunction or None.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.observe">
+<span class="sig-name descname"><span class="pre">observe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.observe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts the observation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.plot_spectra">
+<span class="sig-name descname"><span class="pre">plot_spectra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_photons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.plot_spectra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the spectra observed by each line of sight in the group for a given pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>str/int</em>) – The index or name of the pipeline. Default: 0.</p></li>
+<li><p><strong>in_photons</strong> (<em>bool</em>) – If True, plots the spectrum in photon/s/nm instead of W/nm.
+Default is False.</p></li>
+<li><p><strong>ax</strong> (<em>Axes</em>) – Existing matplotlib axes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.plot_total_signal">
+<span class="sig-name descname"><span class="pre">plot_total_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.plot_total_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots total (wavelength-integrated) signal for each sight line in the group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>str/int</em>) – The index or name of the pipeline. Default: 0.</p></li>
+<li><p><strong>ax</strong> (<em>Axes</em>) – Existing matplotlib axes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.SightLineGroup">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.group.</span></span><span class="sig-name descname"><span class="pre">SightLineGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.SightLineGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A group of spectroscopic sight-lines under a single scene-graph node.</p>
+<p>A scene-graph object regrouping a series of ‘SpectroscopicSightLine’
+observers as a scene-graph parent. Allows combined observation and display
+control simultaneously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><p><strong>sight_lines</strong> (<em>list</em>) – A list of lines of sight (SpectroscopicSightLine instances)
+in this group.</p>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">SpectralRadiancePipeline0D</span><span class="p">,</span> <span class="n">RadiancePipeline0D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">SpectroscopicSightLine</span><span class="p">,</span> <span class="n">SightLineGroup</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">SightLineGroup</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicSightLine</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SightLine 1&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicSightLine</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SightLine 2&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicSightLine</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SightLine 3&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">connect_pipelines</span><span class="p">([(</span><span class="n">SpectralRadiancePipeline0D</span><span class="p">,</span> <span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="go">                             (RadiancePipeline0D, &#39;MyMonoPipeline&#39;, None)])  # add pipelines to all sight lines in the group</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="mi">512</span>  <span class="c1"># same value for all sight lines in the group</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>  <span class="c1"># individual value for each sight line in the group</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">display_progress</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># control pipeline parameters through the group observer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>  <span class="c1"># combined observation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">plot_spectra</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">,</span> <span class="n">in_photons</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># plot the spectra</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">plot_total_signal</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="s1">&#39;MyMonoPipeline&#39;</span><span class="p">)</span>  <span class="c1"># plot the total signals</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.SightLineGroup.add_sight_line">
+<span class="sig-name descname"><span class="pre">add_sight_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sight_line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.SightLineGroup.add_sight_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds new line of sight to the group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sight_line</strong> (<a class="reference internal" href="#cherab.tools.observers.spectroscopy.SpectroscopicSightLine" title="cherab.tools.observers.spectroscopy.SpectroscopicSightLine"><em>SpectroscopicSightLine</em></a>) – Sight line to add.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.FibreOpticGroup">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.group.</span></span><span class="sig-name descname"><span class="pre">FibreOpticGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.FibreOpticGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A group of fibre optics under a single scene-graph node.</p>
+<p>A scene-graph object regrouping a series of ‘SpectroscopicFibreOptic’
+observers as a scene-graph parent. Allows combined observation and display
+control simultaneously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sight_lines</strong> (<em>list</em>) – A list of fibre optics (SpectroscopicFibreOptic instances) in this
+group.</p></li>
+<li><p><strong>acceptance_angle</strong> (<em>list/float</em>) – The angle in degrees between the z axis and the cone
+surface which defines the fibres solid angle sampling
+area. The same value can be shared between all sight lines,
+or each sight line can be assigned with individual value.</p></li>
+<li><p><strong>radius</strong> (<em>list/float</em>) – The radius of the fibre tip in metres. This radius defines a circular
+area at the fibre tip which will be sampled over. The same value
+can be shared between all sight lines, or each sight line can be
+assigned with individual value.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">SpectralPowerPipeline0D</span><span class="p">,</span> <span class="n">PowerPipeline0D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">SpectroscopicFibreOptic</span><span class="p">,</span> <span class="n">FibreOpticGroup</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">FibreOpticGroup</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicFibreOptic</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fibre 1&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicFibreOptic</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fibre 2&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicFibreOptic</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fibre 3&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">connect_pipelines</span><span class="p">([(</span><span class="n">SpectralPowerPipeline0D</span><span class="p">,</span> <span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="go">                             (PowerPipeline0D, &#39;MyMonoPipeline&#39;, None)])  # add pipelines to all fibres in the group</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">acceptance_angle</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># same value for all fibres in the group</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">2.e-3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>  <span class="c1"># individual value for each fibre in the group</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">display_progress</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># control pipeline parameters through the group observer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>  <span class="c1"># combined observation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">plot_spectra</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">,</span> <span class="n">in_photons</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># plot the spectra</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">plot_total_signal</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="s1">&#39;MyMonoPipeline&#39;</span><span class="p">)</span>  <span class="c1"># plot the total signals</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.FibreOpticGroup.add_sight_line">
+<span class="sig-name descname"><span class="pre">add_sight_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sight_line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.FibreOpticGroup.add_sight_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds new fibre optic to the group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sight_line</strong> (<a class="reference internal" href="#cherab.tools.observers.spectroscopy.SpectroscopicFibreOptic" title="cherab.tools.observers.spectroscopy.SpectroscopicFibreOptic"><em>SpectroscopicFibreOptic</em></a>) – Fibre optic to add.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -464,7 +1053,7 @@ primitive.</p>
         <a href="tomography.html" class="btn btn-neutral float-right" title="10.5. Tomography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="primitives.html" class="btn btn-neutral float-left" title="10.3. Primitives" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="primitives.html" class="btn btn-neutral" title="10.3. Primitives" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -473,7 +1062,7 @@ primitive.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, CHERAB Team
+        &copy; Copyright 2021, Cherab Team
 
     </p>
   </div> 
@@ -489,16 +1078,27 @@ primitive.</p>
   
 
 
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
