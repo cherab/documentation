@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10.4. Observers &mdash; Cherab 1.3.0 documentation</title>
+  <title>10.4. Observers &mdash; Cherab 1.4.0 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10.5. Tomography" href="tomography.html" />
+    <link rel="next" title="10.5. Spectroscopy" href="spectroscopy.html" />
     <link rel="prev" title="10.3. Primitives" href="primitives.html" /> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -101,11 +101,15 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">10.4. Observers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#bolometers">10.4.1. Bolometers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spectroscopic-lines-of-sight">10.4.2. Spectroscopic lines of sight</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#group-observers">10.4.3. Group observers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-observers">10.4.3. Group observers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#spectroscopic-groups">10.4.3.1. Spectroscopic Groups</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tomography.html">10.5. Tomography</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utility.html">10.6. Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy.html">10.5. Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tomography.html">10.6. Tomography</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">10.7. Utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -665,13 +669,19 @@ point and terminating surface primitive for each pixel.</p>
 </div>
 <div class="section" id="spectroscopic-lines-of-sight">
 <span id="observers-spectroscopic"></span><h2><span class="section-number">10.4.2. </span>Spectroscopic lines of sight<a class="headerlink" href="#spectroscopic-lines-of-sight" title="Permalink to this headline">¶</a></h2>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.4.0: </span>Use Raysect’s observer classes instead</p>
+</div>
 <p>Spectroscopic line of sight allows to control main parameters of the pipeline
 without accessing the pipeline directly. Multiple spectroscopic line of sight can be
 combined into a group.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.spectroscopy.base.</span></span><span class="sig-name descname"><span class="pre">_SpectroscopicObserver0DBase</span></span><a class="headerlink" href="#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>A base class for spectroscopic 0D observers.</p>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.4.0: </span>Use Raysect’s observer classes instead.</p>
+</div>
+<p>A base class for spectroscopic 0D observers.</p>
 <p>The observer allows to control some of the pipeline properties
 without accessing the pipelines. It has a built-in plotting method.</p>
 <p>Multiple spectroscopic 0D observers can be combined into a group.</p>
@@ -750,7 +760,10 @@ Default is False.</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.tools.observers.spectroscopy.SpectroscopicSightLine">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.spectroscopy.</span></span><span class="sig-name descname"><span class="pre">SpectroscopicSightLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipelines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.spectroscopy.SpectroscopicSightLine" title="Permalink to this definition">¶</a></dt>
-<dd><p>A simple line of sight observer.</p>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.4.0: </span>Use Raysect’s SightLine observer instead.</p>
+</div>
+<p>A simple line of sight observer.</p>
 <p>Multiple <cite>SpectroscopicSightLine</cite> observers can be combined into <cite>SightLineGroup</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -783,7 +796,10 @@ Default is [SpectralRadiancePipeline0D(accumulate=False)].</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.tools.observers.spectroscopy.SpectroscopicFibreOptic">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.spectroscopy.</span></span><span class="sig-name descname"><span class="pre">SpectroscopicFibreOptic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipelines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acceptance_angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.spectroscopy.SpectroscopicFibreOptic" title="Permalink to this definition">¶</a></dt>
-<dd><p>An optic fibre spectroscopic observer with non-zero acceptance angle.</p>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.4.0: </span>Use Raysect’s FibreOptic observer instead.</p>
+</div>
+<p>An optic fibre spectroscopic observer with non-zero acceptance angle.</p>
 <p>Rays are sampled over a circular area at the fibre tip and a conical solid angle
 defined by the acceptance_angle parameter.</p>
 <p>Multiple <cite>SpectroscopicFibreOptic</cite> observers can be combined into <cite>FibreOpticGroup</cite>.</p>
@@ -824,69 +840,77 @@ area at the fibre tip which will be sampled over.</p></li>
 </div>
 <div class="section" id="group-observers">
 <span id="observers-group"></span><h2><span class="section-number">10.4.3. </span>Group observers<a class="headerlink" href="#group-observers" title="Permalink to this headline">¶</a></h2>
-<p>Group observer is a collection of observers of the same type, for example an array of line of
-sight. The parameters of individual observers in a group may differ.
-Group observer allows combined observation, namely, calling the observe function for a group
-leads to a sequential call of this function for each observer in the group.</p>
+<p>Group observer is a collection of observers of the same type. All Observer0D classes
+defined in Raysect are supoorted. The parameters of individual observers in a group
+may differ. Group observer allows combined observation, namely, calling the observe
+function for a group leads to a sequential call of this function for each observer
+in the group.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.group.base.</span></span><span class="sig-name descname"><span class="pre">Observer0DGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup" title="Permalink to this definition">¶</a></dt>
-<dd><p>A base class for a group of 0D spectroscopic observers under a single scene-graph node.</p>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.group.base.</span></span><span class="sig-name descname"><span class="pre">Observer0DGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A base class for handling groups of nonimaging observers as one Node.</p>
 <p>A scene-graph object regrouping a series of observers as a scene-graph parent.
 Allows combined observation and display control simultaneously.
 Note that for any property except <cite>names</cite> and <cite>pipelines</cite>, the same value can be shared between
-all sight lines, or each sight line can be assigned with individual value.</p>
+all observers, or each observer can be assigned with individual value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>names</strong> (<em>list</em>) – A list of sight-line names.</p></li>
-<li><p><strong>pipelines</strong> (<em>list</em>) – A list of all pipelines connected to each sight-line in the group.</p></li>
-<li><p><strong>origin</strong> (<em>list/Point3D</em>) – The origin points for the sight lines.</p></li>
-<li><p><strong>direction</strong> (<em>list/Vector3D</em>) – The observation directions for the sight lines.</p></li>
-<li><p><strong>render_engine</strong> (<em>list/RenderEngine</em>) – Rendering engine used by the sight lines.
+<li><p><strong>names</strong> (<em>list</em>) – A list of observer names.</p></li>
+<li><p><strong>render_engine</strong> (<em>list/RenderEngine</em>) – Rendering engine used by the observers.
 Note that if the engine is shared, changing its
-parameters for one sight line in a group will affect
-all sight lines.</p></li>
-<li><p><strong>display_progress</strong> (<em>list/bool</em>) – Toggles the display of live render progress.</p></li>
-<li><p><strong>accumulate</strong> (<em>list/bool</em>) – Toggles whether to accumulate samples with subsequent
-observations.</p></li>
-<li><p><strong>min_wavelength</strong> (<em>list/float</em>) – Lower wavelength bound for sampled spectral range.</p></li>
-<li><p><strong>max_wavelength</strong> (<em>list/float</em>) – Upper wavelength bound for sampled spectral range.</p></li>
+parameters for one observer in a group will affect
+all observers.</p></li>
 <li><p><strong>spectral_bins</strong> (<em>list/int</em>) – The number of spectral samples over the wavelength range.</p></li>
-<li><p><strong>ray_extinction_prob</strong> (<em>list/float</em>) – Probability of ray extinction after every material
-intersection.</p></li>
-<li><p><strong>ray_extinction_min_depth</strong> (<em>list/float</em>) – Minimum number of paths before russian roulette
-style ray extinction.</p></li>
+<li><p><strong>spectral_rays</strong> (<em>list/int</em>) – The number of smaller sub-spectrum rays the full spectrum will be divided into.</p></li>
+<li><p><strong>max_wavelength</strong> (<em>list/float</em>) – Upper wavelength bound for sampled spectral range.</p></li>
+<li><p><strong>min_wavelength</strong> (<em>list/float</em>) – Lower wavelength bound for sampled spectral range.</p></li>
+<li><p><strong>ray_extinction_prob</strong> (<em>list/float</em>) – Probability of ray extinction after every material intersection.</p></li>
 <li><p><strong>ray_max_depth</strong> (<em>list/int</em>) – Maximum number of Ray paths before terminating Ray.</p></li>
+<li><p><strong>ray_extinction_min_depth</strong> (<em>list/float</em>) – Minimum number of paths before russian roulette style ray extinction.</p></li>
+<li><p><strong>ray_importance_sampling</strong> (<em>list/bool</em>) – Toggle importance sampling behaviour (default=True).</p></li>
 <li><p><strong>ray_important_path_weight</strong> (<em>list/float</em>) – Relative weight of important path sampling.</p></li>
 <li><p><strong>pixel_samples</strong> (<em>list/int</em>) – The number of samples to take per pixel.</p></li>
 <li><p><strong>samples_per_task</strong> (<em>list/int</em>) – Minimum number of samples to request per task.</p></li>
+<li><p><strong>pipelines</strong> (<em>list</em>) – A list of all pipelines connected to each observer in the group.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.add_observer">
+<span class="sig-name descname"><span class="pre">add_observer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.add_observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds new observer to the group.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.connect_pipelines">
-<span class="sig-name descname"><span class="pre">connect_pipelines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">properties=[(&lt;class</span> <span class="pre">'raysect.optical.observer.pipeline.spectral.radiance.SpectralRadiancePipeline0D'&gt;,</span> <span class="pre">None,</span> <span class="pre">None)]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.connect_pipelines" title="Permalink to this definition">¶</a></dt>
-<dd><p>Connects pipelines of given kinds and names to each sight-line in the group.
-Connected pipelines are non-accumulating by default.</p>
+<span class="sig-name descname"><span class="pre">connect_pipelines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipeline_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_display_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.connect_pipelines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and connects a new set of given pipelines to each observer in the group.</p>
+<p>Pipeline classes are instantiated using parameters specified in appropriate dict from keywords list.
+If keywords list is provided, it length must match the number of provided pipeline classes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>properties</strong> (<em>list</em>) – <p>3-tuple list of pipeline properties in order (class, name, filter).
-Default is [(SpectralRadiancePipeline0D, None, None)].
-The following pipeline classes are supported:</p>
-<blockquote>
-<div><p>SpectralRadiacnePipeline0D,
-SpectralPowerPipeline0D,
-RadiacnePipeline0D,
-PowerPipeline0D.</p>
-</div></blockquote>
-<p>Filters are applied to the mono pipelines only, namely,
-PowerPipeline0D or RadiacnePipeline0D. The values provided for spectral
-pipelines will be ignored. The filter must be an instance of
-SpectralFunction or None.</p>
-</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pipeline_classes</strong> (<em>list</em>) – list of pipeline classes to be connected with observers</p></li>
+<li><p><strong>keywords_list</strong> (<em>list</em>) – list of dicts with keywords passed to init methods of pipeline classes
+its length must match the number of pipeline classes
+for default parameters place an empty dict to appropriate place in the list</p></li>
+<li><p><strong>suppress_display_progress</strong> (<em>bool</em>) – Toggles setting display_progress to False for each compatible pipeline (default=True)</p></li>
+</ul>
 </dd>
 </dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipelines</span> <span class="o">=</span> <span class="p">[</span><span class="n">SpectralRadiancePipeline0D</span><span class="p">,</span> <span class="n">RadiancePipeline0D</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">keywords</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">},</span> <span class="p">{}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">connect_pipelines</span><span class="p">(</span><span class="n">pipeline_classes</span><span class="o">=</span><span class="n">pipelines</span><span class="p">,</span> <span class="n">keywords_list</span><span class="o">=</span><span class="n">keywords</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.names">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">names</span></span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.names" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of observer names.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -895,150 +919,210 @@ SpectralFunction or None.</p>
 <dd><p>Starts the observation.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.plot_spectra">
-<span class="sig-name descname"><span class="pre">plot_spectra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_photons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.plot_spectra" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot the spectra observed by each line of sight in the group for a given pipeline.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.observers">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">observers</span></span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.observers" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of all observer object assigned to the group.
+The group is set as a parent to any added observer.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>item</strong> (<em>str/int</em>) – The index or name of the pipeline. Default: 0.</p></li>
-<li><p><strong>in_photons</strong> (<em>bool</em>) – If True, plots the spectrum in photon/s/nm instead of W/nm.
-Default is False.</p></li>
-<li><p><strong>ax</strong> (<em>Axes</em>) – Existing matplotlib axes.</p></li>
-</ul>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.plot_total_signal">
-<span class="sig-name descname"><span class="pre">plot_total_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.plot_total_signal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plots total (wavelength-integrated) signal for each sight line in the group.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.pipelines">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">pipelines</span></span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.pipelines" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of all pipelines connected to each observer in the group</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>item</strong> (<em>str/int</em>) – The index or name of the pipeline. Default: 0.</p></li>
-<li><p><strong>ax</strong> (<em>Axes</em>) – Existing matplotlib axes.</p></li>
-</ul>
+<dd class="field-odd"><p><strong>pipelist</strong> (<em>list</em>) – list of lists/tuples of already instantiated pipelines</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.base.Observer0DGroup.render_engine">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">render_engine</span></span><a class="headerlink" href="#cherab.tools.observers.group.base.Observer0DGroup.render_engine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rendering engine used by the observers.
+:rtype: list</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.tools.observers.group.SightLineGroup">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.group.</span></span><span class="sig-name descname"><span class="pre">SightLineGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.SightLineGroup" title="Permalink to this definition">¶</a></dt>
-<dd><p>A group of spectroscopic sight-lines under a single scene-graph node.</p>
-<p>A scene-graph object regrouping a series of ‘SpectroscopicSightLine’
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.group.</span></span><span class="sig-name descname"><span class="pre">SightLineGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.SightLineGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A group of SightLine under a single scene-graph node.</p>
+<p>A scene-graph object regrouping a series of ‘SightLine’
 observers as a scene-graph parent. Allows combined observation and display
 control simultaneously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
-<dd class="field-odd"><p><strong>sight_lines</strong> (<em>list</em>) – A list of lines of sight (SpectroscopicSightLine instances)
-in this group.</p>
+<dd class="field-odd"><p><strong>observers</strong> (<em>list</em>) – A list of sight lines (SightLine instances) in this group.</p>
 </dd>
 </dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate_basis</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">SpectralRadiancePipeline0D</span><span class="p">,</span> <span class="n">RadiancePipeline0D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">SpectroscopicSightLine</span><span class="p">,</span> <span class="n">SightLineGroup</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">RadiancePipeline0D</span><span class="p">,</span> <span class="n">SpectralRadiancePipeline0D</span><span class="p">,</span> <span class="n">PowerPipeline0D</span><span class="p">,</span> <span class="n">SpectralPowerPipeline0D</span><span class="p">,</span> <span class="n">SightLine</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">SightLineGroup</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers.group.plotting</span> <span class="kn">import</span> <span class="n">plot_group_total</span><span class="p">,</span> <span class="n">plot_group_spectra</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">SightLineGroup</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicSightLine</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SightLine 1&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicSightLine</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SightLine 2&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicSightLine</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SightLine 3&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">connect_pipelines</span><span class="p">([(</span><span class="n">SpectralRadiancePipeline0D</span><span class="p">,</span> <span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="go">                             (RadiancePipeline0D, &#39;MyMonoPipeline&#39;, None)])  # add pipelines to all sight lines in the group</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="mi">512</span>  <span class="c1"># same value for all sight lines in the group</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>  <span class="c1"># individual value for each sight line in the group</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">display_progress</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># control pipeline parameters through the group observer</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transform1</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate_basis</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sightline_1</span> <span class="o">=</span> <span class="n">SightLine</span><span class="p">(</span><span class="n">transform</span><span class="o">=</span><span class="n">transform1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SightLine 1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transform2</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate_basis</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sightline_2</span> <span class="o">=</span> <span class="n">SightLine</span><span class="p">(</span><span class="n">transform</span><span class="o">=</span><span class="n">transform2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SightLine 2&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transform3</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate_basis</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sightline_3</span> <span class="o">=</span> <span class="n">SightLine</span><span class="p">(</span><span class="n">transform</span><span class="o">=</span><span class="n">transform3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SightLine 3&quot;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">SightLineGroup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;MySightLineGroup&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">observers</span><span class="o">=</span><span class="p">[</span><span class="n">sightline_1</span><span class="p">,</span> <span class="n">sightline_2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_observer</span><span class="p">(</span><span class="n">sightline_3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipelines</span> <span class="o">=</span> <span class="p">[</span><span class="n">SpectralRadiancePipeline0D</span><span class="p">,</span> <span class="n">RadiancePipeline0D</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">keywords</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;MyMonoPipeline&#39;</span><span class="p">}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">connect_pipelines</span><span class="p">(</span><span class="n">pipelines</span><span class="p">,</span> <span class="n">keywords</span><span class="p">)</span>  <span class="c1"># add pipelines to all observers in the group</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">acceptance_angle</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># same value for all sightlines in the group</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">2.e-3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>  <span class="c1"># individual value for each sightline in the group</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>  <span class="c1"># combined observation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">plot_spectra</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">,</span> <span class="n">in_photons</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># plot the spectra</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">plot_total_signal</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="s1">&#39;MyMonoPipeline&#39;</span><span class="p">)</span>  <span class="c1"># plot the total signals</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_group_spectra</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">item</span><span class="o">=</span><span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">,</span> <span class="n">in_photons</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># plot the spectra</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_group_total</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">item</span><span class="o">=</span><span class="s1">&#39;MyMonoPipeline&#39;</span><span class="p">)</span>  <span class="c1"># plot the total signals</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="py method">
-<dt class="sig sig-object py" id="cherab.tools.observers.group.SightLineGroup.add_sight_line">
-<span class="sig-name descname"><span class="pre">add_sight_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sight_line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.SightLineGroup.add_sight_line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds new line of sight to the group.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sight_line</strong> (<a class="reference internal" href="#cherab.tools.observers.spectroscopy.SpectroscopicSightLine" title="cherab.tools.observers.spectroscopy.SpectroscopicSightLine"><em>SpectroscopicSightLine</em></a>) – Sight line to add.</p>
-</dd>
-</dl>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.tools.observers.group.FibreOpticGroup">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.group.</span></span><span class="sig-name descname"><span class="pre">FibreOpticGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.FibreOpticGroup" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.group.</span></span><span class="sig-name descname"><span class="pre">FibreOpticGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.FibreOpticGroup" title="Permalink to this definition">¶</a></dt>
 <dd><p>A group of fibre optics under a single scene-graph node.</p>
-<p>A scene-graph object regrouping a series of ‘SpectroscopicFibreOptic’
+<p>A scene-graph object regrouping a series of ‘FibreOptic’
 observers as a scene-graph parent. Allows combined observation and display
 control simultaneously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sight_lines</strong> (<em>list</em>) – A list of fibre optics (SpectroscopicFibreOptic instances) in this
-group.</p></li>
 <li><p><strong>acceptance_angle</strong> (<em>list/float</em>) – The angle in degrees between the z axis and the cone
 surface which defines the fibres solid angle sampling
-area. The same value can be shared between all sight lines,
-or each sight line can be assigned with individual value.</p></li>
+area. The same value can be shared between all observers,
+or each observer can be assigned with individual value.</p></li>
 <li><p><strong>radius</strong> (<em>list/float</em>) – The radius of the fibre tip in metres. This radius defines a circular
 area at the fibre tip which will be sampled over. The same value
-can be shared between all sight lines, or each sight line can be
+can be shared between all observers, or each observer can be
 assigned with individual value.</p></li>
 </ul>
 </dd>
 </dl>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate_basis</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">SpectralPowerPipeline0D</span><span class="p">,</span> <span class="n">PowerPipeline0D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">SpectroscopicFibreOptic</span><span class="p">,</span> <span class="n">FibreOpticGroup</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">RadiancePipeline0D</span><span class="p">,</span> <span class="n">SpectralRadiancePipeline0D</span><span class="p">,</span> <span class="n">PowerPipeline0D</span><span class="p">,</span> <span class="n">SpectralPowerPipeline0D</span><span class="p">,</span> <span class="n">FibreOptic</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">FibreOpticGroup</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.observers.group.plotting</span> <span class="kn">import</span> <span class="n">plot_group_total</span><span class="p">,</span> <span class="n">plot_group_spectra</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">FibreOpticGroup</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicFibreOptic</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fibre 1&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicFibreOptic</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fibre 2&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_sight_line</span><span class="p">(</span><span class="n">SpectroscopicFibreOptic</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fibre 3&quot;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">connect_pipelines</span><span class="p">([(</span><span class="n">SpectralPowerPipeline0D</span><span class="p">,</span> <span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="go">                             (PowerPipeline0D, &#39;MyMonoPipeline&#39;, None)])  # add pipelines to all fibres in the group</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transform1</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate_basis</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibre1</span> <span class="o">=</span> <span class="n">FibreOptic</span><span class="p">(</span><span class="n">transform</span><span class="o">=</span><span class="n">transform1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fibre 1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transform2</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate_basis</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibre2</span> <span class="o">=</span> <span class="n">FibreOptic</span><span class="p">(</span><span class="n">transform</span><span class="o">=</span><span class="n">transform2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fibre 2&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transform3</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate_basis</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">)),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibre3</span> <span class="o">=</span> <span class="n">FibreOptic</span><span class="p">(</span><span class="n">transform</span><span class="o">=</span><span class="n">transform3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fibre 3&quot;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">FibreOpticGroup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;MyFibreGroup&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">observers</span><span class="o">=</span><span class="p">[</span><span class="n">fibre1</span><span class="p">,</span> <span class="n">fibre2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">add_observer</span><span class="p">(</span><span class="n">fibre3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipelines</span> <span class="o">=</span> <span class="p">[</span><span class="n">SpectralRadiancePipeline0D</span><span class="p">,</span> <span class="n">RadiancePipeline0D</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">keywords</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;MyMonoPipeline&#39;</span><span class="p">}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">connect_pipelines</span><span class="p">(</span><span class="n">pipelines</span><span class="p">,</span> <span class="n">keywords</span><span class="p">)</span>  <span class="c1"># add pipelines to all observers in the group</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">acceptance_angle</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># same value for all fibres in the group</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">2.e-3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="mi">512</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>  <span class="c1"># individual value for each fibre in the group</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">display_progress</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># control pipeline parameters through the group observer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>  <span class="c1"># combined observation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">plot_spectra</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">,</span> <span class="n">in_photons</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># plot the spectra</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span><span class="o">.</span><span class="n">plot_total_signal</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="s1">&#39;MyMonoPipeline&#39;</span><span class="p">)</span>  <span class="c1"># plot the total signals</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_group_spectra</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">item</span><span class="o">=</span><span class="s1">&#39;MySpectralPipeline&#39;</span><span class="p">,</span> <span class="n">in_photons</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># plot the spectra</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_group_total</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">item</span><span class="o">=</span><span class="s1">&#39;MyMonoPipeline&#39;</span><span class="p">)</span>  <span class="c1"># plot the total signals</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="py method">
-<dt class="sig sig-object py" id="cherab.tools.observers.group.FibreOpticGroup.add_sight_line">
-<span class="sig-name descname"><span class="pre">add_sight_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sight_line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.FibreOpticGroup.add_sight_line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds new fibre optic to the group.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.PixelGroup">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.group.</span></span><span class="sig-name descname"><span class="pre">PixelGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.PixelGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A group of pixels under a single scene-graph node.</p>
+<p>A scene-graph object regrouping a series of ‘Pixel’
+observers as a scene-graph parent. Allows combined observation and display
+control simultaneously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_width</strong> (<em>list</em>) – Width of pixel along local x axis</p></li>
+<li><p><strong>y_width</strong> (<em>list</em>) – Width of pixel along local y axis</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.TargettedPixelGroup">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.observers.group.</span></span><span class="sig-name descname"><span class="pre">TargettedPixelGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.observers.group.TargettedPixelGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A group of targetted pixel under a single scene-graph node.</p>
+<p>A scene-graph object regrouping a series of ‘TargettedPixel’
+observers as a scene-graph parent. Allows combined observation and display
+control simultaneously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_width</strong> (<em>list</em>) – Width of pixel along local x axis</p></li>
+<li><p><strong>y_width</strong> (<em>list</em>) – Width of pixel along local y axis</p></li>
+<li><p><strong>targets</strong> (<em>list</em>) – Targets for preferential sampling</p></li>
+<li><p><strong>targetted_path_prob</strong> (<em>list</em>) – Probability of ray being casted at the target</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="cherab.tools.observers.group.TargettedPixelGroup.targets">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">targets</span></span><a class="headerlink" href="#cherab.tools.observers.group.TargettedPixelGroup.targets" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of target lists used by pixels for preferential sampling</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sight_line</strong> (<a class="reference internal" href="#cherab.tools.observers.spectroscopy.SpectroscopicFibreOptic" title="cherab.tools.observers.spectroscopy.SpectroscopicFibreOptic"><em>SpectroscopicFibreOptic</em></a>) – Fibre optic to add.</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>list</em>) – List of primitives to be set to each pixel or 
+list of lists containing targets specific for each pixel
+in this case the number of lists must match number of pixels</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
+<div class="section" id="spectroscopic-groups">
+<h3><span class="section-number">10.4.3.1. </span>Spectroscopic Groups<a class="headerlink" href="#spectroscopic-groups" title="Permalink to this headline">¶</a></h3>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.4.0: </span>Use groups based on Raysect’s observer classes instead</p>
+</div>
+<p>These groups take control of spectroscopic lines of sight observers. They support
+direction and origin positioning and contain methods for plotting the power and
+spectrum. Originally, these were called group observers and did not include the
+Spectroscopic prefix in class name.</p>
+</div>
 </div>
 </div>
 
@@ -1050,7 +1134,7 @@ assigned with individual value.</p></li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tomography.html" class="btn btn-neutral float-right" title="10.5. Tomography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="spectroscopy.html" class="btn btn-neutral float-right" title="10.5. Spectroscopy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="primitives.html" class="btn btn-neutral" title="10.3. Primitives" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -1062,7 +1146,7 @@ assigned with individual value.</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, Cherab Team
+        &copy; Copyright 2022, Cherab Team
 
     </p>
   </div> 

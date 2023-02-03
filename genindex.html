@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Cherab 1.3.0 documentation</title>
+  <title>Index &mdash; Cherab 1.4.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -202,22 +202,24 @@
         <li><a href="atomic/rate_coefficients.html#call__">built-in function</a>, <a href="atomic/rate_coefficients.html#id0">[1]</a>
 </li>
       </ul></li>
-      <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamCXPEC.__call__">__call__() (cherab.core.atomic.rates.BeamCXPEC method)</a>
+      <li><a href="atomic/gaunt_factors.html#cherab.core.atomic.gaunt.FreeFreeGauntFactor.__call__">__call__() (cherab.core.atomic.gaunt.FreeFreeGauntFactor method)</a>
 
       <ul>
+        <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamCXPEC.__call__">(cherab.core.atomic.rates.BeamCXPEC method)</a>
+</li>
         <li><a href="plasmas/core_plasma_classes.html#cherab.core.distribution.DistributionFunction.__call__">(cherab.core.distribution.DistributionFunction method)</a>
 </li>
         <li><a href="tools/tomography.html#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.__call__">(cherab.tools.inversions.opencl.sart_opencl.SartOpencl method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.__getitem__">__getitem__() (cherab.core.plasma.node.Composition method)</a>
 
       <ul>
         <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.__getitem__">(cherab.tools.observers.bolometry.BolometerCamera method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.__iter__">__iter__() (cherab.core.plasma.node.Composition method)</a>
 
       <ul>
@@ -225,8 +227,6 @@
 </li>
       </ul></li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.__len__">__len__() (cherab.tools.observers.bolometry.BolometerCamera method)</a>
-</li>
-      <li><a href="models/cxs/cxs_model.html#cherab.core.model.beam.charge_exchange.BeamCXLine._change">_change() (cherab.core.model.beam.charge_exchange.BeamCXLine method)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase">_SpectroscopicObserver0DBase (class in cherab.tools.observers.spectroscopy.base)</a>
 </li>
@@ -242,18 +242,14 @@
 </li>
       <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.add_gaussian_line">add_gaussian_line (class in cherab.core.model.lineshape)</a>
 </li>
-      <li><a href="tools/observers.html#cherab.tools.observers.group.FibreOpticGroup.add_sight_line">add_sight_line() (cherab.tools.observers.group.FibreOpticGroup method)</a>
-
-      <ul>
-        <li><a href="tools/observers.html#cherab.tools.observers.group.SightLineGroup.add_sight_line">(cherab.tools.observers.group.SightLineGroup method)</a>
+      <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup.add_observer">add_observer() (cherab.tools.observers.group.base.Observer0DGroup method)</a>
 </li>
-      </ul></li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.AmuToKg">AmuToKg (class in cherab.core.utility.conversion)</a>
+</li>
+      <li><a href="tools/utility.html#cherab.core.utility.conversion.AngstromToNm">AngstromToNm (class in cherab.core.utility.conversion)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="tools/utility.html#cherab.core.utility.conversion.AngstromToNm">AngstromToNm (class in cherab.core.utility.conversion)</a>
-</li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.append">append() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil.as_sightline">as_sightline() (cherab.tools.observers.bolometry.BolometerFoil method)</a>
@@ -347,6 +343,10 @@
         <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerIRVB.calculate_sensitivity">(cherab.tools.observers.bolometry.BolometerIRVB method)</a>
 </li>
       </ul></li>
+      <li><a href="models/laser/laser.html#cherab.core.model.laser.model.SeldenMatobaThomsonSpectrum.calculate_spectrum">calculate_spectrum() (cherab.core.model.laser.model.SeldenMatobaThomsonSpectrum method)</a>
+</li>
+      <li><a href="tools/spectroscopy.html#cherab.tools.spectroscopy.Spectrometer.calibrate">calibrate() (cherab.tools.spectroscopy.Spectrometer method)</a>
+</li>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.emitters.CartesianRayTransferEmitter">CartesianRayTransferEmitter (class in cherab.tools.raytransfer.emitters)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.emitters.CartesianRayTransferIntegrator">CartesianRayTransferIntegrator (class in cherab.tools.raytransfer.emitters)</a>
@@ -406,8 +406,6 @@
         <li><a href="math/clamp.html#module-cherab.core.math.clamp">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     cherab.core.math.mappers
 
@@ -415,6 +413,8 @@
         <li><a href="math/mappers.html#module-cherab.core.math.mappers">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     cherab.core.math.mask
 
@@ -480,9 +480,17 @@
         <li><a href="tools/observers.html#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.connect_pipelines">(cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase method)</a>
 </li>
       </ul></li>
+      <li><a href="models/laser/laser.html#cherab.core.model.laser.profile.ConstantBivariateGaussian">ConstantBivariateGaussian (class in cherab.core.model.laser.profile)</a>
+</li>
+      <li><a href="models/laser/laser.html#cherab.core.model.laser.laserspectrum.ConstantSpectrum">ConstantSpectrum (class in cherab.core.model.laser.laserspectrum)</a>
+</li>
+      <li><a href="tools/spectroscopy.html#cherab.tools.spectroscopy.SpectroscopicInstrument.create_pipelines">create_pipelines() (cherab.tools.spectroscopy.SpectroscopicInstrument method)</a>
+</li>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.emitters.CylindricalRayTransferEmitter">CylindricalRayTransferEmitter (class in cherab.tools.raytransfer.emitters)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.emitters.CylindricalRayTransferIntegrator">CylindricalRayTransferIntegrator (class in cherab.tools.raytransfer.emitters)</a>
+</li>
+      <li><a href="tools/spectroscopy.html#cherab.tools.spectroscopy.CzernyTurnerSpectrometer">CzernyTurnerSpectrometer (class in cherab.tools.spectroscopy)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -522,16 +530,8 @@
 </li>
       <li><a href="atomic/elements_and_isotopes.html#cherab.core.atomic.elements.Element">Element (class in cherab.core.atomic.elements)</a>
 </li>
-      <li><a href="models/cxs/cxs_model.html#cherab.core.model.beam.charge_exchange.BeamCXLine.emission">emission() (cherab.core.model.beam.charge_exchange.BeamCXLine method)</a>
-
-      <ul>
-        <li><a href="models/brem/bremsstrahlung.html#cherab.core.model.plasma.bremsstrahlung.Bremsstrahlung.emission">(cherab.core.model.plasma.bremsstrahlung.Bremsstrahlung method)</a>
-</li>
-      </ul></li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function">emissivities_from_function() (cherab.tools.inversions.voxels.VoxelCollection method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function">emissivity_from_function() (cherab.tools.inversions.voxels.AxisymmetricVoxel method)</a>
 </li>
       <li>
@@ -541,8 +541,16 @@
         <li><a href="atomic/rate_coefficients.html#evaluate">built-in function</a>, <a href="atomic/rate_coefficients.html#id2">[1]</a>
 </li>
       </ul></li>
-      <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamCXPEC.evaluate">evaluate() (cherab.core.atomic.rates.BeamCXPEC method)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="atomic/gaunt_factors.html#cherab.core.atomic.gaunt.FreeFreeGauntFactor.evaluate">evaluate() (cherab.core.atomic.gaunt.FreeFreeGauntFactor method)</a>
+
+      <ul>
+        <li><a href="atomic/gaunt_factors.html#cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor.evaluate">(cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor method)</a>
 </li>
+        <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamCXPEC.evaluate">(cherab.core.atomic.rates.BeamCXPEC method)</a>
+</li>
+      </ul></li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.EvAmuToMS">EvAmuToMS (class in cherab.core.utility.conversion)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.EvToJ">EvToJ (class in cherab.core.utility.conversion)</a>
@@ -559,6 +567,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/observers.html#cherab.tools.observers.group.FibreOpticGroup">FibreOpticGroup (class in cherab.tools.observers.group)</a>
 </li>
+      <li><a href="atomic/gaunt_factors.html#cherab.core.atomic.gaunt.FreeFreeGauntFactor">FreeFreeGauntFactor (class in cherab.core.atomic.gaunt)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/utility.html#cherab.core.utility.recursivedict.RecursiveDict.freeze">freeze() (cherab.core.utility.recursivedict.RecursiveDict method)</a>
@@ -571,13 +581,25 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="models/laser/laser.html#cherab.core.model.laser.profile.GaussianBeamAxisymmetric">GaussianBeamAxisymmetric (class in cherab.core.model.laser.profile)</a>
+</li>
       <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.GaussianLine">GaussianLine (class in cherab.core.model.lineshape)</a>
+</li>
+      <li><a href="models/laser/laser.html#cherab.core.model.laser.laserspectrum.GaussianSpectrum">GaussianSpectrum (class in cherab.core.model.laser.laserspectrum)</a>
+</li>
+      <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.generate_geometry">generate_geometry() (cherab.core.laser.profile.LaserProfile method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.get">get() (cherab.core.plasma.node.Composition method)</a>
 </li>
+      <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.get_energy_density">get_energy_density() (cherab.core.laser.profile.LaserProfile method)</a>
+</li>
       <li><a href="tools/observers.html#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.get_pipeline">get_pipeline() (cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase method)</a>
+</li>
+      <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.get_pointing">get_pointing() (cherab.core.laser.profile.LaserProfile method)</a>
+</li>
+      <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.get_polarization">get_polarization() (cherab.core.laser.profile.LaserProfile method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -602,6 +624,8 @@
       <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators3d.Interpolate3DCubic">Interpolate3DCubic (class in cherab.core.math.interpolators.interpolators3d)</a>
 </li>
       <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators3d.Interpolate3DLinear">Interpolate3DLinear (class in cherab.core.math.interpolators.interpolators3d)</a>
+</li>
+      <li><a href="atomic/gaunt_factors.html#cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor">InterpolatedFreeFreeGauntFactor (class in cherab.core.atomic.gaunt)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.BaseFactorConversion.inv">inv() (cherab.core.utility.conversion.BaseFactorConversion class method)</a>
 
@@ -637,12 +661,18 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="plasmas/laser.html#cherab.core.laser.model.LaserModel">LaserModel (class in cherab.core.laser.model)</a>
+</li>
+      <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile">LaserProfile (class in cherab.core.laser.profile)</a>
+</li>
+      <li><a href="plasmas/laser.html#cherab.core.laser.laserspectrum.LaserSpectrum">LaserSpectrum (class in cherab.core.laser.laserspectrum)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomic/emission_lines.html#cherab.core.atomic.line.Line">Line (class in cherab.core.atomic.line)</a>
 </li>
       <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.LineShapeModel">LineShapeModel (class in cherab.core.model.lineshape)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomic/elements_and_isotopes.html#cherab.core.atomic.elements.lookup_element">lookup_element() (in module cherab.core.atomic.elements)</a>
 </li>
       <li><a href="atomic/elements_and_isotopes.html#cherab.core.atomic.elements.lookup_isotope">lookup_isotope() (in module cherab.core.atomic.elements)</a>
@@ -662,6 +692,8 @@
       <li><a href="plasmas/equilibrium.html#cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector3d">map_vector3d() (cherab.tools.equilibrium.efit.EFITEquilibrium method)</a>
 </li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.distribution.Maxwellian">Maxwellian (class in cherab.core.distribution)</a>
+</li>
+      <li><a href="atomic/gaunt_factors.html#cherab.core.atomic.gaunt.MaxwellianFreeFreeGauntFactor">MaxwellianFreeFreeGauntFactor (class in cherab.core.atomic.gaunt)</a>
 </li>
       <li>
     module
@@ -698,10 +730,12 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="tools/utility.html#cherab.core.utility.notify.Notifier">Notifier (class in cherab.core.utility.notify)</a>
+      <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup.names">names (cherab.tools.observers.group.base.Observer0DGroup property)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/utility.html#cherab.core.utility.notify.Notifier">Notifier (class in cherab.core.utility.notify)</a>
+</li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList">NotifyingList (class in cherab.core.utility.notify)</a>
 </li>
   </ul></td>
@@ -720,6 +754,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup">Observer0DGroup (class in cherab.tools.observers.group.base)</a>
 </li>
+      <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup.observers">observers (cherab.tools.observers.group.base.Observer0DGroup property)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -734,19 +770,23 @@
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.PhotonToJ">PhotonToJ (class in cherab.core.utility.conversion)</a>
 </li>
-      <li><a href="plasmas/core_plasma_classes.html#cherab.core.Plasma">Plasma (class in cherab.core)</a>
+      <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup.pipelines">pipelines (cherab.tools.observers.group.base.Observer0DGroup property)</a>
 </li>
-      <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot">plot() (cherab.tools.inversions.voxels.ToroidalVoxelGrid method)</a>
+      <li><a href="tools/observers.html#cherab.tools.observers.group.PixelGroup">PixelGroup (class in cherab.tools.observers.group)</a>
+</li>
+      <li><a href="plasmas/core_plasma_classes.html#cherab.core.Plasma">Plasma (class in cherab.core)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="plasmas/equilibrium.html#cherab.tools.equilibrium.plot.plot_equilibrium">plot_equilibrium() (in module cherab.tools.equilibrium.plot)</a>
+      <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot">plot() (cherab.tools.inversions.voxels.ToroidalVoxelGrid method)</a>
 </li>
-      <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup.plot_spectra">plot_spectra() (cherab.tools.observers.group.base.Observer0DGroup method)</a>
+      <li><a href="plasmas/equilibrium.html#cherab.tools.equilibrium.plot.plot_equilibrium">plot_equilibrium() (in module cherab.tools.equilibrium.plot)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.plot_spectrum">plot_spectrum() (cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase method)</a>
 </li>
-      <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup.plot_total_signal">plot_total_signal() (cherab.tools.observers.group.base.Observer0DGroup method)</a>
+      <li><a href="tools/spectroscopy.html#cherab.tools.spectroscopy.Polychromator">Polychromator (class in cherab.tools.spectroscopy)</a>
+</li>
+      <li><a href="tools/spectroscopy.html#cherab.tools.spectroscopy.PolychromatorFilter">PolychromatorFilter (class in cherab.tools.spectroscopy)</a>
 </li>
       <li><a href="math/mask.html#cherab.core.math.mask.PolygonMask2D">PolygonMask2D (class in cherab.core.math.mask)</a>
 </li>
@@ -770,10 +810,10 @@
 </li>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.raytransfer.RayTransferObject">RayTransferObject (class in cherab.tools.raytransfer.raytransfer)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.pipelines.RayTransferPipeline0D">RayTransferPipeline0D (class in cherab.tools.raytransfer.pipelines)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.pipelines.RayTransferPipeline1D">RayTransferPipeline1D (class in cherab.tools.raytransfer.pipelines)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.pipelines.RayTransferPipeline2D">RayTransferPipeline2D (class in cherab.tools.raytransfer.pipelines)</a>
@@ -783,6 +823,10 @@
       <li><a href="tools/utility.html#cherab.core.utility.recursivedict.RecursiveDict">RecursiveDict (class in cherab.core.utility.recursivedict)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.remove">remove() (cherab.core.utility.notify.NotifyingList method)</a>
+</li>
+      <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup.render_engine">render_engine (cherab.tools.observers.group.base.Observer0DGroup property)</a>
+</li>
+      <li><a href="tools/spectroscopy.html#cherab.tools.spectroscopy.CzernyTurnerSpectrometer.resolution">resolution() (cherab.tools.spectroscopy.CzernyTurnerSpectrometer method)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.reverse">reverse() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
@@ -824,13 +868,21 @@
 </li>
       <li><a href="math/function.html#cherab.core.math.function.ScalarToVectorFunction2D">ScalarToVectorFunction2D (in module cherab.core.math.function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="math/function.html#cherab.core.math.function.ScalarToVectorFunction3D">ScalarToVectorFunction3D (in module cherab.core.math.function)</a>
+</li>
+      <li><a href="models/laser/laser.html#cherab.core.model.laser.model.SeldenMatobaThomsonSpectrum">SeldenMatobaThomsonSpectrum (class in cherab.core.model.laser.model)</a>
 </li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.set">set() (cherab.core.plasma.node.Composition method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.set_active">set_active() (cherab.tools.inversions.voxels.VoxelCollection method)</a>
+</li>
+      <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.set_energy_density_function">set_energy_density_function() (cherab.core.laser.profile.LaserProfile method)</a>
+</li>
+      <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.set_pointing_function">set_pointing_function() (cherab.core.laser.profile.LaserProfile method)</a>
+</li>
+      <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.set_polarization_function">set_polarization_function() (cherab.core.laser.profile.LaserProfile method)</a>
 </li>
       <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.ParametrisedZeemanTriplet.show_supported_transitions">show_supported_transitions() (cherab.core.model.lineshape.ParametrisedZeemanTriplet method)</a>
 
@@ -850,7 +902,11 @@
 </li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.Species">Species (class in cherab.core)</a>
 </li>
+      <li><a href="tools/spectroscopy.html#cherab.tools.spectroscopy.Spectrometer">Spectrometer (class in cherab.tools.spectroscopy)</a>
+</li>
       <li><a href="tools/observers.html#cherab.tools.observers.spectroscopy.SpectroscopicFibreOptic">SpectroscopicFibreOptic (class in cherab.tools.observers.spectroscopy)</a>
+</li>
+      <li><a href="tools/spectroscopy.html#cherab.tools.spectroscopy.SpectroscopicInstrument">SpectroscopicInstrument (class in cherab.tools.spectroscopy)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.spectroscopy.SpectroscopicSightLine">SpectroscopicSightLine (class in cherab.tools.observers.spectroscopy)</a>
 </li>
@@ -866,6 +922,10 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/observers.html#cherab.tools.observers.group.TargettedPixelGroup.targets">targets (cherab.tools.observers.group.TargettedPixelGroup property)</a>
+</li>
+      <li><a href="tools/observers.html#cherab.tools.observers.group.TargettedPixelGroup">TargettedPixelGroup (class in cherab.tools.observers.group)</a>
+</li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.ThermalCXPEC">ThermalCXPEC (class in cherab.core.atomic.rates)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.BaseFactorConversion.to">to() (cherab.core.utility.conversion.BaseFactorConversion class method)</a>
@@ -878,11 +938,17 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/primitives.html#cherab.tools.primitives.toroidal_mesh.toroidal_mesh_from_polygon">toroidal_mesh_from_polygon() (in module cherab.tools.primitives.toroidal_mesh)</a>
+</li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid">ToroidalVoxelGrid (class in cherab.tools.inversions.voxels)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil.trace_sightline">trace_sightline() (cherab.tools.observers.bolometry.BolometerFoil method)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerIRVB.trace_sightlines">trace_sightlines() (cherab.tools.observers.bolometry.BolometerIRVB method)</a>
+</li>
+      <li><a href="tools/spectroscopy.html#cherab.tools.spectroscopy.TrapezoidalFilter">TrapezoidalFilter (class in cherab.tools.spectroscopy)</a>
+</li>
+      <li><a href="models/laser/laser.html#cherab.core.model.laser.profile.TrivariateGaussian">TrivariateGaussian (class in cherab.core.model.laser.profile)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -890,10 +956,12 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels">unparent_all_voxels() (cherab.tools.inversions.voxels.VoxelCollection method)</a>
+      <li><a href="models/laser/laser.html#cherab.core.model.laser.profile.UniformEnergyDensity">UniformEnergyDensity (class in cherab.core.model.laser.profile)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels">unparent_all_voxels() (cherab.tools.inversions.voxels.VoxelCollection method)</a>
+</li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.update_laplacian_matrix">update_laplacian_matrix() (cherab.tools.inversions.opencl.sart_opencl.SartOpencl method)</a>
 </li>
   </ul></td>
@@ -947,7 +1015,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, Cherab Team
+        &copy; Copyright 2022, Cherab Team
 
     </p>
   </div> 

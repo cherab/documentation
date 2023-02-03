@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.6. Bremsstrahlung &mdash; Cherab 1.3.0 documentation</title>
+  <title>8.6. Bremsstrahlung &mdash; Cherab 1.4.0 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -101,6 +101,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">8.6. Bremsstrahlung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../line_shapes/spectral_line_shapes.html">8.8. Spectral Line Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../laser/laser.html">8.9. Laser</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
@@ -191,31 +192,19 @@
 <p>The bremmstrahlung formula implemented is equation 2 from M. Beurskens,
 et. al., ‘ITER LIDAR performance analysis’, Rev. Sci. Instrum. 79, 10E727 (2008),</p>
 <div class="math notranslate nohighlight">
-\[\epsilon (\lambda) = \frac{0.95 \times 10^{-19}}{\lambda 4 \pi} g_{ff} n_e^2 Z_{eff} T_e^{1/2} \times \exp{\frac{-hc}{\lambda T_e}},\]</div>
+\[\epsilon (\lambda) = \frac{0.95 \times 10^{-19}}{\lambda 4 \pi} \sum_{i} \left(g_{ff}(Z_i, T_e, \lambda) n_i Z_i^2\right) n_e T_e^{-1/2} \times \exp{\frac{-hc}{\lambda T_e}},\]</div>
 <p>where the emission <span class="math notranslate nohighlight">\(\epsilon (\lambda)\)</span> is in units of radiance (ph/s/sr/m^3/nm).</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="cherab.core.model.plasma.bremsstrahlung.Bremsstrahlung.emission">
-<span class="sig-name descname"><span class="pre">emission</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.plasma.bremsstrahlung.Bremsstrahlung.emission" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate the emission for a point in the plasma in a specified direction.</p>
-<p>Models implementing this method must add their spectral response to the
-supplied spectrum object. The spectrum units are spectral radiance per
-meter (W/m^3/str/nm).</p>
-<p>If a model has a directional response, the model should pass through
-its own reference axis e.g. Thomsen scattering laser direction.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Variables</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>point</strong> – Point in plasma space.</p></li>
-<li><p><strong>direction</strong> – Direction in plasma space.</p></li>
-<li><p><strong>spectrum</strong> – Spectrum to which emission should be added.</p></li>
+<li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The plasma to which this emission model is attached. Default is None.</p></li>
+<li><p><strong>atomic_data</strong> (<em>AtomicData</em>) – The atomic data provider for this model. Default is None.</p></li>
+<li><p><strong>gaunt_factor</strong> (<a class="reference internal" href="../../atomic/gaunt_factors.html#cherab.core.atomic.gaunt.FreeFreeGauntFactor" title="cherab.core.atomic.gaunt.FreeFreeGauntFactor"><em>FreeFreeGauntFactor</em></a>) – Free-free Gaunt factor as a function of Z, Te and
+wavelength. If not provided,
+the <cite>atomic_data</cite> is used.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Updated Spectrum object.</p>
-</dd>
 </dl>
-</dd></dl>
-
 </dd></dl>
 
 </div>
@@ -240,7 +229,7 @@ its own reference axis e.g. Thomsen scattering laser direction.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, Cherab Team
+        &copy; Copyright 2022, Cherab Team
 
     </p>
   </div> 

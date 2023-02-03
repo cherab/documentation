@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10.3. Primitives &mdash; Cherab 1.3.0 documentation</title>
+  <title>10.3. Primitives &mdash; Cherab 1.4.0 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -99,8 +99,9 @@
 <li class="toctree-l2"><a class="reference internal" href="materials.html">10.2. Materials</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">10.3. Primitives</a></li>
 <li class="toctree-l2"><a class="reference internal" href="observers.html">10.4. Observers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tomography.html">10.5. Tomography</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utility.html">10.6. Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy.html">10.5. Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tomography.html">10.6. Tomography</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">10.7. Utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -185,14 +186,15 @@
 <p>A few useful utilities for creating primitives particularly relevant for fusion.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon">
-<span class="sig-prename descclassname"><span class="pre">cherab.tools.primitives.axisymmetric_mesh.</span></span><span class="sig-name descname"><span class="pre">axisymmetric_mesh_from_polygon</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.tools.primitives.axisymmetric_mesh.</span></span><span class="sig-name descname"><span class="pre">axisymmetric_mesh_from_polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polygon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_toroidal_segments</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates an Raysect Mesh primitive from the specified 2D polygon.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>polygon</strong> (<em>np.ndarray</em>) – A numpy array with shape [N,2] specifying the wall outline polygon
-in the R-Z plane. The polygon should not be closed, i.e. vertex i = 0 and i = N should not
-be the same vertex, but neighbours.</p></li>
+<li><p><strong>polygon</strong> (<em>object</em>) – An object which can be converted to a numpy array with shape [N,2] 
+specifying the wall outline polygon in the R-Z plane. The polygon 
+should not be closed, i.e. vertex i = 0 and i = N should not be the
+same vertex, but neighbours.</p></li>
 <li><p><strong>num_toroidal_segments</strong> (<em>int</em>) – The number of repeating toroidal segments that will be used
 to construct the mesh.</p></li>
 </ul>
@@ -205,6 +207,47 @@ to construct the mesh.</p></li>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># wall_polygon is your (N, 2) ndarray describing the polygon</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">axisymmetric_mesh_from_polygon</span><span class="p">(</span><span class="n">wall_polygon</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.tools.primitives.toroidal_mesh.toroidal_mesh_from_polygon">
+<span class="sig-prename descclassname"><span class="pre">cherab.tools.primitives.toroidal_mesh.</span></span><span class="sig-name descname"><span class="pre">toroidal_mesh_from_polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polygon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toroidal_extent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polygon_triangles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_toroidal_segments</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.primitives.toroidal_mesh.toroidal_mesh_from_polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a watertight Raysect Mesh primitive from the specified 2D polygon in R-Z plane
+by extending it in toroidal direction by a given angle and closing the
+poloidal faces with triangulated polygons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>polygon</strong> (<em>object</em>) – An object which can be converted to a numpy array with shape 
+[N,2] specifying the wall outline polygon in the R-Z plane. 
+The polygon should not be closed, i.e. vertex i = 0 and i = N 
+should not be the same vertex, but neighbours.</p></li>
+<li><p><strong>polygon_triangles</strong> (<em>object</em>) – An object which can be converted to a numpy array
+with shape [M,3] specifying the triangulation
+of a polygon (polygon_triangles = [[v1, v2, v3],…),
+where v1, v2, v3 are the vertex array indices specifying
+the triangle’s vertices. Should be with clockwise winding.
+Defaults to None.
+If not provided, the triangulation will be performed using
+<cite>triangulate2d(polygon)</cite> from raysect.core.math.polygon.</p></li>
+<li><p><strong>toroidal_extent</strong> (<em>float</em>) – Angular extention of an element in toroidal direction (in degrees).
+Note that in the case of toroidal_extent=360  produces 
+an axisymmetric mesh which has no end faces</p></li>
+<li><p><strong>num_toroidal_segments</strong> (<em>int</em>) – The number of repeating toroidal segments
+per given <cite>toroidal_extent</cite> that will be used to construct
+the mesh. Defaults to 500.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A watertight Raysect Mesh primitive constructed from the R-Z polygon.</p>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.primitives</span> <span class="kn">import</span> <span class="n">toroidal_mesh_from_polygon</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># wall_polygon is your (N, 2) ndarray describing the polygon</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">toroidal_mesh_from_polygon</span><span class="p">(</span><span class="n">wall_polygon</span><span class="p">,</span> <span class="n">toroidal_extent</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -231,7 +274,7 @@ to construct the mesh.</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, Cherab Team
+        &copy; Copyright 2022, Cherab Team
 
     </p>
   </div> 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10.5. Tomography &mdash; Cherab 1.3.0 documentation</title>
+  <title>10.6. Tomography &mdash; Cherab 1.4.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10.6. Utilities" href="utility.html" />
-    <link rel="prev" title="10.4. Observers" href="observers.html" /> 
+    <link rel="next" title="10.7. Utilities" href="utility.html" />
+    <link rel="prev" title="10.5. Spectroscopy" href="spectroscopy.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -99,13 +99,14 @@
 <li class="toctree-l2"><a class="reference internal" href="materials.html">10.2. Materials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="primitives.html">10.3. Primitives</a></li>
 <li class="toctree-l2"><a class="reference internal" href="observers.html">10.4. Observers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">10.5. Tomography</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#inversion-methods">10.5.1. Inversion Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#voxels">10.5.2. Voxels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ray-transfer-objects">10.5.3. Ray Transfer Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy.html">10.5. Spectroscopy</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10.6. Tomography</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inversion-methods">10.6.1. Inversion Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#voxels">10.6.2. Voxels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ray-transfer-objects">10.6.3. Ray Transfer Objects</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="utility.html">10.6. Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">10.7. Utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -166,7 +167,7 @@
         
           <li><a href="tools.html"><span class="section-number">10. </span>Tools</a> &raquo;</li>
         
-      <li><span class="section-number">10.5. </span>Tomography</li>
+      <li><span class="section-number">10.6. </span>Tomography</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -186,7 +187,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tomography">
-<h1><span class="section-number">10.5. </span>Tomography<a class="headerlink" href="#tomography" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">10.6. </span>Tomography<a class="headerlink" href="#tomography" title="Permalink to this headline">¶</a></h1>
 <p>Tomographic inversion problems often arise in the study of plasma diagnostics, especially
 when making line integrated measurements. Tomographic inversion techniques allow us to
 try recovering the underlying plasma properties from a reduced set of measurements. In Cherab
@@ -207,10 +208,10 @@ is typically represented as the matrix equation</p>
 vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> from a set of measurements <span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> and sensitivity
 matrix <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>.</p>
 <div class="section" id="inversion-methods">
-<h2><span class="section-number">10.5.1. </span>Inversion Methods<a class="headerlink" href="#inversion-methods" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.6.1. </span>Inversion Methods<a class="headerlink" href="#inversion-methods" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.tools.inversions.sart.invert_sart">
-<span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.sart.</span></span><span class="sig-name descname"><span class="pre">invert_sart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.sart.invert_sart" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.sart.</span></span><span class="sig-name descname"><span class="pre">invert_sart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measurement_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_guess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relaxation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conv_tol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.sart.invert_sart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs a SART inversion on the specified measurement vector.</p>
 <p>This function implements the Simultaneous Algebraic Reconstruction Technique (SART), as published in
 A. Andersen, and A. Kak, Ultrasonic imaging 6, 81 (1984). The SART method is an iterative inversion 
@@ -255,7 +256,7 @@ and the convergence achieved as a float.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.tools.inversions.sart.invert_constrained_sart">
-<span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.sart.</span></span><span class="sig-name descname"><span class="pre">invert_constrained_sart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.sart.invert_constrained_sart" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.sart.</span></span><span class="sig-name descname"><span class="pre">invert_constrained_sart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laplacian_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measurement_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_guess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relaxation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_laplace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conv_tol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.sart.invert_constrained_sart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs a constrained SART inversion on the specified measurement vector.</p>
 <p>The core of the constrained SART algorithm is identical to the basic SART algorithm implemented in 
 <cite>invert_sart()</cite>. The only difference is that now the iterative update formula includes a 
@@ -303,7 +304,7 @@ and the convergence achieved as a float.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.tools.inversions.opencl.sart_opencl.SartOpencl">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.opencl.sart_opencl.</span></span><span class="sig-name descname"><span class="pre">SartOpencl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laplacian_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_column_major</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size_row_maj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_atomic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps_per_thread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.opencl.sart_opencl.</span></span><span class="sig-name descname"><span class="pre">SartOpencl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laplacian_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_column_major</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size_row_maj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_atomic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps_per_thread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.opencl.sart_opencl.SartOpencl" title="Permalink to this definition">¶</a></dt>
 <dd><p>A GPU-accelerated version of SART inversion.
 The geometry matrix and Laplacian matrix are provided on initialisation because they must
 be copied to GPU memory, which takes time. Inversions may be performed multiple times
@@ -315,29 +316,37 @@ performed with single precision.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>geometry_matrix</strong> (<em>np.ndarray</em>) – The sensitivity matrix describing the coupling between
-the detectors and the voxels. Must be an array with shape <span class="math notranslate nohighlight">\((N_d, N_s)\)</span>.</p></li>
+the detectors and the voxels. Must be an array
+with shape <span class="math notranslate nohighlight">\((N_d, N_s)\)</span>.</p></li>
 <li><p><strong>laplacian_matrix</strong> (<em>np.ndarray</em>) – The laplacian regularisation matrix of
-shape <span class="math notranslate nohighlight">\((N_s, N_s)\)</span>. Default value: <cite>laplacian_matrix=None</cite>.</p></li>
+shape <span class="math notranslate nohighlight">\((N_s, N_s)\)</span>.
+Default value: <cite>laplacian_matrix=None</cite>.</p></li>
 <li><p><strong>device</strong> (<em>pyopencl.Device</em>) – OpenCL device which will be used for computations.
 Default value: <cite>device=None</cite> (autoselect).</p></li>
 <li><p><strong>block_size</strong> (<em>int</em>) – Number of GPU threads per block. Must be the power of 2.
-For the best performance try from 256 to 1024 for Nvidia (use 1024 on high-end GPUs),
-from 64 to 256 for AMD and from 16 to 64 for Intel GPUs. Default value: <cite>block_size=256</cite>.</p></li>
+For the best performance try from 256 to 1024 for Nvidia
+(use 1024 on high-end GPUs), from 64 to 256 for AMD and from 16 to 64
+for Intel GPUs. Default value: <cite>block_size=256</cite>.</p></li>
 <li><p><strong>copy_column_major</strong> (<em>bool</em>) – If True, the two copies of geometry matrix will be stored in
-GPU memory. One in row-major order and the other one in column-major order. This
-provides much better performance of the inversions but requires twice as much GPU memory.
+GPU memory. One in row-major order and the other one in
+column-major order. This provides much better performance
+of the inversions but requires twice as much GPU memory.
 Default value: <cite>copy_column_major=True</cite>.</p></li>
 <li><p><strong>block_size_row_maj</strong> (<em>int</em>) – If <cite>copy_column_major</cite> is set to False, this parameter defines
-the number of GPU threads per block in mat_vec_mult_row_maj() kernel used to calculate
-y_hat. Must be lower than <cite>block_size</cite>. Default value: <cite>block_size_row_maj=64</cite> (optimal
+the number of GPU threads per block in mat_vec_mult_row_maj()
+kernel used to calculate y_hat. Must be lower than
+<cite>block_size</cite>. Default value: <cite>block_size_row_maj=64</cite> (optimal
 value for Nvidia GPUs).</p></li>
 <li><p><strong>use_atomic</strong> (<em>bool</em>) – If True, increases the number of thread blocks that can run in
-parallel with the help of atomic operations (custom atomic add on floats). Set this
-to False, if the atomic operations are running slow on your device (Nvidia GPUs before
-Kepler, some AMD APUs, some Intel GPUs). Default value: <cite>use_atomic=True</cite>.</p></li>
+parallel with the help of atomic operations (custom atomic add on floats).
+Set this to False, if the atomic operations are running slow on your device
+(Nvidia GPUs before Kepler, some AMD APUs, some Intel GPUs).
+Default value: <cite>use_atomic=True</cite>.</p></li>
 <li><p><strong>steps_per_thread</strong> (<em>int</em>) – If <cite>use_atomic</cite> is set to True, this parameters defines the
-maximum number of loop steps performed by the parallel threads in a single thread block.
-Default value: <cite>steps_per_thread=64</cite> (optimal for Nvidia GPUs).</p></li>
+maximum number of loop steps performed by the parallel threads
+in a single thread block. Default value: <cite>steps_per_thread=64</cite>
+(optimal for Nvidia GPUs).</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Verbose output, defaults to <cite>verbose=False</cite>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -452,7 +461,7 @@ detectors and the voxels. Must be an array with shape <span class="math notransl
 
 </div>
 <div class="section" id="voxels">
-<h2><span class="section-number">10.5.2. </span>Voxels<a class="headerlink" href="#voxels" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.6.2. </span>Voxels<a class="headerlink" href="#voxels" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.tools.inversions.voxels.Voxel">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.inversions.voxels.</span></span><span class="sig-name descname"><span class="pre">Voxel</span></span><a class="headerlink" href="#cherab.tools.inversions.voxels.Voxel" title="Permalink to this definition">¶</a></dt>
@@ -504,7 +513,7 @@ the r-z plane.</p></li>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function">
-<span class="sig-name descname"><span class="pre">emissivity_from_function</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">emissivity_from_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">emission_function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_samples</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the average emissivity in the voxel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -638,7 +647,7 @@ generates a new plot.</p></li>
 
 </div>
 <div class="section" id="ray-transfer-objects">
-<h2><span class="section-number">10.5.3. </span>Ray Transfer Objects<a class="headerlink" href="#ray-transfer-objects" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.6.3. </span>Ray Transfer Objects<a class="headerlink" href="#ray-transfer-objects" title="Permalink to this headline">¶</a></h2>
 <p>Ray transfer objects accelerate the calculation of geometry matrices (or Ray Transfer Matrices as they were called
 in <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/ctpp.201500124">S. Kajita, et al. Contrib. Plasma Phys., 2016, 1-9</a>)
 in the case of regular spatial grids. As in the case of Voxels, the spectral array is used to store the data
@@ -1079,10 +1088,10 @@ Use spectral pipelines from Raysect if you need these features.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="utility.html" class="btn btn-neutral float-right" title="10.6. Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="utility.html" class="btn btn-neutral float-right" title="10.7. Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="observers.html" class="btn btn-neutral" title="10.4. Observers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="spectroscopy.html" class="btn btn-neutral" title="10.5. Spectroscopy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1091,7 +1100,7 @@ Use spectral pipelines from Raysect if you need these features.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, Cherab Team
+        &copy; Copyright 2022, Cherab Team
 
     </p>
   </div> 

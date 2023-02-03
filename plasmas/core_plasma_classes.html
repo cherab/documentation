@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.1. Core Plasma Classes &mdash; Cherab 1.3.0 documentation</title>
+  <title>7.1. Core Plasma Classes &mdash; Cherab 1.4.0 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -100,6 +100,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="equilibrium.html">7.2. Plasma equilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="particle_beams.html">7.3. Mono-energetic Particle Beams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="laser.html">7.4. Laser</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
@@ -303,7 +304,7 @@ emission models for this plasma.</p></li>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.Plasma.ion_density">
-<span class="sig-name descname"><span class="pre">ion_density</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Plasma.ion_density" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">ion_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Plasma.ion_density" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the total ion density of the plasma.</p>
 <div class="math notranslate nohighlight">
 \[n_I = \sum_{k=1}^N n_i(k)\]</div>
@@ -328,7 +329,7 @@ emission models for this plasma.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.Plasma.z_effective">
-<span class="sig-name descname"><span class="pre">z_effective</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Plasma.z_effective" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">z_effective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Plasma.z_effective" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the effective Z of the plasma.</p>
 <div class="math notranslate nohighlight">
 \[Z_{eff} = \sum_{j=1}^N n_{i(j)} Z_j^2 / \sum_{k=1}^N n_{i(k)} Z_k\]</div>
@@ -435,7 +436,7 @@ directly. Its always used indirectly through an instantiated Plasma object.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.plasma.node.Composition.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.add" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a species to the plasma composition.</p>
 <p>Replaces any existing species with the same element and charge
 state already in the composition.</p>
@@ -458,7 +459,7 @@ state already in the composition.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.plasma.node.Composition.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.get" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a specified plasma species.</p>
 <p>Raises a ValueError if the specified species is not found in the composition.</p>
 <dl class="field-list simple">
@@ -480,7 +481,7 @@ state already in the composition.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.plasma.node.Composition.set">
-<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.set" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.plasma.node.Composition.set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replaces the species in the composition with a new list of species.</p>
 <p>If there are multiple species with the same element and charge state in
 the list, only the last species with that specification will be added
@@ -538,7 +539,7 @@ method calls. Users should either use a simpler distribution instance
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.distribution.DistributionFunction.bulk_velocity">
-<span class="sig-name descname"><span class="pre">bulk_velocity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.bulk_velocity" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">bulk_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.bulk_velocity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the species’ bulk velocity at the specified 3D coordinate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -559,7 +560,7 @@ method calls. Users should either use a simpler distribution instance
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.distribution.DistributionFunction.density">
-<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.density" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.density" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the species’ density at the specified 3D coordinate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -580,7 +581,7 @@ method calls. Users should either use a simpler distribution instance
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.distribution.DistributionFunction.effective_temperature">
-<span class="sig-name descname"><span class="pre">effective_temperature</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.effective_temperature" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">effective_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.DistributionFunction.effective_temperature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the species’ effective temperature at the specified 3D coordinate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -634,7 +635,7 @@ respectively.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.distribution.Maxwellian.bulk_velocity">
-<span class="sig-name descname"><span class="pre">bulk_velocity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.Maxwellian.bulk_velocity" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">bulk_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.Maxwellian.bulk_velocity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the species’ bulk velocity at the specified 3D coordinate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -656,7 +657,7 @@ respectively.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.distribution.Maxwellian.density">
-<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.Maxwellian.density" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.Maxwellian.density" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -677,7 +678,7 @@ respectively.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.distribution.Maxwellian.effective_temperature">
-<span class="sig-name descname"><span class="pre">effective_temperature</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.Maxwellian.effective_temperature" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">effective_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.distribution.Maxwellian.effective_temperature" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -721,7 +722,7 @@ respectively.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, Cherab Team
+        &copy; Copyright 2022, Cherab Team
 
     </p>
   </div> 

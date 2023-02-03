@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>10.5. Spectroscopy &mdash; Cherab 1.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10.6. Tomography" href="tomography.html" />
+    <link rel="prev" title="10.4. Observers" href="observers.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cherab
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tools.html">10. Tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plasmas.html">10.1. Plasmas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="materials.html">10.2. Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primitives.html">10.3. Primitives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="observers.html">10.4. Observers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10.5. Spectroscopy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#spectroscopic-instruments">10.5.1. Spectroscopic instruments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tomography.html">10.6. Tomography</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">10.7. Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cherab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="tools.html"><span class="section-number">10. </span>Tools</a> &raquo;</li>
+        
+      <li><span class="section-number">10.5. </span>Spectroscopy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tools/spectroscopy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="spectroscopy">
+<h1><span class="section-number">10.5. </span>Spectroscopy<a class="headerlink" href="#spectroscopy" title="Permalink to this headline">¶</a></h1>
+<p>The tools for plasma spectroscopy.</p>
+<div class="section" id="spectroscopic-instruments">
+<span id="spectroscopy-instruments"></span><h2><span class="section-number">10.5.1. </span>Spectroscopic instruments<a class="headerlink" href="#spectroscopic-instruments" title="Permalink to this headline">¶</a></h2>
+<p>Spectroscopic instruments such as polychromators and spectrometers
+simplify the setup of properties of the observers and rendering pipelines. The instruments
+are not connected to the scenegraph, so they cannot observe the world. However, the instruments
+have properties, such as <cite>min_wavelength</cite>, <cite>max_wavelength</cite>, <cite>spectral_bins</cite>,
+<cite>pipeline_properties</cite>, with which the observer can be configured.
+The Cherab core package provides base classes for spectroscopic instruments,
+so machine-specific packages can build more advance instruments from them, such as instruments
+with spectral properties based on the actual experimental setup for a given shot/pulse.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.spectroscopy.SpectroscopicInstrument">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.spectroscopy.</span></span><span class="sig-name descname"><span class="pre">SpectroscopicInstrument</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.spectroscopy.SpectroscopicInstrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for spectroscopic instruments (spectrometers, polychromators, etc.).
+This is an abstract class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Instrument name.</p>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>pipeline_classes</strong> (<em>list</em>) – The list of pipeline classes used with this instrument.</p></li>
+<li><p><strong>pipeline_kwargs</strong> (<em>list</em>) – The list of dicts with keywords passed to init methods of
+pipeline classes used with this instrument.</p></li>
+<li><p><strong>min_wavelength</strong> (<em>float</em>) – Lower wavelength bound for spectral range.</p></li>
+<li><p><strong>max_wavelength</strong> (<em>float</em>) – Upper wavelength bound for spectral range.</p></li>
+<li><p><strong>spectral_bins</strong> (<em>int</em>) – The number of spectral samples over the wavelength range.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.spectroscopy.SpectroscopicInstrument.create_pipelines">
+<span class="sig-name descname"><span class="pre">create_pipelines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.spectroscopy.SpectroscopicInstrument.create_pipelines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of new pipelines created according to <cite>pipeline_classes</cite>
+and keyword arguments.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.spectroscopy.PolychromatorFilter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.spectroscopy.</span></span><span class="sig-name descname"><span class="pre">PolychromatorFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.spectroscopy.PolychromatorFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines a polychromator filter as a Raysect’s InterpolatedSF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelengths</strong> (<em>object</em>) – 1D array of wavelengths in nanometers.</p></li>
+<li><p><strong>samples</strong> (<em>object</em>) – 1D array of spectral samples.</p></li>
+<li><p><strong>normalise</strong> (<em>bool</em>) – True/false toggle for whether to normalise the
+spectral function so its integral equals 1.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Filter name (e.g. “H-alpha filter”). Default is ‘’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>min_wavelength</strong> (<em>float</em>) – Lower wavelength bound of the filter’s spectral range in nm.</p></li>
+<li><p><strong>max_wavelength</strong> (<em>float</em>) – Upper wavelength bound of the filter’s spectral range in nm.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.spectroscopy.TrapezoidalFilter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.spectroscopy.</span></span><span class="sig-name descname"><span class="pre">TrapezoidalFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">central_wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat_top</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.spectroscopy.TrapezoidalFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.tools.spectroscopy.PolychromatorFilter" title="cherab.tools.spectroscopy.polychromator.PolychromatorFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.tools.spectroscopy.polychromator.PolychromatorFilter</span></code></a></p>
+<p>Symmetrical trapezoidal polychromator filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength</strong> (<em>float</em>) – Central wavelength of the filter in nm.</p></li>
+<li><p><strong>window</strong> (<em>float</em>) – Size of the filtering window in nm. Default is 3.</p></li>
+<li><p><strong>flat_top</strong> (<em>float</em>) – Size of the flat top part of the filter in nm.
+Default is None (equal to window).</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Filter name (e.g. “H-alpha filter”). Default is ‘’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.spectroscopy.Polychromator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.spectroscopy.</span></span><span class="sig-name descname"><span class="pre">Polychromator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_bins_per_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.spectroscopy.Polychromator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.tools.spectroscopy.SpectroscopicInstrument" title="cherab.tools.spectroscopy.instrument.SpectroscopicInstrument"><code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.tools.spectroscopy.instrument.SpectroscopicInstrument</span></code></a></p>
+<p>A polychromator assembly with a set of different filters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filters</strong> (<em>list</em>) – List of the <cite>PolychromatorFilter</cite> instances.</p></li>
+<li><p><strong>min_bins_per_window</strong> (<em>int</em>) – Minimal number of spectral bins
+per filtering window. Default is 10.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Polychromator name.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">FibreOptic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.spectroscopy</span> <span class="kn">import</span> <span class="n">Polychromator</span><span class="p">,</span> <span class="n">TrapezoidalFilter</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h_alpha_filter</span> <span class="o">=</span> <span class="n">TrapezoidalFilter</span><span class="p">(</span><span class="mf">656.1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;H-alpha filter&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ciii_465nm_filter</span> <span class="o">=</span> <span class="n">TrapezoidalFilter</span><span class="p">(</span><span class="mf">464.8</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;CIII 465 nm filter&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">polychromator</span> <span class="o">=</span> <span class="n">Polychromator</span><span class="p">([</span><span class="n">h_alpha_filter</span><span class="p">,</span> <span class="n">ciii_465nm_filter</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;MyPolychromator&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span> <span class="o">=</span> <span class="n">FibreOptic</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;MyFibreOptic&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">min_wavelength</span> <span class="o">=</span> <span class="n">polychromator</span><span class="o">.</span><span class="n">min_wavelength</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">max_wavelength</span> <span class="o">=</span> <span class="n">polychromator</span><span class="o">.</span><span class="n">max_wavelength</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="n">polychromator</span><span class="o">.</span><span class="n">spectral_bins</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">pipelines</span> <span class="o">=</span> <span class="n">polychromator</span><span class="o">.</span><span class="n">create_pipelines</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.spectroscopy.Spectrometer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.spectroscopy.</span></span><span class="sig-name descname"><span class="pre">Spectrometer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength_to_pixel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_bins_per_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.spectroscopy.Spectrometer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.tools.spectroscopy.SpectroscopicInstrument" title="cherab.tools.spectroscopy.instrument.SpectroscopicInstrument"><code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.tools.spectroscopy.instrument.SpectroscopicInstrument</span></code></a></p>
+<p>Spectrometer that can accommodate multiple spectra.</p>
+<p>Spectrometer is initialized with a sequence of calibration arrays (one array per accommodated
+spectrum) containing the wavelengths of the pixel borders. Namely, the values
+<span class="math notranslate nohighlight">\(w_{k}^{i}\)</span> and <span class="math notranslate nohighlight">\(w_{k}^{i+1}\)</span> define the spectral range of the pixel <span class="math notranslate nohighlight">\(p_i\)</span>
+of the <cite>k</cite>-th spectrum. After the spectrum is ray-traced, it can be recalibrated with
+<cite>spectrometer.calibrate(spectrum)</cite>.</p>
+<p>Note that Raysect cannot raytrace the spectra with non-constant spectral resolution.
+Thus, the actual number of spectral bins of raytraced spectrum is defined with
+<cite>min_bins_per_pixel</cite> attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength_to_pixel</strong> (<em>tuple</em>) – Wavelength-to-pixel calibration arrays.</p></li>
+<li><p><strong>min_bins_per_pixel</strong> (<em>int</em>) – Minimal number of spectral bins
+per pixel. Default is 1.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Spectrometer name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><p><strong>wavelengths</strong> (<em>tuple</em>) – Central wavelengths of the pixels.</p>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">Spectrum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">FibreOptic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.spectroscopy</span> <span class="kn">import</span> <span class="n">Spectrometer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wavelength_to_pixel</span> <span class="o">=</span> <span class="p">([</span><span class="mf">400.</span><span class="p">,</span> <span class="mf">400.5</span><span class="p">,</span> <span class="mf">401.5</span><span class="p">,</span> <span class="mf">402.</span><span class="p">,</span> <span class="mf">404.</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>                       <span class="p">[</span><span class="mf">600.</span><span class="p">,</span> <span class="mf">600.5</span><span class="p">,</span> <span class="mf">601.5</span><span class="p">,</span> <span class="mf">602.</span><span class="p">,</span> <span class="mf">604.</span><span class="p">,</span> <span class="mf">607.</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spectrometer</span> <span class="o">=</span> <span class="n">Spectrometer</span><span class="p">(</span><span class="n">wavelength_to_pixel</span><span class="p">,</span> <span class="n">min_bins_per_pixel</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;MySpectrometer&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span> <span class="o">=</span> <span class="n">FibreOptic</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;MyFibreOptic&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">min_wavelength</span> <span class="o">=</span> <span class="n">spectrometer</span><span class="o">.</span><span class="n">min_wavelength</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">max_wavelength</span> <span class="o">=</span> <span class="n">spectrometer</span><span class="o">.</span><span class="n">max_wavelength</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="n">spectrometer</span><span class="o">.</span><span class="n">spectral_bins</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">pipelines</span> <span class="o">=</span> <span class="n">spectrometer</span><span class="o">.</span><span class="n">create_pipelines</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spectrum</span> <span class="o">=</span> <span class="n">Spectrum</span><span class="p">(</span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">min_wavelength</span><span class="p">,</span> <span class="n">fibreoptic</span><span class="o">.</span><span class="n">max_wavelength</span><span class="p">,</span> <span class="n">fibreoptic</span><span class="o">.</span><span class="n">spectral_bins</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spectrum</span><span class="o">.</span><span class="n">samples</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">fibreoptic</span><span class="o">.</span><span class="n">pipelines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">calibrated_spectra</span> <span class="o">=</span> <span class="n">spectrometer</span><span class="o">.</span><span class="n">calibrate</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wavelengths</span> <span class="o">=</span> <span class="n">spectrometer</span><span class="o">.</span><span class="n">wavelengths</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">calibrated_spectra</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.spectroscopy.Spectrometer.calibrate">
+<span class="sig-name descname"><span class="pre">calibrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spectrum</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.spectroscopy.Spectrometer.calibrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calibrates the spectrum according to the <cite>wavelength_to_pixel</cite> arrays
+by averaging it over the pixel widths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spectrum</strong> (<em>Spectrum</em>) – Spectrum to calibrate.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple of calibrated spectra as ndarrays.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.tools.spectroscopy.CzernyTurnerSpectrometer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.spectroscopy.</span></span><span class="sig-name descname"><span class="pre">CzernyTurnerSpectrometer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diffraction_order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grating</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focal_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_spacing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffraction_angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accommodated_spectra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_bins_per_pixel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.spectroscopy.CzernyTurnerSpectrometer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.tools.spectroscopy.Spectrometer" title="cherab.tools.spectroscopy.spectrometer.Spectrometer"><code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.tools.spectroscopy.spectrometer.Spectrometer</span></code></a></p>
+<p>Czerny-Turner spectrometer.</p>
+<p>The Czerny-Turner spectrometer is initialized with the parameters of the diffraction scheme
+and a sequence of accommodated spectra, each of which is determined by the lower wavelength
+bound and the number of pixels.</p>
+<p>This spectrometer automatically fills the wavelength-to-pixel calibration arrays
+according to the parameters of the diffraction scheme.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>diffraction_order</strong> (<em>int</em>) – Diffraction order.</p></li>
+<li><p><strong>grating</strong> (<em>float</em>) – Diffraction grating in nm-1.</p></li>
+<li><p><strong>focal_length</strong> (<em>float</em>) – Focal length in nm.</p></li>
+<li><p><strong>pixel_spacing</strong> (<em>float</em>) – Pixel to pixel spacing on CCD in nm.</p></li>
+<li><p><strong>diffraction_angle</strong> (<em>float</em>) – Angle between incident and diffracted light in degrees.</p></li>
+<li><p><strong>accommodated_spectra</strong> (<em>tuple</em>) – A sequence of (<cite>min_wavelength</cite>, <cite>pixels</cite>) pairs, specifying
+the lower wavelength bound and the number of pixels
+of accommodated spectra.</p></li>
+<li><p><strong>min_bins_per_pixel</strong> (<em>int</em>) – Minimal number of spectral bins
+per pixel. Default is 1.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Spectrometer name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><p><strong>wavelength_to_pixel</strong> (<em>tuple</em>) – Wavelength-to-pixel calibration arrays.</p>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">FibreOptic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.tools.spectroscopy</span> <span class="kn">import</span> <span class="n">CzernyTurnerSpectrometer</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hires_spectrometer</span> <span class="o">=</span> <span class="n">CzernyTurnerSpectrometer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.e-3</span><span class="p">,</span> <span class="mf">1.e9</span><span class="p">,</span> <span class="mf">2.e4</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                              <span class="p">((</span><span class="mf">600.</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="p">(</span><span class="mf">700.</span><span class="p">,</span> <span class="mi">128</span><span class="p">)),</span>
+<span class="gp">&gt;&gt;&gt; </span>                                              <span class="n">name</span><span class="o">=</span><span class="s1">&#39;MySpectrometer&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span> <span class="o">=</span> <span class="n">FibreOptic</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;MyFibreOptic&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">min_wavelength</span> <span class="o">=</span> <span class="n">hires_spectrometer</span><span class="o">.</span><span class="n">min_wavelength</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">max_wavelength</span> <span class="o">=</span> <span class="n">hires_spectrometer</span><span class="o">.</span><span class="n">max_wavelength</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">spectral_bins</span> <span class="o">=</span> <span class="n">hires_spectrometer</span><span class="o">.</span><span class="n">spectral_bins</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibreoptic</span><span class="o">.</span><span class="n">pipelines</span> <span class="o">=</span> <span class="n">hires_spectrometer</span><span class="o">.</span><span class="n">create_pipelines</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.tools.spectroscopy.CzernyTurnerSpectrometer.resolution">
+<span class="sig-name descname"><span class="pre">resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.spectroscopy.CzernyTurnerSpectrometer.resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates spectral resolution in nm for a given wavelength.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wavelength</strong> – Wavelength in nm.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Resolution in nm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tomography.html" class="btn btn-neutral float-right" title="10.6. Tomography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="observers.html" class="btn btn-neutral" title="10.4. Observers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Cherab Team
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

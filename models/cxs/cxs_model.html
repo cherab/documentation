@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.2. CXS models &mdash; Cherab 1.3.0 documentation</title>
+  <title>8.2. CXS models &mdash; Cherab 1.4.0 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -105,6 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../line_shapes/spectral_line_shapes.html">8.8. Spectral Line Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../laser/laser.html">8.9. Laser</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
@@ -202,7 +203,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.model.attenuator.singleray.SingleRayAttenuator.density">
-<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.attenuator.singleray.SingleRayAttenuator.density" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.attenuator.singleray.SingleRayAttenuator.density" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the beam density at the specified point.</p>
 <p>The point is specified in beam space.</p>
 <dl class="field-list simple">
@@ -239,38 +240,6 @@
 <dd class="field-even"><p></p>
 </dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="cherab.core.model.beam.charge_exchange.BeamCXLine._change">
-<span class="sig-name descname"><span class="pre">_change</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.beam.charge_exchange.BeamCXLine._change" title="Permalink to this definition">¶</a></dt>
-<dd><p>Called if the plasma, beam or the atomic data source properties change.</p>
-<p>If the model caches calculation data that would be invalidated if its
-source data changes then this method may be overridden to clear the
-cache.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="cherab.core.model.beam.charge_exchange.BeamCXLine.emission">
-<span class="sig-name descname"><span class="pre">emission</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.beam.charge_exchange.BeamCXLine.emission" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate the emission for a point on the beam in a specified direction.</p>
-<p>Models implementing this method must add their spectral response to the
-supplied spectrum object. The spectrum units are spectral radiance per
-meter (W/m^3/str/nm).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>beam_point</strong> – Point in beam space.</p></li>
-<li><p><strong>plasma_point</strong> – Point in plasma space.</p></li>
-<li><p><strong>beam_direction</strong> – Beam axis direction in plasma space.</p></li>
-<li><p><strong>observation_direction</strong> – Observation direction in plasma space.</p></li>
-<li><p><strong>spectrum</strong> – Spectrum to which emission should be added.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Updated Spectrum object.</p>
-</dd>
-</dl>
-</dd></dl>
-
 </dd></dl>
 
 </div>
@@ -296,7 +265,7 @@ meter (W/m^3/str/nm).</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, Cherab Team
+        &copy; Copyright 2022, Cherab Team
 
     </p>
   </div> 

@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.4. Gaunt factors &mdash; Cherab 1.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Plasmas" href="../plasmas/plasmas.html" />
+    <link rel="prev" title="6.3. Rate Coefficients" href="rate_coefficients.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cherab
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="atomic_data.html">6. Atomic Data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="elements_and_isotopes.html">6.1. Elements and Isotopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emission_lines.html">6.2. Spectroscopic Emission Lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">6.3. Rate Coefficients</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.4. Gaunt factors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#free-free-gaunt-factors">6.4.1. Free-free Gaunt factors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cherab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="atomic_data.html"><span class="section-number">6. </span>Atomic Data</a> &raquo;</li>
+        
+      <li><span class="section-number">6.4. </span>Gaunt factors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/atomic/gaunt_factors.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gaunt-factors">
+<h1><span class="section-number">6.4. </span>Gaunt factors<a class="headerlink" href="#gaunt-factors" title="Permalink to this headline">¶</a></h1>
+<p>This includes classes for temperature-averaged Gaunt factors used to calculate Bremsstrahlung (free-free Gaunt factor)
+and radiative recombination continuum (bound-free Gaunt factor) emission.</p>
+<div class="section" id="free-free-gaunt-factors">
+<h2><span class="section-number">6.4.1. </span>Free-free Gaunt factors<a class="headerlink" href="#free-free-gaunt-factors" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.atomic.gaunt.FreeFreeGauntFactor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.gaunt.</span></span><span class="sig-name descname"><span class="pre">FreeFreeGauntFactor</span></span><a class="headerlink" href="#cherab.core.atomic.gaunt.FreeFreeGauntFactor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The base class for temperature-averaged free-free Gaunt factors.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.gaunt.FreeFreeGauntFactor.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.gaunt.FreeFreeGauntFactor.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the temperature-averaged free-free Gaunt factor for the supplied parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z</strong> (<em>double</em>) – Species charge or effective plasma charge.</p></li>
+<li><p><strong>temperature</strong> (<em>double</em>) – Electron temperature in eV.</p></li>
+<li><p><strong>wavelength</strong> (<em>double</em>) – Spectral wavelength.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>free-free Gaunt factor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.gaunt.FreeFreeGauntFactor.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.gaunt.FreeFreeGauntFactor.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the temperature-averaged free-free Gaunt factor for the supplied parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z</strong> (<em>double</em>) – Species charge or effective plasma charge.</p></li>
+<li><p><strong>temperature</strong> (<em>double</em>) – Electron temperature in eV.</p></li>
+<li><p><strong>wavelength</strong> (<em>double</em>) – Spectral wavelength.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>free-free Gaunt factor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.gaunt.</span></span><span class="sig-name descname"><span class="pre">InterpolatedFreeFreeGauntFactor</span></span><a class="headerlink" href="#cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.atomic.gaunt.FreeFreeGauntFactor" title="cherab.core.atomic.gaunt.FreeFreeGauntFactor"><code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.atomic.gaunt.FreeFreeGauntFactor</span></code></a></p>
+<p>The temperature-averaged free-free Gaunt factors interpolated in the space of parameters:
+<span class="math notranslate nohighlight">\(u = h{\nu}/kT\)</span> and <span class="math notranslate nohighlight">\({\gamma}^{2} = Z^{2}Ry/kT\)</span>.
+See T.R. Carson, 1988, Astron. &amp; Astrophys., 189,
+<a class="reference external" href="https://ui.adsabs.harvard.edu/#abs/1988A&amp;A...189..319C/abstract">319</a> for details.</p>
+<p>The cubic interpolation in a semi-log space is used.</p>
+<p>The Born approximation is used outside the interpolation range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>object</em>) – A 1D array-like object of real values.</p></li>
+<li><p><strong>gamma2</strong> (<em>object</em>) – A 1D array-like object of real values.</p></li>
+<li><p><strong>gaunt_factor</strong> (<em>object</em>) – 2D array-like object of real values
+storing the Gaunt factor values at u, gamma2.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>u_range</strong> (<em>tuple</em>) – The interpolation range of <cite>u</cite> parameter.</p></li>
+<li><p><strong>gamma2_range</strong> (<em>tuple</em>) – The interpolation range of <span class="math notranslate nohighlight">\(\\gamma^2\)</span> parameter.</p></li>
+<li><p><strong>raw_data</strong> (<em>dict</em>) – Dictionary containing the raw data.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the temperature-averaged free-free Gaunt factor for the supplied parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z</strong> (<em>double</em>) – Species charge or effective plasma charge.</p></li>
+<li><p><strong>temperature</strong> (<em>double</em>) – Electron temperature in eV.</p></li>
+<li><p><strong>wavelength</strong> (<em>double</em>) – Spectral wavelength.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>free-free Gaunt factor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.atomic.gaunt.MaxwellianFreeFreeGauntFactor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.gaunt.</span></span><span class="sig-name descname"><span class="pre">MaxwellianFreeFreeGauntFactor</span></span><a class="headerlink" href="#cherab.core.atomic.gaunt.MaxwellianFreeFreeGauntFactor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor" title="cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor"><code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor</span></code></a></p>
+<p>The Maxwellian-averaged free-free Gaunt factor interpolated over the data from Table A.1 in
+M.A. de Avillez and D. Breitschwerdt, “Temperature-averaged and total free-free Gaunt factors
+for κ and Maxwellian distributions of electrons”, 2015, Astron. &amp; Astrophys. 580,
+<a class="reference external" href="https://www.aanda.org/articles/aa/full_html/2015/08/aa26104-15/aa26104-15.html">A124</a>.</p>
+<p>The Born approximation is used outside the interpolation range.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../plasmas/plasmas.html" class="btn btn-neutral float-right" title="7. Plasmas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rate_coefficients.html" class="btn btn-neutral" title="6.3. Rate Coefficients" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Cherab Team
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

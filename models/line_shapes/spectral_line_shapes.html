@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.8. Spectral Line Shapes &mdash; Cherab 1.3.0 documentation</title>
+  <title>8.8. Spectral Line Shapes &mdash; Cherab 1.4.0 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="9. Function Framework" href="../../math/math.html" />
+    <link rel="next" title="8.9. Laser" href="../laser/laser.html" />
     <link rel="prev" title="8.7. Basic Line Emission" href="../basic_line/basic_line_emission.html" /> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -101,6 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">8.8. Spectral Line Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../laser/laser.html">8.9. Laser</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
@@ -191,7 +192,7 @@ will be added in the future.</p>
 <strong>A general model of Doppler broadening will be implemented in the future.</strong></p>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.model.lineshape.add_gaussian_line">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.</span></span><span class="sig-name descname"><span class="pre">add_gaussian_line</span></span><a class="headerlink" href="#cherab.core.model.lineshape.add_gaussian_line" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.</span></span><span class="sig-name descname"><span class="pre">add_gaussian_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radiance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectrum</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.lineshape.add_gaussian_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a Gaussian line to the given spectrum and returns the new spectrum.</p>
 <p>The formula used is based on the following definite integral:
 <span class="math notranslate nohighlight">\(\frac{1}{\sigma \sqrt{2 \pi}} \int_{\lambda_0}^{\lambda_1} \exp(-\frac{(x-\mu)^2}{2\sigma^2}) dx = \frac{1}{2} \left[ -Erf(\frac{a-\mu}{\sqrt{2}\sigma}) +Erf(\frac{b-\mu}{\sqrt{2}\sigma}) \right]\)</span></p>
@@ -221,6 +222,8 @@ will be added in the future.</p>
 <li><p><strong>wavelength</strong> (<em>float</em>) – The rest wavelength for this emission line.</p></li>
 <li><p><strong>target_species</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – The target plasma species that is emitting.</p></li>
 <li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The emitting plasma object.</p></li>
+<li><p><strong>integrator</strong> (<em>Integrator1D</em>) – Integrator1D instance to integrate the line shape
+over the spectral bin. Default is None.</p></li>
 </ul>
 </dd>
 </dl>
@@ -307,6 +310,8 @@ default model coefficients.</p>
 <li><p><strong>stark_model_coefficients</strong> (<em>dict</em>) – Alternative model coefficients in the form
 {line_ij: (c_ij, a_ij, b_ij), …}.
 If None, the default model parameters will be used.</p></li>
+<li><p><strong>integrator</strong> (<em>Integrator1D</em>) – Integrator1D instance to integrate the line shape
+over the spectral bin. Default is <cite>GaussianQuadrature()</cite>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -439,7 +444,7 @@ components for any given magnetic field strength.</p></li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../math/math.html" class="btn btn-neutral float-right" title="9. Function Framework" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../laser/laser.html" class="btn btn-neutral float-right" title="8.9. Laser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../basic_line/basic_line_emission.html" class="btn btn-neutral" title="8.7. Basic Line Emission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -451,7 +456,7 @@ components for any given magnetic field strength.</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, Cherab Team
+        &copy; Copyright 2022, Cherab Team
 
     </p>
   </div> 

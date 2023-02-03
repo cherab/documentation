@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.1. Elements and Isotopes &mdash; Cherab 1.3.0 documentation</title>
+  <title>6.1. Elements and Isotopes &mdash; Cherab 1.4.0 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -94,6 +94,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. Elements and Isotopes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="emission_lines.html">6.2. Spectroscopic Emission Lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">6.3. Rate Coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gaunt_factors.html">6.4. Gaunt factors</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
@@ -216,7 +217,7 @@
 <a class="reference external" href="https://github.com/cherab/core/blob/master/cherab/core/atomic/elements.pyx">source file</a> .</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.core.atomic.elements.lookup_element">
-<span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.elements.</span></span><span class="sig-name descname"><span class="pre">lookup_element</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.elements.lookup_element" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.elements.</span></span><span class="sig-name descname"><span class="pre">lookup_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.elements.lookup_element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds an element by name, symbol or atomic number.</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">lookup_element</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hydrogen</span> <span class="o">=</span> <span class="n">lookup_element</span><span class="p">(</span><span class="s1">&#39;hydrogen&#39;</span><span class="p">)</span>
@@ -277,7 +278,7 @@ and neutrons. Allows identification of specific isotopes.</p></li>
 <a class="reference external" href="https://github.com/cherab/core/blob/master/cherab/core/atomic/elements.pyx">source file</a> .</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.core.atomic.elements.lookup_isotope">
-<span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.elements.</span></span><span class="sig-name descname"><span class="pre">lookup_isotope</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.elements.lookup_isotope" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.elements.</span></span><span class="sig-name descname"><span class="pre">lookup_isotope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.elements.lookup_isotope" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds an isotope by name, symbol or number.</p>
 <p>Isotopes are uniquely determined by the element type and mass number. These
 can be specified as a single string or a combination of element and mass number.</p>
@@ -323,7 +324,7 @@ can be specified as a single string or a combination of element and mass number.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, Cherab Team
+        &copy; Copyright 2022, Cherab Team
 
     </p>
   </div> 
