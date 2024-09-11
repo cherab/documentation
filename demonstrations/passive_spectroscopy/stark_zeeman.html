@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Stark-Zeeman line shape &mdash; Cherab 1.5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Cherab
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#bolometry">Bolometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cherab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Stark-Zeeman line shape</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demonstrations/passive_spectroscopy/stark_zeeman.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="stark-zeeman-line-shape">
+<span id="stark-zeeman"></span><h1>Stark-Zeeman line shape<a class="headerlink" href="#stark-zeeman-line-shape" title="Permalink to this heading">¶</a></h1>
+<p>In B. Lomanowski, et al. “Inferring divertor plasma properties from hydrogen Balmer
+and Paschen series spectroscopy in JET-ILW.” Nuclear Fusion 55.12 (2015)
+<a class="reference external" href="https://doi.org/10.1088/0029-5515/55/12/123028">123028</a> Stark and Zeeman features
+are treated independently. This is a simplification and for better accuracy these effects
+must be taken into account jointly as in J. Rosato, Y. Marandet, R. Stamm,
+Journal of Quantitative Spectroscopy &amp; Radiative Transfer 187 (2017)
+<a class="reference external" href="https://doi.org/10.1016/j.jqsrt.2016.10.005">333</a>.</p>
+<p>The StarkBroadenedLine() follows the Lomanowski’s paper, but introduces a couple of additional
+approximations:</p>
+<ul class="simple">
+<li><p>Zeeman splitting is taken in the form of a simple triplet with a <span class="math notranslate nohighlight">\(\pi\)</span>-component
+centred at <span class="math notranslate nohighlight">\(\lambda\)</span>, <span class="math notranslate nohighlight">\(\sigma^{+}\)</span>-component at <span class="math notranslate nohighlight">\(\frac{hc}{hc/\lambda -\mu B}\)</span>
+and <span class="math notranslate nohighlight">\(\sigma^{-}\)</span>-component at <span class="math notranslate nohighlight">\(\frac{hc}{hc/\lambda +\mu B}\)</span>.</p></li>
+<li><p>The convolution of Stark-Zeeman and Doppler profiles is replaced with the weighted sum
+to speed-up calculations (<a class="reference external" href="https://en.wikipedia.org/wiki/Voigt_profile#Pseudo-Voigt_approximation">pseudo-Voigt</a> approximation).</p></li>
+</ul>
+<p>This example calculates Balmer-alpha and Paschen-beta Stark-Zeeman spectral lines
+for the same parameters of plasma as in Figure 2 in Lomanowski’s paper.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copyright 2016-2022 Euratom</span>
+<span class="c1"># Copyright 2016-2022 United Kingdom Atomic Energy Authority</span>
+<span class="c1"># Copyright 2016-2022 Centro de Investigaciones Energéticas, Medioambientales y Tecnológicas</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the EUPL, Version 1.1 or – as soon they will be approved by the</span>
+<span class="c1"># European Commission - subsequent versions of the EUPL (the &quot;Licence&quot;);</span>
+<span class="c1"># You may not use this work except in compliance with the Licence.</span>
+<span class="c1"># You may obtain a copy of the Licence at:</span>
+<span class="c1">#</span>
+<span class="c1"># https://joinup.ec.europa.eu/software/page/eupl5</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software distributed</span>
+<span class="c1"># under the Licence is distributed on an &quot;AS IS&quot; basis, WITHOUT WARRANTIES OR</span>
+<span class="c1"># CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1">#</span>
+<span class="c1"># See the Licence for the specific language governing permissions and limitations</span>
+<span class="c1"># under the Licence.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Calculates Balmer-alpha and Paschen-beta Stark-Zeeman spectral lines.</span>
+
+<span class="sd">Compare the figures with Figure 2 in B.A. Lomanowski at al, Nucl. Fusion 55 (2015) 123028,</span>
+<span class="sd">https://iopscience.iop.org/article/10.1088/0029-5515/55/12/123028</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c1"># External imports</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Ray</span>
+
+<span class="c1"># Cherab imports</span>
+<span class="kn">from</span> <span class="nn">cherab.core</span> <span class="kn">import</span> <span class="n">Line</span>
+<span class="kn">from</span> <span class="nn">cherab.core.atomic.elements</span> <span class="kn">import</span> <span class="n">deuterium</span>
+<span class="kn">from</span> <span class="nn">cherab.core.model</span> <span class="kn">import</span> <span class="n">ExcitationLine</span><span class="p">,</span> <span class="n">StarkBroadenedLine</span>
+<span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="kn">import</span> <span class="n">OpenADAS</span>
+<span class="kn">from</span> <span class="nn">cherab.tools.plasmas.slab</span> <span class="kn">import</span> <span class="n">build_constant_slab_plasma</span>
+
+
+<span class="c1"># tunables</span>
+<span class="n">ion_density</span> <span class="o">=</span> <span class="mf">2e20</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.25</span>
+
+<span class="c1"># setup scenegraph</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+
+<span class="c1"># create atomic data source</span>
+<span class="n">adas</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># setup the Balmer and Paschen lines</span>
+<span class="n">balmer_alpha</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">paschen_beta</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># setup plasma for Balmer-alpha line</span>
+<span class="n">plasma_species</span> <span class="o">=</span> <span class="p">[(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.e20</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))]</span>
+<span class="n">plasma</span> <span class="o">=</span> <span class="n">build_constant_slab_plasma</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">electron_density</span><span class="o">=</span><span class="mf">5e20</span><span class="p">,</span> <span class="n">electron_temperature</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
+                                    <span class="n">plasma_species</span><span class="o">=</span><span class="n">plasma_species</span><span class="p">,</span> <span class="n">b_field</span><span class="o">=</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">adas</span>
+
+<span class="c1"># add Balmer-alpha line to the plasma</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">ExcitationLine</span><span class="p">(</span><span class="n">balmer_alpha</span><span class="p">,</span> <span class="n">lineshape</span><span class="o">=</span><span class="n">StarkBroadenedLine</span><span class="p">)]</span>
+
+<span class="c1"># Ray-trace perpendicular to magnetic field and plot the results</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">Ray</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">Point3D</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">direction</span><span class="o">=</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">min_wavelength</span><span class="o">=</span><span class="mf">655.9</span><span class="p">,</span> <span class="n">max_wavelength</span><span class="o">=</span><span class="mf">656.3</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">samples</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Radiance (W/m^2/str/nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Balmer-alpha spectrum, Ne = 5e20 m-3, Te = 1 eV, B = 3 T&#39;</span><span class="p">)</span>
+
+<span class="n">plasma</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># setup plasma for Paschen-beta line</span>
+<span class="n">plasma_species</span> <span class="o">=</span> <span class="p">[(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.e20</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))]</span>
+<span class="n">plasma</span> <span class="o">=</span> <span class="n">build_constant_slab_plasma</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">electron_density</span><span class="o">=</span><span class="mf">1e20</span><span class="p">,</span> <span class="n">electron_temperature</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
+                                    <span class="n">plasma_species</span><span class="o">=</span><span class="n">plasma_species</span><span class="p">,</span> <span class="n">b_field</span><span class="o">=</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">adas</span>
+
+<span class="c1"># add Paschen-beta line to the plasma</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">ExcitationLine</span><span class="p">(</span><span class="n">paschen_beta</span><span class="p">,</span> <span class="n">lineshape</span><span class="o">=</span><span class="n">StarkBroadenedLine</span><span class="p">)]</span>
+
+<span class="c1"># Ray-trace perpendicular to magnetic field and plot the results</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">Ray</span><span class="p">(</span><span class="n">origin</span><span class="o">=</span><span class="n">Point3D</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">direction</span><span class="o">=</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">min_wavelength</span><span class="o">=</span><span class="mf">1280.3</span><span class="p">,</span> <span class="n">max_wavelength</span><span class="o">=</span><span class="mf">1282.6</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">samples</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Radiance (W/m^2/str/nm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Paschen-beta spectrum, Ne = 1e20 m-3, Te = 1 eV, B = 3 T&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../../_images/stark_zeeman_balmer_alpha.png"><img alt="../../_images/stark_zeeman_balmer_alpha.png" src="../../_images/stark_zeeman_balmer_alpha.png" style="width: 450px;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The Stark-Zeeman structure of the Balmer-alpha line.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../../_images/stark_zeeman_paschen_beta.png"><img alt="../../_images/stark_zeeman_paschen_beta.png" src="../../_images/stark_zeeman_paschen_beta.png" style="width: 450px;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The Stark-Zeeman structure of the Paschen-beta line.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2024, Cherab Team
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

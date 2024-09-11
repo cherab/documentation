@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8.2. Beam Attenuation &mdash; Cherab 1.5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8.3. CXS models" href="../cxs/cxs_model.html" />
+    <link rel="prev" title="8.1. Custom emission models" href="../custom_models.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Cherab
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">8. Emission Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../custom_models.html">8.1. Custom emission models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.2. Beam Attenuation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#single-ray-attenuator">8.2.1. Single Ray Attenuator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.model.attenuator.singleray.SingleRayAttenuator"><code class="docutils literal notranslate"><span class="pre">SingleRayAttenuator</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cxs/cxs_model.html">8.3. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxs/charge_exchange_calculation.html">8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">8.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">8.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">8.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.8. Basic Line Emission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../line_shapes/spectral_line_shapes.html">8.9. Spectral Line Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../laser/laser.html">8.10. Laser</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cherab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../emission_models.html"><span class="section-number">8. </span>Emission Models</a> &raquo;</li>
+        
+      <li><span class="section-number">8.2. </span>Beam Attenuation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/models/beam/beam_attenuator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="beam-attenuation">
+<h1><span class="section-number">8.2. </span>Beam Attenuation<a class="headerlink" href="#beam-attenuation" title="Permalink to this heading">¶</a></h1>
+<section id="single-ray-attenuator">
+<h2><span class="section-number">8.2.1. </span>Single Ray Attenuator<a class="headerlink" href="#single-ray-attenuator" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.model.attenuator.singleray.SingleRayAttenuator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.attenuator.singleray.</span></span><span class="sig-name descname"><span class="pre">SingleRayAttenuator</span></span><a class="headerlink" href="#cherab.core.model.attenuator.singleray.SingleRayAttenuator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates beam attenuation in the single-ray approximation.
+Attenuation is calculated along the beam axis and extrapolated across the beam.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>step</strong> (<em>double</em>) – Distance between sample points along the beam axis in meters
+for beam stopping calculation. Defaults to 0.01.</p></li>
+<li><p><strong>clamp_to_zero</strong> (<em>bint</em>) – Omptimises beam density calculation.
+If True, the beam density outside the clamping range is zero. Defaults to False.</p></li>
+<li><p><strong>clamp_sigma</strong> (<em>double</em>) – The clamping range as a factor of beam <span class="math notranslate nohighlight">\(\sigma(z)\)</span>.
+Defaults to 5.</p></li>
+<li><p><strong>beam</strong> (<a class="reference internal" href="../../plasmas/particle_beams.html#cherab.core.beam.node.Beam" title="cherab.core.beam.node.Beam"><em>Beam</em></a>) – The beam instance to which this attenuator is attached. Defaults to None.</p></li>
+<li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The plasma instance with which this beam interacts. Defaults to None.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider class for this attenuator.
+Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.model.attenuator.singleray.SingleRayAttenuator.calculate_attenuation">
+<span class="sig-name descname"><span class="pre">calculate_attenuation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.attenuator.singleray.SingleRayAttenuator.calculate_attenuation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger beam attenuation calculation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.model.attenuator.singleray.SingleRayAttenuator.density">
+<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.attenuator.singleray.SingleRayAttenuator.density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the beam density at the specified point in beam coordinate space.
+The beam density is calculated as follows:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}n(x, y, z) = \frac{R}{2\pi v_0 \sigma_x\sigma_y} exp\left(-\frac{1}{2}\left(\frac{x^2}{\sigma_x^2}+\frac{y^2}{\sigma_y^2}\right)\right)exp\left(-\int_{0}^{z}\frac{S(z')}{v_0}dz'\right),\\\sigma_x = \sqrt{\sigma^2 + (ztg(\alpha_x))^2}\hspace{0.5cm}\sigma_y = \sqrt{\sigma^2 + (ztg(\alpha_y))^2},\end{aligned}\end{align} \]</div>
+<p>where <span class="math notranslate nohighlight">\(R=\frac{P}{E}\)</span> is the particle rate of the beam defined as the power
+of the beam divided by the kinetic energy of the single particle, <span class="math notranslate nohighlight">\(v_0=\sqrt{2E/m}\)</span>
+is the particle speed, <span class="math notranslate nohighlight">\(\sigma\)</span> is the Gaussian beam deviation at origin,
+<span class="math notranslate nohighlight">\(\alpha_x\)</span> and <span class="math notranslate nohighlight">\(\alpha_y\)</span> are the beam divergence angles in the x and y
+dimensions respectively, <span class="math notranslate nohighlight">\(S(z)\)</span> is the composite beam attenuation coefficient due to
+collisional-radiative interaction with the plasma species:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}S(z) = \sum_{i=1}^{N}Z_i n_i S_i(E_{int}, n_{i,e}^{(eq)}, T_i),\\n_{i,e}^{(eq)} = \frac{1}{Z_i}\sum_{j=1}^{N}Z_j^2 n_j.\end{aligned}\end{align} \]</div>
+<p>Here <span class="math notranslate nohighlight">\(Z_i\)</span> is the charge of the i-th type of plasma ions,
+<span class="math notranslate nohighlight">\(n_i\)</span> is density of the i-th type of plasma ions, <span class="math notranslate nohighlight">\(N\)</span> is the number of type of plasma
+ions, <span class="math notranslate nohighlight">\(E_{int}\)</span> is the kinetic energy of the beam atoms in the frame of reference where
+ions of the i-th type are at rest, <span class="math notranslate nohighlight">\(T_{i}\)</span> is the temperature of ions of the i-th type.</p>
+<p>The values of partial beam attenuation coefficients, <span class="math notranslate nohighlight">\(S_i\)</span>, are provided by the atomic data source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – x coordinate in meters.</p></li>
+<li><p><strong>y</strong> – y coordinate in meters.</p></li>
+<li><p><strong>z</strong> – z coordinate in meters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Density in m^-3.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cxs/cxs_model.html" class="btn btn-neutral float-right" title="8.3. CXS models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../custom_models.html" class="btn btn-neutral" title="8.1. Custom emission models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2024, Cherab Team
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

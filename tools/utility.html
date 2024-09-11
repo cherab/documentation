@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10.7. Utilities &mdash; Cherab 1.4.0 documentation</title>
+  <title>10.7. Utilities &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Atomic Data" href="../demonstrations/demonstrations.html" />
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -102,9 +104,26 @@
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy.html">10.5. Spectroscopy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tomography.html">10.6. Tomography</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">10.7. Utilities</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-cherab.core.utility.conversion">10.7.1. Unit Conversions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-cherab.core.utility.notify">10.7.2. Notify</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-cherab.core.utility.recursivedict">10.7.3. Recursive Dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cherab.core.utility.conversion">10.7.1. Unit Conversions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.utility.conversion.AmuToKg"><code class="docutils literal notranslate"><span class="pre">AmuToKg</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.utility.conversion.AngstromToNm"><code class="docutils literal notranslate"><span class="pre">AngstromToNm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.utility.conversion.BaseFactorConversion"><code class="docutils literal notranslate"><span class="pre">BaseFactorConversion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.utility.conversion.Cm3ToM3"><code class="docutils literal notranslate"><span class="pre">Cm3ToM3</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.utility.conversion.EvAmuToMS"><code class="docutils literal notranslate"><span class="pre">EvAmuToMS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.utility.conversion.EvToJ"><code class="docutils literal notranslate"><span class="pre">EvToJ</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.utility.conversion.PerCm3ToPerM3"><code class="docutils literal notranslate"><span class="pre">PerCm3ToPerM3</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.utility.conversion.PhotonToJ"><code class="docutils literal notranslate"><span class="pre">PhotonToJ</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cherab.core.utility.notify">10.7.2. Notify</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.utility.notify.Notifier"><code class="docutils literal notranslate"><span class="pre">Notifier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.utility.notify.NotifyingList"><code class="docutils literal notranslate"><span class="pre">NotifyingList</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cherab.core.utility.recursivedict">10.7.3. Recursive Dict</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.utility.recursivedict.RecursiveDict"><code class="docutils literal notranslate"><span class="pre">RecursiveDict</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -186,37 +205,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="utilities">
-<h1><span class="section-number">10.7. </span>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
+  <section id="utilities">
+<h1><span class="section-number">10.7. </span>Utilities<a class="headerlink" href="#utilities" title="Permalink to this heading">¶</a></h1>
 <p>Small module of helper functions and classes.</p>
-<div class="section" id="module-cherab.core.utility.conversion">
-<span id="unit-conversions"></span><h2><span class="section-number">10.7.1. </span>Unit Conversions<a class="headerlink" href="#module-cherab.core.utility.conversion" title="Permalink to this headline">¶</a></h2>
+<section id="module-cherab.core.utility.conversion">
+<span id="unit-conversions"></span><h2><span class="section-number">10.7.1. </span>Unit Conversions<a class="headerlink" href="#module-cherab.core.utility.conversion" title="Permalink to this heading">¶</a></h2>
 <p>Utility functions shared for two or more modules</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.AmuToKg">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">AmuToKg</span></span><a class="headerlink" href="#cherab.core.utility.conversion.AmuToKg" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">AmuToKg</span></span><a class="headerlink" href="#cherab.core.utility.conversion.AmuToKg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts from amu to kg</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.AngstromToNm">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">AngstromToNm</span></span><a class="headerlink" href="#cherab.core.utility.conversion.AngstromToNm" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">AngstromToNm</span></span><a class="headerlink" href="#cherab.core.utility.conversion.AngstromToNm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts from Angstroms to nm.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.BaseFactorConversion">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">BaseFactorConversion</span></span><a class="headerlink" href="#cherab.core.utility.conversion.BaseFactorConversion" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">BaseFactorConversion</span></span><a class="headerlink" href="#cherab.core.utility.conversion.BaseFactorConversion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for conversion based on factor</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.BaseFactorConversion.inv">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.BaseFactorConversion.inv" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.BaseFactorConversion.inv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse conversion</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.BaseFactorConversion.to">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.BaseFactorConversion.to" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.BaseFactorConversion.to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct conversion</p>
 </dd></dl>
 
@@ -224,23 +243,23 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.Cm3ToM3">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">Cm3ToM3</span></span><a class="headerlink" href="#cherab.core.utility.conversion.Cm3ToM3" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">Cm3ToM3</span></span><a class="headerlink" href="#cherab.core.utility.conversion.Cm3ToM3" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts from cm3 to m3</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.EvAmuToMS">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">EvAmuToMS</span></span><a class="headerlink" href="#cherab.core.utility.conversion.EvAmuToMS" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">EvAmuToMS</span></span><a class="headerlink" href="#cherab.core.utility.conversion.EvAmuToMS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts from eV/amu to velocity (m/s)</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.EvAmuToMS.inv">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.EvAmuToMS.inv" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.EvAmuToMS.inv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse conversion</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.EvAmuToMS.to">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.EvAmuToMS.to" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.EvAmuToMS.to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct conversion</p>
 </dd></dl>
 
@@ -248,40 +267,40 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.EvToJ">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">EvToJ</span></span><a class="headerlink" href="#cherab.core.utility.conversion.EvToJ" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">EvToJ</span></span><a class="headerlink" href="#cherab.core.utility.conversion.EvToJ" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts from eV to Jules</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.PerCm3ToPerM3">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">PerCm3ToPerM3</span></span><a class="headerlink" href="#cherab.core.utility.conversion.PerCm3ToPerM3" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">PerCm3ToPerM3</span></span><a class="headerlink" href="#cherab.core.utility.conversion.PerCm3ToPerM3" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts from cm-3 to m-3</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.PhotonToJ">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">PhotonToJ</span></span><a class="headerlink" href="#cherab.core.utility.conversion.PhotonToJ" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.conversion.</span></span><span class="sig-name descname"><span class="pre">PhotonToJ</span></span><a class="headerlink" href="#cherab.core.utility.conversion.PhotonToJ" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts from photon to Jules</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.PhotonToJ.inv">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.PhotonToJ.inv" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.PhotonToJ.inv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse conversion; wavelength in nm</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.utility.conversion.PhotonToJ.to">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.PhotonToJ.to" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.conversion.PhotonToJ.to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct conversion; wavelength in nm</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-cherab.core.utility.notify">
-<span id="notify"></span><h2><span class="section-number">10.7.2. </span>Notify<a class="headerlink" href="#module-cherab.core.utility.notify" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-cherab.core.utility.notify">
+<span id="notify"></span><h2><span class="section-number">10.7.2. </span>Notify<a class="headerlink" href="#module-cherab.core.utility.notify" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.utility.notify.Notifier">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.notify.</span></span><span class="sig-name descname"><span class="pre">Notifier</span></span><a class="headerlink" href="#cherab.core.utility.notify.Notifier" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.notify.</span></span><span class="sig-name descname"><span class="pre">Notifier</span></span><a class="headerlink" href="#cherab.core.utility.notify.Notifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Allows objects to broadcast notifications to observing objects.</p>
 <p>This object implements a version of the observer pattern. Objects wishing
 to be notified may register a callback function with the notifier. The
@@ -301,7 +320,7 @@ collected.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.utility.notify.NotifyingList">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.notify.</span></span><span class="sig-name descname"><span class="pre">NotifyingList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.notify.NotifyingList" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.notify.</span></span><span class="sig-name descname"><span class="pre">NotifyingList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.notify.NotifyingList" title="Permalink to this definition">¶</a></dt>
 <dd><p>A list that reports changes to its contents.</p>
 <p>The NotifyingList class is a subclass of the builtin list type. It extends
 the list type to add a Notifier object that generates notifications
@@ -336,7 +355,7 @@ a basic builtin list.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.utility.notify.NotifyingList.pop">
-<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.notify.NotifyingList.pop" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.notify.NotifyingList.pop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove and return item at index (default last).</p>
 <p>Raises IndexError if list is empty or index is out of range.</p>
 </dd></dl>
@@ -362,12 +381,12 @@ a basic builtin list.</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-cherab.core.utility.recursivedict">
-<span id="recursive-dict"></span><h2><span class="section-number">10.7.3. </span>Recursive Dict<a class="headerlink" href="#module-cherab.core.utility.recursivedict" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-cherab.core.utility.recursivedict">
+<span id="recursive-dict"></span><h2><span class="section-number">10.7.3. </span>Recursive Dict<a class="headerlink" href="#module-cherab.core.utility.recursivedict" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.utility.recursivedict.RecursiveDict">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.recursivedict.</span></span><span class="sig-name descname"><span class="pre">RecursiveDict</span></span><a class="headerlink" href="#cherab.core.utility.recursivedict.RecursiveDict" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.utility.recursivedict.</span></span><span class="sig-name descname"><span class="pre">RecursiveDict</span></span><a class="headerlink" href="#cherab.core.utility.recursivedict.RecursiveDict" title="Permalink to this definition">¶</a></dt>
 <dd><p>A dictionary that implements a basic, automatically expanding tree.</p>
 <p>If a key is accessed that is not defined then it is automatically populated
 with another RecursiveDict object. This allows the user to rapidly
@@ -405,14 +424,14 @@ converting the tree to a nested set of basic python dictionaries.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.utility.recursivedict.RecursiveDict.from_dict">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.recursivedict.RecursiveDict.from_dict" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.utility.recursivedict.RecursiveDict.from_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a copy of the dictionary as a RecursiveDict.</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -434,7 +453,7 @@ converting the tree to a nested set of basic python dictionaries.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -458,7 +477,9 @@ converting the tree to a nested set of basic python dictionaries.</p>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

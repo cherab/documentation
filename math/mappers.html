@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.5. Mappers &mdash; Cherab 1.4.0 documentation</title>
+  <title>9.5. Mappers &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,9 +28,10 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.6. Masks" href="mask.html" />
+    <link rel="next" title="9.6. Transformations" href="transform.html" />
     <link rel="prev" title="9.4. Interpolators" href="interpolators.html" /> 
 
   
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -98,10 +100,19 @@
 <li class="toctree-l2"><a class="reference internal" href="clamp.html">9.2. Clamps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="function.html">9.3. Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.4. Interpolators</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.5. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mask.html">9.6. Masks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.7. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slice.html">9.8. Slicing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.5. Mappers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.mappers.AxisymmetricMapper"><code class="docutils literal notranslate"><span class="pre">AxisymmetricMapper</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.mappers.IsoMapper2D"><code class="docutils literal notranslate"><span class="pre">IsoMapper2D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.mappers.IsoMapper3D"><code class="docutils literal notranslate"><span class="pre">IsoMapper3D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.mappers.Swizzle2D"><code class="docutils literal notranslate"><span class="pre">Swizzle2D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.mappers.Swizzle3D"><code class="docutils literal notranslate"><span class="pre">Swizzle3D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.mappers.VectorAxisymmetricMapper"><code class="docutils literal notranslate"><span class="pre">VectorAxisymmetricMapper</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html">9.6. Transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">9.7. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.8. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slice.html">9.9. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
@@ -182,17 +193,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-cherab.core.math.mappers">
-<span id="mappers"></span><h1><span class="section-number">9.5. </span>Mappers<a class="headerlink" href="#module-cherab.core.math.mappers" title="Permalink to this headline">¶</a></h1>
+  <section id="module-cherab.core.math.mappers">
+<span id="mappers"></span><h1><span class="section-number">9.5. </span>Mappers<a class="headerlink" href="#module-cherab.core.math.mappers" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.mappers.AxisymmetricMapper">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">AxisymmetricMapper</span></span><a class="headerlink" href="#cherab.core.math.mappers.AxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">AxisymmetricMapper</span></span><a class="headerlink" href="#cherab.core.math.mappers.AxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs an 360 degree rotation of a 2D function (defined on the xz plane)
 around the z-axis.</p>
 <p>Due to the nature of this mapping, only the positive region of the x range
 of the supplied function is mapped.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>function2d</strong> (<em>Function2D</em>) – The function to be mapped.</p>
 </dd>
 </dl>
@@ -214,12 +225,12 @@ of the supplied function is mapped.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.mappers.IsoMapper2D">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">IsoMapper2D</span></span><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper2D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">IsoMapper2D</span></span><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies a 1D function to modify the value of a 2D scalar field.</p>
 <p>For a given 2D scalar field f(x,y) and 1D function g(x) this object
 returns g(f(x,y)).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function2d</strong> (<em>Function2D</em>) – the 2D scalar field</p></li>
 <li><p><strong>function1d</strong> (<em>Function1D</em>) – the 1D function</p></li>
@@ -249,12 +260,12 @@ returns g(f(x,y)).</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.mappers.IsoMapper3D">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">IsoMapper3D</span></span><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper3D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">IsoMapper3D</span></span><a class="headerlink" href="#cherab.core.math.mappers.IsoMapper3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies a 1D function to modify the value of a 3D scalar field.</p>
 <p>For a given 3D scalar field f(x,y,z) and 1D function g(x) this object
 returns g(f(x,y,z)).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function3d</strong> (<em>Function3D</em>) – the 3D scalar field</p></li>
 <li><p><strong>function1d</strong> (<em>Function1D</em>) – the 1D function</p></li>
@@ -285,10 +296,10 @@ returns g(f(x,y,z)).</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.mappers.Swizzle2D">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">Swizzle2D</span></span><a class="headerlink" href="#cherab.core.math.mappers.Swizzle2D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">Swizzle2D</span></span><a class="headerlink" href="#cherab.core.math.mappers.Swizzle2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverts the argument order of the specified function.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>function2d</strong> (<em>Function2D</em>) – The 2D function you want to inverse the arguments.</p>
 </dd>
 </dl>
@@ -307,7 +318,7 @@ returns g(f(x,y,z)).</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.mappers.Swizzle3D">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">Swizzle3D</span></span><a class="headerlink" href="#cherab.core.math.mappers.Swizzle3D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">Swizzle3D</span></span><a class="headerlink" href="#cherab.core.math.mappers.Swizzle3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rearranges the order of a 3D functions arguments.</p>
 <p>For instance, a 90 degree rotation of function coordinates can be performed
 by swapping arguments: xyz -&gt; xzy</p>
@@ -318,7 +329,7 @@ For instance:
 shape = (0,2,1) transforms f(x,y,z) in f(x,z,y)
 shape = (1,0,1) transforms f(x,y,z) in f(y,x,y)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function3d</strong> (<em>Function3D</em>) – the 3D function you want to reorder the arguments.</p></li>
 <li><p><strong>shape</strong> (<em>tuple</em>) – a tuple of integers imposing the order of the arguments.</p></li>
@@ -340,13 +351,13 @@ shape = (1,0,1) transforms f(x,y,z) in f(y,x,y)</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.mappers.VectorAxisymmetricMapper">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">VectorAxisymmetricMapper</span></span><a class="headerlink" href="#cherab.core.math.mappers.VectorAxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.mappers.</span></span><span class="sig-name descname"><span class="pre">VectorAxisymmetricMapper</span></span><a class="headerlink" href="#cherab.core.math.mappers.VectorAxisymmetricMapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs an 360 degree rotation of a 2D vector function (defined on the xz plane)
 around the z-axis.</p>
 <p>Due to the nature of this mapping, only the positive region of the x range
 of the supplied function is mapped.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>vectorfunction2d</strong> (<em>VectorFunction2D</em>) – The vector function to be mapped.</p>
 </dd>
 </dl>
@@ -367,7 +378,7 @@ of the supplied function is mapped.</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -377,7 +388,7 @@ of the supplied function is mapped.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mask.html" class="btn btn-neutral float-right" title="9.6. Masks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="transform.html" class="btn btn-neutral float-right" title="9.6. Transformations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="interpolators.html" class="btn btn-neutral" title="9.4. Interpolators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -389,7 +400,7 @@ of the supplied function is mapped.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -413,7 +424,9 @@ of the supplied function is mapped.</p>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

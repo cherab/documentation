@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.7. Samplers &mdash; Cherab 1.4.0 documentation</title>
+  <title>9.8. Samplers &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,10 +28,11 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.8. Slicing" href="slice.html" />
-    <link rel="prev" title="9.6. Masks" href="mask.html" /> 
+    <link rel="next" title="9.9. Slicing" href="slice.html" />
+    <link rel="prev" title="9.7. Masks" href="mask.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -99,14 +101,35 @@
 <li class="toctree-l2"><a class="reference internal" href="function.html">9.3. Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.4. Interpolators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mappers.html">9.5. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mask.html">9.6. Masks</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.7. Samplers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#d-sampling">9.7.1. 1D Sampling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">9.7.2. 2D Sampling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">9.7.3. 3D Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html">9.6. Transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">9.7. Masks</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.8. Samplers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d-sampling">9.8.1. 1D Sampling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.sample1d"><code class="docutils literal notranslate"><span class="pre">sample1d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.sample1d_points"><code class="docutils literal notranslate"><span class="pre">sample1d_points()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="slice.html">9.8. Slicing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">9.8.2. 2D Sampling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.sample2d"><code class="docutils literal notranslate"><span class="pre">sample2d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.sample2d_points"><code class="docutils literal notranslate"><span class="pre">sample2d_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.sample2d_grid"><code class="docutils literal notranslate"><span class="pre">sample2d_grid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.samplevector2d"><code class="docutils literal notranslate"><span class="pre">samplevector2d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.samplevector2d_points"><code class="docutils literal notranslate"><span class="pre">samplevector2d_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.samplevector2d_grid"><code class="docutils literal notranslate"><span class="pre">samplevector2d_grid()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">9.8.3. 3D Sampling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.sample3d"><code class="docutils literal notranslate"><span class="pre">sample3d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.sample3d_points"><code class="docutils literal notranslate"><span class="pre">sample3d_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.sample3d_grid"><code class="docutils literal notranslate"><span class="pre">sample3d_grid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.samplevector3d"><code class="docutils literal notranslate"><span class="pre">samplevector3d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.samplevector3d_points"><code class="docutils literal notranslate"><span class="pre">samplevector3d_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.samplers.samplevector3d_grid"><code class="docutils literal notranslate"><span class="pre">samplevector3d_grid()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slice.html">9.9. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
@@ -168,7 +191,7 @@
         
           <li><a href="math.html"><span class="section-number">9. </span>Function Framework</a> &raquo;</li>
         
-      <li><span class="section-number">9.7. </span>Samplers</li>
+      <li><span class="section-number">9.8. </span>Samplers</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,26 +210,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="samplers">
-<h1><span class="section-number">9.7. </span>Samplers<a class="headerlink" href="#samplers" title="Permalink to this headline">¶</a></h1>
+  <section id="samplers">
+<h1><span class="section-number">9.8. </span>Samplers<a class="headerlink" href="#samplers" title="Permalink to this heading">¶</a></h1>
 <p>This module provides a set of sampling functions for rapidly generating samples
 of 1D, 2D and 3D functions.</p>
 <p>These functions use C calls when sampling Function1D, Function2D and Function3D
 objects and are therefore considerably faster than the equivalent Python code.</p>
-<div class="section" id="d-sampling">
-<h2><span class="section-number">9.7.1. </span>1D Sampling<a class="headerlink" href="#d-sampling" title="Permalink to this headline">¶</a></h2>
+<section id="d-sampling">
+<h2><span class="section-number">9.8.1. </span>1D Sampling<a class="headerlink" href="#d-sampling" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.core.math.samplers.sample1d">
 <span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function1d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Samples a 1D function over the specified range.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function1d</strong> – a Python function or Function1D object</p></li>
 <li><p><strong>x_range</strong> – a tuple defining the sample range: (min, max, samples)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a tuple containing the sampled values: (x_points, function_samples)</p>
 </dd>
 </dl>
@@ -229,13 +252,13 @@ objects and are therefore considerably faster than the equivalent Python code.</
 <span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample1d_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function1d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_points</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample1d_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a 1D function at the specified points</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function1d</strong> – a Python function or Function1D object</p></li>
 <li><p><strong>x_points</strong> – an array of points at which to sample the function</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>an array containing the sampled values</p>
 </dd>
 </dl>
@@ -251,22 +274,22 @@ objects and are therefore considerably faster than the equivalent Python code.</
 </div>
 </dd></dl>
 
-</div>
-<div class="section" id="id1">
-<h2><span class="section-number">9.7.2. </span>2D Sampling<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id1">
+<h2><span class="section-number">9.8.2. </span>2D Sampling<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.core.math.samplers.sample2d">
 <span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function2d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_range</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Samples a 2D function over the specified range.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function2d</strong> – a Python function or Function2D object</p></li>
 <li><p><strong>x_range</strong> – a tuple defining the x sample range: (x_min, x_max, x_samples)</p></li>
 <li><p><strong>y_range</strong> – a tuple defining the y sample range: (y_min, y_max, y_samples)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a tuple containing the sampled values: (x_points, y_points, function_samples)</p>
 </dd>
 </dl>
@@ -298,13 +321,13 @@ objects and are therefore considerably faster than the equivalent Python code.</
 For sampling over a regular grid, consider sample2d or sample2d_grid
 instead.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function2d</strong> – a Python function or Function2D object</p></li>
 <li><p><strong>points</strong> – an Nx2 array of points at which to sample the function</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a 1D array containing the sampled values at each point</p>
 </dd>
 </dl>
@@ -326,14 +349,14 @@ instead.</p>
 <dd><p>Sample a 2D function on a rectilinear grid</p>
 <p>Note that v[i, j] = f(x[i], y[j])</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function2d</strong> – a Python function or Function2D object</p></li>
 <li><p><strong>x</strong> – the x coordinates of each column in the grid</p></li>
 <li><p><strong>y</strong> – the y coordinates of each row in the grid</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return v</dt>
+<dt class="field-even">Return v<span class="colon">:</span></dt>
 <dd class="field-even"><p>a 2D array containing the sampled values at each grid point</p>
 </dd>
 </dl>
@@ -357,14 +380,14 @@ instead.</p>
 <p>The function samples returns are an NxMx3 array where the last axis are the
 x, y, and z components of the vector respectively.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function2d</strong> – a Python function or Function2D object</p></li>
 <li><p><strong>x_range</strong> – a tuple defining the x sample range: (x_min, x_max, x_samples)</p></li>
 <li><p><strong>y_range</strong> – a tuple defining the y sample range: (y_min, y_max, y_samples)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a tuple containing the sampled values: (x_points, y_points, function_samples)</p>
 </dd>
 </dl>
@@ -401,13 +424,13 @@ x, y, and z components of the vector respectively.</p>
 For sampling over a regular grid, consider samplevector2d or
 samplevector2d_grid instead.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function2d</strong> – a Python function or Function2D object</p></li>
 <li><p><strong>points</strong> – an Nx2 array of points at which to sample the function</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a Nx3 array containing the sampled values at each point</p>
 </dd>
 </dl>
@@ -431,14 +454,14 @@ samplevector2d_grid instead.</p>
 <span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">samplevector2d_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function2d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.samplevector2d_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a 2D vector function on a rectilinear grid</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function2d</strong> – a Python function or Function2D object</p></li>
 <li><p><strong>x</strong> – the x coordinates of each column in the grid</p></li>
 <li><p><strong>y</strong> – the y coordinates of each row in the grid</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return v</dt>
+<dt class="field-even">Return v<span class="colon">:</span></dt>
 <dd class="field-even"><p>a 3D array containing the sampled values at each grid point</p>
 </dd>
 </dl>
@@ -461,15 +484,15 @@ samplevector2d_grid instead.</p>
 </div>
 </dd></dl>
 
-</div>
-<div class="section" id="id2">
-<h2><span class="section-number">9.7.3. </span>3D Sampling<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id2">
+<h2><span class="section-number">9.8.3. </span>3D Sampling<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.core.math.samplers.sample3d">
 <span class="sig-prename descclassname"><span class="pre">cherab.core.math.samplers.</span></span><span class="sig-name descname"><span class="pre">sample3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function3d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_range</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.samplers.sample3d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Samples a 3D function over the specified range.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function3d</strong> – a Python function or Function2D object</p></li>
 <li><p><strong>x_range</strong> – a tuple defining the x sample range: (x_min, x_max, x_samples)</p></li>
@@ -477,7 +500,7 @@ samplevector2d_grid instead.</p>
 <li><p><strong>z_range</strong> – a tuple defining the z sample range: (z_min, z_max, z_samples)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a tuple containing the sampled values: (x_points, y_points, z_points, function_samples)</p>
 </dd>
 </dl>
@@ -511,13 +534,13 @@ samplevector2d_grid instead.</p>
 For sampling over a regular grid, consider sample3d or sample3d_grid
 instead.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function3d</strong> – a Python function or Function3D object</p></li>
 <li><p><strong>points</strong> – an Nx3 array of points at which to sample the function</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a 1D array containing the sampled values at each point</p>
 </dd>
 </dl>
@@ -539,7 +562,7 @@ instead.</p>
 <dd><p>Sample a 3D function on a rectilinear grid</p>
 <p>Note that v[i, j, k] = f(x[i], y[j], z[k])</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function3d</strong> – a Python function or Function3D object</p></li>
 <li><p><strong>x</strong> – the x coordinates of each column in the grid</p></li>
@@ -547,7 +570,7 @@ instead.</p>
 <li><p><strong>z</strong> – the z coordinates of each plane in the grid</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return v</dt>
+<dt class="field-even">Return v<span class="colon">:</span></dt>
 <dd class="field-even"><p>a 3D array containing the sampled values at each grid point</p>
 </dd>
 </dl>
@@ -578,7 +601,7 @@ instead.</p>
 <p>The function samples returns are an NxMxKx3 array where the last axis are the
 x, y, and z components of the vector respectively.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function3d</strong> – a Python function or Function2D object</p></li>
 <li><p><strong>x_range</strong> – a tuple defining the x sample range: (x_min, x_max, x_samples)</p></li>
@@ -586,7 +609,7 @@ x, y, and z components of the vector respectively.</p>
 <li><p><strong>z_range</strong> – a tuple defining the z sample range: (z_min, z_max, z_samples)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a tuple containing the sampled values: (x_points, y_points, z_points, function_samples)</p>
 </dd>
 </dl>
@@ -631,13 +654,13 @@ x, y, and z components of the vector respectively.</p>
 For sampling over a regular grid, consider samplevector3d or
 samplevector3d_grid instead.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function3d</strong> – a Python function or Function3D object</p></li>
 <li><p><strong>points</strong> – an Nx3 array of points at which to sample the function</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>an Nx3 array containing the sampled values at each point</p>
 </dd>
 </dl>
@@ -662,7 +685,7 @@ samplevector3d_grid instead.</p>
 <dd><p>Sample a 3D vector function on a rectilinear grid</p>
 <p>Note that v[i, j, k] = f(x[i], y[j], z[k])</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function3d</strong> – a Python function or Function3D object</p></li>
 <li><p><strong>x</strong> – the x coordinates of each column in the grid</p></li>
@@ -670,7 +693,7 @@ samplevector3d_grid instead.</p>
 <li><p><strong>z</strong> – the z coordinates of each plane in the grid</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return v</dt>
+<dt class="field-even">Return v<span class="colon">:</span></dt>
 <dd class="field-even"><p>an NxMxkx3 array containing the sampled values at each grid point</p>
 </dd>
 </dl>
@@ -705,8 +728,8 @@ samplevector3d_grid instead.</p>
 </div>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -716,10 +739,10 @@ samplevector3d_grid instead.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="slice.html" class="btn btn-neutral float-right" title="9.8. Slicing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="slice.html" class="btn btn-neutral float-right" title="9.9. Slicing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="mask.html" class="btn btn-neutral" title="9.6. Masks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mask.html" class="btn btn-neutral" title="9.7. Masks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -728,7 +751,7 @@ samplevector3d_grid instead.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -752,7 +775,9 @@ samplevector3d_grid instead.</p>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

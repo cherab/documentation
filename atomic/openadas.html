@@ -1,0 +1,602 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.8. Open-ADAS &mdash; Cherab 1.5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Plasmas" href="../plasmas/plasmas.html" />
+    <link rel="prev" title="6.7. Atomic data repository" href="repository.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cherab
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="atomic_data.html">6. Atomic Data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="elements_and_isotopes.html">6.1. Elements and Isotopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emission_lines.html">6.2. Spectroscopic Emission Lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">6.3. Rate Coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gaunt_factors.html">6.4. Gaunt factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic_data_interface.html">6.5. Atomic Data Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_interpolators.html">6.6. Atomic data interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repository.html">6.7. Atomic data repository</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.8. Open-ADAS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parse">6.8.1. Parse</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.parse.adf11.parse_adf11"><code class="docutils literal notranslate"><span class="pre">parse_adf11()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.parse.adf12.parse_adf12"><code class="docutils literal notranslate"><span class="pre">parse_adf12()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.parse.adf15.parse_adf15"><code class="docutils literal notranslate"><span class="pre">parse_adf15()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.parse.adf21.parse_adf21"><code class="docutils literal notranslate"><span class="pre">parse_adf21()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.parse.adf22.parse_adf22bmp"><code class="docutils literal notranslate"><span class="pre">parse_adf22bmp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.parse.adf22.parse_adf22bme"><code class="docutils literal notranslate"><span class="pre">parse_adf22bme()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cherab.openadas.install">6.8.2. Install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.install.install_adf11acd"><code class="docutils literal notranslate"><span class="pre">install_adf11acd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.install.install_adf11ccd"><code class="docutils literal notranslate"><span class="pre">install_adf11ccd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.install.install_adf11plt"><code class="docutils literal notranslate"><span class="pre">install_adf11plt()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.install.install_adf11prb"><code class="docutils literal notranslate"><span class="pre">install_adf11prb()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.install.install_adf11prc"><code class="docutils literal notranslate"><span class="pre">install_adf11prc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.install.install_adf11scd"><code class="docutils literal notranslate"><span class="pre">install_adf11scd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.install.install_adf12"><code class="docutils literal notranslate"><span class="pre">install_adf12()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.install.install_adf15"><code class="docutils literal notranslate"><span class="pre">install_adf15()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.install.install_adf21"><code class="docutils literal notranslate"><span class="pre">install_adf21()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.install.install_adf22bme"><code class="docutils literal notranslate"><span class="pre">install_adf22bme()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.install.install_adf22bmp"><code class="docutils literal notranslate"><span class="pre">install_adf22bmp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cherab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="atomic_data.html"><span class="section-number">6. </span>Atomic Data</a> &raquo;</li>
+        
+      <li><span class="section-number">6.8. </span>Open-ADAS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/atomic/openadas.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="open-adas">
+<h1><span class="section-number">6.8. </span>Open-ADAS<a class="headerlink" href="#open-adas" title="Permalink to this heading">¶</a></h1>
+<p>Although a typical Open-ADAS data set is installed to the local atomic data repository
+using the <cite>populate()</cite> function, additional atomic data can be installed manually.</p>
+<p>The following functions allow to parse the Open-ADAS files and install the rates of the atomic processes
+to the local atomic data repository.</p>
+<section id="parse">
+<h2><span class="section-number">6.8.1. </span>Parse<a class="headerlink" href="#parse" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.parse.adf11.parse_adf11">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.parse.adf11.</span></span><span class="sig-name descname"><span class="pre">parse_adf11</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adf_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.parse.adf11.parse_adf11" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads contents of open adas adf11 files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Element described by ADF file.</p></li>
+<li><p><strong>adf_file_path</strong> – Path to ADF11 file from ADAS root.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>temperature, density, rates as numpy array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.parse.adf12.parse_adf12">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.parse.adf12.</span></span><span class="sig-name descname"><span class="pre">parse_adf12</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adf_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.parse.adf12.parse_adf12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens and parses ADAS ADF12 data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_ion</strong> – The donor ion element described by the rate file.</p></li>
+<li><p><strong>donor_metastable</strong> – The donor ion metastable level.</p></li>
+<li><p><strong>receiver_ion</strong> – The receiver ion element described by the rate file.</p></li>
+<li><p><strong>receiver_charge</strong> – The receiver ion charge state described by the rate file.</p></li>
+<li><p><strong>adf_file_path</strong> – Path to ADF15 file from ADAS root.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing rates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.parse.adf15.parse_adf15">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.parse.adf15.</span></span><span class="sig-name descname"><span class="pre">parse_adf15</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adf_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.parse.adf15.parse_adf15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens and parses ADAS ADF15 data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Element described by ADF file.</p></li>
+<li><p><strong>charge</strong> – Charge state described by ADF file.</p></li>
+<li><p><strong>adf_file_path</strong> – Path to ADF15 file from ADAS root.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing rates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.parse.adf21.parse_adf21">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.parse.adf21.</span></span><span class="sig-name descname"><span class="pre">parse_adf21</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adf_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.parse.adf21.parse_adf21" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens and parses ADAS ADF21 data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Element object describing the beam species.</p></li>
+<li><p><strong>target_ion</strong> – Element object describing the target ion species.</p></li>
+<li><p><strong>target_charge</strong> – Ionisation level of the target species.</p></li>
+<li><p><strong>adf_file_path</strong> – Path to ADF15 file from ADAS root.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing rates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.parse.adf22.parse_adf22bmp">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.parse.adf22.</span></span><span class="sig-name descname"><span class="pre">parse_adf22bmp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adf_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.parse.adf22.parse_adf22bmp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens and parses ADAS ADF22 BMP data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Element object describing the beam species.</p></li>
+<li><p><strong>beam_metastable</strong> – The metastable level of the beam species.</p></li>
+<li><p><strong>target_ion</strong> – Element object describing the target ion species.</p></li>
+<li><p><strong>target_charge</strong> – Charge state of the target species.</p></li>
+<li><p><strong>adf_file_path</strong> – Path to ADF15 file from ADAS root.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing rates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.parse.adf22.parse_adf22bme">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.parse.adf22.</span></span><span class="sig-name descname"><span class="pre">parse_adf22bme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adf_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.parse.adf22.parse_adf22bme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens and parses ADAS ADF22 BME data files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Element object describing the beam species.</p></li>
+<li><p><strong>target_ion</strong> – Element object describing the target ion species.</p></li>
+<li><p><strong>target_charge</strong> – Charge state of the target species.</p></li>
+<li><p><strong>transition</strong> – Atomic transition tuple (upper level, lower level).</p></li>
+<li><p><strong>adf_file_path</strong> – Path to ADF15 file from ADAS root.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing rates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-cherab.openadas.install">
+<span id="install"></span><h2><span class="section-number">6.8.2. </span>Install<a class="headerlink" href="#module-cherab.openadas.install" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.install.install_adf11acd">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.install.</span></span><span class="sig-name descname"><span class="pre">install_adf11acd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.install.install_adf11acd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the recombination rate defined in an ADF11 file to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – The element described by the rate file.</p></li>
+<li><p><strong>file_path</strong> – Path relative to ADAS root.</p></li>
+<li><p><strong>download</strong> – Attempt to download file if not present (Default=True).</p></li>
+<li><p><strong>repository_path</strong> – Path to the repository in which to install the rates (optional).</p></li>
+<li><p><strong>adas_path</strong> – Path to ADAS files repository (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.install.install_adf11ccd">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.install.</span></span><span class="sig-name descname"><span class="pre">install_adf11ccd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.install.install_adf11ccd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the thermal charge exchange rate defined in an ADF11 file to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_element</strong> – Element donating the electron, for the case of ADF11 files it is
+neutral hydrogen.</p></li>
+<li><p><strong>donor_charge</strong> – Charge of the donor atom/ion.</p></li>
+<li><p><strong>receiver_element</strong> – Element receiving the electron.</p></li>
+<li><p><strong>file_path</strong> – Path relative to ADAS root.</p></li>
+<li><p><strong>download</strong> – Attempt to download file if not present (Default=True).</p></li>
+<li><p><strong>repository_path</strong> – Path to the repository in which to install the rates (optional).</p></li>
+<li><p><strong>adas_path</strong> – Path to ADAS files repository (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.install.install_adf11plt">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.install.</span></span><span class="sig-name descname"><span class="pre">install_adf11plt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.install.install_adf11plt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the line radiated power rates defined in an ADF11 file to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – The element described by the rate file.</p></li>
+<li><p><strong>file_path</strong> – Path relative to ADAS root.</p></li>
+<li><p><strong>download</strong> – Attempt to download file if not present (Default=True).</p></li>
+<li><p><strong>repository_path</strong> – Path to the repository in which to install the rates (optional).</p></li>
+<li><p><strong>adas_path</strong> – Path to ADAS files repository (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.install.install_adf11prb">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.install.</span></span><span class="sig-name descname"><span class="pre">install_adf11prb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.install.install_adf11prb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the continuum radiated power rates defined in an ADF11 file to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – The element described by the rate file.</p></li>
+<li><p><strong>file_path</strong> – Path relative to ADAS root.</p></li>
+<li><p><strong>download</strong> – Attempt to download file if not present (Default=True).</p></li>
+<li><p><strong>repository_path</strong> – Path to the repository in which to install the rates (optional).</p></li>
+<li><p><strong>adas_path</strong> – Path to ADAS files repository (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.install.install_adf11prc">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.install.</span></span><span class="sig-name descname"><span class="pre">install_adf11prc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.install.install_adf11prc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the CX radiated power rates defined in an ADF11 file to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – The element described by the rate file.</p></li>
+<li><p><strong>file_path</strong> – Path relative to ADAS root.</p></li>
+<li><p><strong>download</strong> – Attempt to download file if not present (Default=True).</p></li>
+<li><p><strong>repository_path</strong> – Path to the repository in which to install the rates (optional).</p></li>
+<li><p><strong>adas_path</strong> – Path to ADAS files repository (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.install.install_adf11scd">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.install.</span></span><span class="sig-name descname"><span class="pre">install_adf11scd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.install.install_adf11scd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the ionisation rate defined in an ADF11 file to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – The element described by the rate file.</p></li>
+<li><p><strong>file_path</strong> – Path relative to ADAS root.</p></li>
+<li><p><strong>download</strong> – Attempt to download file if not present (Default=True).</p></li>
+<li><p><strong>repository_path</strong> – Path to the repository in which to install the rates (optional).</p></li>
+<li><p><strong>adas_path</strong> – Path to ADAS files repository (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.install.install_adf12">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.install.</span></span><span class="sig-name descname"><span class="pre">install_adf12</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.install.install_adf12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the rates in the ADF12 file to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_ion</strong> – The donor ion element described by the rate file.</p></li>
+<li><p><strong>donor_metastable</strong> – The donor ion metastable level.</p></li>
+<li><p><strong>receiver_ion</strong> – The receiver ion element described by the rate file.</p></li>
+<li><p><strong>receiver_charge</strong> – The receiver ion ionisation level described by the rate file.</p></li>
+<li><p><strong>file_path</strong> – Path relative to ADAS root.</p></li>
+<li><p><strong>download</strong> – Attempt to download file if not present (Default=True).</p></li>
+<li><p><strong>repository_path</strong> – Path to the repository in which to install the rates (optional).</p></li>
+<li><p><strong>adas_path</strong> – Path to ADAS files repository (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.install.install_adf15">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.install.</span></span><span class="sig-name descname"><span class="pre">install_adf15</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ionisation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.install.install_adf15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the rates in the ADF15 file to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – The element described by the rate file.</p></li>
+<li><p><strong>ionisation</strong> – The ionisation level described by the rate file.</p></li>
+<li><p><strong>file_path</strong> – Path relative to ADAS root.</p></li>
+<li><p><strong>download</strong> – Attempt to download file if not present (Default=True).</p></li>
+<li><p><strong>repository_path</strong> – Path to the repository in which to install the rates (optional).</p></li>
+<li><p><strong>adas_path</strong> – Path to ADAS files repository (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.install.install_adf21">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.install.</span></span><span class="sig-name descname"><span class="pre">install_adf21</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.install.install_adf21" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the beam stopping rate defined in an ADF21 file to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Beam neutral atom (Element/Isotope).</p></li>
+<li><p><strong>target_ion</strong> – Target species (Element/Isotope).</p></li>
+<li><p><strong>target_charge</strong> – Charge of the target species.</p></li>
+<li><p><strong>file_path</strong> – Path relative to ADAS root.</p></li>
+<li><p><strong>download</strong> – Attempt to download file if not present (Default=True).</p></li>
+<li><p><strong>repository_path</strong> – Path to the repository in which to install the rates (optional).</p></li>
+<li><p><strong>adas_path</strong> – Path to ADAS files repository (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.install.install_adf22bme">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.install.</span></span><span class="sig-name descname"><span class="pre">install_adf22bme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.install.install_adf22bme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the beam emission rate defined in an ADF22 BME file to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Beam neutral atom (Element/Isotope).</p></li>
+<li><p><strong>target_ion</strong> – Target species (Element/Isotope).</p></li>
+<li><p><strong>target_charge</strong> – Charge of the target species.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>file_path</strong> – Path relative to ADAS root.</p></li>
+<li><p><strong>download</strong> – Attempt to download file if not present (Default=True).</p></li>
+<li><p><strong>repository_path</strong> – Path to the repository in which to install the rates (optional).</p></li>
+<li><p><strong>adas_path</strong> – Path to ADAS files repository (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.install.install_adf22bmp">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.install.</span></span><span class="sig-name descname"><span class="pre">install_adf22bmp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.install.install_adf22bmp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the beam population rate defined in an ADF22 BMP file to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Beam neutral atom (Element/Isotope).</p></li>
+<li><p><strong>beam_metastable</strong> – Metastable/excitation level of beam neutral atom.</p></li>
+<li><p><strong>target_ion</strong> – Target species (Element/Isotope).</p></li>
+<li><p><strong>target_charge</strong> – Charge of the target species.</p></li>
+<li><p><strong>file_path</strong> – Path relative to ADAS root.</p></li>
+<li><p><strong>download</strong> – Attempt to download file if not present (Default=True).</p></li>
+<li><p><strong>repository_path</strong> – Path to the repository in which to install the rates (optional).</p></li>
+<li><p><strong>adas_path</strong> – Path to ADAS files repository (optional).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../plasmas/plasmas.html" class="btn btn-neutral float-right" title="7. Plasmas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="repository.html" class="btn btn-neutral" title="6.7. Atomic data repository" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2024, Cherab Team
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

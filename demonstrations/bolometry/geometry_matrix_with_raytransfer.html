@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Calculating a Geometry Matrix using Ray Transfer Objects &mdash; Cherab 1.4.0 documentation</title>
+  <title>Calculating a Geometry Matrix using Ray Transfer Objects &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="calculating-a-geometry-matrix-using-ray-transfer-objects">
-<span id="bolometer-geometry-raytransfer"></span><h1>Calculating a Geometry Matrix using Ray Transfer Objects<a class="headerlink" href="#calculating-a-geometry-matrix-using-ray-transfer-objects" title="Permalink to this headline">¶</a></h1>
+  <section id="calculating-a-geometry-matrix-using-ray-transfer-objects">
+<span id="bolometer-geometry-raytransfer"></span><h1>Calculating a Geometry Matrix using Ray Transfer Objects<a class="headerlink" href="#calculating-a-geometry-matrix-using-ray-transfer-objects" title="Permalink to this heading">¶</a></h1>
 <p>In this demonstration, we calculate the geometry matrix for a slightly more complicated
 bolometer system, consisting of 3 cameras each of which have 16 foils looking through a
 single aperture. This produces the same end result as the <a class="reference internal" href="geometry_matrix_from_voxels.html#bolometer-geometry-voxels"><span class="std std-ref">Geometry Matrix With
@@ -426,7 +428,7 @@ regularisation operator, which corresponds to isotropic smoothing.</p>
 <span class="k">for</span> <span class="n">camera</span> <span class="ow">in</span> <span class="n">cameras</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">foil</span> <span class="ow">in</span> <span class="n">camera</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculating sensitivity for </span><span class="si">{}</span><span class="s2">...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">foil</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-        <span class="n">foil</span><span class="o">.</span><span class="n">pipelines</span> <span class="o">=</span> <span class="p">[</span><span class="n">RayTransferPipeline0D</span><span class="p">()]</span>
+        <span class="n">foil</span><span class="o">.</span><span class="n">pipelines</span> <span class="o">=</span> <span class="p">[</span><span class="n">RayTransferPipeline0D</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">foil</span><span class="o">.</span><span class="n">units</span><span class="p">)]</span>
         <span class="c1"># All objects in world have wavelength-independent material properties,</span>
         <span class="c1"># so it doesn&#39;t matter which wavelength range we use (as long as</span>
         <span class="c1"># max_wavelength - min_wavelength = 1)</span>
@@ -470,18 +472,22 @@ regularisation operator, which corresponds to isotropic smoothing.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
-<img alt="../../_images/bolometer_inversion_lines_of_sight.svg" src="../../_images/bolometer_inversion_lines_of_sight.svg" /><p class="caption"><span class="caption-text"><strong>Caption</strong> The lines of sight of the 48 foils in 3 bolometer cameras, used to
+<figure class="align-center" id="id1">
+<img alt="../../_images/bolometer_inversion_lines_of_sight.svg" src="../../_images/bolometer_inversion_lines_of_sight.svg" /><figcaption>
+<p><span class="caption-text"><strong>Caption</strong> The lines of sight of the 48 foils in 3 bolometer cameras, used to
 generate the sensitivity matrix.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id2">
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
 <img alt="../../_images/bolometer_raytransfer_sensitivities.png" src="../../_images/bolometer_raytransfer_sensitivities.png" />
-<p class="caption"><span class="caption-text"><strong>Caption</strong> The result of summing the sensitivty of all foils, for each voxel in the
+<figcaption>
+<p><span class="caption-text"><strong>Caption</strong> The result of summing the sensitivty of all foils, for each voxel in the
 ray transfer object. Since we are using a mask, only a subset of the ray transfer
 object’s cells are treated as voxels to be calculated: in the rest the sensitivity is
 undefined.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -494,7 +500,7 @@ undefined.</span><a class="headerlink" href="#id2" title="Permalink to this imag
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -518,7 +524,9 @@ undefined.</span><a class="headerlink" href="#id2" title="Permalink to this imag
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

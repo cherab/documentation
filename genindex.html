@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Cherab 1.4.0 documentation</title>
+  <title>Index &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
 
@@ -57,7 +58,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -189,6 +190,7 @@
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
  | <a href="#Z"><strong>Z</strong></a>
  
 </div>
@@ -199,7 +201,7 @@
     __call__()
 
       <ul>
-        <li><a href="atomic/rate_coefficients.html#call__">built-in function</a>, <a href="atomic/rate_coefficients.html#id0">[1]</a>
+        <li><a href="atomic/rate_coefficients.html#call__">built-in function</a>, <a href="atomic/rate_coefficients.html#id0">[1]</a>, <a href="atomic/rate_coefficients.html#id3">[2]</a>
 </li>
       </ul></li>
       <li><a href="atomic/gaunt_factors.html#cherab.core.atomic.gaunt.FreeFreeGauntFactor.__call__">__call__() (cherab.core.atomic.gaunt.FreeFreeGauntFactor method)</a>
@@ -228,6 +230,8 @@
       </ul></li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.__len__">__len__() (cherab.tools.observers.bolometry.BolometerCamera method)</a>
 </li>
+      <li><a href="models/cxs/cxs_model.html#cherab.core.model.beam.charge_exchange.BeamCXLine._change">_change() (cherab.core.model.beam.charge_exchange.BeamCXLine method)</a>
+</li>
       <li><a href="tools/observers.html#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase">_SpectroscopicObserver0DBase (class in cherab.tools.observers.spectroscopy.base)</a>
 </li>
   </ul></td>
@@ -238,23 +242,55 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.add">add() (cherab.core.plasma.node.Composition method)</a>
 </li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.cx.add_beam_cx_rate">add_beam_cx_rate() (in module cherab.openadas.repository.beam.cx)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.emission.add_beam_emission_rate">add_beam_emission_rate() (in module cherab.openadas.repository.beam.emission)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.population.add_beam_population_rate">add_beam_population_rate() (in module cherab.openadas.repository.beam.population)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.stopping.add_beam_stopping_rate">add_beam_stopping_rate() (in module cherab.openadas.repository.beam.stopping)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.radiated_power.add_continuum_power_rate">add_continuum_power_rate() (in module cherab.openadas.repository.radiated_power)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.radiated_power.add_cx_power_rate">add_cx_power_rate() (in module cherab.openadas.repository.radiated_power)</a>
+</li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera.add_foil_detector">add_foil_detector() (cherab.tools.observers.bolometry.BolometerCamera method)</a>
 </li>
-      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.add_gaussian_line">add_gaussian_line (class in cherab.core.model.lineshape)</a>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.gaussian.add_gaussian_line">add_gaussian_line (class in cherab.core.model.lineshape.gaussian)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.atomic.add_ionisation_rate">add_ionisation_rate() (in module cherab.openadas.repository.atomic)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.radiated_power.add_line_power_rate">add_line_power_rate() (in module cherab.openadas.repository.radiated_power)</a>
+</li>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.stark.add_lorentzian_line">add_lorentzian_line (class in cherab.core.model.lineshape.stark)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup.add_observer">add_observer() (cherab.tools.observers.group.base.Observer0DGroup method)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.pec.add_pec_excitation_rate">add_pec_excitation_rate() (in module cherab.openadas.repository.pec)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.pec.add_pec_recombination_rate">add_pec_recombination_rate() (in module cherab.openadas.repository.pec)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.pec.add_pec_thermal_cx_rate">add_pec_thermal_cx_rate() (in module cherab.openadas.repository.pec)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.atomic.add_recombination_rate">add_recombination_rate() (in module cherab.openadas.repository.atomic)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.atomic.add_thermal_cx_rate">add_thermal_cx_rate() (in module cherab.openadas.repository.atomic)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.wavelength.add_wavelength">add_wavelength() (in module cherab.openadas.repository.wavelength)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.AmuToKg">AmuToKg (class in cherab.core.utility.conversion)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.AngstromToNm">AngstromToNm (class in cherab.core.utility.conversion)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.append">append() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil.as_sightline">as_sightline() (cherab.tools.observers.bolometry.BolometerFoil method)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerIRVB.as_sightlines">as_sightlines() (cherab.tools.observers.bolometry.BolometerIRVB method)</a>
+</li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData">AtomicData (class in cherab.core.atomic.interface)</a>
 </li>
       <li><a href="tools/primitives.html#cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon">axisymmetric_mesh_from_polygon() (in module cherab.tools.primitives.axisymmetric_mesh)</a>
 </li>
@@ -270,26 +306,70 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.BaseFactorConversion">BaseFactorConversion (class in cherab.core.utility.conversion)</a>
 </li>
-      <li><a href="plasmas/particle_beams.html#cherab.core.Beam">Beam (class in cherab.core)</a>
+      <li><a href="plasmas/particle_beams.html#cherab.core.beam.node.Beam">Beam (class in cherab.core.beam.node)</a>
 </li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.beam_cx_pec">beam_cx_pec() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.beam_cx_pec">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.beam_emission_pec">beam_emission_pec() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.beam_emission_pec">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.beam_population_rate">beam_population_rate() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.beam_population_rate">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.beam_stopping_rate">beam_stopping_rate() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.beam_stopping_rate">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
       <li><a href="models/cxs/cxs_model.html#cherab.core.model.beam.charge_exchange.BeamCXLine">BeamCXLine (class in cherab.core.model.beam.charge_exchange)</a>
 </li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamCXPEC">BeamCXPEC (class in cherab.core.atomic.rates)</a>
+
+      <ul>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.cx.BeamCXPEC">(class in cherab.openadas.rates.cx)</a>
+</li>
+      </ul></li>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.beam.mse.BeamEmissionMultiplet">BeamEmissionMultiplet (class in cherab.core.model.lineshape.beam.mse)</a>
 </li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamEmissionPEC">BeamEmissionPEC (class in cherab.core.atomic.rates)</a>
+
+      <ul>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.BeamEmissionPEC">(class in cherab.openadas.rates.beam)</a>
 </li>
+      </ul></li>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.beam.base.BeamLineShapeModel">BeamLineShapeModel (class in cherab.core.model.lineshape.beam.base)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamPopulationRate">BeamPopulationRate (class in cherab.core.atomic.rates)</a>
+
+      <ul>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.BeamPopulationRate">(class in cherab.openadas.rates.beam)</a>
 </li>
+      </ul></li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamStoppingRate">BeamStoppingRate (class in cherab.core.atomic.rates)</a>
+
+      <ul>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.BeamStoppingRate">(class in cherab.openadas.rates.beam)</a>
 </li>
+      </ul></li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerCamera">BolometerCamera (class in cherab.tools.observers.bolometry)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil">BolometerFoil (class in cherab.tools.observers.bolometry)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerIRVB">BolometerIRVB (class in cherab.tools.observers.bolometry)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerSlit">BolometerSlit (class in cherab.tools.observers.bolometry)</a>
 </li>
       <li><a href="models/brem/bremsstrahlung.html#cherab.core.model.plasma.bremsstrahlung.Bremsstrahlung">Bremsstrahlung (class in cherab.core.model.plasma.bremsstrahlung)</a>
@@ -300,7 +380,7 @@
     built-in function
 
       <ul>
-        <li><a href="atomic/rate_coefficients.html#call__">__call__()</a>, <a href="atomic/rate_coefficients.html#id0">[1]</a>
+        <li><a href="atomic/rate_coefficients.html#call__">__call__()</a>, <a href="atomic/rate_coefficients.html#id0">[1]</a>, <a href="atomic/rate_coefficients.html#id3">[2]</a>
 </li>
         <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.FractionalAbundance.__call__">cherab.core.atomic.rates.FractionalAbundance.__call__()</a>
 </li>
@@ -308,7 +388,7 @@
 </li>
         <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.StageResolvedLineRadiation.__call__">cherab.core.atomic.rates.StageResolvedLineRadiation.__call__()</a>
 </li>
-        <li><a href="atomic/rate_coefficients.html#evaluate">evaluate()</a>, <a href="atomic/rate_coefficients.html#id2">[1]</a>
+        <li><a href="atomic/rate_coefficients.html#evaluate">evaluate()</a>, <a href="atomic/rate_coefficients.html#id1">[1]</a>, <a href="atomic/rate_coefficients.html#id4">[2]</a>
 </li>
       </ul></li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.distribution.DistributionFunction.bulk_velocity">bulk_velocity() (cherab.core.distribution.DistributionFunction method)</a>
@@ -329,7 +409,7 @@
 </li>
       <li><a href="math/caching.html#cherab.core.math.caching.caching3d.Caching3D">Caching3D (class in cherab.core.math.caching.caching3d)</a>
 </li>
-      <li><a href="models/cxs/cxs_model.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator.calculate_attenuation">calculate_attenuation() (cherab.core.model.attenuator.singleray.SingleRayAttenuator method)</a>
+      <li><a href="models/beam/beam_attenuator.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator.calculate_attenuation">calculate_attenuation() (cherab.core.model.attenuator.singleray.SingleRayAttenuator method)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil.calculate_etendue">calculate_etendue() (cherab.tools.observers.bolometry.BolometerFoil method)</a>
 
@@ -413,8 +493,6 @@
         <li><a href="math/mappers.html#module-cherab.core.math.mappers">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     cherab.core.math.mask
 
@@ -427,6 +505,20 @@
 
       <ul>
         <li><a href="math/slice.html#module-cherab.core.math.slice">module</a>
+</li>
+      </ul></li>
+      <li>
+    cherab.core.math.transform.cylindrical
+
+      <ul>
+        <li><a href="math/transform.html#module-cherab.core.math.transform.cylindrical">module</a>
+</li>
+      </ul></li>
+      <li>
+    cherab.core.math.transform.periodic
+
+      <ul>
+        <li><a href="math/transform.html#module-cherab.core.math.transform.periodic">module</a>
 </li>
       </ul></li>
       <li>
@@ -443,11 +535,69 @@
         <li><a href="tools/utility.html#module-cherab.core.utility.notify">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     cherab.core.utility.recursivedict
 
       <ul>
         <li><a href="tools/utility.html#module-cherab.core.utility.recursivedict">module</a>
+</li>
+      </ul></li>
+      <li>
+    cherab.openadas.install
+
+      <ul>
+        <li><a href="atomic/openadas.html#module-cherab.openadas.install">module</a>
+</li>
+      </ul></li>
+      <li>
+    cherab.openadas.repository.beam.cx
+
+      <ul>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.beam.cx">module</a>
+</li>
+      </ul></li>
+      <li>
+    cherab.openadas.repository.beam.emission
+
+      <ul>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.beam.emission">module</a>
+</li>
+      </ul></li>
+      <li>
+    cherab.openadas.repository.beam.population
+
+      <ul>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.beam.population">module</a>
+</li>
+      </ul></li>
+      <li>
+    cherab.openadas.repository.beam.stopping
+
+      <ul>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.beam.stopping">module</a>
+</li>
+      </ul></li>
+      <li>
+    cherab.openadas.repository.pec
+
+      <ul>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.pec">module</a>
+</li>
+      </ul></li>
+      <li>
+    cherab.openadas.repository.radiated_power
+
+      <ul>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.radiated_power">module</a>
+</li>
+      </ul></li>
+      <li>
+    cherab.openadas.repository.wavelength
+
+      <ul>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.wavelength">module</a>
 </li>
       </ul></li>
       <li><a href="math/clamp.html#cherab.core.math.clamp.ClampInput1D">ClampInput1D (class in cherab.core.math.clamp)</a>
@@ -484,11 +634,29 @@
 </li>
       <li><a href="models/laser/laser.html#cherab.core.model.laser.laserspectrum.ConstantSpectrum">ConstantSpectrum (class in cherab.core.model.laser.laserspectrum)</a>
 </li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.continuum_radiated_power_rate">continuum_radiated_power_rate() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.continuum_radiated_power_rate">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.ContinuumPower">ContinuumPower (class in cherab.openadas.rates.radiated_power)</a>
+</li>
       <li><a href="tools/spectroscopy.html#cherab.tools.spectroscopy.SpectroscopicInstrument.create_pipelines">create_pipelines() (cherab.tools.spectroscopy.SpectroscopicInstrument method)</a>
+</li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.cx_radiated_power_rate">cx_radiated_power_rate() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.cx_radiated_power_rate">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.CXRadiationPower">CXRadiationPower (class in cherab.openadas.rates.radiated_power)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.emitters.CylindricalRayTransferEmitter">CylindricalRayTransferEmitter (class in cherab.tools.raytransfer.emitters)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.emitters.CylindricalRayTransferIntegrator">CylindricalRayTransferIntegrator (class in cherab.tools.raytransfer.emitters)</a>
+</li>
+      <li><a href="math/transform.html#cherab.core.math.transform.cylindrical.CylindricalTransform">CylindricalTransform (class in cherab.core.math.transform.cylindrical)</a>
 </li>
       <li><a href="tools/spectroscopy.html#cherab.tools.spectroscopy.CzernyTurnerSpectrometer">CzernyTurnerSpectrometer (class in cherab.tools.spectroscopy)</a>
 </li>
@@ -498,21 +666,23 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="plasmas/particle_beams.html#cherab.core.Beam.density">density() (cherab.core.Beam method)</a>
+      <li><a href="plasmas/particle_beams.html#cherab.core.beam.node.Beam.density">density() (cherab.core.beam.node.Beam method)</a>
 
       <ul>
         <li><a href="plasmas/core_plasma_classes.html#cherab.core.distribution.DistributionFunction.density">(cherab.core.distribution.DistributionFunction method)</a>
 </li>
         <li><a href="plasmas/core_plasma_classes.html#cherab.core.distribution.Maxwellian.density">(cherab.core.distribution.Maxwellian method)</a>
 </li>
-        <li><a href="models/cxs/cxs_model.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator.density">(cherab.core.model.attenuator.singleray.SingleRayAttenuator method)</a>
+        <li><a href="models/beam/beam_attenuator.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator.density">(cherab.core.model.attenuator.singleray.SingleRayAttenuator method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="plasmas/particle_beams.html#cherab.core.Beam.direction">direction() (cherab.core.Beam method)</a>
+      <li><a href="plasmas/particle_beams.html#cherab.core.beam.node.Beam.direction">direction() (cherab.core.beam.node.Beam method)</a>
 </li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.distribution.DistributionFunction">DistributionFunction (class in cherab.core.distribution)</a>
+</li>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.doppler.doppler_shift">doppler_shift (class in cherab.core.model.lineshape.doppler)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -530,6 +700,12 @@
 </li>
       <li><a href="atomic/elements_and_isotopes.html#cherab.core.atomic.elements.Element">Element (class in cherab.core.atomic.elements)</a>
 </li>
+      <li><a href="models/cxs/cxs_model.html#cherab.core.model.beam.charge_exchange.BeamCXLine.emission">emission() (cherab.core.model.beam.charge_exchange.BeamCXLine method)</a>
+
+      <ul>
+        <li><a href="models/brem/bremsstrahlung.html#cherab.core.model.plasma.bremsstrahlung.Bremsstrahlung.emission">(cherab.core.model.plasma.bremsstrahlung.Bremsstrahlung method)</a>
+</li>
+      </ul></li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function">emissivities_from_function() (cherab.tools.inversions.voxels.VoxelCollection method)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function">emissivity_from_function() (cherab.tools.inversions.voxels.AxisymmetricVoxel method)</a>
@@ -538,11 +714,9 @@
     evaluate()
 
       <ul>
-        <li><a href="atomic/rate_coefficients.html#evaluate">built-in function</a>, <a href="atomic/rate_coefficients.html#id2">[1]</a>
+        <li><a href="atomic/rate_coefficients.html#evaluate">built-in function</a>, <a href="atomic/rate_coefficients.html#id1">[1]</a>, <a href="atomic/rate_coefficients.html#id4">[2]</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomic/gaunt_factors.html#cherab.core.atomic.gaunt.FreeFreeGauntFactor.evaluate">evaluate() (cherab.core.atomic.gaunt.FreeFreeGauntFactor method)</a>
 
       <ul>
@@ -550,12 +724,64 @@
 </li>
         <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.BeamCXPEC.evaluate">(cherab.core.atomic.rates.BeamCXPEC method)</a>
 </li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.IonisationRate.evaluate">(cherab.openadas.rates.atomic.IonisationRate method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.NullIonisationRate.evaluate">(cherab.openadas.rates.atomic.NullIonisationRate method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.NullRecombinationRate.evaluate">(cherab.openadas.rates.atomic.NullRecombinationRate method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.NullThermalCXRate.evaluate">(cherab.openadas.rates.atomic.NullThermalCXRate method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.RecombinationRate.evaluate">(cherab.openadas.rates.atomic.RecombinationRate method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.ThermalCXRate.evaluate">(cherab.openadas.rates.atomic.ThermalCXRate method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.BeamEmissionPEC.evaluate">(cherab.openadas.rates.beam.BeamEmissionPEC method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.BeamPopulationRate.evaluate">(cherab.openadas.rates.beam.BeamPopulationRate method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.BeamStoppingRate.evaluate">(cherab.openadas.rates.beam.BeamStoppingRate method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.NullBeamEmissionPEC.evaluate">(cherab.openadas.rates.beam.NullBeamEmissionPEC method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.NullBeamPopulationRate.evaluate">(cherab.openadas.rates.beam.NullBeamPopulationRate method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.NullBeamStoppingRate.evaluate">(cherab.openadas.rates.beam.NullBeamStoppingRate method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.cx.BeamCXPEC.evaluate">(cherab.openadas.rates.cx.BeamCXPEC method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.cx.NullBeamCXPEC.evaluate">(cherab.openadas.rates.cx.NullBeamCXPEC method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.pec.ImpactExcitationPEC.evaluate">(cherab.openadas.rates.pec.ImpactExcitationPEC method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.pec.NullImpactExcitationPEC.evaluate">(cherab.openadas.rates.pec.NullImpactExcitationPEC method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.pec.NullRecombinationPEC.evaluate">(cherab.openadas.rates.pec.NullRecombinationPEC method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.pec.RecombinationPEC.evaluate">(cherab.openadas.rates.pec.RecombinationPEC method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.ContinuumPower.evaluate">(cherab.openadas.rates.radiated_power.ContinuumPower method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.CXRadiationPower.evaluate">(cherab.openadas.rates.radiated_power.CXRadiationPower method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.LineRadiationPower.evaluate">(cherab.openadas.rates.radiated_power.LineRadiationPower method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.NullContinuumPower.evaluate">(cherab.openadas.rates.radiated_power.NullContinuumPower method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.NullCXRadiationPower.evaluate">(cherab.openadas.rates.radiated_power.NullCXRadiationPower method)</a>
+</li>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.NullLineRadiationPower.evaluate">(cherab.openadas.rates.radiated_power.NullLineRadiationPower method)</a>
+</li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.EvAmuToMS">EvAmuToMS (class in cherab.core.utility.conversion)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.EvToJ">EvToJ (class in cherab.core.utility.conversion)</a>
 </li>
       <li><a href="plasmas/equilibrium.html#cherab.tools.equilibrium.example.example_equilibrium">example_equilibrium() (in module cherab.tools.equilibrium.example)</a>
+</li>
+      <li><a href="models/basic_line/basic_line_emission.html#cherab.core.model.plasma.impact_excitation.ExcitationLine">ExcitationLine (class in cherab.core.model.plasma.impact_excitation)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.extend">extend() (cherab.core.utility.notify.NotifyingList method)</a>
 </li>
@@ -567,10 +793,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/observers.html#cherab.tools.observers.group.FibreOpticGroup">FibreOpticGroup (class in cherab.tools.observers.group)</a>
 </li>
-      <li><a href="atomic/gaunt_factors.html#cherab.core.atomic.gaunt.FreeFreeGauntFactor">FreeFreeGauntFactor (class in cherab.core.atomic.gaunt)</a>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.fractional_abundance">fractional_abundance() (cherab.core.atomic.interface.AtomicData method)</a>
+</li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.free_free_gaunt_factor">free_free_gaunt_factor() (cherab.core.atomic.interface.AtomicData method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="atomic/gaunt_factors.html#cherab.core.atomic.gaunt.FreeFreeGauntFactor">FreeFreeGauntFactor (class in cherab.core.atomic.gaunt)</a>
+</li>
       <li><a href="tools/utility.html#cherab.core.utility.recursivedict.RecursiveDict.freeze">freeze() (cherab.core.utility.recursivedict.RecursiveDict method)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.recursivedict.RecursiveDict.from_dict">from_dict() (cherab.core.utility.recursivedict.RecursiveDict class method)</a>
@@ -583,17 +813,49 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="models/laser/laser.html#cherab.core.model.laser.profile.GaussianBeamAxisymmetric">GaussianBeamAxisymmetric (class in cherab.core.model.laser.profile)</a>
 </li>
-      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.GaussianLine">GaussianLine (class in cherab.core.model.lineshape)</a>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.gaussian.GaussianLine">GaussianLine (class in cherab.core.model.lineshape.gaussian)</a>
 </li>
       <li><a href="models/laser/laser.html#cherab.core.model.laser.laserspectrum.GaussianSpectrum">GaussianSpectrum (class in cherab.core.model.laser.laserspectrum)</a>
 </li>
       <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.generate_geometry">generate_geometry() (cherab.core.laser.profile.LaserProfile method)</a>
+
+      <ul>
+        <li><a href="models/laser/laser.html#cherab.core.model.laser.profile.ConstantBivariateGaussian.generate_geometry">(cherab.core.model.laser.profile.ConstantBivariateGaussian method)</a>
+</li>
+        <li><a href="models/laser/laser.html#cherab.core.model.laser.profile.GaussianBeamAxisymmetric.generate_geometry">(cherab.core.model.laser.profile.GaussianBeamAxisymmetric method)</a>
+</li>
+        <li><a href="models/laser/laser.html#cherab.core.model.laser.profile.TrivariateGaussian.generate_geometry">(cherab.core.model.laser.profile.TrivariateGaussian method)</a>
+</li>
+        <li><a href="models/laser/laser.html#cherab.core.model.laser.profile.UniformEnergyDensity.generate_geometry">(cherab.core.model.laser.profile.UniformEnergyDensity method)</a>
+</li>
+      </ul></li>
+      <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.get">get() (cherab.core.plasma.node.Composition method)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.cx.get_beam_cx_rates">get_beam_cx_rates() (in module cherab.openadas.repository.beam.cx)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.emission.get_beam_emission_rate">get_beam_emission_rate() (in module cherab.openadas.repository.beam.emission)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.population.get_beam_population_rate">get_beam_population_rate() (in module cherab.openadas.repository.beam.population)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.stopping.get_beam_stopping_rate">get_beam_stopping_rate() (in module cherab.openadas.repository.beam.stopping)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="plasmas/core_plasma_classes.html#cherab.core.plasma.node.Composition.get">get() (cherab.core.plasma.node.Composition method)</a>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.radiated_power.get_continuum_radiated_power_rate">get_continuum_radiated_power_rate() (in module cherab.openadas.repository.radiated_power)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.radiated_power.get_cx_radiated_power_rate">get_cx_radiated_power_rate() (in module cherab.openadas.repository.radiated_power)</a>
 </li>
       <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.get_energy_density">get_energy_density() (cherab.core.laser.profile.LaserProfile method)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.atomic.get_ionisation_rate">get_ionisation_rate() (in module cherab.openadas.repository.atomic)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.radiated_power.get_line_radiated_power_rate">get_line_radiated_power_rate() (in module cherab.openadas.repository.radiated_power)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.pec.get_pec_excitation_rate">get_pec_excitation_rate() (in module cherab.openadas.repository.pec)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.pec.get_pec_recombination_rate">get_pec_recombination_rate() (in module cherab.openadas.repository.pec)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.pec.get_pec_thermal_cx_rate">get_pec_thermal_cx_rate() (in module cherab.openadas.repository.pec)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.get_pipeline">get_pipeline() (cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase method)</a>
 </li>
@@ -601,17 +863,55 @@
 </li>
       <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.get_polarization">get_polarization() (cherab.core.laser.profile.LaserProfile method)</a>
 </li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.atomic.get_recombination_rate">get_recombination_rate() (in module cherab.openadas.repository.atomic)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.atomic.get_thermal_cx_rate">get_thermal_cx_rate() (in module cherab.openadas.repository.atomic)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.wavelength.get_wavelength">get_wavelength() (in module cherab.openadas.repository.wavelength)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.ImpactExcitationPEC">ImpactExcitationPEC (class in cherab.core.atomic.rates)</a>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.impact_excitation_pec">impact_excitation_pec() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.impact_excitation_pec">(cherab.openadas.openadas.OpenADAS method)</a>
 </li>
+      </ul></li>
+      <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.ImpactExcitationPEC">ImpactExcitationPEC (class in cherab.core.atomic.rates)</a>
+
+      <ul>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.pec.ImpactExcitationPEC">(class in cherab.openadas.rates.pec)</a>
+</li>
+      </ul></li>
       <li><a href="plasmas/equilibrium.html#cherab.tools.equilibrium.eqdsk.import_eqdsk">import_eqdsk() (in module cherab.tools.equilibrium.eqdsk)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.insert">insert() (cherab.core.utility.notify.NotifyingList method)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.install.install_adf11acd">install_adf11acd() (in module cherab.openadas.install)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.install.install_adf11ccd">install_adf11ccd() (in module cherab.openadas.install)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.install.install_adf11plt">install_adf11plt() (in module cherab.openadas.install)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.install.install_adf11prb">install_adf11prb() (in module cherab.openadas.install)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.install.install_adf11prc">install_adf11prc() (in module cherab.openadas.install)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.install.install_adf11scd">install_adf11scd() (in module cherab.openadas.install)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.install.install_adf12">install_adf12() (in module cherab.openadas.install)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.install.install_adf15">install_adf15() (in module cherab.openadas.install)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.install.install_adf21">install_adf21() (in module cherab.openadas.install)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.install.install_adf22bme">install_adf22bme() (in module cherab.openadas.install)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.install.install_adf22bmp">install_adf22bmp() (in module cherab.openadas.install)</a>
 </li>
       <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators1d.Interpolate1DCubic">Interpolate1DCubic (class in cherab.core.math.interpolators.interpolators1d)</a>
 </li>
@@ -619,6 +919,8 @@
 </li>
       <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators2d.Interpolate2DCubic">Interpolate2DCubic (class in cherab.core.math.interpolators.interpolators2d)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators2d.Interpolate2DLinear">Interpolate2DLinear (class in cherab.core.math.interpolators.interpolators2d)</a>
 </li>
       <li><a href="math/interpolators.html#cherab.core.math.interpolators.interpolators3d.Interpolate3DCubic">Interpolate3DCubic (class in cherab.core.math.interpolators.interpolators3d)</a>
@@ -635,8 +937,6 @@
         <li><a href="tools/utility.html#cherab.core.utility.conversion.PhotonToJ.inv">(cherab.core.utility.conversion.PhotonToJ class method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/tomography.html#cherab.tools.inversions.sart.invert_constrained_sart">invert_constrained_sart() (in module cherab.tools.inversions.sart)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.nnls.invert_regularised_nnls">invert_regularised_nnls() (in module cherab.tools.inversions.nnls)</a>
@@ -649,6 +949,18 @@
 </li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.Plasma.ion_density">ion_density() (cherab.core.Plasma method)</a>
 </li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.ionisation_rate">ionisation_rate() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.ionisation_rate">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
+      <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.IonisationRate">IonisationRate (class in cherab.core.atomic.rates)</a>
+
+      <ul>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.IonisationRate">(class in cherab.openadas.rates.atomic)</a>
+</li>
+      </ul></li>
       <li><a href="math/mappers.html#cherab.core.math.mappers.IsoMapper2D">IsoMapper2D (class in cherab.core.math.mappers)</a>
 </li>
       <li><a href="math/mappers.html#cherab.core.math.mappers.IsoMapper3D">IsoMapper3D (class in cherab.core.math.mappers)</a>
@@ -667,11 +979,19 @@
 </li>
       <li><a href="plasmas/laser.html#cherab.core.laser.laserspectrum.LaserSpectrum">LaserSpectrum (class in cherab.core.laser.laserspectrum)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomic/emission_lines.html#cherab.core.atomic.line.Line">Line (class in cherab.core.atomic.line)</a>
 </li>
-      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.LineShapeModel">LineShapeModel (class in cherab.core.model.lineshape)</a>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.line_radiated_power_rate">line_radiated_power_rate() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.line_radiated_power_rate">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.LineRadiationPower">LineRadiationPower (class in cherab.openadas.rates.radiated_power)</a>
+</li>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.base.LineShapeModel">LineShapeModel (class in cherab.core.model.lineshape.base)</a>
 </li>
       <li><a href="atomic/elements_and_isotopes.html#cherab.core.atomic.elements.lookup_element">lookup_element() (in module cherab.core.atomic.elements)</a>
 </li>
@@ -713,16 +1033,36 @@
 </li>
         <li><a href="math/slice.html#module-cherab.core.math.slice">cherab.core.math.slice</a>
 </li>
+        <li><a href="math/transform.html#module-cherab.core.math.transform.cylindrical">cherab.core.math.transform.cylindrical</a>
+</li>
+        <li><a href="math/transform.html#module-cherab.core.math.transform.periodic">cherab.core.math.transform.periodic</a>
+</li>
         <li><a href="tools/utility.html#module-cherab.core.utility.conversion">cherab.core.utility.conversion</a>
 </li>
         <li><a href="tools/utility.html#module-cherab.core.utility.notify">cherab.core.utility.notify</a>
 </li>
         <li><a href="tools/utility.html#module-cherab.core.utility.recursivedict">cherab.core.utility.recursivedict</a>
 </li>
+        <li><a href="atomic/openadas.html#module-cherab.openadas.install">cherab.openadas.install</a>
+</li>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.beam.cx">cherab.openadas.repository.beam.cx</a>
+</li>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.beam.emission">cherab.openadas.repository.beam.emission</a>
+</li>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.beam.population">cherab.openadas.repository.beam.population</a>
+</li>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.beam.stopping">cherab.openadas.repository.beam.stopping</a>
+</li>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.pec">cherab.openadas.repository.pec</a>
+</li>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.radiated_power">cherab.openadas.repository.radiated_power</a>
+</li>
+        <li><a href="atomic/repository.html#module-cherab.openadas.repository.wavelength">cherab.openadas.repository.wavelength</a>
+</li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.MultipletLineShape">MultipletLineShape (class in cherab.core.model.lineshape)</a>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.multiplet.MultipletLineShape">MultipletLineShape (class in cherab.core.model.lineshape.multiplet)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -732,11 +1072,35 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup.names">names (cherab.tools.observers.group.base.Observer0DGroup property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/utility.html#cherab.core.utility.notify.Notifier">Notifier (class in cherab.core.utility.notify)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList">NotifyingList (class in cherab.core.utility.notify)</a>
+</li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.cx.NullBeamCXPEC">NullBeamCXPEC (class in cherab.openadas.rates.cx)</a>
+</li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.NullBeamEmissionPEC">NullBeamEmissionPEC (class in cherab.openadas.rates.beam)</a>
+</li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.NullBeamPopulationRate">NullBeamPopulationRate (class in cherab.openadas.rates.beam)</a>
+</li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.beam.NullBeamStoppingRate">NullBeamStoppingRate (class in cherab.openadas.rates.beam)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.NullContinuumPower">NullContinuumPower (class in cherab.openadas.rates.radiated_power)</a>
+</li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.NullCXRadiationPower">NullCXRadiationPower (class in cherab.openadas.rates.radiated_power)</a>
+</li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.pec.NullImpactExcitationPEC">NullImpactExcitationPEC (class in cherab.openadas.rates.pec)</a>
+</li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.NullIonisationRate">NullIonisationRate (class in cherab.openadas.rates.atomic)</a>
+</li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.radiated_power.NullLineRadiationPower">NullLineRadiationPower (class in cherab.openadas.rates.radiated_power)</a>
+</li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.pec.NullRecombinationPEC">NullRecombinationPEC (class in cherab.openadas.rates.pec)</a>
+</li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.NullRecombinationRate">NullRecombinationRate (class in cherab.openadas.rates.atomic)</a>
+</li>
+      <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.NullThermalCXRate">NullThermalCXRate (class in cherab.openadas.rates.atomic)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -756,18 +1120,40 @@
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup.observers">observers (cherab.tools.observers.group.base.Observer0DGroup property)</a>
 </li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS">OpenADAS (class in cherab.openadas.openadas)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.ParametrisedZeemanTriplet">ParametrisedZeemanTriplet (class in cherab.core.model.lineshape)</a>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.zeeman.ParametrisedZeemanTriplet">ParametrisedZeemanTriplet (class in cherab.core.model.lineshape.zeeman)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.parent_all_voxels">parent_all_voxels() (cherab.tools.inversions.voxels.VoxelCollection method)</a>
 </li>
+      <li><a href="atomic/openadas.html#cherab.openadas.parse.adf11.parse_adf11">parse_adf11() (in module cherab.openadas.parse.adf11)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.parse.adf12.parse_adf12">parse_adf12() (in module cherab.openadas.parse.adf12)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.parse.adf15.parse_adf15">parse_adf15() (in module cherab.openadas.parse.adf15)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.parse.adf21.parse_adf21">parse_adf21() (in module cherab.openadas.parse.adf21)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.parse.adf22.parse_adf22bme">parse_adf22bme() (in module cherab.openadas.parse.adf22)</a>
+</li>
+      <li><a href="atomic/openadas.html#cherab.openadas.parse.adf22.parse_adf22bmp">parse_adf22bmp() (in module cherab.openadas.parse.adf22)</a>
+</li>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.PerCm3ToPerM3">PerCm3ToPerM3 (class in cherab.core.utility.conversion)</a>
 </li>
+      <li><a href="math/transform.html#cherab.core.math.transform.periodic.PeriodicTransform1D">PeriodicTransform1D (class in cherab.core.math.transform.periodic)</a>
+</li>
+      <li><a href="math/transform.html#cherab.core.math.transform.periodic.PeriodicTransform2D">PeriodicTransform2D (class in cherab.core.math.transform.periodic)</a>
+</li>
+      <li><a href="math/transform.html#cherab.core.math.transform.periodic.PeriodicTransform3D">PeriodicTransform3D (class in cherab.core.math.transform.periodic)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.PhotonToJ">PhotonToJ (class in cherab.core.utility.conversion)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.group.base.Observer0DGroup.pipelines">pipelines (cherab.tools.observers.group.base.Observer0DGroup property)</a>
@@ -776,8 +1162,6 @@
 </li>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.Plasma">Plasma (class in cherab.core)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot">plot() (cherab.tools.inversions.voxels.ToroidalVoxelGrid method)</a>
 </li>
       <li><a href="plasmas/equilibrium.html#cherab.tools.equilibrium.plot.plot_equilibrium">plot_equilibrium() (in module cherab.tools.equilibrium.plot)</a>
@@ -791,6 +1175,8 @@
       <li><a href="math/mask.html#cherab.core.math.mask.PolygonMask2D">PolygonMask2D (class in cherab.core.math.mask)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.pop">pop() (cherab.core.utility.notify.NotifyingList method)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.create.populate">populate() (in module cherab.openadas.repository.create)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -812,14 +1198,38 @@
 </li>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.pipelines.RayTransferPipeline0D">RayTransferPipeline0D (class in cherab.tools.raytransfer.pipelines)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.pipelines.RayTransferPipeline1D">RayTransferPipeline1D (class in cherab.tools.raytransfer.pipelines)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.raytransfer.pipelines.RayTransferPipeline2D">RayTransferPipeline2D (class in cherab.tools.raytransfer.pipelines)</a>
 </li>
-      <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.RecombinationPEC">RecombinationPEC (class in cherab.core.atomic.rates)</a>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.recombination_pec">recombination_pec() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.recombination_pec">(cherab.openadas.openadas.OpenADAS method)</a>
 </li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.recombination_rate">recombination_rate() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.recombination_rate">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
+      <li><a href="models/basic_line/basic_line_emission.html#cherab.core.model.plasma.recombination.RecombinationLine">RecombinationLine (class in cherab.core.model.plasma.recombination)</a>
+</li>
+      <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.RecombinationPEC">RecombinationPEC (class in cherab.core.atomic.rates)</a>
+
+      <ul>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.pec.RecombinationPEC">(class in cherab.openadas.rates.pec)</a>
+</li>
+      </ul></li>
+      <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.RecombinationRate">RecombinationRate (class in cherab.core.atomic.rates)</a>
+
+      <ul>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.RecombinationRate">(class in cherab.openadas.rates.atomic)</a>
+</li>
+      </ul></li>
       <li><a href="tools/utility.html#cherab.core.utility.recursivedict.RecursiveDict">RecursiveDict (class in cherab.core.utility.recursivedict)</a>
 </li>
       <li><a href="tools/utility.html#cherab.core.utility.notify.NotifyingList.remove">remove() (cherab.core.utility.notify.NotifyingList method)</a>
@@ -876,23 +1286,21 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.set_active">set_active() (cherab.tools.inversions.voxels.VoxelCollection method)</a>
+      <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid.set_active">set_active() (cherab.tools.inversions.voxels.ToroidalVoxelGrid method)</a>
+
+      <ul>
+        <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.set_active">(cherab.tools.inversions.voxels.VoxelCollection method)</a>
 </li>
+      </ul></li>
       <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.set_energy_density_function">set_energy_density_function() (cherab.core.laser.profile.LaserProfile method)</a>
 </li>
       <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.set_pointing_function">set_pointing_function() (cherab.core.laser.profile.LaserProfile method)</a>
 </li>
       <li><a href="plasmas/laser.html#cherab.core.laser.profile.LaserProfile.set_polarization_function">set_polarization_function() (cherab.core.laser.profile.LaserProfile method)</a>
 </li>
-      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.ParametrisedZeemanTriplet.show_supported_transitions">show_supported_transitions() (cherab.core.model.lineshape.ParametrisedZeemanTriplet method)</a>
-
-      <ul>
-        <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.StarkBroadenedLine.show_supported_transitions">(cherab.core.model.lineshape.StarkBroadenedLine method)</a>
-</li>
-      </ul></li>
       <li><a href="tools/observers.html#cherab.tools.observers.group.SightLineGroup">SightLineGroup (class in cherab.tools.observers.group)</a>
 </li>
-      <li><a href="models/cxs/cxs_model.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator">SingleRayAttenuator (class in cherab.core.model.attenuator.singleray)</a>
+      <li><a href="models/beam/beam_attenuator.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator">SingleRayAttenuator (class in cherab.core.model.attenuator.singleray)</a>
 </li>
       <li><a href="math/slice.html#cherab.core.math.slice.Slice2D">Slice2D (class in cherab.core.math.slice)</a>
 </li>
@@ -910,7 +1318,9 @@
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.spectroscopy.SpectroscopicSightLine">SpectroscopicSightLine (class in cherab.tools.observers.spectroscopy)</a>
 </li>
-      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.StarkBroadenedLine">StarkBroadenedLine (class in cherab.core.model.lineshape)</a>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.stark_model_coefficients">stark_model_coefficients() (cherab.core.atomic.interface.AtomicData method)</a>
+</li>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.stark.StarkBroadenedLine">StarkBroadenedLine (class in cherab.core.model.lineshape.stark)</a>
 </li>
       <li><a href="math/mappers.html#cherab.core.math.mappers.Swizzle2D">Swizzle2D (class in cherab.core.math.mappers)</a>
 </li>
@@ -926,8 +1336,32 @@
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.group.TargettedPixelGroup">TargettedPixelGroup (class in cherab.tools.observers.group)</a>
 </li>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.doppler.thermal_broadening">thermal_broadening (class in cherab.core.model.lineshape.doppler)</a>
+</li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.thermal_cx_pec">thermal_cx_pec() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.thermal_cx_pec">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.thermal_cx_rate">thermal_cx_rate() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.thermal_cx_rate">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
+      <li><a href="models/basic_line/basic_line_emission.html#cherab.core.model.plasma.thermal_cx.ThermalCXLine">ThermalCXLine (class in cherab.core.model.plasma.thermal_cx)</a>
+</li>
       <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.ThermalCXPEC">ThermalCXPEC (class in cherab.core.atomic.rates)</a>
 </li>
+      <li><a href="atomic/rate_coefficients.html#cherab.core.atomic.rates.ThermalCXRate">ThermalCXRate (class in cherab.core.atomic.rates)</a>
+
+      <ul>
+        <li><a href="atomic/data_interpolators.html#cherab.openadas.rates.atomic.ThermalCXRate">(class in cherab.openadas.rates.atomic)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/utility.html#cherab.core.utility.conversion.BaseFactorConversion.to">to() (cherab.core.utility.conversion.BaseFactorConversion class method)</a>
 
       <ul>
@@ -936,11 +1370,13 @@
         <li><a href="tools/utility.html#cherab.core.utility.conversion.PhotonToJ.to">(cherab.core.utility.conversion.PhotonToJ class method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/primitives.html#cherab.tools.primitives.toroidal_mesh.toroidal_mesh_from_polygon">toroidal_mesh_from_polygon() (in module cherab.tools.primitives.toroidal_mesh)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid">ToroidalVoxelGrid (class in cherab.tools.inversions.voxels)</a>
+</li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.total_radiated_power">total_radiated_power() (cherab.core.atomic.interface.AtomicData method)</a>
+</li>
+      <li><a href="models/radiated_power/radiated_power.html#cherab.core.model.plasma.total_radiated_power.TotalRadiatedPower">TotalRadiatedPower (class in cherab.core.model.plasma.total_radiated_power)</a>
 </li>
       <li><a href="tools/observers.html#cherab.tools.observers.bolometry.BolometerFoil.trace_sightline">trace_sightline() (cherab.tools.observers.bolometry.BolometerFoil method)</a>
 </li>
@@ -958,11 +1394,37 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="models/laser/laser.html#cherab.core.model.laser.profile.UniformEnergyDensity">UniformEnergyDensity (class in cherab.core.model.laser.profile)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels">unparent_all_voxels() (cherab.tools.inversions.voxels.VoxelCollection method)</a>
 </li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.cx.update_beam_cx_rates">update_beam_cx_rates() (in module cherab.openadas.repository.beam.cx)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.emission.update_beam_emission_rates">update_beam_emission_rates() (in module cherab.openadas.repository.beam.emission)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.population.update_beam_population_rates">update_beam_population_rates() (in module cherab.openadas.repository.beam.population)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.beam.stopping.update_beam_stopping_rates">update_beam_stopping_rates() (in module cherab.openadas.repository.beam.stopping)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.radiated_power.update_continuum_power_rates">update_continuum_power_rates() (in module cherab.openadas.repository.radiated_power)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.radiated_power.update_cx_power_rates">update_cx_power_rates() (in module cherab.openadas.repository.radiated_power)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.atomic.update_ionisation_rates">update_ionisation_rates() (in module cherab.openadas.repository.atomic)</a>
+</li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.update_laplacian_matrix">update_laplacian_matrix() (cherab.tools.inversions.opencl.sart_opencl.SartOpencl method)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.radiated_power.update_line_power_rates">update_line_power_rates() (in module cherab.openadas.repository.radiated_power)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.pec.update_pec_rates">update_pec_rates() (in module cherab.openadas.repository.pec)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.pec.update_pec_thermal_cx_rates">update_pec_thermal_cx_rates() (in module cherab.openadas.repository.pec)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.atomic.update_recombination_rates">update_recombination_rates() (in module cherab.openadas.repository.atomic)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.atomic.update_thermal_cx_rates">update_thermal_cx_rates() (in module cherab.openadas.repository.atomic)</a>
+</li>
+      <li><a href="atomic/repository.html#cherab.openadas.repository.wavelength.update_wavelengths">update_wavelengths() (in module cherab.openadas.repository.wavelength)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -972,11 +1434,19 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="math/mappers.html#cherab.core.math.mappers.VectorAxisymmetricMapper">VectorAxisymmetricMapper (class in cherab.core.math.mappers)</a>
 </li>
+      <li><a href="math/transform.html#cherab.core.math.transform.cylindrical.VectorCylindricalTransform">VectorCylindricalTransform (class in cherab.core.math.transform.cylindrical)</a>
+</li>
       <li><a href="math/function.html#cherab.core.math.function.VectorFunction2D">VectorFunction2D (in module cherab.core.math.function)</a>
+</li>
+      <li><a href="math/function.html#cherab.core.math.function.VectorFunction3D">VectorFunction3D (in module cherab.core.math.function)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="math/function.html#cherab.core.math.function.VectorFunction3D">VectorFunction3D (in module cherab.core.math.function)</a>
+      <li><a href="math/transform.html#cherab.core.math.transform.periodic.VectorPeriodicTransform1D">VectorPeriodicTransform1D (class in cherab.core.math.transform.periodic)</a>
+</li>
+      <li><a href="math/transform.html#cherab.core.math.transform.periodic.VectorPeriodicTransform2D">VectorPeriodicTransform2D (class in cherab.core.math.transform.periodic)</a>
+</li>
+      <li><a href="math/transform.html#cherab.core.math.transform.periodic.VectorPeriodicTransform3D">VectorPeriodicTransform3D (class in cherab.core.math.transform.periodic)</a>
 </li>
       <li><a href="tools/tomography.html#cherab.tools.inversions.voxels.Voxel">Voxel (class in cherab.tools.inversions.voxels)</a>
 </li>
@@ -985,20 +1455,36 @@
   </ul></td>
 </tr></table>
 
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.wavelength">wavelength() (cherab.core.atomic.interface.AtomicData method)</a>
+
+      <ul>
+        <li><a href="atomic/atomic_data_interface.html#cherab.openadas.openadas.OpenADAS.wavelength">(cherab.openadas.openadas.OpenADAS method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
 <h2 id="Z">Z</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="plasmas/core_plasma_classes.html#cherab.core.Plasma.z_effective">z_effective() (cherab.core.Plasma method)</a>
 </li>
-      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.ZeemanLineShapeModel">ZeemanLineShapeModel (class in cherab.core.model.lineshape)</a>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.zeeman_structure">zeeman_structure() (cherab.core.atomic.interface.AtomicData method)</a>
+</li>
+      <li><a href="atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData.zeeman_triplet_parameters">zeeman_triplet_parameters() (cherab.core.atomic.interface.AtomicData method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.ZeemanMultiplet">ZeemanMultiplet (class in cherab.core.model.lineshape)</a>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.zeeman.ZeemanLineShapeModel">ZeemanLineShapeModel (class in cherab.core.model.lineshape.zeeman)</a>
+</li>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.zeeman.ZeemanMultiplet">ZeemanMultiplet (class in cherab.core.model.lineshape.zeeman)</a>
 </li>
       <li><a href="atomic/emission_lines.html#cherab.core.atomic.zeeman.ZeemanStructure">ZeemanStructure (class in cherab.core.atomic.zeeman)</a>
 </li>
-      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.ZeemanTriplet">ZeemanTriplet (class in cherab.core.model.lineshape)</a>
+      <li><a href="models/line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.zeeman.ZeemanTriplet">ZeemanTriplet (class in cherab.core.model.lineshape.zeeman)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1015,7 +1501,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -1039,7 +1525,10 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/tabs.js"></script>
     
 
   

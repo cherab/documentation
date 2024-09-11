@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.1. Custom emission models &mdash; Cherab 1.4.0 documentation</title>
+  <title>8.1. Custom emission models &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,9 +28,10 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.2. CXS models" href="cxs/cxs_model.html" />
+    <link rel="next" title="8.2. Beam Attenuation" href="beam/beam_attenuator.html" />
     <link rel="prev" title="8. Emission Models" href="emission_models.html" /> 
 
   
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -94,14 +96,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="emission_models.html">8. Emission Models</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">8.1. Custom emission models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/cxs_model.html">8.2. CXS models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html">8.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bes/bes_model.html">8.4. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="radiated_power/radiated_power.html">8.5. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html">8.8. Spectral Line Shapes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="laser/laser.html">8.9. Laser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beam/beam_attenuator.html">8.2. Beam Attenuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/cxs_model.html">8.3. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html">8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bes/bes_model.html">8.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="radiated_power/radiated_power.html">8.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brem/bremsstrahlung.html">8.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_line/basic_line_emission.html">8.8. Basic Line Emission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html">8.9. Spectral Line Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="laser/laser.html">8.10. Laser</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
@@ -183,8 +186,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="custom-emission-models">
-<h1><span class="section-number">8.1. </span>Custom emission models<a class="headerlink" href="#custom-emission-models" title="Permalink to this headline">¶</a></h1>
+  <section id="custom-emission-models">
+<h1><span class="section-number">8.1. </span>Custom emission models<a class="headerlink" href="#custom-emission-models" title="Permalink to this heading">¶</a></h1>
 <p>Custom emitters are implemented as Raysect materials with the <cite>VolumeEmitterInhomogeneous</cite> class.
 You model should inherit from this base class, only two methods need to be implemented,
 the <cite>__init__()</cite> and <cite>emission_function()</cite> methods.</p>
@@ -283,7 +286,7 @@ should add your local emission at the current point in space to the measured spe
         <span class="k">return</span> <span class="n">spectrum</span>
 </pre></div>
 </div>
-</div>
+</section>
 
 
            </div>
@@ -293,7 +296,7 @@ should add your local emission at the current point in space to the measured spe
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cxs/cxs_model.html" class="btn btn-neutral float-right" title="8.2. CXS models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="beam/beam_attenuator.html" class="btn btn-neutral float-right" title="8.2. Beam Attenuation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="emission_models.html" class="btn btn-neutral" title="8. Emission Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -305,7 +308,7 @@ should add your local emission at the current point in space to the measured spe
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -329,7 +332,9 @@ should add your local emission at the current point in space to the measured spe
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

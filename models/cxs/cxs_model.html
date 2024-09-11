@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.2. CXS models &mdash; Cherab 1.4.0 documentation</title>
+  <title>8.3. CXS models &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,10 +28,11 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight" href="charge_exchange_calculation.html" />
-    <link rel="prev" title="8.1. Custom emission models" href="../custom_models.html" /> 
+    <link rel="next" title="8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight" href="charge_exchange_calculation.html" />
+    <link rel="prev" title="8.2. Beam Attenuation" href="../beam/beam_attenuator.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -94,18 +96,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">7. Plasmas</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">8. Emission Models</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../custom_models.html">8.1. Custom emission models</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8.2. CXS models</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#single-ray-attenuator">8.2.1. Single Ray Attenuator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cxs-beam-plasma-intersection">8.2.2. CXS Beam Plasma Intersection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../beam/beam_attenuator.html">8.2. Beam Attenuation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.3. CXS models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cxs-beam-plasma-intersection">8.3.1. CXS Beam Plasma Intersection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.model.beam.charge_exchange.BeamCXLine"><code class="docutils literal notranslate"><span class="pre">BeamCXLine</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="charge_exchange_calculation.html">8.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">8.4. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">8.5. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../line_shapes/spectral_line_shapes.html">8.8. Spectral Line Shapes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../laser/laser.html">8.9. Laser</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="charge_exchange_calculation.html">8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">8.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">8.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">8.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.8. Basic Line Emission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../line_shapes/spectral_line_shapes.html">8.9. Spectral Line Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../laser/laser.html">8.10. Laser</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
@@ -168,7 +173,7 @@
         
           <li><a href="../emission_models.html"><span class="section-number">8. </span>Emission Models</a> &raquo;</li>
         
-      <li><span class="section-number">8.2. </span>CXS models</li>
+      <li><span class="section-number">8.3. </span>CXS models</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,63 +192,82 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cxs-models">
-<h1><span class="section-number">8.2. </span>CXS models<a class="headerlink" href="#cxs-models" title="Permalink to this headline">¶</a></h1>
-<p>CXS models.</p>
-<div class="section" id="single-ray-attenuator">
-<h2><span class="section-number">8.2.1. </span>Single Ray Attenuator<a class="headerlink" href="#single-ray-attenuator" title="Permalink to this headline">¶</a></h2>
+  <section id="cxs-models">
+<h1><span class="section-number">8.3. </span>CXS models<a class="headerlink" href="#cxs-models" title="Permalink to this heading">¶</a></h1>
+<section id="cxs-beam-plasma-intersection">
+<h2><span class="section-number">8.3.1. </span>CXS Beam Plasma Intersection<a class="headerlink" href="#cxs-beam-plasma-intersection" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.model.attenuator.singleray.SingleRayAttenuator">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.attenuator.singleray.</span></span><span class="sig-name descname"><span class="pre">SingleRayAttenuator</span></span><a class="headerlink" href="#cherab.core.model.attenuator.singleray.SingleRayAttenuator" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
-<dt class="sig sig-object py" id="cherab.core.model.attenuator.singleray.SingleRayAttenuator.calculate_attenuation">
-<span class="sig-name descname"><span class="pre">calculate_attenuation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.attenuator.singleray.SingleRayAttenuator.calculate_attenuation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Trigger beam attenuation calculation</p>
+<dt class="sig sig-object py" id="cherab.core.model.beam.charge_exchange.BeamCXLine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.beam.charge_exchange.</span></span><span class="sig-name descname"><span class="pre">BeamCXLine</span></span><a class="headerlink" href="#cherab.core.model.beam.charge_exchange.BeamCXLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates emission produced by charge-exchange of plasma ions
+with beam species.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object.</p></li>
+<li><p><strong>beam</strong> (<a class="reference internal" href="../../plasmas/particle_beams.html#cherab.core.beam.node.Beam" title="cherab.core.beam.node.Beam"><em>Beam</em></a>) – The beam object.</p></li>
+<li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The emitting plasma object.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider.</p></li>
+<li><p><strong>lineshape</strong> (<em>object</em>) – The spectral line shape class. Must be a subclass of <cite>LineShapeModel</cite>.
+Defaults to <cite>GaussianLine</cite>.</p></li>
+<li><p><strong>lineshape_args</strong> (<em>object</em>) – The arguments of spectral line shape class. Defaults is None.</p></li>
+<li><p><strong>lineshape_kwargs</strong> (<em>object</em>) – The keyword arguments of spectral line shape class.
+Defaults is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object.</p>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.model</span> <span class="kn">import</span> <span class="n">BeamCXLine</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">carbon</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.model</span> <span class="kn">import</span> <span class="n">ParametrisedZeemanTriplet</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cVI_8_7</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">carbon</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>  <span class="c1"># emission line</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># define plasma, beam and atomic data, plasma mast contain C6+ ions.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># here we override default line shape class, GaussianLine,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># with ParametrisedZeemanTriplet to take into account Zeeman splitting.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam_cx_line</span> <span class="o">=</span> <span class="n">BeamCXLine</span><span class="p">(</span><span class="n">cVI_8_7</span><span class="p">,</span> <span class="n">lineshape</span><span class="o">=</span><span class="n">ParametrisedZeemanTriplet</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">beam_cx_line</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.model.beam.charge_exchange.BeamCXLine._change">
+<span class="sig-name descname"><span class="pre">_change</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.beam.charge_exchange.BeamCXLine._change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called if the plasma, beam or the atomic data source properties change.</p>
+<p>If the model caches calculation data that would be invalidated if its
+source data changes then this method may be overridden to clear the
+cache.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="cherab.core.model.attenuator.singleray.SingleRayAttenuator.density">
-<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.attenuator.singleray.SingleRayAttenuator.density" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the beam density at the specified point.</p>
-<p>The point is specified in beam space.</p>
+<dt class="sig sig-object py" id="cherab.core.model.beam.charge_exchange.BeamCXLine.emission">
+<span class="sig-name descname"><span class="pre">emission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plasma_point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observation_direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectrum</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.beam.charge_exchange.BeamCXLine.emission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the emission for a point on the beam in a specified direction.</p>
+<p>Models implementing this method must add their spectral response to the
+supplied spectrum object. The spectrum units are spectral radiance per
+meter (W/m^3/str/nm).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> – x coordinate in meters.</p></li>
-<li><p><strong>y</strong> – y coordinate in meters.</p></li>
-<li><p><strong>z</strong> – z coordinate in meters.</p></li>
+<li><p><strong>beam_point</strong> – Point in beam space.</p></li>
+<li><p><strong>plasma_point</strong> – Point in plasma space.</p></li>
+<li><p><strong>beam_direction</strong> – Beam axis direction in plasma space.</p></li>
+<li><p><strong>observation_direction</strong> – Observation direction in plasma space.</p></li>
+<li><p><strong>spectrum</strong> – Spectrum to which emission should be added.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Density in m^-3.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated Spectrum object.</p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="cxs-beam-plasma-intersection">
-<h2><span class="section-number">8.2.2. </span>CXS Beam Plasma Intersection<a class="headerlink" href="#cxs-beam-plasma-intersection" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.model.beam.charge_exchange.BeamCXLine">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.beam.charge_exchange.</span></span><span class="sig-name descname"><span class="pre">BeamCXLine</span></span><a class="headerlink" href="#cherab.core.model.beam.charge_exchange.BeamCXLine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates CX emission for a beam.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>line</strong> – </p></li>
-<li><p><strong>step</strong> – integration step in meters</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -253,10 +277,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="charge_exchange_calculation.html" class="btn btn-neutral float-right" title="8.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="charge_exchange_calculation.html" class="btn btn-neutral float-right" title="8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../custom_models.html" class="btn btn-neutral" title="8.1. Custom emission models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../beam/beam_attenuator.html" class="btn btn-neutral" title="8.2. Beam Attenuation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -265,7 +289,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -289,7 +313,9 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Charge Exchange Spectroscopy &mdash; Cherab 1.4.0 documentation</title>
+  <title>Charge Exchange Spectroscopy &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="charge-exchange-spectroscopy">
-<span id="beam-cxs"></span><h1>Charge Exchange Spectroscopy<a class="headerlink" href="#charge-exchange-spectroscopy" title="Permalink to this headline">¶</a></h1>
+  <section id="charge-exchange-spectroscopy">
+<span id="beam-cxs"></span><h1>Charge Exchange Spectroscopy<a class="headerlink" href="#charge-exchange-spectroscopy" title="Permalink to this heading">¶</a></h1>
 <p>This demonstration shows how to model the Charge Exchange Spectroscopy (CXS)
 spectrum from a beam-plasma interaction. A slab plasma is setup as the target, with a neutral
 beam injected along the x axis. The BeamCXLine() emission model is added as a property of
@@ -298,7 +300,7 @@ the beam object.</p>
 
 <span class="n">integration_step</span> <span class="o">=</span> <span class="mf">0.0025</span>
 <span class="n">beam_transform</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">rotate_basis</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">beam_energy</span> <span class="o">=</span> <span class="mi">50000</span>  <span class="c1"># keV</span>
+<span class="n">beam_energy</span> <span class="o">=</span> <span class="mi">50000</span>  <span class="c1"># eV</span>
 
 <span class="n">beam_full</span> <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">beam_transform</span><span class="p">)</span>
 <span class="n">beam_full</span><span class="o">.</span><span class="n">plasma</span> <span class="o">=</span> <span class="n">plasma</span>
@@ -413,21 +415,27 @@ the beam object.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../../_images/CXS_camera.png"><img alt="../../_images/CXS_camera.png" src="../../_images/CXS_camera.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A camera view of a beam entering a slab plasma. The colouring of the image is
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A camera view of a beam entering a slab plasma. The colouring of the image is
 due to the mixing of both charge exchange spectral lines.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id2">
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../../_images/CXS_spectrum.png"><img alt="../../_images/CXS_spectrum.png" src="../../_images/CXS_spectrum.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> The observed spectrum reveals observations of both active charge exchange lines.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id3">
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The observed spectrum reveals observations of both active charge exchange lines.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../../_images/CXS_multi_sightlines.png"><img alt="../../_images/CXS_multi_sightlines.png" src="../../_images/CXS_multi_sightlines.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A zoomed in spectral view of the commonly studied CVI n = 8-&gt;7 CXS line.
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A zoomed in spectral view of the commonly studied CVI n = 8-&gt;7 CXS line.
 The lines are doppler shifted due to the velocity of the plasma.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -440,7 +448,7 @@ The lines are doppler shifted due to the velocity of the plasma.</span><a class=
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -464,7 +472,9 @@ The lines are doppler shifted due to the velocity of the plasma.</span><a class=
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

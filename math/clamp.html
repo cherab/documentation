@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.2. Clamps &mdash; Cherab 1.4.0 documentation</title>
+  <title>9.2. Clamps &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9.3. Functions" href="function.html" />
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -95,13 +97,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="math.html">9. Function Framework</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="caching.html">9.1. Caching</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9.2. Clamps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.2. Clamps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.clamp.ClampInput1D"><code class="docutils literal notranslate"><span class="pre">ClampInput1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.clamp.ClampInput2D"><code class="docutils literal notranslate"><span class="pre">ClampInput2D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.clamp.ClampInput3D"><code class="docutils literal notranslate"><span class="pre">ClampInput3D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.clamp.ClampOutput1D"><code class="docutils literal notranslate"><span class="pre">ClampOutput1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.clamp.ClampOutput2D"><code class="docutils literal notranslate"><span class="pre">ClampOutput2D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.clamp.ClampOutput3D"><code class="docutils literal notranslate"><span class="pre">ClampOutput3D</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="function.html">9.3. Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.4. Interpolators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mappers.html">9.5. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mask.html">9.6. Masks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.7. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slice.html">9.8. Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html">9.6. Transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">9.7. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.8. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slice.html">9.9. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
@@ -182,14 +193,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-cherab.core.math.clamp">
-<span id="clamps"></span><h1><span class="section-number">9.2. </span>Clamps<a class="headerlink" href="#module-cherab.core.math.clamp" title="Permalink to this headline">¶</a></h1>
+  <section id="module-cherab.core.math.clamp">
+<span id="clamps"></span><h1><span class="section-number">9.2. </span>Clamps<a class="headerlink" href="#module-cherab.core.math.clamp" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.clamp.ClampInput1D">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampInput1D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampInput1D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampInput1D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampInput1D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clamps the x input of a Function1D to the range [xmin, xmax].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> (<em>object</em>) – A Function1D instance or a callable python object that takes one argument.</p></li>
 <li><p><strong>xmin</strong> (<em>float</em>) – the lower bound, default=-INFINITY.</p></li>
@@ -211,10 +222,10 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.clamp.ClampInput2D">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampInput2D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampInput2D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampInput2D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampInput2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clamps the [x, y] inputs of a Function2D to the ranges [xmin, xmax], [ymin, ymax].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> (<em>object</em>) – A Function2D instance or a callable python object that takes two arguments.</p></li>
 <li><p><strong>xmin</strong> (<em>float</em>) – the x lower bound, default=-INFINITY.</p></li>
@@ -241,10 +252,10 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.clamp.ClampInput3D">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampInput3D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampInput3D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampInput3D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampInput3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clamps the [x, y, z] inputs of a Function3D to the ranges [xmin, xmax], [ymin, ymax], [zmin, zmax].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> (<em>object</em>) – A Function3D instance or a callable python object that takes three arguments.</p></li>
 <li><p><strong>xmin</strong> (<em>float</em>) – the x lower bound, default=-INFINITY.</p></li>
@@ -273,10 +284,10 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.clamp.ClampOutput1D">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampOutput1D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampOutput1D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampOutput1D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampOutput1D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clamps the output of a Function1D to the range [min, max].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> (<em>object</em>) – A Function1D instance or a callable python object that takes one argument.</p></li>
 <li><p><strong>min</strong> (<em>float</em>) – the lower bound, default=-INFINITY.</p></li>
@@ -300,10 +311,10 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.clamp.ClampOutput2D">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampOutput2D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampOutput2D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampOutput2D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampOutput2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clamps the output of a Function2D to the range [min, max].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> (<em>object</em>) – A Function2D instance or a callable python object that takes two arguments.</p></li>
 <li><p><strong>min</strong> (<em>float</em>) – the lower bound, default=-INFINITY.</p></li>
@@ -325,10 +336,10 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.math.clamp.ClampOutput3D">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampOutput3D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampOutput3D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.clamp.</span></span><span class="sig-name descname"><span class="pre">ClampOutput3D</span></span><a class="headerlink" href="#cherab.core.math.clamp.ClampOutput3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clamps the output of a Function3D to the range [min, max].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> (<em>object</em>) – A Function3D instance or a callable python object that takes three arguments.</p></li>
 <li><p><strong>min</strong> (<em>float</em>) – the lower bound, default=-INFINITY.</p></li>
@@ -352,7 +363,7 @@
 </div>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -374,7 +385,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -398,7 +409,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

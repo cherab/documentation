@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Calculating wall surface radiation loads &mdash; Cherab 1.4.0 documentation</title>
+  <title>Calculating wall surface radiation loads &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="calculating-wall-surface-radiation-loads">
-<span id="aug-solps-radiation-load"></span><h1>Calculating wall surface radiation loads<a class="headerlink" href="#calculating-wall-surface-radiation-loads" title="Permalink to this headline">¶</a></h1>
+  <section id="calculating-wall-surface-radiation-loads">
+<span id="aug-solps-radiation-load"></span><h1>Calculating wall surface radiation loads<a class="headerlink" href="#calculating-wall-surface-radiation-loads" title="Permalink to this heading">¶</a></h1>
 <p>In this example we ray-trace the total radiated power from a SOLPS simulation
 and use rectangular observers wrapping around the machine wall to calculate a
 radiation power profile wrapping around the machine. The full demo file for
@@ -203,8 +205,8 @@ Start by importing all required modules and creating world.</p>
 <span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="section" id="loading-plasma-and-machine-geometry">
-<h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Permalink to this headline">¶</a></h2>
+<section id="loading-plasma-and-machine-geometry">
+<h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Permalink to this heading">¶</a></h2>
 <p>Load all parts of the machine mesh from files. We are using a perfect absorbing surface so that
 no emission will be reflected.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MESH_PATH</span> <span class="o">=</span> <span class="s1">&#39;/projects/cadmesh/aug/&#39;</span>
@@ -248,9 +250,9 @@ or locally from files.</p>
 <span class="n">plasma_cylinder</span> <span class="o">=</span> <span class="n">solps_total_radiated_power</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">sim</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="description-of-wall-tile-observers">
-<h2>Description of wall tile observers<a class="headerlink" href="#description-of-wall-tile-observers" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="description-of-wall-tile-observers">
+<h2>Description of wall tile observers<a class="headerlink" href="#description-of-wall-tile-observers" title="Permalink to this heading">¶</a></h2>
 <p>Even though we are using the full CAD files for ray-tracing effects such as
 occlusion and shadowing, we will use a simplified wall surface as the
 observing surface.</p>
@@ -274,16 +276,20 @@ a y-axis vector. An example description could be a list like this:</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <img alt="../../_images/AUG_wall_outline.png" src="../../_images/AUG_wall_outline.png" />
-<p class="caption"><span class="caption-text">Example wall observation geometry for AUG shown in blue. Surface normals indicated.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id2">
+<figcaption>
+<p><span class="caption-text">Example wall observation geometry for AUG shown in blue. Surface normals indicated.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
 <img alt="../../_images/AUG_wall_zoomed.png" src="../../_images/AUG_wall_zoomed.png" />
-<p class="caption"><span class="caption-text">Zoomed in view of the wall observation geometry for AUG in the divertor. Note,
+<figcaption>
+<p><span class="caption-text">Zoomed in view of the wall observation geometry for AUG in the divertor. Note,
 observing surface can be very close but must not overlap the CAD files. Otherwise
 radiation is absorbed by the CAD surface instead of the observing surface.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 <p>For each tile in the list of wall tiles, setup the tile as a <cite>Pixel</cite> observer class.
 These pixels are rectangular surfaces with arbitrary orientation. Random sample points
 and vectors are generated across the rectangular surface to cover the full etendue of
@@ -340,13 +346,15 @@ the tile.</p>
     <span class="n">cherab_total_power</span> <span class="o">+=</span> <span class="n">power_data</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="n">y_width</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">pixel_radius</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id3">
+<figure class="align-center" id="id3">
 <img alt="../../_images/AUG_radiation_load.png" src="../../_images/AUG_radiation_load.png" />
-<p class="caption"><span class="caption-text">Example plot of radiation power loading around the machine walls.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="checking-for-energy-conservation">
-<h2>Checking for energy conservation<a class="headerlink" href="#checking-for-energy-conservation" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-text">Example plot of radiation power loading around the machine walls.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="checking-for-energy-conservation">
+<h2>Checking for energy conservation<a class="headerlink" href="#checking-for-energy-conservation" title="Permalink to this heading">¶</a></h2>
 <p>We can check that energy is being conserved by looping over each cell in the SOLPS simulation and adding
 up its power to find the total power emitted in the simulation. Total radiated power should equal total
 power collected on the walls.</p>
@@ -363,8 +371,8 @@ power collected on the walls.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SOLPS total radiated power =&gt; </span><span class="si">{:.4G}</span><span class="s2"> W&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">solps_total_power</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -377,7 +385,7 @@ power collected on the walls.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -401,7 +409,9 @@ power collected on the walls.</p>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

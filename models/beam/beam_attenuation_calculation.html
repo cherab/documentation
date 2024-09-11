@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Beam attenuation calcualtion &mdash; Cherab 1.4.0 documentation</title>
+  <title>Beam attenuation calcualtion &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="beam-attenuation-calcualtion">
-<h1>Beam attenuation calcualtion<a class="headerlink" href="#beam-attenuation-calcualtion" title="Permalink to this headline">¶</a></h1>
+  <section id="beam-attenuation-calcualtion">
+<h1>Beam attenuation calcualtion<a class="headerlink" href="#beam-attenuation-calcualtion" title="Permalink to this heading">¶</a></h1>
 <p>In this section, the calculation of beam attenuation in Cherab is
 presented. This documentation is meant to be a concise compilation
 of the main aspects needed to carry out a beam attenuation calculation
@@ -183,11 +185,6 @@ documentation manager. Thanks.</p>
 </div>
 <table class="docutils align-default" id="id1">
 <caption><span class="caption-text">Notations for this section</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Notation</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -274,8 +271,8 @@ ionic species <em>i</em> can be calculated from the beam stopping coefficient
 It depends on the collisional energy between ions and neutrals, ion temperature
 and ion density: <span class="math notranslate nohighlight">\(S_{ST}^i = S_{ST}^i[E_c^i, n_i, T_i]\)</span>. Here we consider
 both main ion and impurities.</p>
-<div class="section" id="stopping-coefficients-with-respect-to-electron-density">
-<h2>Stopping coefficients with respect to electron density<a class="headerlink" href="#stopping-coefficients-with-respect-to-electron-density" title="Permalink to this headline">¶</a></h2>
+<section id="stopping-coefficients-with-respect-to-electron-density">
+<h2>Stopping coefficients with respect to electron density<a class="headerlink" href="#stopping-coefficients-with-respect-to-electron-density" title="Permalink to this heading">¶</a></h2>
 <p>Although ion impact ionisation and charge transfer are the most efficient
 reactions causing beam stopping, it is usual in fusion to define the stopping
 coefficient with respect to the electron density:</p>
@@ -289,9 +286,9 @@ calculation of the stopping coefficient is dependent on the plasma composition.
 We will see below how an accurate calculation can be made for the effective
 stopping coefficient and which simplification can be made for a more
 time-efficient calculation.</p>
-</div>
-<div class="section" id="the-collisional-radiative-model-for-beam-stopping">
-<h2>The collisional-radiative model for beam stopping<a class="headerlink" href="#the-collisional-radiative-model-for-beam-stopping" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="the-collisional-radiative-model-for-beam-stopping">
+<h2>The collisional-radiative model for beam stopping<a class="headerlink" href="#the-collisional-radiative-model-for-beam-stopping" title="Permalink to this heading">¶</a></h2>
 <p>It was found advantageous to embed the calculation of beam stopping (and beam
 emission) by hydrogen in a more general picture of neutral hydrogen as a
 radiating, ionizing and recombining species in the fusion plasma.</p>
@@ -348,8 +345,8 @@ generalized collisional-radiative theory.</p></li>
 evaluated (assume relative statistical population for the l states). Thus for
 hydrogenic systems only populations of complete n-shells need to be evaluated,
 the bundle-n approximation.</p>
-<div class="topic">
-<p class="topic-title first">ADAS310</p>
+<aside class="topic">
+<p class="topic-title">ADAS310</p>
 <p>Full implementation of the collisional-radiative model for hydrogen in the
 bundled-n approximation. It iterates through sets of plasma conditions,
 which include the plasma density, temperature and neutral beam energy.
@@ -362,7 +359,7 @@ adf26. ADAS310 accepts as input the definitions of these scans. Established
 an extended list of cases required to achieve the latter and then executes
 repeated population calculations at each set of plasma conditions in the
 list.</p>
-</div>
+</aside>
 <p>ADAS310 can compute the populations for any mixture of light impurities (H+ to
 Ne10+) in the plasma. It is impractical to tabulate all possible mixtures of
 impurities. It is our usual practise to execute ADAS310 in turn for each light
@@ -370,11 +367,11 @@ impurity species from hydrogen to neon treated as a pure species. The mixed
 species effective coefficients are constructed from these pure impurity
 solutions as a linear superposition by the theoretical data acquisition
 routines in CHEAP.</p>
-</div>
-<div class="section" id="building-up-the-beam-stopping-coefficient-from-the-pure-impurity-solutions-simplification-adopted-to-make-calculation-faster">
-<h2>Building-up the beam stopping coefficient from the pure impurity solutions: simplification adopted to make calculation faster<a class="headerlink" href="#building-up-the-beam-stopping-coefficient-from-the-pure-impurity-solutions-simplification-adopted-to-make-calculation-faster" title="Permalink to this headline">¶</a></h2>
-<div class="topic">
-<p class="topic-title first">ADAS312</p>
+</section>
+<section id="building-up-the-beam-stopping-coefficient-from-the-pure-impurity-solutions-simplification-adopted-to-make-calculation-faster">
+<h2>Building-up the beam stopping coefficient from the pure impurity solutions: simplification adopted to make calculation faster<a class="headerlink" href="#building-up-the-beam-stopping-coefficient-from-the-pure-impurity-solutions-simplification-adopted-to-make-calculation-faster" title="Permalink to this heading">¶</a></h2>
+<aside class="topic">
+<p class="topic-title">ADAS312</p>
 <p>It is the interactive post-processing code designed to extract effective
 stopping and emission coefficients from the comprehensive adf26 file and
 archive the data in condensed rapid-look-up tables in their respective ADAS
@@ -386,7 +383,7 @@ two-dimensional array of coefficients as functions of beam energy and
 plasma density at the reference conditions of the plasma ion temperature
 and then a one-dimensional vector of coefficients as a function of the
 plasma ion temperature at the reference conditions of the other parameters.</p>
-</div>
+</aside>
 <p>If now instead of one ion species, we consider n ion species, the rate at which
 atoms <span class="math notranslate nohighlight">\(H^0\)</span> in a beam are ionised <span class="math notranslate nohighlight">\(Q_{ST}\)</span> can be written as:</p>
 <div class="math notranslate nohighlight">
@@ -428,19 +425,19 @@ plasma and beam conditons. [Delabie also in annex].</p>
 <p>It is appropriate to re-tune the tabulations of reference beam and plasma
 conditions for application to other plasma/injection systems. (He beams, …..)</p>
 </div>
-</div>
-<div class="section" id="features-implemented-in-cherab">
-<h2>Features implemented in Cherab<a class="headerlink" href="#features-implemented-in-cherab" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="features-implemented-in-cherab">
+<h2>Features implemented in Cherab<a class="headerlink" href="#features-implemented-in-cherab" title="Permalink to this heading">¶</a></h2>
 <p><strong>Assumption: no need to take into account the spatial transport of metastables in the plasma</strong></p>
 <blockquote>
 <div><p>(more relevant to beam emission)</p>
 </div></blockquote>
-</div>
-<div class="section" id="litterature-on-which-this-note-is-based">
-<h2>Litterature on which this note is based<a class="headerlink" href="#litterature-on-which-this-note-is-based" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="litterature-on-which-this-note-is-based">
+<h2>Litterature on which this note is based<a class="headerlink" href="#litterature-on-which-this-note-is-based" title="Permalink to this heading">¶</a></h2>
 <p>Anderson 2000</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -453,7 +450,7 @@ conditions for application to other plasma/injection systems. (He beams, …..)<
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -477,7 +474,9 @@ conditions for application to other plasma/injection systems. (He beams, …..)<
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 

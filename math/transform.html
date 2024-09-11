@@ -1,0 +1,543 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>9.6. Transformations &mdash; Cherab 1.5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9.7. Masks" href="mask.html" />
+    <link rel="prev" title="9.5. Mappers" href="mappers.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cherab
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="math.html">9. Function Framework</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="caching.html">9.1. Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.2. Clamps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function.html">9.3. Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.4. Interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.5. Mappers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.6. Transformations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.transform.cylindrical.CylindricalTransform"><code class="docutils literal notranslate"><span class="pre">CylindricalTransform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.transform.cylindrical.VectorCylindricalTransform"><code class="docutils literal notranslate"><span class="pre">VectorCylindricalTransform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.transform.periodic.PeriodicTransform1D"><code class="docutils literal notranslate"><span class="pre">PeriodicTransform1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.transform.periodic.PeriodicTransform2D"><code class="docutils literal notranslate"><span class="pre">PeriodicTransform2D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.transform.periodic.PeriodicTransform3D"><code class="docutils literal notranslate"><span class="pre">PeriodicTransform3D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.transform.periodic.VectorPeriodicTransform1D"><code class="docutils literal notranslate"><span class="pre">VectorPeriodicTransform1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.transform.periodic.VectorPeriodicTransform2D"><code class="docutils literal notranslate"><span class="pre">VectorPeriodicTransform2D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.transform.periodic.VectorPeriodicTransform3D"><code class="docutils literal notranslate"><span class="pre">VectorPeriodicTransform3D</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">9.7. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.8. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slice.html">9.9. Slicing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cherab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="math.html"><span class="section-number">9. </span>Function Framework</a> &raquo;</li>
+        
+      <li><span class="section-number">9.6. </span>Transformations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/math/transform.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="transformations">
+<h1><span class="section-number">9.6. </span>Transformations<a class="headerlink" href="#transformations" title="Permalink to this heading">¶</a></h1>
+<p>These functions perform coordinate transformations as wrappers for other functions. Unlike mappers, these wrappers do not change the dimensionality of the wrapped functions.</p>
+<span class="target" id="module-cherab.core.math.transform.cylindrical"></span><dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.transform.cylindrical.CylindricalTransform">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.transform.cylindrical.</span></span><span class="sig-name descname"><span class="pre">CylindricalTransform</span></span><a class="headerlink" href="#cherab.core.math.transform.cylindrical.CylindricalTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts Cartesian coordinates to cylindrical coordinates and calls a 3D function
+defined in cylindrical coordinates, f(r, <span class="math notranslate nohighlight">\(\phi\)</span>, z).</p>
+<p>The angular coordinate is given in radians.</p>
+<p>Positive angular coordinate is measured counterclockwise from the xz plane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function3d</strong> (<em>Function3D</em>) – The function to be mapped. Must be defined
+in the interval (<span class="math notranslate nohighlight">\(-\pi\)</span>, <span class="math notranslate nohighlight">\(\pi\)</span>]
+on the angular axis.</p>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">cos</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">CylindricalTransform</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">r</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">CylindricalTransform</span><span class="p">(</span><span class="n">my_func</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">0.8660254037844385</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.transform.cylindrical.VectorCylindricalTransform">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.transform.cylindrical.</span></span><span class="sig-name descname"><span class="pre">VectorCylindricalTransform</span></span><a class="headerlink" href="#cherab.core.math.transform.cylindrical.VectorCylindricalTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts Cartesian coordinates to cylindrical coordinates, calls
+a 3D vector function defined in cylindrical coordinates, f(r, <span class="math notranslate nohighlight">\(\phi\)</span>, z),
+then converts the returned 3D vector to Cartesian coordinates.</p>
+<p>The angular coordinate is given in radians.</p>
+<p>Positive angular coordinate is measured counterclockwise from the xz plane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function3d</strong> (<em>VectorFunction3D</em>) – The function to be mapped. Must be defined
+in the interval (<span class="math notranslate nohighlight">\(-\pi\)</span>, <span class="math notranslate nohighlight">\(\pi\)</span>]
+on the angular axis.</p>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">cos</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">VectorCylindricalTransform</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_vec_func</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">v</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">v</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">v</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">VectorCylindricalTransform</span><span class="p">(</span><span class="n">my_vec_func</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">Vector3D(0.0, 1.0, 0.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">Vector3D(-0.5, 0.5, 0.0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-cherab.core.math.transform.periodic"></span><dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.transform.periodic.PeriodicTransform1D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.transform.periodic.</span></span><span class="sig-name descname"><span class="pre">PeriodicTransform1D</span></span><a class="headerlink" href="#cherab.core.math.transform.periodic.PeriodicTransform1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extends a periodic 1D function to an infinite 1D space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function1d</strong> (<em>Function1D</em>) – The periodic 1D function defined
+in the [0, period) interval.</p></li>
+<li><p><strong>period</strong> (<em>double</em>) – The period of the function.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">PeriodicTransform1D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PeriodicTransform1D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="go">0.7</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.transform.periodic.PeriodicTransform2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.transform.periodic.</span></span><span class="sig-name descname"><span class="pre">PeriodicTransform2D</span></span><a class="headerlink" href="#cherab.core.math.transform.periodic.PeriodicTransform2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extends a periodic 2D function to an infinite 2D space.</p>
+<p>Set period_x/period_y to 0 if the function is not periodic along x/y axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function2d</strong> (<em>Function2D</em>) – The periodic 2D function defined
+in the ([0, period_x), [0, period_y)) intervals.</p></li>
+<li><p><strong>period_x</strong> (<em>double</em>) – The period of the function along x-axis.
+0 if not periodic.</p></li>
+<li><p><strong>period_y</strong> (<em>double</em>) – The period of the function along y-axis.
+0 if not periodic.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">PeriodicTransform2D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PeriodicTransform2D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">0.25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3</span><span class="p">)</span>
+<span class="go">0.49</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">PeriodicTransform2D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">0.75</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3</span><span class="p">)</span>
+<span class="go">-0.91</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.transform.periodic.PeriodicTransform3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.transform.periodic.</span></span><span class="sig-name descname"><span class="pre">PeriodicTransform3D</span></span><a class="headerlink" href="#cherab.core.math.transform.periodic.PeriodicTransform3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extends a periodic 3D function to an infinite 3D space.</p>
+<p>Set period_x/period_y/period_z to 0 if the function is not periodic along x/y/z axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function3d</strong> (<em>Function3D</em>) – The periodic 3D function defined in the
+([0, period_x), [0, period_y), [0, period_z)) intervals.</p></li>
+<li><p><strong>period_x</strong> (<em>double</em>) – The period of the function along x-axis.
+0 if not periodic.</p></li>
+<li><p><strong>period_y</strong> (<em>double</em>) – The period of the function along y-axis.
+0 if not periodic.</p></li>
+<li><p><strong>period_z</strong> (<em>double</em>) – The period of the function along z-axis.
+0 if not periodic.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">PeriodicTransform3D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">z</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">PeriodicTransform3D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">0.125</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">)</span>
+<span class="go">0.343</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">PeriodicTransform3D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">1.125</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="go">0.063</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.transform.periodic.VectorPeriodicTransform1D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.transform.periodic.</span></span><span class="sig-name descname"><span class="pre">VectorPeriodicTransform1D</span></span><a class="headerlink" href="#cherab.core.math.transform.periodic.VectorPeriodicTransform1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extends a periodic 1D vector function to an infinite 1D space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function1d</strong> (<em>VectorFunction1D</em>) – The periodic 1D vector function
+defined in the [0, period) interval.</p></li>
+<li><p><strong>period</strong> (<em>double</em>) – The period of the function.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">raysect.core.math</span> <span class="kn">import</span> <span class="n">Vector3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">VectorPeriodicTransform1D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">VectorPeriodicTransform1D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="go">Vector3D(0.5, 0, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="go">Vector3D(0.7, 0, 0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.transform.periodic.VectorPeriodicTransform2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.transform.periodic.</span></span><span class="sig-name descname"><span class="pre">VectorPeriodicTransform2D</span></span><a class="headerlink" href="#cherab.core.math.transform.periodic.VectorPeriodicTransform2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extends a periodic 2D vector function to an infinite 2D space.</p>
+<p>Set period_x/period_y to 0 if the function is not periodic along x/y axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function2d</strong> (<em>VectorFunction2D</em>) – The periodic 2D vector function defined in
+the ([0, period_x), [0, period_y)) intervals.</p></li>
+<li><p><strong>period_x</strong> (<em>double</em>) – The period of the function along x-axis.
+0 if not periodic.</p></li>
+<li><p><strong>period_y</strong> (<em>double</em>) – The period of the function along y-axis.
+0 if not periodic.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">VectorPeriodicTransform2D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">VectorPeriodicTransform2D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">Vector3D(0.5, 0.5, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3</span><span class="p">)</span>
+<span class="go">Vector3D(0.7, 0.7, 0)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">VectorPeriodicTransform2D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">Vector3D(0.5, 1.5, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3</span><span class="p">)</span>
+<span class="go">Vector3D(0.7, -1.3, 0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.transform.periodic.VectorPeriodicTransform3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.transform.periodic.</span></span><span class="sig-name descname"><span class="pre">VectorPeriodicTransform3D</span></span><a class="headerlink" href="#cherab.core.math.transform.periodic.VectorPeriodicTransform3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extends a periodic 3D vector function to an infinite 3D space.</p>
+<p>Set period_x/period_y/period_z to 0 if the function is not periodic along x/y/z axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function3d</strong> (<em>VectorFunction3D</em>) – The periodic 3D vector function defined in the
+([0, period_x), [0, period_y), [0, period_z)) intervals.</p></li>
+<li><p><strong>period_x</strong> (<em>double</em>) – The period of the function along x-axis.
+0 if not periodic.</p></li>
+<li><p><strong>period_y</strong> (<em>double</em>) – The period of the function along y-axis.
+0 if not periodic.</p></li>
+<li><p><strong>period_z</strong> (<em>double</em>) – The period of the function along z-axis.
+0 if not periodic.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">PeriodicTransform3D</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span> <span class="o">=</span> <span class="n">VectorPeriodicTransform3D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">Vector3D(0.5, 0.5, 0.5)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">)</span>
+<span class="go">Vector3D(0.7, 0.7, 0.7)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">VectorPeriodicTransform3D</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="go">Vector3D(1.5, 0.5, 1.5)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mask.html" class="btn btn-neutral float-right" title="9.7. Masks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mappers.html" class="btn btn-neutral" title="9.5. Mappers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2024, Cherab Team
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

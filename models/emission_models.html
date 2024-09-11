@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8. Emission Models &mdash; Cherab 1.4.0 documentation</title>
+  <title>8. Emission Models &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8.1. Custom emission models" href="custom_models.html" />
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -94,14 +96,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">8. Emission Models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="custom_models.html">8.1. Custom emission models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/cxs_model.html">8.2. CXS models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html">8.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bes/bes_model.html">8.4. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="radiated_power/radiated_power.html">8.5. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html">8.8. Spectral Line Shapes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="laser/laser.html">8.9. Laser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beam/beam_attenuator.html">8.2. Beam Attenuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/cxs_model.html">8.3. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html">8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bes/bes_model.html">8.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="radiated_power/radiated_power.html">8.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brem/bremsstrahlung.html">8.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_line/basic_line_emission.html">8.8. Basic Line Emission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html">8.9. Spectral Line Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="laser/laser.html">8.10. Laser</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
@@ -181,39 +184,114 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="emission-models">
-<h1><span class="section-number">8. </span>Emission Models<a class="headerlink" href="#emission-models" title="Permalink to this headline">¶</a></h1>
+  <section id="emission-models">
+<h1><span class="section-number">8. </span>Emission Models<a class="headerlink" href="#emission-models" title="Permalink to this heading">¶</a></h1>
 <p>Cherab contains a number of independent physics models for spectroscopic emission.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="custom_models.html">8.1. Custom emission models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cxs/cxs_model.html">8.2. CXS models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cxs/cxs_model.html#single-ray-attenuator">8.2.1. Single Ray Attenuator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/cxs_model.html#cxs-beam-plasma-intersection">8.2.2. CXS Beam Plasma Intersection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beam/beam_attenuator.html">8.2. Beam Attenuation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="beam/beam_attenuator.html#single-ray-attenuator">8.2.1. Single Ray Attenuator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beam/beam_attenuator.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator"><code class="docutils literal notranslate"><span class="pre">SingleRayAttenuator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beam/beam_attenuator.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator.calculate_attenuation"><code class="docutils literal notranslate"><span class="pre">SingleRayAttenuator.calculate_attenuation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beam/beam_attenuator.html#cherab.core.model.attenuator.singleray.SingleRayAttenuator.density"><code class="docutils literal notranslate"><span class="pre">SingleRayAttenuator.density()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cxs/charge_exchange_calculation.html">8.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html#definition-of-charge-exchange-coefficients">8.3.1. Definition of charge-exchange coefficients</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html#calculation-of-the-line-intensity-of-cx-spectral-lines-without-predicting-observed-spectra">8.3.2. Calculation of the line intensity of CX spectral lines (without predicting observed spectra)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html#in-more-details-charge-exchange-cross-section">8.3.3. In more details charge-exchange cross-section</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html#in-more-details-calculation-of-excited-level-populations-of-impurity-ions-z-alpha-n-l-j">8.3.4. In more details calculation of excited level populations of impurity ions <span class="math notranslate nohighlight">\(Z^{* \alpha+}(n, l, j)\)</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html#calculation-of-the-line-intensity-of-cx-spectral-lines-using-a-statistical-description-prediction-of-spectra">8.3.5. Calculation of the line intensity of CX spectral lines using a statistical description (prediction of spectra)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="bes/bes_model.html">8.4. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="radiated_power/radiated_power.html">8.5. Total Radiated Power</a></li>
-<li class="toctree-l1"><a class="reference internal" href="brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
-<li class="toctree-l1"><a class="reference internal" href="line_shapes/spectral_line_shapes.html">8.8. Spectral Line Shapes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="laser/laser.html">8.9. Laser</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="laser/laser.html#laser-spectrum">8.9.1. Laser Spectrum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="laser/laser.html#laser-profile">8.9.2. Laser Profile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="laser/laser.html#laser-model">8.9.3. Laser Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cxs/cxs_model.html">8.3. CXS models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cxs/cxs_model.html#cxs-beam-plasma-intersection">8.3.1. CXS Beam Plasma Intersection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cxs/cxs_model.html#cherab.core.model.beam.charge_exchange.BeamCXLine"><code class="docutils literal notranslate"><span class="pre">BeamCXLine</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cxs/cxs_model.html#cherab.core.model.beam.charge_exchange.BeamCXLine._change"><code class="docutils literal notranslate"><span class="pre">BeamCXLine._change()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cxs/cxs_model.html#cherab.core.model.beam.charge_exchange.BeamCXLine.emission"><code class="docutils literal notranslate"><span class="pre">BeamCXLine.emission()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cxs/charge_exchange_calculation.html">8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html#definition-of-charge-exchange-coefficients">8.4.1. Definition of charge-exchange coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html#calculation-of-the-line-intensity-of-cx-spectral-lines-without-predicting-observed-spectra">8.4.2. Calculation of the line intensity of CX spectral lines (without predicting observed spectra)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html#in-more-details-charge-exchange-cross-section">8.4.3. In more details charge-exchange cross-section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html#in-more-details-calculation-of-excited-level-populations-of-impurity-ions-z-alpha-n-l-j">8.4.4. In more details calculation of excited level populations of impurity ions <span class="math notranslate nohighlight">\(Z^{* \alpha+}(n, l, j)\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxs/charge_exchange_calculation.html#calculation-of-the-line-intensity-of-cx-spectral-lines-using-a-statistical-description-prediction-of-spectra">8.4.5. Calculation of the line intensity of CX spectral lines using a statistical description (prediction of spectra)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bes/bes_model.html">8.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radiated_power/radiated_power.html">8.6. Total Radiated Power</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="radiated_power/radiated_power.html#cherab.core.model.plasma.total_radiated_power.TotalRadiatedPower"><code class="docutils literal notranslate"><span class="pre">TotalRadiatedPower</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="brem/bremsstrahlung.html">8.7. Bremsstrahlung</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="brem/bremsstrahlung.html#cherab.core.model.plasma.bremsstrahlung.Bremsstrahlung"><code class="docutils literal notranslate"><span class="pre">Bremsstrahlung</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="brem/bremsstrahlung.html#cherab.core.model.plasma.bremsstrahlung.Bremsstrahlung.emission"><code class="docutils literal notranslate"><span class="pre">Bremsstrahlung.emission()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basic_line/basic_line_emission.html">8.8. Basic Line Emission</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic_line/basic_line_emission.html#cherab.core.model.plasma.impact_excitation.ExcitationLine"><code class="docutils literal notranslate"><span class="pre">ExcitationLine</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_line/basic_line_emission.html#cherab.core.model.plasma.recombination.RecombinationLine"><code class="docutils literal notranslate"><span class="pre">RecombinationLine</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_line/basic_line_emission.html#cherab.core.model.plasma.thermal_cx.ThermalCXLine"><code class="docutils literal notranslate"><span class="pre">ThermalCXLine</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="line_shapes/spectral_line_shapes.html">8.9. Spectral Line Shapes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.doppler.doppler_shift"><code class="docutils literal notranslate"><span class="pre">doppler_shift</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.doppler.thermal_broadening"><code class="docutils literal notranslate"><span class="pre">thermal_broadening</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.gaussian.add_gaussian_line"><code class="docutils literal notranslate"><span class="pre">add_gaussian_line</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.stark.add_lorentzian_line"><code class="docutils literal notranslate"><span class="pre">add_lorentzian_line</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.base.LineShapeModel"><code class="docutils literal notranslate"><span class="pre">LineShapeModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.gaussian.GaussianLine"><code class="docutils literal notranslate"><span class="pre">GaussianLine</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.multiplet.MultipletLineShape"><code class="docutils literal notranslate"><span class="pre">MultipletLineShape</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.zeeman.ZeemanLineShapeModel"><code class="docutils literal notranslate"><span class="pre">ZeemanLineShapeModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.zeeman.ZeemanTriplet"><code class="docutils literal notranslate"><span class="pre">ZeemanTriplet</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.zeeman.ParametrisedZeemanTriplet"><code class="docutils literal notranslate"><span class="pre">ParametrisedZeemanTriplet</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.zeeman.ZeemanMultiplet"><code class="docutils literal notranslate"><span class="pre">ZeemanMultiplet</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.stark.StarkBroadenedLine"><code class="docutils literal notranslate"><span class="pre">StarkBroadenedLine</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.beam.base.BeamLineShapeModel"><code class="docutils literal notranslate"><span class="pre">BeamLineShapeModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_shapes/spectral_line_shapes.html#cherab.core.model.lineshape.beam.mse.BeamEmissionMultiplet"><code class="docutils literal notranslate"><span class="pre">BeamEmissionMultiplet</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="laser/laser.html">8.10. Laser</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="laser/laser.html#laser-spectrum">8.10.1. Laser Spectrum</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.laserspectrum.ConstantSpectrum"><code class="docutils literal notranslate"><span class="pre">ConstantSpectrum</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.laserspectrum.GaussianSpectrum"><code class="docutils literal notranslate"><span class="pre">GaussianSpectrum</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="laser/laser.html#laser-profile">8.10.2. Laser Profile</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.profile.UniformEnergyDensity"><code class="docutils literal notranslate"><span class="pre">UniformEnergyDensity</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.profile.UniformEnergyDensity.generate_geometry"><code class="docutils literal notranslate"><span class="pre">UniformEnergyDensity.generate_geometry()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.profile.ConstantBivariateGaussian"><code class="docutils literal notranslate"><span class="pre">ConstantBivariateGaussian</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.profile.ConstantBivariateGaussian.generate_geometry"><code class="docutils literal notranslate"><span class="pre">ConstantBivariateGaussian.generate_geometry()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.profile.TrivariateGaussian"><code class="docutils literal notranslate"><span class="pre">TrivariateGaussian</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.profile.TrivariateGaussian.generate_geometry"><code class="docutils literal notranslate"><span class="pre">TrivariateGaussian.generate_geometry()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.profile.GaussianBeamAxisymmetric"><code class="docutils literal notranslate"><span class="pre">GaussianBeamAxisymmetric</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.profile.GaussianBeamAxisymmetric.generate_geometry"><code class="docutils literal notranslate"><span class="pre">GaussianBeamAxisymmetric.generate_geometry()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="laser/laser.html#laser-model">8.10.3. Laser Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.model.SeldenMatobaThomsonSpectrum"><code class="docutils literal notranslate"><span class="pre">SeldenMatobaThomsonSpectrum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="laser/laser.html#cherab.core.model.laser.model.SeldenMatobaThomsonSpectrum.calculate_spectrum"><code class="docutils literal notranslate"><span class="pre">SeldenMatobaThomsonSpectrum.calculate_spectrum()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
+</section>
 
 
            </div>
@@ -235,7 +313,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -259,7 +337,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

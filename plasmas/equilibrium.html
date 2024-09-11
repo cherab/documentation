@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.2. Plasma equilibrium &mdash; Cherab 1.4.0 documentation</title>
+  <title>7.2. Plasma equilibrium &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7.3. Mono-energetic Particle Beams" href="particle_beams.html" />
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -93,7 +95,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">6. Atomic Data</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="plasmas.html">7. Plasmas</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html">7.1. Core Plasma Classes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.2. Plasma equilibrium</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.2. Plasma equilibrium</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.tools.equilibrium.efit.EFITEquilibrium"><code class="docutils literal notranslate"><span class="pre">EFITEquilibrium</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map2d"><code class="docutils literal notranslate"><span class="pre">EFITEquilibrium.map2d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map3d"><code class="docutils literal notranslate"><span class="pre">EFITEquilibrium.map3d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector2d"><code class="docutils literal notranslate"><span class="pre">EFITEquilibrium.map_vector2d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector3d"><code class="docutils literal notranslate"><span class="pre">EFITEquilibrium.map_vector3d()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.tools.equilibrium.example.example_equilibrium"><code class="docutils literal notranslate"><span class="pre">example_equilibrium()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.tools.equilibrium.plot.plot_equilibrium"><code class="docutils literal notranslate"><span class="pre">plot_equilibrium()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.tools.equilibrium.eqdsk.import_eqdsk"><code class="docutils literal notranslate"><span class="pre">import_eqdsk()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="particle_beams.html">7.3. Mono-energetic Particle Beams</a></li>
 <li class="toctree-l2"><a class="reference internal" href="laser.html">7.4. Laser</a></li>
 </ul>
@@ -178,11 +192,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="plasma-equilibrium">
-<h1><span class="section-number">7.2. </span>Plasma equilibrium<a class="headerlink" href="#plasma-equilibrium" title="Permalink to this headline">¶</a></h1>
+  <section id="plasma-equilibrium">
+<h1><span class="section-number">7.2. </span>Plasma equilibrium<a class="headerlink" href="#plasma-equilibrium" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.tools.equilibrium.efit.EFITEquilibrium">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.equilibrium.efit.</span></span><span class="sig-name descname"><span class="pre">EFITEquilibrium</span></span><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITEquilibrium" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.tools.equilibrium.efit.</span></span><span class="sig-name descname"><span class="pre">EFITEquilibrium</span></span><a class="headerlink" href="#cherab.tools.equilibrium.efit.EFITEquilibrium" title="Permalink to this definition">¶</a></dt>
 <dd><p>An object representing an EFIT equilibrium time-slice.</p>
 <p>EFIT is a code commonly used throughout the Fusion research community
 for calculating the plasma magnetic equilibrium from a range of magnetics
@@ -197,7 +211,7 @@ field.</p>
 <p>For examples of how to instantiate this class, see the examples in the
 machine specific packages.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>r</strong> – EFIT grid radius axis values (array).</p></li>
 <li><p><strong>z</strong> – EFIT grid height axis values (array).</p></li>
@@ -216,7 +230,7 @@ machine specific packages.</p>
 <li><p><strong>time</strong> (<em>float</em>) – The time stamp of the time-slice (in seconds).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>psi</strong> (<em>Function2D</em>) – The poloidal flux in the r-z plane, <span class="math notranslate nohighlight">\(\psi(r,z)\)</span>.</p></li>
 <li><p><strong>psi_normalised</strong> (<em>Function2D</em>) – The normalised poloidal flux in the r-z plane, <span class="math notranslate nohighlight">\(\psi_n(r,z)\)</span>.</p></li>
@@ -225,7 +239,7 @@ machine specific packages.</p>
 <li><p><strong>b_field</strong> (<em>VectorFunction2D</em>) – A 2D function that returns the magnetic field vector at the specified
 point in the r-z plane, <span class="math notranslate nohighlight">\(B(r, z)\)</span>.</p></li>
 <li><p><strong>toroidal_vector</strong> (<em>VectorFunction2D</em>) – The toroidal flux coordinate basis vector, <span class="math notranslate nohighlight">\(\hat{\phi}(r, z)\)</span>.</p></li>
-<li><p><strong>poloidal_vector</strong> (<em>VectorFunction2D</em>) – The poloidal flux coordinate basis vector, <span class="math notranslate nohighlight">\(\hat{     heta }(r, z)\)</span>.</p></li>
+<li><p><strong>poloidal_vector</strong> (<em>VectorFunction2D</em>) – The poloidal flux coordinate basis vector, <span class="math notranslate nohighlight">\(\hat{ \theta }(r, z)\)</span>.</p></li>
 <li><p><strong>surface_normal</strong> (<em>VectorFunction2D</em>) – The surface normal flux coordinate basis vector, <span class="math notranslate nohighlight">\(\hat{\psi}(r, z)\)</span>.</p></li>
 <li><p><strong>inside_lcfs</strong> (<em>Function2D</em>) – A 2D function that identifies if a given (r, z) coordinate lies inside or outside
 the plasma Last Closed Flux Surface (LCFS). This mask function returns a value of 1 if the requested point
@@ -242,13 +256,13 @@ lies inside the limit polygon. A value of 0.0 is returned outside the polygon.</
 <dd><p>Maps a 1D profile onto the equilibrium to give a 2D profile.</p>
 <p>Useful for mapping flux surface quantities in the r-z plane.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>profile</strong> – A 1D function or 2xN array.</p></li>
 <li><p><strong>value_outside_lcfs</strong> – Value returned if point requested outside the LCFS (default=0.0).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Function2D object.</p>
 </dd>
 </dl>
@@ -271,13 +285,13 @@ lies inside the limit polygon. A value of 0.0 is returned outside the polygon.</
 <dd><p>Maps a 1D profile onto the equilibrium to give a 3D profile.</p>
 <p>Useful for mapping flux surface quantities in 3D space.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>profile</strong> – A 1D function or Nx2 array.</p></li>
 <li><p><strong>value_outside_lcfs</strong> – Value returned if point requested outside the LCFS (default=0.0).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Function3D object.</p>
 </dd>
 </dl>
@@ -303,11 +317,11 @@ assuming the velocities are flux functions. This function allows the user to
 specify velocity components as 1D functions of <span class="math notranslate nohighlight">\(\psi_n\)</span>. The three velocity
 components are combined to yield a velocity vector at the requested r-z coordinate.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>toroidal</strong> – Toroidal velocity <span class="math notranslate nohighlight">\(v_{\phi} (\psi_n)\)</span>, specified as a 1D function
 or Nx2 array.</p></li>
-<li><p><strong>poloidal</strong> – Poloidal vector <span class="math notranslate nohighlight">\(v_{     heta} (\psi_n)\)</span>, specified as a 1D function
+<li><p><strong>poloidal</strong> – Poloidal vector <span class="math notranslate nohighlight">\(v_{\theta} (\psi_n)\)</span>, specified as a 1D function
 or Nx2 array.</p></li>
 <li><p><strong>normal</strong> – Velocity along the flux surface normal <span class="math notranslate nohighlight">\(v_{\psi} (\psi_n)\)</span>, specified
 as a 1D function or Nx2 array.</p></li>
@@ -315,7 +329,7 @@ as a 1D function or Nx2 array.</p></li>
 Vector3D(0, 0, 0)).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>VectorFunction2D object that returns the velocity vector at a given r,z coordinate,
 <span class="math notranslate nohighlight">\(v(r,z)\)</span>.</p>
 </dd>
@@ -347,11 +361,11 @@ assuming the velocities are flux functions. This function allows the user to
 specify velocity components as 1D functions of <span class="math notranslate nohighlight">\(\psi_n\)</span>. The three velocity
 components are combined to yield a velocity vector at the requested 3D coordinate.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>toroidal</strong> – Toroidal velocity <span class="math notranslate nohighlight">\(v_{\phi} (\psi_n)\)</span>, specified as a 1D function
 or Nx2 array.</p></li>
-<li><p><strong>poloidal</strong> – Poloidal vector <span class="math notranslate nohighlight">\(v_{     heta} (\psi_n)\)</span>, specified as a 1D function
+<li><p><strong>poloidal</strong> – Poloidal vector <span class="math notranslate nohighlight">\(v_{\theta} (\psi_n)\)</span>, specified as a 1D function
 or Nx2 array.</p></li>
 <li><p><strong>normal</strong> – Velocity along the flux surface normal <span class="math notranslate nohighlight">\(v_{\psi} (\psi_n)\)</span>, specified
 as a 1D function or Nx2 array.</p></li>
@@ -359,7 +373,7 @@ as a 1D function or Nx2 array.</p></li>
 Vector3D(0, 0, 0)).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>VectorFunction2D object that returns the velocity vector at a given r,z coordinate,
 <span class="math notranslate nohighlight">\(v(r,z)\)</span>.</p>
 </dd>
@@ -399,7 +413,7 @@ Vector3D(0, 0, 0)).</p></li>
 <span class="sig-prename descclassname"><span class="pre">cherab.tools.equilibrium.plot.</span></span><span class="sig-name descname"><span class="pre">plot_equilibrium</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">equilibrium</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detail</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.025</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.plot.plot_equilibrium" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates some overview plots of a given EFIT equilibrium.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>equilibrium</strong> – The input EFIT equilibrium object.</p></li>
 <li><p><strong>detail</strong> – If true, prints additional information about the equilibrium.</p></li>
@@ -415,9 +429,9 @@ Vector3D(0, 0, 0)).</p></li>
 </div>
 </dd></dl>
 
-<div class="figure align-center">
+<figure class="align-center">
 <img alt="../_images/equilibrium_surfaces.png" src="../_images/equilibrium_surfaces.png" />
-</div>
+</figure>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.tools.equilibrium.eqdsk.import_eqdsk">
 <span class="sig-prename descclassname"><span class="pre">cherab.tools.equilibrium.eqdsk.</span></span><span class="sig-name descname"><span class="pre">import_eqdsk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.equilibrium.eqdsk.import_eqdsk" title="Permalink to this definition">¶</a></dt>
@@ -428,13 +442,13 @@ Vector3D(0, 0, 0)).</p></li>
 <p>The G EQDSK file format is unstable and unreliable. Use with caution.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>file_path</strong> (<em>str</em>) – Path to the EFIT eqdsk file.</p></li>
 <li><p><strong>drop_nan</strong> (<em>bool</em>) – Drop NaN values in the f and q profiles.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#cherab.tools.equilibrium.efit.EFITEquilibrium" title="cherab.tools.equilibrium.efit.EFITEquilibrium">EFITEquilibrium</a></p>
 </dd>
 </dl>
@@ -444,7 +458,7 @@ Vector3D(0, 0, 0)).</p></li>
 </div>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -466,7 +480,7 @@ Vector3D(0, 0, 0)).</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -490,7 +504,9 @@ Vector3D(0, 0, 0)).</p></li>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 

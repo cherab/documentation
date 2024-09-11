@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Rectangular regular grid &mdash; Cherab 1.4.0 documentation</title>
+  <title>Rectangular regular grid &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="rectangular-regular-grid">
-<span id="ray-transfer-box"></span><h1>Rectangular regular grid<a class="headerlink" href="#rectangular-regular-grid" title="Permalink to this headline">¶</a></h1>
+  <section id="rectangular-regular-grid">
+<span id="ray-transfer-box"></span><h1>Rectangular regular grid<a class="headerlink" href="#rectangular-regular-grid" title="Permalink to this heading">¶</a></h1>
 <p>This example shows how to:</p>
 <blockquote>
 <div><ul class="simple">
@@ -216,8 +218,8 @@
 <span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">PinholeCamera</span><span class="p">,</span> <span class="n">FullFrameSampler2D</span>
 
 <span class="c1"># RayTransferPipeline2D is optimised for calculation of ray transfer matrices.</span>
-<span class="c1"># It&#39;s also possible to use SpectralRadiancePipeline2D but for the matrices with &gt;1000 elements</span>
-<span class="c1"># the performance will be lower.</span>
+<span class="c1"># It&#39;s also possible to use SpectralRadiancePipeline2D or SpectralPowerPipeline2D but</span>
+<span class="c1"># for the matrices with &gt;1000 elements the performance will be lower.</span>
 <span class="kn">from</span> <span class="nn">cherab.tools.raytransfer</span> <span class="kn">import</span> <span class="n">RayTransferPipeline2D</span><span class="p">,</span> <span class="n">RayTransferBox</span>
 
 <span class="c1"># Here we use special materials optimised for calculation of ray transfer matrices.</span>
@@ -246,6 +248,9 @@
 <span class="n">rtb</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="mf">0.2</span>
 
 <span class="c1"># creating ray transfer pipeline</span>
+<span class="c1"># Be careful when setting the &#39;kind&#39; attribute of the pipeline to &#39;power&#39; or &#39;radiance&#39;.</span>
+<span class="c1"># In the case of &#39;power&#39;, the matrix [m] is multiplied by the detector&#39;s sensitivity [m^2 sr].</span>
+<span class="c1"># For the PinholeCamera this does not matter, because its pixel sensitivity is 1.</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">RayTransferPipeline2D</span><span class="p">()</span>
 
 <span class="c1"># setting up the camera</span>
@@ -321,11 +326,13 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../../_images/ray_transfer_box_demo.png"><img alt="../../_images/ray_transfer_box_demo.png" src="../../_images/ray_transfer_box_demo.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> The result of collapsing geometry matrix with four different emission profiles.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The result of collapsing geometry matrix with four different emission profiles.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -338,7 +345,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -362,7 +369,9 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

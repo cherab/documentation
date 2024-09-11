@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.9. Laser &mdash; Cherab 1.4.0 documentation</title>
+  <title>8.10. Laser &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,10 +28,11 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="9. Function Framework" href="../../math/math.html" />
-    <link rel="prev" title="8.8. Spectral Line Shapes" href="../line_shapes/spectral_line_shapes.html" /> 
+    <link rel="prev" title="8.9. Spectral Line Shapes" href="../line_shapes/spectral_line_shapes.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -94,17 +96,31 @@
 <li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">7. Plasmas</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">8. Emission Models</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../custom_models.html">8.1. Custom emission models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cxs/cxs_model.html">8.2. CXS models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cxs/charge_exchange_calculation.html">8.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">8.4. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">8.5. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../line_shapes/spectral_line_shapes.html">8.8. Spectral Line Shapes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8.9. Laser</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#laser-spectrum">8.9.1. Laser Spectrum</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#laser-profile">8.9.2. Laser Profile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#laser-model">8.9.3. Laser Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../beam/beam_attenuator.html">8.2. Beam Attenuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxs/cxs_model.html">8.3. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxs/charge_exchange_calculation.html">8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">8.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">8.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">8.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.8. Basic Line Emission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../line_shapes/spectral_line_shapes.html">8.9. Spectral Line Shapes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.10. Laser</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#laser-spectrum">8.10.1. Laser Spectrum</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.model.laser.laserspectrum.ConstantSpectrum"><code class="docutils literal notranslate"><span class="pre">ConstantSpectrum</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.model.laser.laserspectrum.GaussianSpectrum"><code class="docutils literal notranslate"><span class="pre">GaussianSpectrum</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#laser-profile">8.10.2. Laser Profile</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.model.laser.profile.UniformEnergyDensity"><code class="docutils literal notranslate"><span class="pre">UniformEnergyDensity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.model.laser.profile.ConstantBivariateGaussian"><code class="docutils literal notranslate"><span class="pre">ConstantBivariateGaussian</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.model.laser.profile.TrivariateGaussian"><code class="docutils literal notranslate"><span class="pre">TrivariateGaussian</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.model.laser.profile.GaussianBeamAxisymmetric"><code class="docutils literal notranslate"><span class="pre">GaussianBeamAxisymmetric</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#laser-model">8.10.3. Laser Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.model.laser.model.SeldenMatobaThomsonSpectrum"><code class="docutils literal notranslate"><span class="pre">SeldenMatobaThomsonSpectrum</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -169,7 +185,7 @@
         
           <li><a href="../emission_models.html"><span class="section-number">8. </span>Emission Models</a> &raquo;</li>
         
-      <li><span class="section-number">8.9. </span>Laser</li>
+      <li><span class="section-number">8.10. </span>Laser</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -188,13 +204,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="laser">
-<h1><span class="section-number">8.9. </span>Laser<a class="headerlink" href="#laser" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="laser-spectrum">
-<h2><span class="section-number">8.9.1. </span>Laser Spectrum<a class="headerlink" href="#laser-spectrum" title="Permalink to this headline">¶</a></h2>
+  <section id="laser">
+<h1><span class="section-number">8.10. </span>Laser<a class="headerlink" href="#laser" title="Permalink to this heading">¶</a></h1>
+<section id="laser-spectrum">
+<h2><span class="section-number">8.10.1. </span>Laser Spectrum<a class="headerlink" href="#laser-spectrum" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.model.laser.laserspectrum.ConstantSpectrum">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.laserspectrum.</span></span><span class="sig-name descname"><span class="pre">ConstantSpectrum</span></span><a class="headerlink" href="#cherab.core.model.laser.laserspectrum.ConstantSpectrum" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.laserspectrum.</span></span><span class="sig-name descname"><span class="pre">ConstantSpectrum</span></span><a class="headerlink" href="#cherab.core.model.laser.laserspectrum.ConstantSpectrum" title="Permalink to this definition">¶</a></dt>
 <dd><p>A laser spectrum with constant power.</p>
 <p>Has a constant, non-zero distribution of power spectral density
 between the min_wavelength and max_wavelength. The integral value
@@ -209,11 +225,11 @@ ConstantSpectrum(1063.9, 1064.1, 1)</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.model.laser.laserspectrum.GaussianSpectrum">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.laserspectrum.</span></span><span class="sig-name descname"><span class="pre">GaussianSpectrum</span></span><a class="headerlink" href="#cherab.core.model.laser.laserspectrum.GaussianSpectrum" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.laserspectrum.</span></span><span class="sig-name descname"><span class="pre">GaussianSpectrum</span></span><a class="headerlink" href="#cherab.core.model.laser.laserspectrum.GaussianSpectrum" title="Permalink to this definition">¶</a></dt>
 <dd><p>A laser spectrum with a normally distributed power spectral density.</p>
 <p>Has a Gaussian-like spectral shape. The inegral value of power is 1 W.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mean</strong> (<em>float</em>) – The mean value of the Gaussian distribution
 of the laser spectrum in nm, can be thought of as the central
@@ -222,7 +238,7 @@ wavelength of the laser.</p></li>
 distribution of the laser spectrum.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>stddev</strong> (<em>float</em>) – Standard deviation of the Gaussian
 distribution of the laser spectrum.</p></li>
@@ -234,12 +250,12 @@ wavelength of the laser.</p></li>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="laser-profile">
-<h2><span class="section-number">8.9.2. </span>Laser Profile<a class="headerlink" href="#laser-profile" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="laser-profile">
+<h2><span class="section-number">8.10.2. </span>Laser Profile<a class="headerlink" href="#laser-profile" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.model.laser.profile.UniformEnergyDensity">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.profile.</span></span><span class="sig-name descname"><span class="pre">UniformEnergyDensity</span></span><a class="headerlink" href="#cherab.core.model.laser.profile.UniformEnergyDensity" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.profile.</span></span><span class="sig-name descname"><span class="pre">UniformEnergyDensity</span></span><a class="headerlink" href="#cherab.core.model.laser.profile.UniformEnergyDensity" title="Permalink to this definition">¶</a></dt>
 <dd><p>LaserProfile with a constant volumetric energy density.</p>
 <p>Returns a laser with a cylindrical shape within which the laser volumentric energy density is constant.
 The laser starts at z=0 and extends in the positive z direction.</p>
@@ -258,7 +274,7 @@ and volumetric energy density of 5 J*m^-3 and polarisation in the y direction is
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>energy_density</strong> (<em>float</em>) – The volumetric energy density of the laser light.</p></li>
 <li><p><strong>laser_length</strong> (<em>float</em>) – The length of the laser cylinder.</p></li>
@@ -266,7 +282,7 @@ and volumetric energy density of 5 J*m^-3 and polarisation in the y direction is
 <li><p><strong>polarization</strong> (<em>Vector3D</em>) – The direction of the laser polarization:</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>energy_density</strong> (<em>float</em>) – The volumetric energy density of the laser light.</p></li>
 <li><p><strong>laser_radius</strong> (<em>float</em>) – The radius of the laser cylinder.</p></li>
@@ -274,11 +290,23 @@ and volumetric energy density of 5 J*m^-3 and polarisation in the y direction is
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.model.laser.profile.UniformEnergyDensity.generate_geometry">
+<span class="sig-name descname"><span class="pre">generate_geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.laser.profile.UniformEnergyDensity.generate_geometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns list of raysect primitives composing the laser geometry</p>
+<p>This method is called from the Laser instance to which the instance
+of Profile is attached to. The Laser instance will be assigned as
+the parent to the returned primitives in the Laser._configure method.
+The Laser._configure method does not change any transforms. This is
+why the returned primitives have to have their transforms already
+initialised in the frame of the laser, when returned.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.model.laser.profile.ConstantBivariateGaussian">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.profile.</span></span><span class="sig-name descname"><span class="pre">ConstantBivariateGaussian</span></span><a class="headerlink" href="#cherab.core.model.laser.profile.ConstantBivariateGaussian" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.profile.</span></span><span class="sig-name descname"><span class="pre">ConstantBivariateGaussian</span></span><a class="headerlink" href="#cherab.core.model.laser.profile.ConstantBivariateGaussian" title="Permalink to this definition">¶</a></dt>
 <dd><p>LaserProfile with a Gaussian-shaped volumetric energy density distribution in the xy plane
 and constant pulse intensity.</p>
 <p>Returns a laser with a cylindrical shape and the propagation of the laser light in the positive z direction.</p>
@@ -319,7 +347,7 @@ profile in x-y plane to be elliptical. The pulse energy is 5 J and the laser tem
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pulse_energy</strong> (<em>float</em>) – The energy of the laser in Joules delivered in a single laser pulse.</p></li>
 <li><p><strong>pulse_length</strong> (<em>float</em>) – The temporal length of the laser pulse in seconds.</p></li>
@@ -332,7 +360,7 @@ density distribution of the laser light in the y axis in meters.</p></li>
 <li><p><strong>polarization</strong> (<em>Vector3D</em>) – The direction of the laser polarization:</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>pulse_energy</strong> (<em>float</em>) – The energy of the laser in Joules delivered in a single laser pulse.</p></li>
 <li><p><strong>pulse_length</strong> (<em>float</em>) – The temporal length of the laser pulse in seconds.</p></li>
@@ -345,11 +373,23 @@ density distribution of the laser light in the y axis in meters.</p></li>
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.model.laser.profile.ConstantBivariateGaussian.generate_geometry">
+<span class="sig-name descname"><span class="pre">generate_geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.laser.profile.ConstantBivariateGaussian.generate_geometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns list of raysect primitives composing the laser geometry</p>
+<p>This method is called from the Laser instance to which the instance
+of Profile is attached to. The Laser instance will be assigned as
+the parent to the returned primitives in the Laser._configure method.
+The Laser._configure method does not change any transforms. This is
+why the returned primitives have to have their transforms already
+initialised in the frame of the laser, when returned.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.model.laser.profile.TrivariateGaussian">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.profile.</span></span><span class="sig-name descname"><span class="pre">TrivariateGaussian</span></span><a class="headerlink" href="#cherab.core.model.laser.profile.TrivariateGaussian" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.profile.</span></span><span class="sig-name descname"><span class="pre">TrivariateGaussian</span></span><a class="headerlink" href="#cherab.core.model.laser.profile.TrivariateGaussian" title="Permalink to this definition">¶</a></dt>
 <dd><p>LaserProfile with a trivariate Gaussian-shaped volumetric energy density.</p>
 <p>Returns a laser with a cylindrical shape and the propagation of the laser light in the positive z direction.
 This model imitates a laser beam with a Gaussian distribution of power output within a single pulse frozen in time:</p>
@@ -391,7 +431,7 @@ The position of the laser pulse maximum mean_z is set to 0.5:</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pulse_energy</strong> (<em>float</em>) – The energy of the laser in Joules delivered in a single laser pulse.</p></li>
 <li><p><strong>pulse_length</strong> (<em>float</em>) – The standard deviation of the laser pulse length in the temporal domain.</p></li>
@@ -406,7 +446,7 @@ density distribution of the laser light in the y axis in meters.</p></li>
 <li><p><strong>polarization</strong> (<em>Vector3D</em>) – The direction of the laser polarization.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>pulse_energy</strong> (<em>float</em>) – The energy of the laser in Joules delivered in a single laser pulse.</p></li>
 <li><p><strong>pulse_length</strong> (<em>float</em>) – The standard deviation of the laser pulse length in the temporal domain.</p></li>
@@ -421,11 +461,23 @@ density distribution of the laser light in the y axis in meters.</p></li>
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.model.laser.profile.TrivariateGaussian.generate_geometry">
+<span class="sig-name descname"><span class="pre">generate_geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.laser.profile.TrivariateGaussian.generate_geometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns list of raysect primitives composing the laser geometry</p>
+<p>This method is called from the Laser instance to which the instance
+of Profile is attached to. The Laser instance will be assigned as
+the parent to the returned primitives in the Laser._configure method.
+The Laser._configure method does not change any transforms. This is
+why the returned primitives have to have their transforms already
+initialised in the frame of the laser, when returned.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.model.laser.profile.GaussianBeamAxisymmetric">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.profile.</span></span><span class="sig-name descname"><span class="pre">GaussianBeamAxisymmetric</span></span><a class="headerlink" href="#cherab.core.model.laser.profile.GaussianBeamAxisymmetric" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.profile.</span></span><span class="sig-name descname"><span class="pre">GaussianBeamAxisymmetric</span></span><a class="headerlink" href="#cherab.core.model.laser.profile.GaussianBeamAxisymmetric" title="Permalink to this definition">¶</a></dt>
 <dd><p>LaserProfile with volumetric energy density following the Gaussian beam model.</p>
 <p>Returns a laser with a cylindrical shape and the propagation of the laser light in the positive z direction. This model implements
 the axisymmetrical Gaussian beam model. It immitates a focused axis symmetrical laser beam with a uniform power ouput in a laser pulse.
@@ -472,7 +524,7 @@ waist is z=50 cm. The laser wavelength is 1060 nm.</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pulse_energy</strong> (<em>float</em>) – The energy of the laser in Joules delivered in a single laser pulse.</p></li>
 <li><p><strong>pulse_length</strong> (<em>float</em>) – The temporal length of the laser pulse in seconds.</p></li>
@@ -484,7 +536,7 @@ waist is z=50 cm. The laser wavelength is 1060 nm.</p>
 <li><p><strong>polarization</strong> (<em>Vector3D</em>) – The direction of the laser polarization.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>pulse_energy</strong> (<em>float</em>) – The energy of the laser in Joules delivered in a single laser pulse.</p></li>
 <li><p><strong>pulse_length</strong> (<em>float</em>) – The temporal length of the laser pulse in seconds.</p></li>
@@ -497,23 +549,35 @@ waist is z=50 cm. The laser wavelength is 1060 nm.</p>
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.model.laser.profile.GaussianBeamAxisymmetric.generate_geometry">
+<span class="sig-name descname"><span class="pre">generate_geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.laser.profile.GaussianBeamAxisymmetric.generate_geometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns list of raysect primitives composing the laser geometry</p>
+<p>This method is called from the Laser instance to which the instance
+of Profile is attached to. The Laser instance will be assigned as
+the parent to the returned primitives in the Laser._configure method.
+The Laser._configure method does not change any transforms. This is
+why the returned primitives have to have their transforms already
+initialised in the frame of the laser, when returned.</p>
 </dd></dl>
 
-</div>
-<div class="section" id="laser-model">
-<h2><span class="section-number">8.9.3. </span>Laser Model<a class="headerlink" href="#laser-model" title="Permalink to this headline">¶</a></h2>
+</dd></dl>
+
+</section>
+<section id="laser-model">
+<h2><span class="section-number">8.10.3. </span>Laser Model<a class="headerlink" href="#laser-model" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.model.laser.model.SeldenMatobaThomsonSpectrum">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.model.</span></span><span class="sig-name descname"><span class="pre">SeldenMatobaThomsonSpectrum</span></span><a class="headerlink" href="#cherab.core.model.laser.model.SeldenMatobaThomsonSpectrum" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.laser.model.</span></span><span class="sig-name descname"><span class="pre">SeldenMatobaThomsonSpectrum</span></span><a class="headerlink" href="#cherab.core.model.laser.model.SeldenMatobaThomsonSpectrum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Thomson Scattering based on Selden-Matoba.</p>
 <p>The class calculates Thomson scattering of the laser to the spectrum. The model of the scattered spectrum used is based on
 the semi-empirical model by Selden and the Thomson scattering cross-section is taken from Matoba articles. The spectral contribution
 of the scattered laser light c is calculated as a sum of contributions of all laser wavelengths</p>
 <div class="math notranslate nohighlight">
-\[c(\lambda) =  c r_e^2 n_e cos^2\theta \sum_{\lambda_L} \frac{E_L(\lambda_l) S(\frac{\lambda}{\lambda_L} - 1, \varphi, T_e)}{\lambda_L},\]</div>
-<p>where <span class="math notranslate nohighlight">\(\lambda\)</span> is the spectrum’s wavelength, <span class="math notranslate nohighlight">\(r_e\)</span> is the classical electron radius, <span class="math notranslate nohighlight">\(n_e\)</span> is the electron delsity,
-<span class="math notranslate nohighlight">\(\theta\)</span> is the angle between the laser polarisation and scattering vectors, <span class="math notranslate nohighlight">\(c\)</span> is the vacuum speed of light
-<span class="math notranslate nohighlight">\(\lambda_L\)</span> is the laser wavelength, <span class="math notranslate nohighlight">\(E_L\)</span> is the laser energy density, <span class="math notranslate nohighlight">\(\varphi\)</span> is the scattering angle and <span class="math notranslate nohighlight">\(T_e\)</span> is the electron
+\[\begin{split}c(\lambda) =  c r_e^2 n_e cos^2\\theta \\sum_{\\lambda_L} \\frac{E_L(\\lambda_l) S(\\frac{\\lambda}{\\lambda_L} - 1, \\varphi, T_e)}{\\lambda_L},\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\\lambda\)</span> is the spectrum’s wavelength, <span class="math notranslate nohighlight">\(r_e\)</span> is the classical electron radius, <span class="math notranslate nohighlight">\(n_e\)</span> is the electron delsity,
+<span class="math notranslate nohighlight">\(\\theta\)</span> is the angle between the laser polarisation and scattering vectors, <span class="math notranslate nohighlight">\(c\)</span> is the vacuum speed of light
+<span class="math notranslate nohighlight">\(\\lambda_L\)</span> is the laser wavelength, <span class="math notranslate nohighlight">\(E_L\)</span> is the laser energy density, <span class="math notranslate nohighlight">\(\\varphi\)</span> is the scattering angle and <span class="math notranslate nohighlight">\(T_e\)</span> is the electron
 temperature. The scattering function S is taken from the Matoba article. The multiplication by the speed of light is added to transfer the Thomson scattering
 cross section into a reaction rate.</p>
 <div class="admonition seealso">
@@ -521,14 +585,14 @@ cross section into a reaction rate.</p>
 <p>The Prunty article provides a thorough introduction into the phyiscs of Thomson scattering. The articles by Selden and Matoba were used to build
 this model.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Selden</dt>
+<dt class="field-odd">Selden<span class="colon">:</span></dt>
 <dd class="field-odd"><p><cite>Selden, A.C., 1980. Simple analytic form of the relativistic Thomson scattering spectrum. Physics Letters A, 79(5-6), pp.405-406.</cite></p>
 </dd>
-<dt class="field-even">Matoba</dt>
+<dt class="field-even">Matoba<span class="colon">:</span></dt>
 <dd class="field-even"><p><cite>Matoba, T., et al., 1979. Analytical approximations in the theory of relativistic Thomson scattering for high temperature fusion plasma.
 Japanese Journal of Applied Physics, 18(6), p.1127.</cite></p>
 </dd>
-<dt class="field-odd">Prunty</dt>
+<dt class="field-odd">Prunty<span class="colon">:</span></dt>
 <dd class="field-odd"><p><cite>Prunty, S.L., 2014. A primer on the theory of Thomson scattering for high-temperature fusion plasmas. Physica Scripta, 89(12), p.128001.</cite></p>
 </dd>
 </dl>
@@ -540,7 +604,7 @@ Japanese Journal of Applied Physics, 18(6), p.1127.</cite></p>
 <p>The method returns the Thomson scattered spectrum given the plasma parameters, without the need of specifying
 plasma or laser.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ne</strong> (<em>float</em>) – Plasma electron density in m**-3</p></li>
 <li><p><strong>te</strong> (<em>float</em>) – Plasma electron temperature in eV</p></li>
@@ -551,7 +615,7 @@ of the Poynting vector.</p></li>
 <li><p><strong>angle_polarization</strong> (<em>float</em>) – The angle between the observation direction and the polarisation direction of the laser light.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Spectrum</p>
 </dd>
 </dl>
@@ -559,8 +623,8 @@ of the Poynting vector.</p></li>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -573,7 +637,7 @@ of the Poynting vector.</p></li>
         <a href="../../math/math.html" class="btn btn-neutral float-right" title="9. Function Framework" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../line_shapes/spectral_line_shapes.html" class="btn btn-neutral" title="8.8. Spectral Line Shapes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../line_shapes/spectral_line_shapes.html" class="btn btn-neutral" title="8.9. Spectral Line Shapes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -582,7 +646,7 @@ of the Poynting vector.</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -606,7 +670,9 @@ of the Poynting vector.</p></li>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 

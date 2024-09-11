@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.5. Total Radiated Power &mdash; Cherab 1.4.0 documentation</title>
+  <title>8.6. Total Radiated Power &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,10 +28,11 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8.6. Bremsstrahlung" href="../brem/bremsstrahlung.html" />
-    <link rel="prev" title="8.4. BES - Beam Emission Spectroscopy" href="../bes/bes_model.html" /> 
+    <link rel="next" title="8.7. Bremsstrahlung" href="../brem/bremsstrahlung.html" />
+    <link rel="prev" title="8.5. BES - Beam Emission Spectroscopy" href="../bes/bes_model.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -94,14 +96,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">7. Plasmas</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">8. Emission Models</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../custom_models.html">8.1. Custom emission models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cxs/cxs_model.html">8.2. CXS models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cxs/charge_exchange_calculation.html">8.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">8.4. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8.5. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../line_shapes/spectral_line_shapes.html">8.8. Spectral Line Shapes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../laser/laser.html">8.9. Laser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../beam/beam_attenuator.html">8.2. Beam Attenuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxs/cxs_model.html">8.3. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxs/charge_exchange_calculation.html">8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">8.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.6. Total Radiated Power</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.plasma.total_radiated_power.TotalRadiatedPower"><code class="docutils literal notranslate"><span class="pre">TotalRadiatedPower</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">8.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.8. Basic Line Emission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../line_shapes/spectral_line_shapes.html">8.9. Spectral Line Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../laser/laser.html">8.10. Laser</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
@@ -164,7 +170,7 @@
         
           <li><a href="../emission_models.html"><span class="section-number">8. </span>Emission Models</a> &raquo;</li>
         
-      <li><span class="section-number">8.5. </span>Total Radiated Power</li>
+      <li><span class="section-number">8.6. </span>Total Radiated Power</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,10 +189,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="total-radiated-power">
-<h1><span class="section-number">8.5. </span>Total Radiated Power<a class="headerlink" href="#total-radiated-power" title="Permalink to this headline">¶</a></h1>
-<p>Documentation for this model will go here soon…</p>
-</div>
+  <section id="total-radiated-power">
+<h1><span class="section-number">8.6. </span>Total Radiated Power<a class="headerlink" href="#total-radiated-power" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.model.plasma.total_radiated_power.TotalRadiatedPower">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.plasma.total_radiated_power.</span></span><span class="sig-name descname"><span class="pre">TotalRadiatedPower</span></span><a class="headerlink" href="#cherab.core.model.plasma.total_radiated_power.TotalRadiatedPower" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emitter that calculates total power radiated by a given ion, which includes:</p>
+<ul class="simple">
+<li><p>line power due to electron impact excitation,</p></li>
+<li><p>continuum and line power due to recombination and Bremsstrahlung,</p></li>
+<li><p>line power due to charge exchange with thermal neutral hydrogen and its isotopes.</p></li>
+</ul>
+<p>The emission calculated by this model is spectrally unresolved,
+which means that the total radiated power will be spread of the entire
+observable spectral range.</p>
+<div class="math notranslate nohighlight">
+\[\epsilon_{\mathrm{total}} = \frac{1}{4 \pi \Delta\lambda} \left(
+n_{Z_\mathrm{i}} n_\mathrm{e} C_{\mathrm{excit}}(n_\mathrm{e}, T_\mathrm{e}) + 
+n_{Z_\mathrm{i} + 1} n_\mathrm{e} C_{\mathrm{recomb}}(n_\mathrm{e}, T_\mathrm{e}) +
+n_{Z_\mathrm{i} + 1} n_\mathrm{hyd} C_{\mathrm{cx}}(n_\mathrm{e}, T_\mathrm{e}) \right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(n_{Z_\mathrm{i}}\)</span> is the target species density;
+<span class="math notranslate nohighlight">\(n_{Z_\mathrm{i} + 1}\)</span> is the recombining species density;
+<span class="math notranslate nohighlight">\(n_{\mathrm{hyd}}\)</span> is the total density of all hydrogen isotopes;
+<span class="math notranslate nohighlight">\(C_{\mathrm{excit}}, C_{\mathrm{recomb}}, C_{\mathrm{cx}}\)</span> are the radiated power
+coefficients in <span class="math notranslate nohighlight">\(W m^3\)</span> due to electron impact excitation, recombination
++ Bremsstrahlung and charge exchange with thermal neutral hydrogen, respectively;
+<span class="math notranslate nohighlight">\(\Delta\lambda\)</span> is the observable spectral range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<a class="reference internal" href="../../atomic/elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – The atomic element/isotope.</p></li>
+<li><p><strong>charge</strong> (<em>int</em>) – The charge state of the element/isotope.</p></li>
+<li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The plasma to which this emission model is attached. Default is None.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider for this model. Default is None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 
 
            </div>
@@ -196,10 +237,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../brem/bremsstrahlung.html" class="btn btn-neutral float-right" title="8.6. Bremsstrahlung" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../brem/bremsstrahlung.html" class="btn btn-neutral float-right" title="8.7. Bremsstrahlung" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../bes/bes_model.html" class="btn btn-neutral" title="8.4. BES - Beam Emission Spectroscopy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../bes/bes_model.html" class="btn btn-neutral" title="8.5. BES - Beam Emission Spectroscopy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -208,7 +249,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -232,7 +273,10 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 
   

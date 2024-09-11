@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Flux Function Plasmas &mdash; Cherab 1.4.0 documentation</title>
+  <title>Flux Function Plasmas &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="flux-function-plasmas">
-<span id="id1"></span><h1>Flux Function Plasmas<a class="headerlink" href="#flux-function-plasmas" title="Permalink to this headline">¶</a></h1>
+  <section id="flux-function-plasmas">
+<span id="id1"></span><h1>Flux Function Plasmas<a class="headerlink" href="#flux-function-plasmas" title="Permalink to this heading">¶</a></h1>
 <p>It is a common use case to approximate the core plasma of a tokamak with 1D flux
 functions. For example, we might assume the electron temperature can be defined
 as a 1D profile function of <span class="math notranslate nohighlight">\(\psi_n\)</span>, i.e. is constant on flux surfaces.
@@ -332,28 +334,38 @@ Cherab tools module for the tutorials and experimentation.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id2">
+<figure class="align-center" id="id2">
 <img alt="../../_images/equilibrium_surfaces.png" src="../../_images/equilibrium_surfaces.png" />
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> The flux surfaces of the example equilibrium.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id3">
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The flux surfaces of the example equilibrium.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
 <img alt="../../_images/equilibrium_lcfs.png" src="../../_images/equilibrium_lcfs.png" />
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> The Last Closed Flux Surface (LCFS) polygon mask.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id4">
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The Last Closed Flux Surface (LCFS) polygon mask.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
 <img alt="../../_images/equilibrium_limiter.png" src="../../_images/equilibrium_limiter.png" />
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> The limiter polygon mask.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id5">
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The limiter polygon mask.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
 <img alt="../../_images/equilibrium_mapped_te_xz.png" src="../../_images/equilibrium_mapped_te_xz.png" />
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A slice of the electron temperature through the x-z plane
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A slice of the electron temperature through the x-z plane
 revealing Te as a flux quantitiy.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id6">
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
 <img alt="../../_images/equilibrium_mapped_te_xy.png" src="../../_images/equilibrium_mapped_te_xy.png" />
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A slice of the electron temperature through the x-y plane.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A slice of the electron temperature through the x-y plane.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -366,7 +378,7 @@ revealing Te as a flux quantitiy.</span><a class="headerlink" href="#id5" title=
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -390,7 +402,9 @@ revealing Te as a flux quantitiy.</span><a class="headerlink" href="#id5" title=
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 

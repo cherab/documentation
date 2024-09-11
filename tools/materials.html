@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10.2. Materials &mdash; Cherab 1.4.0 documentation</title>
+  <title>10.2. Materials &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="10.3. Primitives" href="primitives.html" />
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -96,7 +98,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="tools.html">10. Tools</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="plasmas.html">10.1. Plasmas</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">10.2. Materials</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10.2. Materials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.tools.emitters.radiation_function.RadiationFunction"><code class="docutils literal notranslate"><span class="pre">RadiationFunction</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="primitives.html">10.3. Primitives</a></li>
 <li class="toctree-l2"><a class="reference internal" href="observers.html">10.4. Observers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy.html">10.5. Spectroscopy</a></li>
@@ -181,14 +186,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="materials">
-<h1><span class="section-number">10.2. </span>Materials<a class="headerlink" href="#materials" title="Permalink to this headline">¶</a></h1>
+  <section id="materials">
+<h1><span class="section-number">10.2. </span>Materials<a class="headerlink" href="#materials" title="Permalink to this heading">¶</a></h1>
 <p>See the Raysect reference documentation for the full catalogue of materials and associated
 API interfaces. In Cherab we provide a few useful materials.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.tools.emitters.radiation_function.RadiationFunction">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.tools.emitters.radiation_function.</span></span><span class="sig-name descname"><span class="pre">RadiationFunction</span></span><a class="headerlink" href="#cherab.tools.emitters.radiation_function.RadiationFunction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.optical.material.emitter.inhomogeneous.InhomogeneousVolumeEmitter</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.tools.emitters.radiation_function.</span></span><span class="sig-name descname"><span class="pre">RadiationFunction</span></span><a class="headerlink" href="#cherab.tools.emitters.radiation_function.RadiationFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InhomogeneousVolumeEmitter</span></code></p>
 <p>A general purpose radiation material.</p>
 <p>Radiates power over 4 pi according to the supplied 3D radiation
 function. Note that this model ignores the spectral range of the
@@ -201,7 +206,7 @@ functions defined in a different coordinate system, consider
 wrapping this in a VolumeTransform material to ensure the function
 evaluation takes place in the correct coordinate system.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>radiation_function</strong> (<em>Function3D</em>) – A 3D radiation function that specifies the amount of radiation
 to be radiated at a given point, <span class="math notranslate nohighlight">\(\phi(x, y, z)\)</span> [W/m^3].</p></li>
@@ -218,7 +223,7 @@ to be radiated at a given point, <span class="math notranslate nohighlight">\(\p
 </div>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -240,7 +245,7 @@ to be radiated at a given point, <span class="math notranslate nohighlight">\(\p
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -264,7 +269,9 @@ to be radiated at a given point, <span class="math notranslate nohighlight">\(\p
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 

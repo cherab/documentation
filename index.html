@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Cherab’s documentation &mdash; Cherab 1.4.0 documentation</title>
+  <title>Cherab’s documentation &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. Welcome" href="welcome.html" /> 
@@ -58,7 +60,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -169,8 +171,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cherab-s-documentation">
-<h1>Cherab’s documentation<a class="headerlink" href="#cherab-s-documentation" title="Permalink to this headline">¶</a></h1>
+  <section id="cherab-s-documentation">
+<h1>Cherab’s documentation<a class="headerlink" href="#cherab-s-documentation" title="Permalink to this heading">¶</a></h1>
 <p>Welcome to the Cherab project. A python library for forward modelling
 diagnostics based on spectroscopic plasma emission.</p>
 <p>Please note that these documentation pages are in a state of flux and might not
@@ -216,6 +218,10 @@ become stable until we have finished moving the source code to github.</p>
 <li class="toctree-l2"><a class="reference internal" href="atomic/emission_lines.html">6.2. Spectroscopic Emission Lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="atomic/rate_coefficients.html">6.3. Rate Coefficients</a></li>
 <li class="toctree-l2"><a class="reference internal" href="atomic/gaunt_factors.html">6.4. Gaunt factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic/atomic_data_interface.html">6.5. Atomic Data Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic/data_interpolators.html">6.6. Atomic data interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic/repository.html">6.7. Atomic data repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic/openadas.html">6.8. Open-ADAS</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="plasmas/plasmas.html">7. Plasmas</a><ul>
@@ -227,14 +233,15 @@ become stable until we have finished moving the source code to github.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="models/emission_models.html">8. Emission Models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="models/custom_models.html">8.1. Custom emission models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/cxs/cxs_model.html">8.2. CXS models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/cxs/charge_exchange_calculation.html">8.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/bes/bes_model.html">8.4. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/radiated_power/radiated_power.html">8.5. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/line_shapes/spectral_line_shapes.html">8.8. Spectral Line Shapes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/laser/laser.html">8.9. Laser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/beam/beam_attenuator.html">8.2. Beam Attenuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/cxs/cxs_model.html">8.3. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/cxs/charge_exchange_calculation.html">8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/bes/bes_model.html">8.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/radiated_power/radiated_power.html">8.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/brem/bremsstrahlung.html">8.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/basic_line/basic_line_emission.html">8.8. Basic Line Emission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/line_shapes/spectral_line_shapes.html">8.9. Spectral Line Shapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/laser/laser.html">8.10. Laser</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="math/math.html">9. Function Framework</a><ul>
@@ -243,9 +250,10 @@ become stable until we have finished moving the source code to github.</p>
 <li class="toctree-l2"><a class="reference internal" href="math/function.html">9.3. Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math/interpolators.html">9.4. Interpolators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math/mappers.html">9.5. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/mask.html">9.6. Masks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/samplers.html">9.7. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math/slice.html">9.8. Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/transform.html">9.6. Transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/mask.html">9.7. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/samplers.html">9.8. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/slice.html">9.9. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tools/tools.html">10. Tools</a><ul>
@@ -273,14 +281,14 @@ become stable until we have finished moving the source code to github.</p>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 </ul>
-</div>
+</section>
 
 
            </div>
@@ -300,7 +308,7 @@ become stable until we have finished moving the source code to github.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -324,7 +332,9 @@ become stable until we have finished moving the source code to github.</p>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     
 
   

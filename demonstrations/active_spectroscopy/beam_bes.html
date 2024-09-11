@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Beam Emission Spectroscopy &mdash; Cherab 1.4.0 documentation</title>
+  <title>Beam Emission Spectroscopy &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="beam-emission-spectroscopy">
-<span id="beam-bes"></span><h1>Beam Emission Spectroscopy<a class="headerlink" href="#beam-emission-spectroscopy" title="Permalink to this headline">¶</a></h1>
+  <section id="beam-emission-spectroscopy">
+<span id="beam-bes"></span><h1>Beam Emission Spectroscopy<a class="headerlink" href="#beam-emission-spectroscopy" title="Permalink to this heading">¶</a></h1>
 <p>This demonstration shows how to model the Beam Emission Spectrum (BES) from a beam-plasma
 interaction. These features are sometimes also known as the Motional Stark Effect (MSE)
 features. A slab plasma is setup as the target, with a neutral beam injected along the x
@@ -246,9 +248,9 @@ as arguments to the BeamEmissionLine() model.</p>
 <span class="n">beam_energy</span> <span class="o">=</span> <span class="mi">110000</span>  <span class="c1"># keV</span>
 <span class="n">beam_current</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># A</span>
 <span class="n">beam_sigma</span> <span class="o">=</span> <span class="mf">0.05</span>
-<span class="n">beam_divergence</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">beam_divergence</span> <span class="o">=</span> <span class="mf">1.3</span>  <span class="c1"># degree</span>
 <span class="n">beam_length</span> <span class="o">=</span> <span class="mf">3.0</span>
-<span class="n">beam_temperature</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">beam_temperature</span> <span class="o">=</span> <span class="mf">1.0</span>
 
 <span class="n">bes_full_model</span> <span class="o">=</span> <span class="n">BeamEmissionLine</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
                                   <span class="n">sigma_to_pi</span><span class="o">=</span><span class="n">SIGMA_TO_PI</span><span class="p">,</span> <span class="n">sigma1_to_sigma0</span><span class="o">=</span><span class="n">SIGMA1_TO_SIGMA0</span><span class="p">,</span>
@@ -372,27 +374,35 @@ as arguments to the BeamEmissionLine() model.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../../_images/BES_camera.png"><img alt="../../_images/BES_camera.png" src="../../_images/BES_camera.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A camera view of a beam entering a slab plasma. The camera is tuned to
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A camera view of a beam entering a slab plasma. The camera is tuned to
 D-alpha light. We can see the background passive emission of the neutrals hitting
 the slab as well as the beam emission light.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id2">
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../../_images/BES_sightline.png"><img alt="../../_images/BES_sightline.png" src="../../_images/BES_sightline.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A x-z slice of the beam density profile showing the optical sightline.
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A x-z slice of the beam density profile showing the optical sightline.
 The amount of Motional Stark Effect (MSE) splitting is direction dependent.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id3">
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../../_images/BES_spectrum_full.png"><img alt="../../_images/BES_spectrum_full.png" src="../../_images/BES_spectrum_full.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> The full beam emission spectrum showing the passive emision peak as
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The full beam emission spectrum showing the passive emision peak as
 well as the three beam emission multiplet components.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id4">
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="../../_images/BES_spectrum_zoomed.png"><img alt="../../_images/BES_spectrum_zoomed.png" src="../../_images/BES_spectrum_zoomed.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A zoomed in view of the BES feature.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A zoomed in view of the BES feature.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -405,7 +415,7 @@ well as the three beam emission multiplet components.</span><a class="headerlink
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -429,7 +439,9 @@ well as the three beam emission multiplet components.</span><a class="headerlink
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

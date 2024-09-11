@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Symmetric Power Load Calculation &mdash; Cherab 1.4.0 documentation</title>
+  <title>Symmetric Power Load Calculation &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="symmetric-power-load-calculation">
-<span id="symmetric-power-load"></span><h1>Symmetric Power Load Calculation<a class="headerlink" href="#symmetric-power-load-calculation" title="Permalink to this headline">¶</a></h1>
+  <section id="symmetric-power-load-calculation">
+<span id="symmetric-power-load"></span><h1>Symmetric Power Load Calculation<a class="headerlink" href="#symmetric-power-load-calculation" title="Permalink to this heading">¶</a></h1>
 <p>In this example we perform a simple radiation load calculation by exploiting
 symmetry, building on the previous examples. We use an analytic
 <a class="reference internal" href="radiation_function.html#radiation-function"><span class="std std-ref">radiation function</span></a> combined with a simple
@@ -434,22 +436,28 @@ with some small numerical scale length.</p>
 <span class="go">Cherab total detected power =&gt; 4.844 MW</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <img alt="../../_images/symmetric_power_load_detectors.png" src="../../_images/symmetric_power_load_detectors.png" />
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> The emission source function with the wall detector positions
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The emission source function with the wall detector positions
 overlaid.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id2">
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
 <img alt="../../_images/symmetric_power_load_zoomed_detectors.png" src="../../_images/symmetric_power_load_zoomed_detectors.png" />
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A zoomed in view of the wall detectors (black) and their surface
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A zoomed in view of the wall detectors (black) and their surface
 normals (red).</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id3">
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
 <img alt="../../_images/symmetric_power_load.png" src="../../_images/symmetric_power_load.png" />
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> The power loading in MW/m^2 measured on the pixel detectors wrapping
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The power loading in MW/m^2 measured on the pixel detectors wrapping
 around the wall.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -462,7 +470,7 @@ around the wall.</span><a class="headerlink" href="#id3" title="Permalink to thi
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -486,7 +494,9 @@ around the wall.</span><a class="headerlink" href="#id3" title="Permalink to thi
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

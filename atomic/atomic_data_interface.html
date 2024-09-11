@@ -1,0 +1,729 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.5. Atomic Data Interface &mdash; Cherab 1.5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.6. Atomic data interpolators" href="data_interpolators.html" />
+    <link rel="prev" title="6.4. Gaunt factors" href="gaunt_factors.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cherab
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="atomic_data.html">6. Atomic Data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="elements_and_isotopes.html">6.1. Elements and Isotopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emission_lines.html">6.2. Spectroscopic Emission Lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">6.3. Rate Coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gaunt_factors.html">6.4. Gaunt factors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.5. Atomic Data Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#abstract-interface-class">6.5.1. Abstract (interface) class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.atomic.interface.AtomicData"><code class="docutils literal notranslate"><span class="pre">AtomicData</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#openadas-atomic-data-source">6.5.2. OpenADAS atomic data source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.openadas.OpenADAS"><code class="docutils literal notranslate"><span class="pre">OpenADAS</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data_interpolators.html">6.6. Atomic data interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repository.html">6.7. Atomic data repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openadas.html">6.8. Open-ADAS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cherab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="atomic_data.html"><span class="section-number">6. </span>Atomic Data</a> &raquo;</li>
+        
+      <li><span class="section-number">6.5. </span>Atomic Data Interface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/atomic/atomic_data_interface.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="atomic-data-interface">
+<h1><span class="section-number">6.5. </span>Atomic Data Interface<a class="headerlink" href="#atomic-data-interface" title="Permalink to this heading">¶</a></h1>
+<section id="abstract-interface-class">
+<h2><span class="section-number">6.5.1. </span>Abstract (interface) class<a class="headerlink" href="#abstract-interface-class" title="Permalink to this heading">¶</a></h2>
+<p>Abstract atomic data interface.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.interface.</span></span><span class="sig-name descname"><span class="pre">AtomicData</span></span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Atomic data source abstraction layer.</p>
+<p>This base class specifies a standardised set of methods for obtaining
+atomic data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.beam_cx_pec">
+<span class="sig-name descname"><span class="pre">beam_cx_pec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.beam_cx_pec" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of Effective charge exchange photon emission coefficient for a given donor (beam) in W.m^3.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.beam_emission_pec">
+<span class="sig-name descname"><span class="pre">beam_emission_pec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plasma_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.beam_emission_pec" title="Permalink to this definition">¶</a></dt>
+<dd><p>The beam photon emission coefficient for a given beam and target species
+and a given transition in W.m^3.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.beam_population_rate">
+<span class="sig-name descname"><span class="pre">beam_population_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plasma_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.beam_population_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dimensionless Beam population coefficient for a given beam and target species.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.beam_stopping_rate">
+<span class="sig-name descname"><span class="pre">beam_stopping_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plasma_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.beam_stopping_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beam stopping coefficient for a given beam and target species in m^3/s.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.continuum_radiated_power_rate">
+<span class="sig-name descname"><span class="pre">continuum_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.continuum_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Continuum radiated power coefficient for a given species in W.m^3.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.cx_radiated_power_rate">
+<span class="sig-name descname"><span class="pre">cx_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.cx_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Charge exchange radiated power coefficient for a given species in W.m^3.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.fractional_abundance">
+<span class="sig-name descname"><span class="pre">fractional_abundance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.fractional_abundance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fractional abundance of a given species in thermodynamic equilibrium.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.free_free_gaunt_factor">
+<span class="sig-name descname"><span class="pre">free_free_gaunt_factor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.free_free_gaunt_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Maxwellian-averaged free-free Gaunt factor interpolated over the data
+from Table A.1 in M.A. de Avillez and D. Breitschwerdt, 2015, Astron. &amp; Astrophys. 580,
+<a class="reference external" href="https://www.aanda.org/articles/aa/full_html/2015/08/aa26104-15/aa26104-15.html">A124</a>.</p>
+<p>The Born approximation is used outside the interpolation range.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.impact_excitation_pec">
+<span class="sig-name descname"><span class="pre">impact_excitation_pec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.impact_excitation_pec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Electron impact excitation photon emission coefficient for a given species in W.m^3.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.ionisation_rate">
+<span class="sig-name descname"><span class="pre">ionisation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.ionisation_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Electron impact ionisation rate for a given species in m^3/s.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.line_radiated_power_rate">
+<span class="sig-name descname"><span class="pre">line_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.line_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Line radiated power coefficient for a given species in W.m^3.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.recombination_pec">
+<span class="sig-name descname"><span class="pre">recombination_pec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.recombination_pec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recombination photon emission coefficient for a given species in W.m^3.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.recombination_rate">
+<span class="sig-name descname"><span class="pre">recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.recombination_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recombination rate for a given species in m^3/s.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.stark_model_coefficients">
+<span class="sig-name descname"><span class="pre">stark_model_coefficients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.stark_model_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns Stark model coefficients. See Table 1 in B. Lomanowski, et al.
+“Inferring divertor plasma properties from hydrogen Balmer
+and Paschen series spectroscopy in JET-ILW.” Nuclear Fusion 55.12 (2015)
+<a class="reference external" href="https://doi.org/10.1088/0029-5515/55/12/123028">123028</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.thermal_cx_pec">
+<span class="sig-name descname"><span class="pre">thermal_cx_pec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.thermal_cx_pec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thermal charge exchange photon emission coefficient for given donor and receiver species in W.m^3.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.thermal_cx_rate">
+<span class="sig-name descname"><span class="pre">thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.thermal_cx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thermal charge exchange effective rate coefficient for a given donor and receiver species in m^3/s.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.total_radiated_power">
+<span class="sig-name descname"><span class="pre">total_radiated_power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.total_radiated_power" title="Permalink to this definition">¶</a></dt>
+<dd><p>The total (summed over all charge states) radiated power
+in equilibrium conditions for a given species in W.m^3.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.wavelength">
+<span class="sig-name descname"><span class="pre">wavelength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>The natural wavelength of the specified transition in nm.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.zeeman_structure">
+<span class="sig-name descname"><span class="pre">zeeman_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_field</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.zeeman_structure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wavelengths and ratios of <span class="math notranslate nohighlight">\(\pi\)</span>-/<span class="math notranslate nohighlight">\(\sigma\)</span>-polarised Zeeman components
+for any given value of magnetic field strength.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.atomic.interface.AtomicData.zeeman_triplet_parameters">
+<span class="sig-name descname"><span class="pre">zeeman_triplet_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.interface.AtomicData.zeeman_triplet_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns Zeeman truplet parameters. See Table 1 in A. Blom and C. Jupén.
+“Parametrisation of the Zeeman effect for hydrogen-like spectra in
+high-temperature plasmas”, Plasma Phys. Control. Fusion 44 (2002) <a class="reference external" href="https://doi.org/10.1088/0741-3335/44/7/312">1229-1241</a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="openadas-atomic-data-source">
+<h2><span class="section-number">6.5.2. </span>OpenADAS atomic data source<a class="headerlink" href="#openadas-atomic-data-source" title="Permalink to this heading">¶</a></h2>
+<p>Interface to local atomic data repository.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.openadas.openadas.</span></span><span class="sig-name descname"><span class="pre">OpenADAS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permit_extrapolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_rates_return_null</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength_element_fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS" title="Permalink to this definition">¶</a></dt>
+<dd><p>OpenADAS atomic data source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_path</strong> (<em>str</em>) – OpenADAS local repository path.</p></li>
+<li><p><strong>permit_extrapolation</strong> (<em>bool</em>) – If true, informs interpolation objects to allow extrapolation
+beyond the limits of the tabulated data. Default is False.</p></li>
+<li><p><strong>missing_rates_return_null</strong> (<em>bool</em>) – If true, allows Null rate objects to be returned when
+the requested atomic data is missing. Default is False.</p></li>
+<li><p><strong>wavelength_element_fallback</strong> (<em>bool</em>) – If true, allows to use the element’s wavelength when
+the isotope’s wavelength is not available.
+Default is False.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.beam_cx_pec">
+<span class="sig-name descname"><span class="pre">beam_cx_pec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.beam_cx_pec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Effective charge exchange photon emission coefficient for a given donor (beam)
+and receiver (plasma) species and a given transition.</p>
+<p>The data for “qeb” is interpolated with a cubic spline in log-log space.
+The data for “qti”, “qni”, “qz” and “qb” are interpolated with a cubic spline
+in linear space.
+Quadratic extrapolation is used for “qeb” and nearest neighbour extrapolation is used for
+“qti”, “qni”, “qz” and “qb” when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_ion</strong> – Element object defining the donor ion type.</p></li>
+<li><p><strong>receiver_ion</strong> – Element object defining the receiver ion type.</p></li>
+<li><p><strong>receiver_charge</strong> – Charge state of the receiver ion.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level) of the receiver species.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Charge exchange photon emission coefficient in W.m^3 as a function of
+interaction energy, receiver ion temperature, receiver ion density,
+plasma Z-effective, magnetic field magnitude.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.beam_emission_pec">
+<span class="sig-name descname"><span class="pre">beam_emission_pec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plasma_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.beam_emission_pec" title="Permalink to this definition">¶</a></dt>
+<dd><p>The beam photon emission coefficient for a given beam and target species
+and a given transition.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Linear and quadratic extrapolations are used for “sen” and “st” respectively
+when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_ion</strong> – Element object defining the beam ion type.</p></li>
+<li><p><strong>plasma_ion</strong> – Element object defining the target ion type.</p></li>
+<li><p><strong>charge</strong> – Charge state of the target ion.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level) of the beam ion.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The beam photon emission coefficient in W.m^3 as a function of
+interaction energy, target equivalent electron density, target temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.beam_population_rate">
+<span class="sig-name descname"><span class="pre">beam_population_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plasma_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.beam_population_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beam population coefficient for a given beam and target species.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Linear and quadratic extrapolations are used for “sen” and “st” respectively
+when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_ion</strong> – Element object defining the beam ion type.</p></li>
+<li><p><strong>metastable</strong> – The beam ion metastable number.</p></li>
+<li><p><strong>plasma_ion</strong> – Element object defining the target ion type.</p></li>
+<li><p><strong>charge</strong> – Charge state of the target ion.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The beam population coefficient in dimensionless units as a function of
+interaction energy, target equivalent electron density, target temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.beam_stopping_rate">
+<span class="sig-name descname"><span class="pre">beam_stopping_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plasma_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.beam_stopping_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beam stopping coefficient for a given beam and target species.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Linear and quadratic extrapolations are used for “sen” and “st” respectively
+when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_ion</strong> – Element object defining the beam ion type.</p></li>
+<li><p><strong>plasma_ion</strong> – Element object defining the target ion type.</p></li>
+<li><p><strong>charge</strong> – Charge state of the target ion.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The beam stopping coefficient in m^3.s^-1 as a function of interaction energy,
+target equivalent electron density, target temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.continuum_radiated_power_rate">
+<span class="sig-name descname"><span class="pre">continuum_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.continuum_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recombination continuum radiated power coefficient for a given species.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Nearest neighbour extrapolation is used when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ion</strong> – Element object defining the ion type.</p></li>
+<li><p><strong>charge</strong> – Charge state of the ion.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Continuum radiated power coefficient in W.m^3 as a function
+of electron density and temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.cx_radiated_power_rate">
+<span class="sig-name descname"><span class="pre">cx_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.cx_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Charge exchange radiated power coefficient for a given species.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Linear extrapolation is used when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ion</strong> – Element object defining the ion type.</p></li>
+<li><p><strong>charge</strong> – Charge state of the ion.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Charge exchange radiated power coefficient in W.m^3 as a function
+of electron density and temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.impact_excitation_pec">
+<span class="sig-name descname"><span class="pre">impact_excitation_pec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.impact_excitation_pec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Electron impact excitation photon emission coefficient for a given species.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Nearest neighbour extrapolation is used when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ion</strong> – Element object defining the ion type.</p></li>
+<li><p><strong>charge</strong> – Charge state of the ion.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Impact excitation photon emission coefficient in W.m^3 as a
+function of electron density and temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.ionisation_rate">
+<span class="sig-name descname"><span class="pre">ionisation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.ionisation_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Electron impact ionisation rate for a given species.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Nearest neighbour extrapolation is used when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ion</strong> – Element object defining the ion type.</p></li>
+<li><p><strong>charge</strong> – Charge state of the ion.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ionisation rate in m^3/s as a function of electron density and temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.line_radiated_power_rate">
+<span class="sig-name descname"><span class="pre">line_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.line_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Line radiated power coefficient for a given species.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Nearest neighbour extrapolation is used when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ion</strong> – Element object defining the ion type.</p></li>
+<li><p><strong>charge</strong> – Charge state of the ion.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Line radiated power coefficient in W.m^3 as a function of electron
+density and temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.recombination_pec">
+<span class="sig-name descname"><span class="pre">recombination_pec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.recombination_pec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recombination photon emission coefficient for a given species.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Nearest neighbour extrapolation is used when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ion</strong> – Element object defining the ion type.</p></li>
+<li><p><strong>charge</strong> – Charge state of the ion after recombination.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Recombination photon emission coefficient in W.m^3 as a function of electron
+density and temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.recombination_rate">
+<span class="sig-name descname"><span class="pre">recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.recombination_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recombination rate for a given species.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Nearest neighbour extrapolation is used when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ion</strong> – Element object defining the ion type.</p></li>
+<li><p><strong>charge</strong> – Charge state of the ion.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Recombination rate in m^3/s as a function of electron density and temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.thermal_cx_pec">
+<span class="sig-name descname"><span class="pre">thermal_cx_pec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.thermal_cx_pec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thermal CX photon emission coefficient for a given species.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Nearest neighbour extrapolation is used when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_element</strong> – Element object defining the donor ion type.</p></li>
+<li><p><strong>donor_charge</strong> – Charge state of the donor ion.</p></li>
+<li><p><strong>receiver_element</strong> – Element object defining the receiver ion type.</p></li>
+<li><p><strong>receiver_charge</strong> – Charge state of the receiver ion.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level) of the receiver
+in charge state receiver_charge - 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Thermal charge exchange photon emission coefficient in W.m^3
+as a function of electron density, electron temperature and donor temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.thermal_cx_rate">
+<span class="sig-name descname"><span class="pre">thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.thermal_cx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thermal charge exchange effective rate coefficient for a given donor and receiver species.</p>
+<p>Open-ADAS data is interpolated with cubic spline in log-log space.
+Linear extrapolation is used when permit_extrapolation is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_element</strong> – Element object defining the donor ion type.</p></li>
+<li><p><strong>donor_charge</strong> – Charge state of the donor ion.</p></li>
+<li><p><strong>receiver_element</strong> – Element object defining the receiver ion type.</p></li>
+<li><p><strong>receiver_charge</strong> – Charge state of the receiver ion.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Thermal charge exchange rate in m^3/s as a function of electron density and
+temperature.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.openadas.openadas.OpenADAS.wavelength">
+<span class="sig-name descname"><span class="pre">wavelength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.openadas.OpenADAS.wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spectral line wavelength for a given transition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ion</strong> – Element object defining the ion type.</p></li>
+<li><p><strong>charge</strong> – Charge state of the ion.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Wavelength in nanometers.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data_interpolators.html" class="btn btn-neutral float-right" title="6.6. Atomic data interpolators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gaunt_factors.html" class="btn btn-neutral" title="6.4. Gaunt factors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2024, Cherab Team
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

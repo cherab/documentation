@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Building a Bolometer Camera Using Geometric Primitives &mdash; Cherab 1.4.0 documentation</title>
+  <title>Building a Bolometer Camera Using Geometric Primitives &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="building-a-bolometer-camera-using-geometric-primitives">
-<span id="bolometer-from-primitives"></span><h1>Building a Bolometer Camera Using Geometric Primitives<a class="headerlink" href="#building-a-bolometer-camera-using-geometric-primitives" title="Permalink to this headline">¶</a></h1>
+  <section id="building-a-bolometer-camera-using-geometric-primitives">
+<span id="bolometer-from-primitives"></span><h1>Building a Bolometer Camera Using Geometric Primitives<a class="headerlink" href="#building-a-bolometer-camera-using-geometric-primitives" title="Permalink to this heading">¶</a></h1>
 <p>In this demonstration we build a simple bolometer camera using geometric primitives from
 raysect. The camera itself is a rectangular box, with a rectangular aperture forming the
 slit. There are 4 bolometer foils inside the box. The slit and foil positions and
@@ -305,11 +307,13 @@ field of view of each foil. For that examine the sensitivity matrix demos.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
-<img alt="../../_images/camera_from_primitives.svg" src="../../_images/camera_from_primitives.svg" /><p class="caption"><span class="caption-text"><strong>Caption</strong> The positions of the foils (“x”), the slit (“.”) and the lines of sight
+<figure class="align-center" id="id1">
+<img alt="../../_images/camera_from_primitives.svg" src="../../_images/camera_from_primitives.svg" /><figcaption>
+<p><span class="caption-text"><strong>Caption</strong> The positions of the foils (“x”), the slit (“.”) and the lines of sight
 for a simple bolometer camera, plotted in the R-Z plane.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -322,7 +326,7 @@ for a simple bolometer camera, plotted in the R-Z plane.</span><a class="headerl
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -346,7 +350,9 @@ for a simple bolometer camera, plotted in the R-Z plane.</span><a class="headerl
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

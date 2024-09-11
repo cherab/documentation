@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10.3. Primitives &mdash; Cherab 1.4.0 documentation</title>
+  <title>10.3. Primitives &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="10.4. Observers" href="observers.html" />
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -97,7 +99,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="tools.html">10. Tools</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="plasmas.html">10.1. Plasmas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="materials.html">10.2. Materials</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">10.3. Primitives</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10.3. Primitives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon"><code class="docutils literal notranslate"><span class="pre">axisymmetric_mesh_from_polygon()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.tools.primitives.toroidal_mesh.toroidal_mesh_from_polygon"><code class="docutils literal notranslate"><span class="pre">toroidal_mesh_from_polygon()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="observers.html">10.4. Observers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spectroscopy.html">10.5. Spectroscopy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tomography.html">10.6. Tomography</a></li>
@@ -181,15 +187,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="primitives">
-<h1><span class="section-number">10.3. </span>Primitives<a class="headerlink" href="#primitives" title="Permalink to this headline">¶</a></h1>
+  <section id="primitives">
+<h1><span class="section-number">10.3. </span>Primitives<a class="headerlink" href="#primitives" title="Permalink to this heading">¶</a></h1>
 <p>A few useful utilities for creating primitives particularly relevant for fusion.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon">
 <span class="sig-prename descclassname"><span class="pre">cherab.tools.primitives.axisymmetric_mesh.</span></span><span class="sig-name descname"><span class="pre">axisymmetric_mesh_from_polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polygon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_toroidal_segments</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates an Raysect Mesh primitive from the specified 2D polygon.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>polygon</strong> (<em>object</em>) – An object which can be converted to a numpy array with shape [N,2] 
 specifying the wall outline polygon in the R-Z plane. The polygon 
@@ -199,7 +205,7 @@ same vertex, but neighbours.</p></li>
 to construct the mesh.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A Raysect Mesh primitive constructed from the R-Z polygon using symmetry.</p>
 </dd>
 </dl>
@@ -218,7 +224,7 @@ to construct the mesh.</p></li>
 by extending it in toroidal direction by a given angle and closing the
 poloidal faces with triangulated polygons.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>polygon</strong> (<em>object</em>) – An object which can be converted to a numpy array with shape 
 [N,2] specifying the wall outline polygon in the R-Z plane. 
@@ -240,7 +246,7 @@ per given <cite>toroidal_extent</cite> that will be used to construct
 the mesh. Defaults to 500.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A watertight Raysect Mesh primitive constructed from the R-Z polygon.</p>
 </dd>
 </dl>
@@ -252,7 +258,7 @@ the mesh. Defaults to 500.</p></li>
 </div>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -274,7 +280,7 @@ the mesh. Defaults to 500.</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -298,7 +304,9 @@ the mesh. Defaults to 500.</p></li>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

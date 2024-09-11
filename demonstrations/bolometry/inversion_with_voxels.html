@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Performing Inversions of Bolometer Measurements Using the Voxel Framework &mdash; Cherab 1.4.0 documentation</title>
+  <title>Performing Inversions of Bolometer Measurements Using the Voxel Framework &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="performing-inversions-of-bolometer-measurements-using-the-voxel-framework">
-<span id="bolometer-voxel-inversion"></span><h1>Performing Inversions of Bolometer Measurements Using the Voxel Framework<a class="headerlink" href="#performing-inversions-of-bolometer-measurements-using-the-voxel-framework" title="Permalink to this headline">¶</a></h1>
+  <section id="performing-inversions-of-bolometer-measurements-using-the-voxel-framework">
+<span id="bolometer-voxel-inversion"></span><h1>Performing Inversions of Bolometer Measurements Using the Voxel Framework<a class="headerlink" href="#performing-inversions-of-bolometer-measurements-using-the-voxel-framework" title="Permalink to this heading">¶</a></h1>
 <p>In this demonstration, we take the geometry matrix and regularisation operator
 calculated in the <a class="reference internal" href="geometry_matrix_from_voxels.html#bolometer-geometry-voxels"><span class="std std-ref">Geometry Matrix Calculation Using Voxels</span></a> demonstration and use them to perform an inversion of
 simulated bolometer measurements from a defined emissivity profile. The emission source
@@ -469,25 +471,29 @@ inverted profile. There is good agreement between the two, with only a 4% discre
 <span class="go">Inversion total power: 5.03W</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <img alt="../../_images/inversion_with_voxels_profile.png" src="../../_images/inversion_with_voxels_profile.png" />
-<p class="caption"><span class="caption-text"><strong>Caption</strong> The input and reconstructed emissivity profiles. The general profile
+<figcaption>
+<p><span class="caption-text"><strong>Caption</strong> The input and reconstructed emissivity profiles. The general profile
 shape is preserved, with the central blob and ring radiator visible in the
 inversion. There are a few artefacts around the edge of the reconstruction volume,
 particularly near the bottom. Note also that there is more blurring of the boundary
 between the central and ring radiators in the upper half of the image: this reflects
 the fact that the bolometer sightlines are not symmetric above and below the
 midplane.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id2">
-<img alt="../../_images/bolometer_voxel_calculated_powers.svg" src="../../_images/bolometer_voxel_calculated_powers.svg" /><p class="caption"><span class="caption-text"><strong>Caption</strong> The forward-modelled and back-calculated power measurements on the foils.
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
+<img alt="../../_images/bolometer_voxel_calculated_powers.svg" src="../../_images/bolometer_voxel_calculated_powers.svg" /><figcaption>
+<p><span class="caption-text"><strong>Caption</strong> The forward-modelled and back-calculated power measurements on the foils.
 The measured power using ray tracing in this script, the calculated power by
 multiplying the sensitivity matrix by the emission vector and the back-calculated
 power calculated by multiplying the sensitivity matrix by the inverted emissivity are
 all in good agreement, showing that the voxel size and the amount of regularisation
 are suitable in this case.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -500,7 +506,7 @@ are suitable in this case.</span><a class="headerlink" href="#id2" title="Permal
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -524,7 +530,9 @@ are suitable in this case.</span><a class="headerlink" href="#id2" title="Permal
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

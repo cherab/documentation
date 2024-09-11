@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.4. Laser &mdash; Cherab 1.4.0 documentation</title>
+  <title>7.4. Laser &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8. Emission Models" href="../models/emission_models.html" />
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -96,9 +98,18 @@
 <li class="toctree-l2"><a class="reference internal" href="equilibrium.html">7.2. Plasma equilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="particle_beams.html">7.3. Mono-energetic Particle Beams</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">7.4. Laser</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#laser-spectrum">7.4.1. Laser Spectrum</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#laser-profile">7.4.2. Laser Profile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#laser-model">7.4.3. Laser Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#laser-spectrum">7.4.1. Laser Spectrum</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.laser.laserspectrum.LaserSpectrum"><code class="docutils literal notranslate"><span class="pre">LaserSpectrum</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#laser-profile">7.4.2. Laser Profile</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.laser.profile.LaserProfile"><code class="docutils literal notranslate"><span class="pre">LaserProfile</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#laser-model">7.4.3. Laser Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.laser.model.LaserModel"><code class="docutils literal notranslate"><span class="pre">LaserModel</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -183,13 +194,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="laser">
-<h1><span class="section-number">7.4. </span>Laser<a class="headerlink" href="#laser" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="laser-spectrum">
-<h2><span class="section-number">7.4.1. </span>Laser Spectrum<a class="headerlink" href="#laser-spectrum" title="Permalink to this headline">¶</a></h2>
+  <section id="laser">
+<h1><span class="section-number">7.4. </span>Laser<a class="headerlink" href="#laser" title="Permalink to this heading">¶</a></h1>
+<section id="laser-spectrum">
+<h2><span class="section-number">7.4.1. </span>Laser Spectrum<a class="headerlink" href="#laser-spectrum" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.laser.laserspectrum.LaserSpectrum">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.laser.laserspectrum.</span></span><span class="sig-name descname"><span class="pre">LaserSpectrum</span></span><a class="headerlink" href="#cherab.core.laser.laserspectrum.LaserSpectrum" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.laser.laserspectrum.</span></span><span class="sig-name descname"><span class="pre">LaserSpectrum</span></span><a class="headerlink" href="#cherab.core.laser.laserspectrum.LaserSpectrum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Laser spectrum base class.</p>
 <p>This is an abstract class and cannot be used for observing.</p>
 <p>A 1D function holding information about the spectral properties
@@ -213,7 +224,7 @@ laser and can use laser spectrum with a single
 bin, which approximates an infinitely narrow laser spectrum.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>min_wavelength</strong> (<em>float</em>) – The minimum wavelength of the laser
 spectrum in nm.</p></li>
@@ -222,7 +233,7 @@ spectrum in nm.</p></li>
 <li><p><strong>bins</strong> (<em>int</em>) – The number of spectral bins of the laser spectrum.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>min_wavelength</strong> (<em>float</em>) – The minimum wavelength of the laser
 spectrum in nm.</p></li>
@@ -238,12 +249,12 @@ spectral density in W / nm.</p></li>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="laser-profile">
-<h2><span class="section-number">7.4.2. </span>Laser Profile<a class="headerlink" href="#laser-profile" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="laser-profile">
+<h2><span class="section-number">7.4.2. </span>Laser Profile<a class="headerlink" href="#laser-profile" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.laser.profile.LaserProfile">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.laser.profile.</span></span><span class="sig-name descname"><span class="pre">LaserProfile</span></span><a class="headerlink" href="#cherab.core.laser.profile.LaserProfile" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.laser.profile.</span></span><span class="sig-name descname"><span class="pre">LaserProfile</span></span><a class="headerlink" href="#cherab.core.laser.profile.LaserProfile" title="Permalink to this definition">¶</a></dt>
 <dd><p>LaserProfile base class.</p>
 <p>This is an abstract class and cannot be used for observing.</p>
 <p>Provides information about spatial properties of the laser beam:
@@ -264,7 +275,7 @@ Combination of incompatible cases may yield incorrect
 values of scattered power.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Variables</dt>
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>laser</strong> (<em>Laser</em>) – The Laser scenegraph node the LaserProfile
 is connected to.</p>
 </dd>
@@ -287,14 +298,14 @@ initialised in the frame of the laser, when returned.</p>
 <dd><p>Returns the volumetric energy density of the laser light in W*m^-3.</p>
 <p>At the point (x, y, z) in the laser space.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – x coordinate in meters in the laser frame.</p></li>
 <li><p><strong>y</strong> – y coordinate in meters in the laser frame.</p></li>
 <li><p><strong>z</strong> – z coordinate in meters in the laser frame.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>power density in W*m^-3.</p>
 </dd>
 </dl>
@@ -306,14 +317,14 @@ initialised in the frame of the laser, when returned.</p>
 <dd><p>Returns the laser light propagation direction.</p>
 <p>At the point (x, y, z) in the laser space.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – x coordinate in meters.</p></li>
 <li><p><strong>y</strong> – y coordinate in meters.</p></li>
 <li><p><strong>z</strong> – z coordinate in meters.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Intensity in m^-3.</p>
 </dd>
 </dl>
@@ -327,14 +338,14 @@ initialised in the frame of the laser, when returned.</p>
 component of the electromagnetic wave for the point (x, y, z)
 in the laser space.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – x coordinate in meters.</p></li>
 <li><p><strong>y</strong> – y coordinate in meters.</p></li>
 <li><p><strong>z</strong> – z coordinate in meters.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>power density in Wm^-3.</p>
 </dd>
 </dl>
@@ -355,7 +366,7 @@ energy density of the laser light.</p>
 <p>The direction of the laser light propagation is the direction
 of the Poynting vector.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>function</strong> (<em>VectorFunction3D</em>) – A 3D vector function describing
 the laser light propagation direction</p>
 </dd>
@@ -370,7 +381,7 @@ the laser light propagation direction</p>
 component of the electromagnetic wave.</p>
 <p>The function is specified in the laser space.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>function</strong> (<em>VectorFunction3D</em>) – A 3D vector function describing
 the polarisation vector.</p>
 </dd>
@@ -379,24 +390,24 @@ the polarisation vector.</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="laser-model">
-<h2><span class="section-number">7.4.3. </span>Laser Model<a class="headerlink" href="#laser-model" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="laser-model">
+<h2><span class="section-number">7.4.3. </span>Laser Model<a class="headerlink" href="#laser-model" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.laser.model.LaserModel">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.laser.model.</span></span><span class="sig-name descname"><span class="pre">LaserModel</span></span><a class="headerlink" href="#cherab.core.laser.model.LaserModel" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.laser.model.</span></span><span class="sig-name descname"><span class="pre">LaserModel</span></span><a class="headerlink" href="#cherab.core.laser.model.LaserModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Laser spectrum base class.</p>
 <p>This is an abstract class and cannot be used for observing.</p>
 <p>Calculates the contribution to a spectrum caused by a laser.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>laser_profile</strong> – LaserProfile object</p></li>
 <li><p><strong>plasma</strong> – Plasma object</p></li>
 <li><p><strong>laser_spectrum</strong> – LaserSpectrum object</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>laser_profile</strong> – LaserProfile object</p></li>
 <li><p><strong>plasma</strong> – Plasma object</p></li>
@@ -406,8 +417,8 @@ the polarisation vector.</p>
 </dl>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -429,7 +440,7 @@ the polarisation vector.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -453,7 +464,9 @@ the polarisation vector.</p>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

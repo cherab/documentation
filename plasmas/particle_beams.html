@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.3. Mono-energetic Particle Beams &mdash; Cherab 1.4.0 documentation</title>
+  <title>7.3. Mono-energetic Particle Beams &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7.4. Laser" href="laser.html" />
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -94,7 +96,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="plasmas.html">7. Plasmas</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html">7.1. Core Plasma Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="equilibrium.html">7.2. Plasma equilibrium</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. Mono-energetic Particle Beams</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. Mono-energetic Particle Beams</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.beam.node.Beam"><code class="docutils literal notranslate"><span class="pre">Beam</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.beam.node.Beam.density"><code class="docutils literal notranslate"><span class="pre">Beam.density()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.beam.node.Beam.direction"><code class="docutils literal notranslate"><span class="pre">Beam.direction()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="laser.html">7.4. Laser</a></li>
 </ul>
 </li>
@@ -178,11 +187,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="mono-energetic-particle-beams">
-<h1><span class="section-number">7.3. </span>Mono-energetic Particle Beams<a class="headerlink" href="#mono-energetic-particle-beams" title="Permalink to this headline">¶</a></h1>
+  <section id="mono-energetic-particle-beams">
+<h1><span class="section-number">7.3. </span>Mono-energetic Particle Beams<a class="headerlink" href="#mono-energetic-particle-beams" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.Beam">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.</span></span><span class="sig-name descname"><span class="pre">Beam</span></span><a class="headerlink" href="#cherab.core.Beam" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="cherab.core.beam.node.Beam">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.beam.node.</span></span><span class="sig-name descname"><span class="pre">Beam</span></span><a class="headerlink" href="#cherab.core.beam.node.Beam" title="Permalink to this definition">¶</a></dt>
 <dd><p>A scene-graph object representing a Gaussian mono-energetic beam.</p>
 <p>The Cherab beam object holds all the properties and state of a mono-energetic
 particle beam to which beam attenuation and emission models may be attached.
@@ -219,7 +228,7 @@ beam attenuation will only be calculated for the plasma instance to which
 this beam is attached.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>parent</strong> (<em>Node</em>) – The parent node in the Raysect scene-graph.
 See the Raysect documentation for more guidance.</p></li>
@@ -229,9 +238,9 @@ guidance on how to use AffineMatrix3D transforms.</p></li>
 <li><p><strong>name</strong> (<em>str</em>) – The name for this beam object.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>atomic_data</strong> (<em>AtomicData</em>) – The atomic data provider class for this beam.
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider class for this beam.
 All beam emission and attenuation rates will be calculated from the same provider.</p></li>
 <li><p><strong>attenuator</strong> (<em>BeamAttenuator</em>) – The method used for calculating the attenuation
 of this beam into the plasma. Defaults to a SingleRayAttenuator().</p></li>
@@ -284,40 +293,48 @@ emission models for this beam.</p></li>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="cherab.core.Beam.density">
-<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.density" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="cherab.core.beam.node.Beam.density">
+<span class="sig-name descname"><span class="pre">density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.beam.node.Beam.density" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the bean density at the specified position in beam coordinates.</p>
 <p>Note: this function is only defined over the domain 0 &lt; z &lt; beam_length.
 Outside of this range the density is clamped to zero.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – x coordinate in meters.</p></li>
 <li><p><strong>y</strong> – y coordinate in meters.</p></li>
 <li><p><strong>z</strong> – z coordinate in meters.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Beam density in m^-3</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="cherab.core.Beam.direction">
-<span class="sig-name descname"><span class="pre">direction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.Beam.direction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the beam direction vector at a point in space.</p>
+<dt class="sig sig-object py" id="cherab.core.beam.node.Beam.direction">
+<span class="sig-name descname"><span class="pre">direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.beam.node.Beam.direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the beam direction vector at a point in beam coordinate space.</p>
+<p>The beam direction (non-normalised) is calculated as follows (z &gt; 0):</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}e_x = x\frac{(ztg(\alpha_x))^2}{\sigma^2 + (ztg(\alpha_x))^2},\\e_y = y\frac{(ztg(\alpha_y))^2}{\sigma^2 + (ztg(\alpha_y))^2},\\e_z = z,\end{aligned}\end{align} \]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma\)</span> is the Gaussian beam deviation at origin,
+<span class="math notranslate nohighlight">\(\alpha_x\)</span> and <span class="math notranslate nohighlight">\(\alpha_y\)</span> are the beam divergence angles
+in the x and y dimensions respectively.</p>
+<p>For z &lt;= 0 the beam direction is (0, 0, 1).</p>
+<p>The function returns normalised beam direction.</p>
 <p>Note the values of the beam outside of the beam envelope should be
 treated with caution.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – x coordinate in meters.</p></li>
 <li><p><strong>y</strong> – y coordinate in meters.</p></li>
 <li><p><strong>z</strong> – z coordinate in meters.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Direction vector.</p>
 </dd>
 </dl>
@@ -325,7 +342,14 @@ treated with caution.</p>
 
 </dd></dl>
 
-</div>
+<figure class="align-center" id="id1">
+<img alt="../_images/beam_direction.png" src="../_images/beam_direction.png" />
+<figcaption>
+<p><span class="caption-text">The beam direction pattern in XZ-plane for the beam with <code class="docutils literal notranslate"><span class="pre">sigma</span></code> = 0.1 m
+and <code class="docutils literal notranslate"><span class="pre">divergence_x</span></code> = 5 <span class="math notranslate nohighlight">\(^{\circ}\)</span>.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -347,7 +371,7 @@ treated with caution.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -371,7 +395,10 @@ treated with caution.</p>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 
   

@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Calculating the Etendue of Bolometer Foils &mdash; Cherab 1.4.0 documentation</title>
+  <title>Calculating the Etendue of Bolometer Foils &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="calculating-the-etendue-of-bolometer-foils">
-<span id="bolometer-etendue"></span><h1>Calculating the Etendue of Bolometer Foils<a class="headerlink" href="#calculating-the-etendue-of-bolometer-foils" title="Permalink to this headline">¶</a></h1>
+  <section id="calculating-the-etendue-of-bolometer-foils">
+<span id="bolometer-etendue"></span><h1>Calculating the Etendue of Bolometer Foils<a class="headerlink" href="#calculating-the-etendue-of-bolometer-foils" title="Permalink to this heading">¶</a></h1>
 <p>In this demonstration we calculate the etendue of each of the bolometer foils in a
 camera. The camera is produced in the same way as in the <a class="reference internal" href="camera_from_primitives.html#bolometer-from-primitives"><span class="std std-ref">Camera From Primitives</span></a> demo.</p>
 <p>A simple analytic formula for the etendue of a foil-aperture system is:</p>
@@ -313,15 +315,17 @@ actual values may be slightly different, due to the Monte-Carlo sampling techniq
 <span class="go">Foil 4 raytraced etendue: 1.854e-07 +- 6e-10 analytic: 1.883e-07</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
-<img alt="../../_images/bolometer_etendues.svg" src="../../_images/bolometer_etendues.svg" /><p class="caption"><span class="caption-text"><strong>Caption</strong> The etendue of the foils, calculated analytically and also by ray
+<figure class="align-center" id="id1">
+<img alt="../../_images/bolometer_etendues.svg" src="../../_images/bolometer_etendues.svg" /><figcaption>
+<p><span class="caption-text"><strong>Caption</strong> The etendue of the foils, calculated analytically and also by ray
 tracing. There is good agreement between the two methods, with the ray tracing method
 producing a slightly lower etendue value. The analytic method has been shown to
 overestimate the etendue when the foil-slit distance is small compared with the
 aperture size (see the <a class="reference external" href="https://raysect.github.io/documentation/demonstrations/optics/etendue_of_pinhole.html#demo-etendue-of-pinhole">example</a>
 in the raysect documentation), which is consistent with this result.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -334,7 +338,7 @@ in the raysect documentation), which is consistent with this result.</span><a cl
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -358,7 +362,9 @@ in the raysect documentation), which is consistent with this result.</span><a cl
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 

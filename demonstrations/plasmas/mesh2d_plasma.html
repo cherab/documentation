@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2D Mesh Plasmas &mdash; Cherab 1.4.0 documentation</title>
+  <title>2D Mesh Plasmas &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="d-mesh-plasmas">
-<span id="mesh2d-plasma"></span><h1>2D Mesh Plasmas<a class="headerlink" href="#d-mesh-plasmas" title="Permalink to this headline">¶</a></h1>
+  <section id="d-mesh-plasmas">
+<span id="mesh2d-plasma"></span><h1>2D Mesh Plasmas<a class="headerlink" href="#d-mesh-plasmas" title="Permalink to this heading">¶</a></h1>
 <p>This demonstration shows how to define a set of plasma distributions using 2D meshes
 that are revolved around the z-axis. This use case is commonly encountered when we
 already have a plasma solution that has been computed with a fluid code or
@@ -233,7 +235,7 @@ supplied by the plasma simulation code.</p>
 
 
 <span class="k">def</span> <span class="nf">neutral_distribution</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">peak</span><span class="p">,</span> <span class="n">lcfs_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A neutral profile that is constant outside the plasma,</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A neutral profile that is constant outside the plasma,</span>
 <span class="sd">       then exponentially decays inside the LCFS.&quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">lcfs_radius</span><span class="p">:</span>
@@ -243,7 +245,7 @@ supplied by the plasma simulation code.</p>
 
 
 <span class="k">def</span> <span class="nf">ion_distribution</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">v_core</span><span class="p">,</span> <span class="n">v_lcfs</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">lcfs_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A cylindrical plasma profile that follows a double</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A cylindrical plasma profile that follows a double</span>
 <span class="sd">       quadratic between the LCFS and axisymmetric z axis.&quot;&quot;&quot;</span>
 
     <span class="c1"># evaluate pedestal-&gt; core function</span>
@@ -396,21 +398,27 @@ supplied by the plasma simulation code.</p>
 <span class="c1">#              [vertex_coords[v1, 1], vertex_coords[v2, 1], vertex_coords[v3, 1], vertex_coords[v1, 1]], &#39;.b&#39;)</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../../_images/mesh_plasma_slices.png"><img alt="../../_images/mesh_plasma_slices.png" src="../../_images/mesh_plasma_slices.png" style="width: 650px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> Visualisation plots of slices through the plasma.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id2">
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> Visualisation plots of slices through the plasma.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../../_images/mesh_plasma_column.png"><img alt="../../_images/mesh_plasma_column.png" src="../../_images/mesh_plasma_column.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A camera rendering of the d-alpha light from the cylindrically symmetric
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A camera rendering of the d-alpha light from the cylindrically symmetric
 plasma column.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id3">
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../../_images/mesh_for_plasma.png"><img alt="../../_images/mesh_for_plasma.png" src="../../_images/mesh_for_plasma.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A visualisation of the underlying triangular mesh in the r-z plane. The
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A visualisation of the underlying triangular mesh in the r-z plane. The
 plasma values were defined at the triangle vertices.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -423,7 +431,7 @@ plasma values were defined at the triangle vertices.</span><a class="headerlink"
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -447,7 +455,9 @@ plasma values were defined at the triangle vertices.</span><a class="headerlink"
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

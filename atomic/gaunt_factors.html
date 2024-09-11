@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.4. Gaunt factors &mdash; Cherab 1.4.0 documentation</title>
+  <title>6.4. Gaunt factors &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,9 +28,10 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Plasmas" href="../plasmas/plasmas.html" />
+    <link rel="next" title="6.5. Atomic Data Interface" href="atomic_data_interface.html" />
     <link rel="prev" title="6.3. Rate Coefficients" href="rate_coefficients.html" /> 
 
   
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -95,9 +97,18 @@
 <li class="toctree-l2"><a class="reference internal" href="emission_lines.html">6.2. Spectroscopic Emission Lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">6.3. Rate Coefficients</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">6.4. Gaunt factors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#free-free-gaunt-factors">6.4.1. Free-free Gaunt factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#free-free-gaunt-factors">6.4.1. Free-free Gaunt factors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.atomic.gaunt.FreeFreeGauntFactor"><code class="docutils literal notranslate"><span class="pre">FreeFreeGauntFactor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor"><code class="docutils literal notranslate"><span class="pre">InterpolatedFreeFreeGauntFactor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.atomic.gaunt.MaxwellianFreeFreeGauntFactor"><code class="docutils literal notranslate"><span class="pre">MaxwellianFreeFreeGauntFactor</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="atomic_data_interface.html">6.5. Atomic Data Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_interpolators.html">6.6. Atomic data interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repository.html">6.7. Atomic data repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openadas.html">6.8. Open-ADAS</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
@@ -181,29 +192,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="gaunt-factors">
-<h1><span class="section-number">6.4. </span>Gaunt factors<a class="headerlink" href="#gaunt-factors" title="Permalink to this headline">¶</a></h1>
+  <section id="gaunt-factors">
+<h1><span class="section-number">6.4. </span>Gaunt factors<a class="headerlink" href="#gaunt-factors" title="Permalink to this heading">¶</a></h1>
 <p>This includes classes for temperature-averaged Gaunt factors used to calculate Bremsstrahlung (free-free Gaunt factor)
 and radiative recombination continuum (bound-free Gaunt factor) emission.</p>
-<div class="section" id="free-free-gaunt-factors">
-<h2><span class="section-number">6.4.1. </span>Free-free Gaunt factors<a class="headerlink" href="#free-free-gaunt-factors" title="Permalink to this headline">¶</a></h2>
+<section id="free-free-gaunt-factors">
+<h2><span class="section-number">6.4.1. </span>Free-free Gaunt factors<a class="headerlink" href="#free-free-gaunt-factors" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.atomic.gaunt.FreeFreeGauntFactor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.gaunt.</span></span><span class="sig-name descname"><span class="pre">FreeFreeGauntFactor</span></span><a class="headerlink" href="#cherab.core.atomic.gaunt.FreeFreeGauntFactor" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.gaunt.</span></span><span class="sig-name descname"><span class="pre">FreeFreeGauntFactor</span></span><a class="headerlink" href="#cherab.core.atomic.gaunt.FreeFreeGauntFactor" title="Permalink to this definition">¶</a></dt>
 <dd><p>The base class for temperature-averaged free-free Gaunt factors.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="cherab.core.atomic.gaunt.FreeFreeGauntFactor.__call__">
 <span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.gaunt.FreeFreeGauntFactor.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the temperature-averaged free-free Gaunt factor for the supplied parameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>z</strong> (<em>double</em>) – Species charge or effective plasma charge.</p></li>
 <li><p><strong>temperature</strong> (<em>double</em>) – Electron temperature in eV.</p></li>
 <li><p><strong>wavelength</strong> (<em>double</em>) – Spectral wavelength.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>free-free Gaunt factor</p>
 </dd>
 </dl>
@@ -214,14 +225,14 @@ and radiative recombination continuum (bound-free Gaunt factor) emission.</p>
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.gaunt.FreeFreeGauntFactor.evaluate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the temperature-averaged free-free Gaunt factor for the supplied parameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>z</strong> (<em>double</em>) – Species charge or effective plasma charge.</p></li>
 <li><p><strong>temperature</strong> (<em>double</em>) – Electron temperature in eV.</p></li>
 <li><p><strong>wavelength</strong> (<em>double</em>) – Spectral wavelength.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>free-free Gaunt factor</p>
 </dd>
 </dl>
@@ -231,8 +242,8 @@ and radiative recombination continuum (bound-free Gaunt factor) emission.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.gaunt.</span></span><span class="sig-name descname"><span class="pre">InterpolatedFreeFreeGauntFactor</span></span><a class="headerlink" href="#cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#cherab.core.atomic.gaunt.FreeFreeGauntFactor" title="cherab.core.atomic.gaunt.FreeFreeGauntFactor"><code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.atomic.gaunt.FreeFreeGauntFactor</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.gaunt.</span></span><span class="sig-name descname"><span class="pre">InterpolatedFreeFreeGauntFactor</span></span><a class="headerlink" href="#cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.atomic.gaunt.FreeFreeGauntFactor" title="cherab.core.atomic.gaunt.FreeFreeGauntFactor"><code class="xref py py-class docutils literal notranslate"><span class="pre">FreeFreeGauntFactor</span></code></a></p>
 <p>The temperature-averaged free-free Gaunt factors interpolated in the space of parameters:
 <span class="math notranslate nohighlight">\(u = h{\nu}/kT\)</span> and <span class="math notranslate nohighlight">\({\gamma}^{2} = Z^{2}Ry/kT\)</span>.
 See T.R. Carson, 1988, Astron. &amp; Astrophys., 189,
@@ -240,7 +251,7 @@ See T.R. Carson, 1988, Astron. &amp; Astrophys., 189,
 <p>The cubic interpolation in a semi-log space is used.</p>
 <p>The Born approximation is used outside the interpolation range.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>u</strong> (<em>object</em>) – A 1D array-like object of real values.</p></li>
 <li><p><strong>gamma2</strong> (<em>object</em>) – A 1D array-like object of real values.</p></li>
@@ -248,7 +259,7 @@ See T.R. Carson, 1988, Astron. &amp; Astrophys., 189,
 storing the Gaunt factor values at u, gamma2.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>u_range</strong> (<em>tuple</em>) – The interpolation range of <cite>u</cite> parameter.</p></li>
 <li><p><strong>gamma2_range</strong> (<em>tuple</em>) – The interpolation range of <span class="math notranslate nohighlight">\(\\gamma^2\)</span> parameter.</p></li>
@@ -261,14 +272,14 @@ storing the Gaunt factor values at u, gamma2.</p></li>
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor.evaluate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the temperature-averaged free-free Gaunt factor for the supplied parameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>z</strong> (<em>double</em>) – Species charge or effective plasma charge.</p></li>
 <li><p><strong>temperature</strong> (<em>double</em>) – Electron temperature in eV.</p></li>
 <li><p><strong>wavelength</strong> (<em>double</em>) – Spectral wavelength.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>free-free Gaunt factor</p>
 </dd>
 </dl>
@@ -278,8 +289,8 @@ storing the Gaunt factor values at u, gamma2.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.atomic.gaunt.MaxwellianFreeFreeGauntFactor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.gaunt.</span></span><span class="sig-name descname"><span class="pre">MaxwellianFreeFreeGauntFactor</span></span><a class="headerlink" href="#cherab.core.atomic.gaunt.MaxwellianFreeFreeGauntFactor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor" title="cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor"><code class="xref py py-class docutils literal notranslate"><span class="pre">cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.gaunt.</span></span><span class="sig-name descname"><span class="pre">MaxwellianFreeFreeGauntFactor</span></span><a class="headerlink" href="#cherab.core.atomic.gaunt.MaxwellianFreeFreeGauntFactor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor" title="cherab.core.atomic.gaunt.InterpolatedFreeFreeGauntFactor"><code class="xref py py-class docutils literal notranslate"><span class="pre">InterpolatedFreeFreeGauntFactor</span></code></a></p>
 <p>The Maxwellian-averaged free-free Gaunt factor interpolated over the data from Table A.1 in
 M.A. de Avillez and D. Breitschwerdt, “Temperature-averaged and total free-free Gaunt factors
 for κ and Maxwellian distributions of electrons”, 2015, Astron. &amp; Astrophys. 580,
@@ -287,8 +298,8 @@ for κ and Maxwellian distributions of electrons”, 2015, Astron. &amp; Astroph
 <p>The Born approximation is used outside the interpolation range.</p>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -298,7 +309,7 @@ for κ and Maxwellian distributions of electrons”, 2015, Astron. &amp; Astroph
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../plasmas/plasmas.html" class="btn btn-neutral float-right" title="7. Plasmas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="atomic_data_interface.html" class="btn btn-neutral float-right" title="6.5. Atomic Data Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="rate_coefficients.html" class="btn btn-neutral" title="6.3. Rate Coefficients" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -310,7 +321,7 @@ for κ and Maxwellian distributions of electrons”, 2015, Astron. &amp; Astroph
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -334,7 +345,9 @@ for κ and Maxwellian distributions of electrons”, 2015, Astron. &amp; Astroph
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 

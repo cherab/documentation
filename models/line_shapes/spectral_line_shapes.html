@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8.8. Spectral Line Shapes &mdash; Cherab 1.4.0 documentation</title>
+  <title>8.9. Spectral Line Shapes &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,10 +28,11 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8.9. Laser" href="../laser/laser.html" />
-    <link rel="prev" title="8.7. Basic Line Emission" href="../basic_line/basic_line_emission.html" /> 
+    <link rel="next" title="8.10. Laser" href="../laser/laser.html" />
+    <link rel="prev" title="8.8. Basic Line Emission" href="../basic_line/basic_line_emission.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -94,14 +96,31 @@
 <li class="toctree-l1"><a class="reference internal" href="../../plasmas/plasmas.html">7. Plasmas</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../emission_models.html">8. Emission Models</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../custom_models.html">8.1. Custom emission models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cxs/cxs_model.html">8.2. CXS models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cxs/charge_exchange_calculation.html">8.3. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">8.4. BES - Beam Emission Spectroscopy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">8.5. Total Radiated Power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">8.6. Bremsstrahlung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.7. Basic Line Emission</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8.8. Spectral Line Shapes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../laser/laser.html">8.9. Laser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../beam/beam_attenuator.html">8.2. Beam Attenuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxs/cxs_model.html">8.3. CXS models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cxs/charge_exchange_calculation.html">8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bes/bes_model.html">8.5. BES - Beam Emission Spectroscopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../radiated_power/radiated_power.html">8.6. Total Radiated Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../brem/bremsstrahlung.html">8.7. Bremsstrahlung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_line/basic_line_emission.html">8.8. Basic Line Emission</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.9. Spectral Line Shapes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.doppler.doppler_shift"><code class="docutils literal notranslate"><span class="pre">doppler_shift</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.doppler.thermal_broadening"><code class="docutils literal notranslate"><span class="pre">thermal_broadening</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.gaussian.add_gaussian_line"><code class="docutils literal notranslate"><span class="pre">add_gaussian_line</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.stark.add_lorentzian_line"><code class="docutils literal notranslate"><span class="pre">add_lorentzian_line</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.base.LineShapeModel"><code class="docutils literal notranslate"><span class="pre">LineShapeModel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.gaussian.GaussianLine"><code class="docutils literal notranslate"><span class="pre">GaussianLine</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.multiplet.MultipletLineShape"><code class="docutils literal notranslate"><span class="pre">MultipletLineShape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.zeeman.ZeemanLineShapeModel"><code class="docutils literal notranslate"><span class="pre">ZeemanLineShapeModel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.zeeman.ZeemanTriplet"><code class="docutils literal notranslate"><span class="pre">ZeemanTriplet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.zeeman.ParametrisedZeemanTriplet"><code class="docutils literal notranslate"><span class="pre">ParametrisedZeemanTriplet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.zeeman.ZeemanMultiplet"><code class="docutils literal notranslate"><span class="pre">ZeemanMultiplet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.stark.StarkBroadenedLine"><code class="docutils literal notranslate"><span class="pre">StarkBroadenedLine</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.beam.base.BeamLineShapeModel"><code class="docutils literal notranslate"><span class="pre">BeamLineShapeModel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.model.lineshape.beam.mse.BeamEmissionMultiplet"><code class="docutils literal notranslate"><span class="pre">BeamEmissionMultiplet</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../laser/laser.html">8.10. Laser</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
@@ -164,7 +183,7 @@
         
           <li><a href="../emission_models.html"><span class="section-number">8. </span>Emission Models</a> &raquo;</li>
         
-      <li><span class="section-number">8.8. </span>Spectral Line Shapes</li>
+      <li><span class="section-number">8.9. </span>Spectral Line Shapes</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,21 +202,56 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="spectral-line-shapes">
-<h1><span class="section-number">8.8. </span>Spectral Line Shapes<a class="headerlink" href="#spectral-line-shapes" title="Permalink to this headline">¶</a></h1>
-<p>Cherab contains Doppler-broadened, Stark-broadened and Doppler-Zeeman line shapes of
-atomic spectra. Stark-Doppler and Stark-Doppler-Zeeman line shapes of hydrogen spectra
-will be added in the future.</p>
+  <section id="spectral-line-shapes">
+<h1><span class="section-number">8.9. </span>Spectral Line Shapes<a class="headerlink" href="#spectral-line-shapes" title="Permalink to this heading">¶</a></h1>
+<p>Cherab contains Doppler-broadened, Doppler-Zeeman and Stark-Doppler-Zeeman line shapes of
+atomic spectra.</p>
 <p><strong>Assumption: Maxwellian distribution of emitting species is assumed.</strong>
 <strong>A general model of Doppler broadening will be implemented in the future.</strong></p>
 <dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.model.lineshape.add_gaussian_line">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.</span></span><span class="sig-name descname"><span class="pre">add_gaussian_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radiance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectrum</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.lineshape.add_gaussian_line" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.doppler.doppler_shift">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.doppler.</span></span><span class="sig-name descname"><span class="pre">doppler_shift</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observation_direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.lineshape.doppler.doppler_shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Doppler shifted wavelength for a given velocity and observation direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength</strong> – The wavelength to Doppler shift in nanometers.</p></li>
+<li><p><strong>observation_direction</strong> – A Vector defining the direction of observation.</p></li>
+<li><p><strong>velocity</strong> – A Vector defining the relative velocity of the emitting source in m/s.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Doppler shifted wavelength in nanometers.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.doppler.thermal_broadening">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.doppler.</span></span><span class="sig-name descname"><span class="pre">thermal_broadening</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atomic_weight</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.lineshape.doppler.thermal_broadening" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the line width for a gaussian line as a standard deviation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength</strong> – Central wavelength.</p></li>
+<li><p><strong>temperature</strong> – Temperature in eV.</p></li>
+<li><p><strong>atomic_weight</strong> – Atomic weight in AMU.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standard deviation of gaussian line.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.gaussian.add_gaussian_line">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.gaussian.</span></span><span class="sig-name descname"><span class="pre">add_gaussian_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radiance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectrum</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.lineshape.gaussian.add_gaussian_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a Gaussian line to the given spectrum and returns the new spectrum.</p>
 <p>The formula used is based on the following definite integral:
 <span class="math notranslate nohighlight">\(\frac{1}{\sigma \sqrt{2 \pi}} \int_{\lambda_0}^{\lambda_1} \exp(-\frac{(x-\mu)^2}{2\sigma^2}) dx = \frac{1}{2} \left[ -Erf(\frac{a-\mu}{\sqrt{2}\sigma}) +Erf(\frac{b-\mu}{\sqrt{2}\sigma}) \right]\)</span></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>radiance</strong> (<em>float</em>) – Intensity of the line in radiance.</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – central wavelength of the line in nm.</p></li>
@@ -205,23 +259,53 @@ will be added in the future.</p>
 <li><p><strong>spectrum</strong> (<em>Spectrum</em>) – the current spectrum to which the gaussian line is added.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.model.lineshape.LineShapeModel">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.</span></span><span class="sig-name descname"><span class="pre">LineShapeModel</span></span><a class="headerlink" href="#cherab.core.model.lineshape.LineShapeModel" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.stark.add_lorentzian_line">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.stark.</span></span><span class="sig-name descname"><span class="pre">add_lorentzian_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radiance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_1_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectrum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.lineshape.stark.add_lorentzian_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a modified Lorentzian line to the given spectrum and returns the new spectrum.</p>
+<p>The modified Lorentzian:
+<span class="math notranslate nohighlight">\(L(\lambda-\lambda_0, \Delta\lambda_{1/2}^{(L)})=\frac{C_0(\Delta\lambda_{1/2}^{(L)})^{3/2}}{(\lambda-\lambda_0)^{5/2}+(\frac{\Delta\lambda_{1/2}^{(L)}}{2})^{5/2}},\)</span></p>
+<p><span class="math notranslate nohighlight">\(C_0=\frac{(1/2)^{3/2}}{4R{_2}F_1(\frac{2}{5},1,\frac{7}{5},-R^{5/2})},\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\Delta\lambda_{1/2}^{(L)}\)</span> is the line FWHM, <span class="math notranslate nohighlight">\({_2}F_1\)</span> is the hypergeometric function and <span class="math notranslate nohighlight">\(R=50\)</span>.
+The line shape is truncated at <span class="math notranslate nohighlight">\(\lambda&lt;R\Delta\lambda_{1/2}^{(L)}\)</span> and <span class="math notranslate nohighlight">\(\lambda&gt;R\Delta\lambda_{1/2}^{(L)}\)</span>.</p>
+<p>See B. Lomanowski, et al. “Inferring divertor plasma properties from hydrogen Balmer
+and Paschen series spectroscopy in JET-ILW.” Nuclear Fusion 55.12 (2015)
+<a class="reference external" href="https://doi.org/10.1088/0029-5515/55/12/123028">123028</a> for details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radiance</strong> (<em>float</em>) – Intensity of the line in radiance.</p></li>
+<li><p><strong>wavelength</strong> (<em>float</em>) – central wavelength of the line in nm.</p></li>
+<li><p><strong>lambda_1_2</strong> (<em>float</em>) – FWHM of the line shape in nm.</p></li>
+<li><p><strong>spectrum</strong> (<em>Spectrum</em>) – the current spectrum to which the Lorentzian line is added.</p></li>
+<li><p><strong>integrator</strong> (<em>Integrator1D</em>) – Integrator1D instance to integrate the line shape
+over the spectral bin.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.base.LineShapeModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.base.</span></span><span class="sig-name descname"><span class="pre">LineShapeModel</span></span><a class="headerlink" href="#cherab.core.model.lineshape.base.LineShapeModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>A base class for building line shapes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object for this line shape.</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – The rest wavelength for this emission line.</p></li>
 <li><p><strong>target_species</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – The target plasma species that is emitting.</p></li>
 <li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The emitting plasma object.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider.</p></li>
 <li><p><strong>integrator</strong> (<em>Integrator1D</em>) – Integrator1D instance to integrate the line shape
 over the spectral bin. Default is None.</p></li>
 </ul>
@@ -230,16 +314,17 @@ over the spectral bin. Default is None.</p></li>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.model.lineshape.GaussianLine">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.</span></span><span class="sig-name descname"><span class="pre">GaussianLine</span></span><a class="headerlink" href="#cherab.core.model.lineshape.GaussianLine" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.gaussian.GaussianLine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.gaussian.</span></span><span class="sig-name descname"><span class="pre">GaussianLine</span></span><a class="headerlink" href="#cherab.core.model.lineshape.gaussian.GaussianLine" title="Permalink to this definition">¶</a></dt>
 <dd><p>Produces Gaussian line shape.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object for this line shape.</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – The rest wavelength for this emission line.</p></li>
 <li><p><strong>target_species</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – The target plasma species that is emitting.</p></li>
 <li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The emitting plasma object.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider.</p></li>
 </ul>
 </dd>
 </dl>
@@ -255,8 +340,8 @@ over the spectral bin. Default is None.</p></li>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.model.lineshape.MultipletLineShape">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.</span></span><span class="sig-name descname"><span class="pre">MultipletLineShape</span></span><a class="headerlink" href="#cherab.core.model.lineshape.MultipletLineShape" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.multiplet.MultipletLineShape">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.multiplet.</span></span><span class="sig-name descname"><span class="pre">MultipletLineShape</span></span><a class="headerlink" href="#cherab.core.model.lineshape.multiplet.MultipletLineShape" title="Permalink to this definition">¶</a></dt>
 <dd><p>Produces Multiplet line shapes.</p>
 <p>The lineshape radiance is calculated from a base PEC rate that is unresolved. This
 radiance is then divided over a number of components as specified in the multiplet
@@ -265,12 +350,13 @@ number of components in the multiplet. The first axis of the array contains the
 wavelengths of each component, the second contains the line ratio for each component.
 The component line ratios must sum to one. For example:</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object for the base rate radiance calculation.</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – The rest wavelength of the base emission line.</p></li>
 <li><p><strong>target_species</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – The target plasma species that is emitting.</p></li>
 <li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The emitting plasma object.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider.</p></li>
 <li><p><strong>multiplet</strong> – An Nx2 array that specifies the multiplet wavelengths and line ratios.</p></li>
 </ul>
 </dd>
@@ -290,70 +376,40 @@ The component line ratios must sum to one. For example:</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.model.lineshape.StarkBroadenedLine">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.</span></span><span class="sig-name descname"><span class="pre">StarkBroadenedLine</span></span><a class="headerlink" href="#cherab.core.model.lineshape.StarkBroadenedLine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parametrised Stark broadened line shape based on the Model Microfield Method (MMM).
-Contains embedded atomic data in the form of fits to MMM.
-Only Balmer and Paschen series are supported by default.
-See B. Lomanowski, et al. “Inferring divertor plasma properties from hydrogen Balmer
-and Paschen series spectroscopy in JET-ILW.” Nuclear Fusion 55.12 (2015)
-<a class="reference external" href="https://doi.org/10.1088/0029-5515/55/12/123028">123028</a>.</p>
-<p>Call <cite>show_supported_transitions()</cite> to see the list of supported transitions and
-default model coefficients.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object for this line shape.</p></li>
-<li><p><strong>wavelength</strong> (<em>float</em>) – The rest wavelength for this emission line.</p></li>
-<li><p><strong>target_species</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – The target plasma species that is emitting.</p></li>
-<li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The emitting plasma object.</p></li>
-<li><p><strong>stark_model_coefficients</strong> (<em>dict</em>) – Alternative model coefficients in the form
-{line_ij: (c_ij, a_ij, b_ij), …}.
-If None, the default model parameters will be used.</p></li>
-<li><p><strong>integrator</strong> (<em>Integrator1D</em>) – Integrator1D instance to integrate the line shape
-over the spectral bin. Default is <cite>GaussianQuadrature()</cite>.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="cherab.core.model.lineshape.StarkBroadenedLine.show_supported_transitions">
-<span class="sig-name descname"><span class="pre">show_supported_transitions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.lineshape.StarkBroadenedLine.show_supported_transitions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prints all supported transitions.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.model.lineshape.ZeemanLineShapeModel">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.</span></span><span class="sig-name descname"><span class="pre">ZeemanLineShapeModel</span></span><a class="headerlink" href="#cherab.core.model.lineshape.ZeemanLineShapeModel" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.zeeman.ZeemanLineShapeModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.zeeman.</span></span><span class="sig-name descname"><span class="pre">ZeemanLineShapeModel</span></span><a class="headerlink" href="#cherab.core.model.lineshape.zeeman.ZeemanLineShapeModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>A base class for building Zeeman line shapes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object for this line shape.</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – The rest wavelength for this emission line.</p></li>
 <li><p><strong>target_species</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – The target plasma species that is emitting.</p></li>
 <li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The emitting plasma object.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider.</p></li>
 <li><p><strong>polarisation</strong> (<em>str</em>) – Leaves only <span class="math notranslate nohighlight">\(\pi\)</span>-/<span class="math notranslate nohighlight">\(\sigma\)</span>-polarised components:
 “pi” - leave only <span class="math notranslate nohighlight">\(\pi\)</span>-polarised components,
 “sigma” - leave only <span class="math notranslate nohighlight">\(\sigma\)</span>-polarised components,
 “no” - leave all components (default).</p></li>
+<li><p><strong>integrator</strong> (<em>Integrator1D</em>) – Integrator1D instance to integrate the line shape
+over the spectral bin. Default is None.</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.model.lineshape.ZeemanTriplet">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.</span></span><span class="sig-name descname"><span class="pre">ZeemanTriplet</span></span><a class="headerlink" href="#cherab.core.model.lineshape.ZeemanTriplet" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.zeeman.ZeemanTriplet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.zeeman.</span></span><span class="sig-name descname"><span class="pre">ZeemanTriplet</span></span><a class="headerlink" href="#cherab.core.model.lineshape.zeeman.ZeemanTriplet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple Doppler-Zeeman triplet (Paschen-Back effect).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object for this line shape.</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – The rest wavelength for this emission line.</p></li>
 <li><p><strong>target_species</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – The target plasma species that is emitting.</p></li>
 <li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The emitting plasma object.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider.</p></li>
 <li><p><strong>polarisation</strong> (<em>str</em>) – Leaves only <span class="math notranslate nohighlight">\(\pi\)</span>-/<span class="math notranslate nohighlight">\(\sigma\)</span>-polarised components:
 “pi” - leave central component,
 “sigma” - leave side components,
@@ -364,8 +420,8 @@ over the spectral bin. Default is <cite>GaussianQuadrature()</cite>.</p></li>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.model.lineshape.ParametrisedZeemanTriplet">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.</span></span><span class="sig-name descname"><span class="pre">ParametrisedZeemanTriplet</span></span><a class="headerlink" href="#cherab.core.model.lineshape.ParametrisedZeemanTriplet" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.zeeman.ParametrisedZeemanTriplet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.zeeman.</span></span><span class="sig-name descname"><span class="pre">ParametrisedZeemanTriplet</span></span><a class="headerlink" href="#cherab.core.model.lineshape.zeeman.ParametrisedZeemanTriplet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parametrised Doppler-Zeeman triplet. It takes into account additional broadening due to
 the line’s fine structure without resolving the individual components of the fine
 structure. The model is described with three parameters: <span class="math notranslate nohighlight">\(\alpha\)</span>,
@@ -376,21 +432,19 @@ where <cite>B</cite> is the magnetic field strength.
 The ratio between Zeeman and thermal broadening line widths: 
 <span class="math notranslate nohighlight">\(\frac{W_{Zeeman}}{W_{Doppler}} = \beta T^{\gamma}\)</span>,
 where <cite>T</cite> is the species temperature in eV.</p>
-<p>Call <cite>show_supported_transitions()</cite> to see the list of supported transitions and
-default parameters of the model.</p>
 <p>For details see A. Blom and C. Jupén, Parametrisation of the Zeeman effect
 for hydrogen-like spectra in high-temperature plasmas,
 Plasma Phys. Control. Fusion 44 (2002) <a class="reference external" href="https://doi.org/10.1088/0741-3335/44/7/312">1229-1241</a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object for this line shape.</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – The rest wavelength for this emission line.</p></li>
 <li><p><strong>target_species</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – The target plasma species that is emitting.</p></li>
 <li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The emitting plasma object.</p></li>
-<li><p><strong>line_parameters</strong> (<em>dict</em>) – Alternative parameters of the model in the form
-{line_i: (alpha_i, beta_i, gamma_i), …}.
-If None, the default model parameters will be used.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider.</p></li>
+<li><p><strong>line_parameters</strong> (<em>tuple</em>) – Parameters of the model in the form (alpha, beta, gamma).
+Default is None (will use <cite>atomic_data.zeeman_triplet_parameters</cite>).</p></li>
 <li><p><strong>polarisation</strong> (<em>str</em>) – Leaves only <span class="math notranslate nohighlight">\(\pi\)</span>-/<span class="math notranslate nohighlight">\(\sigma\)</span>-polarised components:
 “pi” - leave central component,
 “sigma” - leave side components,
@@ -398,17 +452,11 @@ If None, the default model parameters will be used.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="cherab.core.model.lineshape.ParametrisedZeemanTriplet.show_supported_transitions">
-<span class="sig-name descname"><span class="pre">show_supported_transitions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.model.lineshape.ParametrisedZeemanTriplet.show_supported_transitions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prints all supported transitions.</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="cherab.core.model.lineshape.ZeemanMultiplet">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.</span></span><span class="sig-name descname"><span class="pre">ZeemanMultiplet</span></span><a class="headerlink" href="#cherab.core.model.lineshape.ZeemanMultiplet" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.zeeman.ZeemanMultiplet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.zeeman.</span></span><span class="sig-name descname"><span class="pre">ZeemanMultiplet</span></span><a class="headerlink" href="#cherab.core.model.lineshape.zeeman.ZeemanMultiplet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Doppler-Zeeman Multiplet.</p>
 <p>The lineshape radiance is calculated from a base PEC rate that is unresolved. This
 radiance is then divided over a number of components as specified in the <code class="docutils literal notranslate"><span class="pre">zeeman_structure</span></code>
@@ -416,15 +464,17 @@ argument. The <code class="docutils literal notranslate"><span class="pre">zeema
 <span class="math notranslate nohighlight">\(\pi\)</span>-/<span class="math notranslate nohighlight">\(\sigma\)</span>-polarised components as functions of the magnetic field strength.
 These functions can be obtained using the output of the ADAS603 routines.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object for the base rate radiance calculation.</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – The rest wavelength of the base emission line.</p></li>
 <li><p><strong>target_species</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – The target plasma species that is emitting.</p></li>
 <li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The emitting plasma object.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider.</p></li>
 <li><p><strong>zeeman_structure</strong> – A <code class="docutils literal notranslate"><span class="pre">ZeemanStructure</span></code> object that provides wavelengths and ratios
 of <span class="math notranslate nohighlight">\(\pi\)</span>-/<span class="math notranslate nohighlight">\(\sigma^{+}\)</span>-/<span class="math notranslate nohighlight">\(\sigma^{-}\)</span>-polarised
-components for any given magnetic field strength.</p></li>
+components for any given magnetic field strength.
+Default is None (will use atomic_data.zeeman_structure).</p></li>
 <li><p><strong>polarisation</strong> (<em>str</em>) – Leaves only <span class="math notranslate nohighlight">\(\pi\)</span>-/<span class="math notranslate nohighlight">\(\sigma\)</span>-polarised components:
 “pi” - leave only <span class="math notranslate nohighlight">\(\pi\)</span>-polarised components,
 “sigma” - leave only <span class="math notranslate nohighlight">\(\sigma\)</span>-polarised components,
@@ -434,7 +484,99 @@ components for any given magnetic field strength.</p></li>
 </dl>
 </dd></dl>
 
-</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.stark.StarkBroadenedLine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.stark.</span></span><span class="sig-name descname"><span class="pre">StarkBroadenedLine</span></span><a class="headerlink" href="#cherab.core.model.lineshape.stark.StarkBroadenedLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parametrised Stark-Doppler-Zeeman line shape for Balmer and Paschen series based on
+B. Lomanowski, et al. “Inferring divertor plasma properties from hydrogen Balmer
+and Paschen series spectroscopy in JET-ILW.” Nuclear Fusion 55.12 (2015)
+<a class="reference external" href="https://doi.org/10.1088/0029-5515/55/12/123028">123028</a>.</p>
+<p>The following approximations are used:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The Zeeman and Stark effects are considered independently.</p></li>
+<li><p>Zeeman splitting is taken in the form of a simple triplet with a <span class="math notranslate nohighlight">\(\pi\)</span>-component
+centred at <span class="math notranslate nohighlight">\(\lambda\)</span>, <span class="math notranslate nohighlight">\(\sigma^{+}\)</span>-component at <span class="math notranslate nohighlight">\(\frac{hc}{hc/\lambda -\mu B}\)</span>
+and <span class="math notranslate nohighlight">\(\sigma^{-}\)</span>-component at <span class="math notranslate nohighlight">\(\frac{hc}{hc/\lambda +\mu B}\)</span>.</p></li>
+<li><p>The model of Stark broadening is obtained by fitting the Model Microfield Method (MMM).</p></li>
+<li><p>The convolution of Stark-Zeeman and Doppler profiles is replaced with the weighted sum
+to speed-up calculations (so-called pseudo-Voigt profile).</p></li>
+</ul>
+</div></blockquote>
+<p>The Stark-broadened line shape is modelled as modified Lorentzian:
+<span class="math notranslate nohighlight">\(L(\lambda-\lambda_0, \Delta\lambda_{1/2}^{(L)})=\frac{C_0(\Delta\lambda_{1/2}^{(L)})^{3/2}}{(\lambda-\lambda_0)^{5/2}+(\frac{\Delta\lambda_{1/2}^{(L)}}{2})^{5/2}},\)</span></p>
+<p><span class="math notranslate nohighlight">\(C_0=\frac{(1/2)^{3/2}}{4R{_2}F_1(\frac{2}{5},1,\frac{7}{5},-R^{5/2})},\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\Delta\lambda_{1/2}^{(L)}=c_{ij}\frac{n_e^{a_{ij}}}{T_e^{b_{ij}}}\)</span> is the line FWHM,
+<span class="math notranslate nohighlight">\({_2}F_1\)</span> is the hypergeometric function and <span class="math notranslate nohighlight">\(R=50\)</span>. 
+The line shape is truncated at <span class="math notranslate nohighlight">\(\lambda&lt;R\Delta\lambda_{1/2}^{(L)}\)</span> and <span class="math notranslate nohighlight">\(\lambda&gt;R\Delta\lambda_{1/2}^{(L)}\)</span>.
+The <span class="math notranslate nohighlight">\(a_{ij}\)</span>, <span class="math notranslate nohighlight">\(b_{ij}\)</span> and <span class="math notranslate nohighlight">\(c_{ij}\)</span> are the fitting coefficients.</p>
+<p>Each Zeeman component is modelled as a weighted sum of Stark (Lorentzian), <span class="math notranslate nohighlight">\(L(\lambda-\lambda_0, \Delta\lambda_{1/2}^{(L)})\)</span>,
+and Doppler (Gauss), <span class="math notranslate nohighlight">\(G(\lambda'-\lambda_0, \Delta\lambda_{1/2}^{(G)})\)</span> profiles:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\eta L(\lambda-\lambda_0, \Delta\lambda_{1/2}^{(V)}) + (1-\eta)G(\lambda-\lambda_0, \Delta\lambda_{1/2}^{(V)})\)</span>,</p>
+<p>with <span class="math notranslate nohighlight">\(\Delta\lambda_{1/2}^{(V)}\equiv \Delta\lambda_{1/2}^{(V)}(\Delta\lambda_{1/2}^{(G)}, \Delta\lambda_{1/2}^{(L)})\)</span>
+and <span class="math notranslate nohighlight">\(\eta\equiv \eta(\Delta\lambda_{1/2}^{(G)}, \Delta\lambda_{1/2}^{(L)})\)</span>.</p>
+</div></blockquote>
+<p>Both <span class="math notranslate nohighlight">\(\Delta\lambda_{1/2}^{(V)}\)</span> and <span class="math notranslate nohighlight">\(\eta\)</span> are obtained by fitting the convolution:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\int_{-\infty}^{\infty}G(\lambda'-\lambda_0, \Delta\lambda_{1/2}^{(G)})L(\lambda-\lambda'-\lambda_0, \Delta\lambda_{1/2}^{(L)})d\lambda'\)</span>.</p>
+</div></blockquote>
+<p>The <span class="math notranslate nohighlight">\(\Delta\lambda_{1/2}^{(V)}\)</span> function is fitted as:
+<span class="math notranslate nohighlight">\(\Delta\lambda_{1/2}^{(V)}=\sum_{n=0}^{6}a_n(\frac{\Delta\lambda_{1/2}^{(L)}}{\Delta\lambda_{1/2}^{(G)}})^n\)</span>
+for <span class="math notranslate nohighlight">\(\frac{\Delta\lambda_{1/2}^{(L)}}{\Delta\lambda_{1/2}^{(G)}} \le 1\)</span> and
+<span class="math notranslate nohighlight">\(\Delta\lambda_{1/2}^{(V)}=\sum_{n=0}^{6}b_n(\frac{\Delta\lambda_{1/2}^{(G)}}{\Delta\lambda_{1/2}^{(L)}})^n\)</span>
+for <span class="math notranslate nohighlight">\(\frac{\Delta\lambda_{1/2}^{(L)}}{\Delta\lambda_{1/2}^{(G)}} &gt; 1\)</span> with</p>
+<p><cite>a</cite> = [1., 0.15882, 1.04388, -1.38281, 0.46251, 0.82325, -0.58026] and</p>
+<p><cite>b</cite> = [1., 0, 0.57575, 0.37902, -0.42519, -0.31525, 0.31718].</p>
+<p>While the <span class="math notranslate nohighlight">\(\eta\)</span> function is fitted as:
+<span class="math notranslate nohighlight">\(\eta=exp(\sum_{n=0}^{5}c_n(ln(\frac{\Delta\lambda_{1/2}^{(L)}}{\Delta\lambda_{1/2}^{(V)}}))^n\)</span>
+for <span class="math notranslate nohighlight">\(0.01&lt;\frac{\Delta\lambda_{1/2}^{(L)}}{\Delta\lambda_{1/2}^{(V)}}&lt;0.999\)</span> with</p>
+<p><cite>c</cite> = [5.14820e-04, 1.38821e+00, -9.60424e-02, -3.83995e-02, -7.40042e-03, -5.47626e-04].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object for this line shape.</p></li>
+<li><p><strong>wavelength</strong> (<em>float</em>) – The rest wavelength for this emission line.</p></li>
+<li><p><strong>target_species</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Species" title="cherab.core.Species"><em>Species</em></a>) – The target plasma species that is emitting.</p></li>
+<li><p><strong>plasma</strong> (<a class="reference internal" href="../../plasmas/core_plasma_classes.html#cherab.core.Plasma" title="cherab.core.Plasma"><em>Plasma</em></a>) – The emitting plasma object.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider.</p></li>
+<li><p><strong>stark_model_coefficients</strong> (<em>tuple</em>) – Stark model coefficients in the form (c_ij, a_ij, b_ij).
+Default is None (will use
+<cite>atomic_data.stark_model_coefficients</cite>).</p></li>
+<li><p><strong>integrator</strong> (<em>Integrator1D</em>) – Integrator1D instance to integrate the line shape
+over the spectral bin. Default is <cite>GaussianQuadrature()</cite>.</p></li>
+<li><p><strong>polarisation</strong> (<em>str</em>) – Leaves only <span class="math notranslate nohighlight">\(\pi\)</span>-/<span class="math notranslate nohighlight">\(\sigma\)</span>-polarised components:
+“pi” - leave only <span class="math notranslate nohighlight">\(\pi\)</span>-polarised components,
+“sigma” - leave only <span class="math notranslate nohighlight">\(\sigma\)</span>-polarised components,
+“no” - leave all components (default).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.beam.base.BeamLineShapeModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.beam.base.</span></span><span class="sig-name descname"><span class="pre">BeamLineShapeModel</span></span><a class="headerlink" href="#cherab.core.model.lineshape.beam.base.BeamLineShapeModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A base class for building beam emission line shapes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<a class="reference internal" href="../../atomic/emission_lines.html#cherab.core.atomic.line.Line" title="cherab.core.atomic.line.Line"><em>Line</em></a>) – The emission line object for this line shape.</p></li>
+<li><p><strong>wavelength</strong> (<em>float</em>) – The rest wavelength for this emission line.</p></li>
+<li><p><strong>beam</strong> (<a class="reference internal" href="../../plasmas/particle_beams.html#cherab.core.beam.node.Beam" title="cherab.core.beam.node.Beam"><em>Beam</em></a>) – The beam class that is emitting.</p></li>
+<li><p><strong>atomic_data</strong> (<a class="reference internal" href="../../atomic/atomic_data_interface.html#cherab.core.atomic.interface.AtomicData" title="cherab.core.atomic.interface.AtomicData"><em>AtomicData</em></a>) – The atomic data provider.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.model.lineshape.beam.mse.BeamEmissionMultiplet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.model.lineshape.beam.mse.</span></span><span class="sig-name descname"><span class="pre">BeamEmissionMultiplet</span></span><a class="headerlink" href="#cherab.core.model.lineshape.beam.mse.BeamEmissionMultiplet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produces Beam Emission Multiplet line shape, also known as the Motional Stark Effect spectrum.</p>
+</dd></dl>
+
+</section>
 
 
            </div>
@@ -444,10 +586,10 @@ components for any given magnetic field strength.</p></li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../laser/laser.html" class="btn btn-neutral float-right" title="8.9. Laser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../laser/laser.html" class="btn btn-neutral float-right" title="8.10. Laser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../basic_line/basic_line_emission.html" class="btn btn-neutral" title="8.7. Basic Line Emission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../basic_line/basic_line_emission.html" class="btn btn-neutral" title="8.8. Basic Line Emission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -456,7 +598,7 @@ components for any given magnetic field strength.</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -480,7 +622,9 @@ components for any given magnetic field strength.</p></li>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 

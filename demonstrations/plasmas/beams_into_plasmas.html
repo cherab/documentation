@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Beams into plasmas &mdash; Cherab 1.4.0 documentation</title>
+  <title>Beams into plasmas &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="beams-into-plasmas">
-<span id="id1"></span><h1>Beams into plasmas<a class="headerlink" href="#beams-into-plasmas" title="Permalink to this headline">¶</a></h1>
+  <section id="beams-into-plasmas">
+<span id="id1"></span><h1>Beams into plasmas<a class="headerlink" href="#beams-into-plasmas" title="Permalink to this heading">¶</a></h1>
 <p>This demonstration shows how to define a mono-energetic neutral particle beam that interacts
 with a plasma. Beams such as these are commonly used in fusion plasmas for power injection
 and current drive, usually abbreviated as NBI.</p>
@@ -332,32 +334,42 @@ visualises the results.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id2">
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../../_images/beam_ion_temp.png"><img alt="../../_images/beam_ion_temp.png" src="../../_images/beam_ion_temp.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> The ion temperature profile in our slab plasma.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id3">
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The ion temperature profile in our slab plasma.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../../_images/beam_neutral_temp.png"><img alt="../../_images/beam_neutral_temp.png" src="../../_images/beam_neutral_temp.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> The neutral temperature profile in our slab plasma.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id4">
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The neutral temperature profile in our slab plasma.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="../../_images/beam_density_xz.png"><img alt="../../_images/beam_density_xz.png" src="../../_images/beam_density_xz.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A plot of the full energy component beam density along
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A plot of the full energy component beam density along
 the beam axis in the x-z plane. Note that the coordinates here are
 in the beam’s local coordinate system.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id5">
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
 <a class="reference internal image-reference" href="../../_images/beam_attenuation.png"><img alt="../../_images/beam_attenuation.png" src="../../_images/beam_attenuation.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A plot of the beam attenuation for each of the beam energy
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A plot of the beam attenuation for each of the beam energy
 components along the beam axis. Note these are plotted in local beam
 coordinates. So the beam origin is at the origin coordinate (0, 0, 0)
 and the beam axis is aligned along the z-axis.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id6">
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
 <a class="reference internal image-reference" href="../../_images/beam_into_plasma.png"><img alt="../../_images/beam_into_plasma.png" src="../../_images/beam_into_plasma.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A camera observation of the charge exchange CVI 8-&gt;7 line.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A camera observation of the charge exchange CVI 8-&gt;7 line.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -370,7 +382,7 @@ and the beam axis is aligned along the z-axis.</span><a class="headerlink" href=
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -394,7 +406,9 @@ and the beam axis is aligned along the z-axis.</span><a class="headerlink" href=
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.2. Spectroscopic Emission Lines &mdash; Cherab 1.4.0 documentation</title>
+  <title>6.2. Spectroscopic Emission Lines &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6.3. Rate Coefficients" href="rate_coefficients.html" />
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -92,9 +94,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="atomic_data.html">6. Atomic Data</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="elements_and_isotopes.html">6.1. Elements and Isotopes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6.2. Spectroscopic Emission Lines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.2. Spectroscopic Emission Lines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.atomic.line.Line"><code class="docutils literal notranslate"><span class="pre">Line</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.atomic.zeeman.ZeemanStructure"><code class="docutils literal notranslate"><span class="pre">ZeemanStructure</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">6.3. Rate Coefficients</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gaunt_factors.html">6.4. Gaunt factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic_data_interface.html">6.5. Atomic Data Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_interpolators.html">6.6. Atomic data interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repository.html">6.7. Atomic data repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openadas.html">6.8. Open-ADAS</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
@@ -178,18 +188,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="spectroscopic-emission-lines">
-<h1><span class="section-number">6.2. </span>Spectroscopic Emission Lines<a class="headerlink" href="#spectroscopic-emission-lines" title="Permalink to this headline">¶</a></h1>
+  <section id="spectroscopic-emission-lines">
+<h1><span class="section-number">6.2. </span>Spectroscopic Emission Lines<a class="headerlink" href="#spectroscopic-emission-lines" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.atomic.line.Line">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.line.</span></span><span class="sig-name descname"><span class="pre">Line</span></span><a class="headerlink" href="#cherab.core.atomic.line.Line" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.line.</span></span><span class="sig-name descname"><span class="pre">Line</span></span><a class="headerlink" href="#cherab.core.atomic.line.Line" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class fully specifies an observed spectroscopic emission line.</p>
 <p>Note that wavelengths are not arguments to this class. This is because in
 principle the transition has already been fully specified with the other three
 arguments. The wavelength is looked up in the wavelength database of the
 atomic data provider.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>element</strong> (<a class="reference internal" href="elements_and_isotopes.html#cherab.core.atomic.elements.Element" title="cherab.core.atomic.elements.Element"><em>Element</em></a>) – The atomic element/isotope to which this emission line belongs.</p></li>
 <li><p><strong>charge</strong> (<em>int</em>) – The charge state of the element/isotope that emits this line.</p></li>
@@ -215,12 +225,12 @@ provider package to define the exact notation.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.atomic.zeeman.ZeemanStructure">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.zeeman.</span></span><span class="sig-name descname"><span class="pre">ZeemanStructure</span></span><a class="headerlink" href="#cherab.core.atomic.zeeman.ZeemanStructure" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.zeeman.</span></span><span class="sig-name descname"><span class="pre">ZeemanStructure</span></span><a class="headerlink" href="#cherab.core.atomic.zeeman.ZeemanStructure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides wavelengths and ratios of
 <span class="math notranslate nohighlight">\(\pi\)</span>-/<span class="math notranslate nohighlight">\(\sigma\)</span>-polarised Zeeman components for any given value of
 magnetic field strength.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pi_components</strong> (<em>list</em>) – A list of 2-tuples of Function1D objects that provide the
 wavelengths and ratios of individual <span class="math notranslate nohighlight">\(\pi\)</span>-polarised
@@ -241,7 +251,7 @@ Zeeman components for a given magnetic field strength:
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -263,7 +273,7 @@ Zeeman components for a given magnetic field strength:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -287,7 +297,9 @@ Zeeman components for a given magnetic field strength:
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 

@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Stark Broadening &mdash; Cherab 1.4.0 documentation</title>
+  <title>Stark Broadening &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="stark-broadening">
-<span id="id1"></span><h1>Stark Broadening<a class="headerlink" href="#stark-broadening" title="Permalink to this headline">¶</a></h1>
+  <section id="stark-broadening">
+<span id="id1"></span><h1>Stark Broadening<a class="headerlink" href="#stark-broadening" title="Permalink to this heading">¶</a></h1>
 <p>Normally, the dominant factor in determining the lineshape is the thermal
 doppler broadening. However, in certain high density plasma scenarios a
 secondary effect can take over, known as pressure broadening. This effect
@@ -177,12 +179,18 @@ results from the fact that radiating ions experience a change in the
 electric field due to the presence of neighbouring ions. In normal tokamak
 operations this effect is negligible, except in the divertor region.</p>
 <p>It is possible to override the default doppler broadened line shape by
-specifying the StarkBroadenedLine() lineshape class. In this example
-we can see two stark broadened balmer series lines surrounding a
-Nitrogen II multiplet feature.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copyright 2016-2018 Euratom</span>
-<span class="c1"># Copyright 2016-2018 United Kingdom Atomic Energy Authority</span>
-<span class="c1"># Copyright 2016-2018 Centro de Investigaciones Energéticas, Medioambientales y Tecnológicas</span>
+specifying the StarkBroadenedLine() lineshape class.
+This class suppors Balmer and Paschen series and is based on
+the Stark-Doppler-Zeeman line shape model from B. Lomanowski, et al.
+“Inferring divertor plasma properties from hydrogen Balmer
+and Paschen series spectroscopy in JET-ILW.” Nuclear Fusion 55.12 (2015)
+<a class="reference external" href="https://doi.org/10.1088/0029-5515/55/12/123028">123028</a>.
+In this example we can see two stark broadened balmer series lines surrounding a
+Nitrogen II multiplet feature. The logarithmic scale is chosen to illustrate
+the power-law decay of the Stark-broadened line wings.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copyright 2016-2022 Euratom</span>
+<span class="c1"># Copyright 2016-2022 United Kingdom Atomic Energy Authority</span>
+<span class="c1"># Copyright 2016-2022 Centro de Investigaciones Energéticas, Medioambientales y Tecnológicas</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the EUPL, Version 1.1 or – as soon they will be approved by the</span>
 <span class="c1"># European Commission - subsequent versions of the EUPL (the &quot;Licence&quot;);</span>
@@ -216,7 +224,7 @@ Nitrogen II multiplet feature.</p>
 
 
 <span class="c1"># tunables</span>
-<span class="n">ion_density</span> <span class="o">=</span> <span class="mf">1e20</span>
+<span class="n">ion_density</span> <span class="o">=</span> <span class="mf">2e20</span>
 <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.25</span>
 
 <span class="c1"># setup scenegraph</span>
@@ -281,20 +289,18 @@ Nitrogen II multiplet feature.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Radiance (W/m^2/str/nm)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Observed Spectrum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id2">
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../../_images/stark_spectrum.png"><img alt="../../_images/stark_spectrum.png" src="../../_images/stark_spectrum.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> The observed spectrum with two stark broadened balmer lines
-(397nm and 410nm) surrounding a NII multiplet feature.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id3">
-<a class="reference internal image-reference" href="../../_images/stark_line_zoomed.png"><img alt="../../_images/stark_line_zoomed.png" src="../../_images/stark_line_zoomed.png" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A zoomed in view of the 410nm Balmer line revealing the
-characteristic stark broadened lineshape.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> The observed spectrum with two stark broadened balmer lines
+(397nm and 410nm) surrounding a NII multiplet feature in the logarithmic scale.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -307,7 +313,7 @@ characteristic stark broadened lineshape.</span><a class="headerlink" href="#id3
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -331,7 +337,9 @@ characteristic stark broadened lineshape.</span><a class="headerlink" href="#id3
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

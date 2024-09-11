@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Measuring line of sight spectra &mdash; Cherab 1.4.0 documentation</title>
+  <title>Measuring line of sight spectra &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="measuring-line-of-sight-spectra">
-<span id="balmer-series-spectra"></span><h1>Measuring line of sight spectra<a class="headerlink" href="#measuring-line-of-sight-spectra" title="Permalink to this headline">¶</a></h1>
+  <section id="measuring-line-of-sight-spectra">
+<span id="balmer-series-spectra"></span><h1>Measuring line of sight spectra<a class="headerlink" href="#measuring-line-of-sight-spectra" title="Permalink to this heading">¶</a></h1>
 <p>Cherab is capable of simulating spectroscopic measurements. In this example we
 simulate a basic measurement of the balmer series in the MAST-U divertor with
 an optical fibre.</p>
@@ -206,8 +208,8 @@ Start by importing all required modules and creating world.</p>
 <span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="section" id="loading-plasma-and-machine-geometry">
-<h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Permalink to this headline">¶</a></h2>
+<section id="loading-plasma-and-machine-geometry">
+<h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Permalink to this heading">¶</a></h2>
 <p>Load all parts of the machine mesh from files. In this example we only need the centre column
 and divertor.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MESH_PARTS</span> <span class="o">=</span> <span class="n">CENTRE_COLUMN</span> <span class="o">+</span> <span class="n">LOWER_DIVERTOR_ARMOUR</span>
@@ -267,9 +269,9 @@ explained in another tutorial.</p>
 <span class="n">d_epsilon_recom</span><span class="o">.</span><span class="n">add_emitter_to_world</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">plasma</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="optical-fibre-setup">
-<h2>Optical Fibre setup<a class="headerlink" href="#optical-fibre-setup" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="optical-fibre-setup">
+<h2>Optical Fibre setup<a class="headerlink" href="#optical-fibre-setup" title="Permalink to this heading">¶</a></h2>
 <p>Setup an example MAST-U observation point with the <cite>FibreOptic</cite> observer class.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fibre position and observation direction</span>
 <span class="n">start_point</span> <span class="o">=</span> <span class="n">Point3D</span><span class="p">(</span><span class="mf">1.669</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.6502</span><span class="p">)</span>
@@ -286,14 +288,16 @@ explained in another tutorial.</p>
 <span class="n">fibre</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <img alt="../../_images/balmer_series_spectra.png" src="../../_images/balmer_series_spectra.png" />
-<p class="caption"><span class="caption-text">Balmer series spectrum measured with an optical fibre pointing into the
+<figcaption>
+<p><span class="caption-text">Balmer series spectrum measured with an optical fibre pointing into the
 MAST-U divertor.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="sampling-plasma-parameters-along-ray-trajectory">
-<h2>Sampling plasma parameters along ray trajectory<a class="headerlink" href="#sampling-plasma-parameters-along-ray-trajectory" title="Permalink to this headline">¶</a></h2>
+</figcaption>
+</figure>
+</section>
+<section id="sampling-plasma-parameters-along-ray-trajectory">
+<h2>Sampling plasma parameters along ray trajectory<a class="headerlink" href="#sampling-plasma-parameters-along-ray-trajectory" title="Permalink to this heading">¶</a></h2>
 <p>The easiest way to understand the resulting spectra is to look at the predicted
 emission and plasma parameters along the ray trajectory. Start by finding
 the intersection point so that we can parameterise the ray trajectory with
@@ -350,9 +354,9 @@ a parametric line equation.</p>
     <span class="n">depsilon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">d_epsilon_excit</span><span class="o">.</span><span class="n">emission_at_point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="n">d_epsilon_recom</span><span class="o">.</span><span class="n">emission_at_point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="example-plots">
-<h2>Example plots<a class="headerlink" href="#example-plots" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-plots">
+<h2>Example plots<a class="headerlink" href="#example-plots" title="Permalink to this heading">¶</a></h2>
 <p>Here are some example plots that can be made with collected profiles.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalise the emission arrays</span>
 <span class="n">dalpha</span> <span class="o">/=</span> <span class="n">dalpha</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -391,25 +395,33 @@ a parametric line equation.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id2">
+<figure class="align-center" id="id2">
 <img alt="../../_images/poloidal_dalpha_emission.png" src="../../_images/poloidal_dalpha_emission.png" />
-<p class="caption"><span class="caption-text">D-alpha emission in the poloidal plane. The ray trajectory is overplotted with
+<figcaption>
+<p><span class="caption-text">D-alpha emission in the poloidal plane. The ray trajectory is overplotted with
 the start and end points indicated in blue and red respectively.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id3">
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
 <img alt="../../_images/te_ray_trajectory.png" src="../../_images/te_ray_trajectory.png" />
-<p class="caption"><span class="caption-text">Electron temperature from the plasma sampled along the ray trajectory.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id4">
+<figcaption>
+<p><span class="caption-text">Electron temperature from the plasma sampled along the ray trajectory.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
 <img alt="../../_images/ne_ray_trajectory.png" src="../../_images/ne_ray_trajectory.png" />
-<p class="caption"><span class="caption-text">Electron density from the plasma sampled along the ray trajectory.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id5">
+<figcaption>
+<p><span class="caption-text">Electron density from the plasma sampled along the ray trajectory.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
 <img alt="../../_images/normalised_emission_ray_trajectory.png" src="../../_images/normalised_emission_ray_trajectory.png" />
-<p class="caption"><span class="caption-text">Normalised balmer series emission plotted along the ray trajectory.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-text">Normalised balmer series emission plotted along the ray trajectory.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
 
 
            </div>
@@ -422,7 +434,7 @@ the start and end points indicated in blue and red respectively.</span><a class=
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -446,7 +458,9 @@ the start and end points indicated in blue and red respectively.</span><a class=
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

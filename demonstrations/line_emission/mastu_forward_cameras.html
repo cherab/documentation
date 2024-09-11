@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MAST-U filtered cameras &mdash; Cherab 1.4.0 documentation</title>
+  <title>MAST-U filtered cameras &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="mast-u-filtered-cameras">
-<span id="mastu-forward-cameras"></span><h1>MAST-U filtered cameras<a class="headerlink" href="#mast-u-filtered-cameras" title="Permalink to this headline">¶</a></h1>
+  <section id="mast-u-filtered-cameras">
+<span id="mastu-forward-cameras"></span><h1>MAST-U filtered cameras<a class="headerlink" href="#mast-u-filtered-cameras" title="Permalink to this heading">¶</a></h1>
 <p>Example of using SOLPS simulation and ADAS rates to model filtered cameras.
 Start by importing all required modules and creating world.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Core and external imports</span>
@@ -195,8 +197,8 @@ Start by importing all required modules and creating world.</p>
 <span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="section" id="loading-machine-geometry">
-<h2>Loading machine geometry<a class="headerlink" href="#loading-machine-geometry" title="Permalink to this headline">¶</a></h2>
+<section id="loading-machine-geometry">
+<h2>Loading machine geometry<a class="headerlink" href="#loading-machine-geometry" title="Permalink to this heading">¶</a></h2>
 <p>Load all parts of the machine mesh from files (either .stl or .obj). Each CAD files’ optical properties are modified
 by the chosen material:</p>
 <ul class="simple">
@@ -216,9 +218,9 @@ illumination. All surfaces will be illuminated with a uniform light emitting in 
     <span class="c1"># import_stl(path, parent=world, material=Debug(Vector3D(0.0, 1.0, 0.0)))  # Mesh with debugging material</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="loading-plasma-from-solps-simulation">
-<h2>Loading plasma from SOLPS simulation<a class="headerlink" href="#loading-plasma-from-solps-simulation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="loading-plasma-from-solps-simulation">
+<h2>Loading plasma from SOLPS simulation<a class="headerlink" href="#loading-plasma-from-solps-simulation" title="Permalink to this heading">¶</a></h2>
 <p>The core Plasma object can be populated from the output of a SOLPS simulation. These simulations can be loaded from the
 raw output files, or from the AUG MDSplus server. This example loads a SOLPS simulation from the AUG server.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load plasma from SOLPS model</span>
@@ -230,9 +232,9 @@ raw output files, or from the AUG MDSplus server. This example loads a SOLPS sim
 <span class="n">vessel</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vessel</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="setting-up-emission-lines">
-<h2>Setting up emission lines<a class="headerlink" href="#setting-up-emission-lines" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="setting-up-emission-lines">
+<h2>Setting up emission lines<a class="headerlink" href="#setting-up-emission-lines" title="Permalink to this heading">¶</a></h2>
 <p>The desired emission lines can be simulated by setting up an emission Line object. This specifies the species and
 transition of interest. Rate coefficient data will be loaded from the ADAS database if the line identified is available
 in the default ADAS ADF files. If no rate data is available, a user supplied ADF file can be used to populate the rate
@@ -270,9 +272,9 @@ coefficient curves.</p>
 <span class="n">ciii_excit</span><span class="o">.</span><span class="n">add_emitter_to_world</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">plasma</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="filtered-camera-setup">
-<h2>Filtered camera setup<a class="headerlink" href="#filtered-camera-setup" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="filtered-camera-setup">
+<h2>Filtered camera setup<a class="headerlink" href="#filtered-camera-setup" title="Permalink to this heading">¶</a></h2>
 <p>Camera geometry can be loaded from a CalCam calibration. The appropriate camera to use is the VectorCamera which takes
 the pixel geometry as arguments.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select from available Cameras</span>
@@ -325,29 +327,37 @@ samples. The simulation can be terminated manually when the required noise level
 <span class="n">spectral</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">mean</span><span class="p">[</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="p">:]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="example-output-images">
-<h2>Example output images<a class="headerlink" href="#example-output-images" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-center" id="id1">
+</section>
+<section id="example-output-images">
+<h2>Example output images<a class="headerlink" href="#example-output-images" title="Permalink to this heading">¶</a></h2>
+<figure class="align-center" id="id1">
 <img alt="../../_images/mastu_bulletb_midplane_dgamma.png" src="../../_images/mastu_bulletb_midplane_dgamma.png" />
-<p class="caption"><span class="caption-text">D-gamma with the mid-plane bullet camera.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id2">
+<figcaption>
+<p><span class="caption-text">D-gamma with the mid-plane bullet camera.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
 <img alt="../../_images/mastu_divcam_isp_ciii_465.png" src="../../_images/mastu_divcam_isp_ciii_465.png" />
-<p class="caption"><span class="caption-text">C-III at 465nm with the X-point camera.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id3">
+<figcaption>
+<p><span class="caption-text">C-III at 465nm with the X-point camera.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
 <img alt="../../_images/mastu_divcam_sxd_dalpha.png" src="../../_images/mastu_divcam_sxd_dalpha.png" />
-<p class="caption"><span class="caption-text">D-alpha in the Super-X configuration and viewed with the SXD camera.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id4">
+<figcaption>
+<p><span class="caption-text">D-alpha in the Super-X configuration and viewed with the SXD camera.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
 <img alt="../../_images/mastu_divcam_sxd_dalpha_150_samples.png" src="../../_images/mastu_divcam_sxd_dalpha_150_samples.png" />
-<p class="caption"><span class="caption-text">Repeat of the previous image. All previous simulations used the perfect AbsorbingSurface material to include geometry
+<figcaption>
+<p><span class="caption-text">Repeat of the previous image. All previous simulations used the perfect AbsorbingSurface material to include geometry
 blocking effects. This simulation goes one step further, instead we are using a Lambertian material with 25%
 reflectance to simulate carbon tiles. This leads to a visable difference around the tile surfaces.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
+</section>
 
 
            </div>
@@ -360,7 +370,7 @@ reflectance to simulate carbon tiles. This leads to a visable difference around 
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -384,7 +394,9 @@ reflectance to simulate carbon tiles. This leads to a visable difference around 
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

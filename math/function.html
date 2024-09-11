@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9.3. Functions &mdash; Cherab 1.4.0 documentation</title>
+  <title>9.3. Functions &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9.4. Interpolators" href="interpolators.html" />
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -97,15 +99,24 @@
 <li class="toctree-l2"><a class="reference internal" href="caching.html">9.1. Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="clamp.html">9.2. Clamps</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">9.3. Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#d-vector-functions">9.3.1. 2D Vector Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">9.3.2. 3D Vector Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#d-vector-functions">9.3.1. 2D Vector Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.VectorFunction2D"><code class="docutils literal notranslate"><span class="pre">VectorFunction2D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.ScalarToVectorFunction2D"><code class="docutils literal notranslate"><span class="pre">ScalarToVectorFunction2D</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">9.3.2. 3D Vector Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.VectorFunction3D"><code class="docutils literal notranslate"><span class="pre">VectorFunction3D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.ScalarToVectorFunction3D"><code class="docutils literal notranslate"><span class="pre">ScalarToVectorFunction3D</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.4. Interpolators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mappers.html">9.5. Mappers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mask.html">9.6. Masks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.7. Samplers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slice.html">9.8. Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html">9.6. Transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">9.7. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.8. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slice.html">9.9. Slicing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
@@ -186,45 +197,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="functions">
-<h1><span class="section-number">9.3. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+  <section id="functions">
+<h1><span class="section-number">9.3. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h1>
 <p>The Cherab function framework is built on the core Raysect 1D, 2D and 3D
 <a class="reference external" href="https://raysect.github.io/documentation/api_reference/core/functions.html">function framework</a>.
 For more details on the base functionality refer to the Raysect
 documentation and the Cherab function tutorials.</p>
 <p>Cherab previously provided vector functions which were not present in Raysect.
 New codes should prefer the Raysect vector functions, but the old aliases are preserved for backwards compatibility.</p>
-<div class="section" id="d-vector-functions">
-<h2><span class="section-number">9.3.1. </span>2D Vector Functions<a class="headerlink" href="#d-vector-functions" title="Permalink to this headline">¶</a></h2>
+<section id="d-vector-functions">
+<h2><span class="section-number">9.3.1. </span>2D Vector Functions<a class="headerlink" href="#d-vector-functions" title="Permalink to this heading">¶</a></h2>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cherab.core.math.function.VectorFunction2D">
 <span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">VectorFunction2D</span></span><a class="headerlink" href="#cherab.core.math.function.VectorFunction2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.vector3d.function2d.base.Function2D</span></code></p>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Function2D</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cherab.core.math.function.ScalarToVectorFunction2D">
 <span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">ScalarToVectorFunction2D</span></span><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.vector3d.function2d.utility.FloatToVector3DFunction2D</span></code></p>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">FloatToVector3DFunction2D</span></code></p>
 </dd></dl>
 
-</div>
-<div class="section" id="id1">
-<h2><span class="section-number">9.3.2. </span>3D Vector Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id1">
+<h2><span class="section-number">9.3.2. </span>3D Vector Functions<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cherab.core.math.function.VectorFunction3D">
 <span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">VectorFunction3D</span></span><a class="headerlink" href="#cherab.core.math.function.VectorFunction3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.vector3d.function3d.base.Function3D</span></code></p>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Function3D</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cherab.core.math.function.ScalarToVectorFunction3D">
 <span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">ScalarToVectorFunction3D</span></span><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction3D" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">raysect.core.math.function.vector3d.function3d.utility.FloatToVector3DFunction3D</span></code></p>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">FloatToVector3DFunction3D</span></code></p>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -246,7 +257,7 @@ New codes should prefer the Raysect vector functions, but the old aliases are pr
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -270,7 +281,9 @@ New codes should prefer the Raysect vector functions, but the old aliases are pr
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

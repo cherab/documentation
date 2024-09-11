@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Defining A Radiation Function &mdash; Cherab 1.4.0 documentation</title>
+  <title>Defining A Radiation Function &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="defining-a-radiation-function">
-<span id="radiation-function"></span><h1>Defining A Radiation Function<a class="headerlink" href="#defining-a-radiation-function" title="Permalink to this headline">¶</a></h1>
+  <section id="defining-a-radiation-function">
+<span id="radiation-function"></span><h1>Defining A Radiation Function<a class="headerlink" href="#defining-a-radiation-function" title="Permalink to this heading">¶</a></h1>
 <p>When calculating surface radiation loads on reactor components it is necessary
 to define a radiation function. This could be some output from a physics code,
 or perhaps an analytic function. In Cherab, the source function will always be
@@ -283,18 +285,22 @@ use raysect’s <cite>VolumeMaterial</cite> material modifier.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <img alt="../../_images/radiation_function_rz.png" src="../../_images/radiation_function_rz.png" />
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A slice through the specified 3D emission function in the R-Z plane..</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id2">
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A slice through the specified 3D emission function in the R-Z plane..</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
 <img alt="../../_images/radiation_function.png" src="../../_images/radiation_function.png" />
-<p class="caption"><span class="caption-text"><strong>Caption:</strong> A camera visualiation of the emission function. Notice that
+<figcaption>
+<p><span class="caption-text"><strong>Caption:</strong> A camera visualiation of the emission function. Notice that
 the bounding cylinder is transparent so there are effectively no walls.
 The emission function is defined inside the bounding cylinder and zero
 everywhere else.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
 
 
            </div>
@@ -307,7 +313,7 @@ everywhere else.</span><a class="headerlink" href="#id2" title="Permalink to thi
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -331,7 +337,9 @@ everywhere else.</span><a class="headerlink" href="#id2" title="Permalink to thi
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

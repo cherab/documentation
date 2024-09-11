@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.1. Elements and Isotopes &mdash; Cherab 1.4.0 documentation</title>
+  <title>6.1. Elements and Isotopes &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6.2. Spectroscopic Emission Lines" href="emission_lines.html" />
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -91,10 +93,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="atomic_data.html">6. Atomic Data</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. Elements and Isotopes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. Elements and Isotopes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.atomic.elements.Element"><code class="docutils literal notranslate"><span class="pre">Element</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.atomic.elements.lookup_element"><code class="docutils literal notranslate"><span class="pre">lookup_element()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.atomic.elements.Isotope"><code class="docutils literal notranslate"><span class="pre">Isotope</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.atomic.elements.lookup_isotope"><code class="docutils literal notranslate"><span class="pre">lookup_isotope()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="emission_lines.html">6.2. Spectroscopic Emission Lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">6.3. Rate Coefficients</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gaunt_factors.html">6.4. Gaunt factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic_data_interface.html">6.5. Atomic Data Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_interpolators.html">6.6. Atomic data interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repository.html">6.7. Atomic data repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openadas.html">6.8. Open-ADAS</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
@@ -178,14 +190,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="elements-and-isotopes">
-<h1><span class="section-number">6.1. </span>Elements and Isotopes<a class="headerlink" href="#elements-and-isotopes" title="Permalink to this headline">¶</a></h1>
+  <section id="elements-and-isotopes">
+<h1><span class="section-number">6.1. </span>Elements and Isotopes<a class="headerlink" href="#elements-and-isotopes" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.atomic.elements.Element">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.elements.</span></span><span class="sig-name descname"><span class="pre">Element</span></span><a class="headerlink" href="#cherab.core.atomic.elements.Element" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.elements.</span></span><span class="sig-name descname"><span class="pre">Element</span></span><a class="headerlink" href="#cherab.core.atomic.elements.Element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class representing an atomic element.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – Element name.</p></li>
 <li><p><strong>symbol</strong> (<em>str</em>) – Element symbol, e.g. ‘H’.</p></li>
@@ -193,7 +205,7 @@
 <li><p><strong>atomic_weight</strong> (<em>float</em>) – average atomic weight in amu</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – Element name.</p></li>
 <li><p><strong>symbol</strong> (<em>str</em>) – Element symbol, e.g. ‘H’.</p></li>
@@ -226,10 +238,10 @@
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>v</strong> – Search string or integer.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Element object.</p>
 </dd>
 </dl>
@@ -237,10 +249,10 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cherab.core.atomic.elements.Isotope">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.elements.</span></span><span class="sig-name descname"><span class="pre">Isotope</span></span><a class="headerlink" href="#cherab.core.atomic.elements.Isotope" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.atomic.elements.</span></span><span class="sig-name descname"><span class="pre">Isotope</span></span><a class="headerlink" href="#cherab.core.atomic.elements.Isotope" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class representing an atomic isotope.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – Isotope name.</p></li>
 <li><p><strong>symbol</strong> (<em>str</em>) – Isotope symbol, e.g. ‘T’.</p></li>
@@ -253,7 +265,7 @@ and neutrons. Allows identification of specific isotopes.</p></li>
 e.g. for Tritium it would be Hydrogen.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Variables</dt>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – Isotope name.</p></li>
 <li><p><strong>symbol</strong> (<em>str</em>) – Isotope symbol, e.g. ‘T’.</p></li>
@@ -290,19 +302,19 @@ can be specified as a single string or a combination of element and mass number.
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>v</strong> – Search string, integer or element.</p></li>
 <li><p><strong>number</strong> – Integer mass number</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Element object.</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -324,7 +336,7 @@ can be specified as a single string or a combination of element and mass number.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -348,7 +360,9 @@ can be specified as a single string or a combination of element and mass number.
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

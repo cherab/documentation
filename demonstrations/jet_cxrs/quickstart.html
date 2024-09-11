@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quickstart Example &mdash; Cherab 1.4.0 documentation</title>
+  <title>Quickstart Example &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,10 +170,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quickstart-example">
-<span id="jet-cxrs-quickstart"></span><h1>Quickstart Example<a class="headerlink" href="#quickstart-example" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="preamble">
-<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this headline">¶</a></h2>
+  <section id="quickstart-example">
+<span id="jet-cxrs-quickstart"></span><h1>Quickstart Example<a class="headerlink" href="#quickstart-example" title="Permalink to this heading">¶</a></h1>
+<section id="preamble">
+<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this heading">¶</a></h2>
 <p>This is a commented demo file about how to use Cherab. It aims to give an
 example with the main steps for a basic use of Cherab. We start by importing
 the classes used in this demo.:</p>
@@ -207,9 +209,9 @@ pulse 79503 at t=61s.:</p>
 <p>To achieve this simulation we need to set up the scenegraph, which means placing
 beams and lines of sight in a first place, and providing parameters and plasma
 profiles in a second place.</p>
-</div>
-<div class="section" id="scenegraph-creation">
-<h2>Scenegraph Creation<a class="headerlink" href="#scenegraph-creation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="scenegraph-creation">
+<h2>Scenegraph Creation<a class="headerlink" href="#scenegraph-creation" title="Permalink to this heading">¶</a></h2>
 <p>The first step is to generate the scenegraph and to give the geometry and physical
 models needed. The scenegraph is created through the <cite>build_scenegraph</cite> function.
 This function build PINIs and lines of sight with the geometry given in geometry
@@ -265,9 +267,9 @@ NIB8 (containing the PINIs) and two groups of lines of sight.</p>
 <span class="n">ks5_oct1</span><span class="o">.</span><span class="n">spectral_samples</span> <span class="o">=</span> <span class="mi">1000</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="plasma-configuration">
-<h2>Plasma Configuration<a class="headerlink" href="#plasma-configuration" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plasma-configuration">
+<h2>Plasma Configuration<a class="headerlink" href="#plasma-configuration" title="Permalink to this heading">¶</a></h2>
 <p>To set up a real plasma, we need to feed <cite>plasma</cite> with profiles and composition.</p>
 <p>Now we are looking for information about the plasma (temperature, density, etc)
 in the PPF system. Here they are generally given as profile arrays along
@@ -383,9 +385,9 @@ get ADAS CX rates. Here a toroidal unitary vector field is given:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plasma</span><span class="o">.</span><span class="n">b_field</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">Vector3D</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span><span class="o">.</span><span class="n">normalise</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="pini-configuration">
-<h2>PINI Configuration<a class="headerlink" href="#pini-configuration" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pini-configuration">
+<h2>PINI Configuration<a class="headerlink" href="#pini-configuration" title="Permalink to this heading">¶</a></h2>
 <p>The plasma have been entirely set up, let’s set the PINIs parameters. PINIs will be composed of deuterium:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beam_element</span> <span class="o">=</span> <span class="n">elements</span><span class="o">.</span><span class="n">deuterium</span>
 </pre></div>
@@ -416,9 +418,9 @@ octant 8 PINIs, we need information about 8 PINIS, so:</p>
 <span class="n">nib8</span><span class="o">.</span><span class="n">pini_parameters</span> <span class="o">=</span> <span class="n">pini_parameters</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="observation">
-<h2>Observation<a class="headerlink" href="#observation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="observation">
+<h2>Observation<a class="headerlink" href="#observation" title="Permalink to this heading">¶</a></h2>
 <p>The scenegraph have been completely set up now! To be sure, we can have a look
 at it with <cite>print_scenegraph</cite> from raysect.core.scenegraph.utility:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_scenegraph</span><span class="p">(</span><span class="n">world</span><span class="p">)</span>
@@ -467,8 +469,8 @@ of data in photons/s/m^3/str/nm using <cite>to_photons</cite> method:</p>
 </pre></div>
 </div>
 <img alt="../../_images/JET_CXRS_d5lines.png" class="align-center" src="../../_images/JET_CXRS_d5lines.png" />
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -481,7 +483,7 @@ of data in photons/s/m^3/str/nm using <cite>to_photons</cite> method:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -505,7 +507,9 @@ of data in photons/s/m^3/str/nm using <cite>to_photons</cite> method:</p>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   

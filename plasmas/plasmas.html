@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7. Plasmas &mdash; Cherab 1.4.0 documentation</title>
+  <title>7. Plasmas &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,10 +28,11 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7.1. Core Plasma Classes" href="core_plasma_classes.html" />
-    <link rel="prev" title="6.4. Gaunt factors" href="../atomic/gaunt_factors.html" /> 
+    <link rel="prev" title="6.8. Open-ADAS" href="../atomic/openadas.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -176,27 +178,98 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="plasmas">
-<h1><span class="section-number">7. </span>Plasmas<a class="headerlink" href="#plasmas" title="Permalink to this headline">¶</a></h1>
+  <section id="plasmas">
+<h1><span class="section-number">7. </span>Plasmas<a class="headerlink" href="#plasmas" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="core_plasma_classes.html">7.1. Core Plasma Classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html#main-plasma-object">7.1.1. Main Plasma Object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html#plasma-species">7.1.2. Plasma Species</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html#distribution-functions">7.1.3. Distribution functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html#main-plasma-object">7.1.1. Main Plasma Object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core_plasma_classes.html#cherab.core.Plasma"><code class="docutils literal notranslate"><span class="pre">Plasma</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.Plasma.ion_density"><code class="docutils literal notranslate"><span class="pre">Plasma.ion_density()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.Plasma.z_effective"><code class="docutils literal notranslate"><span class="pre">Plasma.z_effective()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">7.2. Plasma equilibrium</a></li>
-<li class="toctree-l1"><a class="reference internal" href="particle_beams.html">7.3. Mono-energetic Particle Beams</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html#plasma-species">7.1.2. Plasma Species</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core_plasma_classes.html#cherab.core.Species"><code class="docutils literal notranslate"><span class="pre">Species</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core_plasma_classes.html#cherab.core.plasma.node.Composition"><code class="docutils literal notranslate"><span class="pre">Composition</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.plasma.node.Composition.__getitem__"><code class="docutils literal notranslate"><span class="pre">Composition.__getitem__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.plasma.node.Composition.__iter__"><code class="docutils literal notranslate"><span class="pre">Composition.__iter__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.plasma.node.Composition.add"><code class="docutils literal notranslate"><span class="pre">Composition.add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.plasma.node.Composition.clear"><code class="docutils literal notranslate"><span class="pre">Composition.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.plasma.node.Composition.get"><code class="docutils literal notranslate"><span class="pre">Composition.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.plasma.node.Composition.set"><code class="docutils literal notranslate"><span class="pre">Composition.set()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="core_plasma_classes.html#distribution-functions">7.1.3. Distribution functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core_plasma_classes.html#cherab.core.distribution.DistributionFunction"><code class="docutils literal notranslate"><span class="pre">DistributionFunction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.distribution.DistributionFunction.__call__"><code class="docutils literal notranslate"><span class="pre">DistributionFunction.__call__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.distribution.DistributionFunction.bulk_velocity"><code class="docutils literal notranslate"><span class="pre">DistributionFunction.bulk_velocity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.distribution.DistributionFunction.density"><code class="docutils literal notranslate"><span class="pre">DistributionFunction.density()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.distribution.DistributionFunction.effective_temperature"><code class="docutils literal notranslate"><span class="pre">DistributionFunction.effective_temperature()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="core_plasma_classes.html#cherab.core.distribution.Maxwellian"><code class="docutils literal notranslate"><span class="pre">Maxwellian</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.distribution.Maxwellian.bulk_velocity"><code class="docutils literal notranslate"><span class="pre">Maxwellian.bulk_velocity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.distribution.Maxwellian.density"><code class="docutils literal notranslate"><span class="pre">Maxwellian.density()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="core_plasma_classes.html#cherab.core.distribution.Maxwellian.effective_temperature"><code class="docutils literal notranslate"><span class="pre">Maxwellian.effective_temperature()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">7.2. Plasma equilibrium</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="equilibrium.html#cherab.tools.equilibrium.efit.EFITEquilibrium"><code class="docutils literal notranslate"><span class="pre">EFITEquilibrium</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="equilibrium.html#cherab.tools.equilibrium.efit.EFITEquilibrium.map2d"><code class="docutils literal notranslate"><span class="pre">EFITEquilibrium.map2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="equilibrium.html#cherab.tools.equilibrium.efit.EFITEquilibrium.map3d"><code class="docutils literal notranslate"><span class="pre">EFITEquilibrium.map3d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="equilibrium.html#cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector2d"><code class="docutils literal notranslate"><span class="pre">EFITEquilibrium.map_vector2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="equilibrium.html#cherab.tools.equilibrium.efit.EFITEquilibrium.map_vector3d"><code class="docutils literal notranslate"><span class="pre">EFITEquilibrium.map_vector3d()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="equilibrium.html#cherab.tools.equilibrium.example.example_equilibrium"><code class="docutils literal notranslate"><span class="pre">example_equilibrium()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="equilibrium.html#cherab.tools.equilibrium.plot.plot_equilibrium"><code class="docutils literal notranslate"><span class="pre">plot_equilibrium()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="equilibrium.html#cherab.tools.equilibrium.eqdsk.import_eqdsk"><code class="docutils literal notranslate"><span class="pre">import_eqdsk()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="particle_beams.html">7.3. Mono-energetic Particle Beams</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="particle_beams.html#cherab.core.beam.node.Beam"><code class="docutils literal notranslate"><span class="pre">Beam</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="particle_beams.html#cherab.core.beam.node.Beam.density"><code class="docutils literal notranslate"><span class="pre">Beam.density()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="particle_beams.html#cherab.core.beam.node.Beam.direction"><code class="docutils literal notranslate"><span class="pre">Beam.direction()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="laser.html">7.4. Laser</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="laser.html#laser-spectrum">7.4.1. Laser Spectrum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="laser.html#laser-profile">7.4.2. Laser Profile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="laser.html#laser-model">7.4.3. Laser Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="laser.html#laser-spectrum">7.4.1. Laser Spectrum</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="laser.html#cherab.core.laser.laserspectrum.LaserSpectrum"><code class="docutils literal notranslate"><span class="pre">LaserSpectrum</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="laser.html#laser-profile">7.4.2. Laser Profile</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="laser.html#cherab.core.laser.profile.LaserProfile"><code class="docutils literal notranslate"><span class="pre">LaserProfile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="laser.html#cherab.core.laser.profile.LaserProfile.generate_geometry"><code class="docutils literal notranslate"><span class="pre">LaserProfile.generate_geometry()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="laser.html#cherab.core.laser.profile.LaserProfile.get_energy_density"><code class="docutils literal notranslate"><span class="pre">LaserProfile.get_energy_density()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="laser.html#cherab.core.laser.profile.LaserProfile.get_pointing"><code class="docutils literal notranslate"><span class="pre">LaserProfile.get_pointing()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="laser.html#cherab.core.laser.profile.LaserProfile.get_polarization"><code class="docutils literal notranslate"><span class="pre">LaserProfile.get_polarization()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="laser.html#cherab.core.laser.profile.LaserProfile.set_energy_density_function"><code class="docutils literal notranslate"><span class="pre">LaserProfile.set_energy_density_function()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="laser.html#cherab.core.laser.profile.LaserProfile.set_pointing_function"><code class="docutils literal notranslate"><span class="pre">LaserProfile.set_pointing_function()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="laser.html#cherab.core.laser.profile.LaserProfile.set_polarization_function"><code class="docutils literal notranslate"><span class="pre">LaserProfile.set_polarization_function()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="laser.html#laser-model">7.4.3. Laser Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="laser.html#cherab.core.laser.model.LaserModel"><code class="docutils literal notranslate"><span class="pre">LaserModel</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
+</section>
 
 
            </div>
@@ -209,7 +282,7 @@
         <a href="core_plasma_classes.html" class="btn btn-neutral float-right" title="7.1. Core Plasma Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../atomic/gaunt_factors.html" class="btn btn-neutral" title="6.4. Gaunt factors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../atomic/openadas.html" class="btn btn-neutral" title="6.8. Open-ADAS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -218,7 +291,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -242,7 +315,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

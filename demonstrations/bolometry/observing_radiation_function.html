@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Observing a 3D Radiation Function with a Bolometer &mdash; Cherab 1.4.0 documentation</title>
+  <title>Observing a 3D Radiation Function with a Bolometer &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,19 +170,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="observing-a-3d-radiation-function-with-a-bolometer">
-<span id="bolometer-observing-radiation"></span><h1>Observing a 3D Radiation Function with a Bolometer<a class="headerlink" href="#observing-a-3d-radiation-function-with-a-bolometer" title="Permalink to this headline">¶</a></h1>
+  <section id="observing-a-3d-radiation-function-with-a-bolometer">
+<span id="bolometer-observing-radiation"></span><h1>Observing a 3D Radiation Function with a Bolometer<a class="headerlink" href="#observing-a-3d-radiation-function-with-a-bolometer" title="Permalink to this heading">¶</a></h1>
 <p>In this demonstration we forward model the measured power on a synthetic bolometer
 diagnostic viewing a 3D — but axisymmetric — emissivity profile. The emissivity
 profile is defined in the R-Z plane and then mapped to 3D world space. The bolometer
 system is produced in the same way as in the <a class="reference internal" href="camera_from_primitives.html#bolometer-from-primitives"><span class="std std-ref">Camera From Primitives</span></a> demo. The emitter is produced in the same way as in the
 <a class="reference internal" href="../radiation_loads/radiation_function.html#radiation-function"><span class="std std-ref">Defining A Radiation Function</span></a> demo, except that the emission
 profile is a torus with circular cross section and uniform emissivity of 1W/m³.</p>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <img alt="../../_images/bolometer_and_radiation_function.png" src="../../_images/bolometer_and_radiation_function.png" />
-<p class="caption"><span class="caption-text"><strong>Caption</strong> A slice through the 3D emission function in the R-Z plane, along with the
+<figcaption>
+<p><span class="caption-text"><strong>Caption</strong> A slice through the 3D emission function in the R-Z plane, along with the
 lines of sight of the bolometer foils.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+</figcaption>
+</figure>
 <p>5 measurements are presented:</p>
 <blockquote>
 <div><ul class="simple">
@@ -437,7 +441,7 @@ different numbers due to random sampling of the emitting material):</p>
 bolometer assuming the emission is radiated isotropically into <span class="math notranslate nohighlight">\(4\pi\)</span> steradians)
 is approximately 1W/m². The emissivity profile is a constant 1W/m³ and the emitter has a
 diameter of 1m, so these numbers are reasonable.</p>
-</div>
+</section>
 
 
            </div>
@@ -450,7 +454,7 @@ diameter of 1m, so these numbers are reasonable.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -474,7 +478,9 @@ diameter of 1m, so these numbers are reasonable.</p>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
 

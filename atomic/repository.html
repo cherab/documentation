@@ -1,0 +1,1617 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6.7. Atomic data repository &mdash; Cherab 1.5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.8. Open-ADAS" href="openadas.html" />
+    <link rel="prev" title="6.6. Atomic data interpolators" href="data_interpolators.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cherab
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="atomic_data.html">6. Atomic Data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="elements_and_isotopes.html">6.1. Elements and Isotopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emission_lines.html">6.2. Spectroscopic Emission Lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rate_coefficients.html">6.3. Rate Coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gaunt_factors.html">6.4. Gaunt factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic_data_interface.html">6.5. Atomic Data Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_interpolators.html">6.6. Atomic data interpolators</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.7. Atomic data repository</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.openadas.repository.create.populate"><code class="docutils literal notranslate"><span class="pre">populate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cherab.openadas.repository.wavelength">6.7.1. Wavelength</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.wavelength.add_wavelength"><code class="docutils literal notranslate"><span class="pre">add_wavelength()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.wavelength.get_wavelength"><code class="docutils literal notranslate"><span class="pre">get_wavelength()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.wavelength.update_wavelengths"><code class="docutils literal notranslate"><span class="pre">update_wavelengths()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ionisation">6.7.2. Ionisation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.atomic.add_ionisation_rate"><code class="docutils literal notranslate"><span class="pre">add_ionisation_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.atomic.get_ionisation_rate"><code class="docutils literal notranslate"><span class="pre">get_ionisation_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.atomic.update_ionisation_rates"><code class="docutils literal notranslate"><span class="pre">update_ionisation_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#recombination">6.7.3. Recombination</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.atomic.add_recombination_rate"><code class="docutils literal notranslate"><span class="pre">add_recombination_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.atomic.get_recombination_rate"><code class="docutils literal notranslate"><span class="pre">get_recombination_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.atomic.update_recombination_rates"><code class="docutils literal notranslate"><span class="pre">update_recombination_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#thermal-charge-exchange">6.7.4. Thermal Charge Exchange</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.atomic.add_thermal_cx_rate"><code class="docutils literal notranslate"><span class="pre">add_thermal_cx_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.atomic.get_thermal_cx_rate"><code class="docutils literal notranslate"><span class="pre">get_thermal_cx_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.atomic.update_thermal_cx_rates"><code class="docutils literal notranslate"><span class="pre">update_thermal_cx_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cherab.openadas.repository.pec">6.7.5. Photon Emissivity Coefficients</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.pec.add_pec_excitation_rate"><code class="docutils literal notranslate"><span class="pre">add_pec_excitation_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.pec.add_pec_recombination_rate"><code class="docutils literal notranslate"><span class="pre">add_pec_recombination_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.pec.add_pec_thermal_cx_rate"><code class="docutils literal notranslate"><span class="pre">add_pec_thermal_cx_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.pec.get_pec_excitation_rate"><code class="docutils literal notranslate"><span class="pre">get_pec_excitation_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.pec.get_pec_recombination_rate"><code class="docutils literal notranslate"><span class="pre">get_pec_recombination_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.pec.get_pec_thermal_cx_rate"><code class="docutils literal notranslate"><span class="pre">get_pec_thermal_cx_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.pec.update_pec_rates"><code class="docutils literal notranslate"><span class="pre">update_pec_rates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.pec.update_pec_thermal_cx_rates"><code class="docutils literal notranslate"><span class="pre">update_pec_thermal_cx_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cherab.openadas.repository.radiated_power">6.7.6. Radiated Power</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.radiated_power.add_continuum_power_rate"><code class="docutils literal notranslate"><span class="pre">add_continuum_power_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.radiated_power.add_cx_power_rate"><code class="docutils literal notranslate"><span class="pre">add_cx_power_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.radiated_power.add_line_power_rate"><code class="docutils literal notranslate"><span class="pre">add_line_power_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.radiated_power.get_continuum_radiated_power_rate"><code class="docutils literal notranslate"><span class="pre">get_continuum_radiated_power_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.radiated_power.get_cx_radiated_power_rate"><code class="docutils literal notranslate"><span class="pre">get_cx_radiated_power_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.radiated_power.get_line_radiated_power_rate"><code class="docutils literal notranslate"><span class="pre">get_line_radiated_power_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.radiated_power.update_continuum_power_rates"><code class="docutils literal notranslate"><span class="pre">update_continuum_power_rates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.radiated_power.update_cx_power_rates"><code class="docutils literal notranslate"><span class="pre">update_cx_power_rates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.radiated_power.update_line_power_rates"><code class="docutils literal notranslate"><span class="pre">update_line_power_rates()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cherab.openadas.repository.beam.cx">6.7.7. Beam</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.cx.add_beam_cx_rate"><code class="docutils literal notranslate"><span class="pre">add_beam_cx_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.cx.get_beam_cx_rates"><code class="docutils literal notranslate"><span class="pre">get_beam_cx_rates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.cx.update_beam_cx_rates"><code class="docutils literal notranslate"><span class="pre">update_beam_cx_rates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.emission.add_beam_emission_rate"><code class="docutils literal notranslate"><span class="pre">add_beam_emission_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.emission.get_beam_emission_rate"><code class="docutils literal notranslate"><span class="pre">get_beam_emission_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.emission.update_beam_emission_rates"><code class="docutils literal notranslate"><span class="pre">update_beam_emission_rates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.population.add_beam_population_rate"><code class="docutils literal notranslate"><span class="pre">add_beam_population_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.population.get_beam_population_rate"><code class="docutils literal notranslate"><span class="pre">get_beam_population_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.population.update_beam_population_rates"><code class="docutils literal notranslate"><span class="pre">update_beam_population_rates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.stopping.add_beam_stopping_rate"><code class="docutils literal notranslate"><span class="pre">add_beam_stopping_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.stopping.get_beam_stopping_rate"><code class="docutils literal notranslate"><span class="pre">get_beam_stopping_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.openadas.repository.beam.stopping.update_beam_stopping_rates"><code class="docutils literal notranslate"><span class="pre">update_beam_stopping_rates()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="openadas.html">6.8. Open-ADAS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cherab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="atomic_data.html"><span class="section-number">6. </span>Atomic Data</a> &raquo;</li>
+        
+      <li><span class="section-number">6.7. </span>Atomic data repository</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/atomic/repository.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="atomic-data-repository">
+<h1><span class="section-number">6.7. </span>Atomic data repository<a class="headerlink" href="#atomic-data-repository" title="Permalink to this heading">¶</a></h1>
+<p>The following functions allow to manipulate the local atomic data repository:
+add the rates of the atomic processes, update existing ones or get the data
+already present in the repository.</p>
+<p>The default repository is created at <cite>~/.cherab/openadas/repository</cite>.
+Cherab supports multiple atomic data repositories. The user can configure different
+repositories by setting the <cite>repository_path</cite> parameter.
+The data in these repositories can be accessed through the <cite>OpenADAS</cite> atomic data provider
+by specifying the <cite>data_path</cite> parameter.</p>
+<p>To create the new atomic data repository at the default location and populate it with a typical
+set of rates and wavelengths from Open-ADAS, do:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.openadas.repository</span> <span class="kn">import</span> <span class="n">populate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">populate</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.create.populate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.create.</span></span><span class="sig-name descname"><span class="pre">populate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.create.populate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Populates the OpenADAS repository with a typical set of rates and wavelengths.</p>
+<p>If an ADAS file is not note found an attempt will be made to download the
+file from the OpenADAS website. This behaviour can be disabled by setting
+the download argument to False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>download</strong> – Attempt to download the ADAS files if missing (default=True).</p></li>
+<li><p><strong>repository_path</strong> – Alternate path for the OpenADAS repository (default=None).</p></li>
+<li><p><strong>adas_path</strong> – Alternate path in which to search for ADAS files (default=None) .</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="module-cherab.openadas.repository.wavelength">
+<span id="wavelength"></span><h2><span class="section-number">6.7.1. </span>Wavelength<a class="headerlink" href="#module-cherab.openadas.repository.wavelength" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.wavelength.add_wavelength">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.wavelength.</span></span><span class="sig-name descname"><span class="pre">add_wavelength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.wavelength.add_wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single wavelength to the repository.</p>
+<p>If adding multiple wavelengths, consider using the update_wavelengths()
+function instead. The update function avoid repeatedly opening and closing
+the rate files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>wavelength</strong> – Transition’s wavelength in nm.</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.wavelength.get_wavelength">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.wavelength.</span></span><span class="sig-name descname"><span class="pre">get_wavelength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.wavelength.get_wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the wavelength for the given species, charge and transition from the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return wavelength<span class="colon">:</span></dt>
+<dd class="field-even"><p>Wavelength in nm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.wavelength.update_wavelengths">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.wavelength.</span></span><span class="sig-name descname"><span class="pre">update_wavelengths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.wavelength.update_wavelengths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the wavelength files <cite>/wavelength/&lt;species&gt;/&lt;charge&gt;.json</cite>
+in atomic data repository.</p>
+<p>File contains multiple rates, indexed by the transitions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>wavelengths</strong> – Dictionary in the form:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">{ &lt;species&gt;: { &lt;charge&gt;: { &lt;transition&gt;: &lt;wavelength&gt; } } }, where</div>
+<div class="line-block">
+<div class="line">&lt;species&gt; is the plasma species (Element/Isotope),</div>
+<div class="line">&lt;charge&gt; is the charge of the plasma species,</div>
+<div class="line">&lt;transition&gt; is the tuple containing (initial level, final level),</div>
+<div class="line">&lt;wavelength&gt; is the transition’s wavelength in nm.</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="ionisation">
+<h2><span class="section-number">6.7.2. </span>Ionisation<a class="headerlink" href="#ionisation" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.atomic.add_ionisation_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">add_ionisation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.add_ionisation_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single ionisation rate to the repository.</p>
+<p>If adding multiple rates, consider using the update_ionisation_rates()
+function instead. The update function avoids repeatedly opening and closing
+the rate files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>species</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>rate</strong> – Ionisation rate dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with ionisation rate in m^3.s^-1.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.atomic.get_ionisation_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">get_ionisation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.get_ionisation_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the ionisation rate for the given species and charge
+from the atomic data repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ionisation rate dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: 1D array of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: 1D array of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: 2D array of size (N, M) with ionisation rate in m^3.s^-1.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.atomic.update_ionisation_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">update_ionisation_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.update_ionisation_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the ionisation rate files <cite>/ionisation/&lt;species&gt;.json</cite>
+in atomic data repository.</p>
+<p>File contains multiple rates, indexed by the ion charge state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form {&lt;species&gt;: {&lt;charge&gt;: &lt;rate&gt;}}, where</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">&lt;species&gt; is the plasma species (Element/Isotope),</div>
+<div class="line">&lt;charge&gt; is the charge of the plasma species,</div>
+<div class="line">&lt;rate&gt; is the ionisation rate dictionary containing the following entries:</div>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with ionisation rate in m^3.s^-1.</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="recombination">
+<h2><span class="section-number">6.7.3. </span>Recombination<a class="headerlink" href="#recombination" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.atomic.add_recombination_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">add_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.add_recombination_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single recombination rate to the repository.</p>
+<p>If adding multiple rates, consider using the update_recombination_rates()
+function instead. The update function avoids repeatedly opening and closing
+the rate files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>species</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>rate</strong> – Recombination rate dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with recombination rate in m^3.s^-1.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.atomic.get_recombination_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">get_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.get_recombination_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the recombination rate for the given species and charge
+from the atomic data repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Recombination rate dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: 1D array of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: 1D array of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: 2D array of size (N, M) with recombination rate in m^3.s^-1.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.atomic.update_recombination_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">update_recombination_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.update_recombination_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the recombination rate files <cite>/recombination/&lt;species&gt;.json</cite>
+in the atomic data repository.</p>
+<p>File contains multiple rates, indexed by the ion charge state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form {&lt;species&gt;: {&lt;charge&gt;: &lt;rate&gt;}}, where</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">&lt;species&gt; is the plasma species (Element/Isotope),</div>
+<div class="line">&lt;charge&gt; is the charge of the plasma species,</div>
+<div class="line">&lt;rate&gt; is the recombination rate dictionary containing the following entries:</div>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with recombination rate in m^3.s^-1.</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="thermal-charge-exchange">
+<h2><span class="section-number">6.7.4. </span>Thermal Charge Exchange<a class="headerlink" href="#thermal-charge-exchange" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.atomic.add_thermal_cx_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">add_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.add_thermal_cx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single thermal charge exchange rate to the repository.</p>
+<p>If adding multiple rates, consider using the update_recombination_rates()
+function instead. The update function avoids repeatedly opening and closing
+the rate files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_element</strong> – Element donating the electron.</p></li>
+<li><p><strong>donor_charge</strong> – Charge of the donating atom/ion.</p></li>
+<li><p><strong>receiver_element</strong> – Element receiving the electron.</p></li>
+<li><p><strong>receiver_charge</strong> – Charge of the receiving atom/ion.</p></li>
+<li><p><strong>rate</strong> – Thermal CX rate dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with thermal CX rate in m^3.s^-1.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.atomic.get_thermal_cx_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">get_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.get_thermal_cx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the thermal charge exchange rate for the given species and charge
+from the atomic data repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_element</strong> – Element donating the electron.</p></li>
+<li><p><strong>donor_charge</strong> – Charge of the donating atom/ion.</p></li>
+<li><p><strong>receiver_element</strong> – Element receiving the electron.</p></li>
+<li><p><strong>receiver_charge</strong> – Charge of the receiving atom/ion.</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Thermal CX rate dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: 1D array of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: 1D array of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: 2D array of size (N, M) with thermal CX rate in m^3.s^-1.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.atomic.update_thermal_cx_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">update_thermal_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.update_thermal_cx_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the thermal charge exchange rate files
+<cite>/thermal_cx/&lt;donor_element&gt;/&lt;donor_charge&gt;/&lt;receiver_element&gt;.json</cite>
+in the atomic data repository.</p>
+<p>File contains multiple rates, indexed by the ion charge state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">{ &lt;donor_element&gt;: { &lt;donor_charge&gt;: { &lt;receiver_element&gt;: { &lt;donor_charge&gt;: &lt;rate&gt; } } } }, where</div>
+<div class="line-block">
+<div class="line">&lt;donor_element&gt; is the element donating the electron.</div>
+<div class="line">&lt;donor_charge&gt; is the charge of the donating atom/ion.</div>
+<div class="line">&lt;receiver_element&gt; is the element receiving the electron.</div>
+<div class="line">&lt;receiver_charge&gt; is the charge of the receiving atom/ion.</div>
+<div class="line">&lt;rate&gt; is the thermal CX rate dictionary containing the following entries:</div>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with thermal CX rate in m^3.s^-1.</div>
+</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-cherab.openadas.repository.pec">
+<span id="photon-emissivity-coefficients"></span><h2><span class="section-number">6.7.5. </span>Photon Emissivity Coefficients<a class="headerlink" href="#module-cherab.openadas.repository.pec" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.pec.add_pec_excitation_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">add_pec_excitation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.add_pec_excitation_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single PEC excitation rate to the repository.</p>
+<p>If adding multiple rate, consider using the update_pec_rates() function
+instead. The update function avoid repeatedly opening and closing the rate
+files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>rate</strong> – Excitation PEC dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with excitation PEC in photon.m^3.s^-1.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.pec.add_pec_recombination_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">add_pec_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.add_pec_recombination_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single PEC recombination rate to the repository.</p>
+<p>If adding multiple rate, consider using the update_pec_rates() function
+instead. The update function avoid repeatedly opening and closing the rate
+files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>rate</strong> – Recombination PEC dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with recombination PEC in photon.m^3.s^-1.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.pec.add_pec_thermal_cx_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">add_pec_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.add_pec_thermal_cx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single PEC thermal charge exchange rate to the repository.</p>
+<p>If adding multiple rate, consider using the update_pec_thermal_rates() function
+instead. The update function avoid repeatedly opening and closing the rate
+files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_element</strong> – Electron donor plasma species (Element/Isotope).</p></li>
+<li><p><strong>donor_charge</strong> – Electron donor charge.</p></li>
+<li><p><strong>receiver_element</strong> – Electron receiver plasma species (Element/Isotope).</p></li>
+<li><p><strong>receiver_charge</strong> – Electron receiver charge.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>rate</strong> – Thermal CX PEC dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘td’: array-like of size (K) with donor temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M, K) with thermal CX PEC in photon.m^3.s^-1.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.pec.get_pec_excitation_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">get_pec_excitation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.get_pec_excitation_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the excitation PEC from the repository for the given
+element, charge and transition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Excitation PEC dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: 1D array of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: 1D array of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: 2D array of size (N, M) with excitation PEC in photon.m^3.s^-1.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.pec.get_pec_recombination_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">get_pec_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.get_pec_recombination_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the recombination PEC from the repository for the given
+element, charge and transition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Recombination PEC dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: 1D array of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: 1D array of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: 2D array of size (N, M) with recombination PEC in photon.m^3.s^-1.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.pec.get_pec_thermal_cx_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">get_pec_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.get_pec_thermal_cx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the thermal charge exchange PEC from the repository for the given
+donor element, donor charge, receiver element, receiver charge and transition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_element</strong> – Electron donor plasma species (Element/Isotope).</p></li>
+<li><p><strong>donor_charge</strong> – Electron donor charge.</p></li>
+<li><p><strong>receiver_element</strong> – Electron receiver plasma species (Element/Isotope).</p></li>
+<li><p><strong>receiver_charge</strong> – Electron receiver charge.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Thermal CX PEC dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: 1D array of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: 1D array of size (M) with electron temperature in eV,</div>
+<div class="line">‘td’: 1D array of size (K) with donor temperature in eV,</div>
+<div class="line">‘rate’: 2D array of size (N, M, K) with thermal CX PEC in photon.m^3.s^-1.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.pec.update_pec_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">update_pec_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.update_pec_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates excitation and recombination PEC files /pec/&lt;class&gt;/&lt;element&gt;/&lt;charge&gt;.json.
+in the atomic data repository.</p>
+<p>File contains multiple PECs, indexed by the transition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">{ &lt;class&gt;: { &lt;element&gt;: { &lt;charge&gt;: { &lt;transition&gt;: &lt;pec&gt; } } } }, where</div>
+<div class="line-block">
+<div class="line">&lt;class&gt; is the one of the following PEC types: ‘excitation’, ‘recombination’.</div>
+<div class="line">&lt;element&gt; is the plasma species (Element/Isotope).</div>
+<div class="line">&lt;charge&gt; is the charge of the plasma species.</div>
+<div class="line">&lt;transition&gt; is the tuple containing (initial level, final level).</div>
+<div class="line">&lt;pec&gt; is the PEC dictionary containing the following entries:</div>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with PEC in photon.m^3.s^-1.</div>
+</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.pec.update_pec_thermal_cx_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">update_pec_thermal_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.update_pec_thermal_cx_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates thermal CX PEC files /pec/thermal_cx/&lt;donor_element&gt;/&lt;donor_charge&gt;/&lt;receiver_element&gt;/&lt;receiver_charge&gt;.json
+in the atomic data repository.</p>
+<p>File contains multiple PECs, indexed by the transition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">{ &lt;donor_element&gt;: { &lt;donor_charge&gt;: { &lt;receiver_element&gt;: { &lt;receiver_charge&gt;: { &lt;transition&gt;: &lt;pec&gt; } } } } }, where</div>
+<div class="line-block">
+<div class="line">&lt;donor_element&gt; is the electron donor species (Element/Isotope).</div>
+<div class="line">&lt;donor_charge&gt; is the electron donor charge.</div>
+<div class="line">&lt;receiver_element&gt; is the electron receiver species (Element/Isotope).</div>
+<div class="line">&lt;receiver_charge&gt; is the electron receiver charge.</div>
+<div class="line">&lt;transition&gt; is the tuple containing (initial level, final level).</div>
+<div class="line">&lt;pec&gt; is the PEC dictionary containing the following entries:</div>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘td’: array-like of size (K) with donor temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M, K) with PEC in photon.m^3.s^-1.</div>
+</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-cherab.openadas.repository.radiated_power">
+<span id="radiated-power"></span><h2><span class="section-number">6.7.6. </span>Radiated Power<a class="headerlink" href="#module-cherab.openadas.repository.radiated_power" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.add_continuum_power_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">add_continuum_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.add_continuum_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single continuum power rate to the repository.</p>
+<p>If adding multiple rates, consider using the update_continuum_power_rates()
+function instead. The update function avoids repeatedly opening and closing
+the rate files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>species</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>rate</strong> – Continuum power rate dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with continuum power rate in W.m^3.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.add_cx_power_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">add_cx_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.add_cx_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single CX radiation power rate to the repository
+(charge exchage with neutral hydrogen).</p>
+<p>If adding multiple rates, consider using the update_cx_power_rates()
+function instead. The update function avoids repeatedly opening and closing
+the rate files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>species</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>rate</strong> – CX power rate dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with CX power rate in W.m^3.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.add_line_power_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">add_line_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.add_line_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single line radiated power rate to the repository.</p>
+<p>If adding multiple rates, consider using the update_line_power_rates()
+function instead. The update function avoids repeatedly opening and closing
+the rate files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>species</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>rate</strong> – Line radiated power rate dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with line radiated power rate in W.m^3.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.get_continuum_radiated_power_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">get_continuum_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.get_continuum_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the continuum power rate for the given species and charge
+from the atomic data repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Continuum power rate dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: 1D array of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: 1D array of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: 2D array of size (N, M) with continuum power rate in W.m^3.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.get_cx_radiated_power_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">get_cx_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.get_cx_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the CX radiation power rate for the given species and charge
+from the atomic data repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>CX radiation power rate dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: 1D array of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: 1D array of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: 2D array of size (N, M) with CX radiation power rate in W.m^3.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.get_line_radiated_power_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">get_line_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.get_line_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the line radiated power rate for the given species and charge
+from the atomic data repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> – Plasma species (Element/Isotope).</p></li>
+<li><p><strong>charge</strong> – Charge of the plasma species.</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Line radiated power rate dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘ne’: 1D array of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: 1D array of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: 2D array of size (N, M) with line radiated power rate in W.m^3.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.update_continuum_power_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">update_continuum_power_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.update_continuum_power_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the files for the continuum power rates:
+/radiated_power/continuum/&lt;species&gt;.json
+in the atomic data repository.</p>
+<p>File contains multiple rates, indexed by ion’s charge state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form {&lt;species&gt;: {&lt;charge&gt;: &lt;rate&gt;}}, where</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">&lt;species&gt; is the plasma species (Element/Isotope),</div>
+<div class="line">&lt;charge&gt; is the charge of the plasma species,</div>
+<div class="line">&lt;rate&gt; is the continuum power rate dictionary containing the following entries:</div>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with continuum power rate in W.m^3.</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.update_cx_power_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">update_cx_power_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.update_cx_power_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the files for the CX radiation power rates
+(charge exchage with neutral hydrogen):
+/radiated_power/cx/&lt;species&gt;.json
+in the atomic data repository.</p>
+<p>File contains multiple rates, indexed by ion’s charge state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form {&lt;species&gt;: {&lt;charge&gt;: &lt;rate&gt;}}, where</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">&lt;species&gt; is the plasma species (Element/Isotope),</div>
+<div class="line">&lt;charge&gt; is the charge of the plasma species,</div>
+<div class="line">&lt;rate&gt; is the thermal CX power rate dictionary containing the following entries:</div>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with thermal CX power rate in W.m^3.</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.update_line_power_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">update_line_power_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.update_line_power_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the files for the line radiated power rates:
+/radiated_power/line/&lt;species&gt;.json
+in the atomic data repository.</p>
+<p>File contains multiple rates, indexed by the ion’s charge state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form {&lt;species&gt;: {&lt;charge&gt;: &lt;rate&gt;}}, where</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">&lt;species&gt; is the plasma species (Element/Isotope),</div>
+<div class="line">&lt;charge&gt; is the charge of the plasma species,</div>
+<div class="line">&lt;rate&gt; is the line radiated rate dictionary containing the following entries:</div>
+<div class="line-block">
+<div class="line">‘ne’: array-like of size (N) with electron density in m^-3,</div>
+<div class="line">‘te’: array-like of size (M) with electron temperature in eV,</div>
+<div class="line">‘rate’: array-like of size (N, M) with line radiated power rate in W.m^3.</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-cherab.openadas.repository.beam.cx">
+<span id="beam"></span><h2><span class="section-number">6.7.7. </span>Beam<a class="headerlink" href="#module-cherab.openadas.repository.beam.cx" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.cx.add_beam_cx_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.cx.</span></span><span class="sig-name descname"><span class="pre">add_beam_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.cx.add_beam_cx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single beam CX PEC to the repository.</p>
+<p>If adding multiple rate, consider using the update_beam_cx_rates() function
+instead. The update function avoid repeatedly opening and closing the rate
+files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_ion</strong> – Beam neutral atom (Element/Isotope) donating the electron.</p></li>
+<li><p><strong>donor_metastable</strong> – Metastable/excited level of beam neutral atom.</p></li>
+<li><p><strong>receiver_ion</strong> – Element/Isotope receiving the electron.</p></li>
+<li><p><strong>receiver_charge</strong> – Charge of the receiving atom/ion.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>rate</strong> – Beam CX PEC dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line-block">
+<div class="line">‘eb’: array-like of size (N) with beam energy in eV/amu,</div>
+<div class="line">‘ti’: array-like of size (M) with receiver ion temperature in eV,</div>
+<div class="line">‘ni’: array-like of size (K) with plasma ion density in m^-3,</div>
+<div class="line">‘z’: array-like of size (L) with plasma Z-effective,</div>
+<div class="line">‘b’: array-like of size (J) with magnetic field strength in Tesla,</div>
+<div class="line">‘qeb’: array-like of size (N) with CX PEC energy component in photon.m^3.s-1,</div>
+<div class="line">‘qti’: array-like of size (M) with CX PEC temperature component in photon.m^3.s-1,</div>
+<div class="line">‘qni’: array-like of size (K) with CX PEC density component in photon.m^3.s-1,</div>
+<div class="line">‘qz’: array-like of size (L) with CX PEC Zeff component in photon.m^3.s-1,</div>
+<div class="line">‘qb’: array-like of size (J) with CX PEC B-field component in photon.m^3.s-1,</div>
+<div class="line">‘qref’: reference CX PEC in photon.m^3.s-1.</div>
+</div>
+<div class="line">The total beam CX PEC: q = qeb * qti * qni * qz * qb / qref^4.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.cx.get_beam_cx_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.cx.</span></span><span class="sig-name descname"><span class="pre">get_beam_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.cx.get_beam_cx_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a single beam CX PEC from the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>donor_ion</strong> – Beam neutral atom (Element/Isotope) donating the electron.</p></li>
+<li><p><strong>donor_metastable</strong> – Metastable/excited level of beam neutral atom.</p></li>
+<li><p><strong>receiver_ion</strong> – Element/Isotope receiving the electron.</p></li>
+<li><p><strong>receiver_charge</strong> – Charge of the receiving atom/ion.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Beam CX PEC dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line-block">
+<div class="line">‘eb’: 1D array of size (N) with beam energy in eV/amu,</div>
+<div class="line">‘ti’: 1D array of size (M) with receiver ion temperature in eV,</div>
+<div class="line">‘ni’: 1D array of size (K) with plasma ion density in m^-3,</div>
+<div class="line">‘z’: 1D array of size (L) with plasma Z-effective,</div>
+<div class="line">‘b’: 1D array of size (J) with magnetic field strength in Tesla,</div>
+<div class="line">‘qeb’: 1D array of size (N) with CX PEC energy component in photon.m^3.s-1,</div>
+<div class="line">‘qti’: 1D array of size (M) with CX PEC temperature component in photon.m^3.s-1,</div>
+<div class="line">‘qni’: 1D array of size (K) with CX PEC density component in photon.m^3.s-1,</div>
+<div class="line">‘qz’: 1D array of size (L) with CX PEC Zeff component in photon.m^3.s-1,</div>
+<div class="line">‘qb’: 1D array of size (J) with CX PEC B-field component in photon.m^3.s-1,</div>
+<div class="line">‘qref’: reference CX PEC in photon.m^3.s-1.</div>
+</div>
+<div class="line">The total beam CX PEC: q = qeb * qti * qni * qz * qb / qref^4.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.cx.update_beam_cx_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.cx.</span></span><span class="sig-name descname"><span class="pre">update_beam_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.cx.update_beam_cx_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the beam CX PEC files
+beam/cx/&lt;donor_ion&gt;/&lt;receiver_ion&gt;/&lt;receiver_charge&gt;.json
+in the atomic data repository.</p>
+<p>File contains multiple metastable-resolved rates, indexed by transition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">{ &lt;donor_ion&gt;: { &lt;receiver_ion&gt;: { &lt;receiver_charge&gt;: { &lt;transition&gt;: {&lt;donor_metastable&gt;: &lt;rate&gt;} } } } }, where</div>
+<div class="line-block">
+<div class="line">&lt;donor_ion&gt; is the beam neutral atom (Element/Isotope) donating the electron.</div>
+<div class="line">&lt;donor_metastable&gt; is the metastable/excited level of beam neutral atom.</div>
+<div class="line">&lt;receiver_ion&gt; is the Element/Isotope receiving the electron.</div>
+<div class="line">&lt;receiver_charge&gt; is the charge of the receiving atom/ion.</div>
+<div class="line">&lt;transition&gt; is the tuple containing (initial level, final level).</div>
+<div class="line">&lt;rate&gt; is the beam CX PEC dictionary containing the following entries:</div>
+<div class="line-block">
+<div class="line">‘eb’: array-like of size (N) with beam energy in eV/amu,</div>
+<div class="line">‘ti’: array-like of size (M) with receiver ion temperature in eV,</div>
+<div class="line">‘ni’: array-like of size (K) with plasma ion density in m^-3,</div>
+<div class="line">‘z’: array-like of size (L) with plasma Z-effective,</div>
+<div class="line">‘b’: array-like of size (J) with magnetic field strength in Tesla,</div>
+<div class="line">‘qeb’: array-like of size (N) with CX PEC energy component in photon.m^3.s-1,</div>
+<div class="line">‘qti’: array-like of size (M) with CX PEC temperature component in photon.m^3.s-1,</div>
+<div class="line">‘qni’: array-like of size (K) with CX PEC density component in photon.m^3.s-1,</div>
+<div class="line">‘qz’: array-like of size (L) with CX PEC Zeff component in photon.m^3.s-1,</div>
+<div class="line">‘qb’: array-like of size (J) with CX PEC B-field component in photon.m^3.s-1,</div>
+<div class="line">‘qref’: reference CX PEC in photon.m^3.s-1.</div>
+</div>
+<div class="line">The total beam CX PEC: q = qeb * qti * qni * qz * qb / qref^4.</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-cherab.openadas.repository.beam.emission"></span><dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.emission.add_beam_emission_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.emission.</span></span><span class="sig-name descname"><span class="pre">add_beam_emission_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.emission.add_beam_emission_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single beam emission rate to the repository.</p>
+<p>If adding multiple rate, consider using the update_beam_emission_rates()
+function instead. The update function avoid repeatedly opening and closing
+the rate files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Beam neutral species (Element/Isotope).</p></li>
+<li><p><strong>target_ion</strong> – Target species (Element/Isotope).</p></li>
+<li><p><strong>target_charge</strong> – Charge of the target species.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>rate</strong> – Beam emission rate dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line-block">
+<div class="line">‘e’: array-like of size (N) with interaction energy in eV/amu,</div>
+<div class="line">‘n’ array-like of size (M) with target electron density in m^-3,</div>
+<div class="line">‘t’ array-like of size (K) with target electron temperature in eV,</div>
+<div class="line">‘sen’ array-like of size (N, M) with beam emission rate energy component in photon.m^3.s^-1.</div>
+<div class="line">‘st’ array-like of size (K) with beam emission rate temperature component in photon.m^3.s^-1.</div>
+<div class="line">‘eref’: reference interaction energy in eV/amu,</div>
+<div class="line">‘nref’: reference target electron density in m^-3,</div>
+<div class="line">‘tref’: reference target electron temperature in eV,</div>
+<div class="line">‘sref’: reference beam emission rate in photon.m^3.s^-1.</div>
+</div>
+<div class="line">The total beam emission rate: s = sen * st / sref.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.emission.get_beam_emission_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.emission.</span></span><span class="sig-name descname"><span class="pre">get_beam_emission_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.emission.get_beam_emission_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a single beam emission rate from the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Beam neutral species (Element/Isotope).</p></li>
+<li><p><strong>target_ion</strong> – Target species (Element/Isotope).</p></li>
+<li><p><strong>target_charge</strong> – Charge of the target species.</p></li>
+<li><p><strong>transition</strong> – Tuple containing (initial level, final level).</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Beam emission rate dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line-block">
+<div class="line">‘e’: 1D array of size (N) with interaction energy in eV/amu,</div>
+<div class="line">‘n’ 1D array of size (M) with target electron density in m^-3,</div>
+<div class="line">‘t’ 1D array of size (K) with target electron temperature in eV,</div>
+<div class="line">‘sen’ 2D array of size (N, M) with beam emission rate energy component in photon.m^3.s^-1.</div>
+<div class="line">‘st’ 1D array of size (K) with beam emission rate temperature component in photon.m^3.s^-1.</div>
+<div class="line">‘eref’: reference interaction energy in eV/amu,</div>
+<div class="line">‘nref’: reference target electron density in m^-3,</div>
+<div class="line">‘tref’: reference target electron temperature in eV,</div>
+<div class="line">‘sref’: reference beam emission rate in photon.m^3.s^-1.</div>
+</div>
+<div class="line">The total beam emission rate: s = sen * st / sref.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.emission.update_beam_emission_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.emission.</span></span><span class="sig-name descname"><span class="pre">update_beam_emission_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.emission.update_beam_emission_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the beam emission rate files:
+/beam/emission/&lt;beam species&gt;/&lt;target ion&gt;/&lt;target_charge&gt;.json
+in the atomic repository.</p>
+<p>File contains multiple rates, indexed by transition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">{ &lt;beam_species&gt;: { &lt;target_ion&gt;: { &lt;target_charge&gt;: {&lt;transition&gt;: &lt;rate&gt;} } } }, where</div>
+<div class="line-block">
+<div class="line">&lt;beam_species&gt; is the beam neutral species (Element/Isotope)</div>
+<div class="line">&lt;target_ion&gt; is the target species (Element/Isotope).</div>
+<div class="line">&lt;target_charge&gt; is the charge of the target species.</div>
+<div class="line">&lt;transition&gt; is the tuple containing (initial level, final level).</div>
+<div class="line">&lt;rate&gt; Beam emission rate dictionary containing the following entries:</div>
+<div class="line-block">
+<div class="line">‘e’: array-like of size (N) with interaction energy in eV/amu,</div>
+<div class="line">‘n’ array-like of size (M) with target electron density in m^-3,</div>
+<div class="line">‘t’ array-like of size (K) with target electron temperature in eV,</div>
+<div class="line">‘sen’ array-like of size (N, M) with beam emission rate energy component in photon.m^3.s^-1.</div>
+<div class="line">‘st’ array-like of size (K) with beam emission rate temperature component in photon.m^3.s^-1.</div>
+<div class="line">‘eref’: reference interaction energy in eV/amu,</div>
+<div class="line">‘nref’: reference target electron density in m^-3,</div>
+<div class="line">‘tref’: reference target electron temperature in eV,</div>
+<div class="line">‘sref’: reference beam emission rate in photon.m^3.s^-1.</div>
+</div>
+<div class="line">The total beam emission rate: s = sen * st / sref.</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-cherab.openadas.repository.beam.population"></span><dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.population.add_beam_population_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.population.</span></span><span class="sig-name descname"><span class="pre">add_beam_population_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.population.add_beam_population_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single beam population rate to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Beam neutral species (Element/Isotope).</p></li>
+<li><p><strong>beam_metastable</strong> – Metastable level of beam neutral atom.</p></li>
+<li><p><strong>target_ion</strong> – Target species (Element/Isotope).</p></li>
+<li><p><strong>target_charge</strong> – Charge of the target species.</p></li>
+<li><p><strong>rate</strong> – Beam population rate dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line-block">
+<div class="line">‘e’: array-like of size (N) with interaction energy in eV/amu,</div>
+<div class="line">‘n’: array-like of size (M) with target electron density in m^-3,</div>
+<div class="line">‘t’: array-like of size (K) with target electron temperature in eV,</div>
+<div class="line">‘sen’: array-like of size (N, M) with dimensionless beam population rate energy component.</div>
+<div class="line">‘st’: array-like of size (K) with dimensionless beam population rate temperature component.</div>
+<div class="line">‘eref’: reference interaction energy in eV/amu,</div>
+<div class="line">‘nref’: reference target electron density in m^-3,</div>
+<div class="line">‘tref’: reference target electron temperature in eV,</div>
+<div class="line">‘sref’: reference dimensionless beam population rate.</div>
+</div>
+<div class="line">The total beam population rate: s = sen * st / sref.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.population.get_beam_population_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.population.</span></span><span class="sig-name descname"><span class="pre">get_beam_population_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.population.get_beam_population_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a single beam population rate from the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Beam neutral species (Element/Isotope).</p></li>
+<li><p><strong>beam_metastable</strong> – Metastable level of beam neutral atom.</p></li>
+<li><p><strong>target_ion</strong> – Target species (Element/Isotope).</p></li>
+<li><p><strong>target_charge</strong> – Charge of the target species.</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Beam population rate dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line-block">
+<div class="line">‘e’: 1D array of size (N) with interaction energy in eV/amu,</div>
+<div class="line">‘n’: 1D array of size (M) with target electron density in m^-3,</div>
+<div class="line">‘t’: 1D array of size (K) with target electron temperature in eV,</div>
+<div class="line">‘sen’: 2D array of size (N, M) with dimensionless beam population rate energy component.</div>
+<div class="line">‘st’: 1D array of size (K) with dimensionless beam population rate temperature component.</div>
+<div class="line">‘eref’: reference interaction energy in eV/amu,</div>
+<div class="line">‘nref’: reference target electron density in m^-3,</div>
+<div class="line">‘tref’: reference target electron temperature in eV,</div>
+<div class="line">‘sref’: reference dimensionless beam population rate.</div>
+</div>
+<div class="line">The total beam population rate: s = sen * st / sref.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.population.update_beam_population_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.population.</span></span><span class="sig-name descname"><span class="pre">update_beam_population_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.population.update_beam_population_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the beam population rate files
+/beam/population/&lt;beam species&gt;/&lt;beam metastable&gt;/&lt;target ion&gt;/&lt;target_charge&gt;.json
+in the atomic data repository.</p>
+<p>Each json file contains a single rate, so it can simply be replaced.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">{ &lt;beam_species&gt;: { &lt;beam_metastable&gt;: { &lt;target_ion&gt;: {&lt;target_charge&gt;: &lt;rate&gt;} } } }, where</div>
+<div class="line-block">
+<div class="line">&lt;beam_species&gt; is the beam neutral species (Element/Isotope)</div>
+<div class="line">&lt;beam_metastable&gt; is the metastable level of beam neutral atom.</div>
+<div class="line">&lt;target_ion&gt; is the target species (Element/Isotope).</div>
+<div class="line">&lt;target_charge&gt; is the charge of the target species.</div>
+<div class="line">&lt;rate&gt; is the beam population rate dictionary containing the following fields:</div>
+<div class="line-block">
+<div class="line">‘e’: array-like of size (N) with interaction energy in eV/amu,</div>
+<div class="line">‘n’: array-like of size (M) with target electron density in m^-3,</div>
+<div class="line">‘t’: array-like of size (K) with target electron temperature in eV,</div>
+<div class="line">‘sen’: array-like of size (N, M) with dimensionless beam population rate energy component.</div>
+<div class="line">‘st’: array-like of size (K) with dimensionless beam population rate temperature component.</div>
+<div class="line">‘eref’: reference interaction energy in eV/amu,</div>
+<div class="line">‘nref’: reference target electron density in m^-3,</div>
+<div class="line">‘tref’: reference target electron temperature in eV,</div>
+<div class="line">‘sref’: reference dimensionless beam population rate.</div>
+</div>
+<div class="line">The total beam population rate: s = sen * st / sref.</div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-cherab.openadas.repository.beam.stopping"></span><dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.stopping.add_beam_stopping_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.stopping.</span></span><span class="sig-name descname"><span class="pre">add_beam_stopping_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.stopping.add_beam_stopping_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a single beam stopping/excitation rate to the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Beam neutral atom (Element/Isotope).</p></li>
+<li><p><strong>target_ion</strong> – Target species (Element/Isotope).</p></li>
+<li><p><strong>target_charge</strong> – Charge of the target species.</p></li>
+<li><p><strong>rate</strong> – Beam stopping rate dictionary containing the following entries:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line-block">
+<div class="line">‘e’: array-like of size (N) with interaction energy in eV/amu,</div>
+<div class="line">‘n’: array-like of size (M) with target electron density in m^-3,</div>
+<div class="line">‘t’: array-like of size (K) with target electron temperature in eV,</div>
+<div class="line">‘sen’: array-like of size (N, M) with beam stopping rate energy component in m^3.s^-1.</div>
+<div class="line">‘st’: array-like of size (K) with beam stopping rate temperature component in m^3.s^-1.</div>
+<div class="line">‘eref’: reference interaction energy in eV/amu,</div>
+<div class="line">‘nref’: reference target electron density in m^-3,</div>
+<div class="line">‘tref’: reference target electron temperature in eV,</div>
+<div class="line">‘sref’: reference beam stopping rate in m^3.s^-1.</div>
+</div>
+<div class="line">The total beam stopping rate: s = sen * st / sref.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>repository_path</strong> – Path to the atomic data repository.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.stopping.get_beam_stopping_rate">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.stopping.</span></span><span class="sig-name descname"><span class="pre">get_beam_stopping_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.stopping.get_beam_stopping_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a single beam stopping/excitation rate from the repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam_species</strong> – Beam neutral atom (Element/Isotope).</p></li>
+<li><p><strong>target_ion</strong> – Target species (Element/Isotope).</p></li>
+<li><p><strong>target_charge</strong> – Charge of the target species.</p></li>
+<li><p><strong>repository_path</strong> – Path to the atomic data repository.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Beam stopping rate dictionary containing the following entries:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line-block">
+<div class="line">‘e’: 1D array of size (N) with interaction energy in eV/amu,</div>
+<div class="line">‘n’: 1D array of size (M) with target electron density in m^-3,</div>
+<div class="line">‘t’: 1D array of size (K) with target electron temperature in eV,</div>
+<div class="line">‘sen’: 2D array of size (N, M) with beam stopping rate energy component in m^3.s^-1.</div>
+<div class="line">‘st’: 1D array of size (K) with beam stopping rate temperature component in m^3.s^-1.</div>
+<div class="line">‘eref’: reference interaction energy in eV/amu,</div>
+<div class="line">‘nref’: reference target electron density in m^-3,</div>
+<div class="line">‘tref’: reference target electron temperature in eV,</div>
+<div class="line">‘sref’: reference beam stopping rate in m^3.s^-1.</div>
+</div>
+<div class="line">The total beam stopping rate: s = sen * st / sref.</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cherab.openadas.repository.beam.stopping.update_beam_stopping_rates">
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.stopping.</span></span><span class="sig-name descname"><span class="pre">update_beam_stopping_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.stopping.update_beam_stopping_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the beam stopping rate files
+/beam/stopping/&lt;beam species&gt;/&lt;beam metastable&gt;/&lt;target ion&gt;/&lt;target_charge&gt;.json
+in the atomic data repository.</p>
+<p>Each json file contains a single rate, so it can simply be replaced.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rates</strong> – Dictionary in the form:</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">{ &lt;beam_species&gt;: { &lt;beam_metastable&gt;: { &lt;target_ion&gt;: {&lt;target_charge&gt;: &lt;rate&gt;} } } }, where</div>
+<div class="line-block">
+<div class="line">&lt;beam_species&gt; is the beam neutral species (Element/Isotope).</div>
+<div class="line">&lt;target_ion&gt; is the target species (Element/Isotope).</div>
+<div class="line">&lt;target_charge&gt; is the charge of the target species.</div>
+<div class="line">&lt;rate&gt; is the beam stopping rate dictionary containing the following entries:</div>
+<div class="line-block">
+<div class="line">‘e’: array-like of size (N) with interaction energy in eV/amu,</div>
+<div class="line">‘n’: array-like of size (M) with target electron density in m^-3,</div>
+<div class="line">‘t’: array-like of size (K) with target electron temperature in eV,</div>
+<div class="line">‘sen’: array-like of size (N, M) with beam stopping rate energy component in m^3.s^-1.</div>
+<div class="line">‘st’: array-like of size (K) with beam stopping rate temperature component in m^3.s^-1.</div>
+<div class="line">‘eref’: reference interaction energy in eV/amu,</div>
+<div class="line">‘nref’: reference target electron density in m^-3,</div>
+<div class="line">‘tref’: reference target electron temperature in eV,</div>
+<div class="line">‘sref’: reference beam stopping rate in m^3.s^-1.</div>
+</div>
+<div class="line">The total beam stopping rate: s = sen * st / sref.</div>
+</div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="openadas.html" class="btn btn-neutral float-right" title="6.8. Open-ADAS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="data_interpolators.html" class="btn btn-neutral" title="6.6. Atomic data interpolators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2024, Cherab Team
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

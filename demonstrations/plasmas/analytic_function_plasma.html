@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Analytic Function Plasma &mdash; Cherab 1.4.0 documentation</title>
+  <title>Analytic Function Plasma &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,17 +170,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="analytic-function-plasma">
-<span id="id1"></span><h1>Analytic Function Plasma<a class="headerlink" href="#analytic-function-plasma" title="Permalink to this headline">¶</a></h1>
+  <section id="analytic-function-plasma">
+<span id="id1"></span><h1>Analytic Function Plasma<a class="headerlink" href="#analytic-function-plasma" title="Permalink to this heading">¶</a></h1>
 <p>This demonstration shows how to define a set of plasma distributions using analytic functions.
 Each function must by implemented as a python callable. The rest of the code
 shows how to use these functions in a plasma and visualises the results.</p>
 <p>Note that while it is possible to use pure python functions for development, they are typically
 ~100 times slower than their cython counterparts. Therefore, for use cases where speed is important
-we recommend moving these functions to cython classes. For an example of a cython function,
-see the <a class="reference external" href="https://github.com/cherab/core/blob/master/demos/gaussian_volume.pyx">Gaussian</a>
-cython class in the demos folder.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+we recommend moving these functions to cython classes. An alternative solution which may not require
+writing and compiling any additional cython code is to use Raysect’s
+<a class="reference external" href="https://www.raysect.org/api_reference/core/functions.html">function framework</a> to build up
+expressions which will be evaluated like Python functions. These will typically run slightly slower
+than a hand-coded cython implementation but still significantly faster than a pure python
+implementation.</p>
+<p>Two examples are provided, one using a pure python implementation of analytic forms for neutral and
+ion plasma species distributions, and one using objects from Raysect’s function framework.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Pure python</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Function framework</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># Copyright 2016-2018 Euratom</span>
 <span class="c1"># Copyright 2016-2018 United Kingdom Atomic Energy Authority</span>
 <span class="c1"># Copyright 2016-2018 Centro de Investigaciones Energéticas, Medioambientales y Tecnológicas</span>
@@ -214,7 +222,7 @@ cython class in the demos folder.</p>
 
 
 <span class="k">class</span> <span class="nc">NeutralFunction</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;A neutral profile that is constant outside the plasma,</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A neutral profile that is constant outside the plasma,</span>
 <span class="sd">       then exponentially decays inside the LCFS.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">peak_value</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">,</span> <span class="n">lcfs_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
@@ -242,7 +250,7 @@ cython class in the demos folder.</p>
 
 
 <span class="k">class</span> <span class="nc">IonFunction</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;An approximate toroidal plasma profile that follows a double</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An approximate toroidal plasma profile that follows a double</span>
 <span class="sd">       quadratic between the LCFS and magnetic axis.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_core</span><span class="p">,</span> <span class="n">v_lcfs</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">lcfs_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
@@ -378,13 +386,181 @@ cython class in the demos folder.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="figure align-center">
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Copyright 2016-2018 Euratom</span>
+<span class="c1"># Copyright 2016-2018 United Kingdom Atomic Energy Authority</span>
+<span class="c1"># Copyright 2016-2018 Centro de Investigaciones Energéticas, Medioambientales y Tecnológicas</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the EUPL, Version 1.1 or – as soon they will be approved by the</span>
+<span class="c1"># European Commission - subsequent versions of the EUPL (the &quot;Licence&quot;);</span>
+<span class="c1"># You may not use this work except in compliance with the Licence.</span>
+<span class="c1"># You may obtain a copy of the Licence at:</span>
+<span class="c1">#</span>
+<span class="c1"># https://joinup.ec.europa.eu/software/page/eupl5</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software distributed</span>
+<span class="c1"># under the Licence is distributed on an &quot;AS IS&quot; basis, WITHOUT WARRANTIES OR</span>
+<span class="c1"># CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1">#</span>
+<span class="c1"># See the Licence for the specific language governing permissions and limitations</span>
+<span class="c1"># under the Licence.</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">electron_mass</span><span class="p">,</span> <span class="n">atomic_mass</span>
+
+<span class="kn">from</span> <span class="nn">raysect.core.math.function.float</span> <span class="kn">import</span> <span class="n">Arg2D</span><span class="p">,</span> <span class="n">Exp2D</span><span class="p">,</span> <span class="n">Sqrt2D</span>
+<span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="kn">import</span> <span class="n">Cylinder</span>
+<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">rotate_basis</span><span class="p">,</span> <span class="n">Spectrum</span>
+<span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">PinholeCamera</span><span class="p">,</span> <span class="n">PowerPipeline2D</span>
+
+<span class="kn">from</span> <span class="nn">cherab.core</span> <span class="kn">import</span> <span class="n">Species</span><span class="p">,</span> <span class="n">Maxwellian</span><span class="p">,</span> <span class="n">Plasma</span><span class="p">,</span> <span class="n">Line</span>
+<span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">sample3d</span><span class="p">,</span> <span class="n">AxisymmetricMapper</span>
+<span class="kn">from</span> <span class="nn">cherab.core.atomic</span> <span class="kn">import</span> <span class="n">deuterium</span>
+<span class="kn">from</span> <span class="nn">cherab.core.model</span> <span class="kn">import</span> <span class="n">ExcitationLine</span>
+<span class="kn">from</span> <span class="nn">cherab.openadas</span> <span class="kn">import</span> <span class="n">OpenADAS</span>
+
+
+<span class="k">def</span> <span class="nf">NeutralFunction</span><span class="p">(</span><span class="n">peak_value</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">,</span> <span class="n">lcfs_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A neutral profile that is constant outside the plasma,</span>
+<span class="sd">       then exponentially decays inside the LCFS.&quot;&quot;&quot;</span>
+    <span class="n">raxis</span> <span class="o">=</span> <span class="n">magnetic_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">zaxis</span> <span class="o">=</span> <span class="n">magnetic_axis</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">radius_from_axis</span> <span class="o">=</span> <span class="n">Sqrt2D</span><span class="p">((</span><span class="n">Arg2D</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">raxis</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Arg2D</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">zaxis</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">Exp2D</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">radius_from_axis</span> <span class="o">-</span> <span class="n">lcfs_radius</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">inside_lcfs</span> <span class="o">=</span> <span class="p">(</span><span class="n">radius_from_axis</span> <span class="o">&lt;=</span> <span class="n">lcfs_radius</span><span class="p">)</span>
+    <span class="c1"># density = peak * scale * inside_lcfs + peak * (inside_lcfs - 1).</span>
+    <span class="c1"># Rearrange so inside_lcfs and scale are only called once each.</span>
+    <span class="n">density</span> <span class="o">=</span> <span class="n">peak_value</span> <span class="o">*</span> <span class="p">(</span><span class="n">inside_lcfs</span> <span class="o">*</span> <span class="p">(</span><span class="n">scale</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">AxisymmetricMapper</span><span class="p">(</span><span class="n">density</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">IonFunction</span><span class="p">(</span><span class="n">v_core</span><span class="p">,</span> <span class="n">v_lcfs</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">lcfs_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An approximate toroidal plasma profile that follows a double</span>
+<span class="sd">       quadratic between the LCFS and magnetic axis.&quot;&quot;&quot;</span>
+    <span class="n">r_axis</span> <span class="o">=</span> <span class="n">magnetic_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">z_axis</span> <span class="o">=</span> <span class="n">magnetic_axis</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">radius_from_axis</span> <span class="o">=</span> <span class="n">Sqrt2D</span><span class="p">((</span><span class="n">Arg2D</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">r_axis</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Arg2D</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">z_axis</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">density</span> <span class="o">=</span> <span class="p">(</span><span class="n">v_core</span> <span class="o">-</span> <span class="n">v_lcfs</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">radius_from_axis</span> <span class="o">/</span> <span class="n">lcfs_radius</span><span class="p">)</span><span class="o">**</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="n">q</span> <span class="o">+</span> <span class="n">v_lcfs</span>
+    <span class="n">inside_lcfs</span> <span class="o">=</span> <span class="p">(</span><span class="n">radius_from_axis</span> <span class="o">&lt;=</span> <span class="n">lcfs_radius</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">AxisymmetricMapper</span><span class="p">(</span><span class="n">density</span> <span class="o">*</span> <span class="n">inside_lcfs</span><span class="p">)</span>
+
+
+<span class="c1"># tunables</span>
+<span class="n">peak_density</span> <span class="o">=</span> <span class="mf">1e19</span>
+<span class="n">peak_temperature</span> <span class="o">=</span> <span class="mi">2500</span>
+<span class="n">magnetic_axis</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="c1"># setup scenegraph</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+
+
+<span class="c1">###################</span>
+<span class="c1"># plasma creation #</span>
+
+<span class="n">plasma</span> <span class="o">=</span> <span class="n">Plasma</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">atomic_data</span> <span class="o">=</span> <span class="n">OpenADAS</span><span class="p">(</span><span class="n">permit_extrapolation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">Cylinder</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1</span><span class="p">))</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">geometry_transform</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1</span><span class="p">)</span>
+
+<span class="c1"># No net velocity for any species</span>
+<span class="n">zero_velocity</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># define neutral species distribution</span>
+<span class="n">d0_density</span> <span class="o">=</span> <span class="n">NeutralFunction</span><span class="p">(</span><span class="n">peak_density</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">)</span>
+<span class="n">d0_temperature</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># constant 0.5eV temperature for all neutrals</span>
+<span class="n">d0_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">d0_density</span><span class="p">,</span> <span class="n">d0_temperature</span><span class="p">,</span> <span class="n">zero_velocity</span><span class="p">,</span>
+                             <span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
+<span class="n">d0_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">d0_distribution</span><span class="p">)</span>
+
+<span class="c1"># define deuterium ion species distribution</span>
+<span class="n">d1_density</span> <span class="o">=</span> <span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_density</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">)</span>
+<span class="n">d1_temperature</span> <span class="o">=</span> <span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">)</span>
+<span class="n">d1_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">d1_density</span><span class="p">,</span> <span class="n">d1_temperature</span><span class="p">,</span> <span class="n">zero_velocity</span><span class="p">,</span>
+                             <span class="n">deuterium</span><span class="o">.</span><span class="n">atomic_weight</span> <span class="o">*</span> <span class="n">atomic_mass</span><span class="p">)</span>
+<span class="n">d1_species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d1_distribution</span><span class="p">)</span>
+
+<span class="c1"># define the electron distribution</span>
+<span class="n">e_density</span> <span class="o">=</span> <span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_density</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">)</span>
+<span class="n">e_temperature</span> <span class="o">=</span> <span class="n">IonFunction</span><span class="p">(</span><span class="n">peak_temperature</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">magnetic_axis</span><span class="p">)</span>
+<span class="n">e_distribution</span> <span class="o">=</span> <span class="n">Maxwellian</span><span class="p">(</span><span class="n">e_density</span><span class="p">,</span> <span class="n">e_temperature</span><span class="p">,</span> <span class="n">zero_velocity</span><span class="p">,</span> <span class="n">electron_mass</span><span class="p">)</span>
+
+<span class="c1"># define species</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">b_field</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">electron_distribution</span> <span class="o">=</span> <span class="n">e_distribution</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">composition</span> <span class="o">=</span> <span class="p">[</span><span class="n">d0_species</span><span class="p">,</span> <span class="n">d1_species</span><span class="p">]</span>
+
+<span class="c1"># Add a balmer alpha line for visualisation purposes</span>
+<span class="n">d_alpha_excit</span> <span class="o">=</span> <span class="n">ExcitationLine</span><span class="p">(</span><span class="n">Line</span><span class="p">(</span><span class="n">deuterium</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="n">plasma</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">d_alpha_excit</span><span class="p">]</span>
+
+
+<span class="c1">####################</span>
+<span class="c1"># Visualise Plasma #</span>
+
+<span class="c1"># Run some plots to check the distribution functions and emission profile are as expected</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t_samples</span> <span class="o">=</span> <span class="n">sample3d</span><span class="p">(</span><span class="n">d1_temperature</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">t_samples</span><span class="p">)),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;r axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;z axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ion temperature profile in r-z plane&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t_samples</span> <span class="o">=</span> <span class="n">sample3d</span><span class="p">(</span><span class="n">d1_temperature</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">t_samples</span><span class="p">)),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ion temperature profile in x-y plane&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">t_samples</span> <span class="o">=</span> <span class="n">sample3d</span><span class="p">(</span><span class="n">d0_density</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">t_samples</span><span class="p">)),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;r axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;z axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neutral Density profile in r-z plane&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">xrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">yrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">d_alpha_rz_intensity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">direction</span> <span class="o">=</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">xrange</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">yrange</span><span class="p">):</span>
+        <span class="n">emission</span> <span class="o">=</span> <span class="n">d_alpha_excit</span><span class="o">.</span><span class="n">emission</span><span class="p">(</span><span class="n">Point3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">direction</span><span class="p">,</span> <span class="n">Spectrum</span><span class="p">(</span><span class="mi">650</span><span class="p">,</span> <span class="mi">660</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">d_alpha_rz_intensity</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">emission</span><span class="o">.</span><span class="n">total</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">d_alpha_rz_intensity</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;r axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;z axis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;D-alpha emission in R-Z&quot;</span><span class="p">)</span>
+
+
+<span class="n">camera</span> <span class="o">=</span> <span class="n">PinholeCamera</span><span class="p">((</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span> <span class="n">pipelines</span><span class="o">=</span><span class="p">[</span><span class="n">PowerPipeline2D</span><span class="p">()],</span> <span class="n">parent</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="n">rotate_basis</span><span class="p">(</span><span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector3D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">pixel_samples</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></div>
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/analytic_plasma_slices.png"><img alt="../../_images/analytic_plasma_slices.png" src="../../_images/analytic_plasma_slices.png" style="width: 650px;" /></a>
-</div>
-<div class="figure align-center">
+</figure>
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/analytic_plasma.png"><img alt="../../_images/analytic_plasma.png" src="../../_images/analytic_plasma.png" style="width: 450px;" /></a>
-</div>
-</div>
+</figure>
+</section>
 
 
            </div>
@@ -397,7 +573,7 @@ cython class in the demos folder.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -421,7 +597,10 @@ cython class in the demos folder.</p>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/tabs.js"></script>
     
 
   

@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10. Tools &mdash; Cherab 1.4.0 documentation</title>
+  <title>10. Tools &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,10 +28,11 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="10.1. Plasmas" href="plasmas.html" />
-    <link rel="prev" title="9.8. Slicing" href="../math/slice.html" /> 
+    <link rel="prev" title="9.9. Slicing" href="../math/slice.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -179,41 +181,211 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="tools">
-<h1><span class="section-number">10. </span>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
+  <section id="tools">
+<h1><span class="section-number">10. </span>Tools<a class="headerlink" href="#tools" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="plasmas.html">10.1. Plasmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="materials.html">10.2. Materials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="primitives.html">10.3. Primitives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plasmas.html">10.1. Plasmas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plasmas.html#cherab.tools.plasmas.slab.build_slab_plasma"><code class="docutils literal notranslate"><span class="pre">build_slab_plasma()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">10.2. Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="materials.html#cherab.tools.emitters.radiation_function.RadiationFunction"><code class="docutils literal notranslate"><span class="pre">RadiationFunction</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="primitives.html">10.3. Primitives</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="primitives.html#cherab.tools.primitives.axisymmetric_mesh.axisymmetric_mesh_from_polygon"><code class="docutils literal notranslate"><span class="pre">axisymmetric_mesh_from_polygon()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="primitives.html#cherab.tools.primitives.toroidal_mesh.toroidal_mesh_from_polygon"><code class="docutils literal notranslate"><span class="pre">toroidal_mesh_from_polygon()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="observers.html">10.4. Observers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="observers.html#bolometers">10.4.1. Bolometers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="observers.html#spectroscopic-lines-of-sight">10.4.2. Spectroscopic lines of sight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="observers.html#bolometers">10.4.1. Bolometers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerCamera"><code class="docutils literal notranslate"><span class="pre">BolometerCamera</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerCamera.__getitem__"><code class="docutils literal notranslate"><span class="pre">BolometerCamera.__getitem__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerCamera.__iter__"><code class="docutils literal notranslate"><span class="pre">BolometerCamera.__iter__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerCamera.__len__"><code class="docutils literal notranslate"><span class="pre">BolometerCamera.__len__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerCamera.add_foil_detector"><code class="docutils literal notranslate"><span class="pre">BolometerCamera.add_foil_detector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerCamera.observe"><code class="docutils literal notranslate"><span class="pre">BolometerCamera.observe()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerSlit"><code class="docutils literal notranslate"><span class="pre">BolometerSlit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerFoil"><code class="docutils literal notranslate"><span class="pre">BolometerFoil</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerFoil.as_sightline"><code class="docutils literal notranslate"><span class="pre">BolometerFoil.as_sightline()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerFoil.calculate_etendue"><code class="docutils literal notranslate"><span class="pre">BolometerFoil.calculate_etendue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerFoil.calculate_sensitivity"><code class="docutils literal notranslate"><span class="pre">BolometerFoil.calculate_sensitivity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerFoil.trace_sightline"><code class="docutils literal notranslate"><span class="pre">BolometerFoil.trace_sightline()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerIRVB"><code class="docutils literal notranslate"><span class="pre">BolometerIRVB</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerIRVB.as_sightlines"><code class="docutils literal notranslate"><span class="pre">BolometerIRVB.as_sightlines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerIRVB.calculate_etendue"><code class="docutils literal notranslate"><span class="pre">BolometerIRVB.calculate_etendue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerIRVB.calculate_sensitivity"><code class="docutils literal notranslate"><span class="pre">BolometerIRVB.calculate_sensitivity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.bolometry.BolometerIRVB.trace_sightlines"><code class="docutils literal notranslate"><span class="pre">BolometerIRVB.trace_sightlines()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="observers.html#spectroscopic-lines-of-sight">10.4.2. Spectroscopic lines of sight</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase"><code class="docutils literal notranslate"><span class="pre">_SpectroscopicObserver0DBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.connect_pipelines"><code class="docutils literal notranslate"><span class="pre">_SpectroscopicObserver0DBase.connect_pipelines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.get_pipeline"><code class="docutils literal notranslate"><span class="pre">_SpectroscopicObserver0DBase.get_pipeline()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.spectroscopy.base._SpectroscopicObserver0DBase.plot_spectrum"><code class="docutils literal notranslate"><span class="pre">_SpectroscopicObserver0DBase.plot_spectrum()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.spectroscopy.SpectroscopicSightLine"><code class="docutils literal notranslate"><span class="pre">SpectroscopicSightLine</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.spectroscopy.SpectroscopicFibreOptic"><code class="docutils literal notranslate"><span class="pre">SpectroscopicFibreOptic</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="observers.html#group-observers">10.4.3. Group observers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.group.base.Observer0DGroup"><code class="docutils literal notranslate"><span class="pre">Observer0DGroup</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.group.base.Observer0DGroup.add_observer"><code class="docutils literal notranslate"><span class="pre">Observer0DGroup.add_observer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.group.base.Observer0DGroup.connect_pipelines"><code class="docutils literal notranslate"><span class="pre">Observer0DGroup.connect_pipelines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.group.base.Observer0DGroup.names"><code class="docutils literal notranslate"><span class="pre">Observer0DGroup.names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.group.base.Observer0DGroup.observe"><code class="docutils literal notranslate"><span class="pre">Observer0DGroup.observe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.group.base.Observer0DGroup.observers"><code class="docutils literal notranslate"><span class="pre">Observer0DGroup.observers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.group.base.Observer0DGroup.pipelines"><code class="docutils literal notranslate"><span class="pre">Observer0DGroup.pipelines</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.group.base.Observer0DGroup.render_engine"><code class="docutils literal notranslate"><span class="pre">Observer0DGroup.render_engine</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.group.SightLineGroup"><code class="docutils literal notranslate"><span class="pre">SightLineGroup</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.group.FibreOpticGroup"><code class="docutils literal notranslate"><span class="pre">FibreOpticGroup</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.group.PixelGroup"><code class="docutils literal notranslate"><span class="pre">PixelGroup</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="observers.html#cherab.tools.observers.group.TargettedPixelGroup"><code class="docutils literal notranslate"><span class="pre">TargettedPixelGroup</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="observers.html#cherab.tools.observers.group.TargettedPixelGroup.targets"><code class="docutils literal notranslate"><span class="pre">TargettedPixelGroup.targets</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="observers.html#spectroscopic-groups">10.4.3.1. Spectroscopic Groups</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="spectroscopy.html">10.5. Spectroscopy</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="spectroscopy.html#spectroscopic-instruments">10.5.1. Spectroscopic instruments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectroscopy.html#spectroscopic-instruments">10.5.1. Spectroscopic instruments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy.html#cherab.tools.spectroscopy.SpectroscopicInstrument"><code class="docutils literal notranslate"><span class="pre">SpectroscopicInstrument</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spectroscopy.html#cherab.tools.spectroscopy.SpectroscopicInstrument.create_pipelines"><code class="docutils literal notranslate"><span class="pre">SpectroscopicInstrument.create_pipelines()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy.html#cherab.tools.spectroscopy.PolychromatorFilter"><code class="docutils literal notranslate"><span class="pre">PolychromatorFilter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy.html#cherab.tools.spectroscopy.TrapezoidalFilter"><code class="docutils literal notranslate"><span class="pre">TrapezoidalFilter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy.html#cherab.tools.spectroscopy.Polychromator"><code class="docutils literal notranslate"><span class="pre">Polychromator</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy.html#cherab.tools.spectroscopy.Spectrometer"><code class="docutils literal notranslate"><span class="pre">Spectrometer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spectroscopy.html#cherab.tools.spectroscopy.Spectrometer.calibrate"><code class="docutils literal notranslate"><span class="pre">Spectrometer.calibrate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="spectroscopy.html#cherab.tools.spectroscopy.CzernyTurnerSpectrometer"><code class="docutils literal notranslate"><span class="pre">CzernyTurnerSpectrometer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="spectroscopy.html#cherab.tools.spectroscopy.CzernyTurnerSpectrometer.resolution"><code class="docutils literal notranslate"><span class="pre">CzernyTurnerSpectrometer.resolution()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tomography.html">10.6. Tomography</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tomography.html#inversion-methods">10.6.1. Inversion Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tomography.html#voxels">10.6.2. Voxels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tomography.html#ray-transfer-objects">10.6.3. Ray Transfer Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tomography.html#inversion-methods">10.6.1. Inversion Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.inversions.sart.invert_sart"><code class="docutils literal notranslate"><span class="pre">invert_sart()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.inversions.sart.invert_constrained_sart"><code class="docutils literal notranslate"><span class="pre">invert_constrained_sart()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.inversions.opencl.sart_opencl.SartOpencl"><code class="docutils literal notranslate"><span class="pre">SartOpencl</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tomography.html#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.__call__"><code class="docutils literal notranslate"><span class="pre">SartOpencl.__call__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tomography.html#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.clean"><code class="docutils literal notranslate"><span class="pre">SartOpencl.clean()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tomography.html#cherab.tools.inversions.opencl.sart_opencl.SartOpencl.update_laplacian_matrix"><code class="docutils literal notranslate"><span class="pre">SartOpencl.update_laplacian_matrix()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.inversions.nnls.invert_regularised_nnls"><code class="docutils literal notranslate"><span class="pre">invert_regularised_nnls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.inversions.svd.invert_svd"><code class="docutils literal notranslate"><span class="pre">invert_svd()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tomography.html#voxels">10.6.2. Voxels</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.Voxel"><code class="docutils literal notranslate"><span class="pre">Voxel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.AxisymmetricVoxel"><code class="docutils literal notranslate"><span class="pre">AxisymmetricVoxel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.AxisymmetricVoxel.emissivity_from_function"><code class="docutils literal notranslate"><span class="pre">AxisymmetricVoxel.emissivity_from_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.VoxelCollection"><code class="docutils literal notranslate"><span class="pre">VoxelCollection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.VoxelCollection.emissivities_from_function"><code class="docutils literal notranslate"><span class="pre">VoxelCollection.emissivities_from_function()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.VoxelCollection.parent_all_voxels"><code class="docutils literal notranslate"><span class="pre">VoxelCollection.parent_all_voxels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.VoxelCollection.set_active"><code class="docutils literal notranslate"><span class="pre">VoxelCollection.set_active()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.VoxelCollection.unparent_all_voxels"><code class="docutils literal notranslate"><span class="pre">VoxelCollection.unparent_all_voxels()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid"><code class="docutils literal notranslate"><span class="pre">ToroidalVoxelGrid</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid.plot"><code class="docutils literal notranslate"><span class="pre">ToroidalVoxelGrid.plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tomography.html#cherab.tools.inversions.voxels.ToroidalVoxelGrid.set_active"><code class="docutils literal notranslate"><span class="pre">ToroidalVoxelGrid.set_active()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tomography.html#ray-transfer-objects">10.6.3. Ray Transfer Objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.raytransfer.RayTransferObject"><code class="docutils literal notranslate"><span class="pre">RayTransferObject</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.raytransfer.RayTransferObject.invert_voxel_map"><code class="docutils literal notranslate"><span class="pre">RayTransferObject.invert_voxel_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.raytransfer.RayTransferBox"><code class="docutils literal notranslate"><span class="pre">RayTransferBox</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.raytransfer.RayTransferCylinder"><code class="docutils literal notranslate"><span class="pre">RayTransferCylinder</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.emitters.RayTransferEmitter"><code class="docutils literal notranslate"><span class="pre">RayTransferEmitter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.emitters.RayTransferIntegrator"><code class="docutils literal notranslate"><span class="pre">RayTransferIntegrator</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.emitters.CartesianRayTransferEmitter"><code class="docutils literal notranslate"><span class="pre">CartesianRayTransferEmitter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.emitters.CartesianRayTransferIntegrator"><code class="docutils literal notranslate"><span class="pre">CartesianRayTransferIntegrator</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.emitters.CylindricalRayTransferEmitter"><code class="docutils literal notranslate"><span class="pre">CylindricalRayTransferEmitter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.emitters.CylindricalRayTransferIntegrator"><code class="docutils literal notranslate"><span class="pre">CylindricalRayTransferIntegrator</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.pipelines.RayTransferPipeline0D"><code class="docutils literal notranslate"><span class="pre">RayTransferPipeline0D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.pipelines.RayTransferPipeline1D"><code class="docutils literal notranslate"><span class="pre">RayTransferPipeline1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tomography.html#cherab.tools.raytransfer.pipelines.RayTransferPipeline2D"><code class="docutils literal notranslate"><span class="pre">RayTransferPipeline2D</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="utility.html">10.7. Utilities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.conversion">10.7.1. Unit Conversions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.notify">10.7.2. Notify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.recursivedict">10.7.3. Recursive Dict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.conversion">10.7.1. Unit Conversions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.AmuToKg"><code class="docutils literal notranslate"><span class="pre">AmuToKg</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.AngstromToNm"><code class="docutils literal notranslate"><span class="pre">AngstromToNm</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.BaseFactorConversion"><code class="docutils literal notranslate"><span class="pre">BaseFactorConversion</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.BaseFactorConversion.inv"><code class="docutils literal notranslate"><span class="pre">BaseFactorConversion.inv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.BaseFactorConversion.to"><code class="docutils literal notranslate"><span class="pre">BaseFactorConversion.to()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.Cm3ToM3"><code class="docutils literal notranslate"><span class="pre">Cm3ToM3</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.EvAmuToMS"><code class="docutils literal notranslate"><span class="pre">EvAmuToMS</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.EvAmuToMS.inv"><code class="docutils literal notranslate"><span class="pre">EvAmuToMS.inv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.EvAmuToMS.to"><code class="docutils literal notranslate"><span class="pre">EvAmuToMS.to()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.EvToJ"><code class="docutils literal notranslate"><span class="pre">EvToJ</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.PerCm3ToPerM3"><code class="docutils literal notranslate"><span class="pre">PerCm3ToPerM3</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.PhotonToJ"><code class="docutils literal notranslate"><span class="pre">PhotonToJ</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.PhotonToJ.inv"><code class="docutils literal notranslate"><span class="pre">PhotonToJ.inv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.conversion.PhotonToJ.to"><code class="docutils literal notranslate"><span class="pre">PhotonToJ.to()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.notify">10.7.2. Notify</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utility.html#cherab.core.utility.notify.Notifier"><code class="docutils literal notranslate"><span class="pre">Notifier</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="utility.html#cherab.core.utility.notify.NotifyingList"><code class="docutils literal notranslate"><span class="pre">NotifyingList</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.notify.NotifyingList.append"><code class="docutils literal notranslate"><span class="pre">NotifyingList.append()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.notify.NotifyingList.clear"><code class="docutils literal notranslate"><span class="pre">NotifyingList.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.notify.NotifyingList.extend"><code class="docutils literal notranslate"><span class="pre">NotifyingList.extend()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.notify.NotifyingList.insert"><code class="docutils literal notranslate"><span class="pre">NotifyingList.insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.notify.NotifyingList.pop"><code class="docutils literal notranslate"><span class="pre">NotifyingList.pop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.notify.NotifyingList.remove"><code class="docutils literal notranslate"><span class="pre">NotifyingList.remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.notify.NotifyingList.reverse"><code class="docutils literal notranslate"><span class="pre">NotifyingList.reverse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.notify.NotifyingList.sort"><code class="docutils literal notranslate"><span class="pre">NotifyingList.sort()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html#module-cherab.core.utility.recursivedict">10.7.3. Recursive Dict</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utility.html#cherab.core.utility.recursivedict.RecursiveDict"><code class="docutils literal notranslate"><span class="pre">RecursiveDict</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.recursivedict.RecursiveDict.freeze"><code class="docutils literal notranslate"><span class="pre">RecursiveDict.freeze()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utility.html#cherab.core.utility.recursivedict.RecursiveDict.from_dict"><code class="docutils literal notranslate"><span class="pre">RecursiveDict.from_dict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
+</section>
 
 
            </div>
@@ -226,7 +398,7 @@
         <a href="plasmas.html" class="btn btn-neutral float-right" title="10.1. Plasmas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../math/slice.html" class="btn btn-neutral" title="9.8. Slicing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../math/slice.html" class="btn btn-neutral" title="9.9. Slicing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -235,7 +407,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -259,7 +431,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

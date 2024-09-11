@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Plasma sources &mdash; Cherab 1.4.0 documentation</title>
+  <title>Plasma sources &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,12 +170,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="plasma-sources">
-<h1>Plasma sources<a class="headerlink" href="#plasma-sources" title="Permalink to this headline">¶</a></h1>
+  <section id="plasma-sources">
+<h1>Plasma sources<a class="headerlink" href="#plasma-sources" title="Permalink to this heading">¶</a></h1>
 <p>The core plasma object needs to be populated with distributions for each species in the model. The two most common ways
 of providing a plasma model are by using existing measured core profiles, and loading from a simulation such as SOLPS.</p>
-<div class="section" id="measured-profiles">
-<h2>Measured profiles<a class="headerlink" href="#measured-profiles" title="Permalink to this headline">¶</a></h2>
+<section id="measured-profiles">
+<h2>Measured profiles<a class="headerlink" href="#measured-profiles" title="Permalink to this heading">¶</a></h2>
 <p>In this example, we use the PPF system to load a JET plasma from analysed diagnostic PPFs. Start by loading the
 equilibrium and creating a psi mapping function.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load equilibrium object</span>
@@ -227,9 +229,9 @@ equilibrium and creating a psi mapping function.</p>
 <span class="n">plasma</span><span class="o">.</span><span class="n">set_species</span><span class="p">([</span><span class="n">d_species</span><span class="p">,</span> <span class="n">c6_species</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="solps-simulations">
-<h2>SOLPS Simulations<a class="headerlink" href="#solps-simulations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="solps-simulations">
+<h2>SOLPS Simulations<a class="headerlink" href="#solps-simulations" title="Permalink to this heading">¶</a></h2>
 <p>Using an existing simulation can make it much easier to load a plasma. In this case, a reference simulation will be
 loaded from the AUG MDSplus server.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cherab_contrib.simulation_data.solps.solps_plasma</span> <span class="kn">import</span> <span class="n">SOLPSSimulation</span>
@@ -248,12 +250,12 @@ loaded from the AUG MDSplus server.</p>
 <span class="n">plasma</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">plasma</span>
 </pre></div>
 </div>
-<div class="section" id="solpsmesh-class">
-<h3>SOLPSMesh Class<a class="headerlink" href="#solpsmesh-class" title="Permalink to this headline">¶</a></h3>
+<section id="solpsmesh-class">
+<h3>SOLPSMesh Class<a class="headerlink" href="#solpsmesh-class" title="Permalink to this heading">¶</a></h3>
 <p>Documentation coming soon.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -266,7 +268,7 @@ loaded from the AUG MDSplus server.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -290,7 +292,9 @@ loaded from the AUG MDSplus server.</p>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     
 
   

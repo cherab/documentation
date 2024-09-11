@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Custom emission model &mdash; Cherab 1.4.0 documentation</title>
+  <title>Custom emission model &mdash; Cherab 1.5.0 documentation</title>
   
 
   
@@ -27,6 +28,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="custom-emission-model">
-<span id="custom-emitter"></span><h1>Custom emission model<a class="headerlink" href="#custom-emission-model" title="Permalink to this headline">¶</a></h1>
+  <section id="custom-emission-model">
+<span id="custom-emitter"></span><h1>Custom emission model<a class="headerlink" href="#custom-emission-model" title="Permalink to this heading">¶</a></h1>
 <p>Example of how to make a custom electron impact excitation emission model.
 A MAST-U SOLPS plasma simulation will be used to drive the emission model.
 The full demo file for this tutorial can be downloaded from
@@ -203,8 +205,8 @@ Start by importing all required modules and creating world.</p>
 <span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="section" id="loading-plasma-and-machine-geometry">
-<h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Permalink to this headline">¶</a></h2>
+<section id="loading-plasma-and-machine-geometry">
+<h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Permalink to this heading">¶</a></h2>
 <p>Load all parts of the machine mesh from files (either .stl or .obj). Each CAD files’ optical
 properties are modified by the chosen material. In this case an AbsorbingSurface is being used,
 which acts like a perfect absorber. This class is useful for using the mesh geometry to
@@ -227,9 +229,9 @@ loads a SOLPS simulation from the AUG server.</p>
 <span class="n">vessel</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vessel</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id1">
-<h2>Custom emission model<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id1">
+<h2>Custom emission model<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
 <p>Custom emitters are implemented as Raysect materials with the <cite>VolumeEmitterInhomogeneous</cite> class.
 You model should inherit from this base class, only two methods need to be implemented,
 the <cite>__init__()</cite> and <cite>emission_function()</cite> methods.</p>
@@ -345,9 +347,9 @@ to a cylinder with the approximate vessel geometry.</p>
                                 <span class="n">material</span><span class="o">=</span><span class="n">d_alpha_excit</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">translate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">lower_z</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="camera-setup">
-<h2>Camera setup<a class="headerlink" href="#camera-setup" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="camera-setup">
+<h2>Camera setup<a class="headerlink" href="#camera-setup" title="Permalink to this heading">¶</a></h2>
 <p>Setup an example MAST-U camera with Calcam and <cite>VectorCamera</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a MAST-U midplane camera</span>
 <span class="n">camera_config</span> <span class="o">=</span> <span class="n">load_calcam_calibration</span><span class="p">(</span><span class="s1">&#39;./demo/mast/camera_configs/mug_bulletb_midplane.nc&#39;</span><span class="p">)</span>
@@ -361,17 +363,19 @@ to a cylinder with the approximate vessel geometry.</p>
 <span class="n">camera</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="example-output-images">
-<h2>Example output images<a class="headerlink" href="#example-output-images" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-center" id="id2">
+</section>
+<section id="example-output-images">
+<h2>Example output images<a class="headerlink" href="#example-output-images" title="Permalink to this heading">¶</a></h2>
+<figure class="align-center" id="id2">
 <img alt="../../_images/mastu_bulletb_midplane_dalpha.png" src="../../_images/mastu_bulletb_midplane_dalpha.png" />
-<p class="caption"><span class="caption-text">D-alpha with the mid-plane bullet camera. This example combines excitation and
+<figcaption>
+<p><span class="caption-text">D-alpha with the mid-plane bullet camera. This example combines excitation and
 recombination rates. Divertor recombination dominates when line integration is
 taking into account.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
+</section>
 
 
            </div>
@@ -384,7 +388,7 @@ taking into account.</span><a class="headerlink" href="#id2" title="Permalink to
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2022, Cherab Team
+        &copy; Copyright 2024, Cherab Team
 
     </p>
   </div> 
@@ -408,7 +412,9 @@ taking into account.</span><a class="headerlink" href="#id2" title="Permalink to
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     
 
   
