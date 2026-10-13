@@ -1,90 +1,46 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>9.3. Functions &mdash; Cherab 1.5.0 documentation</title>
-  
-
-  
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9.3. Functions &mdash; Cherab 1.6.0 documentation</title>
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
 
   
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <script src="../_static/documentation_options.js?v=72d88caf"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9.4. Interpolators" href="interpolators.html" />
     <link rel="prev" title="9.2. Clamps" href="clamp.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+        <div class="wy-side-nav-search" >
 
           
-            <a href="../index.html" class="icon icon-home"> Cherab
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            Cherab
           </a>
-
-          
-            
-            
-              <div class="version">
-                1.5
-              </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
@@ -99,12 +55,29 @@
 <li class="toctree-l2"><a class="reference internal" href="caching.html">9.1. Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="clamp.html">9.2. Clamps</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">9.3. Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#d-vector-functions">9.3.1. 2D Vector Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d-scalar-functions">9.3.1. 6D Scalar Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D"><code class="docutils literal notranslate"><span class="pre">Function6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.constant.Constant6D"><code class="docutils literal notranslate"><span class="pre">Constant6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.arg.Arg6D"><code class="docutils literal notranslate"><span class="pre">Arg6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.cmath.Exp6D"><code class="docutils literal notranslate"><span class="pre">Exp6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.cmath.Sin6D"><code class="docutils literal notranslate"><span class="pre">Sin6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.cmath.Cos6D"><code class="docutils literal notranslate"><span class="pre">Cos6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.cmath.Tan6D"><code class="docutils literal notranslate"><span class="pre">Tan6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.cmath.Asin6D"><code class="docutils literal notranslate"><span class="pre">Asin6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.cmath.Acos6D"><code class="docutils literal notranslate"><span class="pre">Acos6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.cmath.Atan6D"><code class="docutils literal notranslate"><span class="pre">Atan6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.cmath.Atan4Q6D"><code class="docutils literal notranslate"><span class="pre">Atan4Q6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.cmath.Sqrt6D"><code class="docutils literal notranslate"><span class="pre">Sqrt6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.cmath.Erf6D"><code class="docutils literal notranslate"><span class="pre">Erf6D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.float.function6d.blend.Blend6D"><code class="docutils literal notranslate"><span class="pre">Blend6D</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#d-vector-functions">9.3.2. 2D Vector Functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.VectorFunction2D"><code class="docutils literal notranslate"><span class="pre">VectorFunction2D</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.ScalarToVectorFunction2D"><code class="docutils literal notranslate"><span class="pre">ScalarToVectorFunction2D</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">9.3.2. 3D Vector Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">9.3.3. 3D Vector Functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.VectorFunction3D"><code class="docutils literal notranslate"><span class="pre">VectorFunction3D</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.function.ScalarToVectorFunction3D"><code class="docutils literal notranslate"><span class="pre">ScalarToVectorFunction3D</span></code></a></li>
 </ul>
@@ -117,9 +90,14 @@
 <li class="toctree-l2"><a class="reference internal" href="mask.html">9.7. Masks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samplers.html">9.8. Samplers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slice.html">9.9. Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrators.html">9.10. Integrators</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/pixi.html">Pixi developer guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -133,104 +111,302 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Cherab</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="math.html"><span class="section-number">9. </span>Function Framework</a> &raquo;</li>
-        
-      <li><span class="section-number">9.3. </span>Functions</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="math.html"><span class="section-number">9. </span>Function Framework</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">9.3. </span>Functions</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/math/function.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <section id="functions">
-<h1><span class="section-number">9.3. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">9.3. </span>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h1>
 <p>The Cherab function framework is built on the core Raysect 1D, 2D and 3D
 <a class="reference external" href="https://raysect.github.io/documentation/api_reference/core/functions.html">function framework</a>.
 For more details on the base functionality refer to the Raysect
 documentation and the Cherab function tutorials.</p>
 <p>Cherab previously provided vector functions which were not present in Raysect.
 New codes should prefer the Raysect vector functions, but the old aliases are preserved for backwards compatibility.</p>
+<p>The Function6D framework in Cherab aims to provide a framework for building six-dimensional distribution functions.
+It follows closely Raysect’s function framework.</p>
+<section id="d-scalar-functions">
+<h2><span class="section-number">9.3.1. </span>6D Scalar Functions<a class="headerlink" href="#d-scalar-functions" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.base.Function6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.base.</span></span><span class="sig-name descname"><span class="pre">Function6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.base.Function6D" title="Link to this definition">¶</a></dt>
+<dd><p>Cython optimised class for representing an arbitrary 6D function returning a float.</p>
+<p>Using __call__() in cython is slow. This class provides an overloadable
+cython cdef evaluate() method which has much less overhead than a python
+function call.</p>
+<p>For use in cython code only, this class cannot be extended via python.</p>
+<p>To create a new function object, inherit this class and implement the
+evaluate() method. The new function object can then be used with any code
+that accepts a function object.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.base.Function6D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cherab.core.math.function.float.function6d.base.Function6D.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>Evaluate the function f(x, y, z, u, v, w)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – function parameter x</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – function parameter y</p></li>
+<li><p><strong>z</strong> (<em>float</em>) – function parameter z</p></li>
+<li><p><strong>u</strong> (<em>float</em>) – function parameter u</p></li>
+<li><p><strong>v</strong> (<em>float</em>) – function parameter v</p></li>
+<li><p><strong>w</strong> (<em>float</em>) – function parameter w</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.constant.Constant6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.constant.</span></span><span class="sig-name descname"><span class="pre">Constant6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.constant.Constant6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>Wraps a scalar constant with a Function6D object.</p>
+<p>This class allows a numeric Python scalar, such as a float or an integer, to
+interact with cython code that requires a Function6D object. The scalar must
+be convertible to double. The value of the scalar constant will be returned
+independent of the arguments the function is called with.</p>
+<p>This class is intended to be used to transparently wrap python objects that
+are passed via constructors or methods into cython optimised code. It is not
+intended that the users should need to directly interact with these wrapping
+objects. Constructors and methods expecting a Function6D object should be
+designed to accept a generic python object and then test that object to
+determine if it is an instance of Function6D. If the object is not a
+Function6D object it should be wrapped using this class for internal use.</p>
+<p>See also: autowrap_function6d()</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – the constant value to return when called</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.arg.Arg6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.arg.</span></span><span class="sig-name descname"><span class="pre">Arg6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.arg.Arg6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>Returns one of the arguments the function is passed, unmodified</p>
+<p>This is used to pass coordinates through to other functions in the
+function framework which expect a Function6D object.</p>
+<p>Valid options for argument are “x”, “y”, “z”, “u”, “v”, or “w”.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">argx</span> <span class="o">=</span> <span class="n">Arg6D</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argx</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="go">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argy</span> <span class="o">=</span> <span class="n">Arg6D</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argy</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="go">3.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argz</span> <span class="o">=</span> <span class="n">Arg6D</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argz</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="go">5.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argu</span> <span class="o">=</span> <span class="n">Arg6D</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argu</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="go">7.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argv</span> <span class="o">=</span> <span class="n">Arg6D</span><span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="go">11.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argw</span> <span class="o">=</span> <span class="n">Arg6D</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">argw</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="go">13.0</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>argument</strong> (<em>str</em>) – either “x”, “y”, “z”, “u”, “v”, or “w”, the argument to return</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.cmath.Exp6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.cmath.</span></span><span class="sig-name descname"><span class="pre">Exp6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.cmath.Exp6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>A Function6D class that implements the exponential of the result of a Function6D object: exp(f())</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><em>Function6D</em></a>) – A Function6D object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.cmath.Sin6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.cmath.</span></span><span class="sig-name descname"><span class="pre">Sin6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.cmath.Sin6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>A Function6D class that implements the sine of the result of a Function6D object: sin(f())</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><em>Function6D</em></a>) – A Function6D object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.cmath.Cos6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.cmath.</span></span><span class="sig-name descname"><span class="pre">Cos6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.cmath.Cos6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>A Function6D class that implements the cosine of the result of a Function6D object: cos(f())</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><em>Function6D</em></a>) – A Function6D object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.cmath.Tan6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.cmath.</span></span><span class="sig-name descname"><span class="pre">Tan6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.cmath.Tan6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>A Function6D class that implements the tangent of the result of a Function6D object: tan(f())</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><em>Function6D</em></a>) – A Function6D object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.cmath.Asin6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.cmath.</span></span><span class="sig-name descname"><span class="pre">Asin6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.cmath.Asin6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>A Function6D class that implements the arcsine of the result of a Function6D object: asin(f())</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><em>Function6D</em></a>) – A Function6D object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.cmath.Acos6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.cmath.</span></span><span class="sig-name descname"><span class="pre">Acos6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.cmath.Acos6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>A Function6D class that implements the arccosine of the result of a Function6D object: acos(f())</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><em>Function6D</em></a>) – A Function6D object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.cmath.Atan6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.cmath.</span></span><span class="sig-name descname"><span class="pre">Atan6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.cmath.Atan6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>A Function6D class that implements the arctangent of the result of a Function6D object: atan(f())</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><em>Function6D</em></a>) – A Function6D object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.cmath.Atan4Q6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.cmath.</span></span><span class="sig-name descname"><span class="pre">Atan4Q6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.cmath.Atan4Q6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>A Function6D class that implements the arctangent of the result of 2 Function6D objects: atan2(f1(), f2())</p>
+<p>This differs from Atan6D in that it takes separate functions for the
+numerator and denominator, in order to get the quadrant correct.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>numerator</strong> (<a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><em>Function6D</em></a>) – A Function6D object representing the numerator</p></li>
+<li><p><strong>denominator</strong> (<a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><em>Function6D</em></a>) – A Function6D object representing the denominator</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.cmath.Sqrt6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.cmath.</span></span><span class="sig-name descname"><span class="pre">Sqrt6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.cmath.Sqrt6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>A Function6D class that implements the square root of the result of a Function6D object: sqrt(f())</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><em>Function6D</em></a>) – A Function6D object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.cmath.Erf6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.cmath.</span></span><span class="sig-name descname"><span class="pre">Erf6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.cmath.Erf6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>A Function6D class that implements the error function of the result of a Function6D object: erf(f())</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><em>Function6D</em></a>) – A Function6D object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.function.float.function6d.blend.Blend6D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.float.function6d.blend.</span></span><span class="sig-name descname"><span class="pre">Blend6D</span></span><a class="headerlink" href="#cherab.core.math.function.float.function6d.blend.Blend6D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cherab.core.math.function.float.function6d.base.Function6D" title="cherab.core.math.function.float.function6d.base.Function6D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function6D</span></code></a></p>
+<p>Performs a linear interpolation between two scalar functions, modulated by a 3rd scalar function.</p>
+<p>The value of the scalar mask function is used to interpolated between the
+values returned by the two functions. Mathematically the value returned by
+this function is as follows:</p>
+<div class="math notranslate nohighlight">
+\[v = (1 - f_m(x, y, z, u, v, w)) f_1(x, y, z, u, v, w) + f_m(x, y, z, u, v, w) f_2(x, y, z, u, v, w)\]</div>
+<p>The value of the mask function is clamped to the range [0, 1] if the sampled
+value exceeds the required range.</p>
+</dd></dl>
+
+</section>
 <section id="d-vector-functions">
-<h2><span class="section-number">9.3.1. </span>2D Vector Functions<a class="headerlink" href="#d-vector-functions" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">9.3.2. </span>2D Vector Functions<a class="headerlink" href="#d-vector-functions" title="Link to this heading">¶</a></h2>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cherab.core.math.function.VectorFunction2D">
-<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">VectorFunction2D</span></span><a class="headerlink" href="#cherab.core.math.function.VectorFunction2D" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">VectorFunction2D</span></span><a class="headerlink" href="#cherab.core.math.function.VectorFunction2D" title="Link to this definition">¶</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Function2D</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cherab.core.math.function.ScalarToVectorFunction2D">
-<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">ScalarToVectorFunction2D</span></span><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction2D" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">ScalarToVectorFunction2D</span></span><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction2D" title="Link to this definition">¶</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">FloatToVector3DFunction2D</span></code></p>
 </dd></dl>
 
 </section>
 <section id="id1">
-<h2><span class="section-number">9.3.2. </span>3D Vector Functions<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">9.3.3. </span>3D Vector Functions<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cherab.core.math.function.VectorFunction3D">
-<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">VectorFunction3D</span></span><a class="headerlink" href="#cherab.core.math.function.VectorFunction3D" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">VectorFunction3D</span></span><a class="headerlink" href="#cherab.core.math.function.VectorFunction3D" title="Link to this definition">¶</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Function3D</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cherab.core.math.function.ScalarToVectorFunction3D">
-<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">ScalarToVectorFunction3D</span></span><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction3D" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.core.math.function.</span></span><span class="sig-name descname"><span class="pre">ScalarToVectorFunction3D</span></span><a class="headerlink" href="#cherab.core.math.function.ScalarToVectorFunction3D" title="Link to this definition">¶</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">FloatToVector3DFunction3D</span></code></p>
 </dd></dl>
 
@@ -239,58 +415,26 @@ New codes should prefer the Raysect vector functions, but the old aliases are pr
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="interpolators.html" class="btn btn-neutral float-right" title="9.4. Interpolators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="clamp.html" class="btn btn-neutral" title="9.2. Clamps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="clamp.html" class="btn btn-neutral float-left" title="9.2. Clamps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="interpolators.html" class="btn btn-neutral float-right" title="9.4. Interpolators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2024, Cherab Team
+    <p>&#169; Copyright 2026, Cherab Team.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

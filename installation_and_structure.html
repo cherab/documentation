@@ -1,90 +1,45 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>4. Installation and Project Structure &mdash; Cherab 1.5.0 documentation</title>
-  
-
-  
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Installation and Project Structure &mdash; Cherab 1.6.0 documentation</title>
+      <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
 
   
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
-  <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+      <script src="_static/documentation_options.js?v=72d88caf"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="5. Available Packages" href="available_modules.html" />
     <link rel="prev" title="3. Project Governance" href="governance.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+        <div class="wy-side-nav-search" >
 
           
-            <a href="index.html" class="icon icon-home"> Cherab
           
-
-          
+          <a href="index.html" class="icon icon-home">
+            Cherab
           </a>
-
-          
-            
-            
-              <div class="version">
-                1.5
-              </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Welcome</a></li>
@@ -95,8 +50,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#project-structure">4.2. Project Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">4.3. Installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installing-through-pip">4.3.1. Installing through Pip</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-from-source">4.3.2. Installing from source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-for-development">4.3.3. Installing for development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-through-conda">4.3.2. Installing through conda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-from-source">4.3.3. Installing from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-for-development">4.3.4. Installing for development</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-atomic-data">4.4. Configuring Atomic Data</a></li>
@@ -110,6 +66,10 @@
 <li class="toctree-l1"><a class="reference internal" href="math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tools/tools.html">10. Tools</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development/pixi.html">Pixi developer guide</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html">Atomic Data</a></li>
@@ -122,86 +82,49 @@
 <li class="toctree-l1"><a class="reference internal" href="demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Cherab</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li><span class="section-number">4. </span>Installation and Project Structure</li>
-    
-    
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>Installation and Project Structure</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/installation_and_structure.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <section id="installation-and-project-structure">
-<h1><span class="section-number">4. </span>Installation and Project Structure<a class="headerlink" href="#installation-and-project-structure" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">4. </span>Installation and Project Structure<a class="headerlink" href="#installation-and-project-structure" title="Link to this heading">¶</a></h1>
 <section id="prerequisites">
-<h2><span class="section-number">4.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
 <p>The Cherab package requires Python 3.5+, numpy, scipy, matplotlib and <a class="reference external" href="https://raysect.github.io/documentation/">Raysect</a>.
 Scipy version 0.13 or higher is recommended. IPython is recommended for interactive use.</p>
 </section>
 <section id="project-structure">
-<h2><span class="section-number">4.2. </span>Project Structure<a class="headerlink" href="#project-structure" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.2. </span>Project Structure<a class="headerlink" href="#project-structure" title="Link to this heading">¶</a></h2>
 <p>Cherab is a large code framework consisting of a main core package and many smaller feature
 packages. The overall structure of the framework is best visualised as onion shells. The full
 project structure is most relevant for researchers in fusion plasma physics. Researchers in other
 areas such as industrial plasmas and astrophysics will only require layers 1, 2 for their
 applications.</p>
 <figure class="align-center" id="id5">
-<a class="reference internal image-reference" href="_images/CHERAB_structure.png"><img alt="_images/CHERAB_structure.png" src="_images/CHERAB_structure.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="_images/CHERAB_structure.png"><img alt="_images/CHERAB_structure.png" src="_images/CHERAB_structure.png" style="width: 650px;" />
+</a>
 <figcaption>
-<p><span class="caption-text"><strong>Caption:</strong> A high level diagram illustrating the structure of the Cherab framework.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><strong>Caption:</strong> A high level diagram illustrating the structure of the Cherab framework.</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>1. Ray-tracing Engine:</strong> Cherab was built on top of a ray-tracing engine to provide all the core
@@ -231,14 +154,14 @@ measured data. These projects may just be collections of scripts owned by diagno
 responsible officers or they could be organised into formal packages.</p>
 </section>
 <section id="installation">
-<h2><span class="section-number">4.3. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.3. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
 <p>Users will generally just install the core package and the specific feature packages they
 need for their work. For example, users working on the JET tokamak will require the
 <a class="reference external" href="https://pypi.org/project/cherab">cherab</a> package and the <a class="reference external" href="https://github.com/cherab/jet">cherab-jet</a>
-package. The core <code class="docutils literal notranslate"><span class="pre">cherab</span></code> package is available through pip. The additional fusion specific
+package. The core <code class="docutils literal notranslate"><span class="pre">cherab</span></code> package is available through pip and conda. The additional fusion specific
 packages, offering extra functionality, should be cloned from their respective repositories.</p>
 <section id="installing-through-pip">
-<h3><span class="section-number">4.3.1. </span>Installing through Pip<a class="headerlink" href="#installing-through-pip" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">4.3.1. </span>Installing through Pip<a class="headerlink" href="#installing-through-pip" title="Link to this heading">¶</a></h3>
 <p>Cherab is available from the python package repository <a class="reference external" href="https://pypi.org/project/cherab">pypi</a>.
 Unless developing new code for a cherab package, most users should use the latest versioned release
 packages available through pypi.</p>
@@ -257,8 +180,20 @@ below), the package will be compiled locally on your machine. Compilation is don
 default, using all available processors, but can be overridden by setting the environment variable
 <code class="docutils literal notranslate"><span class="pre">CHERAB_NCPU</span></code> to the number of processors to use.</p>
 </section>
+<section id="installing-through-conda">
+<h3><span class="section-number">4.3.2. </span>Installing through conda<a class="headerlink" href="#installing-through-conda" title="Link to this heading">¶</a></h3>
+<p>Pre-built Cherab packages are available from the
+<a class="reference external" href="https://anaconda.org/conda-forge/cherab">conda-forge channel</a> for Linux and macOS.
+To install Cherab with conda, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cherab</span>
+</pre></div>
+</div>
+<p>This installs Cherab and its dependencies, including Raysect, without requiring
+a local compiler. The OpenADAS module is included, but its atomic data files must
+be downloaded separately as described in <a class="reference internal" href="#configuring-atomic-data">Configuring Atomic Data</a> below.</p>
+</section>
 <section id="installing-from-source">
-<h3><span class="section-number">4.3.2. </span>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">4.3.3. </span>Installing from source<a class="headerlink" href="#installing-from-source" title="Link to this heading">¶</a></h3>
 <p>If pip is not available the source files can be downloaded from <a class="reference external" href="https://pypi.org/project/cherab">pypi</a>
 or from our <a class="reference external" href="https://github.com/cherab/core">development repository</a>. Once you have the source files,
 locate the folder containing setup.py and run:</p>
@@ -273,7 +208,7 @@ Note that other packages may have their own inter-dependencies, see the specific
 more information.</p>
 </section>
 <section id="installing-for-development">
-<h3><span class="section-number">4.3.3. </span>Installing for development<a class="headerlink" href="#installing-for-development" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">4.3.4. </span>Installing for development<a class="headerlink" href="#installing-for-development" title="Link to this heading">¶</a></h3>
 <p>When developing cherab it is usually preferred that the packages be installed in “develop” mode.
 Clone the project from the development repository, locate the folder containing setup.py and run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
@@ -293,19 +228,19 @@ administrative permission for your python installation.</p>
 </section>
 </section>
 <section id="configuring-atomic-data">
-<h2><span class="section-number">4.4. </span>Configuring Atomic Data<a class="headerlink" href="#configuring-atomic-data" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.4. </span>Configuring Atomic Data<a class="headerlink" href="#configuring-atomic-data" title="Link to this heading">¶</a></h2>
 <p>Regardless of the method you used to install Cherab, you will need a valid atomic data source for your
 calculations. Cherab provides a default atomic data source through the OpenADAS module. To use this module
 it is necessary to obtain the atomic data files from the OpenADAS web archive. An automated download script
 is provided to download and install the most common atomic data files. This data is required to run many of
 the demos supplied with Cherab. To run the script please enter the following commands in a python terminal:</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.openadas.repository</span> <span class="kn">import</span> <span class="n">populate</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">cherab.openadas.repository</span><span class="w"> </span><span class="kn">import</span> <span class="n">populate</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">populate</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
 <section id="testing">
-<h2><span class="section-number">4.5. </span>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.5. </span>Testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
 <p>A selection of test scripts can be run with the <cite>nose</cite> testing framework. These are routinely
 run on the development version.  Running <code class="docutils literal notranslate"><span class="pre">./dev/test.sh</span></code> at the terminal in the source directory
 should run all of these tests to completion without errors or failures.</p>
@@ -316,58 +251,26 @@ the <code class="docutils literal notranslate"><span class="pre">demo</span></co
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="available_modules.html" class="btn btn-neutral float-right" title="5. Available Packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="governance.html" class="btn btn-neutral" title="3. Project Governance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="governance.html" class="btn btn-neutral float-left" title="3. Project Governance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="available_modules.html" class="btn btn-neutral float-right" title="5. Available Packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2024, Cherab Team
+    <p>&#169; Copyright 2026, Cherab Team.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

@@ -1,88 +1,43 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Custom emission model &mdash; Cherab 1.5.0 documentation</title>
-  
-
-  
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom emission model &mdash; Cherab 1.6.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
 
   
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <script src="../../_static/documentation_options.js?v=72d88caf"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+        <div class="wy-side-nav-search" >
 
           
-            <a href="../../index.html" class="icon icon-home"> Cherab
           
-
-          
+          <a href="../../index.html" class="icon icon-home">
+            Cherab
           </a>
-
-          
-            
-            
-              <div class="version">
-                1.5
-              </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
@@ -96,6 +51,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/pixi.html">Pixi developer guide</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
@@ -108,92 +67,54 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Cherab</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
-      <li>Custom emission model</li>
-    
-    
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Custom emission model</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../_sources/demonstrations/line_emission/custom_emitter.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <section id="custom-emission-model">
-<span id="custom-emitter"></span><h1>Custom emission model<a class="headerlink" href="#custom-emission-model" title="Permalink to this heading">¶</a></h1>
+<span id="custom-emitter"></span><h1>Custom emission model<a class="headerlink" href="#custom-emission-model" title="Link to this heading">¶</a></h1>
 <p>Example of how to make a custom electron impact excitation emission model.
 A MAST-U SOLPS plasma simulation will be used to drive the emission model.
 The full demo file for this tutorial can be downloaded from
 <a class="reference external" href="https://git.ccfe.ac.uk/cherab/cherab-core/tree/master/docs/demonstrations/line_emission/custom_emission_model.py">here</a>.
 Start by importing all required modules and creating world.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Core and external imports</span>
-<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">ion</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">exp</span>
-<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">elementary_charge</span><span class="p">,</span> <span class="n">speed_of_light</span><span class="p">,</span> <span class="n">pi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pylab</span><span class="w"> </span><span class="kn">import</span> <span class="n">ion</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">exp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">elementary_charge</span><span class="p">,</span> <span class="n">speed_of_light</span><span class="p">,</span> <span class="n">pi</span>
 
-<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">translate</span>
-<span class="kn">from</span> <span class="nn">raysect.optical.observer.vector_camera</span> <span class="kn">import</span> <span class="n">VectorCamera</span>
-<span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="kn">import</span> <span class="n">Cylinder</span><span class="p">,</span> <span class="n">import_stl</span>
-<span class="kn">from</span> <span class="nn">raysect.optical.material.absorber</span> <span class="kn">import</span> <span class="n">AbsorbingSurface</span>
-<span class="kn">from</span> <span class="nn">raysect.optical.material.emitter</span> <span class="kn">import</span> <span class="n">VolumeEmitterInhomogeneous</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.optical</span><span class="w"> </span><span class="kn">import</span> <span class="n">World</span><span class="p">,</span> <span class="n">translate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.optical.observer.vector_camera</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorCamera</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.primitive</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cylinder</span><span class="p">,</span> <span class="n">import_stl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.optical.material.absorber</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbsorbingSurface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.optical.material.emitter</span><span class="w"> </span><span class="kn">import</span> <span class="n">VolumeEmitterInhomogeneous</span>
 
 <span class="c1"># Cherab and raysect imports</span>
-<span class="kn">from</span> <span class="nn">cherab.atomic.core</span> <span class="kn">import</span> <span class="n">Line</span>
-<span class="kn">from</span> <span class="nn">cherab.atomic.elements</span> <span class="kn">import</span> <span class="n">deuterium</span>
-<span class="kn">from</span> <span class="nn">cherab.atomic.adas.adf_files.read_adf15</span> <span class="kn">import</span> <span class="n">get_adf15_pec</span>
-<span class="kn">from</span> <span class="nn">cherab_contrib.jet.calcam</span> <span class="kn">import</span> <span class="n">load_calcam_calibration</span>
-<span class="kn">from</span> <span class="nn">cherab_contrib.simulation_data.solps.solps_plasma</span> <span class="kn">import</span> <span class="n">SOLPSSimulation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab.atomic.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Line</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab.atomic.elements</span><span class="w"> </span><span class="kn">import</span> <span class="n">deuterium</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab.atomic.adas.adf_files.read_adf15</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_adf15_pec</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab_contrib.jet.calcam</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_calcam_calibration</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab_contrib.simulation_data.solps.solps_plasma</span><span class="w"> </span><span class="kn">import</span> <span class="n">SOLPSSimulation</span>
 
 
 <span class="c1"># Define constants</span>
@@ -206,7 +127,7 @@ Start by importing all required modules and creating world.</p>
 </pre></div>
 </div>
 <section id="loading-plasma-and-machine-geometry">
-<h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Permalink to this heading">¶</a></h2>
+<h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Link to this heading">¶</a></h2>
 <p>Load all parts of the machine mesh from files (either .stl or .obj). Each CAD files’ optical
 properties are modified by the chosen material. In this case an AbsorbingSurface is being used,
 which acts like a perfect absorber. This class is useful for using the mesh geometry to
@@ -231,7 +152,7 @@ loads a SOLPS simulation from the AUG server.</p>
 </div>
 </section>
 <section id="id1">
-<h2>Custom emission model<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<h2>Custom emission model<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <p>Custom emitters are implemented as Raysect materials with the <cite>VolumeEmitterInhomogeneous</cite> class.
 You model should inherit from this base class, only two methods need to be implemented,
 the <cite>__init__()</cite> and <cite>emission_function()</cite> methods.</p>
@@ -263,9 +184,9 @@ cyliner, or CAD mesh for example.</p></li>
 <li><p><cite>to_world</cite> (<cite>AffineMatrix3D</cite>) - Affine matrix for coordinate transformations to world coordinates.</p></li>
 </ul>
 <p>Here is an example class implementation of an excitation line.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExcitationLine</span><span class="p">(</span><span class="n">VolumeEmitterInhomogeneous</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ExcitationLine</span><span class="p">(</span><span class="n">VolumeEmitterInhomogeneous</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">electron_distribution</span><span class="p">,</span> <span class="n">atom_species</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">electron_distribution</span><span class="p">,</span> <span class="n">atom_species</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
                  <span class="n">block</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">)</span>
@@ -278,7 +199,7 @@ cyliner, or CAD mesh for example.</p></li>
         <span class="c1"># Replace this with your own atomic data as necessary.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pec_excitation</span> <span class="o">=</span> <span class="n">get_adf15_pec</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s1">&#39;EXCIT&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">emission_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">,</span> <span class="n">world</span><span class="p">,</span> <span class="n">ray</span><span class="p">,</span> <span class="n">primitive</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">emission_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">,</span> <span class="n">world</span><span class="p">,</span> <span class="n">ray</span><span class="p">,</span> <span class="n">primitive</span><span class="p">,</span>
                           <span class="n">to_local</span><span class="p">,</span> <span class="n">to_world</span><span class="p">):</span>
 
         <span class="c1">##########################################</span>
@@ -349,7 +270,7 @@ to a cylinder with the approximate vessel geometry.</p>
 </div>
 </section>
 <section id="camera-setup">
-<h2>Camera setup<a class="headerlink" href="#camera-setup" title="Permalink to this heading">¶</a></h2>
+<h2>Camera setup<a class="headerlink" href="#camera-setup" title="Link to this heading">¶</a></h2>
 <p>Setup an example MAST-U camera with Calcam and <cite>VectorCamera</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a MAST-U midplane camera</span>
 <span class="n">camera_config</span> <span class="o">=</span> <span class="n">load_calcam_calibration</span><span class="p">(</span><span class="s1">&#39;./demo/mast/camera_configs/mug_bulletb_midplane.nc&#39;</span><span class="p">)</span>
@@ -365,13 +286,13 @@ to a cylinder with the approximate vessel geometry.</p>
 </div>
 </section>
 <section id="example-output-images">
-<h2>Example output images<a class="headerlink" href="#example-output-images" title="Permalink to this heading">¶</a></h2>
+<h2>Example output images<a class="headerlink" href="#example-output-images" title="Link to this heading">¶</a></h2>
 <figure class="align-center" id="id2">
 <img alt="../../_images/mastu_bulletb_midplane_dalpha.png" src="../../_images/mastu_bulletb_midplane_dalpha.png" />
 <figcaption>
 <p><span class="caption-text">D-alpha with the mid-plane bullet camera. This example combines excitation and
 recombination rates. Divertor recombination dominates when line integration is
-taking into account.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+taking into account.</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -379,49 +300,23 @@ taking into account.</span><a class="headerlink" href="#id2" title="Permalink to
 
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2024, Cherab Team
+    <p>&#169; Copyright 2026, Cherab Team.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

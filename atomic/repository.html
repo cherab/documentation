@@ -1,90 +1,45 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>6.7. Atomic data repository &mdash; Cherab 1.5.0 documentation</title>
-  
-
-  
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.7. Atomic data repository &mdash; Cherab 1.6.0 documentation</title>
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
 
   
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <script src="../_static/documentation_options.js?v=72d88caf"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6.8. Open-ADAS" href="openadas.html" />
     <link rel="prev" title="6.6. Atomic data interpolators" href="data_interpolators.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+        <div class="wy-side-nav-search" >
 
           
-            <a href="../index.html" class="icon icon-home"> Cherab
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            Cherab
           </a>
-
-          
-            
-            
-              <div class="version">
-                1.5
-              </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
@@ -173,6 +128,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/pixi.html">Pixi developer guide</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
@@ -185,72 +144,33 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Cherab</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="atomic_data.html"><span class="section-number">6. </span>Atomic Data</a> &raquo;</li>
-        
-      <li><span class="section-number">6.7. </span>Atomic data repository</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="atomic_data.html"><span class="section-number">6. </span>Atomic Data</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.7. </span>Atomic data repository</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/atomic/repository.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <section id="atomic-data-repository">
-<h1><span class="section-number">6.7. </span>Atomic data repository<a class="headerlink" href="#atomic-data-repository" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">6.7. </span>Atomic data repository<a class="headerlink" href="#atomic-data-repository" title="Link to this heading">¶</a></h1>
 <p>The following functions allow to manipulate the local atomic data repository:
 add the rates of the atomic processes, update existing ones or get the data
 already present in the repository.</p>
@@ -261,13 +181,13 @@ The data in these repositories can be accessed through the <cite>OpenADAS</cite>
 by specifying the <cite>data_path</cite> parameter.</p>
 <p>To create the new atomic data repository at the default location and populate it with a typical
 set of rates and wavelengths from Open-ADAS, do:</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cherab.openadas.repository</span> <span class="kn">import</span> <span class="n">populate</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">cherab.openadas.repository</span><span class="w"> </span><span class="kn">import</span> <span class="n">populate</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">populate</span><span class="p">()</span>
 </pre></div>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.create.populate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.create.</span></span><span class="sig-name descname"><span class="pre">populate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.create.populate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.create.</span></span><span class="sig-name descname"><span class="pre">populate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adas_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.create.populate" title="Link to this definition">¶</a></dt>
 <dd><p>Populates the OpenADAS repository with a typical set of rates and wavelengths.</p>
 <p>If an ADAS file is not note found an attempt will be made to download the
 file from the OpenADAS website. This behaviour can be disabled by setting
@@ -284,10 +204,10 @@ the download argument to False.</p>
 </dd></dl>
 
 <section id="module-cherab.openadas.repository.wavelength">
-<span id="wavelength"></span><h2><span class="section-number">6.7.1. </span>Wavelength<a class="headerlink" href="#module-cherab.openadas.repository.wavelength" title="Permalink to this heading">¶</a></h2>
+<span id="wavelength"></span><h2><span class="section-number">6.7.1. </span>Wavelength<a class="headerlink" href="#module-cherab.openadas.repository.wavelength" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.wavelength.add_wavelength">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.wavelength.</span></span><span class="sig-name descname"><span class="pre">add_wavelength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.wavelength.add_wavelength" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.wavelength.</span></span><span class="sig-name descname"><span class="pre">add_wavelength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.wavelength.add_wavelength" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single wavelength to the repository.</p>
 <p>If adding multiple wavelengths, consider using the update_wavelengths()
 function instead. The update function avoid repeatedly opening and closing
@@ -307,7 +227,7 @@ the rate files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.wavelength.get_wavelength">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.wavelength.</span></span><span class="sig-name descname"><span class="pre">get_wavelength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.wavelength.get_wavelength" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.wavelength.</span></span><span class="sig-name descname"><span class="pre">get_wavelength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.wavelength.get_wavelength" title="Link to this definition">¶</a></dt>
 <dd><p>Reads the wavelength for the given species, charge and transition from the repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -326,7 +246,7 @@ the rate files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.wavelength.update_wavelengths">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.wavelength.</span></span><span class="sig-name descname"><span class="pre">update_wavelengths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.wavelength.update_wavelengths" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.wavelength.</span></span><span class="sig-name descname"><span class="pre">update_wavelengths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.wavelength.update_wavelengths" title="Link to this definition">¶</a></dt>
 <dd><p>Updates the wavelength files <cite>/wavelength/&lt;species&gt;/&lt;charge&gt;.json</cite>
 in atomic data repository.</p>
 <p>File contains multiple rates, indexed by the transitions.</p>
@@ -353,10 +273,10 @@ in atomic data repository.</p>
 
 </section>
 <section id="ionisation">
-<h2><span class="section-number">6.7.2. </span>Ionisation<a class="headerlink" href="#ionisation" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">6.7.2. </span>Ionisation<a class="headerlink" href="#ionisation" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.atomic.add_ionisation_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">add_ionisation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.add_ionisation_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">add_ionisation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.add_ionisation_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single ionisation rate to the repository.</p>
 <p>If adding multiple rates, consider using the update_ionisation_rates()
 function instead. The update function avoids repeatedly opening and closing
@@ -384,7 +304,7 @@ the rate files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.atomic.get_ionisation_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">get_ionisation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.get_ionisation_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">get_ionisation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.get_ionisation_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads the ionisation rate for the given species and charge
 from the atomic data repository.</p>
 <dl class="field-list simple">
@@ -408,7 +328,7 @@ from the atomic data repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.atomic.update_ionisation_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">update_ionisation_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.update_ionisation_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">update_ionisation_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.update_ionisation_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Updates the ionisation rate files <cite>/ionisation/&lt;species&gt;.json</cite>
 in atomic data repository.</p>
 <p>File contains multiple rates, indexed by the ion charge state.</p>
@@ -436,10 +356,10 @@ in atomic data repository.</p>
 
 </section>
 <section id="recombination">
-<h2><span class="section-number">6.7.3. </span>Recombination<a class="headerlink" href="#recombination" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">6.7.3. </span>Recombination<a class="headerlink" href="#recombination" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.atomic.add_recombination_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">add_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.add_recombination_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">add_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.add_recombination_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single recombination rate to the repository.</p>
 <p>If adding multiple rates, consider using the update_recombination_rates()
 function instead. The update function avoids repeatedly opening and closing
@@ -467,7 +387,7 @@ the rate files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.atomic.get_recombination_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">get_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.get_recombination_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">get_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.get_recombination_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads the recombination rate for the given species and charge
 from the atomic data repository.</p>
 <dl class="field-list simple">
@@ -491,7 +411,7 @@ from the atomic data repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.atomic.update_recombination_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">update_recombination_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.update_recombination_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">update_recombination_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.update_recombination_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Updates the recombination rate files <cite>/recombination/&lt;species&gt;.json</cite>
 in the atomic data repository.</p>
 <p>File contains multiple rates, indexed by the ion charge state.</p>
@@ -519,10 +439,10 @@ in the atomic data repository.</p>
 
 </section>
 <section id="thermal-charge-exchange">
-<h2><span class="section-number">6.7.4. </span>Thermal Charge Exchange<a class="headerlink" href="#thermal-charge-exchange" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">6.7.4. </span>Thermal Charge Exchange<a class="headerlink" href="#thermal-charge-exchange" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.atomic.add_thermal_cx_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">add_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.add_thermal_cx_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">add_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.add_thermal_cx_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single thermal charge exchange rate to the repository.</p>
 <p>If adding multiple rates, consider using the update_recombination_rates()
 function instead. The update function avoids repeatedly opening and closing
@@ -552,7 +472,7 @@ the rate files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.atomic.get_thermal_cx_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">get_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.get_thermal_cx_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">get_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.get_thermal_cx_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads the thermal charge exchange rate for the given species and charge
 from the atomic data repository.</p>
 <dl class="field-list simple">
@@ -578,7 +498,7 @@ from the atomic data repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.atomic.update_thermal_cx_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">update_thermal_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.update_thermal_cx_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.atomic.</span></span><span class="sig-name descname"><span class="pre">update_thermal_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.atomic.update_thermal_cx_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Updates the thermal charge exchange rate files
 <cite>/thermal_cx/&lt;donor_element&gt;/&lt;donor_charge&gt;/&lt;receiver_element&gt;.json</cite>
 in the atomic data repository.</p>
@@ -612,10 +532,10 @@ in the atomic data repository.</p>
 
 </section>
 <section id="module-cherab.openadas.repository.pec">
-<span id="photon-emissivity-coefficients"></span><h2><span class="section-number">6.7.5. </span>Photon Emissivity Coefficients<a class="headerlink" href="#module-cherab.openadas.repository.pec" title="Permalink to this heading">¶</a></h2>
+<span id="photon-emissivity-coefficients"></span><h2><span class="section-number">6.7.5. </span>Photon Emissivity Coefficients<a class="headerlink" href="#module-cherab.openadas.repository.pec" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.pec.add_pec_excitation_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">add_pec_excitation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.add_pec_excitation_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">add_pec_excitation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.add_pec_excitation_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single PEC excitation rate to the repository.</p>
 <p>If adding multiple rate, consider using the update_pec_rates() function
 instead. The update function avoid repeatedly opening and closing the rate
@@ -644,7 +564,7 @@ files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.pec.add_pec_recombination_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">add_pec_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.add_pec_recombination_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">add_pec_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.add_pec_recombination_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single PEC recombination rate to the repository.</p>
 <p>If adding multiple rate, consider using the update_pec_rates() function
 instead. The update function avoid repeatedly opening and closing the rate
@@ -673,7 +593,7 @@ files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.pec.add_pec_thermal_cx_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">add_pec_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.add_pec_thermal_cx_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">add_pec_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.add_pec_thermal_cx_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single PEC thermal charge exchange rate to the repository.</p>
 <p>If adding multiple rate, consider using the update_pec_thermal_rates() function
 instead. The update function avoid repeatedly opening and closing the rate
@@ -705,7 +625,7 @@ files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.pec.get_pec_excitation_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">get_pec_excitation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.get_pec_excitation_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">get_pec_excitation_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.get_pec_excitation_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads the excitation PEC from the repository for the given
 element, charge and transition.</p>
 <dl class="field-list simple">
@@ -730,7 +650,7 @@ element, charge and transition.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.pec.get_pec_recombination_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">get_pec_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.get_pec_recombination_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">get_pec_recombination_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.get_pec_recombination_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads the recombination PEC from the repository for the given
 element, charge and transition.</p>
 <dl class="field-list simple">
@@ -755,7 +675,7 @@ element, charge and transition.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.pec.get_pec_thermal_cx_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">get_pec_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.get_pec_thermal_cx_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">get_pec_thermal_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.get_pec_thermal_cx_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads the thermal charge exchange PEC from the repository for the given
 donor element, donor charge, receiver element, receiver charge and transition.</p>
 <dl class="field-list simple">
@@ -783,7 +703,7 @@ donor element, donor charge, receiver element, receiver charge and transition.</
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.pec.update_pec_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">update_pec_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.update_pec_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">update_pec_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.update_pec_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Updates excitation and recombination PEC files /pec/&lt;class&gt;/&lt;element&gt;/&lt;charge&gt;.json.
 in the atomic data repository.</p>
 <p>File contains multiple PECs, indexed by the transition.</p>
@@ -816,7 +736,7 @@ in the atomic data repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.pec.update_pec_thermal_cx_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">update_pec_thermal_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.update_pec_thermal_cx_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.pec.</span></span><span class="sig-name descname"><span class="pre">update_pec_thermal_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.pec.update_pec_thermal_cx_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Updates thermal CX PEC files /pec/thermal_cx/&lt;donor_element&gt;/&lt;donor_charge&gt;/&lt;receiver_element&gt;/&lt;receiver_charge&gt;.json
 in the atomic data repository.</p>
 <p>File contains multiple PECs, indexed by the transition.</p>
@@ -851,10 +771,10 @@ in the atomic data repository.</p>
 
 </section>
 <section id="module-cherab.openadas.repository.radiated_power">
-<span id="radiated-power"></span><h2><span class="section-number">6.7.6. </span>Radiated Power<a class="headerlink" href="#module-cherab.openadas.repository.radiated_power" title="Permalink to this heading">¶</a></h2>
+<span id="radiated-power"></span><h2><span class="section-number">6.7.6. </span>Radiated Power<a class="headerlink" href="#module-cherab.openadas.repository.radiated_power" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.add_continuum_power_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">add_continuum_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.add_continuum_power_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">add_continuum_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.add_continuum_power_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single continuum power rate to the repository.</p>
 <p>If adding multiple rates, consider using the update_continuum_power_rates()
 function instead. The update function avoids repeatedly opening and closing
@@ -882,7 +802,7 @@ the rate files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.add_cx_power_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">add_cx_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.add_cx_power_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">add_cx_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.add_cx_power_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single CX radiation power rate to the repository
 (charge exchage with neutral hydrogen).</p>
 <p>If adding multiple rates, consider using the update_cx_power_rates()
@@ -911,7 +831,7 @@ the rate files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.add_line_power_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">add_line_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.add_line_power_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">add_line_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.add_line_power_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single line radiated power rate to the repository.</p>
 <p>If adding multiple rates, consider using the update_line_power_rates()
 function instead. The update function avoids repeatedly opening and closing
@@ -939,7 +859,7 @@ the rate files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.get_continuum_radiated_power_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">get_continuum_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.get_continuum_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">get_continuum_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.get_continuum_radiated_power_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads the continuum power rate for the given species and charge
 from the atomic data repository.</p>
 <dl class="field-list simple">
@@ -963,7 +883,7 @@ from the atomic data repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.get_cx_radiated_power_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">get_cx_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.get_cx_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">get_cx_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.get_cx_radiated_power_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads the CX radiation power rate for the given species and charge
 from the atomic data repository.</p>
 <dl class="field-list simple">
@@ -987,7 +907,7 @@ from the atomic data repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.get_line_radiated_power_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">get_line_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.get_line_radiated_power_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">get_line_radiated_power_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.get_line_radiated_power_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads the line radiated power rate for the given species and charge
 from the atomic data repository.</p>
 <dl class="field-list simple">
@@ -1011,7 +931,7 @@ from the atomic data repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.update_continuum_power_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">update_continuum_power_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.update_continuum_power_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">update_continuum_power_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.update_continuum_power_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Update the files for the continuum power rates:
 /radiated_power/continuum/&lt;species&gt;.json
 in the atomic data repository.</p>
@@ -1040,7 +960,7 @@ in the atomic data repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.update_cx_power_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">update_cx_power_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.update_cx_power_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">update_cx_power_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.update_cx_power_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Update the files for the CX radiation power rates
 (charge exchage with neutral hydrogen):
 /radiated_power/cx/&lt;species&gt;.json
@@ -1070,7 +990,7 @@ in the atomic data repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.radiated_power.update_line_power_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">update_line_power_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.update_line_power_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.radiated_power.</span></span><span class="sig-name descname"><span class="pre">update_line_power_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.radiated_power.update_line_power_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Update the files for the line radiated power rates:
 /radiated_power/line/&lt;species&gt;.json
 in the atomic data repository.</p>
@@ -1099,10 +1019,10 @@ in the atomic data repository.</p>
 
 </section>
 <section id="module-cherab.openadas.repository.beam.cx">
-<span id="beam"></span><h2><span class="section-number">6.7.7. </span>Beam<a class="headerlink" href="#module-cherab.openadas.repository.beam.cx" title="Permalink to this heading">¶</a></h2>
+<span id="beam"></span><h2><span class="section-number">6.7.7. </span>Beam<a class="headerlink" href="#module-cherab.openadas.repository.beam.cx" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.cx.add_beam_cx_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.cx.</span></span><span class="sig-name descname"><span class="pre">add_beam_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.cx.add_beam_cx_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.cx.</span></span><span class="sig-name descname"><span class="pre">add_beam_cx_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">donor_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.cx.add_beam_cx_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single beam CX PEC to the repository.</p>
 <p>If adding multiple rate, consider using the update_beam_cx_rates() function
 instead. The update function avoid repeatedly opening and closing the rate
@@ -1144,7 +1064,7 @@ files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.cx.get_beam_cx_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.cx.</span></span><span class="sig-name descname"><span class="pre">get_beam_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.cx.get_beam_cx_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.cx.</span></span><span class="sig-name descname"><span class="pre">get_beam_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">donor_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receiver_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.cx.get_beam_cx_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Reads a single beam CX PEC from the repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1181,7 +1101,7 @@ files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.cx.update_beam_cx_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.cx.</span></span><span class="sig-name descname"><span class="pre">update_beam_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.cx.update_beam_cx_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.cx.</span></span><span class="sig-name descname"><span class="pre">update_beam_cx_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.cx.update_beam_cx_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Updates the beam CX PEC files
 beam/cx/&lt;donor_ion&gt;/&lt;receiver_ion&gt;/&lt;receiver_charge&gt;.json
 in the atomic data repository.</p>
@@ -1223,9 +1143,9 @@ in the atomic data repository.</p>
 </dl>
 </dd></dl>
 
-<span class="target" id="module-cherab.openadas.repository.beam.emission"></span><dl class="py function">
+<dl class="py function" id="module-cherab.openadas.repository.beam.emission">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.emission.add_beam_emission_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.emission.</span></span><span class="sig-name descname"><span class="pre">add_beam_emission_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.emission.add_beam_emission_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.emission.</span></span><span class="sig-name descname"><span class="pre">add_beam_emission_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.emission.add_beam_emission_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single beam emission rate to the repository.</p>
 <p>If adding multiple rate, consider using the update_beam_emission_rates()
 function instead. The update function avoid repeatedly opening and closing
@@ -1264,7 +1184,7 @@ the rate files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.emission.get_beam_emission_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.emission.</span></span><span class="sig-name descname"><span class="pre">get_beam_emission_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.emission.get_beam_emission_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.emission.</span></span><span class="sig-name descname"><span class="pre">get_beam_emission_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.emission.get_beam_emission_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads a single beam emission rate from the repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1298,7 +1218,7 @@ the rate files.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.emission.update_beam_emission_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.emission.</span></span><span class="sig-name descname"><span class="pre">update_beam_emission_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.emission.update_beam_emission_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.emission.</span></span><span class="sig-name descname"><span class="pre">update_beam_emission_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.emission.update_beam_emission_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Updates the beam emission rate files:
 /beam/emission/&lt;beam species&gt;/&lt;target ion&gt;/&lt;target_charge&gt;.json
 in the atomic repository.</p>
@@ -1337,9 +1257,9 @@ in the atomic repository.</p>
 </dl>
 </dd></dl>
 
-<span class="target" id="module-cherab.openadas.repository.beam.population"></span><dl class="py function">
+<dl class="py function" id="module-cherab.openadas.repository.beam.population">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.population.add_beam_population_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.population.</span></span><span class="sig-name descname"><span class="pre">add_beam_population_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.population.add_beam_population_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.population.</span></span><span class="sig-name descname"><span class="pre">add_beam_population_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.population.add_beam_population_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single beam population rate to the repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1375,7 +1295,7 @@ in the atomic repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.population.get_beam_population_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.population.</span></span><span class="sig-name descname"><span class="pre">get_beam_population_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.population.get_beam_population_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.population.</span></span><span class="sig-name descname"><span class="pre">get_beam_population_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_metastable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.population.get_beam_population_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads a single beam population rate from the repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1409,7 +1329,7 @@ in the atomic repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.population.update_beam_population_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.population.</span></span><span class="sig-name descname"><span class="pre">update_beam_population_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.population.update_beam_population_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.population.</span></span><span class="sig-name descname"><span class="pre">update_beam_population_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.population.update_beam_population_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Updates the beam population rate files
 /beam/population/&lt;beam species&gt;/&lt;beam metastable&gt;/&lt;target ion&gt;/&lt;target_charge&gt;.json
 in the atomic data repository.</p>
@@ -1448,9 +1368,9 @@ in the atomic data repository.</p>
 </dl>
 </dd></dl>
 
-<span class="target" id="module-cherab.openadas.repository.beam.stopping"></span><dl class="py function">
+<dl class="py function" id="module-cherab.openadas.repository.beam.stopping">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.stopping.add_beam_stopping_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.stopping.</span></span><span class="sig-name descname"><span class="pre">add_beam_stopping_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.stopping.add_beam_stopping_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.stopping.</span></span><span class="sig-name descname"><span class="pre">add_beam_stopping_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.stopping.add_beam_stopping_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a single beam stopping/excitation rate to the repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1485,7 +1405,7 @@ in the atomic data repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.stopping.get_beam_stopping_rate">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.stopping.</span></span><span class="sig-name descname"><span class="pre">get_beam_stopping_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.stopping.get_beam_stopping_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.stopping.</span></span><span class="sig-name descname"><span class="pre">get_beam_stopping_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam_species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.stopping.get_beam_stopping_rate" title="Link to this definition">¶</a></dt>
 <dd><p>Reads a single beam stopping/excitation rate from the repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1518,7 +1438,7 @@ in the atomic data repository.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cherab.openadas.repository.beam.stopping.update_beam_stopping_rates">
-<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.stopping.</span></span><span class="sig-name descname"><span class="pre">update_beam_stopping_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.stopping.update_beam_stopping_rates" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">cherab.openadas.repository.beam.stopping.</span></span><span class="sig-name descname"><span class="pre">update_beam_stopping_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cherab.openadas.repository.beam.stopping.update_beam_stopping_rates" title="Link to this definition">¶</a></dt>
 <dd><p>Updates the beam stopping rate files
 /beam/stopping/&lt;beam species&gt;/&lt;beam metastable&gt;/&lt;target ion&gt;/&lt;target_charge&gt;.json
 in the atomic data repository.</p>
@@ -1556,58 +1476,26 @@ in the atomic data repository.</p>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="openadas.html" class="btn btn-neutral float-right" title="6.8. Open-ADAS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="data_interpolators.html" class="btn btn-neutral" title="6.6. Atomic data interpolators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_interpolators.html" class="btn btn-neutral float-left" title="6.6. Atomic data interpolators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="openadas.html" class="btn btn-neutral float-right" title="6.8. Open-ADAS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2024, Cherab Team
+    <p>&#169; Copyright 2026, Cherab Team.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

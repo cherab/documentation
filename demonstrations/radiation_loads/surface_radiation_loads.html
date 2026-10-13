@@ -1,88 +1,43 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Calculating wall surface radiation loads &mdash; Cherab 1.5.0 documentation</title>
-  
-
-  
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculating wall surface radiation loads &mdash; Cherab 1.6.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
 
   
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <script src="../../_static/documentation_options.js?v=72d88caf"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+        <div class="wy-side-nav-search" >
 
           
-            <a href="../../index.html" class="icon icon-home"> Cherab
           
-
-          
+          <a href="../../index.html" class="icon icon-home">
+            Cherab
           </a>
-
-          
-            
-            
-              <div class="version">
-                1.5
-              </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
@@ -96,6 +51,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/pixi.html">Pixi developer guide</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
@@ -108,70 +67,32 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Cherab</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
-      <li>Calculating wall surface radiation loads</li>
-    
-    
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Calculating wall surface radiation loads</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../_sources/demonstrations/radiation_loads/surface_radiation_loads.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <section id="calculating-wall-surface-radiation-loads">
-<span id="aug-solps-radiation-load"></span><h1>Calculating wall surface radiation loads<a class="headerlink" href="#calculating-wall-surface-radiation-loads" title="Permalink to this heading">¶</a></h1>
+<span id="aug-solps-radiation-load"></span><h1>Calculating wall surface radiation loads<a class="headerlink" href="#calculating-wall-surface-radiation-loads" title="Link to this heading">¶</a></h1>
 <p>In this example we ray-trace the total radiated power from a SOLPS simulation
 and use rectangular observers wrapping around the machine wall to calculate a
 radiation power profile wrapping around the machine. The full demo file for
@@ -179,25 +100,25 @@ this tutorial can be downloaded from
 <a class="reference external" href="https://git.ccfe.ac.uk/cherab/cherab-core/tree/master/docs/demonstrations/radiation_wall_loads/wall_radiation.py">here</a>.
 Start by importing all required modules and creating world.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># External imports</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span>
 
 <span class="c1"># Raysect imports</span>
-<span class="kn">from</span> <span class="nn">raysect.core.workflow</span> <span class="kn">import</span> <span class="n">SerialEngine</span>
-<span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate_basis</span>
-<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
-<span class="kn">from</span> <span class="nn">raysect.optical.observer.nonimaging.pixel</span> <span class="kn">import</span> <span class="n">Pixel</span>
-<span class="kn">from</span> <span class="nn">raysect.optical.observer</span> <span class="kn">import</span> <span class="n">PowerPipeline0D</span>
-<span class="kn">from</span> <span class="nn">raysect.primitive.mesh</span> <span class="kn">import</span> <span class="n">Mesh</span>
-<span class="kn">from</span> <span class="nn">raysect.optical.material.absorber</span> <span class="kn">import</span> <span class="n">AbsorbingSurface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.core.workflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">SerialEngine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate_basis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.optical</span><span class="w"> </span><span class="kn">import</span> <span class="n">World</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.optical.observer.nonimaging.pixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.optical.observer</span><span class="w"> </span><span class="kn">import</span> <span class="n">PowerPipeline0D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.primitive.mesh</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mesh</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.optical.material.absorber</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbsorbingSurface</span>
 
 <span class="c1"># Cherab imports</span>
-<span class="kn">from</span> <span class="nn">cherab_extra.simulation_data.solps.models.radiated_power</span> <span class="kn">import</span> <span class="n">solps_total_radiated_power</span>
-<span class="kn">from</span> <span class="nn">cherab_extra.simulation_data.solps.solps_plasma</span> <span class="kn">import</span> <span class="n">SOLPSSimulation</span>
-<span class="kn">from</span> <span class="nn">cherab_aug.integrated_power.wall_detector_geometry</span> <span class="kn">import</span> <span class="n">aug_wall_detectors</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab_extra.simulation_data.solps.models.radiated_power</span><span class="w"> </span><span class="kn">import</span> <span class="n">solps_total_radiated_power</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab_extra.simulation_data.solps.solps_plasma</span><span class="w"> </span><span class="kn">import</span> <span class="n">SOLPSSimulation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab_aug.integrated_power.wall_detector_geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">aug_wall_detectors</span>
 
 <span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
 
@@ -206,7 +127,7 @@ Start by importing all required modules and creating world.</p>
 </pre></div>
 </div>
 <section id="loading-plasma-and-machine-geometry">
-<h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Permalink to this heading">¶</a></h2>
+<h2>Loading Plasma and machine geometry<a class="headerlink" href="#loading-plasma-and-machine-geometry" title="Link to this heading">¶</a></h2>
 <p>Load all parts of the machine mesh from files. We are using a perfect absorbing surface so that
 no emission will be reflected.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MESH_PATH</span> <span class="o">=</span> <span class="s1">&#39;/projects/cadmesh/aug/&#39;</span>
@@ -252,7 +173,7 @@ or locally from files.</p>
 </div>
 </section>
 <section id="description-of-wall-tile-observers">
-<h2>Description of wall tile observers<a class="headerlink" href="#description-of-wall-tile-observers" title="Permalink to this heading">¶</a></h2>
+<h2>Description of wall tile observers<a class="headerlink" href="#description-of-wall-tile-observers" title="Link to this heading">¶</a></h2>
 <p>Even though we are using the full CAD files for ray-tracing effects such as
 occlusion and shadowing, we will use a simplified wall surface as the
 observing surface.</p>
@@ -279,7 +200,7 @@ a y-axis vector. An example description could be a list like this:</p>
 <figure class="align-center" id="id1">
 <img alt="../../_images/AUG_wall_outline.png" src="../../_images/AUG_wall_outline.png" />
 <figcaption>
-<p><span class="caption-text">Example wall observation geometry for AUG shown in blue. Surface normals indicated.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Example wall observation geometry for AUG shown in blue. Surface normals indicated.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id2">
@@ -287,7 +208,7 @@ a y-axis vector. An example description could be a list like this:</p>
 <figcaption>
 <p><span class="caption-text">Zoomed in view of the wall observation geometry for AUG in the divertor. Note,
 observing surface can be very close but must not overlap the CAD files. Otherwise
-radiation is absorbed by the CAD surface instead of the observing surface.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+radiation is absorbed by the CAD surface instead of the observing surface.</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>For each tile in the list of wall tiles, setup the tile as a <cite>Pixel</cite> observer class.
@@ -349,12 +270,12 @@ the tile.</p>
 <figure class="align-center" id="id3">
 <img alt="../../_images/AUG_radiation_load.png" src="../../_images/AUG_radiation_load.png" />
 <figcaption>
-<p><span class="caption-text">Example plot of radiation power loading around the machine walls.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Example plot of radiation power loading around the machine walls.</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="checking-for-energy-conservation">
-<h2>Checking for energy conservation<a class="headerlink" href="#checking-for-energy-conservation" title="Permalink to this heading">¶</a></h2>
+<h2>Checking for energy conservation<a class="headerlink" href="#checking-for-energy-conservation" title="Link to this heading">¶</a></h2>
 <p>We can check that energy is being conserved by looping over each cell in the SOLPS simulation and adding
 up its power to find the total power emitted in the simulation. Total radiated power should equal total
 power collected on the walls.</p>
@@ -376,49 +297,23 @@ power collected on the walls.</p>
 
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2024, Cherab Team
+    <p>&#169; Copyright 2026, Cherab Team.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

@@ -1,90 +1,46 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight &mdash; Cherab 1.5.0 documentation</title>
-  
-
-  
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8.4. Calculation of predicted charge-exchange spectra seen by a line-of-sight &mdash; Cherab 1.6.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
 
   
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <script src="../../_static/documentation_options.js?v=72d88caf"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="8.5. BES - Beam Emission Spectroscopy" href="../bes/bes_model.html" />
     <link rel="prev" title="8.3. CXS models" href="cxs_model.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+        <div class="wy-side-nav-search" >
 
           
-            <a href="../../index.html" class="icon icon-home"> Cherab
           
-
-          
+          <a href="../../index.html" class="icon icon-home">
+            Cherab
           </a>
-
-          
-            
-            
-              <div class="version">
-                1.5
-              </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
@@ -117,6 +73,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/pixi.html">Pixi developer guide</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../demonstrations/demonstrations.html">Atomic Data</a></li>
@@ -129,72 +89,33 @@
 <li class="toctree-l1"><a class="reference internal" href="../../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Cherab</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../emission_models.html"><span class="section-number">8. </span>Emission Models</a> &raquo;</li>
-        
-      <li><span class="section-number">8.4. </span>Calculation of predicted charge-exchange spectra seen by a line-of-sight</li>
-    
-    
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../emission_models.html"><span class="section-number">8. </span>Emission Models</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">8.4. </span>Calculation of predicted charge-exchange spectra seen by a line-of-sight</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../_sources/models/cxs/charge_exchange_calculation.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <section id="calculation-of-predicted-charge-exchange-spectra-seen-by-a-line-of-sight">
-<h1><span class="section-number">8.4. </span>Calculation of predicted charge-exchange spectra seen by a line-of-sight<a class="headerlink" href="#calculation-of-predicted-charge-exchange-spectra-seen-by-a-line-of-sight" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">8.4. </span>Calculation of predicted charge-exchange spectra seen by a line-of-sight<a class="headerlink" href="#calculation-of-predicted-charge-exchange-spectra-seen-by-a-line-of-sight" title="Link to this heading">¶</a></h1>
 <p>In this section, the calculation of a predicted spectral line
 <span class="math notranslate nohighlight">\(I_{obs}(\lambda)\)</span> resulting from a charge-exchange process is presented
 together with the different possible simplifications and details of what is
@@ -212,7 +133,7 @@ documentation manager. Thanks.</p>
 <p><span class="math notranslate nohighlight">\(I_{obs}(\lambda)\)</span> in ray-tracer and therefore Cherab is in <span class="math notranslate nohighlight">\(W.m^{-2}.str^{-1}.nm^{-1}\)</span>.</p>
 </div>
 <table class="docutils align-default" id="id1">
-<caption><span class="caption-text">Notations for this section</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Notations for this section</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Notation</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -227,7 +148,7 @@ documentation manager. Thanks.</p>
 </tbody>
 </table>
 <section id="definition-of-charge-exchange-coefficients">
-<h2><span class="section-number">8.4.1. </span>Definition of charge-exchange coefficients<a class="headerlink" href="#definition-of-charge-exchange-coefficients" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">8.4.1. </span>Definition of charge-exchange coefficients<a class="headerlink" href="#definition-of-charge-exchange-coefficients" title="Link to this heading">¶</a></h2>
 <p>The charge exchange reaction between an ion <span class="math notranslate nohighlight">\(Z^{(\alpha +1)+}\)</span> and a
 donor <span class="math notranslate nohighlight">\(H^0\)</span> (can be in this section deuterium, tritium, hydrogen or helium) is:</p>
 <div class="math notranslate nohighlight">
@@ -283,7 +204,7 @@ and the small fraction of D(n=2) donor dominates at low beam energy
 note.</p>
 </section>
 <section id="calculation-of-the-line-intensity-of-cx-spectral-lines-without-predicting-observed-spectra">
-<h2><span class="section-number">8.4.2. </span>Calculation of the line intensity of CX spectral lines (without predicting observed spectra)<a class="headerlink" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-without-predicting-observed-spectra" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">8.4.2. </span>Calculation of the line intensity of CX spectral lines (without predicting observed spectra)<a class="headerlink" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-without-predicting-observed-spectra" title="Link to this heading">¶</a></h2>
 <p>As already mentioned above the number of <span class="math notranslate nohighlight">\(n\rightarrow n'\)</span> photons
 emitted per unit volume per second per <span class="math notranslate nohighlight">\(4\pi\)</span> steradian can be calculated
 by:</p>
@@ -308,7 +229,7 @@ but Doppler effect):</p>
                              = I_{n\rightarrow n'}.\delta\left(\lambda - \lambda_n \left(1 + \frac{\vec{u}.\vec{l}}{c}\right)\right)\]</div>
 </section>
 <section id="in-more-details-charge-exchange-cross-section">
-<h2><span class="section-number">8.4.3. </span>In more details charge-exchange cross-section<a class="headerlink" href="#in-more-details-charge-exchange-cross-section" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">8.4.3. </span>In more details charge-exchange cross-section<a class="headerlink" href="#in-more-details-charge-exchange-cross-section" title="Link to this heading">¶</a></h2>
 <p>Primary charge-exchange cross-section plays a principal role in this calculation,
 since final derived impurity ion densities depend absolutely on their reliability.
 Theoretical charge-exchange calculations especially for capture to the highly
@@ -369,7 +290,7 @@ additional parameters in respect to 1. will be needed.</p></li>
 </div></blockquote>
 </section>
 <section id="in-more-details-calculation-of-excited-level-populations-of-impurity-ions-z-alpha-n-l-j">
-<h2><span class="section-number">8.4.4. </span>In more details calculation of excited level populations of impurity ions <span class="math notranslate nohighlight">\(Z^{* \alpha+}(n, l, j)\)</span><a class="headerlink" href="#in-more-details-calculation-of-excited-level-populations-of-impurity-ions-z-alpha-n-l-j" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">8.4.4. </span>In more details calculation of excited level populations of impurity ions <span class="math notranslate nohighlight">\(Z^{* \alpha+}(n, l, j)\)</span><a class="headerlink" href="#in-more-details-calculation-of-excited-level-populations-of-impurity-ions-z-alpha-n-l-j" title="Link to this heading">¶</a></h2>
 <p>The calculation of excited level populations of impurity ions in plasma has been
 discussed in details in [Spence and Summer86]. A concise summary is given here.
 Subsequent to the primary direct capture process, it is supposed that four
@@ -505,7 +426,7 @@ Gaussian replace the <span class="math notranslate nohighlight">\(\delta\)</span
 </div></blockquote>
 </section>
 <section id="calculation-of-the-line-intensity-of-cx-spectral-lines-using-a-statistical-description-prediction-of-spectra">
-<h2><span class="section-number">8.4.5. </span>Calculation of the line intensity of CX spectral lines using a statistical description (prediction of spectra)<a class="headerlink" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-using-a-statistical-description-prediction-of-spectra" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">8.4.5. </span>Calculation of the line intensity of CX spectral lines using a statistical description (prediction of spectra)<a class="headerlink" href="#calculation-of-the-line-intensity-of-cx-spectral-lines-using-a-statistical-description-prediction-of-spectra" title="Link to this heading">¶</a></h2>
 <p>We want to be able to calculate the spectra observed in the case of a charge-exchange
 reaction between an ion <span class="math notranslate nohighlight">\(Z^{(\alpha+1)+}\)</span> and neutral atom present in the plasma
 whatever the direction of observation <span class="math notranslate nohighlight">\(\vec{l}\)</span> and velocity <span class="math notranslate nohighlight">\(\vec{u}\)</span>
@@ -515,7 +436,7 @@ function associated to it, <span class="math notranslate nohighlight">\(f_{Z^{\a
 general description for the statistical behaviour of specie <span class="math notranslate nohighlight">\(Z^{\alpha+}\)</span>
 is described by the Boltzmann equation <a class="reference internal" href="#equation-boltzman">(1)</a>:</p>
 <div class="math notranslate nohighlight" id="equation-boltzman">
-<span class="eqno">(1)<a class="headerlink" href="#equation-boltzman" title="Permalink to this equation">¶</a></span>\[\frac{\partial f_{Z^{\alpha+}}}{\partial t} + \vec{u}.\vec{\nabla} f_{Z^{\alpha+}}
+<span class="eqno">(1)<a class="headerlink" href="#equation-boltzman" title="Link to this equation">¶</a></span>\[\frac{\partial f_{Z^{\alpha+}}}{\partial t} + \vec{u}.\vec{\nabla} f_{Z^{\alpha+}}
 + \frac{\vec{F}}{m_{Z^{\alpha+}}}.\vec{\nabla_{\vec{u}}} f_{Z^{\alpha+}}
 = \left(\frac{\partial f_{Z^{\alpha+}}}{\partial t}\right)_{col}\]</div>
 <p>The distribution function changes as a result of the forces <span class="math notranslate nohighlight">\(F\)</span> and collisions
@@ -572,59 +493,26 @@ f_{Z^{(\alpha+1)+}}(\vec{u}-\vec{v}).q^{CX, Z^{(\alpha+1)+}, H^0}_{n\rightarrow 
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../bes/bes_model.html" class="btn btn-neutral float-right" title="8.5. BES - Beam Emission Spectroscopy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="cxs_model.html" class="btn btn-neutral" title="8.3. CXS models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cxs_model.html" class="btn btn-neutral float-left" title="8.3. CXS models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../bes/bes_model.html" class="btn btn-neutral float-right" title="8.5. BES - Beam Emission Spectroscopy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2024, Cherab Team
+    <p>&#169; Copyright 2026, Cherab Team.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

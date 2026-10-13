@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixi developer guide &mdash; Cherab 1.6.0 documentation</title>
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+
+  
+      <script src="../_static/documentation_options.js?v=72d88caf"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Atomic Data" href="../demonstrations/demonstrations.html" />
+    <link rel="prev" title="10.7. Utilities" href="../tools/utility.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Cherab
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math.html">9. Function Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pixi developer guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#discovering-tasks">🔎 Discovering tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environments">🧩 Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-development-tasks">🛠️ Basic development tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">🧪 Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">📚 Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formatting-and-static-analysis">🧹 Formatting and static analysis</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cherab</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Pixi developer guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/development/pixi.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pixi-developer-guide">
+<h1>Pixi developer guide<a class="headerlink" href="#pixi-developer-guide" title="Link to this heading">¶</a></h1>
+<p>This document describes the development environments and tasks configured in
+<a class="reference external" href="https://github.com/cherab/core/blob/development/pixi.toml"><code class="docutils literal notranslate"><span class="pre">pixi.toml</span></code></a>. Pixi
+manages the development dependencies in isolated environments and provides a
+common interface for running tests, building the documentation, and checking
+the source tree.</p>
+<p>Pixi installs or updates the selected environment automatically when a command
+is run. The workspace currently supports Linux x86-64, macOS x86-64, and macOS
+Arm64.</p>
+<section id="discovering-tasks">
+<h2>🔎 Discovering tasks<a class="headerlink" href="#discovering-tasks" title="Link to this heading">¶</a></h2>
+<p>List every task in the workspace with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi task list</span>
+</pre></div>
+</div>
+<p>To show only the tasks available in a particular environment, pass its name:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi task list -e test</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">pixi</span> <span class="pre">run</span> <span class="pre">--help</span></code> for general command help. When a task is available in
+more than one environment, use <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">&lt;environment&gt;</span></code> to select the environment
+explicitly.</p>
+</section>
+<section id="environments">
+<h2>🧩 Environments<a class="headerlink" href="#environments" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Environment</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p></td>
+<td><p>Basic development tools; Cherab is not installed</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test</span></code></p></td>
+<td><p>Run the complete test suite using the latest supported Python; currently equivalent to <code class="docutils literal notranslate"><span class="pre">test-pylatest</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test-pylatest</span></code></p></td>
+<td><p>Run the complete test suite using the latest supported Python</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test-pyoldest</span></code></p></td>
+<td><p>Run the complete test suite using the oldest supported Python</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test-opencl</span></code></p></td>
+<td><p>Run the OpenCL SART tests with Cherab’s <code class="docutils literal notranslate"><span class="pre">opencl</span></code> extra</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docs</span></code></p></td>
+<td><p>Build the documentation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lint</span></code></p></td>
+<td><p>Run formatting and static-analysis tools without installing Cherab</p></td>
+</tr>
+</tbody>
+</table>
+<p>See the <a class="reference external" href="https://github.com/cherab/core/blob/development/pixi.toml#:~:text=Python%20Version%20Features"><code class="docutils literal notranslate"><span class="pre">pyoldest</span></code> and <code class="docutils literal notranslate"><span class="pre">pylatest</span></code> features and environment definitions in
+<code class="docutils literal notranslate"><span class="pre">pixi.toml</span></code></a>
+for the Python versions used by each environment.</p>
+</section>
+<section id="basic-development-tasks">
+<h2>🛠️ Basic development tasks<a class="headerlink" href="#basic-development-tasks" title="Link to this heading">¶</a></h2>
+<p>Start an IPython session in the default environment:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run ipython</span>
+</pre></div>
+</div>
+<p>Remove generated C/Cython libraries and HTML files from the <code class="docutils literal notranslate"><span class="pre">cherab/</span></code> source
+tree:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run clean</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">clean</span></code> task deletes files matching <code class="docutils literal notranslate"><span class="pre">*.c</span></code>, <code class="docutils literal notranslate"><span class="pre">*.so</span></code>, <code class="docutils literal notranslate"><span class="pre">*.pyd</span></code>, <code class="docutils literal notranslate"><span class="pre">*.dll</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">*.html</span></code> below <code class="docutils literal notranslate"><span class="pre">cherab/</span></code>.</p>
+</section>
+<section id="testing">
+<h2>🧪 Testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h2>
+<p>Run the complete test suite with the latest supported Python:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run -e test test</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">test</span></code> environment currently uses the same solve group as
+<code class="docutils literal notranslate"><span class="pre">test-pylatest</span></code>. The explicit alias can also be used:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run -e test-pylatest test</span>
+</pre></div>
+</div>
+<p>Run the suite with the oldest supported Python:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run -e test-pyoldest test</span>
+</pre></div>
+</div>
+<p>Run the OpenCL SART tests:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run -e test-opencl test-opencl</span>
+</pre></div>
+</div>
+<p>The regular test task runs <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">unittest</span> <span class="pre">discover</span> <span class="pre">cherab</span> <span class="pre">-v</span></code>. The OpenCL
+task runs <code class="docutils literal notranslate"><span class="pre">cherab.tools.tests.test_sart_opencl</span></code> only.</p>
+</section>
+<section id="documentation">
+<h2>📚 Documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h2>
+<p>Build the HTML documentation:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run -e docs doc-build</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">html</span></code> is the default Sphinx builder. A different builder can be supplied as
+the final argument; for example, check external and internal links with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run -e docs doc-build linkcheck</span>
+</pre></div>
+</div>
+<p>Build output is written below <code class="docutils literal notranslate"><span class="pre">docs/build/&lt;builder&gt;</span></code>. Remove all documentation
+build output with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run doc-clean</span>
+</pre></div>
+</div>
+<p>After building the HTML documentation, serve it locally on port 8000 with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run doc-serve</span>
+</pre></div>
+</div>
+<p>Then open <a class="reference external" href="http://localhost:8000">http://localhost:8000</a> in a browser. To use a different port, pass
+it as the final argument:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run doc-serve 8080</span>
+</pre></div>
+</div>
+</section>
+<section id="formatting-and-static-analysis">
+<h2>🧹 Formatting and static analysis<a class="headerlink" href="#formatting-and-static-analysis" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">lint</span></code> environment keeps code-quality tools separate from the environments
+that build and install Cherab. Because the task names below are unique to this
+environment, Pixi selects it automatically; <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">lint</span></code> is not required.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lefthook</span></code></p></td>
+<td><p>Run Lefthook</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hooks</span></code></p></td>
+<td><p>Install the Git hooks managed by Lefthook</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></p></td>
+<td><p>Run the Lefthook <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> group</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ruff-check</span></code></p></td>
+<td><p>Run <code class="docutils literal notranslate"><span class="pre">ruff</span> <span class="pre">check</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ruff-format</span></code></p></td>
+<td><p>Run <code class="docutils literal notranslate"><span class="pre">ruff</span> <span class="pre">format</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">toml-format</span></code></p></td>
+<td><p>Run <code class="docutils literal notranslate"><span class="pre">tombi</span> <span class="pre">format</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dprint</span></code></p></td>
+<td><p>Run <code class="docutils literal notranslate"><span class="pre">dprint</span> <span class="pre">fmt</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">typos</span></code></p></td>
+<td><p>Find and fix spelling errors</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">actionlint</span></code></p></td>
+<td><p>Run Actionlint</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">blacken-docs</span></code></p></td>
+<td><p>Format Python examples in documentation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">validate-pyproject</span></code></p></td>
+<td><p>Validate <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cython-lint</span></code></p></td>
+<td><p>Run Cython-Lint</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lint</span></code></p></td>
+<td><p>Run the Lefthook <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> group on all files</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run ruff-check</span>
+<span class="go">pixi run toml-format</span>
+<span class="go">pixi run cython-lint</span>
+<span class="go">pixi run validate-pyproject</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">hooks</span></code>, <code class="docutils literal notranslate"><span class="pre">lefthook</span></code>, <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code>, and aggregate <code class="docutils literal notranslate"><span class="pre">lint</span></code> tasks invoke
+Lefthook.</p>
+<blockquote>
+<div><p>[!WARNING]
+A Lefthook configuration file has not been added to the repository yet, so
+these tasks are not currently available.</p>
+</div></blockquote>
+<p>Install the Git hooks and run all configured checks with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run hooks</span>
+<span class="go">pixi run lint</span>
+</pre></div>
+</div>
+<p>Running <code class="docutils literal notranslate"><span class="pre">pixi</span> <span class="pre">run</span> <span class="pre">hooks</span></code> installs the Git hooks once. After installation, the
+configured pre-commit checks are triggered automatically for every commit. To
+remove the installed hooks and stop the automatic checks, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pixi run lefthook uninstall</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tools/utility.html" class="btn btn-neutral float-left" title="10.7. Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../demonstrations/demonstrations.html" class="btn btn-neutral float-right" title="Atomic Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Cherab Team.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,88 +1,43 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Performing Inversions of Bolometer Measurements Using Ray Transfer Objects &mdash; Cherab 1.5.0 documentation</title>
-  
-
-  
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performing Inversions of Bolometer Measurements Using Ray Transfer Objects &mdash; Cherab 1.6.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
 
   
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <script src="../../_static/documentation_options.js?v=72d88caf"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+        <div class="wy-side-nav-search" >
 
           
-            <a href="../../index.html" class="icon icon-home"> Cherab
           
-
-          
+          <a href="../../index.html" class="icon icon-home">
+            Cherab
           </a>
-
-          
-            
-            
-              <div class="version">
-                1.5
-              </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../welcome.html">1. Welcome</a></li>
@@ -96,6 +51,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../math/math.html">9. Function Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tools/tools.html">10. Tools</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/pixi.html">Pixi developer guide</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html">Atomic Data</a></li>
@@ -108,70 +67,32 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Cherab</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
-      <li>Performing Inversions of Bolometer Measurements Using Ray Transfer Objects</li>
-    
-    
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Performing Inversions of Bolometer Measurements Using Ray Transfer Objects</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../_sources/demonstrations/bolometry/inversion_with_raytransfer.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <section id="performing-inversions-of-bolometer-measurements-using-ray-transfer-objects">
-<span id="bolometer-raytransfer-inversion"></span><h1>Performing Inversions of Bolometer Measurements Using Ray Transfer Objects<a class="headerlink" href="#performing-inversions-of-bolometer-measurements-using-ray-transfer-objects" title="Permalink to this heading">¶</a></h1>
+<span id="bolometer-raytransfer-inversion"></span><h1>Performing Inversions of Bolometer Measurements Using Ray Transfer Objects<a class="headerlink" href="#performing-inversions-of-bolometer-measurements-using-ray-transfer-objects" title="Link to this heading">¶</a></h1>
 <p>In this demonstration, we take the geometry matrix and regularisation operator
 calculated in the <a class="reference internal" href="geometry_matrix_with_raytransfer.html#bolometer-geometry-raytransfer"><span class="std std-ref">Geometry Matrix Calculation Using Ray Transfer Objects</span></a> demonstration and use them to perform an inversion of
 simulated bolometer measurements from a defined emissivity profile. The emission source
@@ -204,21 +125,21 @@ done in this demo script to produce the plot of the phantom).</p>
 <span class="sd">geometry and the same radiation function as in the radiation_function.py</span>
 <span class="sd">demo.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">raysect.core</span> <span class="kn">import</span> <span class="n">Node</span><span class="p">,</span> <span class="n">Point2D</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">rotate_basis</span><span class="p">,</span> <span class="n">rotate_y</span><span class="p">,</span> <span class="n">translate</span>
-<span class="kn">from</span> <span class="nn">raysect.optical</span> <span class="kn">import</span> <span class="n">World</span>
-<span class="kn">from</span> <span class="nn">raysect.optical.material</span> <span class="kn">import</span> <span class="n">AbsorbingSurface</span><span class="p">,</span> <span class="n">VolumeTransform</span>
-<span class="kn">from</span> <span class="nn">raysect.primitive</span> <span class="kn">import</span> <span class="n">Box</span><span class="p">,</span> <span class="n">Cylinder</span><span class="p">,</span> <span class="n">Subtract</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span><span class="p">,</span> <span class="n">Point2D</span><span class="p">,</span> <span class="n">Point3D</span><span class="p">,</span> <span class="n">Vector3D</span><span class="p">,</span> <span class="n">rotate_basis</span><span class="p">,</span> <span class="n">rotate_y</span><span class="p">,</span> <span class="n">translate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.optical</span><span class="w"> </span><span class="kn">import</span> <span class="n">World</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.optical.material</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbsorbingSurface</span><span class="p">,</span> <span class="n">VolumeTransform</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">raysect.primitive</span><span class="w"> </span><span class="kn">import</span> <span class="n">Box</span><span class="p">,</span> <span class="n">Cylinder</span><span class="p">,</span> <span class="n">Subtract</span>
 
-<span class="kn">from</span> <span class="nn">cherab.core.math</span> <span class="kn">import</span> <span class="n">AxisymmetricMapper</span><span class="p">,</span> <span class="n">sample2d</span>
-<span class="kn">from</span> <span class="nn">cherab.tools.emitters</span> <span class="kn">import</span> <span class="n">RadiationFunction</span>
-<span class="kn">from</span> <span class="nn">cherab.tools.inversions</span> <span class="kn">import</span> <span class="n">invert_regularised_nnls</span>
-<span class="kn">from</span> <span class="nn">cherab.tools.observers</span> <span class="kn">import</span> <span class="n">BolometerCamera</span><span class="p">,</span> <span class="n">BolometerSlit</span><span class="p">,</span> <span class="n">BolometerFoil</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab.core.math</span><span class="w"> </span><span class="kn">import</span> <span class="n">AxisymmetricMapper</span><span class="p">,</span> <span class="n">sample2d</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab.tools.emitters</span><span class="w"> </span><span class="kn">import</span> <span class="n">RadiationFunction</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab.tools.inversions</span><span class="w"> </span><span class="kn">import</span> <span class="n">invert_regularised_nnls</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cherab.tools.observers</span><span class="w"> </span><span class="kn">import</span> <span class="n">BolometerCamera</span><span class="p">,</span> <span class="n">BolometerSlit</span><span class="p">,</span> <span class="n">BolometerFoil</span>
 
 
 <span class="c1"># Convenient constants</span>
@@ -260,7 +181,7 @@ done in this demo script to produce the plot of the phantom).</p>
 <span class="c1">################################################################################</span>
 <span class="c1"># Build a simple bolometer system</span>
 <span class="c1">################################################################################</span>
-<span class="k">def</span> <span class="nf">make_bolometer_camera</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_bolometer_camera</span><span class="p">():</span>
     <span class="c1"># The camera consists of a box with a rectangular slit and 4 sensors, each</span>
     <span class="c1"># of which has 4 foils.</span>
     <span class="c1"># In its local coordinate system, the camera&#39;s slit is located at the</span>
@@ -341,7 +262,7 @@ done in this demo script to produce the plot of the phantom).</p>
 <span class="n">CYLINDER_HEIGHT</span> <span class="o">=</span> <span class="p">(</span><span class="n">LCFS_RADIUS</span> <span class="o">+</span> <span class="n">WALL_LCFS_OFFSET</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
 
 
-<span class="k">def</span> <span class="nf">emission_function_2d</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">emission_function_2d</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
 
     <span class="n">sample_point</span> <span class="o">=</span> <span class="n">Point2D</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
     <span class="n">direction</span> <span class="o">=</span> <span class="n">PLASMA_AXIS</span><span class="o">.</span><span class="n">vector_to</span><span class="p">(</span><span class="n">sample_point</span><span class="p">)</span>
@@ -517,66 +438,41 @@ shape is preserved, with the central blob and ring radiator visible in the
 inversion. There are a few artefacts around the edge of the reconstruction volume,
 Note also that there is more blurring of the boundary between the central and ring
 radiators in the upper half of the image: this reflects the fact that the bolometer
-sightlines are not symmetric above and below the midplane.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+sightlines are not symmetric above and below the midplane.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id2">
-<img alt="../../_images/bolometer_raytransfer_calculated_powers.svg" src="../../_images/bolometer_raytransfer_calculated_powers.svg" /><figcaption>
+<img alt="../../_images/bolometer_raytransfer_calculated_powers.svg" src="../../_images/bolometer_raytransfer_calculated_powers.svg" />
+<figcaption>
 <p><span class="caption-text"><strong>Caption</strong> The forward-modelled and back-calculated power measurements on the foils.
 The measured power using ray tracing in this script, the calculated power by
 multiplying the sensitivity matrix by the emission vector and the back-calculated
 power calculated by multiplying the sensitivity matrix by the inverted emissivity are
 all in good agreement, showing that the grid size and the amount of regularisation
-are suitable in this case.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+are suitable in this case.</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2024, Cherab Team
+    <p>&#169; Copyright 2026, Cherab Team.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

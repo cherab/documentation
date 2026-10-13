@@ -1,90 +1,46 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>9. Function Framework &mdash; Cherab 1.5.0 documentation</title>
-  
-
-  
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9. Function Framework &mdash; Cherab 1.6.0 documentation</title>
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
 
   
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <script src="../_static/documentation_options.js?v=72d88caf"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9.1. Caching" href="caching.html" />
     <link rel="prev" title="8.10. Laser" href="../models/laser/laser.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+        <div class="wy-side-nav-search" >
 
           
-            <a href="../index.html" class="icon icon-home"> Cherab
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            Cherab
           </a>
-
-          
-            
-            
-              <div class="version">
-                1.5
-              </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
@@ -105,9 +61,14 @@
 <li class="toctree-l2"><a class="reference internal" href="mask.html">9.7. Masks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samplers.html">9.8. Samplers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slice.html">9.9. Slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrators.html">9.10. Integrators</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/pixi.html">Pixi developer guide</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
 <ul>
@@ -121,70 +82,32 @@
 <li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Cherab</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li><span class="section-number">9. </span>Function Framework</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">9. </span>Function Framework</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/math/math.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <section id="function-framework">
-<h1><span class="section-number">9. </span>Function Framework<a class="headerlink" href="#function-framework" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">9. </span>Function Framework<a class="headerlink" href="#function-framework" title="Link to this heading">¶</a></h1>
 <p>One of Cherab’s most powerful features is the way it is designed to support mathematical
 functions. Most of the physics interfaces in Cherab are specified in terms of math functions
 of a specified dimension. I.e. density is a 3D function f(x, y, z), while <span class="math notranslate nohighlight">\(\psi_n(r,z)\)</span>
@@ -210,12 +133,32 @@ utilities that Cherab provides for slicing, dicing and projecting these function
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="function.html">9.3. Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="function.html#d-vector-functions">9.3.1. 2D Vector Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function.html#d-scalar-functions">9.3.1. 6D Scalar Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.base.Function6D"><code class="docutils literal notranslate"><span class="pre">Function6D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.base.Function6D.__call__"><code class="docutils literal notranslate"><span class="pre">Function6D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.constant.Constant6D"><code class="docutils literal notranslate"><span class="pre">Constant6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.arg.Arg6D"><code class="docutils literal notranslate"><span class="pre">Arg6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.cmath.Exp6D"><code class="docutils literal notranslate"><span class="pre">Exp6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.cmath.Sin6D"><code class="docutils literal notranslate"><span class="pre">Sin6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.cmath.Cos6D"><code class="docutils literal notranslate"><span class="pre">Cos6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.cmath.Tan6D"><code class="docutils literal notranslate"><span class="pre">Tan6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.cmath.Asin6D"><code class="docutils literal notranslate"><span class="pre">Asin6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.cmath.Acos6D"><code class="docutils literal notranslate"><span class="pre">Acos6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.cmath.Atan6D"><code class="docutils literal notranslate"><span class="pre">Atan6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.cmath.Atan4Q6D"><code class="docutils literal notranslate"><span class="pre">Atan4Q6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.cmath.Sqrt6D"><code class="docutils literal notranslate"><span class="pre">Sqrt6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.cmath.Erf6D"><code class="docutils literal notranslate"><span class="pre">Erf6D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.float.function6d.blend.Blend6D"><code class="docutils literal notranslate"><span class="pre">Blend6D</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="function.html#d-vector-functions">9.3.2. 2D Vector Functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.VectorFunction2D"><code class="docutils literal notranslate"><span class="pre">VectorFunction2D</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.ScalarToVectorFunction2D"><code class="docutils literal notranslate"><span class="pre">ScalarToVectorFunction2D</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="function.html#id1">9.3.2. 3D Vector Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function.html#id1">9.3.3. 3D Vector Functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.VectorFunction3D"><code class="docutils literal notranslate"><span class="pre">VectorFunction3D</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="function.html#cherab.core.math.function.ScalarToVectorFunction3D"><code class="docutils literal notranslate"><span class="pre">ScalarToVectorFunction3D</span></code></a></li>
 </ul>
@@ -286,65 +229,49 @@ utilities that Cherab provides for slicing, dicing and projecting these function
 <li class="toctree-l2"><a class="reference internal" href="slice.html#cherab.core.math.slice.Slice3D"><code class="docutils literal notranslate"><span class="pre">Slice3D</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="integrators.html">9.10. Integrators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrators.html#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature1D</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrators.html#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.max_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature1D.max_order</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrators.html#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.min_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature1D.min_order</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrators.html#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.relative_tolerance"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature1D.relative_tolerance</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrators.html#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrators.html#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.relative_tolerance"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D.relative_tolerance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrators.html#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.x_max_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D.x_max_order</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrators.html#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.x_min_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D.x_min_order</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrators.html#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.y_max_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D.y_max_order</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrators.html#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.y_min_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D.y_min_order</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="caching.html" class="btn btn-neutral float-right" title="9.1. Caching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../models/laser/laser.html" class="btn btn-neutral" title="8.10. Laser" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../models/laser/laser.html" class="btn btn-neutral float-left" title="8.10. Laser" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="caching.html" class="btn btn-neutral float-right" title="9.1. Caching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2024, Cherab Team
+    <p>&#169; Copyright 2026, Cherab Team.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });

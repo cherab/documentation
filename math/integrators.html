@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9.10. Integrators &mdash; Cherab 1.6.0 documentation</title>
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+
+  
+      <script src="../_static/documentation_options.js?v=72d88caf"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Tools" href="../tools/tools.html" />
+    <link rel="prev" title="9.9. Slicing" href="slice.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Cherab
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">1. Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../licence.html">2. Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../governance.html">3. Project Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation_and_structure.html">4. Installation and Project Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../available_modules.html">5. Available Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../atomic/atomic_data.html">6. Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plasmas/plasmas.html">7. Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/emission_models.html">8. Emission Models</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="math.html">9. Function Framework</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="caching.html">9.1. Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clamp.html">9.2. Clamps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function.html">9.3. Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolators.html">9.4. Interpolators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mappers.html">9.5. Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html">9.6. Transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mask.html">9.7. Masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplers.html">9.8. Samplers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slice.html">9.9. Slicing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.10. Integrators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.max_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature1D.max_order</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.min_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature1D.min_order</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.relative_tolerance"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature1D.relative_tolerance</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.relative_tolerance"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D.relative_tolerance</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.x_max_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D.x_max_order</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.x_min_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D.x_min_order</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.y_max_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D.y_max_order</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.y_min_order"><code class="docutils literal notranslate"><span class="pre">GaussianQuadrature2D.y_min_order</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">10. Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/pixi.html">Pixi developer guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html">Atomic Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#creating-plasmas">Creating Plasmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#surface-radiation-loads">Surface Radiation Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#active-spectroscopy">Active Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#passive-spectroscopy">Passive Spectroscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#bolometry">Bolometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#geometry-matrices">Geometry Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demonstrations/demonstrations.html#code-examples-gallery">Code examples gallery</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cherab</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="math.html"><span class="section-number">9. </span>Function Framework</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">9.10. </span>Integrators</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/math/integrators.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="integrators">
+<h1><span class="section-number">9.10. </span>Integrators<a class="headerlink" href="#integrators" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.integrators.integrators1d.GaussianQuadrature1D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.integrators.integrators1d.</span></span><span class="sig-name descname"><span class="pre">GaussianQuadrature1D</span></span><a class="headerlink" href="#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Integrator1D</span></code></p>
+<p>Compute an integral of a one-dimensional function over a finite interval
+using fixed-tolerance Gaussian quadrature.
+(see Scipy <cite>quadrature &lt;https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.quadrature.html&gt;</cite>).</p>
+<p>The integration is performed by iteratively increasing the order of the Gaussian quadrature until the relative tolerance is met or the maximum order is reached.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>integrand</strong> (<em>object</em>) – A 1D function to integrate. Default is Constant1D(0).</p></li>
+<li><p><strong>relative_tolerance</strong> (<em>double</em>) – Iteration stops when relative error between
+last two iterates is less than this value. Default is 1.e-5.</p></li>
+<li><p><strong>max_order</strong> (<em>int</em>) – Maximum order on Gaussian quadrature the integration stops at. Default is 50.</p></li>
+<li><p><strong>min_order</strong> (<em>int</em>) – Minimum order on Gaussian quadrature the integration starts from. Default is 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>integrand</strong> (<em>Function1D</em>) – A 1D function to integrate.</p></li>
+<li><p><strong>relative_tolerance</strong> (<em>double</em>) – Iteration stops when relative error between
+last two iterates is less than this value.</p></li>
+<li><p><strong>max_order</strong> (<em>int</em>) – Maximum order on Gaussian quadrature the integration stops at.</p></li>
+<li><p><strong>min_order</strong> (<em>int</em>) – Minimum order on Gaussian quadrature the integration starts from.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.max_order">
+<span class="sig-name descname"><span class="pre">max_order</span></span><a class="headerlink" href="#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.max_order" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum order on Gaussian quadrature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.min_order">
+<span class="sig-name descname"><span class="pre">min_order</span></span><a class="headerlink" href="#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.min_order" title="Link to this definition">¶</a></dt>
+<dd><p>Minimum order on Gaussian quadrature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.relative_tolerance">
+<span class="sig-name descname"><span class="pre">relative_tolerance</span></span><a class="headerlink" href="#cherab.core.math.integrators.integrators1d.GaussianQuadrature1D.relative_tolerance" title="Link to this definition">¶</a></dt>
+<dd><p>Iteration stops when relative error between last two iterates is less than this value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>double</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cherab.core.math.integrators.integrators2d.GaussianQuadrature2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cherab.core.math.integrators.integrators2d.</span></span><span class="sig-name descname"><span class="pre">GaussianQuadrature2D</span></span><a class="headerlink" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Integrator2D</span></code></p>
+<p>Approximates an integral of a two-dimensional function over a finite interval.</p>
+<p>The integral is approximated with fixed-tolerance Gauss-Legendre quadrature.
+The quadrature approximation is calculated as follows:</p>
+<div class="math notranslate nohighlight">
+\[\int_{x_{\mathrm{lower}}}^{x_{\mathrm{upper}}} \int_{y_{\mathrm{lower}}(x)}^{y_{\mathrm{upper}}(x)} f(x, y) \, dy \, dx
+\approx \sum_{i=1}^{n_x} \sum_{j=1}^{n_y} w_{i} w_{j} \,
+f\left( B \xi_i + A, \, D(x) \eta_j + C(x) \right) \,
+B \cdot D(x)\]</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_{\mathrm{lower}}\)</span>: Lower limit of integration for the x-dimension.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{\mathrm{upper}}\)</span>: Upper limit of integration for the x-dimension.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_{\mathrm{lower}}(x)\)</span>: Lower limit of integration for the y-dimension, a function of <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_{\mathrm{upper}}(x)\)</span>: Upper limit of integration for the y-dimension, a function of <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x, y)\)</span>: The function to be integrated over the specified region.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\xi\)</span>: The transformed variable for the x-dimension, ranging from -1 to 1.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\eta\)</span>: The transformed variable for the y-dimension, ranging from -1 to 1.</p></li>
+<li><p><span class="math notranslate nohighlight">\(w_i\)</span>: The weight corresponding to the <span class="math notranslate nohighlight">\(i\)</span>-th root of the Legendre polynomial in the x-dimension.</p></li>
+<li><p><span class="math notranslate nohighlight">\(w_j\)</span>: The weight corresponding to the <span class="math notranslate nohighlight">\(j\)</span>-th root of the Legendre polynomial in the y-dimension.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\xi_i\)</span>: The <span class="math notranslate nohighlight">\(i\)</span>-th root of the Legendre polynomial in the x-dimension.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\eta_j\)</span>: The <span class="math notranslate nohighlight">\(j\)</span>-th root of the Legendre polynomial in the y-dimension.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_x\)</span>: The number of roots (or nodes) in the x-dimension.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_y\)</span>: The number of roots (or nodes) in the y-dimension.</p></li>
+<li><p><span class="math notranslate nohighlight">\(A = \frac{x_{\mathrm{upper}} + x_{\mathrm{lower}}}{2}\)</span>: Midpoint of the x-interval.</p></li>
+<li><p><span class="math notranslate nohighlight">\(B = \frac{x_{\mathrm{upper}} - x_{\mathrm{lower}}}{2}\)</span>: Half-width of the x-interval.</p></li>
+<li><p><span class="math notranslate nohighlight">\(D(x) = \frac{y_{\mathrm{upper}}(x) - y_{\mathrm{lower}}(x)}{2}\)</span>: Half-width of the y-interval.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C(x) = \frac{y_{\mathrm{upper}}(x) + y_{\mathrm{lower}}(x)}{2}\)</span>: Midpoint of the y-interval.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The integration is performed by iteratively increasing the order of the Gaussian quadrature in both the x and y dimensions until the relative tolerance is met or the maximum orders are reached.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>integrand</strong> (<em>Function2D</em>) – A 2D function to integrate. Default is <cite>Constant2D(0)</cite>.</p></li>
+<li><p><strong>relative_tolerance</strong> (<em>double</em>) – Iteration stops when relative error between
+last two iterates is less than this value. Default is <cite>1.e-5</cite>.</p></li>
+<li><p><strong>x_max_order</strong> (<em>int</em>) – Maximum order on Gaussian quadrature in the x dimension the integration stops at. Default is <cite>50</cite>.</p></li>
+<li><p><strong>x_min_order</strong> (<em>int</em>) – Minimum order on Gaussian quadrature in the x dimension the integration starts from. Default is <cite>1</cite>.</p></li>
+<li><p><strong>y_max_order</strong> (<em>int</em>) – Maximum order on Gaussian quadrature in the y dimension the integration stops at. Default is <cite>50</cite>.</p></li>
+<li><p><strong>y_min_order</strong> (<em>int</em>) – Minimum order on Gaussian quadrature in the y dimension the integration starts from. Default is <cite>1</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>integrand</strong> (<em>Function1D</em>) – A 1D function to integrate.</p></li>
+<li><p><strong>relative_tolerance</strong> (<em>double</em>) – Iteration stops when relative error between
+last two iterates is less than this value.</p></li>
+<li><p><strong>x_max_order</strong> (<em>int</em>) – Maximum order on Gaussian quadrature in the x dimension the integration stops at.</p></li>
+<li><p><strong>x_min_order</strong> (<em>int</em>) – Minimum order on Gaussian quadrature in the x dimension the integration starts from.</p></li>
+<li><p><strong>y_max_order</strong> (<em>int</em>) – Maximum order on Gaussian quadrature in the y dimension the integration stops at.</p></li>
+<li><p><strong>y_min_order</strong> (<em>int</em>) – Minimum order on Gaussian quadrature in the y dimension the integration starts from.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.relative_tolerance">
+<span class="sig-name descname"><span class="pre">relative_tolerance</span></span><a class="headerlink" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.relative_tolerance" title="Link to this definition">¶</a></dt>
+<dd><p>Iteration stops when relative error between last two iterates is less than this value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>double</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.x_max_order">
+<span class="sig-name descname"><span class="pre">x_max_order</span></span><a class="headerlink" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.x_max_order" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum order on Gaussian quadrature in the x dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.x_min_order">
+<span class="sig-name descname"><span class="pre">x_min_order</span></span><a class="headerlink" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.x_min_order" title="Link to this definition">¶</a></dt>
+<dd><p>Minimum order on Gaussian quadrature in the x dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.y_max_order">
+<span class="sig-name descname"><span class="pre">y_max_order</span></span><a class="headerlink" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.y_max_order" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum order on Gaussian quadrature in the y dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.y_min_order">
+<span class="sig-name descname"><span class="pre">y_min_order</span></span><a class="headerlink" href="#cherab.core.math.integrators.integrators2d.GaussianQuadrature2D.y_min_order" title="Link to this definition">¶</a></dt>
+<dd><p>Minimum order on Gaussian quadrature in the y dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="slice.html" class="btn btn-neutral float-left" title="9.9. Slicing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tools/tools.html" class="btn btn-neutral float-right" title="10. Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Cherab Team.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
